@@ -1,0 +1,152 @@
+#!/bin/bash
+#
+# Copyright Statement:
+# --------------------
+# This software is protected by Copyright and the information contained
+# herein is confidential. The software may not be copied and the information
+# contained herein may not be used or disclosed except with the written
+# permission of MediaTek Inc. (C) 2011
+#
+# BY OPENING THIS FILE, BUYER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+# THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("MEDIATEK SOFTWARE")
+# RECEIVED FROM MEDIATEK AND/OR ITS REPRESENTATIVES ARE PROVIDED TO BUYER ON
+# AN "AS-IS" BASIS ONLY. MEDIATEK EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NONINFRINGEMENT.
+# NEITHER DOES MEDIATEK PROVIDE ANY WARRANTY WHATSOEVER WITH RESPECT TO THE
+# SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY, INCORPORATED IN, OR
+# SUPPLIED WITH THE MEDIATEK SOFTWARE, AND BUYER AGREES TO LOOK ONLY TO SUCH
+# THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO. MEDIATEK SHALL ALSO
+# NOT BE RESPONSIBLE FOR ANY MEDIATEK SOFTWARE RELEASES MADE TO BUYER'S
+# SPECIFICATION OR TO CONFORM TO A PARTICULAR STANDARD OR OPEN FORUM.
+#
+# BUYER'S SOLE AND EXCLUSIVE REMEDY AND MEDIATEK'S ENTIRE AND CUMULATIVE
+# LIABILITY WITH RESPECT TO THE MEDIATEK SOFTWARE RELEASED HEREUNDER WILL BE,
+# AT MEDIATEK'S OPTION, TO REVISE OR REPLACE THE MEDIATEK SOFTWARE AT ISSUE,
+# OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE CHARGE PAID BY BUYER TO
+# MEDIATEK FOR SUCH MEDIATEK SOFTWARE AT ISSUE.
+#
+# THE TRANSACTION CONTEMPLATED HEREUNDER SHALL BE CONSTRUED IN ACCORDANCE
+# WITH THE LAWS OF THE STATE OF CALIFORNIA, USA, EXCLUDING ITS CONFLICT OF
+# LAWS PRINCIPLES.  ANY DISPUTES, CONTROVERSIES OR CLAIMS ARISING THEREOF AND
+# RELATED THERETO SHALL BE SETTLED BY ARBITRATION IN SAN FRANCISCO, CA, UNDER
+# THE RULES OF THE INTERNATIONAL CHAMBER OF COMMERCE (ICC).
+#
+#
+
+#---------------------------------------------
+#            lib release file list
+#---------------------------------------------
+strongswan_LIB_RELEASE_FILE_LIST=( \
+charon \
+libcharon-ss.so \
+libcrypto-ss.so \
+libcurl-ss.so \
+libhydra.so \
+libsimaka.so \
+libssl-ss.so \
+libstrongswan.so \
+starter \
+stroke \
+)
+
+utinterface_LIB_RELEASE_FILE_LIST=( \
+libutinterface_custom_md.so \
+)
+
+#---------------------------------------------
+#            src release file list
+#---------------------------------------------
+epdg_SRC_RELEASE_FILE_LIST=( \
+./module/epdg/wod/init/init.wod.rc init_rc/ \
+./module/epdg/wod/init/p0/init.wod.rc init_rc/p0/ \
+./module/epdg/wod/init/q0/init.wod.rc init_rc/q0/ \
+./module/epdg/wod/init/r0/init.wod.rc init_rc/r0/ \
+)
+
+volte_SRC_RELEASE_FILE_LIST=( \
+./module/volte/volte_imcb/init.volte_imcb.rc init_rc/ \
+./module/volte/volte_stack/init.volte_stack.rc init_rc/ \
+./module/volte/volte_ua/init.volte_ua.rc init_rc/ \
+./module/volte/volte_imcb/p0/init.volte_imcb.rc init_rc/p0/ \
+./module/volte/volte_stack/p0/init.volte_stack.rc init_rc/p0/ \
+./module/volte/volte_ua/p0/init.volte_ua.rc init_rc/p0/ \
+./module/volte/volte_imcb/q0/init.volte_imcb.rc init_rc/q0/ \
+./module/volte/volte_stack/q0/init.volte_stack.rc init_rc/q0/ \
+./module/volte/volte_ua/q0/init.volte_ua.rc init_rc/q0/ \
+./module/volte/volte_imcb/r0/init.volte_imcb.rc init_rc/r0/ \
+./module/volte/volte_stack/r0/init.volte_stack.rc init_rc/r0/ \
+./module/volte/volte_ua/r0/init.volte_ua.rc init_rc/r0/ \
+)
+
+wfca_SRC_RELEASE_FILE_LIST=( \
+./module/wfca/init.wfca.rc init_rc/ \
+./module/wfca/init.wfca.rc init_rc/p0/ \
+./module/wfca/init.wfca.rc init_rc/q0/ \
+./module/wfca/init.wfca.rc init_rc/r0/ \
+)
+
+strongswan_SRC_RELEASE_FILE_LIST=( \
+./module/strongswan/epdg_conf/ipsec.conf makefile/epdg_conf/ \
+./module/strongswan/epdg_conf/strongswan.conf makefile/epdg_conf/ \
+./module/strongswan/epdg_conf/updown_script makefile/epdg_conf/ \
+./module/strongswan/epdg_conf/openssl.cnf makefile/epdg_conf/ \
+./module/strongswan/epdg_cert/ makefile/ \
+)
+
+mdagent_SRC_RELEASE_FILE_LIST=( \
+./module/mdagent/volte_imsm_93/init.volte_imsm_93.rc init_rc/ \
+./module/mdagent/volte_imsm_93/p0/init.volte_imsm_93.rc init_rc/p0/ \
+./module/mdagent/volte_imsm_93/q0/init.volte_imsm_93.rc init_rc/q0/ \
+./module/mdagent/volte_imsm_93/r0/init.volte_imsm_93.rc init_rc/r0/ \
+./module/mdagent/volte_md_status/init.volte_md_status.rc init_rc/ \
+./module/mdagent/volte_md_status/p0/init.volte_md_status.rc init_rc/p0/ \
+./module/mdagent/volte_md_status/q0/init.volte_md_status.rc init_rc/q0/ \
+./module/mdagent/volte_md_status/r0/init.volte_md_status.rc init_rc/r0/ \
+)
+
+verno_SRC_RELEASE_FILE_LIST=( \
+./module/verno/init.mdapps_verno.rc init_rc/ \
+)
+
+bip_SRC_RELEASE_FILE_LIST=( \
+./module/bip/init.bip.rc init_rc/ \
+./module/bip/p0/init.bip.rc init_rc/p0/ \
+./module/bip/q0/init.bip.rc init_rc/q0/ \
+./module/bip/r0/init.bip.rc init_rc/r0/ \
+)
+
+install_SRC_RELEASE_FILE_LIST=( \
+./module/install/inst_mdapp.mk makefile/ \
+./module/install/inst_epdg.mk makefile/ \
+./module/install/inst_volte.mk makefile/ \
+./module/install/inst_wfca.mk makefile/ \
+./module/install/inst_strongswan.mk makefile/ \
+./module/install/inst_mdagent.mk makefile/ \
+./module/install/inst_bip.mk makefile/ \
+./module/install/inst_utinterface.mk makefile/ \
+./module/install/inst_md_status.mk makefile/ \
+./module/install/product_epdg.mk makefile/ \
+./module/install/product_volte.mk makefile/ \
+./module/install/product_wfca.mk makefile/ \
+./module/install/product_strongswan.mk makefile/ \
+./module/install/product_mdagent.mk makefile/ \
+./module/install/product_bip.mk makefile/ \
+./module/install/product_utinterface.mk makefile/ \
+./module/install/product_mdapp.mk makefile/ \
+./module/install/product_mdstatus.mk makefile/ \
+)
+
+common_SRC_RELEASE_FILE_LIST=( \
+./build/$GEN_CONFIG/module/common/pregen/init.md_apps.rc  init_rc/ \
+./build/$GEN_CONFIG/module/common/pregen/p/init.md_apps.rc  init_rc/p0/ \
+./build/$GEN_CONFIG/module/common/pregen/p/init.mdapps_verno.rc init_rc/p0/ \
+./build/$GEN_CONFIG/module/common/pregen/q/init.md_apps.rc  init_rc/q0/ \
+./build/$GEN_CONFIG/module/common/pregen/q/init.mdapps_verno.rc init_rc/q0/ \
+./build/$GEN_CONFIG/module/common/pregen/r/init.md_apps.rc  init_rc/r0/ \
+./build/$GEN_CONFIG/module/common/pregen/r/init.mdapps_verno.rc init_rc/r0/ \
+)
+
+sepolicy_SRC_RELEASE_FILE_LIST=( \
+./module/sepolicy/ ./ \
+)

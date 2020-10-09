@@ -1,0 +1,12 @@
+__attribute__ ((section ("DRDIRODATA.2G.SETX.LINE")))
+l1d_custom_drdi.obj
+__attribute__ ((section ("DRDIRODATA.3GFDD.SETX.LINE")))
+wcustomdata.obj 
+__attribute__ ((section ("DRDIRODATA.3GTDD.SETX.LINE")))
+t12193.obj 
+__attribute__ ((section ("DRDIRODATA.LTE.SETX.LINE")))
+lte_custom_drdi.obj 
+__attribute__ ((section ("DRDIRODATA.MMRF.SETX.LINE")))
+mml1_drdi.obj   
+__attribute__ ((section ("DRDIRODATA.C2K.SETX.LINE")))
+cl1_drdi.obj

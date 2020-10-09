@@ -1,0 +1,19 @@
+       INT_VECTOR_CODE$$Base = .;
+       *(MIPS_BOOTROM)
+       . = ALIGN(16);
+       *bootarm_gcc.obj (INT_VECTOR_CODE)
+       KEEP(* (NOP_INT_VECTOR_CODE_SECTION))
+       . = ALIGN(16);
+       INT_VECTOR_CODE$$Limit = .;
+       INT_VECTOR_CODE$$Length = ABSOLUTE(INT_VECTOR_CODE$$Limit - INT_VECTOR_CODE$$Base);
+       
+       AUROM_ROCODE$$Base = .;
+       * (AUROM_ROCODE)
+       KEEP(* (NOP_AUROM_ROCODE_SECTION))
+       AUROM_ROCODE$$Limit = .;
+       AUROM_ROCODE$$Length = ABSOLUTE(AUROM_ROCODE$$Limit - AUROM_ROCODE$$Base); 
+       
+       AUROM_RODATA$$Base = .; /* RODATA should be put in the end of ROM section. CGA will not parsing symbols after this linker symbol */
+       * (AUROM_RODATA)	
+       AUROM_RODATA$$Limit = .;
+       AUROM_RODATA$$Length = ABSOLUTE(AUROM_RODATA$$Limit - AUROM_RODATA$$Base); 

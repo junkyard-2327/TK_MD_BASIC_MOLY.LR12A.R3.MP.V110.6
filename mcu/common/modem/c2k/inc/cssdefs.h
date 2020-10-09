@@ -1,0 +1,580 @@
+/*****************************************************************************
+*  Copyright Statement:
+*  --------------------
+*  This software is protected by Copyright and the information contained
+*  herein is confidential. The software may not be copied and the information
+*  contained herein may not be used or disclosed except with the written
+*  permission of MediaTek Inc. (C) 2016
+*
+*  BY OPENING THIS FILE, BUYER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+*  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS (""MEDIATEK SOFTWARE"")
+*  RECEIVED FROM MEDIATEK AND/OR ITS REPRESENTATIVES ARE PROVIDED TO BUYER ON
+*  AN ""AS-IS"" BASIS ONLY. MEDIATEK EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES,
+*  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+*  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NONINFRINGEMENT.
+*  NEITHER DOES MEDIATEK PROVIDE ANY WARRANTY WHATSOEVER WITH RESPECT TO THE
+*  SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY, INCORPORATED IN, OR
+*  SUPPLIED WITH THE MEDIATEK SOFTWARE, AND BUYER AGREES TO LOOK ONLY TO SUCH
+*  THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO. MEDIATEK SHALL ALSO
+*  NOT BE RESPONSIBLE FOR ANY MEDIATEK SOFTWARE RELEASES MADE TO BUYER'S
+*  SPECIFICATION OR TO CONFORM TO A PARTICULAR STANDARD OR OPEN FORUM.
+*
+*  BUYER'S SOLE AND EXCLUSIVE REMEDY AND MEDIATEK'S ENTIRE AND CUMULATIVE
+*  LIABILITY WITH RESPECT TO THE MEDIATEK SOFTWARE RELEASED HEREUNDER WILL BE,
+*  AT MEDIATEK'S OPTION, TO REVISE OR REPLACE THE MEDIATEK SOFTWARE AT ISSUE,
+*  OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE CHARGE PAID BY BUYER TO
+*  MEDIATEK FOR SUCH MEDIATEK SOFTWARE AT ISSUE.
+*
+*  THE TRANSACTION CONTEMPLATED HEREUNDER SHALL BE CONSTRUED IN ACCORDANCE
+*  WITH THE LAWS OF THE STATE OF CALIFORNIA, USA, EXCLUDING ITS CONFLICT OF
+*  LAWS PRINCIPLES.  ANY DISPUTES, CONTROVERSIES OR CLAIMS ARISING THEREOF AND
+*  RELATED THERETO SHALL BE SETTLED BY ARBITRATION IN SAN FRANCISCO, CA, UNDER
+*  THE RULES OF THE INTERNATIONAL CHAMBER OF COMMERCE (ICC).
+*
+*****************************************************************************/
+/*************************************************************
+*
+* This Software is the property of VIA Telecom, Inc. and may only be used pursuant to a license from VIA Telecom, Inc.
+*
+* Any unauthorized use inconsistent with the terms of such license is strictly prohibited.
+*
+* Copyright (c) 2010 VIA Telecom, Inc.  All rights reserved.
+*
+*************************************************************/
+#ifndef _CSS_DEFS_H_
+
+#define _CSS_DEFS_H_  1
+
+#include "uimapi.h"
+/*****************************************************************************
+ * Local Definitions and Marcos
+ ****************************************************************************/
+#define CSS_SWAP(A, B, TMP)  {(TMP) = (A); (A) = (B); (B) = (TMP);}
+
+#define CSS_GENERIC_WARNING_TRACE(WARNING_TYPE, WARNING_VAL)  \
+    dhl_trace(TRACE_WARNING, DHL_USER_FLAG_NONE, DHL_CP_CSS_WARNING_TRACE_ID, WARNING_TYPE, WARNING_VAL, __FUNCTION__, __LINE__)
+
+#define CSS_INVALID_GMSS_DEST_MOD_TRACE()  \
+    dhl_trace(TRACE_WARNING, DHL_USER_FLAG_NONE, DHL_CP_CSS_WARNING_TRACE_ID, CSS_ERR_INVALID_GMSS_TASK, ValIratGetSimAccessIndex, __FUNCTION__, __LINE__)
+
+#define RTT_ASSOCIATED_SCAN_DISABLED
+#define RTT_AVAIL_SYS_SCAN_DISABLED
+#define DO_SILENT_RETRY_DISABLED
+#define DO_EMERGENCY_SCAN_DISABLED
+#define DO_OTASP_SCAN_DISABLED
+#define DO_AVAIL_SYS_SCAN_DISABLED
+
+#define INTERN_SIM_INDEX_OFFSET         0xA0
+
+#define MAX_ERI_ENTRIES     30
+#define CSS_MAX_SIM_NUM     MAX_SUPPORT_SIM_TOTAL
+
+/* maximum size based on NAM (non-PRL) available number of channels           */
+#define MAX_PCS_CHANS                   48 /* all PCS blocks have maximum = 48        */
+#define MAX_CELL_CDMA_CHANS              4 /* cell CDMA from NAM PRI A/B, SEC A/B = 4 */
+#define MAX_CELL_CUSTOM_CDMA_CHANS      32 /* cell CDMA custom channels maximum = 32  */
+#define MAX_MRU_CHANS                   MAX_MRU_RECORDS
+#ifdef MTK_DEV_C2K_IRAT
+#define MAX_SIB8_CHANS                  100
+#define MAX_PS_REG_RAL_RECORDS          10
+#endif
+#ifdef MTK_CBP
+#define MAX_1X_MAX_ACCESS_FAIL_AVOID_CHAN_NUM  4
+#define MAX_DO_MAX_ACCESS_FAIL_AVOID_CHAN_NUM  4
+#define ALL_ENTRIES_IN_AVOID_LIST              0xFE
+#define INVALID_INDEX_IN_AVOID_LIST            0xFF
+#define MAX_1X_MAX_REG_REJ_AVOID_CHAN_NUM      5
+#define MAX_1X_MAX_RELEASE_REJ_AVOID_CHAN_NUM  5
+#endif
+
+#define MAX_SYSTEM_LIST_SIZE        (90)
+#define MAX_EXT_SYSTEM_LIST_SIZE    (90)
+
+#define MAX_SMALL_SYSTEM_LIST_SIZE      20
+#define MAX_SMALL_EXT_SYSTEM_LIST_SIZE  20
+
+#define ACQUISITION_INDEX_NOT_KNOWN     512
+
+#define ACQUISITION_INDEX_NOT_KNOWN_DEFAULT_BAND    513
+
+/* maximum channels & blocks in PRL acq records */
+#ifdef MTK_CBP
+#define MAX_CUSTOM_CHANS    128  /* AR_GENERIC_ACQ_REC_HRPD with 121 band/channel combinations in Sprint card */
+#else
+#define MAX_CUSTOM_CHANS    31
+#endif
+
+#define BC0_BLOCK_CHANNEL_INCREMENT      0  /* Use PriA & PriB in the Nam */
+#define BC1_BLOCK_CHANNEL_INCREMENT      25
+#define BC2_BLOCK_CHANNEL_INCREMENT      0  /* Discrete channels */
+#define BC3_BLOCK_CHANNEL_INCREMENT      0  /* Discrete channels */
+#define BC4_BLOCK_CHANNEL_INCREMENT      25
+#define BC5_BLOCK_CHANNEL_INCREMENT      50
+#define BC6_BLOCK_CHANNEL_INCREMENT      25
+#define BC7_BLOCK_CHANNEL_INCREMENT      25
+#define BC8_BLOCK_CHANNEL_INCREMENT      25
+#define BC9_BLOCK_CHANNEL_INCREMENT      25
+#define BC10_BLOCK_CHANNEL_INCREMENT     50
+#define BC11_BLOCK_CHANNEL_INCREMENT     50
+#define BC12_BLOCK_CHANNEL_INCREMENT     25
+#define BC13_BLOCK_CHANNEL_INCREMENT     25
+#define BC14_BLOCK_CHANNEL_INCREMENT     25
+#define BC15_BLOCK_CHANNEL_INCREMENT     25
+#define BC16_BLOCK_CHANNEL_INCREMENT     25
+#define BC17_BLOCK_CHANNEL_INCREMENT      0
+#define BC18_BLOCK_CHANNEL_INCREMENT     25
+#define BC19_BLOCK_CHANNEL_INCREMENT     25
+#define BC20_BLOCK_CHANNEL_INCREMENT     25
+
+#define CSS_1X_EMERGENCY_CALLBACK_MODE_TIME 300000L
+
+/* E-PRL Defines */
+#define OPERATIONAL_SID_0      15904
+#define OPERATIONAL_SID_1      15905
+
+/* Maximum time to wait for ESPM to validate System Selection */
+#define CSS_1X_EPRL_ESPM_WAIT_TIME 12000L
+
+/* Arbitrary maximum number of times SelectChannel() can be called recursively before
+ * SVSM decides its in an infinite loop and throws MonFault
+ * CSS_ERR_SVSM_SELECT_CHANNEL_TOO_MANY_RECURSIONS */
+#define CSS_1X_SVSM_SELECT_CHANNEL_RECURSION_LIMIT 15
+
+#define MAX_OOSA_PHASES             10
+#define CSS_OOSA_MAX_SLEEP_SECS     510
+
+/* Scan duration is specified in seconds, stored in units of milliseconds */
+#define CP_SELECTION_TIME_SCALE     1000
+
+/*****************************************************************************
+ * Local Enums
+ ****************************************************************************/
+
+typedef enum
+{
+    CSS_UIM_PRL,
+    CSS_UIM_EPRL,
+    CSS_NV_PRL,
+    CSS_PRL_SRC_INVALID
+} CssPrlSourceType;
+
+typedef enum
+{
+    /* VR_ACCEPTED */
+    MOST_PREF_SYS_IN_PRL,
+    MOST_PREF_SYS_IN_PRL_WITH_ASSO,
+    HOME_SYS_IN_NAM_NOT_IN_PRL,
+    HOME_SYS_IN_NAM_NO_PRL,
+    DFLT_PREF_SYS_FOR_1X95_VER_PRL,
+    DFLT_PREF_SYS_NOT_IN_PRL_WITH_ASSO,
+    MRU_SYS_FOR_1X95_VER_PRL,
+    DFLT_PREF_SYS,
+    DFLT_PREF_SYS_NO_PRL,
+
+    /* VR_KEEP_SCAN */
+    PREF_SYS_IN_PRL,
+    PREF_SYS_IN_PRL_WITH_ASSO,
+ 
+    /* VR_NEGATIVE */
+    NEG_SYS_IN_PRL,
+    NEG_SYS_IN_PRL_WITH_ASSO,
+    NEG_SYS_IN_NAM_NOT_IN_PRL,
+    NEG_SYS_IN_NAM_NO_PRL,
+    PRI_LOCK_SYS,
+    SYS_NOT_IN_PRL_AND_NAM_AND_DFLT_BAND,
+    SYS_NOT_IN_MRU_AND_DFLT_BAND_FOR_1X95_VER_PRL,
+    NEG_SYS_FOR_1X95_VER_PRL,
+
+    /* VR_NON_SYS_TABLE */
+    DFLT_BAND_CHANNEL_SYS,
+    NOT_DFLT_BAND_CHANNEL_SYS,
+    NON_IN_SYS_TABLE,
+    NOT_IN_DFLT_PREF_SYS_NO_PRL,
+    NOT_IN_DFLT_PREF_AND_PRL_WITH_ASSO,
+
+    /* VR_UNKNOWN */
+    INTENATIONAL_ROAM_SYS_BARRED,
+    DOMESTIC_ROAM_SYS_BARRED,
+    ONLY_HOME_SYS_ALLOWED,
+
+    /* VR_EXTERNEL_ACCEPTED */
+    CHANNEL_LOCK_MODE,
+    HLP_IS_WAITING_FOR_SVC_MODE,
+
+    /* VR_EXTERNEL_REJECTED */
+    NOT_SUITABLE_SYS,
+    PILOT_STRENGTH_UNQUALIFIED_SYS,
+    MANUAL_SYS_AVOIDANCE,
+    MAPE_HOME_SYS_AVOIDANCE,
+    REGIST_REJECT_SYS_AVOIDANCE,
+    RELEASE_REJECT_SYS_AVOIDANCE,
+    ACCESS_MAX_PROBES_SYS_AVOIDANCE,
+    REDIRECTION_SYS_AVOIDANCE,
+    IRAT_PRIO_UNQUALIFIED_SYS
+} SELECT_VALIDATE_STATUS;
+
+enum cpsm_1x_events
+{
+    CPSM_1X_SELECT_REQ_EV,
+    CPSM_1X_VALIDATE_REQ_EV,
+    CPSM_1X_EXHAUST_SCANLIST_EV,
+    CPSM_1X_OOSA_WAKEUP_EV,
+    CPSM_1X_CONN_STATUS_IND_EV,
+    CPSM_1X_MPSS_TIMEOUT_EV,
+    CPSM_1X_RETRIEVE_RES_EV,
+    CPSM_1X_CP_DISABLED_EV,
+    CPSM_1X_NUM_EVENTS,
+    CPSM_1X_NO_EV
+};
+typedef enum cpsm_1x_events CPSM_1X_EVENTS;
+
+enum cpsm_do_events
+{
+    CPSM_DO_SELECT_REQ_EV,
+    CPSM_DO_VALIDATE_REQ_EV,
+    CPSM_DO_EXHAUST_SCANLIST_EV,
+    CPSM_DO_OOSA_WAKEUP_EV,
+    CPSM_DO_CONN_STATUS_IND_EV,
+    CPSM_DO_MPSS_TIMEOUT_EV,
+    CPSM_DO_RETRIEVE_RES_EV,
+    CPSM_DO_ASSO_SYS_SCAN_EV, /* RESCAN because the collocation between 1X and DO is broken */
+    CPSM_DO_DISABLE_EV,
+    CPSM_DO_NUM_EVENTS,
+    CPSM_DO_NO_EV
+};
+typedef enum cpsm_do_events CPSM_DO_EVENTS;
+
+typedef enum
+{
+    PRL_MRU_SCAN_1X_ST,
+    DFLT_PREF_CHAN_SCAN_1X_ST,
+    ACQD_NON_PRL_SYS_RESCAN_1X_ST,
+    ACQD_PRL_SYS_RESCAN_1X_ST,
+    SR_SCAN_1X_ST,
+    LAST_REG_SYS_SCAN_1X_ST,
+    GEO_SCAN_1X_ST,
+    MPSS_1X_ST,
+    AVAIL_SYS_SCAN_1X_ST, /* NOT USED */
+    EMGER_SCAN_1X_ST,
+    ASSOCIATED_DO_SCAN_1X_ST, /* NOT USED */
+    OTASP_CALL_SCAN_1X_ST,
+    REDIRECT_SCAN_1X_ST,
+    RE_ACQUIRE_1X_ST,
+    CALL_RELEASE_1X_ST,
+    PLL_CHAN_TEST_1X_ST,
+    RESET_1X_ST,
+#ifdef MTK_CBP
+    HVOLTE_SR_SIB8_SCAN_1X_ST, /* hVoLte silent redial on SIB8 */
+    IDLE_GEO_SCAN_1X_ST,
+#endif
+    NUM_1X_SVSM_STATES
+} Svsm_1X_States;
+
+typedef enum {
+    PRL_MRU_SCAN_DO_ST,                 /*0*/
+    DFLT_PREF_CHAN_SCAN_DO_ST,
+    ACQD_NON_PRL_SYS_RESCAN_DO_ST,
+    ACQD_PRL_SYS_RESCAN_DO_ST,
+    SR_SCAN_DO_ST,  /* NOT_USED */
+    LAST_REG_SYS_SCAN_DO_ST,            /*5*/
+    GEO_SCAN_DO_ST,
+    MPSS_DO_ST,
+    AVAIL_SYS_SCAN_DO_ST,  /* NOT_USED */
+    EMGER_SCAN_DO_ST,  /* NOT_USED */
+    ASSOCIATED_DO_SCAN_DO_ST,           /*10*/
+    OTASP_CALL_SCAN_DO_ST,  /* NOT_USED */
+    REDIRECT_SCAN_DO_ST,
+    RE_ACQUIRE_DO_ST, /*this DO SVSM is for acquiring last system one-time, now it's used for IRAT responding HLP case*/
+    ASSOCIATED_SYSLOST_SCAN_DO_ST,
+    ASSOCIATED_MPSS_SCAN_DO_ST,
+    PRL_MRU_SYSLOST_SCAN_DO_ST,
+    GEO_SYSLOST_SCAN_DO_ST,
+    PLL_CHAN_TEST_DO_ST,
+    RAT_CHANS_SCAN_DO_ST,
+    RESET_DO_ST,                        /*20*/
+    NUM_DO_SVSM_STATES
+}Svsm_DO_States;
+
+enum rsvac_1x_states
+{
+    RSVAC_1X_NULL_ST,
+    RSVAC_1X_WAITING_ST,
+    RSVAC_1X_PREEMPTING_ST,
+    RSVAC_1X_RUNNING_ST,
+    RSVAC_1X_NUM_STATES
+};
+typedef enum rsvac_1x_states RSVAC_1X_STATES;
+
+enum rsvac_do_states
+{
+    RSVAC_DO_NULL_ST,
+    RSVAC_DO_WAITING_ST,
+    RSVAC_DO_PREEMPTING_ST,
+    RSVAC_DO_RUNNING_ST,
+    RSVAC_DO_NUM_STATES
+};
+typedef enum rsvac_do_states RSVAC_DO_STATES;
+
+typedef enum
+{
+    SYS_1xRTT,
+    SYS_EVDO,
+    SYS_BOTH
+}C2K_SystemT;
+
+enum cpsm_do_session_states
+{
+    SESSION_CLOSED,
+    SESSION_SETUP,
+    SESSION_OPENED
+};
+typedef enum cpsm_do_session_states CPSM_DO_SESSION_STATES;
+
+typedef enum 
+{
+    /* go through the whole scan list. Only channels with PN association only
+       will be scaned by the PN list.  The other channels(Data association only,
+       or both association or Null association) will be scaned by the whole PN
+       space with small search window */
+    DO_ASSO_PHASE_1 = 0,
+    /* only scan one phase of AssoList, no need to scan Phase 1& Phase 2*/
+    DO_ASSO_PHASE_QUICK,
+    /* the 1st cycle found nothing, do a fallback Phase 2 scan cycle */
+    DO_ASSO_PHASE_2,
+    /* only scan the MRU saved channel in AssoList*/
+    DO_ASSO_PHASE_MRU,
+    /* stop current unfinised AssoScan, no need to go ahead*/
+    DO_ASSO_PHASE_INVALID = 0xFF
+} CssDoAssoPhaseE;
+
+typedef enum
+{
+    _1X_REDIRECTION_AVOIDANCE_SYS = 1,
+    _1X_MAXACCESSFAIL_AVOIDANCE_SYS,    
+    _1X_REGISTERREJECT_AVOIDANCE_SYS,
+    _1X_RELEASEREJECT_AVOIDANCE_SYS,
+} Avoid_1X_SysT;
+
+typedef enum
+{
+    DO_ABANDON_SYS,
+    DO_CONSECUTIVE_LOST_SYS,
+    DO_REDIRECTION_AVOIDANCE_SYS,
+    DO_ACM_PERSIS_TEST_FAIL_AVOIDANCE_SYS,
+    DO_MAXACCESSFAIL_AVOIDANCE_SYS,
+    DO_SESSIONEGO_TIMEOUT_AVOIDANCE_SYS,
+    DO_SESSIONEGO_FAIL_AVOIDANCE_SYS,
+    DO_CONNDENY_AUTH_AVOIDANCE_SYS,
+    DO_CONNDENY_GENERAL_AVOIDANCE_SYS,
+    DO_NOTCA_AVOIDANCE_SYS,
+    DO_TCHSETUP_FAIL_AVOIDANCE_SYS,
+    DO_AVOIDANCE_CHLIST
+} Avoid_DO_SysT;
+
+#ifdef MTK_DEV_C2K_IRAT
+typedef struct
+{
+    CHAN_LIST_HDR
+    CHANNEL_DESC    ChanList[CSS_LIST_SMALL_SIZE];
+    kal_uint16      AcqIndex[CSS_LIST_SMALL_SIZE];
+    kal_uint16      IratPri[CSS_LIST_SMALL_SIZE];
+} SmallRalChannelList, *pSmallRalChannelList;
+#endif
+
+typedef struct
+{
+    PACKED_PREFIX union{
+        RSVAC_1X_STATES rsvac1xState;
+        RSVAC_DO_STATES rsvacDoState;
+    } PACKED_POSTFIX u;
+    kal_bool isCurrFullBand;
+    kal_bool isNewFreqScanRequest;
+    kal_uint8 currSysIndication;
+    kal_bool isWaitModifyResult;
+}rsvacContext;
+
+#ifdef MTK_DEV_C2K_IRAT
+typedef enum
+{
+    NOT_KNOWN,
+    MOST_PREFERRED,
+    PREFERRED,
+    NEGATIVE,
+    NON_SYSTEM_TABLE,
+    SECOND_PREFERRED /* for LTE&DO interworing, second highest priority network in GEO */
+} SystemPreference;
+#else
+typedef enum
+{
+    NOT_KNOWN,
+    MOST_PREFERRED,
+    PREFERRED,
+    NEGATIVE,
+    NON_SYSTEM_TABLE
+} SystemPreference;
+#endif /* MTK_DEV_C2K_IRAT */
+
+typedef enum
+{
+    RSSI_SCAN_PHASE_INACTIVE,      /* no rssi scan filter */
+    RSSI_SCAN_PHASE_SCANNING,      /* rssi scan is running */
+    RSSI_SCAN_PHASE_ABORTING,      /* aborting rssi scan */
+    RSSI_SCAN_PHASE_I,             /* rssi scan filter phase 1*/
+    RSSI_SCAN_PHASE_II,            /* rssi scan filter phase 2*/    
+    RSSI_SCAN_PHASE_NOT_NEEDED     /* rssi scan phase not needed*/
+} FilterByRssiScanStateT;
+
+typedef enum
+{
+    VR_NON_SYS_TABLE,
+    VR_ACCEPTED,
+    VR_KEEP_SCAN,
+    VR_NEGATIVE,
+    VR_UNKNOWN,
+    VR_EXTERNEL_ACCEPTED, /* only for trace */  
+    VR_EXTERNEL_REJECTED, /* only for trace */
+}ValidateResult;
+
+#ifdef MTK_CBP
+#define CSS_MAX_NUMBER_OF_TIMER_IDS ((CSS_MAX_NUMBER_OF_TIMER_TYPES) + \
+                                     (MAX_1X_MAX_ACCESS_FAIL_AVOID_CHAN_NUM) - 1 + \
+                                     (MAX_1X_MAX_REG_REJ_AVOID_CHAN_NUM) - 1 + \
+                                     (MAX_1X_MAX_RELEASE_REJ_AVOID_CHAN_NUM) - 1 + \
+                                     (MAX_DO_MAX_ACCESS_FAIL_AVOID_CHAN_NUM) - 1)
+#endif
+
+typedef enum
+{
+    CPSM_1X_OOSA_SLEEP_REQUEST = 0,
+    CPSM_1X_OOSA_SCAN_TIME_SET,
+    CPSM_1X_OOSA_SCAN_TIME_EXPIRE,
+    CPSM_1X_OOSA_WAKEUP_INDICATOR,
+    CPSM_1X_OOSA_ENTER_NEW_CYCLE,
+    CPSM_1X_OOSA_NOT_ALLOWED_BY_SVSM_STATE,
+    CPSM_1X_OOSA_COUNTERS_RESET,
+    CPSM_1X_OOSA_ENTER_STAGE
+}CssOOSAEvent;
+
+/* IRAT state machine */
+typedef enum {
+    DONOTSCANPOWERUP,   /* wait for IRAT cmd to start scan after power up */
+    DONORMALSCAN        /* normal scan */
+} IRAT_DOStateT;
+
+typedef enum {
+    NOTSCANPOWERUP1X,   /* wait for IRAT cmd to start scan after power up */
+    NORMALSCAN1X        /* normal scan */
+} IRAT_1XStateT;
+
+typedef enum
+{
+    IRAT_TURNOFF_DO_INACTIVE,
+    IRAT_TURNOFF_DO_REL_PPP,
+    IRAT_TURNOFF_DO_REL_PPP_NEED_DEEPSLEEP,
+    IRAT_TURNOFF_DO_FORCE2INIT,
+    IRAT_TURNOFF_DO_FORCE2INIT_NEED_DEEPSLEEP,
+    IRAT_TURNOFF_DO_WAIT_DEEPSLEEP_CNF,
+}IratTurnOffDoStateE;
+
+typedef enum
+{
+    IRAT_TURNOFF_1X_INACTIVE,
+    IRAT_TURNOFF_1X_REL_PPP,
+    IRAT_TURNOFF_1X_FORCE2INIT,
+    IRAT_TURNOFF_1X_WAIT_DEEPSLEEP_CNF,
+    IRAT_TURNOFF_1X_WAIT_RSSI_SCAN_ABORT,
+}IratTurnOff1xStateE;
+
+typedef enum
+{
+    IRAT_NO_PS_RPT_REASON_START = 0,
+    IRAT_NO_PS_POWER_DOWN = IRAT_NO_PS_RPT_REASON_START,
+    IRAT_NO_PS_FLIGHT_MODE,
+    IRAT_NO_PS_AT_DETACHED,
+    IRAT_NO_PS_GMSS_DETACHED,
+    IRAT_NO_PS_RAT_CHG,
+    IRAT_NO_PS_OTHERS,
+    IRAT_NO_PS_1X_EXHAUST,
+    IRAT_NO_PS_EMERGENCY_MODE,
+    IRAT_NO_PS_SIM_ERROR,
+    IRAT_NO_PS_RPT_REASON_END = IRAT_NO_PS_SIM_ERROR,
+
+    IRAT_1X_PS_RPT_REASON_START = 50,
+    IRAT_1X_PS_DELAY_RPT = IRAT_1X_PS_RPT_REASON_START,
+    IRAT_1X_PS_REG_CNF,
+    IRAT_1X_PS_DO_AUTH_FAIL,
+    IRAT_1X_PS_RPT_REASON_END = IRAT_1X_PS_DO_AUTH_FAIL,
+
+    IRAT_DO_PS_RPT_REASON_START = 100,
+} IratPsRptReasonE;
+
+typedef enum
+{
+    CSS_ERR_UNEXPECTED_EVENT     = 0,
+    CSS_ERR_INVALID_SYS_PREFERENCE,
+    CSS_ERR_INVALID_SYS_TYPE,
+    CSS_ERR_INVALID_ACQUSITION_REC_TYPE,
+    CSS_ERR_INVALID_1X_SELECT_REQ_RCVD,
+    CSS_ERR_INVALID_DO_SELECT_REQ_RCVD,
+    CSS_ERR_INVALID_1X_VALIDATION_TYPE,
+    CSS_ERR_INVALID_OOSA_STAGE,
+    CSS_ERR_INVALID_TURNOFF_STATE,
+    CSS_ERR_SUBNET_NULL_POINTER,
+    CSS_ERR_EXT_PRL_P_REV_MISMATCH,
+    CSS_ERR_SCAN_LIST_EMPTY,
+    CSS_ERR_INVALID_NVRAM_PRL,
+    CSS_ERR_INVALID_UIM_PRL_LEN,
+    CSS_ERR_INVALID_MSG_ID,
+    CSS_ERR_NOT_1X_ONLY_IN_SIM2,
+    CSS_ERR_GET_NVRAM_PRL_RECVD_UNEXPECTED_MSG,
+    CSS_ERR_GET_UIM_PRL_RECVD_UNEXPECTED_MSG,
+    CSS_ERR_GET_UIM_PRL_RECVD_INVALID_MSG,
+    CSS_ERR_INVALID_PLL_CHAN_TEST_MODE_SYSTEM,
+    CSS_ERR_INVALID_BAND,
+    CSS_ERR_PRL_TOO_SMALL_SIZE,
+    CSS_ERR_EXT_PRL_ACQRECNUM_INVALID,
+    CSS_ERR_EXT_PRL_SYSRECNUM_INVALID,
+    CSS_ERR_EXT_PRL_BAD_ACQ_REC,
+    CSS_ERR_EXT_PRL_BAD_COMM_SUBNET,
+    CSS_ERR_EXT_PRL_BAD_SYS_REC,
+    CSS_ERR_EXT_PRL_HASH_TABLE_ERROR,
+    CSS_ERR_EXT_PRL_CRC_ERROR,
+    CSS_ERR_EXT_PRL_LEN_ERROR,
+    CSS_ERR_EXT_PRL_INVALID_SSPR,
+    CSS_ERR_DUPLICATE_SUBNET_OVERFLOW, 
+    CSS_ERR_BAND_BLOCK_CHANNEL_OUT_OF_RANGE,
+    CSS_ERR_SYS_NOT_FOUND_IN_LIST,
+    CSS_ERR_INVALID_ERI_TABLE,
+    CSS_ERR_NO_ERI_TABLE,
+    CSS_ERR_ERI_ENTRY_NOT_FOUND,
+    CSS_ERR_SVSM_SELECT_CHANNEL_TOO_MANY_RECURSIONS,
+    CSS_ERR_INVALID_ACTION_IN_1X_MARK_NEGATIVE_SYSTEMS,
+    CSS_ERR_PARM_INVALID_PTR,
+    CSS_ERR_PARM_INVALID_LENGTH,
+    CSS_ERR_PARM_GENERAL_FAILURE,
+    CSS_ERR_PARM_OPERATION_NOT_SUPPORTED,
+    CSS_ERR_NVRAM_DATA_READ_FAIL,
+    CSS_RECEIVED_UNEXPECTED_MSG,
+    CSS_ERR_MRS_LLA_MAJOR_OCCUPY_FAIL,
+    CSS_ERR_MRS_LLA_INVALID_LIST_OCCUPY_EVENT,
+    CSS_ERR_INVALID_REC_NUM,
+    CSS_ERR_NVRAM_READ_ERROR,
+    CSS_ERR_NULL_POINTER,
+    CSS_ERR_POWER_DOWN,
+    CSS_ERR_INVALID_GMSS_TASK,
+    CSS_ERR_BAND_NOT_SUPPORTED,
+    CSS_ERR_GET_MRU_REC_FAILURE,
+    CSS_ERR_INVALID_DO_OOSA_MSG_TYPE,
+    CSS_ERR_ADD_MRU_REC_FAIL_DUE_TO_SCAN_LIST_FULL,  
+    CSS_ERR_SET_1X_REG_DISABLE_WHEN_C2K_ONLY,
+    CSS_ERR_INVALID_RAT_TYPE,
+    CSS_ERR_INVALID_MCC,
+    CSS_ERR_INVALID_ACQ_INDEX,
+    CSS_ERR_EXCEED_CHAN_LIST_MAX_SIZE,
+    CSS_ERR_INVALID_SYS_FOR_OTASP,
+    CSS_ERR_INVALID_MOD_ID,
+    CSS_ERR_INVALID_PRL_POINTER
+} CssErrorCodeT;
+
+#endif
+

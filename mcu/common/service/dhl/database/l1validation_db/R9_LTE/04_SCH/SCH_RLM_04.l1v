@@ -1,0 +1,37 @@
+{ Validation }
+Title 		= "[R9_LTE][04_SCH]SCH_RLM_04: Verify that the UE can detect the FDD in-sync"
+ModuleID 	= MOD_ERRC
+MsgID 		= MSG_ID_L1EDPS_SCH_RLM_04
+
+/******************************************************************************
+* Data Structure accompanying the above primitive
+typedef struct
+{
+    kal_uint8           ref_count;
+    kal_uint16          msg_len;
+    kal_bool            csr_config_by_band;
+    kal_bool            csr_report_by_band;
+    kal_bool            csr_is_skip_bw;
+    el1_csr_search_type_enum search_type;
+    
+} l1edps_sch_rlm_04_struct;
+*
+*******************************************************************************/
+
+
+{Parameters}
+/******************************************************************************
+* 1. The following is the constrained range for the input of this value.
+* 2. Some combination of the following bit-fields may be suported
+* 3. The parameter range can be changed to support combinations of different bands
+*******************************************************************************/
+
+/* [Variable Name] "corresponding label showen on GUI" */
+
+
+
+
+
+
+
+

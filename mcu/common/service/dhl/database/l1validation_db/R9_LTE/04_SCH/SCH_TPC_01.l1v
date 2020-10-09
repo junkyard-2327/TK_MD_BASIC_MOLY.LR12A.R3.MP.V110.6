@@ -1,0 +1,26 @@
+{ Validation }
+Title 		= "[R9_LTE][04_SCH]SCH_TPC_01: Test of TPC Command Updating Procedure (Fix TPC mode, FDD)" 
+ModuleID 	= MOD_ERRC
+MsgID 		= MSG_ID_L1EDPS_SCH_TPC_01
+
+/******************************************************************************
+* Data Structure accomnying the above primitive
+typedef struct
+{
+   kal_uint8          ref_count;
+   kal_uint16         msg_len;
+} l1edps_sch_tpc_01_struct;
+*
+*******************************************************************************/
+
+
+{Parameters}
+/******************************************************************************
+* 1. The following is the constrained range for the input of this value.
+* 2. Some combination of the following bit-fields may be suported
+* 3. The parameter range can be changed to support combinations of different bands
+*******************************************************************************/
+
+/* [Variable Name] "corresponding label showen on GUI" */
+
+

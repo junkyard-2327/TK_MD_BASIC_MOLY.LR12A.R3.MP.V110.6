@@ -1,0 +1,49 @@
+{ Validation }
+Title 		= "[R9_LTE]00_Common_Parameter_Setup"
+ModuleID 	= MOD_ERRC
+MsgID 		= MSG_ID_L1EDPS_COMMON_PARAMS_SETUP
+
+/******************************************************************************
+* Data Structure accomnying the above primitive
+typedef struct
+{
+   kal_uint8                 ref_count;
+   kal_uint16                msg_len;
+   
+   l1edps_inject_bitmap_struct                injectBitmap;
+   EARFCN                    dlEarfcn;
+   kal_uint16                physCellId;
+   el1_bandwidth_enum        mibDlBandwidth;
+   el1_ch_antn_port_num_enum antennaPortNum;
+   el1_bandwidth_enum        sib2UlBandwidth;
+} l1edps_common_params_setup_struct;
+*
+*******************************************************************************/
+
+
+{Parameters}
+/******************************************************************************
+* 1. The following is the constrained range for the input of this value.
+* 2. Some combination of the following bit-fields may be suported
+* 3. The parameter range can be changed to support combinations of different bands
+*******************************************************************************/
+
+/* [Variable Name] "corresponding label showen on GUI" */
+[injectBitmap] "injectBitmap"
+@INJECT_BMP_NONE
+
+[dlEarfcn] "dlEarfcn"
+@0
+
+[physCellId] "physCellId"
+@0xFFFF
+
+[mibDlBandwidth] "mibDlBandwidth"
+@BW_100_RB
+
+[antennaPortNum] "antennaPortNum"
+@EL1_CH_ANTN_PORT_NUM_1
+
+[sib2UlBandwidth] "sib2UlBandwidth"
+@BW_100_RB
+

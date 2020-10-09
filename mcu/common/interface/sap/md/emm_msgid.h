@@ -1,0 +1,2004 @@
+/*****************************************************************************
+ *
+ * Filename:
+ * ---------
+ *   emm_msgid.h
+ *
+ * Project:
+ * --------
+ *   MOLY
+ *
+ * Description:
+ * ------------
+ *   LTE NAS EMM (EPS Mobility Management) related message identity definition
+ *
+ * Author:
+ * -------
+ * -------
+ *
+ *============================================================================
+ *             HISTORY
+ * Below this line, this part is controlled by PVCS VM. DO NOT MODIFY!!
+ *------------------------------------------------------------------------------
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ *
+ *------------------------------------------------------------------------------
+ * Upper this line, this part is controlled by PVCS VM. DO NOT MODIFY!!
+ *============================================================================
+ *
+ ****************************************************************************/
+#include "module_msg_range.h"
+
+#ifndef _EMM_MSGID_H
+#define _EMM_MSGID_H
+
+MODULE_MSG_BEGIN( MSG_ID_EMM_CODE_BEGIN )
+
+/****************************************************************************
+ *                          Destination: EMM (EVAL to EMM) 
+ ****************************************************************************/
+MSG_ID_EVAL_EMM_SET_RAT_MODE_REQ  = MSG_ID_EMM_CODE_BEGIN,
+MSG_ID_EVAL_EMM_ATTACH_REQ,
+MSG_ID_EVAL_EMM_DETACH_REQ,
+MSG_ID_EVAL_EMM_EMC_ATTACH_REQ, // for IMS
+MSG_ID_EVAL_EMM_INIT_REQ,
+MSG_ID_EVAL_EMM_RFOFF_REQ,
+MSG_ID_EVAL_EMM_UEMODE_PARAM_UPDATE_REQ,
+MSG_ID_EVAL_EMM_PLMN_SEARCH_REQ,
+MSG_ID_EVAL_EMM_PLMN_LIST_STATUS_UPDATE_REQ,
+MSG_ID_EVAL_EMM_DEACTIVATE_REQ,
+MSG_ID_EVAL_EMM_NAS_CTXT_TRANSFER_REQ,
+//MSG_ID_EVAL_EMM_L2C_TRANSFER_REQ,  // for C2K
+MSG_ID_EVAL_EMM_SEARCH_STATUS_UPDATE_REQ,
+MSG_ID_EVAL_EMM_SYS_INFO_UPDATE_REQ,
+MSG_ID_EVAL_EMM_REGN_STATUS_UPDATE_REQ,
+MSG_ID_EVAL_EMM_PLMN_LIST_REQ,
+MSG_ID_EVAL_EMM_PLMN_LIST_STOP_REQ,
+MSG_ID_EVAL_EMM_CSG_LIST_REQ,
+MSG_ID_EVAL_EMM_CSG_LIST_STOP_REQ,
+MSG_ID_EVAL_EMM_EMC_FPLMN_LIST_UPDATE_REQ, // for IMS
+MSG_ID_EVAL_EMM_EQ_PLMN_LIST_UPDATE_REQ,
+MSG_ID_EVAL_EMM_RPLMN_EQ_PLMN_LIST_UPDATE_REQ,
+MSG_ID_EVAL_EMM_HPLMN_INFO_UPDATE_REQ,
+MSG_ID_EVAL_EMM_SMS_EST_REQ,
+MSG_ID_EVAL_EMM_SMS_UNITDATA_REQ,
+MSG_ID_EVAL_EMM_LCS_DATA_REQ, // for LPP
+MSG_ID_EVAL_EMM_LPP_DATA_REQ, // for LPP
+MSG_ID_EVAL_EMM_SIM_READY_REQ,
+MSG_ID_EVAL_EMM_AUTHENTICATE_RSP,
+MSG_ID_EVAL_EMM_SIM_ERROR_REQ,
+MSG_ID_EVAL_EMM_SIM_FILE_UPDATE_REQ,
+MSG_ID_EVAL_EMM_SEARCH_PREFERENCE_UPDATE_REQ, // for IMS
+MSG_ID_EVAL_EMM_RESELECT_SHARED_NW_RSP, // for IMS __6293DEV__
+MSG_ID_EVAL_EMM_RESUME_REQ,
+MSG_ID_EVAL_EMM_ACTIVE_SIM_INFO_REQ,// TODO: remove with EACTS
+MSG_ID_EVAL_EMM_SET_IMS_VOICE_AVAILABILITY_REQ, // for IMS
+MSG_ID_EVAL_EMM_SET_IMS_VOICE_TERMINATION_REQ, // for IMS
+MSG_ID_EVAL_EMM_INVALID_SIM_RECOVER_REQ, // for __REL10__: t3245
+MSG_ID_EVAL_EMM_VDM_VOICE_STATUS_REQ, // IMS call start (first) / end (last)
+MSG_ID_EVAL_EMM_EUTRAN_CAP_UPDATE_REQ,
+MSG_ID_EVAL_EMM_DUPLEX_MODE_CHANGE_REQ, //for C2K
+MSG_ID_EVAL_EMM_CLEAR_T3346_EPLMN_REQ,
+MSG_ID_EVAL_EMM_C2K_CSFB_REQ,
+MSG_ID_EVAL_EMM_C2K_CSFB_STOP_REQ,
+MSG_ID_EVAL_EMM_FACTORY_RESET_REQ,
+MSG_ID_EVAL_EMM_IMS_REG_STATUS_UPDATE_REQ, //for VZ_REQ_LTEB13NAC_6482
+MSG_ID_EVAL_EMM_DRX_UPDATE_REQ,
+MSG_ID_EVAL_EMM_GLOBAL_MODE_CHANGE_START_REQ,
+MSG_ID_EVAL_EMM_IMS_SCM_INFO_REQ, // for REL12 feature SCM
+MSG_ID_EVAL_EMM_ACDC_STATUS_UPDATE_REQ,
+MSG_ID_EVAL_EMM_C2K_FORCE_TO_LOCAL_DETACH_REQ, //for C2K when OP12 project
+MSG_ID_EVAL_EMM_HVOLTE_MODE_CHANGE_REQ, //[ALPS02585002] for VZ hVoLTE, E911 test 
+MSG_ID_EVAL_EMM_EMC_SESSION_START_REQ,
+MSG_ID_EVAL_EMM_EMC_SESSION_STOP_REQ,
+MSG_ID_EVAL_EMM_DATA_ALLOW_REQ,         // __MULTIPLE_PS__
+MSG_ID_EVAL_EMM_CLEAR_FORBIDDEN_TA_LIST_REQ,
+MSG_ID_EVAL_EMM_GMSS_IRAT_START_IND, // for C2K
+MSG_ID_EVAL_EMM_GMSS_IRAT_FINISH_IND, // for C2K
+#ifdef __SGLTE__
+MSG_ID_EVAL_EMM_PS_SWITCH_REQ, 
+MSG_ID_EVAL_EMM_PS_SWITCH_SUSPEND_REQ, 
+MSG_ID_EVAL_EMM_PS_SWITCH_RESUME_REQ, 
+#endif /* __SGLTE__ */
+
+MSG_ID_EVAL_EMM_SET_PGCHECK_REQ, // for LG new AT command
+MSG_ID_EVAL_EMM_GUTI_IN_NV_CLEAR_REQ,
+MSG_ID_EVAL_EMM_IA_APN_CHANGE_REQ,
+MSG_ID_EVAL_EMM_IMS_HANDOVER_ATTACH_REQ,
+MSG_ID_EVAL_EMM_SET_MS_SV_REQ,
+MSG_ID_EVAL_EMM_GENERAL_MODEM_CONFIGURE_SET_REQ,
+MSG_ID_EVAL_EMM_RAT_DISABLE_CONFIG_REQ,
+MSG_ID_EVAL_EMM_SMS_STATUS_REQ,
+MSG_ID_EVAL_EMM_MT_SMS_OVER_IMS_STATUS_REQ,
+MSG_ID_EVAL_EMM_PS_SERVICE_TYPE_NOTIFY_REQ,
+MSG_ID_EVAL_EMM_NOTIFY_SIM_SWITCH_RFOFF_REQ,
+MSG_ID_EVAL_EMM_MANUAL_SEARCH_STOP_REQ,
+MSG_ID_EVAL_EMM_ME_RECONFIGURE_REQ,
+MSG_ID_EVAL_EMM_START_RELEASE_PAGING_TIMER_IND,
+
+// Remote SIM
+MSG_ID_EVAL_EMM_RSIM_AKA_STATUS_REQ,
+MSG_ID_EVAL_EMM_RSIM_AKA_RSIM_ACCESS_FOR_AUTH_DOWNLOAD_REQ,
+MSG_ID_EVAL_EMM_RSIM_AUTH_ABORT_REQ,
+
+//TMO-US GID-MTRREQ-245903 
+MSG_ID_EVAL_EMM_CS_SERVICE_NOTIFICATION_RSP,
+
+MSG_ID_EVAL_EMM_PEER_SIM_MANUAL_LIST_START_REQ,
+MSG_ID_EVAL_EMM_PEER_SIM_MANUAL_LIST_FINISH_REQ,
+MSG_ID_EVAL_EMM_ECBM_START_REQ,
+MSG_ID_EVAL_EMM_ECBM_STOP_REQ,
+MSG_ID_EVAL_EMM_SEND_DAN_SMS_IND,
+
+/****************************************************************************
+ *                          Destination: EMM (ESM to EMM) 
+ ****************************************************************************/
+/* From ESM */
+MSG_ID_ESM_EMM_ATTACH_NEEDED_GET_ESM_MSG_RSP,
+MSG_ID_ESM_EMM_GET_ESM_CAUSE_RSP,
+MSG_ID_ESM_EMM_SYNC_EPSB_STATUS_REQ,
+MSG_ID_ESM_EMM_GET_EPSB_STATUS_RSP,
+MSG_ID_ESM_EMM_DETACH_REQ,
+MSG_ID_ESM_EMM_ISR_DEACT_REQ,
+MSG_ID_ESM_EMM_QOS_UPDATE_REQ,
+MSG_ID_ESM_EMM_DATA_REQ,
+MSG_ID_ESM_EMM_REEST_REQ,
+MSG_ID_ESM_EMM_ABORT_REQ,
+MSG_ID_ESM_EMM_RAT_CHANGE_RSP,
+MSG_ID_ESM_EMM_RAT_CHANGE_REQ,
+MSG_ID_ESM_EMM_RAT_CHANGE_EPSB_STATUS_REQ,
+MSG_ID_ESM_EMM_EMC_BEARER_STATUS_REQ, // for IMS
+MSG_ID_ESM_EMM_UPDATE_EPSB_STATUS_RSP, // for IMS
+MSG_ID_ESM_EMM_ENTER_EMC_ATTACH_RSP,  // for IMS
+MSG_ID_ESM_EMM_QUERY_UL_DATA_STATUS_RSP,
+MSG_ID_ESM_EMM_C2K_IRAT_COMPLETE_REQ,
+MSG_ID_ESM_EMM_NOTIFY_ESM_EVENT_REQ, //VzW
+MSG_ID_ESM_EMM_SESSION_BEGIN_REQ,    // __MULTIPLE_PS__
+MSG_ID_ESM_EMM_SESSION_END_REQ,      // __MULTIPLE_PS__
+MSG_ID_ESM_EMM_PERSISTENT_EPSBC_UPDATE_REQ,    //__PERSIST_EPSBC__ 
+MSG_ID_ESM_EMM_EPS_BEARER_INFO_REQ,
+
+#ifdef __SGLTE__
+MSG_ID_ESM_EMM_PS_SWITCH_CONTEXT_TRANSFER_RSP, 
+MSG_ID_ESM_EMM_PS_SWITCH_CONTEXT_TRANSFER_REQ,  
+MSG_ID_ESM_EMM_PS_SWITCH_CONTEXT_TRANSFER_FINAL_RSP, 
+#endif /* __SGLTE__ */
+
+MSG_ID_ESM_EMM_SEMAPHORE_SERVICE_STATUS_REQ, // __MULTIPLE_PS__                                
+MSG_ID_ESM_EMM_IA_APN_SET_REQ,
+
+/****************************************************************************
+ *                          Destination: EMM (ERRC to EMM) 
+ ****************************************************************************/
+
+/* From ERRC */ 
+MSG_ID_EMM_ERRC_ACTIVATION_CNF,
+MSG_ID_EMM_ERRC_RAT_BAND_CNF,
+MSG_ID_EMM_ERRC_ESTABLISH_CNF,
+MSG_ID_EMM_ERRC_RELEASE_CNF,
+MSG_ID_EMM_ERRC_RELEASE_IND,
+MSG_ID_EMM_ERRC_DATA_CNF,
+MSG_ID_EMM_ERRC_DATA_IND,
+MSG_ID_EMM_ERRC_EPSBEARER_DATA_IND,
+MSG_ID_EMM_ERRC_AC_STATUS_IND,
+MSG_ID_EMM_ERRC_KEY_UPDATE_CNF,
+MSG_ID_EMM_ERRC_TEST_CNF,
+MSG_ID_EMM_ERRC_MBMS_PACKET_COUNTER_CNF,
+MSG_ID_EMM_ERRC_OOS_IND,
+MSG_ID_EMM_ERRC_CELLSELECT_CNF,
+MSG_ID_EMM_ERRC_CELLSELECT_IND,
+MSG_ID_EMM_ERRC_PLMN_FOUND_IND,
+MSG_ID_EMM_ERRC_PLMNLIST_CNF,
+MSG_ID_EMM_ERRC_RESUME_CNF,
+MSG_ID_EMM_ERRC_PAGE_IND,
+MSG_ID_EMM_ERRC_EXCLUSIVE_CONTROL_CNF,
+MSG_ID_EMM_ERRC_RAT_CHANGE_CNF,
+MSG_ID_EMM_ERRC_RAT_CHANGE_IND,
+MSG_ID_EMM_ERRC_CSFB_FAILURE_IND,
+MSG_ID_EMM_ERRC_STANDBY_CNF,
+MSG_ID_EMM_ERRC_STANDBY_IND,
+MSG_ID_EMM_ERRC_PARAM_UPDATE_CNF,
+MSG_ID_EMM_ERRC_QOS_UPDATE_CNF,
+MSG_ID_EMM_ERRC_SIGNAL_APPEAR_IND,
+MSG_ID_EMM_ERRC_CSG_LIST_CNF,
+MSG_ID_EMM_ERRC_CSG_LIST_STOP_CNF,
+MSG_ID_EMM_ERRC_STATUS_UPDATE_CNF,
+MSG_ID_EMM_ERRC_SKIP_IRCCO_STAGE2_IND,
+MSG_ID_EMM_ERRC_CELL_CHANGE_IND,
+MSG_ID_EMM_ERRC_GEMINI_SUSPEND_IND,
+MSG_ID_EMM_ERRC_OOS_SEARCH_IND,
+MSG_ID_EMM_ERRC_DUPLEX_MODE_CHANGE_CNF, //for C2K
+MSG_ID_EMM_ERRC_GEMINI_VIRTUAL_MODE_IND,
+MSG_ID_EMM_ERRC_EARLY_OOS_DISPLAY_IND,
+MSG_ID_EMM_ERRC_NEED_DUPLEX_MODE_CHG_IND,
+
+/****************************************************************************
+ *                          Destination: EMM (MM to EMM) 
+ ****************************************************************************/
+
+/* From MM */
+MSG_ID_MM_EMM_INIT_NAS_CTXT_RSP,
+MSG_ID_MM_EMM_GMM_UPDATE_REGISTRATION_REQ,
+MSG_ID_MM_EMM_GMM_UPDATE_DEREGISTRATION_REQ,
+MSG_ID_MM_EMM_MM_UPDATE_REGISTRATION_REQ,
+MSG_ID_MM_EMM_MM_UPDATE_DEREGISTRATION_REQ,
+MSG_ID_MM_EMM_CSFB_REQ,
+MSG_ID_MM_EMM_CSFB_STOP_REQ,
+MSG_ID_MM_EMM_CSFB_PAGE_RSP,
+MSG_ID_MM_EMM_CSFB_PAGE_CONFIG_REQ,
+MSG_ID_MM_EMM_ISR_UPDATE_REQ,
+MSG_ID_MM_EMM_UPDATE_SECURITY_STATUS_IND,
+MSG_ID_MM_EMM_TIMER_STATUS_REQ, // __REL10__: t3346
+
+#ifdef __SGLTE__
+MSG_ID_MM_EMM_PEER_LR_HANDLE_PREPARATION_REQ,
+MSG_ID_MM_EMM_PEER_LR_RESULT_REQ,
+#endif /* __SGLTE__ */
+
+/* To MM (move to mm_msgid.h) */
+//MSG_ID_MM_EMM_INIT_NAS_CTXT_IND,
+//MSG_ID_MM_EMM_EMM_UPDATE_REGISTRATION_IND,
+//MSG_ID_MM_EMM_EMM_UPDATE_DEREGISTRATION_IND,
+//MSG_ID_MM_EMM_CSFB_CNF,
+//MSG_ID_MM_EMM_CSFB_PAGE_IND,
+//MSG_ID_MM_EMM_ISR_UPDATE_IND,
+//#ifdef __SGLTE__
+//MSG_ID_MM_EMM_PEER_LR_HANDLE_PREPARATION_CNF,
+//MSG_ID_MM_EMM_PEER_LR_RESULT_IND,
+//#endif
+
+
+/****************************************************************************
+ *                          Destination: EMM_CALL
+ ****************************************************************************/
+MSG_ID_EMM_ESMIF_CALL_DATA_REQ,
+MSG_ID_EMM_ESMIF_CALL_REEST_REQ,
+MSG_ID_EMM_ESMIF_CALL_BEARER_IND,
+MSG_ID_EMM_ESMIF_CALL_ABORT_REQ,
+MSG_ID_EMM_ESMIF_CALL_SESSION_BEGIN_REQ,   // __MULTIPLE_PS__
+MSG_ID_EMM_ESMIF_CALL_SESSION_END_REQ,     // __MULTIPLE_PS__
+MSG_ID_EMM_ERRCIF_CALL_STMSI_PAGE_IND,
+MSG_ID_EMM_ERRCIF_CALL_CS_PAGE_IND,
+MSG_ID_EMM_ERRCIF_CALL_CSFB_FAILURE_IND,
+MSG_ID_EMM_ERRCIF_CALL_RCV_EPSBEARER_IND,
+MSG_ID_EMM_ERRCIF_CALL_SND_NASMSG_CNF,
+MSG_ID_EMM_ERRCIF_CALL_NEED_DUPLEX_MODE_CHG_IND,
+MSG_ID_EMM_MMIF_CALL_CSFB_REQ,
+MSG_ID_EMM_MMIF_CALL_CSFB_STOP_REQ,
+MSG_ID_EMM_MMIF_CALL_CSFB_PAGE_RSP,
+MSG_ID_EMM_MMIF_CALL_CSFB_PAGE_CONFIG_REQ,
+MSG_ID_EMM_EVALIF_CALL_SMS_EST_REQ,
+MSG_ID_EMM_EVALIF_CALL_SMS_UNITDATA_REQ,
+MSG_ID_EMM_EVALIF_CALL_LCS_DATA_REQ, // for LPP
+MSG_ID_EMM_EVALIF_CALL_LPP_DATA_REQ, // for LPP
+MSG_ID_EMM_EVALIF_CALL_EUTRAN_CAP_UPDATE_REQ,
+MSG_ID_EMM_EVALIF_CALL_SET_PGCHECK_REQ, // for LG new AT command
+MSG_ID_EMM_EVALIF_CALL_C2K_CSFB_REQ,
+MSG_ID_EMM_EVALIF_CALL_C2K_CSFB_STOP_REQ,
+MSG_ID_EMM_EVALIF_CALL_IMS_SCM_INFO_REQ, // for REL12 feature SCM
+MSG_ID_EMM_EVALIF_CALL_SMS_STATUS_REQ,
+MSG_ID_EMM_EVALIF_CALL_MT_SMS_OVER_IMS_STATUS_REQ,
+MSG_ID_EMM_EVALIF_CALL_PS_SERVICE_TYPE_NOTIFY_REQ,
+MSG_ID_EMM_EVALIF_CALL_NOTIFY_SIM_SWITCH_RFOFF_REQ,
+MSG_ID_EMM_EVALIF_CALL_CS_SERVICE_NOTIFICATION_RSP, //TMO-US GID-MTRREQ-245903 
+MSG_ID_EMM_EVALIF_CALL_START_RELEASE_PAGING_TIMER_IND,
+MSG_ID_EMM_TIMERMNG_CALL_T3417EXT_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_CALL_T_CSFB_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_CALL_T3417_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_CALL_T3442_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_CALL_T_SR_NOT_ALLOW_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_CALL_T_PS_HIGH_SEM_REL_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_CALL_T_PS_PAGING_PROTECT_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_CALL_T_PS_HIGH_SEM_REL_EXTD_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_CALL_T_CALL_REL_CS_SEMAPHORE_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_CALL_T_STMSI_PAGE_RETRY_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_CALL_T_RSIM_SR_PROTECT_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_CALL_T_DELAY_SEND_PDN_REQUEST_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_CALL_T_CSFB_USER_RSP_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_CALL_T_IGNORE_SAME_NUMBER_OF_CS_SERVICE_NOTIFICATION_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_CALL_T_GWSD_WARNING_RANDOM_FATAL_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_CALL_T_QUEUE_PS_PAGING_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_CALL_T_ACTIVE_QUEUE_PS_PAGING_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_CALL_T_PROTECT_TAU_SESSION_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_CALL_T_RELEASE_PAGING_SEMAPHORE_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_CALL_T_OBSERVATION_PAGING_TIMEOUT_IND,
+MSG_ID_EMM_REG_CALL_ATTACH_RESULT_IND,
+MSG_ID_EMM_REG_CALL_CS_NW_DETACH_IND,
+MSG_ID_EMM_REG_CALL_REL_EPSB_CTXT_IND,
+MSG_ID_EMM_REG_CALL_SND_ESMMSG_CNF,
+MSG_ID_EMM_REG_CALL_TAU_PENDING_IND,
+MSG_ID_EMM_REG_CALL_SUSPEND_SR_REQ,
+MSG_ID_EMM_REG_CALL_RESUME_SR_REQ,
+MSG_ID_EMM_REG_CALL_UE_DETACH_IND,
+MSG_ID_EMM_REG_CALL_LR_SUCCESS_IND,
+MSG_ID_EMM_REG_CALL_RSIM_AUTH_ABORT_REQ, // Remote SIM
+MSG_ID_EMM_PLMNSEL_CALL_CONOOS_LEAVELTE_IND,
+MSG_ID_EMM_PLMNSEL_CALL_CELL_INFO_IND,
+MSG_ID_EMM_PLMNSEL_CALL_NO_CELL_INFO_IND,
+MSG_ID_EMM_PLMNSEL_CALL_CAMPON_2G3G_IND,
+MSG_ID_EMM_PLMNSEL_CALL_GEMINI_SUSPEND_IND,
+MSG_ID_EMM_PLMNSEL_CALL_OOS_SEARCH_IND,
+MSG_ID_EMM_PLMNSEL_CALL_GEMINI_VIRTUAL_MODE_IND,
+MSG_ID_EMM_RATCHG_CALL_RAT_LTESBY_IND,      // need to remove
+MSG_ID_EMM_RATCHG_CALL_RAT_E2UG_FAIL_IND,   // need to remove
+MSG_ID_EMM_RATCHG_CALL_AS_CONTROL_CNF,      // need to remove
+MSG_ID_EMM_PLMNSEL_CALL_EMC_STATUS_UPDATE_IND, // for IMS
+MSG_ID_EMM_RATCHG_CALL_IRAT_E2UG_COMP_IND,
+MSG_ID_EMM_RATCHG_CALL_IRAT_E2UG_FAIL_IND,
+MSG_ID_EMM_RATCHG_CALL_IRAT_UG2E_COMP_IND,
+MSG_ID_EMM_RATCHG_CALL_IRAT_E2C_COMP_IND, // for C2K
+MSG_ID_EMM_RATCHG_CALL_IRAT_E2C_FAIL_IND, // for C2K
+MSG_ID_EMM_RATCHG_CALL_STANDBY_IND, // for C2K
+MSG_ID_EMM_RATBAND_CALL_SET_RAT_ABORT_PROC_REQ, // abort procedure for skip detach in set RAT
+MSG_ID_EMM_RATBAND_CALL_SET_RAT_MODE_IND,
+MSG_ID_EMM_CONN_CALL_REL_IND,
+MSG_ID_EMM_CONN_CALL_EST_CNF,
+MSG_ID_EMM_CONN_CALL_AC_STATUS_IND,
+MSG_ID_EMM_CONN_CALL_ACDC_STATUS_CHANGE_IND,
+MSG_ID_EMM_NASMSG_CALL_RCV_CS_SERVICE_NOTIFICATION_IND,
+MSG_ID_EMM_NASMSG_CALL_RCV_SERVICE_REJ_IND,
+MSG_ID_EMM_NASMSG_CALL_SND_NASMSG_CNF,
+MSG_ID_EMM_EVTCTRL_CALL_ABORT_REQ,
+//MSG_ID_EMM_EVTCTRL_CALL_SUSPEND_REQ, //remove SUSP_SUSP conflict resolution
+//MSG_ID_EMM_EVTCTRL_CALL_RESUME_REQ,  //remove SUSP_SUSP conflict resolution
+MSG_ID_EMM_EVTCTRL_CALL_CONTINUE_REQ,
+MSG_ID_EMM_EVTCTRL_CALL_WDT_POLLING_REQ,
+MSG_ID_EMM_SEC_CALL_SMC_FAILURE_IND,
+MSG_ID_EMM_SEC_CALL_RSIM_AUTH_IND,
+MSG_ID_EMM_SV_CALL_IMS_OCCUPY_HPS_REQ,
+MSG_ID_EMM_CALL_UT_CFG_REQ,
+
+/****************************************************************************
+ *                          Destination: EMM_CMNPROC
+ ****************************************************************************/
+MSG_ID_EMM_ERRCIF_CMNPROC_SND_NASMSG_CNF,
+MSG_ID_EMM_NASMSG_CMNPROC_RCV_IDENTITY_REQUEST_IND,
+MSG_ID_EMM_NASMSG_CMNPROC_RCV_EMM_INFORMATION_IND,
+MSG_ID_EMM_NASMSG_CMNPROC_RCV_EMM_STATUS_IND,
+MSG_ID_EMM_NASMSG_CMNPROC_RCV_GUTI_REALLOC_CMD_IND,
+MSG_ID_EMM_NASMSG_CMNPROC_SND_NASMSG_CNF,
+MSG_ID_EMM_PLMNSEL_CMNPROC_CELL_INFO_IND,
+MSG_ID_EMM_ANY_CMNPROC_UT_CONFIG_REQ,
+/****************************************************************************
+ *                          Destination: EMM_CONN
+ ****************************************************************************/
+MSG_ID_EMM_CALL_CONN_REL_REQ,
+MSG_ID_EMM_CALL_CONN_EST_REQ,
+MSG_ID_EMM_ERRCIF_CONN_ESTABLISH_CNF,
+MSG_ID_EMM_ERRCIF_CONN_RELEASE_IND,
+MSG_ID_EMM_ERRCIF_CONN_RELEASE_CNF,
+MSG_ID_EMM_ERRCIF_CONN_AC_STATUS_IND,
+MSG_ID_EMM_EVALIF_CONN_ACDC_STATUS_UPDATE_REQ,
+MSG_ID_EMM_NASMSG_CONN_T3440_STOP_REQ,
+MSG_ID_EMM_PLMNSEL_CONN_CELL_INFO_IND,
+MSG_ID_EMM_PLMNSEL_CONN_REL_REQ,
+MSG_ID_EMM_PLMNSEL_CONN_GEMINI_SUSPEND_IND,
+MSG_ID_EMM_PLMNSEL_CONN_GEMINI_VIRTUAL_MODE_IND,
+MSG_ID_EMM_RATCHG_CONN_EST_REQ,
+MSG_ID_EMM_RATCHG_CONN_REL_REQ,
+MSG_ID_EMM_RATCHG_CONN_IRAT_E2UG_COMP_IND,
+MSG_ID_EMM_RATCHG_CONN_STANDBY_IND,
+MSG_ID_EMM_RATCHG_CONN_RAT_HO_U2E_COMP_IND,
+MSG_ID_EMM_RATCHG_CONN_IRAT_E2C_COMP_IND, // for C2K
+MSG_ID_EMM_REG_CONN_REL_REQ,
+MSG_ID_EMM_REG_CONN_EST_REQ,
+MSG_ID_EMM_REG_CONN_T3440_STOP_REQ,
+MSG_ID_EMM_REG_CONN_WAIT_REL_CON_REQ,
+MSG_ID_EMM_REG_CONN_DEREG_COMP_IND,
+MSG_ID_EMM_SEC_CONN_REL_REQ,
+MSG_ID_EMM_TIMERMNG_CONN_T3440_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_CONN_DEREG_REL_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_CONN_T3324_TIMEOUT_IND, //REL12 PSM
+MSG_ID_EMM_PLMNSEL_CONN_PSM_REQ_IND, //REL12 PSM
+MSG_ID_EMM_SV_CONN_SIM_ERROR_IND,
+MSG_ID_EMM_CONN_UT_SETTING_CHANGE_IND,
+MSG_ID_EMM_EVALIF_CONN_DATA_ALLOW_REQ,           // __MULTIPLE_PS__
+MSG_ID_EMM_TIMERMNG_CONN_T_MPS_REL_TIMEOUT_IND,   // __MULTIPLE_PS__
+MSG_ID_EMM_TIMERMNG_CONN_T_IGNORE_PS_PAGING_TIMEOUT_IND,   // __MULTIPLE_PS__
+
+/****************************************************************************
+ *                          Destination: EMM_ERRCIF
+ ****************************************************************************/
+MSG_ID_EMM_REG_ERRCIF_PARAM_UPDATE_REQ,
+MSG_ID_EMM_REG_ERRCIF_CSG_WHITE_LIST_UPDT_REQ,
+MSG_ID_EMM_REG_ERRCIF_GEMINI_LR_REQ,
+MSG_ID_EMM_REG_ERRCIF_REG_STATUS_UPDATE_REQ, //__REL10__ CR0894 + for C2K
+MSG_ID_EMM_REG_ERRCIF_GEMINI_SERVICE_REQ,    // __MULTIPLE_PS__
+MSG_ID_EMM_REG_ERRCIF_PROC_RESULT_UPDATE_REQ, //VZ_REQ_LTEDATARETRY_39861
+MSG_ID_EMM_REG_ERRCIF_NAS_FAIL_HANDLE_REQ,
+MSG_ID_EMM_REG_ERRCIF_SYNC_CONNECTION_STATUS_NTF,
+MSG_ID_EMM_REG_ERRCIF_PROTECT_TAU_SERVICE_REQ,
+MSG_ID_EMM_CALL_ERRCIF_CSG_WHITE_LIST_UPDT_REQ,
+MSG_ID_EMM_CALL_ERRCIF_PARAM_UPDATE_REQ,
+MSG_ID_EMM_CALL_ERRCIF_CSFB_NTF,
+MSG_ID_EMM_CALL_ERRCIF_GEMINI_SERVICE_REQ,   // __MULTIPLE_PS__
+MSG_ID_EMM_CALL_ERRCIF_GEMINI_LR_REQ,	 // __MULTIPLE_PS__
+MSG_ID_EMM_CALL_ERRCIF_PROC_RESULT_UPDATE_REQ, //VZ_REQ_LTEDATARETRY_39861
+MSG_ID_EMM_CALL_ERRCIF_NAS_FAIL_HANDLE_REQ,
+MSG_ID_EMM_CALL_ERRCIF_PROTECT_TAU_SERVICE_REQ,
+MSG_ID_EMM_PLMNSEL_ERRCIF_PLMNLIST_REQ,
+MSG_ID_EMM_PLMNSEL_ERRCIF_CSG_LIST_REQ,
+MSG_ID_EMM_PLMNSEL_ERRCIF_CSG_LIST_STOP_REQ,
+MSG_ID_EMM_PLMNSEL_ERRCIF_CELLSELECT_REQ,
+MSG_ID_EMM_PLMNSEL_ERRCIF_NWSEL_STATUS_UPDATE_REQ,
+MSG_ID_EMM_PLMNSEL_ERRCIF_PLMN_LIST_STATUS_UPDATE_REQ,
+MSG_ID_EMM_PLMNSEL_ERRCIF_PARAM_UPDATE_REQ,
+MSG_ID_EMM_PLMNSEL_ERRCIF_SEARCH_PREFERENCE_UPDATE_REQ, // for IMS
+MSG_ID_EMM_PLMNSEL_ERRCIF_CSG_WHITE_LIST_UPDT_REQ, // modified with IMS
+MSG_ID_EMM_PLMNSEL_ERRCIF_CHECK_SERVING_SUITABILITY_REQ, // for IMS
+MSG_ID_EMM_PLMNSEL_ERRCIF_STANDBY_REQ,
+MSG_ID_EMM_PLMNSEL_ERRCIF_RAT_DISABLE_CONFIG_REQ,
+MSG_ID_EMM_PLMNSEL_ERRCIF_HPLMN_INFO_UPDATE_REQ,
+MSG_ID_EMM_RATCHG_ERRCIF_RAT_CHANGE_REQ,
+MSG_ID_EMM_RATCHG_ERRCIF_RAT_CHANGE_RSP,
+MSG_ID_EMM_RATCHG_ERRCIF_STANDBY_REQ,
+MSG_ID_EMM_RATCHG_ERRCIF_RESUME_REQ,
+MSG_ID_EMM_RATCHG_ERRCIF_REG_STATUS_UPDATE_REQ,
+MSG_ID_EMM_RATCHG_ERRCIF_RAT_CHANGE_CAUSE_UPDATE_REQ,
+MSG_ID_EMM_RATCHG_ERRCIF_C2K_IRAT_COMPLETE_REQ,
+MSG_ID_EMM_SEC_ERRCIF_KEY_UPDATE_REQ,
+MSG_ID_EMM_SEC_ERRCIF_PARAM_UPDATE_REQ,
+MSG_ID_EMM_SEC_ERRCIF_NULL_SECURITY_ACCEPT_REQ,
+MSG_ID_EMM_CONN_ERRCIF_ESTABLISH_REQ,
+MSG_ID_EMM_CONN_ERRCIF_RELEASE_REQ,
+MSG_ID_EMM_CONN_ERRCIF_RELEASE_RSP,
+MSG_ID_EMM_CONN_ERRCIF_PARAM_UPDATE_REQ,
+MSG_ID_EMM_CONN_ERRCIF_NAS_FAIL_HANDLE_REQ,
+MSG_ID_EMM_CONN_ERRCIF_DATA_ALLOW_REQ,             // __MULTIPLE_PS__
+MSG_ID_EMM_CONN_ERRCIF_PROC_RESULT_UPDATE_REQ, //VZ_REQ_LTEDATARETRY_39861
+MSG_ID_EMM_CMNPROC_ERRCIF_PARAM_UPDATE_REQ,
+MSG_ID_EMM_NASMSG_ERRCIF_DATA_REQ,
+MSG_ID_EMM_NASMSG_ERRCIF_SENSITIVE_DATA_REQ,
+MSG_ID_EMM_ESMIF_ERRCIF_QOS_UPDATE_REQ,
+MSG_ID_EMM_ESMIF_ERRCIF_SEMAPHORE_SERVICE_STATUS_REQ,   // __MULTIPLE_PS__
+MSG_ID_EMM_ESMIF_ERRCIF_EPS_BEARER_INFO_REQ,
+MSG_ID_EMM_SV_ERRCIF_ACTIVATION_REQ,
+MSG_ID_EMM_SV_ERRCIF_REG_STATUS_UPDATE_REQ,
+MSG_ID_EMM_SV_ERRCIF_CSG_WHITE_LIST_UPDT_REQ,
+MSG_ID_EMM_SV_ERRCIF_SIM_FILE_UPDATE_REQ,
+MSG_ID_EMM_SV_ERRCIF_PARAM_UPDATE_REQ,
+MSG_ID_EMM_RATBAND_ERRCIF_RAT_BAND_REQ,
+MSG_ID_EMM_RATBAND_ERRCIF_DUPLEX_MODE_CHANGE_REQ, //for C2K
+MSG_ID_EMM_ETCIF_ERRCIF_TEST_REQ,
+MSG_ID_EMM_ETCIF_ERRCIF_MBMS_PACKET_COUNTER_REQ,
+MSG_ID_EMM_ETCIF_ERRCIF_UPDATE_UE_LOCATION_INFORMATION_REQ,
+MSG_ID_EMM_CALL_ERRCIF_GEMINI_CSFB_STATUS_REQ,
+MSG_ID_EMM_CALL_ERRCIF_SET_PGCHECK_REQ, // for LG new AT command
+MSG_ID_EMM_ERRCIF_UT_CONFIG_REQ,
+MSG_ID_EMM_ERRCIF_UT_STATUS_IND,
+MSG_ID_EMM_EVALIF_ERRCIF_IMS_SCM_INFO_REQ, 
+MSG_ID_EMM_EVALIF_ERRCIF_MT_SMS_OVER_IMS_STATUS_REQ,
+
+/****************************************************************************
+ *                          Destination: EMM_ESMIF 
+ ****************************************************************************/
+MSG_ID_EMM_REG_ESMIF_GET_EPSB_STATUS_IND,
+MSG_ID_EMM_REG_ESMIF_DATA_RESUME_IND,
+MSG_ID_EMM_REG_ESMIF_DATA_SUSPEND_IND,
+MSG_ID_EMM_REG_ESMIF_ATTACH_NEEDED_GET_ESM_MSG_IND,
+MSG_ID_EMM_REG_ESMIF_UPDATE_EPSB_STATUS_IND,
+MSG_ID_EMM_REG_ESMIF_DEREG_IND,
+MSG_ID_EMM_REG_ESMIF_GET_ESM_CAUSE_IND,
+MSG_ID_EMM_REG_ESMIF_QUERY_UL_DATA_STATUS_IND,
+MSG_ID_EMM_REG_ESMIF_EMC_ATTACH_REJ_IND, // for IMS
+MSG_ID_EMM_REG_ESMIF_EMC_DATA_FAIL_IND, // for IMS
+MSG_ID_EMM_REG_ESMIF_STOP_T3396_IND, // for __REL10__: t3396
+MSG_ID_EMM_REG_ESMIF_STOP_PDN_THROTT_TIMER_IND,
+MSG_ID_EMM_REG_ESMIF_T3402_START_IND,
+MSG_ID_EMM_REG_ESMIF_T3402_STOP_IND,
+MSG_ID_EMM_REG_ESMIF_T3402_CHANGE_IND,
+MSG_ID_EMM_CALL_ESMIF_DATA_CNF,
+MSG_ID_EMM_CALL_ESMIF_DATA_SEND_IND,
+MSG_ID_EMM_CALL_ESMIF_REEST_REJ,
+MSG_ID_EMM_CALL_ESMIF_ABORT_CNF,
+MSG_ID_EMM_CALL_ESMIF_AC_BAR_ALLEVIATE_IND,
+MSG_ID_EMM_RATCHG_ESMIF_RAT_CHANGE_IND,
+MSG_ID_EMM_RATCHG_ESMIF_RAT_CHANGE_CNF,
+MSG_ID_EMM_CONN_ESMIF_CONN_RELEASE_IND,
+MSG_ID_EMM_NASMSG_ESMIF_EPSBEARER_DATA_IND,
+MSG_ID_EMM_NASMSG_ESMIF_DATA_IND,
+#ifdef __SGLTE__
+MSG_ID_EMM_RATCHG_ESMIF_PS_SWITCH_CONTEXT_TRANSFER_IND,
+MSG_ID_EMM_RATCHG_ESMIF_PS_SWITCH_CONTEXT_TRANSFER_CNF,
+#endif /* __SGLTE__ */
+MSG_ID_EMM_SEC_ESMIF_ENTER_EMC_ATTACH_IND, // for IMS
+MSG_ID_EMM_SV_ESMIF_IMS_REG_STATUS_UPDATE_IND,
+MSG_ID_EMM_TIMERMNG_ESMIF_T3402_STOP_IND,
+MSG_ID_EMM_PLMNSEL_ESMIF_GEMINI_SUSPEND_IND,
+MSG_ID_EMM_PLMNSEL_ESMIF_GEMINI_RESUME_IND,
+MSG_ID_EMM_PLMNSEL_ESMIF_GEMINI_FAILURE_START_IND,
+MSG_ID_EMM_PLMNSEL_ESMIF_GEMINI_FAILURE_END_IND,
+MSG_ID_EMM_PLMNSEL_ESMIF_CELL_INFO_IND,
+
+/****************************************************************************
+ *                          Destination: EMM_ETCIF
+ ****************************************************************************/
+MSG_ID_EMM_ERRCIF_ETCIF_DATA_CNF,
+MSG_ID_EMM_NASMSG_ETCIF_DATA_IND,
+MSG_ID_EMM_NASMSG_ETCIF_DATA_CNF,
+MSG_ID_EMM_ERRCIF_ETCIF_TEST_CNF,
+MSG_ID_EMM_ERRCIF_ETCIF_MBMS_PACKET_COUNTER_CNF,
+MSG_ID_EMM_REG_ETCIF_DETACH_IND,
+MSG_ID_EMM_CONN_ETCIF_REL_IND,
+
+/****************************************************************************
+ *                          Destination: EMM_EVALIF
+ ****************************************************************************/
+MSG_ID_EMM_REG_EVALIF_DETACH_IND,
+MSG_ID_EMM_REG_EVALIF_ATTACH_CNF,
+MSG_ID_EMM_REG_EVALIF_NW_ECC_IND,
+MSG_ID_EMM_REG_EVALIF_REGN_RESULT_IND,
+MSG_ID_EMM_REG_EVALIF_DISABLE_NW_LOSS_OPTIMIZE_IND,
+MSG_ID_EMM_REG_EVALIF_NW_REJECT_IND,
+MSG_ID_EMM_REG_EVALIF_NW_FEATURE_SUPPORT_IND, // for IMS
+MSG_ID_EMM_REG_EVALIF_EMC_ATTACH_CNF, // for IMS
+MSG_ID_EMM_REG_EVALIF_EMC_DETACH_IND, // for IMS
+MSG_ID_EMM_REG_EVALIF_T3402_CHANGE_IND, // __REL10__: t3402
+MSG_ID_EMM_REG_EVALIF_PERSISTENT_EPSB_REL_IND, // __REL10__: persistent EPSB
+MSG_ID_EMM_REG_EVALIF_PLMN_RESTRICTION_CHANGE_IND,
+MSG_ID_EMM_REG_EVALIF_C2K_IRAT_ATTACH_RESULT_IND, // for C2K
+MSG_ID_EMM_REG_EVALIF_UPDATE_EMC_PDN_STATUS_IND,
+MSG_ID_EMM_REG_EVALIF_RSIM_AUTH_ABORT_CNF, // Remote SIM
+MSG_ID_EMM_REG_EVALIF_IA_APN_NOT_READY_IND,
+MSG_ID_EMM_REG_EVALIF_IA_APN_SET_IND,
+MSG_ID_EMM_REG_EVALIF_IMS_HANDOVER_NEED_SEARCH_IND,
+MSG_ID_EMM_CALL_EVALIF_SMS_EST_CNF,
+MSG_ID_EMM_CALL_EVALIF_SMS_EST_REJ,
+MSG_ID_EMM_CALL_EVALIF_SMS_ERR_IND,
+MSG_ID_EMM_CALL_EVALIF_LCS_DATA_CNF, // for LPP
+MSG_ID_EMM_CALL_EVALIF_LPP_DATA_CNF, // for LPP
+MSG_ID_EMM_CALL_EVALIF_SMS_UNITDATA_CNF,
+MSG_ID_EMM_CALL_EVALIF_SR_FAILURE_IND,
+MSG_ID_EMM_CALL_EVALIF_SR_REJECT_IND,
+MSG_ID_EMM_CALL_EVALIF_RACH_REJECT_IND,
+MSG_ID_EMM_CALL_EVALIF_IMS_SCM_INFO_CNF,
+MSG_ID_EMM_CALL_EVALIF_PLMN_RESTRICTION_CHANGE_IND,
+MSG_ID_EMM_CALL_EVALIF_C2K_CSFB_CNF,
+MSG_ID_EMM_CALL_EVALIF_C2K_CSFB_STOP_CNF,
+MSG_ID_EMM_CALL_EVALIF_C2K_CSFB_START_IND,
+MSG_ID_EMM_CALL_EVALIF_C2K_CSFB_EST_IND,
+MSG_ID_EMM_CALL_EVALIF_C2K_CSFB_STOP_IND,
+MSG_ID_EMM_CALL_EVALIF_NEED_DUPLEX_MODE_CHG_IND,
+MSG_ID_EMM_CALL_EVALIF_MT_PAGE_IND,
+MSG_ID_EMM_CALL_EVALIF_SEND_ESR_IND,
+MSG_ID_EMM_CALL_EVALIF_CS_SERVICE_NOTIFICATION_IND, //TMO-US GID-MTRREQ-245903 
+MSG_ID_EMM_CALL_EVALIF_PAGING_SESSION_STATUS_NTF,
+MSG_ID_EMM_CONN_EVALIF_BARRING_STATUS_IND,
+MSG_ID_EMM_CONN_EVALIF_ESTABLISHMENT_IND,
+MSG_ID_EMM_CONN_EVALIF_CONNECTION_INFO_IND,
+MSG_ID_EMM_CONN_EVALIF_ACDC_STATUS_UPDATE_CNF,
+MSG_ID_EMM_PLMNSEL_EVALIF_PLMN_LIST_CNF,
+MSG_ID_EMM_PLMNSEL_EVALIF_PLMN_LIST_STOP_CNF,
+MSG_ID_EMM_PLMNSEL_EVALIF_PLMN_SEARCH_CNF,
+MSG_ID_EMM_PLMNSEL_EVALIF_PLMN_SEARCH_IND,
+MSG_ID_EMM_PLMNSEL_EVALIF_SYS_INFO_IND,
+MSG_ID_EMM_PLMNSEL_EVALIF_PLMN_LOSS_IND,
+MSG_ID_EMM_PLMNSEL_EVALIF_OUT_OF_SERVICE_IND,
+MSG_ID_EMM_PLMNSEL_EVALIF_NO_ACTION_IND,
+MSG_ID_EMM_PLMNSEL_EVALIF_PLMN_FOUND_IND,
+MSG_ID_EMM_PLMNSEL_EVALIF_CSG_LIST_CNF,
+MSG_ID_EMM_PLMNSEL_EVALIF_CSG_LIST_STOP_CNF,
+MSG_ID_EMM_PLMNSEL_EVALIF_SIGNAL_APPEAR_IND,
+MSG_ID_EMM_PLMNSEL_EVALIF_CLEAR_FORBIDDEN_TA_NEED_SEARCH_IND,
+MSG_ID_EMM_PLMNSEL_EVALIF_REGN_RESULT_IND,
+MSG_ID_EMM_PLMNSEL_EVALIF_CELL_INFO_UPDATE_IND,
+MSG_ID_EMM_PLMNSEL_EVALIF_DETACH_IND,
+MSG_ID_EMM_PLMNSEL_EVALIF_EMERGENCY_STATUS_UPDATE_IND, // for IMS
+MSG_ID_EMM_PLMNSEL_EVALIF_RESELECT_SHARED_NW_IND, // for IMS __6293DEV__
+MSG_ID_EMM_PLMNSEL_EVALIF_RESUME_NEEDED_IND,
+MSG_ID_EMM_RATCHG_EVALIF_DEACTIVATE_CNF,
+MSG_ID_EMM_RATCHG_EVALIF_NAS_CTXT_TRANSFER_CNF,
+//MSG_ID_EMM_RATCHG_EVALIF_L2C_TRANSFER_CNF,  // for C2K
+MSG_ID_EMM_RATCHG_EVALIF_SRVCC_STATUS_UPDATE_IND, // for IMS
+MSG_ID_EMM_RATCHG_EVALIF_IRAT_C2L_SUCCESS_NOTIFY_IND, // for C2K
+MSG_ID_EMM_RATCHG_EVALIF_SEARCH_INTERRUPT_EVENT_IND,
+MSG_ID_EMM_SEC_EVALIF_RSIM_AUTH_FINISH_IND, // R-SIM
+MSG_ID_EMM_SEC_EVALIF_AUTHENTICATE_IND,
+MSG_ID_EMM_CMNPROC_EVALIF_NW_INFO_IND,
+MSG_ID_EMM_RATBAND_EVALIF_SET_RAT_MODE_CNF,
+MSG_ID_EMM_RATBAND_EVALIF_RFOFF_CNF,
+MSG_ID_EMM_RATBAND_EVALIF_DUPLEX_MODE_CHANGE_CNF,   //for C2K
+MSG_ID_EMM_NASMSG_EVALIF_SMS_UNITDATA_IND,
+MSG_ID_EMM_NASMSG_EVALIF_LPP_DATA_IND, // for LPP
+MSG_ID_EMM_NASMSG_EVALIF_LCS_DATA_IND, // for LPP
+MSG_ID_EMM_CONN_EVALIF_RELEASE_IND,
+MSG_ID_EMM_TIMERMNG_EVALIF_PLMN_RESTRICTION_CHANGE_IND,
+MSG_ID_EMM_TIMERMNG_EVALIF_SR_FAILURE_IND,
+MSG_ID_EMM_TIMERMNG_EVALIF_CABTSRI_IND,
+MSG_ID_EMM_SV_EVALIF_PLMN_RESTRICTION_CHANGE_IND,
+MSG_ID_EMM_SV_EVALIF_SIM_RESET_COMPLETE_IND,
+MSG_ID_EMM_SV_EVALIF_ME_RECONFIGURE_CNF,
+MSG_ID_EMM_EVALIF_REG_DRX_UPDATE_CNF,
+MSG_ID_EMM_EVALIF_REG_DRX_UPDATE_IND,
+
+#ifdef __SGLTE__
+MSG_ID_EMM_RATCHG_EVALIF_PS_SWITCH_CNF,
+MSG_ID_EMM_RATCHG_EVALIF_PS_SWITCH_SUSPEND_CNF,
+MSG_ID_EMM_RATCHG_EVALIF_PS_SWITCH_IND,
+#endif /* __SGLTE__ */
+
+MSG_ID_EMM_EVALIF_REG_CELL_BAND_INFO_UPDATE_IND,  // For VzW (VZ_REQ_e911_30203)
+MSG_ID_EMM_REG_EVALIF_EMM_MSG_IND,                // For VzW VoWifi TC3.2
+MSG_ID_EMM_REG_EVALIF_CS_DOMAIN_NOT_AVAILABLE_IND,
+
+MSG_ID_EMM_SV_EVALIF_GENERAL_MODEM_CONFIGURE_SET_CNF,
+
+ /****************************************************************************
+ *                          Destination: EMM_EVTCTRL
+ ****************************************************************************/
+/* END_IND */
+MSG_ID_EMM_SV_EVTCTRL_END_IND,
+MSG_ID_EMM_RATBAND_EVTCTRL_END_IND,
+MSG_ID_EMM_RATCHG_EVTCTRL_END_IND,
+MSG_ID_EMM_REG_EVTCTRL_END_IND,
+MSG_ID_EMM_CALL_EVTCTRL_END_IND,
+MSG_ID_EMM_PLMNSEL_EVTCTRL_END_IND,
+/* ABORT_CNF */
+MSG_ID_EMM_SV_EVTCTRL_ABORT_CNF,
+MSG_ID_EMM_RATBAND_EVTCTRL_ABORT_CNF,
+MSG_ID_EMM_RATCHG_EVTCTRL_ABORT_CNF,
+MSG_ID_EMM_REG_EVTCTRL_ABORT_CNF,
+MSG_ID_EMM_CALL_EVTCTRL_ABORT_CNF,
+MSG_ID_EMM_PLMNSEL_EVTCTRL_ABORT_CNF,
+/* SUSPEND_CNF */
+#if 0 //remove SUSP_SUSP conflict resolution
+/* under construction !*/
+/* under construction !*/
+/* under construction !*/
+/* under construction !*/
+/* under construction !*/
+/* under construction !*/
+#endif
+/* TIMERMNG */
+MSG_ID_EMM_TIMERMNG_EVTCTRL_WDT_TIMEOUT_IND,
+/* For UT */
+MSG_ID_EMM_EVTCTRL_UT_START_REQ,
+MSG_ID_EMM_EVTCTRL_UT_STOP_REQ,
+MSG_ID_EMM_EVTCTRL_UT_STATE_SET_REQ,
+MSG_ID_EMM_EVTCTRL_UT_EVENT_START_REQ,
+MSG_ID_EMM_EVTCTRL_UT_PUBLIC_API_REQ,
+MSG_ID_EMM_EVTCTRL_UT_PUBLIC_API_CNF,
+ 
+/****************************************************************************
+ *                          Destination: EMM_MMIF
+ ****************************************************************************/
+MSG_ID_EMM_REG_MMIF_ISR_UPDATE_IND,
+MSG_ID_EMM_REG_MMIF_EMM_UPDATE_REGISTRATION_IND,
+MSG_ID_EMM_REG_MMIF_EMM_UPDATE_DEREGISTRATION_IND,
+#ifdef __SGLTE__
+MSG_ID_EMM_REG_MMIF_PEER_LR_RESULT_IND,
+MSG_ID_EMM_RATCHG_MMIF_PEER_LR_HANDLE_PREPARATION_CNF,
+#endif /*__SGLTE__*/
+MSG_ID_EMM_CALL_MMIF_CSFB_CNF,
+MSG_ID_EMM_CALL_MMIF_CSFB_PAGE_IND,
+MSG_ID_EMM_CALL_MMIF_CSFB_RESULT_IND,
+MSG_ID_EMM_RATCHG_MMIF_INIT_NAS_CTXT_IND,
+MSG_ID_EMM_TIMERMNG_MMIF_TIMER_STATUS_IND, // for __REL10__: t3346
+
+/****************************************************************************
+ *                          Destination: EMM_NASMSG
+ ****************************************************************************/
+MSG_ID_EMM_CALL_NASMSG_SND_NASMSG_REQ,
+MSG_ID_EMM_CALL_NASMSG_SND_SERV_REQ,
+MSG_ID_EMM_REG_NASMSG_SND_NASMSG_REQ,
+MSG_ID_EMM_REG_NASMSG_SND_ESM_MSG_REQ,
+MSG_ID_EMM_REG_NASMSG_ACCEPT_FAILURE_IND,
+MSG_ID_EMM_SEC_NASMSG_SND_NASMSG_REQ,
+MSG_ID_EMM_SEC_NASMSG_EXCHG_REEST_CNF,
+MSG_ID_EMM_CMNPROC_NASMSG_SND_NASMSG_REQ,
+MSG_ID_EMM_ERRCIF_NASMSG_EPSBEARER_DATA_IND,
+MSG_ID_EMM_ERRCIF_NASMSG_DATA_IND,
+MSG_ID_EMM_ERRCIF_NASMSG_DATA_CNF,
+MSG_ID_EMM_NASMSG_UT_SETTING_CHANGE_IND,
+MSG_ID_EMM_ETCIF_NASMSG_DATA_REQ,
+MSG_ID_EMM_PLMNSEL_NASMSG_CELL_INFO_IND,
+MSG_ID_EMM_ERRCIF_NASMSG_CELL_CHANGE_IND,
+MSG_ID_EMM_CONN_NASMSG_REL_IND,
+
+/****************************************************************************
+ *                          Destination: EMM_PLMNSEL
+ ****************************************************************************/
+MSG_ID_EMM_EVALIF_PLMNSEL_PLMN_LIST_REQ,
+MSG_ID_EMM_EVALIF_PLMNSEL_PLMN_LIST_STOP_REQ,
+MSG_ID_EMM_EVALIF_PLMNSEL_PLMN_LIST_STATUS_UPDATE_REQ,
+MSG_ID_EMM_EVALIF_PLMNSEL_PLMN_SEARCH_REQ,
+MSG_ID_EMM_EVALIF_PLMNSEL_SYS_INFO_UPDATE_REQ,
+MSG_ID_EMM_EVALIF_PLMNSEL_SEARCH_STATUS_UPDATE_REQ,
+MSG_ID_EMM_EVALIF_PLMNSEL_CSG_LIST_REQ,
+MSG_ID_EMM_EVALIF_PLMNSEL_CSG_LIST_STOP_REQ,
+MSG_ID_EMM_EVALIF_PLMNSEL_EMC_FPLMN_LIST_UPDATE_REQ, // for IMS
+MSG_ID_EMM_EVALIF_PLMNSEL_EQ_PLMN_LIST_UPDATE_REQ,
+MSG_ID_EMM_EVALIF_PLMNSEL_RPLMN_EQ_PLMN_LIST_UPDATE_REQ,
+MSG_ID_EMM_EVALIF_PLMNSEL_HPLMN_INFO_UPDATE_REQ,
+MSG_ID_EMM_EVALIF_PLMNSEL_REGN_STATUS_UPDATE_REQ,
+MSG_ID_EMM_EVALIF_PLMNSEL_SEARCH_PREFERENCE_UPDATE_REQ, // for IMS
+MSG_ID_EMM_EVALIF_PLMNSEL_CLEAR_FORBIDDEN_TA_LIST_REQ,
+MSG_ID_EMM_EVALIF_PLMNSEL_RESELECT_SHARED_NW_RSP, // for IMS __6293DEV__
+MSG_ID_EMM_EVALIF_PLMNSEL_RESUME_REQ,
+MSG_ID_EMM_EVALIF_PLMNSEL_GLOBAL_MODE_CHANGE_START_REQ,
+MSG_ID_EMM_EVALIF_PLMNSEL_RAT_DISABLE_CONFIG_REQ,
+MSG_ID_EMM_EVALIF_PLMNSEL_PEER_SIM_MANUAL_LIST_START_REQ,
+MSG_ID_EMM_EVALIF_PLMNSEL_PEER_SIM_MANUAL_LIST_FINISH_REQ,
+MSG_ID_EMM_ERRCIF_PLMNSEL_PLMNLIST_CNF,
+MSG_ID_EMM_ERRCIF_PLMNSEL_CSG_LIST_CNF,
+MSG_ID_EMM_ERRCIF_PLMNSEL_CSG_LIST_STOP_CNF,
+MSG_ID_EMM_ERRCIF_PLMNSEL_CELLSELECT_CNF,
+MSG_ID_EMM_ERRCIF_PLMNSEL_CELLSELECT_IND,
+MSG_ID_EMM_ERRCIF_PLMNSEL_PLMN_FOUND_IND,
+MSG_ID_EMM_ERRCIF_PLMNSEL_OOS_IND,
+MSG_ID_EMM_ERRCIF_PLMNSEL_SIGNAL_APPEAR_IND,
+MSG_ID_EMM_ERRCIF_PLMNSEL_EARLY_OOS_DISPLAY_IND,
+MSG_ID_EMM_ERRCIF_PLMNSEL_OOS_SEARCH_IND,
+MSG_ID_EMM_ERRCIF_PLMNSEL_GEMINI_VIRTUAL_MODE_IND,
+MSG_ID_EMM_ERRCIF_PLMNSEL_STANDBY_CNF, //REL12 PSM
+MSG_ID_EMM_ESMIF_PLMNSEL_EMC_BEARER_STATUS_REQ, // for IMS
+MSG_ID_EMM_ERRCIF_PLMNSEL_GEMINI_SUSPEND_IND,
+MSG_ID_EMM_RATCHG_PLMNSEL_AS_CONTROL_CNF,
+//MSG_ID_EMM_RATCHG_PLMNSEL_RAT_HO_E2U_IND,   // unused
+//MSG_ID_EMM_RATCHG_PLMNSEL_PROC_ASSBY_IND,   // unused
+//MSG_ID_EMM_RATCHG_PLMNSEL_IRAT_UG2E_IND,    // unused
+//MSG_ID_EMM_RATCHG_PLMNSEL_REDIR_E2UG_FAIL_IND,  // unused
+//MSG_ID_EMM_RATCHG_PLMNSEL_RAT_LTESBY_IND,       // unused
+MSG_ID_EMM_RATCHG_PLMNSEL_IRAT_E2UG_COMP_IND,
+MSG_ID_EMM_RATCHG_PLMNSEL_STANDBY_IND,
+MSG_ID_EMM_RATCHG_PLMNSEL_NO_ACTION_IND,
+MSG_ID_EMM_RATCHG_PLMNSEL_IRAT_E2C_COMP_IND, // for C2K
+//MSG_ID_EMM_RATCHG_PLMNSEL_IRAT_C2E_COMP_IND, // for C2K
+//MSG_ID_EMM_RATCHG_PLMNSEL_IRAT_C2E_FINISH_IND, // for C2K
+MSG_ID_EMM_CALL_PLMNSEL_SEARCH_2G3G_REQ,
+MSG_ID_EMM_CALL_PLMNSEL_SR_END_IND,
+MSG_ID_EMM_CALL_PLMNSEL_SR_CAUSE_IND, // modified with IMS
+MSG_ID_EMM_REG_PLMNSEL_REGISTRATION_END_IND,
+MSG_ID_EMM_REG_PLMNSEL_REGISTRATION_SUCCESS_IND,
+MSG_ID_EMM_REG_PLMNSEL_REGISTRATION_CAUSE_IND, // modified with IMS
+MSG_ID_EMM_REG_PLMNSEL_RESELECT_SHARED_NW_REQ, // for IMS
+MSG_ID_EMM_CONN_PLMNSEL_REL_IND,
+MSG_ID_EMM_CONN_PLMNSEL_PSM_ACTIVATE_REQ, //REL12 PSM
+MSG_ID_EMM_PLMNSEL_PSM_DEACTIVATE_REQ, //REL12 PSM
+MSG_ID_EMM_EVTCTRL_PLMNSEL_ABORT_REQ,
+//MSG_ID_EMM_EVTCTRL_PLMNSEL_SUSPEND_REQ, //remove SUSP_SUSP conflict resolution
+//MSG_ID_EMM_EVTCTRL_PLMNSEL_RESUME_REQ,  //remove SUSP_SUSP conflict resolution
+MSG_ID_EMM_EVTCTRL_PLMNSEL_CONTINUE_REQ,
+MSG_ID_EMM_EVTCTRL_PLMNSEL_WDT_POLLING_REQ,
+MSG_ID_EMM_TIMERMNG_PLMNSEL_FTAI_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_PLMNSEL_FTAI_REJ15_TIMEOUT_IND,
+MSG_ID_EMM_SV_PLMNSEL_SIM_ERROR_IND,
+MSG_ID_EMM_SV_PLMNSEL_POWEROFF_IND,
+MSG_ID_EMM_SV_PLMNSEL_SIM_READY_IND,
+MSG_ID_EMM_SV_PLMNSEL_SIM_VALID_IND,
+MSG_ID_EMM_SV_PLMNSEL_SIM_READY_CANCELED_IND,
+MSG_ID_EMM_RATBAND_PLMNSEL_SET_RAT_MODE_IND,
+MSG_ID_EMM_PLMNSEL_UT_CONFIG_REQ,
+MSG_ID_EMM_PLMNSEL_UT_CHECK_PUBLIC_FUNCTION_REQ,
+MSG_ID_EMM_PLMNSEL_UT_CHECK_PUBLIC_FUNCTION_CNF,
+MSG_ID_EMM_PLMNSEL_SELF_UT_REQ, // modified with IMS
+
+/****************************************************************************
+ *                          Destination: EMM_RATBAND
+ ****************************************************************************/
+MSG_ID_EMM_EVTCTRL_RATBAND_ABORT_REQ,
+//MSG_ID_EMM_EVTCTRL_RATBAND_SUSPEND_REQ, //remove SUSP_SUSP conflict resolution
+//MSG_ID_EMM_EVTCTRL_RATBAND_RESUME_REQ,  //remove SUSP_SUSP conflict resolution
+MSG_ID_EMM_EVTCTRL_RATBAND_CONTINUE_REQ,
+MSG_ID_EMM_EVALIF_RATBAND_RFOFF_REQ,
+MSG_ID_EMM_EVALIF_RATBAND_SET_RAT_MODE_REQ,
+MSG_ID_EMM_EVALIF_RATBAND_DUPLEX_MODE_CHANGE_REQ,   //for C2K
+MSG_ID_EMM_ERRCIF_RATBAND_RAT_BAND_CNF,
+MSG_ID_EMM_ERRCIF_RATBAND_DUPLEX_MODE_CHANGE_CNF,   //for C2K
+MSG_ID_EMM_REG_RATBAND_DETACH_CNF,
+MSG_ID_EMM_RATCHG_RATBAND_AS_CONTROL_CNF,
+MSG_ID_EMM_ANY_RATBAND_UT_CONFIG_REQ,
+MSG_ID_EMM_RATBAND_UT_STATUS_IND,
+MSG_ID_EMM_EVTCTRL_RATBAND_WDT_POLLING_REQ,
+MSG_ID_EMM_CONN_RATBAND_REL_IND,
+MSG_ID_EMM_TIMERMNG_RATBAND_REL_CONN_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_RATBAND_DETACH_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_RATBAND_DEFER_SET_RAT_TIMEOUT_IND,
+MSG_ID_EMM_SV_RATBAND_IMS_REG_STATUS_UPDATE_REQ,
+
+
+/****************************************************************************
+ *                          Destination: EMM_RATCHG
+ ****************************************************************************/ 
+//MSG_ID_EMM_CALL_RATCHG_AS_CONTROL_REQ,
+MSG_ID_EMM_PLMNSEL_RATCHG_AS_CONTROL_REQ,
+MSG_ID_EMM_PLMNSEL_RATCHG_CELL_INFO_IND,
+MSG_ID_EMM_PLMNSEL_RATCHG_ABORT_NAS_CTXT_TRANSFER_REQ,
+MSG_ID_EMM_CONN_RATCHG_EST_CNF,
+MSG_ID_EMM_CONN_RATCHG_REDIRECTION_IND,
+MSG_ID_EMM_CONN_RATCHG_REL_PEND_IND,
+MSG_ID_EMM_CONN_RATCHG_REL_IND,
+MSG_ID_EMM_ESMIF_RATCHG_RAT_CHANGE_REQ,
+MSG_ID_EMM_ESMIF_RATCHG_RAT_CHANGE_RSP,
+MSG_ID_EMM_ESMIF_RATCHG_C2K_IRAT_COMPLETE_REQ, // for C2K
+MSG_ID_EMM_ESMIF_RATCHG_RAT_CHANGE_EPSB_STATUS_REQ,
+MSG_ID_EMM_EVALIF_RATCHG_NAS_CTXT_TRANSFER_REQ,
+//MSG_ID_EMM_EVALIF_RATCHG_L2C_TRANSFER_REQ,  // for C2K
+MSG_ID_EMM_EVALIF_RATCHG_DEACTIVATE_REQ,
+MSG_ID_EMM_EVALIF_RATCHG_GMSS_IRAT_START_IND, // for C2K
+MSG_ID_EMM_EVALIF_RATCHG_GMSS_IRAT_FINISH_IND, // for C2K
+MSG_ID_EMM_MMIF_RATCHG_INIT_NAS_CTXT_RSP,
+MSG_ID_EMM_MMIF_RATCHG_UPDATE_SECURITY_STATUS_IND,
+#ifdef __SGLTE__
+MSG_ID_EMM_MMIF_RATCHG_PEER_LR_HANDLE_PREPARATION_REQ,
+MSG_ID_EMM_ESMIF_RATCHG_PS_SWITCH_CONTEXT_TRANSFER_REQ,
+MSG_ID_EMM_ESMIF_RATCHG_PS_SWITCH_CONTEXT_TRANSFER_RSP,
+MSG_ID_EMM_EVALIF_RATCHG_PS_SWITCH_REQ,
+MSG_ID_EMM_EVALIF_RATCHG_PS_SWITCH_SUSPEND_REQ,
+MSG_ID_EMM_EVALIF_RATCHG_PS_SWITCH_RESUME_REQ,
+#endif /*__SGLTE__*/
+MSG_ID_EMM_ERRCIF_RATCHG_RAT_CHANGE_IND,
+MSG_ID_EMM_ERRCIF_RATCHG_RAT_CHANGE_CNF,
+MSG_ID_EMM_ERRCIF_RATCHG_STANDBY_CNF,
+MSG_ID_EMM_ERRCIF_RATCHG_STANDBY_IND,
+MSG_ID_EMM_ERRCIF_RATCHG_RESUME_CNF,
+MSG_ID_EMM_ERRCIF_RATCHG_SKIP_IRCCO_STAGE2_IND,
+MSG_ID_EMM_RATBAND_RATCHG_AS_CONTROL_REQ,
+MSG_ID_EMM_RATBAND_RATCHG_C2K_RAT_DISABLE_IND, // for C2K
+#ifdef __SGLTE__
+MSG_ID_EMM_REG_RATCHG_RESUME_IRAT_REQ,
+MSG_ID_EMM_REG_RATCHG_PS_SWITCH_RSP,
+#endif /*__SGLTE__*/
+MSG_ID_EMM_SV_RATCHG_SIM_READY_IND,
+MSG_ID_EMM_SV_RATCHG_SIM_DETACH_IND,
+MSG_ID_EMM_EVTCTRL_RATCHG_ABORT_REQ,
+//MSG_ID_EMM_EVTCTRL_RATCHG_SUSPEND_REQ,  //remove SUSP_SUSP conflict resolution
+//MSG_ID_EMM_EVTCTRL_RATCHG_RESUME_REQ,   //remove SUSP_SUSP conflict resolution
+MSG_ID_EMM_EVTCTRL_RATCHG_CONTINUE_REQ,
+MSG_ID_EMM_EVTCTRL_RATCHG_WDT_POLLING_REQ,
+MSG_ID_EMM_ANY_RATCHG_UT_CONFIG_REQ,
+MSG_ID_EMM_RATCHG_UT_STATUS_IND,
+
+
+/****************************************************************************
+ *                          Destination: EMM_REG
+ ****************************************************************************/ 
+/* from CALL */
+MSG_ID_EMM_CALL_REG_RCV_SERVICE_REJECT_IND,
+MSG_ID_EMM_CALL_REG_TAU_INIT_REQ,
+MSG_ID_EMM_CALL_REG_EXSR_SEND_IND,
+MSG_ID_EMM_CALL_REG_SND_ESMMSG_REQ,
+MSG_ID_EMM_CALL_REG_BEARER_IND,
+MSG_ID_EMM_CALL_REG_WAITEPSINFO_START_REQ,
+MSG_ID_EMM_CALL_REG_ATTACH_INIT_REQ,
+MSG_ID_EMM_CALL_REG_SUSPEND_TAU_REQ,
+MSG_ID_EMM_CALL_REG_RESUME_TAU_REQ,
+MSG_ID_EMM_CALL_REG_SR_PENDING_IND,
+MSG_ID_EMM_CALL_REG_SR_STATUS_IND, // for IMS
+MSG_ID_EMM_CALL_REG_SR_MAX_ATTEMPT_IND,
+MSG_ID_EMM_CALL_REG_SR_RACH_FAIL_IND,
+MSG_ID_EMM_CALL_REG_SR_ABNORMAL_IND,
+MSG_ID_EMM_CALL_REG_C2K_CSFB_IND, //for C2K + SRLTE
+MSG_ID_EMM_CALL_REG_C2K_CSFB_STOP_IND, //for C2K + SRLTE
+MSG_ID_EMM_CALL_REG_EUTRAN_CAP_UPDATE_IND,
+MSG_ID_EMM_CALL_REG_SMS_EST_IND,
+/* from PLMNSEL */
+MSG_ID_EMM_PLMNSEL_REG_NO_CELL_INFO_IND,
+MSG_ID_EMM_PLMNSEL_REG_CELL_INFO_IND,
+MSG_ID_EMM_PLMNSEL_REG_PLMN_LIST_STATUS_UPDATE_REQ,
+MSG_ID_EMM_PLMNSEL_REG_PLMNSEARCH_END_IND,
+MSG_ID_EMM_PLMNSEL_REG_OOS_FIRST_ROUND_FAIL_IND,
+MSG_ID_EMM_PLMNSEL_REG_EMC_STATUS_UPDATE_IND, // for IMS
+MSG_ID_EMM_PLMNSEL_REG_RESELECT_SHARED_NW_CNF, // for IMS
+MSG_ID_EMM_PLMNSEL_REG_PLMN_SEARCH_LIST_START_IND, // for IMS
+MSG_ID_EMM_PLMNSEL_REG_GEMINI_SUSPEND_IND,
+MSG_ID_EMM_PLMNSEL_REG_GLOBAL_MODE_CHANGE_START_REQ,
+MSG_ID_EMM_PLMNSEL_REG_GEMINI_VIRTUAL_MODE_IND,
+MSG_ID_EMM_PLMNSEL_REG_LEAVE_VIRTUAL_IDLE_MODE_IND,
+MSG_ID_EMM_PLMNSEL_REG_PEER_SIM_MANUAL_LIST_START_REQ,
+MSG_ID_EMM_PLMNSEL_REG_PEER_SIM_MANUAL_LIST_FINISH_REQ,
+/* from CMNPROC */
+MSG_ID_EMM_CMNPROC_REG_REG_REINIT_REQ,
+/* from CONN */
+MSG_ID_EMM_CONN_REG_EST_CNF,
+MSG_ID_EMM_CONN_REG_REL_IND,
+MSG_ID_EMM_CONN_REG_AC_STATUS_IND,
+MSG_ID_EMM_CONN_REG_EST_IND,
+MSG_ID_EMM_CONN_REG_T3440_STOP_CNF,
+MSG_ID_EMM_CONN_REG_ACDC_STATUS_CHANGE_IND,
+/* from ESMIF */
+MSG_ID_EMM_ESMIF_REG_ATTACH_NEEDED_GET_ESM_MSG_RSP,
+MSG_ID_EMM_ESMIF_REG_GET_EPSB_STATUS_RSP,
+MSG_ID_EMM_ESMIF_REG_SYNC_EPSB_STATUS_REQ,
+MSG_ID_EMM_ESMIF_REG_DETACH_REQ,
+MSG_ID_EMM_ESMIF_REG_ISR_DEACT_REQ,
+MSG_ID_EMM_ESMIF_REG_GET_ESM_CAUSE_RSP,
+MSG_ID_EMM_ESMIF_REG_QUERY_UL_DATA_STATUS_RSP,
+MSG_ID_EMM_ESMIF_REG_UPDATE_EPSB_STATUS_RSP, // for IMS
+MSG_ID_EMM_ESMIF_REG_QOS_UPDATE_REQ,
+MSG_ID_EMM_ESMIF_REG_PERSISTENT_EPSBC_UPDATE_REQ,  // for __REL10__: persistent EPSB
+MSG_ID_EMM_ESMIF_REG_NOTIFY_ESM_EVENT_REQ, //VzW
+MSG_ID_EMM_ESMIF_REG_EPS_BEARER_INFO_REQ,
+MSG_ID_EMM_ESMIF_REG_IA_APN_SET_REQ,
+#ifdef __SGLTE__
+MSG_ID_EMM_ESMIF_REG_PS_SWITCH_CONTEXT_TRANSFER_FINAL_RSP,
+#endif /*__SGLTE__*/
+/* from EVALIF */
+MSG_ID_EMM_EVALIF_REG_DETACH_REQ,
+MSG_ID_EMM_EVALIF_REG_ATTACH_REQ,
+MSG_ID_EMM_EVALIF_REG_UEMODE_PARAM_UPDATE_REQ,
+MSG_ID_EMM_EVALIF_REG_EMC_ATTACH_REQ, // for IMS
+MSG_ID_EMM_EVALIF_REG_ACTIVE_SIM_INFO_REQ, // TODO: remove with EACTS
+MSG_ID_EMM_EVALIF_REG_SET_IMS_VOICE_AVAILABILITY_REQ, // for IMS
+MSG_ID_EMM_EVALIF_REG_SET_IMS_VOICE_TERMINATION_REQ, // for IMS
+MSG_ID_EMM_EVALIF_REG_VDM_VOICE_STATUS_REQ, // IMS call start (first) / end (last)
+MSG_ID_EMM_EVALIF_REG_DRX_UPDATE_REQ,
+MSG_ID_EMM_EVALIF_REG_C2K_FORCE_TO_LOCAL_DETACH_REQ, //for C2K
+MSG_ID_EMM_EVALIF_REG_EMC_SESSION_START_REQ,
+MSG_ID_EMM_EVALIF_REG_EMC_SESSION_STOP_REQ,
+MSG_ID_EMM_EVALIF_REG_HVOLTE_MODE_CHANGE_REQ, //[ALPS02585002] for VZ hVoLTE, E911 test
+MSG_ID_EMM_EVALIF_REG_GUTI_IN_NV_CLEAR_REQ,
+MSG_ID_EMM_EVALIF_REG_IA_APN_CHANGE_REQ,
+MSG_ID_EMM_EVALIF_REG_IMS_HANDOVER_ATTACH_REQ,
+MSG_ID_EMM_EVALIF_REG_MANUAL_SEARCH_STOP_REQ,
+
+// Remote SIM
+MSG_ID_EMM_EVALIF_REG_RSIM_AKA_STATUS_REQ,
+MSG_ID_EMM_EVALIF_REG_RSIM_AKA_RSIM_ACCESS_FOR_AUTH_DOWNLOAD_REQ,
+MSG_ID_EMM_EVALIF_REG_RSIM_AUTH_ABORT_REQ,
+
+MSG_ID_EMM_EVALIF_REG_ECBM_START_REQ,
+MSG_ID_EMM_EVALIF_REG_ECBM_STOP_REQ,
+MSG_ID_EMM_EVALIF_REG_SEND_DAN_SMS_IND,
+
+/* from MMIF */
+MSG_ID_EMM_MMIF_REG_GMM_UPDATE_REGISTRATION_REQ,
+MSG_ID_EMM_MMIF_REG_GMM_UPDATE_DEREGISTRATION_REQ,
+MSG_ID_EMM_MMIF_REG_MM_UPDATE_REGISTRATION_REQ,
+MSG_ID_EMM_MMIF_REG_MM_UPDATE_DEREGISTRATION_REQ,
+MSG_ID_EMM_MMIF_REG_ISR_UPDATE_REQ,
+MSG_ID_EMM_MMIF_REG_TIMER_STATUS_REQ, // for __REL10__: t3346
+#ifdef __SGLTE__
+MSG_ID_EMM_MMIF_REG_PEER_LR_RESULT_REQ,
+#endif /*__SGLTE__*/
+/* from ERRCIF */
+MSG_ID_EMM_ERRCIF_REG_SND_NASMSG_CNF, // no use?
+MSG_ID_EMM_ERRCIF_REG_IMSI_PAGE_IND,
+MSG_ID_EMM_ERRCIF_REG_ACTIVE_EPSBEARER_IND, // for __REL10__: persistent EPSB
+/* from EVTCTRL */
+MSG_ID_EMM_EVTCTRL_REG_ABORT_REQ,
+//MSG_ID_EMM_EVTCTRL_REG_SUSPEND_REQ, //remove SUSP_SUSP conflict resolution
+//MSG_ID_EMM_EVTCTRL_REG_RESUME_REQ,  //remove SUSP_SUSP conflict resolution
+MSG_ID_EMM_EVTCTRL_REG_CONTINUE_REQ,
+MSG_ID_EMM_EVTCTRL_REG_WDT_POLLING_REQ,
+/* from NASMSG */
+MSG_ID_EMM_NASMSG_REG_RCV_ATTACH_ACCEPT_IND,
+MSG_ID_EMM_NASMSG_REG_RCV_ATTACH_REJECT_IND,
+MSG_ID_EMM_NASMSG_REG_RCV_TAU_ACCEPT_IND,
+MSG_ID_EMM_NASMSG_REG_RCV_TAU_REJECT_IND,
+MSG_ID_EMM_NASMSG_REG_RCV_DETACH_REQUEST_IND,
+MSG_ID_EMM_NASMSG_REG_RCV_DETACH_ACCEPT_IND,
+MSG_ID_EMM_NASMSG_REG_SND_NASMSG_CNF,
+
+/* from SEC */
+MSG_ID_EMM_SEC_REG_REG_REINIT_REQ,
+MSG_ID_EMM_SEC_REG_ATTACH_TRIGGER_IND,
+MSG_ID_EMM_SEC_REG_RCV_AUTH_REJECT_IND,
+MSG_ID_EMM_SEC_REG_SMC_FAILURE_IND,
+MSG_ID_EMM_SEC_REG_AUTH_TRIGGER_END_DETACH_REQ,
+MSG_ID_EMM_SEC_REG_RSIM_AUTH_IND,
+
+/* from TIMERMNG */
+MSG_ID_EMM_TIMERMNG_REG_T3402_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_REG_T3411_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_REG_T3412_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_REG_T3430_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_REG_T3410_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_REG_T3421_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_REG_T_DETACH_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_REG_T3423_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_REG_T3346_TIMEOUT_IND, // for __REL10__: t3346
+MSG_ID_EMM_TIMERMNG_REG_ABN_REG_GUARD_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_REG_T_PLMNLIST_REL_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_REG_THROTTLING_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_REG_T_WAIT_HIGH_PS_REL_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_REG_T_FTAI_ABNORMAL_MAX_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_REG_NAS_RECOVERY_BACKOFF_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_REG_T_NW_DET_ENH_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_REG_T_PROTECT_ERRC_FAKE_PROCEDURE_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_REG_T_REUSE_CONN_FOR_EMC_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_REG_T_GAME_FEATURE_WARNING_RANDOM_FATAL_TIMEOUT_IND,
+
+/* from SV */
+MSG_ID_EMM_SV_REG_SIM_READY_IND,
+MSG_ID_EMM_SV_REG_DETACH_REQ,
+MSG_ID_EMM_SV_REG_SIM_READY_CANCELED_IND,
+MSG_ID_EMM_SV_REG_SIM_VALID_IND, // for __REL10__: t3245 
+/* from RATBAND */
+MSG_ID_EMM_RATBAND_REG_DETACH_REQ,
+MSG_ID_EMM_RATBAND_REG_FORCE_LOCAL_DETACH_REQ,
+MSG_ID_EMM_RATBAND_REG_SET_RAT_ABORT_PROC_REQ, // abort procedure for skip detach in set RAT
+MSG_ID_EMM_RATBAND_REG_SET_RAT_MODE_IND,
+/* from RATCHG */
+MSG_ID_EMM_RATCHG_REG_IRAT_E2UG_COMP_IND,
+MSG_ID_EMM_RATCHG_REG_IRAT_UG2E_COMP_IND,
+MSG_ID_EMM_RATCHG_REG_IRAT_E2UG_FAIL_IND,
+MSG_ID_EMM_RATCHG_REG_IRAT_UG2E_FAIL_IND,
+MSG_ID_EMM_RATCHG_REG_IRAT_E2UG_INIT_IND,
+MSG_ID_EMM_RATCHG_REG_STANDBY_IND, // for C2K
+#ifdef __SGLTE__
+MSG_ID_EMM_RATCHG_REG_PS_SWITCH_IND,
+#endif /*__SGLTE__*/
+MSG_ID_EMM_RATCHG_REG_IRAT_E2C_COMP_IND, // for C2K
+MSG_ID_EMM_RATCHG_REG_IRAT_C2E_COMP_IND, // for C2K
+/* for UT*/
+MSG_ID_EMM_REG_UT_CONFIG_REQ,
+
+/****************************************************************************
+ *                          Destination: EMM_SEC
+ ****************************************************************************/
+MSG_ID_EMM_PLMNSEL_SEC_CAMPON_PLMN_CHG_IND,
+MSG_ID_EMM_PLMNSEL_SEC_CELL_INFO_IND,
+MSG_ID_EMM_PLMNSEL_SEC_VIRTUAL_MODE_STATUS_UPDATE_IND, // R-SIM
+MSG_ID_EMM_CALL_SEC_AUTH_DATA_DEL_REQ,
+MSG_ID_EMM_CALL_SEC_DELETE_KSI_REQ,
+MSG_ID_EMM_CALL_SEC_INITIAL_NAS_PROC_IND,
+MSG_ID_EMM_REG_SEC_DELETE_KSI_REQ,
+MSG_ID_EMM_REG_SEC_AUTH_DATA_DEL_REQ,
+MSG_ID_EMM_REG_SEC_REG_INIT_IND,
+MSG_ID_EMM_REG_SEC_DEREG_COMP_IND,
+MSG_ID_EMM_REG_SEC_INITIAL_NAS_PROC_IND,
+//MSG_ID_EMM_RATCHG_SEC_RATLTESBY_IND,    // need to remove
+//MSG_ID_EMM_RATCHG_SEC_RAT_HO_U2E_IND,   // need to remove
+//MSG_ID_EMM_RATCHG_SEC_RAT_IDLE_U2E_IND, // need to remove 
+MSG_ID_EMM_RATCHG_SEC_IRAT_E2UG_COMP_IND,
+MSG_ID_EMM_RATCHG_SEC_RAT_IDLE_UG2E_COMP_IND,
+MSG_ID_EMM_RATCHG_SEC_RAT_HO_U2E_COMP_IND,
+MSG_ID_EMM_RATCHG_SEC_RAT_HO_U2E_FAIL_IND,
+MSG_ID_EMM_RATCHG_SEC_WRAP_AROUND_IND,
+MSG_ID_EMM_RATCHG_SEC_IRAT_E2C_COMP_IND, // for C2K
+MSG_ID_EMM_CONN_SEC_REL_IND,
+MSG_ID_EMM_CONN_SEC_EST_IND,
+MSG_ID_EMM_EVALIF_SEC_AUTHENTICATE_RSP,
+MSG_ID_EMM_NASMSG_SEC_RCV_AUTH_REQ_IND,
+MSG_ID_EMM_NASMSG_SEC_RCV_AUTH_REJ_IND,
+MSG_ID_EMM_NASMSG_SEC_RCV_SECURITY_CMD_IND,
+MSG_ID_EMM_NASMSG_SEC_WRAP_AROUND_IND,
+//MSG_ID_EMM_NASMSG_SEC_EXCHG_REEST_REQ,
+MSG_ID_EMM_NASMSG_SEC_SND_NASMSG_CNF,
+MSG_ID_EMM_ERRCIF_SEC_SND_NASMSG_CNF,
+MSG_ID_EMM_ERRCIF_SEC_RCV_EPSBEARER_IND,
+MSG_ID_EMM_ESMIF_SEC_ENTER_EMC_ATTACH_RSP, // for IMS
+MSG_ID_EMM_TIMERMNG_SEC_T3416_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_SEC_T3418_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_SEC_T3420_TIMEOUT_IND,
+MSG_ID_EMM_TIMERMNG_SEC_T_RESEND_AUTH_TIMEOUT_IND, // R-SIM
+MSG_ID_EMM_SV_SEC_SIM_READY_IND,
+MSG_ID_EMM_SV_SEC_SIM_DETACH_IND,
+MSG_ID_EMM_SV_SEC_DELETE_KSI_REQ,
+MSG_ID_EMM_ANY_SEC_UT_CONFIG_REQ,
+
+/****************************************************************************
+ *                          Destination: EMM_SV
+ ****************************************************************************/
+MSG_ID_EMM_EVALIF_SV_INIT_REQ,
+MSG_ID_EMM_EVALIF_SV_SET_MS_SV_REQ,
+MSG_ID_EMM_EVALIF_SV_SIM_READY_REQ,
+MSG_ID_EMM_EVALIF_SV_SIM_ERROR_REQ,
+MSG_ID_EMM_EVALIF_SV_DETACH_REQ,
+MSG_ID_EMM_EVALIF_SV_SIM_FILE_UPDATE_REQ,
+MSG_ID_EMM_EVALIF_SV_SIM_VALID_REQ, // for __REL10__: t3245
+MSG_ID_EMM_EVALIF_SV_FACTORY_RESET_REQ,
+MSG_ID_EMM_EVALIF_SV_IMS_REG_STATUS_UPDATE_REQ,
+MSG_ID_EMM_EVALIF_SV_ME_RECONFIGURE_REQ,
+MSG_ID_EMM_EVALIF_SV_SMS_STATUS_REQ,
+MSG_ID_EMM_ERRCIF_SV_ACTIVATION_CNF,
+MSG_ID_EMM_REG_SV_SIM_INVALID_IND,
+MSG_ID_EMM_REG_SV_DETACH_CNF,
+MSG_ID_EMM_CALL_SV_SIM_INVALID_IND,
+MSG_ID_EMM_SEC_SV_SIM_INVALID_IND,
+MSG_ID_EMM_EVTCTRL_SV_ABORT_REQ,
+//MSG_ID_EMM_EVTCTRL_SV_SUSPEND_REQ, //remove SUSP_SUSP conflict resolution
+//MSG_ID_EMM_EVTCTRL_SV_RESUME_REQ,  //remove SUSP_SUSP conflict resolution
+MSG_ID_EMM_EVTCTRL_SV_CONTINUE_REQ,
+MSG_ID_EMM_EVTCTRL_SV_WDT_POLLING_REQ,
+MSG_ID_EMM_ANY_SV_UT_CONFIG_REQ,
+MSG_ID_EMM_SV_UT_STATUS_IND,
+MSG_ID_EMM_RATBAND_SV_SET_RAT_MODE_IND,
+MSG_ID_EMM_EVALIF_SV_GENERAL_MODEM_CONFIGURE_SET_REQ,
+MSG_ID_EMM_PLMNSEL_SV_PLMN_SEARCH_IND,
+MSG_ID_EMM_PLMNSEL_SV_GEMINI_SUSPEND_IND,
+
+/****************************************************************************
+ *                          Destination: EMM_TIMERMNG
+ ****************************************************************************/
+MSG_ID_EMM_RATCHG_TIMERMNG_IRAT_E2UG_INIT_IND,
+MSG_ID_EMM_RATCHG_TIMERMNG_IRAT_E2UG_COMP_IND,
+MSG_ID_EMM_RATCHG_TIMERMNG_IRAT_E2UG_FAIL_IND,
+MSG_ID_EMM_RATCHG_TIMERMNG_IRAT_E2C_INIT_IND, // for C2K
+MSG_ID_EMM_RATCHG_TIMERMNG_IRAT_E2C_COMP_IND, // for C2K
+MSG_ID_EMM_RATCHG_TIMERMNG_IRAT_E2C_FAIL_IND, // for C2K
+MSG_ID_EMM_MMIF_TIMERMNG_TIMER_STATUS_REQ,
+MSG_ID_EMM_EVALIF_TIMERMNG_CLEAR_T3346_EPLMN_REQ,
+/* For TimerMng UT */
+MSG_ID_EMM_TIMERMNG_UT_REQ,
+MSG_ID_EMM_TIMERMNG_UT_IND,
+    
+/* Special Usage: Set current test mode for EMM */
+MSG_ID_EMM_MOD_GLOBAL_VAR_REQ,
+
+/* Engineer Mode Config Message */
+MSG_ID_EMM_EM_CONFIG_REQ,
+
+MSG_ID_EMM_CODE_END,
+
+MODULE_MSG_END( MSG_ID_EMM_CODE_TAIL )
+
+#endif /* _EMM_SAP_H */
+

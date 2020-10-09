@@ -1,0 +1,5 @@
+            * (DYNAMIC_SECTION_ISPRAM0_UBIN_W_ROCODE)
+            KEEP(* (NOP_DYNAMIC_SECTION_ISPRAM0_UBIN_W_ROCODE_SECTION))
+            LONG(0);
+	    . = ALIGN(8);
+

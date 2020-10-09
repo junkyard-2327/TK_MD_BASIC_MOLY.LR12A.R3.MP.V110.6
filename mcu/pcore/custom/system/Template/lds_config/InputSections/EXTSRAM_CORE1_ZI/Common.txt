@@ -1,0 +1,5 @@
+        EXTSRAM_CORE1$$ZI$$Base = .;
+        * (NONCACHEDZI_CORE1)           /* base and end align to cache line size */
+        . = ALIGN(CACHELINESIZE);
+        EXTSRAM_CORE1$$ZI$$Limit = .;
+        EXTSRAM_CORE1$$ZI$$Length = ABSOLUTE(EXTSRAM_CORE1$$ZI$$Limit - EXTSRAM_CORE1$$ZI$$Base);

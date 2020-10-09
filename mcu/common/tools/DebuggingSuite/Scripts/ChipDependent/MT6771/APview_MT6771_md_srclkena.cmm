@@ -1,0 +1,33 @@
+; /* Step 6 config md_srclkena setting */
+&MEM_CLASS="AXI"
+
+; /* (1) INFRA_MISC2 */
+&BASE_INFRACFG=(0x10000000)
+; /* (2) SRCLKEN_O1 force on */
+&SPM_REG=(0x10006000)
+
+
+
+; /* (1) INFRA_MISC2 */
+&INFRA_MISC2=(&BASE_INFRACFG+0x1F0C)
+; /* (2) SRCLKEN_O1 force on */
+&POWERON_CONFIG_EN=(&SPM_REG+0x0)
+&SPM_POWER_ON_VAL1=(&SPM_REG+0x8)
+
+
+
+; /* (1) INFRA_MISC2 */
+; /* [3:0] : mdsrc_req_0_en = 4'b0001 */
+d.s (&MEM_CLASS:&INFRA_MISC2) %long %le data.long(&MEM_CLASS:&INFRA_MISC2)&(0xFFFFFFF0)
+d.s (&MEM_CLASS:&INFRA_MISC2) %long %le data.long(&MEM_CLASS:&INFRA_MISC2)|(0x1)
+
+; /* [7:4] : mdsrc_req_1_en = 4'b0010 */
+d.s (&MEM_CLASS:&INFRA_MISC2) %long %le data.long(&MEM_CLASS:&INFRA_MISC2)&(0xFFFFFF0F)
+d.s (&MEM_CLASS:&INFRA_MISC2) %long %le data.long(&MEM_CLASS:&INFRA_MISC2)|(0x20)
+
+; /* (2) SRCLKEN_O1 force on */
+//MMRF request
+D.S (&MEM_CLASS:&POWERON_CONFIG_EN) %LE %LONG  0x0B160001  //set SPM register for clkenal force on
+D.S (&MEM_CLASS:&SPM_POWER_ON_VAL1) %LE %LONG  0x00215830  //set src clkena1 force on
+
+wait 1.ms

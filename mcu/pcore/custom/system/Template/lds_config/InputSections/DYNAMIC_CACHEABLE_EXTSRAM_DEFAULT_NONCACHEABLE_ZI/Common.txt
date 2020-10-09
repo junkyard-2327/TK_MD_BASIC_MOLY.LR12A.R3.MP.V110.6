@@ -1,0 +1,15 @@
+        . = ALIGN(CACHELINESIZE);
+        MCURW_HWRO_DNC_NOINIT$$Base = . ;
+        * (MCURW_HWRO_DNC_NOINIT)
+        . = ALIGN(CACHELINESIZE);
+        MCURW_HWRO_DNC_NOINIT$$Limit = . ;
+        MCURW_HWRO_DNC_NOINIT$$Length = ABSOLUTE(MCURW_HWRO_DNC_NOINIT$$Limit - MCURW_HWRO_DNC_NOINIT$$Base);
+        * (DYNAMICCACHEABLEZI_NC*)
+
+        
+        /********************** A. need to be confirmed in 93 **********************/
+        /********************** B. need to be moved to right section in 93 **********************/
+        /********************** C. will be removed in 93 **********************/
+        . = ALIGN(CACHELINESIZE);
+        * (DYNAMICCACHEABLEZI_NC_CORE2)            /* base and end align to cache line size */
+        . = ALIGN(CACHELINESIZE);

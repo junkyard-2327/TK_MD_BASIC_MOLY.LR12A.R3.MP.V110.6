@@ -1,0 +1,30 @@
+{ Validation }
+Title 		= "[R9_LTE][01_NOCH]NOCH_CSR_11: Test of RSSI Sniffer Modification Function"
+ModuleID 	= MOD_ERRC
+MsgID 		= MSG_ID_L1EDPS_NOCH_CSR_11
+
+/******************************************************************************
+* Data Structure accomnying the above primitive
+typedef struct
+{
+   kal_uint8           ref_count;
+   kal_uint16         msg_len;
+   kal_uint8          intv;       //640ms x intv (1-50)  
+    
+ 
+} l1edps_noch_csr_11_struct;
+*
+*******************************************************************************/
+
+
+{Parameters}
+/******************************************************************************
+* 1. The following is the constrained range for the input of this value.
+* 2. Some combination of the following bit-fields may be suported
+* 3. The parameter range can be changed to support combinations of different bands
+*******************************************************************************/
+
+/* [Variable Name] "corresponding label showen on GUI" */
+[intv] "intv"
+1~50
+@1

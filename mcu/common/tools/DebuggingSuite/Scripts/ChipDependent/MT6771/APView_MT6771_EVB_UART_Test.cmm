@@ -1,0 +1,35 @@
+;Cannon MD_UART0 port test
+;You should make sure GPIO84 has connected to UART port RXD pin,GPIO85 has connected to UART port TXD pin
+
+;port: MDUART0
+;Baudrate: 115200
+;&BASE_ADDR_MDUART0=0xB0010000
+sys.m prepare
+&BASE_ADDR_MDUART0=0x20010000
+&BASE_ADDR_MDGPIO=0x10005000
+&BASE_ADDR_IOCFG=0x11E80000
+
+D.S AXI:&BASE_ADDR_MDGPIO+0x310 %LE %LONG  0xCCC00000  //set GPIO13 to MD_URXD0 mode,set GPIO14 to MD_UTXD0 mode,
+D.S AXI:&BASE_ADDR_IOCFG+0x60 %LE %LONG  data.long(AXI:&BASE_ADDR_IOCFG+0x60)&(0xFFFFFF7F)  //MD_UTXD0 pull disable
+D.S AXI:&BASE_ADDR_IOCFG+0x60 %LE %LONG  data.long(AXI:&BASE_ADDR_IOCFG+0x60)|(0x00000040)  //MD_URXD0 pull enable
+D.S AXI:&BASE_ADDR_IOCFG+0x80 %LE %LONG  data.long(AXI:&BASE_ADDR_IOCFG+0x80)|(0x00000040)  //MD_URXD0 pull up
+
+D.S AXI:&BASE_ADDR_MDUART0+0x24 %LE %LONG  0x03   //High Speed X
+D.S AXI:&BASE_ADDR_MDUART0+0x28 %LE %LONG  0xE1   //Sample count
+D.S AXI:&BASE_ADDR_MDUART0+0x2C %LE %LONG  0x71   //sample point
+D.S AXI:&BASE_ADDR_MDUART0+0x0C %LE %LONG  0x83   //Enable Divisor latch acess bit, and set 8bit length.
+D.S AXI:&BASE_ADDR_MDUART0+0x00 %LE %LONG  0x01   //sample point
+D.S AXI:&BASE_ADDR_MDUART0+0x04 %LE %LONG  0x00   //sample point
+D.S AXI:&BASE_ADDR_MDUART0+0x0C %LE %LONG  0x03   //Clear Divisor latch acess bit, and set 8bit length.
+
+&uart_lsr=0x0
+&uart_rxd=0x0
+PRINT "Please put char "U" from PC to EVB UART! Note: ASCII "U" remap to HEX is 0x55 "
+WHILE (&uart_lsr&0x01)!=0x01
+(
+	&uart_lsr=data.long(AXI:&BASE_ADDR_MDUART0+0x14)
+)
+&uart_rxd=data.long(AXI:&BASE_ADDR_MDUART0+0x0)
+PRINT "EVB UART Get data: &uart_rxd" 
+D.S AXI:&BASE_ADDR_MDUART0+0x00 %LE %LONG  &uart_rxd   //Write data to UART, please check console.
+PRINT "EVB UART will send data to PC,please check!"

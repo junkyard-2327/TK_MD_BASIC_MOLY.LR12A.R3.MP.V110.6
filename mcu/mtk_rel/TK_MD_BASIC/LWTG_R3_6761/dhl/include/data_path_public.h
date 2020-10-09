@@ -1,0 +1,1682 @@
+#ifndef L1TRC_NAS_DATA_PATH_PUBLIC_DEF_H
+#define L1TRC_NAS_DATA_PATH_PUBLIC_DEF_H
+
+/******************************/
+/* String category definition */
+/******************************/
+
+
+/****************************/
+/* Message macro definition */
+/****************************/
+#include "L1Trc.h"
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define RATDM_RB_EBI_MAPPING(v1, v2) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x04);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x001F,0x001F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x04);\
+		}\
+	} while(0)
+#else
+	#define RATDM_RB_EBI_MAPPING(v1, v2)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PROC_BEARER(v1, v2, v3, v4) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v4,v4);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v4,v4);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x011F,0x011F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v4,v4);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PROC_BEARER(v1, v2, v3, v4)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_UNBIND(v1) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x021F,0x021F);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_UNBIND(v1)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_UNBIND_RCV(v1, v2, v3, v4) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v4,v4);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v4,v4);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x031F,0x031F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v4,v4);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_UNBIND_RCV(v1, v2, v3, v4)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_UNBIND_RSP(v1, v2) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x041F,0x041F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_UNBIND_RSP(v1, v2)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_BIND(v1, v2, v3, v4, v5) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v4,v4);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v4,v4);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x051F,0x051F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v4,v4);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_BIND(v1, v2, v3, v4, v5)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_BIND_RSP(v1, v2, v3, v4, v5) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v4,v4);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v4,v4);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x061F,0x061F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v4,v4);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_BIND_RSP(v1, v2, v3, v4, v5)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_MBMSAL_BIND(v1, v2, v3, v4) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v4,v4);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v4,v4);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x071F,0x071F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v4,v4);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_MBMSAL_BIND(v1, v2, v3, v4)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_MBMSAL_UNBIND_RCV(v1, v2, v3, v4) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v4,v4);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v4,v4);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x081F,0x081F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v4,v4);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_MBMSAL_UNBIND_RCV(v1, v2, v3, v4)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_MBMSAL_UNBIND_RSP(v1, v2) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x091F,0x091F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_MBMSAL_UNBIND_RSP(v1, v2)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_EBI_MAP_SITIDX(v1, v2) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x0A1F,0x0A1F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_EBI_MAP_SITIDX(v1, v2)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_UL_TFT_NO_MATCH(v1) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x02);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x0B1F,0x0B1F);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x02);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_UL_TFT_NO_MATCH(v1)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_DISPATCH_UL(v1) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x02);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x0C1F,0x0C1F);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x02);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_DISPATCH_UL(v1)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_FREE_SIT_VRB_PRI(v1, v2, v3, v4) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v4,v4);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v4,v4);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x0D1F,0x0D1F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v4,v4);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_FREE_SIT_VRB_PRI(v1, v2, v3, v4)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_FREE_SIT_VRB_NML(v1, v2, v3, v4) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v4,v4);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v4,v4);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x0E1F,0x0E1F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v4,v4);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_FREE_SIT_VRB_NML(v1, v2, v3, v4)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_FREE_SIT_ENTRY_PRI(v1, v2, v3, v4) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v4,v4);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v4,v4);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x0F1F,0x0F1F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v4,v4);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_FREE_SIT_ENTRY_PRI(v1, v2, v3, v4)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_FREE_SIT_ENTRY_NML(v1, v2, v3, v4) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v4,v4);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v4,v4);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x101F,0x101F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v4,v4);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_FREE_SIT_ENTRY_NML(v1, v2, v3, v4)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PKT_GPD_TO_SIT(v1, v2, v3, v4, v5, v6) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v4,v4);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v6,v6);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v4,v4);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v6,v6);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x111F,0x111F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v4,v4);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_32_LAST_WRAPPER_L2(cgen_local_v6,v6);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PKT_GPD_TO_SIT(v1, v2, v3, v4, v5, v6)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_VIP(v1, v3) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x02);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x121F,0x121F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_LAST_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x02);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_VIP(v1, v3)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PSN_SIT_MAP_INFO(v1, v3, v4, v5, v6) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v4,v4);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v6,v6);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v4,v4);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v6,v6);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x131F,0x131F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v4,v4);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v6,v6);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PSN_SIT_MAP_INFO(v1, v3, v4, v5, v6)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_1(v1, v3) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x141F,0x141F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_LAST_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_1(v1, v3)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_2(v1, v3, v5) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x151F,0x151F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_LAST_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_2(v1, v3, v5)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_3(v1, v3, v5, v7) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v7,v7);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v7,v7);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x161F,0x161F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v7,v7);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_3(v1, v3, v5, v7)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_4(v1, v3, v5, v7) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v7,v7);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v7,v7);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x171F,0x171F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_32_LAST_WRAPPER_L2(cgen_local_v7,v7);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_4(v1, v3, v5, v7)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_5(v1, v3, v5, v7, v9) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v9,v9);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v9,v9);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x181F,0x181F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v7,v7);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v9,v9);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_5(v1, v3, v5, v7, v9)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_6(v1, v3, v5, v7, v9) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v9,v9);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v9,v9);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x191F,0x191F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v7,v7);\
+			TRC_OUTPUT_32_LAST_WRAPPER_L2(cgen_local_v9,v9);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_6(v1, v3, v5, v7, v9)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_7(v1, v3, v5, v7, v9, v11) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v11,v11);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v11,v11);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x1A1F,0x1A1F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v7,v7);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v9,v9);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v11,v11);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_7(v1, v3, v5, v7, v9, v11)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_8(v1, v3, v5, v7, v9, v11) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v11,v11);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v11,v11);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x1B1F,0x1B1F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v7,v7);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v9,v9);\
+			TRC_OUTPUT_32_LAST_WRAPPER_L2(cgen_local_v11,v11);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_8(v1, v3, v5, v7, v9, v11)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_9(v1, v3, v5, v7, v9, v11, v13) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v13,v13);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v13,v13);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x1C1F,0x1C1F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v7,v7);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v9,v9);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v11,v11);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v13,v13);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_9(v1, v3, v5, v7, v9, v11, v13)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_10(v1, v3, v5, v7, v9, v11, v13) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v13,v13);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v13,v13);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x1D1F,0x1D1F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v7,v7);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v9,v9);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v11,v11);\
+			TRC_OUTPUT_32_LAST_WRAPPER_L2(cgen_local_v13,v13);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_10(v1, v3, v5, v7, v9, v11, v13)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_11(v1, v3, v5, v7, v9, v11, v13, v15) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v13,v13);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v15,v15);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v13,v13);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v15,v15);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x1E1F,0x1E1F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v7,v7);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v9,v9);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v11,v11);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v13,v13);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v15,v15);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_11(v1, v3, v5, v7, v9, v11, v13, v15)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_12(v1, v3, v5, v7, v9, v11, v13, v15) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v13,v13);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v15,v15);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v13,v13);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v15,v15);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x1F1F,0x1F1F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v7,v7);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v9,v9);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v11,v11);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v13,v13);\
+			TRC_OUTPUT_32_LAST_WRAPPER_L2(cgen_local_v15,v15);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_12(v1, v3, v5, v7, v9, v11, v13, v15)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_13(v1, v3, v5, v7, v9, v11, v13, v15, v17) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v13,v13);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v15,v15);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v17,v17);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v13,v13);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v15,v15);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v17,v17);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x201F,0x201F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v7,v7);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v9,v9);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v11,v11);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v13,v13);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v15,v15);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v17,v17);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_13(v1, v3, v5, v7, v9, v11, v13, v15, v17)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_14(v1, v3, v5, v7, v9, v11, v13, v15, v17) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v13,v13);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v15,v15);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v17,v17);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v13,v13);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v15,v15);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v17,v17);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x211F,0x211F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v7,v7);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v9,v9);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v11,v11);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v13,v13);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v15,v15);\
+			TRC_OUTPUT_32_LAST_WRAPPER_L2(cgen_local_v17,v17);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_14(v1, v3, v5, v7, v9, v11, v13, v15, v17)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_15(v1, v3, v5, v7, v9, v11, v13, v15, v17, v19) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v13,v13);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v15,v15);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v17,v17);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v19,v19);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v13,v13);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v15,v15);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v17,v17);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v19,v19);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x221F,0x221F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v7,v7);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v9,v9);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v11,v11);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v13,v13);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v15,v15);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v17,v17);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v19,v19);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_15(v1, v3, v5, v7, v9, v11, v13, v15, v17, v19)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_16(v1, v3, v5, v7, v9, v11, v13, v15, v17, v19) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v13,v13);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v15,v15);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v17,v17);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v19,v19);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v13,v13);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v15,v15);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v17,v17);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v19,v19);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x231F,0x231F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v7,v7);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v9,v9);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v11,v11);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v13,v13);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v15,v15);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v17,v17);\
+			TRC_OUTPUT_32_LAST_WRAPPER_L2(cgen_local_v19,v19);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PSN_SIT_MAP_INFO_16(v1, v3, v5, v7, v9, v11, v13, v15, v17, v19)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_1(v1, v3, v4) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v4,v4);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v4,v4);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x241F,0x241F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v4,v4);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_1(v1, v3, v4)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_2(v1, v3, v5) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x251F,0x251F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_LAST_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_2(v1, v3, v5)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_3(v1, v3, v5, v7) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v7,v7);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v7,v7);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x261F,0x261F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v7,v7);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_3(v1, v3, v5, v7)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_4(v1, v3, v5, v7) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v7,v7);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v7,v7);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x271F,0x271F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_32_LAST_WRAPPER_L2(cgen_local_v7,v7);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_4(v1, v3, v5, v7)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_5(v1, v3, v5, v7, v9) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v9,v9);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v9,v9);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x281F,0x281F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v7,v7);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v9,v9);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_5(v1, v3, v5, v7, v9)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_6(v1, v3, v5, v7, v9) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v9,v9);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v9,v9);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x291F,0x291F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v7,v7);\
+			TRC_OUTPUT_32_LAST_WRAPPER_L2(cgen_local_v9,v9);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_6(v1, v3, v5, v7, v9)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_7(v1, v3, v5, v7, v9, v11) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v11,v11);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v11,v11);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x2A1F,0x2A1F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v7,v7);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v9,v9);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v11,v11);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_7(v1, v3, v5, v7, v9, v11)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_8(v1, v3, v5, v7, v9, v11) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v11,v11);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v11,v11);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x2B1F,0x2B1F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v7,v7);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v9,v9);\
+			TRC_OUTPUT_32_LAST_WRAPPER_L2(cgen_local_v11,v11);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_8(v1, v3, v5, v7, v9, v11)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_9(v1, v3, v5, v7, v9, v11, v13) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v13,v13);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v13,v13);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x2C1F,0x2C1F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v7,v7);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v9,v9);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v11,v11);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v13,v13);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_9(v1, v3, v5, v7, v9, v11, v13)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_10(v1, v3, v5, v7, v9, v11, v13) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v13,v13);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v13,v13);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x2D1F,0x2D1F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v7,v7);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v9,v9);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v11,v11);\
+			TRC_OUTPUT_32_LAST_WRAPPER_L2(cgen_local_v13,v13);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_10(v1, v3, v5, v7, v9, v11, v13)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_11(v1, v3, v5, v7, v9, v11, v13, v15) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v13,v13);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v15,v15);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v13,v13);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v15,v15);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x2E1F,0x2E1F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v7,v7);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v9,v9);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v11,v11);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v13,v13);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v15,v15);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_11(v1, v3, v5, v7, v9, v11, v13, v15)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_12(v1, v3, v5, v7, v9, v11, v13, v15) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v13,v13);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v15,v15);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v13,v13);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v15,v15);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x2F1F,0x2F1F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v7,v7);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v9,v9);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v11,v11);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v13,v13);\
+			TRC_OUTPUT_32_LAST_WRAPPER_L2(cgen_local_v15,v15);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_12(v1, v3, v5, v7, v9, v11, v13, v15)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_13(v1, v3, v5, v7, v9, v11, v13, v15, v17) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v13,v13);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v15,v15);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v17,v17);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v13,v13);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v15,v15);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v17,v17);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x301F,0x301F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v7,v7);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v9,v9);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v11,v11);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v13,v13);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v15,v15);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v17,v17);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_13(v1, v3, v5, v7, v9, v11, v13, v15, v17)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_14(v1, v3, v5, v7, v9, v11, v13, v15, v17) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v13,v13);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v15,v15);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v17,v17);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v13,v13);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v15,v15);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v17,v17);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x311F,0x311F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v7,v7);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v9,v9);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v11,v11);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v13,v13);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v15,v15);\
+			TRC_OUTPUT_32_LAST_WRAPPER_L2(cgen_local_v17,v17);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_14(v1, v3, v5, v7, v9, v11, v13, v15, v17)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_15(v1, v3, v5, v7, v9, v11, v13, v15, v17, v19) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v13,v13);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v15,v15);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v17,v17);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v19,v19);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v13,v13);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v15,v15);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v17,v17);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v19,v19);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x321F,0x321F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v7,v7);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v9,v9);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v11,v11);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v13,v13);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v15,v15);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v17,v17);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v19,v19);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_15(v1, v3, v5, v7, v9, v11, v13, v15, v17, v19)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_16(v1, v3, v5, v7, v9, v11, v13, v15, v17, v19) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v13,v13);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v15,v15);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v17,v17);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v19,v19);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v7,v7);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v9,v9);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v11,v11);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v13,v13);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v15,v15);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v17,v17);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v19,v19);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x331F,0x331F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v7,v7);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v9,v9);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v11,v11);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v13,v13);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v15,v15);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v17,v17);\
+			TRC_OUTPUT_32_LAST_WRAPPER_L2(cgen_local_v19,v19);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_PKT_PSN_TO_CNTL_16(v1, v3, v5, v7, v9, v11, v13, v15, v17, v19)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_DISPATCH_UL_SMALL_UDP(v1, v2) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x02);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x341F,0x341F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x02);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_DISPATCH_UL_SMALL_UDP(v1, v2)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define UPCM_LOG_CH_LOCK_NTF(v1, v2, v3) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x02);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x351F,0x351F);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x02);\
+		}\
+	} while(0)
+#else
+	#define UPCM_LOG_CH_LOCK_NTF(v1, v2, v3)
+#endif
+
+
+
+/*******************************/
+/* declaration of filter array */
+/*******************************/
+EXTERN_TMD_FILTER(unsigned char, NAS_DATA_PATH_PUBLIC_Trace_Filter, 5);
+/*************************/
+/* Function declarations */
+/*************************/
+#ifdef L1_CATCHER
+
+void Set_NAS_DATA_PATH_PUBLIC_Filter(unsigned char *setting);
+
+#endif
+
+/************************************/
+/* Filter checking API declarations */
+/************************************/
+
+#define ChkL1ModFltr_NAS_DATA_PATH_PUBLIC()	(FILTER_CHECK(NAS_DATA_PATH_PUBLIC_Trace_Filter, 0, 1))
+#define ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()	(ChkL1ModFltr_NAS_DATA_PATH_PUBLIC()&&(FILTER_CHECK(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x01)))
+#define ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_DUMP()	(ChkL1ModFltr_NAS_DATA_PATH_PUBLIC()&&(FILTER_CHECK(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x02)))
+#define ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_RATDM_INFO()	(ChkL1ModFltr_NAS_DATA_PATH_PUBLIC()&&(FILTER_CHECK(NAS_DATA_PATH_PUBLIC_Trace_Filter, 1, 0x04)))
+#define ChkL1MsgFltr_RATDM_RB_EBI_MAPPING()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_RATDM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PROC_BEARER()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_UNBIND()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_UNBIND_RCV()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_UNBIND_RSP()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_BIND()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_BIND_RSP()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_MBMSAL_BIND()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_MBMSAL_UNBIND_RCV()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_MBMSAL_UNBIND_RSP()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_EBI_MAP_SITIDX()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_UL_TFT_NO_MATCH()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_DUMP()
+#define ChkL1MsgFltr_UPCM_LOG_DISPATCH_UL()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_DUMP()
+#define ChkL1MsgFltr_UPCM_LOG_FREE_SIT_VRB_PRI()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_FREE_SIT_VRB_NML()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_FREE_SIT_ENTRY_PRI()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_FREE_SIT_ENTRY_NML()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PKT_GPD_TO_SIT()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PSN_SIT_MAP_INFO_VIP()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_DUMP()
+#define ChkL1MsgFltr_UPCM_LOG_PSN_SIT_MAP_INFO()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PSN_SIT_MAP_INFO_1()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PSN_SIT_MAP_INFO_2()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PSN_SIT_MAP_INFO_3()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PSN_SIT_MAP_INFO_4()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PSN_SIT_MAP_INFO_5()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PSN_SIT_MAP_INFO_6()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PSN_SIT_MAP_INFO_7()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PSN_SIT_MAP_INFO_8()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PSN_SIT_MAP_INFO_9()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PSN_SIT_MAP_INFO_10()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PSN_SIT_MAP_INFO_11()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PSN_SIT_MAP_INFO_12()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PSN_SIT_MAP_INFO_13()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PSN_SIT_MAP_INFO_14()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PSN_SIT_MAP_INFO_15()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PSN_SIT_MAP_INFO_16()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PKT_PSN_TO_CNTL_1()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PKT_PSN_TO_CNTL_2()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PKT_PSN_TO_CNTL_3()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PKT_PSN_TO_CNTL_4()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PKT_PSN_TO_CNTL_5()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PKT_PSN_TO_CNTL_6()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PKT_PSN_TO_CNTL_7()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PKT_PSN_TO_CNTL_8()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PKT_PSN_TO_CNTL_9()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PKT_PSN_TO_CNTL_10()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PKT_PSN_TO_CNTL_11()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PKT_PSN_TO_CNTL_12()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PKT_PSN_TO_CNTL_13()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PKT_PSN_TO_CNTL_14()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PKT_PSN_TO_CNTL_15()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_PKT_PSN_TO_CNTL_16()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_INFO()
+#define ChkL1MsgFltr_UPCM_LOG_DISPATCH_UL_SMALL_UDP()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_DUMP()
+#define ChkL1MsgFltr_UPCM_LOG_CH_LOCK_NTF()	ChkL1ClsFltr_NAS_DATA_PATH_PUBLIC_UPCM_DUMP()
+
+
+#endif

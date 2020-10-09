@@ -1,0 +1,4 @@
+VARS kal_uint32 ""
+{
+    {el1dCosimPatternBufPoolAddr}  MODEM_PATTERN_GV;
+};

@@ -1,0 +1,31 @@
+&MEM_CLASS="AXI"
+; do AP to MD path disable
+LOCAL &BASE_ADDR_AP2MD_Dummy 
+LOCAL &BASE_ADDR_INFRA_SET_CLEAR_PROT_EN 
+LOCAL &temp
+
+&BASE_ADDR_AP2MD_Dummy=0x10001370
+&BASE_ADDR_INFRA_SET_CLEAR_PROT_EN=0x100012A0
+
+; Set peri2md_protect_en
+; Write 0x1000_12A0[7] = 1'b1.
+; MD can access AP if reg_ap2md_dummy[0] = 1'b1, 
+&temp=data.long(&MEM_CLASS:(&BASE_ADDR_INFRA_SET_CLEAR_PROT_EN+0x0))|0x80
+;PRINT "temp=" "&temp"
+;PRINT "&BASE_ADDR_INFRA_SET_CLEAR_PROT_EN+0x0"
+D.S &MEM_CLASS:(&BASE_ADDR_INFRA_SET_CLEAR_PROT_EN+0x0) %LE %LONG &temp
+
+; Clear md2peri_protect_en
+; Write 0x1000_12AC[6] = 1'b1.
+&temp=data.long(&MEM_CLASS:(&BASE_ADDR_INFRA_SET_CLEAR_PROT_EN+0xC))|0x40
+;PRINT "temp=" "&temp"
+;PRINT "(&BASE_ADDR_INFRA_SET_CLEAR_PROT_EN+0xC)"
+D.S &MEM_CLASS:(&BASE_ADDR_INFRA_SET_CLEAR_PROT_EN+0xC) %LE %LONG &temp
+wait 1.ms
+
+; Set reg_ap2md_dummy[0] = 1'b1
+&temp=data.long(&MEM_CLASS:(&BASE_ADDR_AP2MD_Dummy+0x0))|0x1
+;PRINT "temp=" "&temp"
+;PRINT "BASE_ADDR_AP2MD_Dummy=" "&BASE_ADDR_AP2MD_Dummy"
+D.S &MEM_CLASS:(&BASE_ADDR_AP2MD_Dummy+0x0) %LE %LONG &temp  
+wait 1.ms

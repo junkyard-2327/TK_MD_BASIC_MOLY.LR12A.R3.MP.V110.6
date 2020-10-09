@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<DB version="1.0">
+	<NVRAM_LIDs>
+		<NVRAM_LID name="NVRAM_EF_SML_LID" type_name="nvram_sml_context_struct" is_struct="true" />
+		<NVRAM_LID name="NVRAM_EF_SIM_LOCK_LID" type_name="nvram_sml_tmo_context_struct" is_struct="true" />
+		<NVRAM_LID name="NVRAM_EF_SML_NONCE_LID" type_name="nvram_ef_sml_nonce_struct" is_struct="true" />
+		<NVRAM_LID name="NVRAM_EF_SML_UNLOCK_CODE_LID" type_name="nvram_ef_sml_unlock_code_struct" is_struct="true" />
+		<NVRAM_LID name="NVRAM_EF_SML_SIGNATURE_LID" type_name="nvram_ef_sml_signature_struct" is_struct="true" />
+		<NVRAM_LID name="NVRAM_EF_SML_GBLOB_LID" type_name="nvram_sml_gblob_s_context_struct" is_struct="true" />
+		<NVRAM_LID name="NVRAM_EF_SML_GBLOB_KEY_LID" type_name="nvram_sml_gblob_key_s_context_struct" is_struct="true" />
+		<NVRAM_LID name="NVRAM_EF_SML_S_LID" type_name="nvram_sml_context_s_struct" is_struct="true" />
+		<NVRAM_LID name="NVRAM_EF_SML_VZW_SIM_LOCK_LID" type_name="nvram_sml_vzw_sim_lock_context_struct" is_struct="true" />
+    	<NVRAM_LID name="NVRAM_EF_SML_VZW_SIM_LOCK_DEVICE_KEY_LID" type_name="nvram_sml_vzw_sim_lock_device_key_struct" is_struct="true" />
+    	<NVRAM_LID name="NVRAM_EF_SML_VZW_RSU_DELAY_TIMER_LID" type_name="sml_vzw_rsu_delay_timer_struct" is_struct="true" />
+    	<NVRAM_LID name="NVRAM_EF_L4_SML_VZW_SIM_LOCK_CODE_LID" type_name="nvram_sml_vzw_sim_lock_code_context_struct" is_struct="true" />
+    	<NVRAM_LID name="NVRAM_EF_L4_TFN_SIMLOCK_LID" type_name="sml_context_tfn_struct" is_struct="true" />
+    	<NVRAM_LID name="NVRAM_EF_ATT_SIM_LOCK_LID" type_name="nvram_sml_att_context_struct" is_struct="true" />
+	</NVRAM_LIDs>
+</DB>

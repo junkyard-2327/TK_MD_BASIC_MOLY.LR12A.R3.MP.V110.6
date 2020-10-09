@@ -1,0 +1,34 @@
+;sys.m prepare
+;LOCAL &TYPE
+
+
+system.mode attach
+
+; configure GCR_ACCESS Register
+; CoreTracer will access MO port via CPU to do following configuration
+D.S 0x1F000020 %LE %LONG 0x0000000F
+D.S 0x1F000090 %LE %LONG 0xA0000000
+D.S 0x1F000098 %LE %LONG 0xE0000002
+D.S 0x1F0000A0 %LE %LONG 0xC0000000
+D.S 0x1F0000A8 %LE %LONG 0xC0000002
+
+
+
+; do orginal APview_MT6771_disable_WDT.cmm
+LOCAL &BASE_MADDR_MDRGU
+&BASE_MADDR_MDRGU=0xA00F0000
+
+
+PRINT "=============================="
+PRINT "Disable MD WDT!"
+PRINT "=============================="
+
+;D.S &MEM_CLASS:&BASE_MADDR_MDRGU+0x100 %LE %LONG (0x55000030)
+D.S &BASE_MADDR_MDRGU+0x0100 %LE %LONG 0x55000030
+
+PRINT "=============================="
+PRINT "Done disable MD WDT!"
+PRINT "=============================="
+
+ENDDO
+

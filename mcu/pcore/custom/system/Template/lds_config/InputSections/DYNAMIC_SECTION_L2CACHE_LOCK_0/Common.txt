@@ -1,0 +1,3 @@
+        . = ALIGN(64);
+        LONG(0);      /* avoid empty section */
+        . = ALIGN(64);

@@ -1,0 +1,28 @@
+{ Validation }
+Title 		= "[R12_LTE][2DL2UL]2DL2UL_tdd_basic_06: Add and activate 2 Scells UL-CA, blind"
+ModuleID 	= MOD_ERRC
+MsgID 		= MSG_ID_L1EDPS_2DL2UL_TDD_BASIC_06
+
+/******************************************************************************
+* Data Structure accomnying the above primitive
+typedef struct
+{
+   kal_uint8          ref_count;
+   kal_uint16         msg_len;
+   kal_uint32         test_pattern_id;
+
+} l1edps_2dl2ul_tdd_basic_06_struct;
+*
+*******************************************************************************/
+
+{Parameters}
+/******************************************************************************
+* 1. The following is the constrained range for the input of this value.
+* 2. Some combination of the following bit-fields may be suported
+* 3. The parameter range can be changed to support combinations of different bands
+*******************************************************************************/
+
+/* [Variable Name] "corresponding label showen on GUI" */
+[test_pattern_id] "test_pattern_id"
+0~9999999
+@16160

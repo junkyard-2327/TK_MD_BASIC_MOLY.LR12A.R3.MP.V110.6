@@ -1,0 +1,11 @@
+        /* owner: Tero, KH */
+        DSP_TEMP_ROM_SPACE$$Base = .;
+        * (DSP_BIN_ZI)
+        DSP_TEMP_ROM_SPACE$$Limit = .;
+        DSP_TEMP_ROM_SPACE$$Length = ABSOLUTE(DSP_TEMP_ROM_SPACE$$Limit - DSP_TEMP_ROM_SPACE$$Base); 
+#ifndef __EVS_SUPPORT__
+        . = DSP_TEMP_ROM_SPACE$$Base + 0xB00000;	/* 11 MB */
+#else
+        . = DSP_TEMP_ROM_SPACE$$Base + 0xE00000;	/* 14 MB */
+#endif
+        MD_USED_END$$Limit = .; /* This address must align 64 KB for EMI MPU and AP MMU */

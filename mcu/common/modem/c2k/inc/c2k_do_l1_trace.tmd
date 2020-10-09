@@ -1,0 +1,202 @@
+/*************************************************************
+*
+* This Software is the property of MTK, Inc. and may only be used pursuant to a license from MTK, Inc.  
+* 
+* Any unauthorized use inconsistent with the terms of such license is strictly prohibited.
+* 
+* Copyright (c) 2002-2016 MTK, Inc.  All rights reserved.
+*
+*************************************************************/
+[Default]
+  C2K_DO_L1
+  On
+  Buffer
+  TCMFORCE
+
+[MODEM_TYPE]
+  C2K_L1
+
+[Class]
+  DO_L1_UT_TRACE       ON
+  DO_L1_IT_TRACE       ON
+  DO_L1_MP_TRACE       ON
+  DO_L1_FULL_FT_TRACE  ON
+  DO_L1_KERNAL_TRACE   ON
+  DO_L1_WARN           OFF
+
+
+
+[String]
+  Rmc_Test_String
+  {
+    "rmc test"
+
+  }
+
+  Fmp_ErrorType_String
+  {
+    "update earliest strongest fngidx",
+    "slot found",
+    "system time track",
+    "finger allocation no path and finger",
+    "store searcher result but num usable path exceed max",
+    "store searcher result but num sector exceed max",
+    "store searcher result but SCHAllocListM not empty",
+    "store searcher result but SCHAllocListMacM not empty",
+    "store searcher result but no free buffer",
+    "assign finger but no free buffer",
+    "finger state mismatch",
+    "cell switch ready"
+  }
+
+  Fmp_BuffProc_String
+  {
+    "Get Buffer",
+    "Free Buffer"
+  }
+
+[Message]
+  info   CL1TRACE_RMC_Rec_Msg_Dbg                DO_L1_UT_TRACE            "rmc task receive msg: %d"
+  info   RMCTRACE_FmpProc                        DO_L1_MP_TRACE            "FMP Proc: FmpMode=%MFmpModeT, Trigger=%MFmpTriggerT, FmpServingPN=%d, FmpServingMacId=%d, FmpServingPNNew=%d, FmpServingMacIdNew=%d"
+  info   RMCTRACE_FmpSysTimeTrack                DO_L1_MP_TRACE            "FMP System Time Track: SlotCnt=%d, ChipCnt=%d, StAdjDir=%d, diffQ4=%d, EarliestFngIndex=%d"
+  info   RMCTRACE_FmpSlotFound                   DO_L1_MP_TRACE            "FMP Slot Found: SlotCnt=%d, ChipCnt=%d, FmpMode=%MFmpModeT, FnSlotOffset=%ul"
+  info   RMCTRACE_FmpInitAcqFngAssign            DO_L1_MP_TRACE            "FMP InitAcqFingerAssign: SlotCnt=%d, ChipCnt=%d, FmpMode=%MFmpModeT, FmpCurrAssignFingerNum=%d, RmcModemState=%MRmcModemStateT"  
+  info   RMCTRACE_FmpConnSetup                   DO_L1_MP_TRACE            "FMP Connection Setup: SlotCnt=%d, ChipCnt=%d, FmpMode=%MFmpModeT"
+  info   RMCTRACE_FmpConnClose                   DO_L1_MP_TRACE            "FMP Connection Close: SlotCnt=%d, ChipCnt=%d, FmpMode=%MFmpModeT"
+  info   RMCTRACE_FmpProcCcShortPktIdxMsg        DO_L1_MP_TRACE            "FMP Receive CcShortPktIdxMsg: SlotCnt=%d, ChipCnt=%d, FmpMode=%MFmpModeT, CcShortPktIdx=%d"
+  info   RMCTRACE_FmpProcInspSyncMsg             DO_L1_MP_TRACE            "FMP Receive INSPSYNCMsg: SlotCnt=%d, ChipCnt=%d, FmpMode=%MFmpModeT, SyncMsgPN=%d"
+  info   RMCTRACE_FmpProcResetFingerMsg          DO_L1_MP_TRACE            "FMP Receive FingerResetMsg: SlotCnt=%d, ChipCnt=%d, FmpMode=%MFmpModeT"
+  info   RMCTRACE_FmpProcRakeCfgDoneMsg          DO_L1_MP_TRACE            "FMP Recevie RakeCfgDoneMsg: SlotCnt=%d, ChipCnt=%d, FmpMode=%MFmpModeT, ClearFlag=%d"
+  info   RMCTRACE_FmpSecInfo                     DO_L1_MP_TRACE            "FMP Sector Info: NumSec=%d, SecId=%d, PilotPN=%ul, MacId=%ul, PcgId=%d, PwrEstQ16=%ul, DRCCover=%d, DSC=%d, RABLength=%d, RABOffset=%d, RAChannelGain=%d"
+  info   RMCTRACE_FmpStoreSearcherResult         DO_L1_MP_TRACE            "FMP Store Searcher Result: Path=%d, PilotPN=%d, MacId=%d, MicPower=%ud, OffsetTc16=%d, AssocAnt=%d, FngType=%MFmpFngType" 
+  info   RMCTRACE_FmpBuildFngAllocList           DO_L1_MP_TRACE            "FMP Build FngAllocList: FngIdx=%d, OffsetTc16=%d, MicPower=%ud, PilotPN=%d, Status=%MEvl1FngStatusT, ProtectCount=%d" 
+  info   RMCTRACE_FmpPruneSchList                DO_L1_MP_TRACE            "FMP Prune SCHList: Pruned Path =%d, OffsetTc16=%d, FngIdx=%d OffsetTc16=%d, Thr=%d"                  
+  info   RMCTRACE_FmpPruneFngList                DO_L1_MP_TRACE            "FMP Prune FngList: Pruned Reason=%MFmpPruneFngReasonT, FngIdx=%d, OffsetTc16=%d, MicPower=%ud, FngIdx=%d OffsetTc16=%d, MicPower=%ud, FngIdx=%d, OffsetTc16=%d, MicPower=%ud"                   
+  info   RMCTRACE_FmpReplaceFng                  DO_L1_MP_TRACE            "FMP Replace Fng: FngIdx=%d, PilotPN=%d, OffsetTc16=%l, MacId=%d, MicPower=%ud, AssocAnt=%d, Status=%MEvl1FngStatusT"
+  info   RMCTRACE_FmpFngAssign                   DO_L1_MP_TRACE            "FMP Assign Fng: FngIdx=%d, PilotPN=%d, OffsetTc16=%l, MacId=%d, MicPower=%ud, AssocAnt=%d, Status=%MEvl1FngStatusT"
+  info   RMCTRACE_FmpUpdEarlyStrongFngIdx        DO_L1_MP_TRACE            "FMP Upd EarlyStrongFngIdx: EarliestFngIndex=%d, OffsetTc16=%l, StrongestFngIndex=%d, OffsetTc16=%l"   
+  info   RMCTRACE_FmpBufMgr                      DO_L1_UT_TRACE            "FMP BufMgr: %s , FreeBuffer count=%d, head=%xl, tail=%xl, buf=%xl, prev=%xl, next=%xl"
+  info   RMCTRACE_FmpFngDump                     DO_L1_MP_TRACE            "FMP Finger Info: FngIdx=%d#, Assigned=%d, AllocStatus=%MFmpAllocStatT, AccuDriftTc8=%b, AssocFinger=%d, AssocAnt=%d, MacId=%d, MicPower=%ud, OffsetTc16=%d, PilotPN=%d, ProtectCount=%d, Status=%d, FiltSnrEstQ9=%l, SnrEstQ9=%l"
+  info   RMCTRACE_FmpSnr                         DO_L1_MP_TRACE            "FMP SNR: SlotCnt=%d, ChipCnt=%d, TotalSNRQ9=%ud, MainSNRQ9.0=%ud, MainSNRQ9.1=%ud, MainSNRQ9.2=%ud, DivSNRQ9.0=%ud, DivSNRQ9.1=%ud, DivSNRQ9.2=%ud, CEPreSNR1Q9=%ud, CEPreSNR2Q9=%ud, EQPostSNRQ9=%ud"
+  info   RMCTRACE_FmpFastChSingleAnt             DO_L1_MP_TRACE            "FMP FastChSingleAnt: Data1=%xl, Data2=%xl, MainfiltSnrQ9=%ud, FmpMacMainRxPwrQ7=%d, DeltaMax=%ud, CurrAssignFingerNum=%d, RmcFastChSingleAntImprv=%d, DrcUnitOp=%d"
+  info   RMCTRACE_FmpSetServingSecInfo           DO_L1_MP_TRACE            "FMP SetServingSecInfo:FmpMode=%MFmpModeT, RmcModemState=%MRmcModemStateT, FmpServingPN=%d, FmpServingMacId=%d, PnNew=%d, MacIdNew=%d, DrcCoverNew=%d, DscValueNew=%d"
+  info   RMCTRACE_FmpError                       DO_L1_MP_TRACE            "FMP Process %s Error! SlotCnt=%d, ChipCnt=%d, ErrorCode1=%d, ErrorCode2=%d"
+  info   RMCTRACE_MbpSecInfo                     DO_L1_MP_TRACE            "MBP_SectorInfo: NumSec=%d, SecId=%d, PilotPN=%d, PcgId=%d, ServCell=%d, MacId=%d, MacWalshId=%d, PwrEst=%d, DRCCover=%d, DSC=%d, RABLength=%d, RABOffset=%d, RAChannelGain=%d"
+  info   RMCTRACE_MbpMacBitInfo1                 DO_L1_MP_TRACE            "MBP_MACBit1: StCount=%l, NumSec=%d, NumPcg=%d, MacSubtype=%d, fwdChanValid=%d, revLinkSilent=%d, PARQValid=%d, PARQ=%d, HLARQ=%d, RPCValid=%d, RPCBit=%d"       
+  info   RMCTRACE_MbpMacBitInfo2                 DO_L1_MP_TRACE            "MBP_MACBit2: PilotPN.0=%d, PilotPN.1=%d, PilotPN.2=%d, PilotPN.3=%d, PilotPN.4=%d, PilotPN.5=%d, Qrabs.0=%d, Qrabs.1=%d, Qrabs.2=%d, Qrabs.3=%d, Qrabs.4=%d, Qrabs.5=%d, RABValid=%d, qrab=%d, frab=%d,"       
+  info   RMCTRACE_MbpMacBitInfo3                 DO_L1_MP_TRACE            "MBP_MACBit3: HLARQBit.0=%d, HLARQBit.1=%d, HLARQBit.2=%d, HLARQBit.3=%d, HLARQBit.4=%d, HLARQBit.5=%d, DrcLock.0=%d, DrcLock.1=%d, DrcLock.2=%d, DrcLock.3=%d, DrcLock.4=%d, DrcLock.5=%d, DRCLockValid=%d"       
+  info   EVL1SHTRACE_BsrpCtrlStart               DO_L1_MP_TRACE            "Evl1BsrpCtrl:Optype=BsrpStart, SlotCnt=%d, ChipCnt=%d, RakeCfgInterVal=%d, BsrpStartDelayCnt=%d, RxPath=%MRfcPathTypT"
+  info   EVL1SHTRACE_BsrpCtrlStop                DO_L1_MP_TRACE            "Evl1BsrpCtrl:Optype=BsrpStop, SlotCnt=%d, ChipCnt=%d, IsRttRakeEnabled=%b "
+  info   EVL1SHTRACE_BsrpCtrlRfOff               DO_L1_MP_TRACE            "Evl1BsrpCtrl:Optype=BsrpRFOff, SlotCnt=%d, ChipCnt=%d, Actiontype=%MCl1ShRakeArbRet, delayd=%b, RcType=%b "
+  info   EVL1SHTRACE_BsrpCtrlLoaderOff           DO_L1_MP_TRACE            "Evl1BsrpCtrl:Optype=LoadOff, SlotCnt=%d, ChipCnt=%d"
+  info   EVL1SHTRACE_BsrpCtrlD2bifOff            DO_L1_MP_TRACE            "Evl1BsrpCtrl:Optype=D2bifOff, SlotCnt=%d, ChipCnt=%d"
+  info   EVL1SHTRACE_BsrpCtrlRakeStart           DO_L1_MP_TRACE            "Evl1BsrpCtrl:Optype=RakeStart, StCount=%l, T3StCount=%l, T3Slot=%l, T3Dist=%l, Evl1State=%MCphEvl1StateT, MacSubType=%d, RxPath=%MRfcPathTypT, DLCarrierFreq=%l, RxcTimeStampT3=%l"
+  info   EVL1SHTRACE_BsrpCtrlRakeStateCfg        DO_L1_MP_TRACE            "Evl1BsrpCtrl:Optype=RakeStateCfg, SlotCnt=%d, ChipCnt=%d, Evl1State=%MCphEvl1StateT"
+  info   EVL1SHTRACE_BsrpCtrlRakeChCfg           DO_L1_MP_TRACE            "Evl1BsrpCtrl:Optype=RakeChCfg, SlotCnt=%d, ChipCnt=%d, Evl1State=%MCphEvl1StateT, MacCfgChange=%d, PmbFtcCfgChange=%d, ServingPN=%ud, ServingSecId=%ud, UserMacIdx=%ud, CcShortPktIdx=%ud, NumSec=%ud"
+  info   EVL1SHTRACE_BsrpCtrlRakeChSector        DO_L1_MP_TRACE            "Evl1BsrpCtrl:Optype=RakeChSec, #%d, SecId=%d, PilotPN=%ud, MacId=%ud, MacWalshId=%ud, PcgId=%ud, PwrEst=%ud, RABLength=%ud, RABOffset=%ud, RAChannelGain=%ud, ServCell=%ud"
+  info   EVL1SHTRACE_BsrpCtrlRakeFngCfg          DO_L1_MP_TRACE            "Evl1BsrpCtrl:Optype=RakeFngCfg, SlotCnt=%d, T5Slot=%d, RefGsrAddrEchip=%xl, RefTimeEchip=%ul, T5GsrAddrEchip=%xl"
+  info   EVL1SHTRACE_BsrpCtrlRakeFngAssign       DO_L1_MP_TRACE            "Evl1BsrpCtrl:Optype=RakeFngAssign, #%d, FngIdx=%d, FngAddrTc8=%xl, FngOffsetTc8=%d, FngInitPower=%ud, FngStatus=%MEvl1FngStatusT, SecId=%d"
+  info   EVL1SHTRACE_BsrpCtrlRakeFngRel          DO_L1_MP_TRACE            "Evl1BsrpCtrl_RakeFngRel: #%d, FngIdx=%d"
+  info   EVL1SHTRACE_BsrpCtrlCheckDivAva         DO_L1_MP_TRACE            "Evl1BsrpCtrl_CheckDivAva: FingerEn=%d, RxmSnr=%l, RxmSnrIsNormal=%b, rssiMain=%d, rssiDiv=%d, RmcMainDivRssiMismatch=%b, RelCnt=%d, IsDiversityRFOn=%b"
+  info   EVL1SHTRACE_BsrpCtrlCalcPdDof           DO_L1_MP_TRACE            "Evl1BsrpCtrl_CalcPdDof: IsDiversityRFOn=%b, CurrAssignFngNum=%d, PktRecMacId=%d, dof=%d"
+  info   EVL1SHTRACE_BsrpCtrlSpestCfg            DO_L1_MP_TRACE            "Evl1BsrpCtrl_SpestCfg: SlotCnt=%d, T5Slot=%d, PrevSpeed=%d, RssiEcVarStable=%b, AfcStableFlag=%b, Speed =%d"
+  info   EVL1SHTRACE_BsrpCtrlTrackCfg1           DO_L1_MP_TRACE            "Evl1BsrpCtrl_TrackPwrThrCfg: SlotCnt=%d, ChipCnt=%d, A2OPilot=%d, O2APilot=%d, A2OMac=%d, O2AMac=%d"
+  info   EVL1SHTRACE_BsrpCtrlTrackCfg2           DO_L1_MP_TRACE            "Evl1BsrpCtrl_TrackAccuDriftCfg: NumFngUpd=%d, #%d, FngIdx=%d, AccuDriftTc8=%b"
+  info   EVL1SHTRACE_BsrpCtrlRakeCfgEvt          DO_L1_MP_TRACE            "Evl1BsrpCtrl_RakeCfgEvt: CfgType=%d, Evl1State=%MCphEvl1StateT, InitFngAssignFlag=%d, PktRecMacId=%d"
+  info   EVL1SHTRACE_BsrpCtrlRakeCfgEvtFng       DO_L1_MP_TRACE            "Evl1BsrpCtrl_RakeCfgEvt: CountNew=%d, CountRel=%d, CurrAssignedFngNum=%d"
+  info   EVL1SHTRACE_BsrpCtrlRakeCfgEvtNewFng    DO_L1_MP_TRACE            "Evl1BsrpCtrl_RakeCfgEvt: New Finger #%d, FngIdx=%d, FngOffsetTc8=%d, InitPower=%ud, SecId=%d, Status=%MEvl1FngStatusT"
+  info   EVL1SHTRACE_BsrpCtrlRakeCfgEvtRelFng    DO_L1_MP_TRACE            "Evl1BsrpCtrl_RakeCfgEvt: Rel Finger #%d, FngIdx=%d"
+  info   EVL1SHTRACE_BsrpCtrlRakeCfgEvtCh        DO_L1_MP_TRACE            "Evl1BsrpCtrl_RakeCfgEvt: PmbFtcCfgChanges=%d, PmbMacCfgChange=%d, ServingPN=%d, ServingSecId=%d, UserMacIdx=%d, NumSec=%d"
+  info   EVL1SHTRACE_BsrpCtrlGsrRead             DO_L1_MP_TRACE            "CphEvl1FlSrpGsrRead: StCount=%xl, RefGsrAddrA02x=%xl, RefTimeEchipA0=%xl, RefGsrAddrA12x=%xl, RefTimeEchipA1=%xl"
+  info   EVL1SHTRACE_BsrpCtrlMcdCmtInfoUpdEvt    DO_L1_MP_TRACE            "Evl1BsrpCtrl_McdCommitInfoEvt: MacSubType=%d, ArqMode=%l, FrabTc=%l, QrabTc=%l"
+  info   EVL1SHTRACE_BsrpCtrlDrcLockUpdEvt       DO_L1_MP_TRACE            "Evl1BsrpCtrl_DrcLockInfoEvt: DrcLockLength=%d, DrcLockPeriod=%d"
+  info   EVL1SHTRACE_BsrpCtrlArqTypeUpdEvt       DO_L1_MP_TRACE            "Evl1BsrpCtrl_ArqTypeInfoEvt: ParqValid=%d, HLArqType=%d"
+  info   EVL1TRACE_TxAgcFtapLoopBackModeSet      DO_L1_MP_TRACE            "TxAgcFtapLoopBackModeSet: FtapLoopBackMode=%d"
+  info   EVL1TRACE_TxAgcRtapTestPktModeSet       DO_L1_MP_TRACE            "TxAgcRtapTestPktModeSet: RtapTestPktMode=%d"
+  info   EVL1TRACE_TxAgcCLoopStepSizeSet         DO_L1_MP_TRACE            "TxAgcCLoopStepSizeSet: RpcStep=%d"
+  info   EVL1TRACE_TxAgcCmuRetapFlagSet          DO_L1_MP_TRACE            "TxAgcCmuRetapFlagSet: CmuRetapFlag=%d"
+  info   RCPCSMTRACE_Active                      DO_L1_MP_TRACE            "RcpCsmActiveMsg: Status=%MRcpCsmStatusEnum, PhySubtype=%MEvl1ShCsmPhySubtypeT, FrameOffset=%d, DscLength=%d, DrcLength=%d"
+  info   RCPCSMTRACE_DeActive                    DO_L1_MP_TRACE            "RcpCsmDeActiveMsg: Status=%MRcpCsmStatusEnum"  
+  info   RCPCSMTRACE_SectorInfoUpdateMsg         DO_L1_MP_TRACE            "RcpCsmSectorInfoUpdateMsg: Status=%MRcpCsmStatusEnum, ActiveNum=%d, ServingPN=%d, NewServingPn=%d, MacCfgChangeFlag=%d"  
+  info   RCPCSMTRACE_SectorInfoDetail            DO_L1_MP_TRACE            "RcpCsmSectorInfo Detail: %d Renum=%d, Pilot=%d, PcgId=%d, MacId=%d, DrcCover=%d, Dsc=%d"
+  info   RCPCSMTRACE_SectorC2IUpdateMsg          DO_L1_MP_TRACE            "RcpCsmSectorC2IUpdateMsg: Status=%MRcpCsmStatusEnum, IgnoreNextC2I=%d, Suspend=%d, DoDecision=%d"
+  info   RCPCSMTRACE_SwitchDecisionInput         DO_L1_MP_TRACE            "RcpCsmCellSwitchDecisionInput : sectorNum = %d, SrvPn = %d, TargetPn = %d"    
+  info   RCPCSMTRACE_SwitchDecisionBaseInfo      DO_L1_MP_TRACE            "RcpCsmCellSwitchDecisionBaseInfo : i = %d, sectorRenum = %d, Pn = %d, C2I = %l, C2I80ms = %l, 80msCount = %d, DrcLock = %d, PersistTimer %d, %d" 
+  info   RCPCSMTRACE_SwitchDecisionSpecialSwitch DO_L1_MP_TRACE            "RcpCsmCellSwitchDecisionSpecialSwitch : Switch2Strongest = %d, servDropped = %d, targetDropped = %d, strongestSector = %d, strongestAvailable = %d, targetSector = %d"
+  info   RCPCSMTRACE_SwitchDecisionPersistMode   DO_L1_MP_TRACE            "RcpCsmCellSwitchDecisionPersistMode : InstantThreshold = %l, InstantSwitchDecisionCount = %d, strongestAvailable = %d and C2I = %l, persistMode = %d"
+  info   RCPCSMTRACE_SwitchDecisionPersistMode2  DO_L1_MP_TRACE            "RcpCsmCellSwitchDecisionPersistMode2 : strongestAvailable = %d and C2I = %l, SrvC2I = %l, instantThreshold = %l, ServingDropThreshold = %l, persistTestMode = %d"
+  info   RCPCSMTRACE_SwitchDecisionNormal        DO_L1_MP_TRACE            "RcpCsmCellSwitchDecisionNormal : Mode = %d, Threshold = %l, CountThreshold = %d, strongestAvailable = %d and C2I = %l, strongestSector = %d and C2I = %l, targetSector = %d"
+  info   RCPCSMTRACE_SwitchDecisionStopBySilent  DO_L1_MP_TRACE            "RcpCsmCellSwitchDecisionStopBySilent!"
+  info   RCPCSMTRACE_SwitchDecisionStopByPreempt DO_L1_MP_TRACE            "RcpCsmCellSwitchDecisionStopByPreempt!"
+  info   RCPCSMTRACE_ResetDecisionDataInfo       DO_L1_MP_TRACE            "RcpCsmResetDecisionData, %d, %d"
+  info   RCPCSMTRACE_C2ISamplingInput            DO_L1_MP_TRACE            "RcpCsmC2ISamplingInput: Signature= %d, %d, SampleCnt = %d, IntervalCnt = %d, DecisionCnt = %d"
+  info   RCPCSMTRACE_C2ISamplingC2IBefore        DO_L1_MP_TRACE            "RcpCsmC2ISamplingC2IBefore: i= %d, sectorRenum = %d, Pn=%d, Cnt = %d, BothAntIsOn = %d, C2i0 = %d, C2i1 = %d, C2IEstdb = %l"
+  info   RCPCSMTRACE_C2ISamplingC2IAfter         DO_L1_MP_TRACE            "RcpCsmC2ISamplingC2IAfter: sectorRenum = %d, Pn=%d, C2IEstdb80ms = %l, C2IEstdb = %l, Sample80msCount = %d"
+  info   RCPCSMTRACE_DoneMsg                     DO_L1_MP_TRACE            "RcpCsmDoneMsg: Status=%MRcpCsmStatusEnum, UpdataTarget=%d, IndicateDrc=%d, TargetPn=%d, TargetCover=%d, TargetDscValue=%d"
+  info   RCPCSMTRACE_HscPreemptMsg               DO_L1_MP_TRACE            "RcpCsmHscPreemptMsg: Status=%MRcpCsmStatusEnum, ResyncFrcCntValid=%d, ResyncFrcCnt=%l, CurFrcCnt=%l"
+  info   RCPCSMTRACE_HscResumeMsg                DO_L1_MP_TRACE            "RcpCsmHscResumeMsg: Status=%MRcpCsmStatusEnum"
+  info   RCPCSMTRACE_TcaIndMsg                   DO_L1_MP_TRACE            "RcpCsmTcaIndMsg: Status=%MRcpCsmStatusEnum, ActiveNum=%d"
+  info   RCPCSMTRACE_TcaDetail                   DO_L1_MP_TRACE            "RcpCsmTcaInd Detail: PilotPN=%d,Mac=%d,DRCCover=%d,DSC=%d"
+  info   RCPCSMTRACE_C2iRdMsg                    DO_L1_MP_TRACE            "RcpCsmC2iRdMsg: Status=%MRcpCsmStatusEnum, Signature=%d"
+  info   RCPCSMTRACE_SuspendMsg                  DO_L1_MP_TRACE            "RcpCsmSuspendMsg: Status=%MRcpCsmStatusEnum"
+  info   RCPCSMTRACE_ResumeMsg                   DO_L1_MP_TRACE            "RcpCsmResumeMsg: Status=%MRcpCsmStatusEnum"
+  info   RCPCSMTRACE_TxFreezeMsg                 DO_L1_MP_TRACE            "RcpCsmTxFreezeMsg: Status=%MRcpCsmStatusEnum"
+  info   RCPCSMTRACE_TxUnFreezeMsg               DO_L1_MP_TRACE            "RcpCsmTxUnFreezeMsg: Status=%MRcpCsmStatusEnum"
+  info   RCPCSMTRACE_ForceNullCover              DO_L1_MP_TRACE            "RcpCsmForceNullCover: Status=%MRcpCsmStatusEnum, Typ=%MCsmForceNullCoverT"  
+  info   RCPCSMTRACE_TestSwtichSucc              DO_L1_MP_TRACE            "RcpCsmTestSwtichSucc: Pn=%d, DrcCover=%d, DscValue=%d, MacId=%d, PcgId=%d, SectorId=%d"  
+  info   RCPCSMTRACE_TestSwtichFail              DO_L1_MP_TRACE            "RcpCsmTestSwtichFail: Status=%MRcpCsmStatusEnum, IgnoreNextC2I=%d, Suspend=%d, TargetSector=%d"   
+  info   EVL1TRACE_TxSthExeRtcDataInfo           DO_L1_MP_TRACE            "EVL1_SthExe_RtcDataInfo:PayLoadIdxAck=%d, PayLoadIdxNak=%d, SubPacketIndexNak=%d"
+  info   EVL1TRACE_TxSthRlAckInfo                DO_L1_MP_TRACE            "EVL1_Sth RlAckInfo:RlAckInfo=%d"  
+  info   EVL1FHTRACE_RatStatus	 	             DO_L1_MP_TRACE            "Evl1RatStatus: %MRmcRatStateT, RatChangedType =%d"
+  info   RMCTRACE_ModemStatus	 	             DO_L1_MP_TRACE            "RmcModemStatus: %MRmcModeStatusT"  
+  info   RMCTRACE_SetRatStatus	 	             DO_L1_MP_TRACE            "RmcSetRatStatus: OldRatType=%MRmcRatStateT, NewRatType=%MsrlteRatTypeT"  
+  info   RMCTRACE_RxpOperation	 	             DO_L1_MP_TRACE            "RxpOperation: slot=%d, chip=%d, cmd=%MRmcRxpTraceCmdT, modemState=%MRmcModemStateT, SlottedMode=%b, Subtype=%MRtmRmmSubtypeT"  
+  info   EVL1FHTRACE_AddPendCnf                  DO_L1_MP_TRACE            "AddPendingEventConfirm: EventId=%MFrEvtIdT"  
+  info   EVL1FHTRACE_SendPendCnf                 DO_L1_MP_TRACE            "SendPendedEventConfirm: PendedFlag=%d, EventId=%MFrEvtIdT" 
+  info   RMCTRACE_RxBrpData	 	                 DO_L1_MP_TRACE            "xBrpData: crcResult=%d"  
+  info   EVL1DRCChTypeEst                        DO_L1_MP_TRACE            "EVL1DRCChTypeEst: PreemptionCnt=%d, FingerC2IAcc=%l, AvgRssidBmQ5=%d, MultiUserPktEnable=%d, FtmState=%MFTMStateTypeT, MultiUserSkip=%d"
+  info   EVL1TRACE_DRCSlmsProc1                  DO_L1_MP_TRACE            "EVL1DRCSlmsProc1: C2IShort=%d, C2ILong=%d, ChannelType=%d, SLMSCnt=%d, R_Doppler=%l"
+  info   EVL1TRACE_DRCSlmsProc2                  DO_L1_MP_TRACE            "EVL1DRCSlmsProc2: ChannelType=%MDRCChanTypeT, ChannelSpeed=%d, C2ILevelCrossing=%d, FmpCurrAssignFingerNumFinal=%d, DrcAwgnChMode=%d"
+  info   EVL1TRACE_DRCRateSelect                 DO_L1_MP_TRACE            "EVL1TRACE_DRCRateSelect: Macid=%d, DrcSuprGoodCCPkt=%d, FtmState=%MFTMStateTypeT, ControlChan=%d, FalseAlarm=%d, PacketC2I=%ul, PreemptionCnt=%d"
+  info   EVL1TRACE_DRCFalseAlarm                 DO_L1_MP_TRACE            "EVL1TRACE_DRCFalseAlarm: SlotValid=%d, interlace=%d, DRC_idx=%d, MACIndex=%d, PacketComplete=%d, MultiUserPktEnable=%d, FalseAlarmStatus=%d"
+  info   EVL1TRACE_DRCPktComplete                DO_L1_MP_TRACE            "EVL1TRACE_DRCPktComplete: CRCPass=%d, DRC_idx=%d, MACIndex=%d, PacketComplete=%d"
+  info   EVL1TRACE_DRCRateProc1                  DO_L1_MP_TRACE            "EVL1TRACE_DRCRateProc1: GOODPacket=%d, CorrectRxBits=%d, FrameDefaultCheck=%d, GlobalAdj=%d, tempFactor=%d, DRCC2IShort=%d"
+  info   EVL1TRACE_DRCRateProc2                  DO_L1_MP_TRACE            "EVL1TRACE_DRCRateProc2: DRC_idx=%d, MultiUserSkip=%d, MultiUserStatus=%d, b1=%d, m2=%d"
+  info   EVL1TRACE_DRCRateProc3                  DO_L1_MP_TRACE            "EVL1TRACE_DRCRateProc3: b1=%d, B_frmax=%d, FilterSnr=%d, GlobalAdj=%d, C2IThresholds=%d"
+  info   EVL1TRACE_DRCRateProc4                  DO_L1_MP_TRACE            "EVL1TRACE_DRCRateProc4: b1=%d, B_frmax=%d, GlbAdjReset=%d, GlobalAdj=%d"
+  info   EVL1TRACE_DRCRateProc5                  DO_L1_MP_TRACE            "EVL1TRACE_DRCRateProc5: packet_count=%d, N_frmax=%d, m2=%d, k1=%d, GlobalAdj=%d, m1_Div_m=%d, GlbAdjCoarsAdj=%d"
+  info   EVL1TRACE_DRCRateProc6                  DO_L1_MP_TRACE            "EVL1TRACE_DRCRateProc6: GlobalAdj=%d, C2IAdjParInUse=%d, MinGlobalAdjust=%l, MaxGlobalAdjust=%l"
+  info   EVL1TRACE_DRCRateProc7                  DO_L1_MP_TRACE            "EVL1TRACE_DRCRateProc7: C2IMonoIdx=%d, ThrputIdx=%d, C2IThresholds=%l, Throughputs=%l, DRC_C2ITHR_Data=%l, DRC_THRPUT_Data=%l"
+  info   EVL1TRACE_DRCRateProc8                  DO_L1_MP_TRACE            "EVL1TRACE_DRCRateProc8: Type=%d, GlobalAdjOut=%l, GlobalAdjInd=%l, GlobalAdjDelta=%l, RoundOff=%d, Factor=%d"  
+  info   EVL1TRACE_DRCFCCPktInfo                 DO_L1_MP_TRACE            "EVL1TRACE_DRCFCCPktInfo: CRCResult=%b, MacIndex=%d, SlotCnt=%d, DrcIndex=%d"
+  info   EVL1TRACE_DRCFTCPktInfo                 DO_L1_MP_TRACE            "EVL1TRACE_DRCFTCPktInfo: CRCResult=%b, MacIndex=%d, SlotCnt=%d, DrcIndex=%d"  
+  info   EVL1SHTRACE_BsrpCtrlDrcTblInit          DO_L1_MP_TRACE            "Evl1BsrpCtrl_DrcTblInitEvt: drcC2IMax=%l, drcC2IMin=%l, drcGlobalAdj=%l, globalByPass=%d"
+  info   EVL1SHTRACE_BsrpCtrlDrcSlmsInit         DO_L1_MP_TRACE            "Evl1BsrpCtrl_DrcSlmaInitEvt: drcSlmsMu=%l, drcThrByPass1=%l, drcThrByPass2=%l"
+  info   EVL1SHTRACE_BsrpCtrlDrcSwParaInit       DO_L1_MP_TRACE            "Evl1BsrpCtrl_DrcSwParaInitEvt: drcErrIIrPole=%l, drcGating=%l, drcGlobalAdj=%l, drcIIrPole=%l, drcLength=%l, drcLvcrossLen=%l, drcSlmsMu=%l"
+  info   EVL1SHTRACE_BsrpCtrlDrcSwReInit         DO_L1_MP_TRACE            "Evl1BsrpCtrl_DrcSwReInitEvt: DrcLength=%l, drcGating=%l, DrcErrIIrPole=%l, drcIIrPole=%l,drcLvcrossLen=%l, drcSlmsMu=%l, DrcGlobalAdj=%l"
+  info   EVL1SHTRACE_BsrpCtrlDrcTblUpdate        DO_L1_MP_TRACE            "Evl1BsrpCtrl_DrcTblUpdateEvt"
+  info   EVL1SHTRACE_BsrpCtrlDrcCfg              DO_L1_MP_TRACE            "Evl1BsrpCtrl_DrcCfgEvt: CfgType=%MCphEvl1FlSrpDrcCfgType, DrcLength=%d, maxDrcValue=%d, minDrcValue=%d, DrcGating=%d, FixTxDrc=%d, DrcLvcrossLen=%l, DrcGlobalAdj=%l"
+  info   EVL1TRACE_Evl1SltCrpCrcResult           DO_L1_MP_TRACE            "Evl1SltCrpCrcResult:CrpCrc= %MConfirmResponseE, CrpCheckSucceCount= %d, CrpCheckFailCount= %d"
+  info   EVL1TRACE_Evl1SltCrpCrcFailslot         DO_L1_MP_TRACE            "EVL1TRACE_Evl1SltCrpCrcFailslot: index= %d, CrpExpect= %xl, CrpReal= %xl"
+  info   EVL1TRACE_ShSchAgcStartInd		   		 DO_L1_MP_TRACE			   "Evl1Sch_ShSchAgcStartInd: SchMode=%MSchModeT, SchState=%MShSchStateT, ListNum=%d, ActiveSetNum=%d, CandidateSetNum=%d, NeighborSetNum=%d, RemainSetNum=%d"
+  info   EVL1TRACE_RmcSchAgcStartInd		   	 DO_L1_MP_TRACE			   "Evl1Sch_RmcSchAgcStartInd: SchMode=%MSchModeT, ListNum=%d, ActiveSetNum=%d, CandidateSetNum=%d, NeighborSetNum=%d, RemainSetNum=%d" 
+  info   EVL1TRACE_SlotHandlerStart	   	         DO_L1_MP_TRACE			   "Evl1SlotHandlerStart: FrameNum=%l, SlotNum=%d, FRCCounter=%l" 
+  info   EVL1TRACE_SlotHandlerStop		   	     DO_L1_MP_TRACE			   "Evl1SlotHandlerStop: FRCCounter=%l"     
+  info   EVL1TRACE_RxBrpCfgTxCrpDecision         DO_L1_MP_TRACE            "Evl1RxBrpCfgTxCrpDecision: CurrSlot = %ul, TimeStamp = %ul, timeDist = %ul, InterlaceId = %d, bCfgTxCrpDelay = %b, DelayCfgTxCrpSlot = %ul,FtapAckParam=%MFlBrpFtapAckParamT,FtapModParam=%MFlBrpFtapModParamT"      
+  info   EVL1TRACE_RxBrpCfgTxCrpDelay            DO_L1_MP_TRACE            "Evl1RxBrpCfgTxCrpDelay: CurrSlot = %ul, TimeStamp = %ul, InterlaceId = %d, bCfgTxCrpDelay = %b, DelayCfgTxCrpSlot = %ul"      
+  info   EVL1TRACE_TxSth_PowerBase               DO_L1_MP_TRACE            "EVL1_SthPowerBaseInfo: PowerBase:%d, CloseLoopW:%d, CloseLoopCurrent:%d,PowerBaseResult:%d, ReleaseType:%MEvl1TxTrafficReleaseTypeT"
+  info   EVL1TRACE_SchIhoWakeReductionInfo       DO_L1_MP_TRACE            "Evl1Sch_RmcSchIhoWakeReductionInfo: IhoWakeReductionEvent=%d, Req = %b"  
+  info   EVL1TRACE_FhGmSefnRemove                DO_L1_MP_TRACE            "EVL1FhGmSefnRemove: FunId=%d, EvtBitmap=%xl, EvtBN=%xl, FRC=%l"
+  info   EVL1TRACE_ShRxAgcMain                   DO_L1_MP_TRACE            "ShRxAgcMain:Path=%MCL1D_RF_PATH_E,RxAgcState=%MCL1D_RF_AGC_FSM_E,PwrMode=%MCL1D_RF_PWR_MODE_E,RxAgcSettleState=%MEvl1ShRxAgcSettleStateE,RxAgcSettleSlotNum=%ud,RxAgcSettleCnt=%ud,RssiVal=%Mkal_bool"
+  info   EVL1TRACE_FhGmRcOFFComplete             DO_L1_MP_TRACE            "EVL1FhGmRcOFFComplete: GmState=%MEvl1FhGmStateT, EvtBitmap=%xl, MsgSendBitmap=%xl, RcOFFSeq=%d, FRC=%l"
+  info   EVL1TRACE_FhGmAddPendMsg                DO_L1_MP_TRACE            "EVL1FhGmAddPendMsg: GmState=%MEvl1FhGmStateT, EvtBitmap=%xl, IsRcOFF=%Mkal_bool, FRC=%l"
+  info   RMCTRACE_RmcReportValMeasParas          DO_L1_MP_TRACE            "RMCTRACE_RmcReportValMeasParas: EcIo= %d,TotalFilterSnr= %l,TotalInstantSnr= %l"
+  info   EVL1TRACE_DRCRateProc9                  DO_L1_MP_TRACE            "EVL1TRACE_DRCRateProc9: Reversion= %d, DisDrc11_12_14=%Mkal_bool, Disable469=%Mkal_bool, AllCChData=%Mkal_bool, UpdateCnt=%l"  
+  info   EVL1TRACE_DRCRateProc10                 DO_L1_MP_TRACE            "EVL1TRACE_DRCRateProc10: Error=%l"  
+  info   EVL1TRACE_DRCRateProc11                 DO_L1_MP_TRACE            "EVL1TRACE_DRCRateProc11: Type=%d, Reversion=%d, D1=%xl, D2=%xl,D3=%xl,D4=%xl,D5=%xl,D6=%xl,D7=%xl,D8=%xl"  
+  info   EVL1FHTRACE_FhRmcDatCfg                 DO_L1_MP_TRACE            "EVL1FHTRACE_FhRmcDatCfg: CurrentFrameNum=%xl,NextFrameTime=%xl,ReserveLen=%l,RrmState=%MEvl1FhRrmStateT"  
+  info   EVL1FHTRACE_ValToRmcDatCfg              DO_L1_MP_TRACE            "EVL1FHTRACE_ValToRmcDatCfg: FeatureIndex=%MFeatureIndexT,ScenaryIndex=%d,SeqNum=%d,DatEnableFlag=%d"  
+  info   EVL1FHTRACE_RmcToValDatRsp              DO_L1_MP_TRACE            "EVL1FHTRACE_RmcToValDatRsp: FeatureIndex=%MFeatureIndexT,DoDatSarCfgRsp=%d,SeqNum=%d"
+  info   EVL1FHTRACE_TasBackOff             	 DO_L1_MP_TRACE			   "EVL1FHTRACE_TasBackOffHandler:InterHoState=%MEvl1FhInterHoStateE,EvtIdBitmap=%xl,TasCfgBand=%xl,TasCfgChannel=%xl"
+  info   EVL1FHTRACE_TasBackOffQuery           	 DO_L1_MP_TRACE			   "EVL1FHTRACE_TasBackOffQuery:DfsState=%MEvl1FhDfsStateE,InterHoState=%MEvl1FhInterHoStateE,RrmState=%MEvl1FhRrmStateT"
+  info   EVL1TRACE_FhGmMpsrRfOnInd         	     DO_L1_MP_TRACE            "EVL1FhGmMpsrRfOnInd: GmState=%MEvl1FhGmStateT,IsRcOFF=%Mkal_bool,RcOffSeq=%d"

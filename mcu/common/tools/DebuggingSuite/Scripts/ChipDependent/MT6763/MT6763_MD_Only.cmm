@@ -1,0 +1,46 @@
+;AP pmic workaround
+&MEM_CLASS="AXI"
+sys.m prepare
+wait 1.ms
+
+; Step 1 set vcore to highest gear(0.8V)
+; [Note] CVD script do NOT need this step
+; skip
+
+; Step 2 config MD related Buck
+; AP preloader should set Modem related buck 
+; Check with preloader/PMIC owner if not set
+; skip
+
+; Step 3 power on MTCMOS
+; do APview_MT6763_MTCMOS2.cmm 
+; skip ==> cancelled since default on 
+
+; Step 4 config md_srclkena setting ==> review done
+do APview_MT6763_md_srclkena.cmm  
+
+; Step 5 config PLL setting ==> review done
+do APview_MT6763_MD_PLL_Init.cmm  
+
+; Step 6 Disable MDWDT/APWDT ==> review done
+do APview_MT6763_disable_WDT.cmm
+
+; Step 7 Trigger MD MCU to run (AP view)
+; skip
+
+; Step 8 set GPIO (MD view: step 7)==> review done
+do APview_MT6763_GPIO.cmm 
+
+;Step 9 Force on Debug Sys clock (MD view: step 8) ==> review done
+;do APview_MT6763_MD_ForceOnDebugSys.cmm  
+
+;Step 10 set MD EMI remap address (MD view: step 9)  ==>review done 
+d.s &MEM_CLASS:0x10001300 %long %le 0x00430041
+d.s &MEM_CLASS:0x10001304 %long %le 0x00470045
+d.s &MEM_CLASS:0x10001308 %long %le 0x004b0049
+d.s &MEM_CLASS:0x1000130c %long %le 0x004f004d
+
+; Final Step: Trigger MD MCU to run 
+; skip
+
+

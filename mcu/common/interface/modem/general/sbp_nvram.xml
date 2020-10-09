@@ -1,0 +1,1704 @@
+<SBP_DOC_ROOT>
+ 
+<SBP_DOC_INFO>
+  <HISTORY>
+  </HISTORY>
+</SBP_DOC_INFO>
+
+<SBP title="Roaming Broker">
+  <DESCRIPTION>
+      This is the Roaming Broker feature required by operator VIVO. 
+      Once  set to TRUE, NWSEL will sort available PLMN list with decreasing order.
+  </DESCRIPTION>
+  <CATEGORY>L4</CATEGORY>
+  <NVRAM>Bit4 in byte[4](5th byte) of NVRAM_EF_RAC_PREFERENCE_LID</NVRAM>
+  <CONFIG value_width="0.2">
+    <VALUE value="Bit3 in byte[4] is 0">Disable roaming broker support.</VALUE>
+    <VALUE value="Bit3 in byte[4] is 1">Enable roaming broker support </VALUE>
+  </CONFIG>
+  <DEFAULT>Disable roaming broker</DEFAULT>
+  <OP>
+    N/A
+  </OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk12592</AUTHOR>
+</SBP>
+
+<SBP title="Autonomous Fast Return (AFR) for CSFB">
+  <DESCRIPTION>
+      The UE may perform CSFB(circuit switched fallback) procedure from 4G to 2G/3G to obtain CS service;
+      after call released, AFR feature enabled indicates if the 2G/3G network does not command the UE to perform redirection,
+      the UE still can perform autonomous cell selection among the frequencies in AFR list to return to 4G.
+      How to maintain AFR list is up to UE implementation.
+  </DESCRIPTION>
+  <CATEGORY>EAS</CATEGORY>
+  <NVRAM>b4 and b5 in 'csfb_enhancement_item_status' of NVRAM_EF_ERRC_PERFORMANCE_PARA_LID</NVRAM>
+  <CONFIG>
+    <VALUE value="b4 in 'csfb_enhancement_item_status' is 0">Indicate 2G AFR feature is disabled.</VALUE>
+    <VALUE value="b4 in 'csfb_enhancement_item_status' is 1">Indicate 2G AFR feature is enabled.</VALUE>
+    <VALUE value="b5 in 'csfb_enhancement_item_status' is 0">Indicate 3G AFR feature is disabled.</VALUE>
+    <VALUE value="b5 in 'csfb_enhancement_item_status' is 1">Indicate 3G AFR feature is enabled.</VALUE>
+  </CONFIG>
+  <DEFAULT>Defaults setting of both 2G/3G AFR features are enabled.</DEFAULT>
+  <OP>
+    N/A
+  </OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    LSB of 'csfb_enhancement_item_status' represents csfb enhancement item b1;
+    MSB represents csfb enhancement item b8.
+  </NOTE>   
+  <AUTHOR>mtk02407</AUTHOR>
+</SBP>
+
+<SBP title="Dynamic AFR (Autonomous Fast Return) setting depends on Home PLMN in IMSI">
+  <DESCRIPTION>
+      The customer can configure 2G/3G AFR setting for different Home PLMN ids by modifying the following NVRMA file.
+      Modem will search for the matched PLMN id got from IMSI, and use the corresponding AFR setting in NVRAM file.
+  </DESCRIPTION>
+  <CATEGORY>EAS</CATEGORY>
+  <NVRAM>NVRAM_EF_ERRC_AFR_SETTING_LID</NVRAM>
+  <CONFIG>
+    <VALUE value="hplmn_afr_mapping[i].plmnid">The designated PLMN wants to configure AFR feature setting.</VALUE>
+    <VALUE value="hplmn_afr_mapping[i].csfb_2g_afr is 0">Indicate 2G AFR feature is disabled under designated PLMN.</VALUE>
+    <VALUE value="hplmn_afr_mapping[i].csfb_2g_afr is 1">Indicate 2G AFR feature is enabled under designated PLMN.</VALUE>
+    <VALUE value="hplmn_afr_mapping[i].csfg_3g_afr is 0">Indicate 3G AFR feature is disabled under designated PLMN.</VALUE>
+    <VALUE value="hplmn_afr_mapping[i].csfg_3g_afr is 1">Indicate 3G AFR feature is enabled under designated PLMN.</VALUE>
+  </CONFIG>
+  <DEFAULT>
+    Default setting of this NVRAM file is empty
+    (i.e. hplmn_afr_mapping[i].plmnid.mcc1 =
+    hplmn_afr_mapping[i].plmnid.mcc2 =
+    hplmn_afr_mapping[i].plmnid.mcc3 =
+    hplmn_afr_mapping[i].plmnid.mnc1 =
+    hplmn_afr_mapping[i].plmnid.mnc2 =
+    hplmn_afr_mapping[i].plmnid.mnc3 = 0x0f, for i = 0~7.)
+  </DEFAULT>
+  <OP>
+    N/A
+  </OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk02407</AUTHOR>
+</SBP>
+
+<SBP title="Local detach without EPS bearer" obsolete="1">
+  <AUTHOR>mtk07903</AUTHOR>
+</SBP>
+
+<SBP title="EMM timer T3440" obsolete="1">
+  <AUTHOR>mtk07903</AUTHOR>
+</SBP>
+
+<SBP title="TMSI based NRI IE">
+  <DESCRIPTION>
+    <PARAG>
+      If this option is enabled, UE will carry TMSI based NRI IE according to 8.2.4.17 and 8.2.29.23 of 3GPP TS 24.301:
+    </PARAG>
+    <PARAG>
+      8.2.4.17 of 3GPP TS 24.301:
+    </PARAG>
+    <LI>
+      The UE shall include this IE during a combined attach procedure if it has a valid TMSI.
+    </LI>
+    <PARAG>
+      8.2.29.23 of 3GPP TS 24.301:
+    </PARAG>
+    <LI>
+      The UE shall include this IE if it has a valid TMSI.
+    </LI>
+    <PARAG>
+      Although it is required in spec that UE should carry this IE 
+      if the above condition fulfilled, some networks are not capable to deal with this IE. Hence, MTK provides the flexibility 
+      to decide whether carry this IE or not.
+    </PARAG>
+  </DESCRIPTION>
+  <CATEGORY>NAS</CATEGORY>
+  <NVRAM>Bit0 in byte[9](10th byte) of "feature_config" in NVRAM_EF_LTE_PREFERENCE_LID</NVRAM>
+  <CONFIG>
+    <VALUE value="0">UE will not carry TMSI based NRI IE</VALUE>
+    <VALUE value="1">UE will carry TMSI based NRI IE according to 3GPP TS 24.301</VALUE>
+  </CONFIG>
+  <DEFAULT>1</DEFAULT>
+  <OP>N/A</OP>
+  <DEPENDENCY>N/A</DEPENDENCY>
+  <NOTE>
+    This feature is available on all MTK modem.
+  </NOTE>   
+  <AUTHOR>mtk07903</AUTHOR>
+</SBP>
+
+<SBP title="Regional Phone">
+  <DESCRIPTION>
+    This feature is to report the IMSI of current inserted SIM to AP during the very early stage of boot-up. By this IMSI, AP can launch location-specific power-on animation.
+  </DESCRIPTION>
+  <CATEGORY>L4</CATEGORY>
+  <NVRAM>NVRAM_EF_REGIONAL_PHONE_MODE_LID</NVRAM>
+  <CONFIG>
+    <VALUE value="0x00">Disable modem Regional Phone feature</VALUE>
+    <VALUE value="other values">Enable modem Regional Phone feature</VALUE>
+  </CONFIG>
+  <DEFAULT>0x00</DEFAULT>
+  <OP>Vodafone</OP>
+  <DEPENDENCY>N/A</DEPENDENCY>
+  <NOTE>
+    This feature shall involve AP side Regional Phone feature.
+  </NOTE>
+  <AUTHOR>mtk13380</AUTHOR>
+</SBP>
+
+<SBP title="Change supported LTE bands">
+  <DESCRIPTION>
+      Supported LTE bands information in Capability message is got from the intersection of NVRAM supported bands setting and RF real supported bands. 
+  </DESCRIPTION>
+  <CATEGORY>EAS</CATEGORY>
+  <NVRAM>NVRAM_EF_AS_BAND_SETTING_LID</NVRAM>
+  <CONFIG>
+    <VALUE value="Bit j in lte_band[i] is 1">Support LTE band (i*8+j+1)</VALUE>
+    <VALUE value="Bit j in lte_band[i] is 0">Not support LTE band (i*8+j+1)</VALUE>
+  </CONFIG>
+  <DEFAULT>
+    All LTE bands are supported.
+  </DEFAULT>
+  <OP>
+    N/A
+  </OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    i = 0~31, j = 0~7
+  </NOTE>   
+  <AUTHOR>mtk12767</AUTHOR>
+</SBP>
+
+<SBP title="Change LTE FGI setting">
+  <DESCRIPTION>
+      This feature is used to change LTE Feature Group Indicators (FGI) of UE capability. 
+  </DESCRIPTION>
+  <CATEGORY>EAS</CATEGORY>
+  <NVRAM>NVRAM_EF_UE_EUTRA_CAP_CSFB_LID</NVRAM>
+  <CONFIG>
+    <VALUE value="feature_group_ind_fdd">Used for FDD mode, total 32 bits, MSB represents FGI bit1, LSB represents FGI bit32.</VALUE>
+    <VALUE value="feature_group_ind_tdd">Used for TDD mode, total 32 bits, MSB represents FGI bit1, LSB represents FGI bit32.</VALUE>
+    <VALUE value="feature_group_ind_add_r9_fdd">Used for FDD mode, total 32 bits, MSB represents FGI bit33, LSB represents FGI bit64.</VALUE>
+    <VALUE value="feature_group_ind_add_r9_tdd">Used for TDD mode, total 32 bits, MSB represents FGI bit33, LSB represents FGI bit64.</VALUE>
+    <VALUE value="feature_group_ind_r10_fdd">Used for FDD mode, total 32 bits, MSB represents FGI bit101, LSB represents FGI bit132.</VALUE>
+    <VALUE value="feature_group_ind_r10_tdd">Used for TDD mode, total 32 bits, MSB represents FGI bit101, LSB represents FGI bit132.</VALUE>
+  </CONFIG>
+  <DEFAULT>
+    N/A
+  </DEFAULT>
+  <OP>
+    N/A
+  </OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    The modification only changes capability reporting, but does not change real supported functionalities.
+  </NOTE>   
+  <AUTHOR>mtk12767</AUTHOR>
+</SBP>
+
+<SBP title="Change LTE category setting">
+  <DESCRIPTION>
+      This feature is used to change LTE category of UE capability. 
+  </DESCRIPTION>
+  <CATEGORY>EAS</CATEGORY>
+  <NVRAM>NVRAM_EF_UE_EUTRA_CAP_CSFB_LID</NVRAM>
+  <CONFIG_EXT>
+    <PARAG>Modify "ue_category" to change LTE category.</PARAG>
+    <TABLE_VALUE caption="ue_category">
+      <VALUE value="1">Category 1</VALUE>
+      <VALUE value="2">Category 2</VALUE>
+      <VALUE value="3">Category 3</VALUE>
+      <VALUE value="4">Category 4</VALUE>
+      <VALUE value="5">Category 5</VALUE>
+      <VALUE value="6">Category 6</VALUE>
+      <VALUE value="7">Category 7</VALUE>
+      <VALUE value="8">Category 8</VALUE>
+      <VALUE value="9">Category 9</VALUE>
+      <VALUE value="10">Category 10</VALUE>
+      <VALUE value="11">Category 11</VALUE>
+      <VALUE value="12">Category 12</VALUE>
+      <VALUE value="128">DL Category 0, UL Category 0</VALUE>
+      <VALUE value="129">DL Category 6, UL Category 5</VALUE>
+      <VALUE value="130">DL Category 7, UL Category 13</VALUE>
+      <VALUE value="131">DL Category 9, UL Category 5</VALUE>
+      <VALUE value="132">DL Category 10, UL Category 13</VALUE>
+      <VALUE value="133">DL Category 11, UL Category 5</VALUE>
+      <VALUE value="134">DL Category 12, UL Category 13</VALUE>
+      <VALUE value="255">Category Invalid</VALUE>
+    </TABLE_VALUE>
+  </CONFIG_EXT>
+  <DEFAULT>
+    N/A
+  </DEFAULT>
+  <OP>
+    N/A
+  </OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    The modification only changes capability reporting, but does not change real supported functionalities.
+  </NOTE>   
+  <AUTHOR>mtk12767</AUTHOR>
+</SBP>
+
+<SBP title="Change UE capability setting of LTE r9_redirection feature">
+  <DESCRIPTION>
+      This feature is used to change UE capability setting of LTE r9_redirection feature.
+  </DESCRIPTION>
+  <CATEGORY>EAS</CATEGORY>
+  <NVRAM>NVRAM_EF_UE_EUTRA_CAP_CSFB_LID</NVRAM>
+  <CONFIG_EXT>
+    <LI>Modify "irat_param_geram_v920.e_RedirectionGERAN_r9" to change the support of redirection from LTE to GERAN.</LI> 
+    <LI>Modify "irat_param_utra_v920.e_RedirectionUTRA_r9_fdd/e_RedirectionUTRA_r9_tdd" to change the support of redirection from LTE to UTRAN.</LI>
+    <TABLE_VALUE caption=" ">
+      <VALUE value="0">Not supported</VALUE>
+      <VALUE value="1">Supported</VALUE>
+    </TABLE_VALUE>
+  </CONFIG_EXT>
+  <DEFAULT>
+    support
+  </DEFAULT>
+  <OP>
+    N/A
+  </OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    The modification only changes capability reporting, but does not change real supported functionalities.
+  </NOTE>   
+  <AUTHOR>mtk12767</AUTHOR>
+</SBP>
+
+<SBP title="Change ROHC Support Status in UE Capability Response ">
+  <DESCRIPTION>
+      This feature is used to change ROHC support status in UE capability response.
+  </DESCRIPTION>
+  <CATEGORY>EAS</CATEGORY>
+  <NVRAM>NVRAM_EF_UE_EUTRA_CAP_CSFB_LID</NVRAM>
+  <CONFIG_EXT>
+    Modify "pdcp_param.rohc_profiles[0~8]" to change the ROHC support status in Capability response.
+    <LI>pdcp_param.rohc_profiles[0]: 0001_RPT</LI>
+    <LI>pdcp_param.rohc_profiles[1]: 0002_UDP</LI>
+    <LI>pdcp_param.rohc_profiles[2]: 0003_ESP</LI>
+    <LI>pdcp_param.rohc_profiles[3]: 0004_IP</LI>
+    <LI>pdcp_param.rohc_profiles[4]: 0006_TCP</LI>
+    <LI>pdcp_param.rohc_profiles[5]: 0101_V2RTP</LI>
+    <LI>pdcp_param.rohc_profiles[6]: 0102_V2UDP</LI>
+    <LI>pdcp_param.rohc_profiles[7]: 0103_V2ESP</LI>
+    <LI>pdcp_param.rohc_profiles[8]: 0104_V2IP</LI>
+    <TABLE_VALUE caption=" ">
+      <VALUE value="0">Not support</VALUE>
+      <VALUE value="1">support</VALUE>
+    </TABLE_VALUE>
+  </CONFIG_EXT>
+  <DEFAULT>
+    <TABLE column="2" caption="">
+      <TR>
+        <TD>Field</TD><TD>Default value</TD>
+      </TR>
+      <TR>
+        <TD>pdcp_param.rohc_profiles[0]: 0001_RPT</TD><TD>support</TD>
+      </TR>
+      <TR>
+        <TD>pdcp_param.rohc_profiles[1]: 0002_UDP</TD><TD>support</TD>
+      </TR>
+      <TR>
+        <TD>pdcp_param.rohc_profiles[2]: 0003_ESP</TD><TD>not support</TD>
+      </TR>
+      <TR>
+        <TD>pdcp_param.rohc_profiles[3]: 0004_IP</TD><TD>support</TD>
+      </TR>
+      <TR>
+        <TD>pdcp_param.rohc_profiles[4]: 0006_TCP</TD><TD>not support</TD>
+      </TR>
+      <TR>
+        <TD>pdcp_param.rohc_profiles[5]: 0101_V2RTP</TD><TD>not support</TD>
+      </TR>
+      <TR>
+        <TD>pdcp_param.rohc_profiles[6]: 0102_V2UDP</TD><TD>not support</TD>
+      </TR>
+      <TR>
+        <TD>pdcp_param.rohc_profiles[7]: 0103_V2ESP</TD><TD>not support</TD>
+      </TR>
+      <TR>
+        <TD>pdcp_param.rohc_profiles[8]: 0104_V2IP</TD><TD>not support</TD>
+      </TR>
+    </TABLE>
+  </DEFAULT>
+  <OP>
+    N/A
+  </OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    The modification only changes ROHC support status in capability response, but does not change real supported ROHC functionalities.
+  </NOTE>   
+  <AUTHOR>mtk12767</AUTHOR>
+</SBP>
+
+<SBP title="Change UE-EUTRA-capability ">
+  <DESCRIPTION>
+      This feature is used to change UE-EUTRA-capability reported in LTE RRC message UEInformationResponse.
+  </DESCRIPTION>
+  <CATEGORY>EAS</CATEGORY>
+  <NVRAM>NVRAM_EF_UE_EUTRA_CAP_CSFB_LID</NVRAM>
+  <CONFIG_EXT>
+    <TABLE_VALUE caption="The field \"phylayer_param-\>ue_specific_ref_sigs\" in NVRAM file." value_width="0.5">
+      <VALUE value="0">Not support</VALUE>
+      <VALUE value="1">Support</VALUE>
+    </TABLE_VALUE>
+    <TABLE_VALUE caption="The field \"phylayer_param_v920-\> enhancedDualLayerFDD_r9\" in NVRAM file." value_width="0.5">
+      <VALUE value="0">Not support</VALUE>
+      <VALUE value="1">Support</VALUE>
+    </TABLE_VALUE>
+    <TABLE_VALUE caption="The field \"son_param_r9-\>rach_Report_r9\" in NVRAM file." value_width="0.5">
+      <VALUE value="0">Not support</VALUE>
+      <VALUE value="1">Support</VALUE>
+    </TABLE_VALUE>
+  </CONFIG_EXT>
+  <DEFAULT>
+    <TABLE column="2" caption="">
+      <TR>
+        <TD>Field</TD><TD>Default value</TD>
+      </TR>
+      <TR>
+        <TD>PhyLayerParameters->ue-SpecificRefSigsSupported</TD><TD>support</TD>
+      </TR>
+      <TR>
+        <TD>PhylayerParameters-v920->enhancedDualLayerFDD-r9</TD><TD>support</TD>
+      </TR>
+      <TR>
+        <TD>UE-EUTRA-Capability-v920-IEs->son-Parameters-r9->rach-Report-r9</TD><TD>support</TD>
+      </TR>
+    </TABLE>
+  </DEFAULT>
+  <OP>
+    N/A
+  </OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    The modification only changes capability reporting, but does not change real supported functionalities.
+  </NOTE>   
+  <AUTHOR>mtk12767</AUTHOR>
+</SBP>
+
+<SBP title="SDM SMS ADS Profile Setting">
+  <DESCRIPTION>
+      To fulfill operator's different strategies about to determinate the proper domain for sending SMS,
+      we provide NVRAM_EF_SDM_ADS_PROFILE_LID to collect all relative setting.
+        <TABLE column="2" caption="NVRAM_EF_SDM_ADS_PROFILE_LID">
+          <TR>
+            <TD width="0.3"> SBP </TD> <TD width="0.7"> Description </TD> 
+          </TR>          
+          <TR>
+            <TD> always_cs_when_2g </TD> <TD> Always sending SMS over CS if camped on GSM </TD> 
+          </TR>
+          <TR>
+            <TD> always_cs_when_3g </TD> <TD> Always sending SMS over CS if camped on UMTS </TD> 
+          </TR>
+          <TR>
+            <TD> try_cs_when_2g_voice_call </TD> <TD> Always sending SMS over CS if 2G voice call is ongoing </TD> 
+          </TR>
+          <TR>
+            <TD> enable_sms_over_sgs </TD> <TD> To enable SMS over SGs capability </TD> 
+          </TR>                              
+          <TR>
+            <TD> prefer_sms_over_sgs_to_ims </TD> <TD> Prefer CS domain than IMS </TD> 
+          </TR>    
+          <TR>
+            <TD> prefer_retry_domain </TD> <TD> Which domain is preferred to retry if SMS is failing </TD> 
+          </TR>  
+          <TR>
+            <TD> enable_sms_over_wifi </TD> <TD> To enable SMS over WIFI capability </TD>
+          </TR>  
+          <TR>
+            <TD> retry_cs_when_ims_tr1m_expiry </TD> <TD> Retry CS domain if IMS SMS failed due to TR1M expires </TD>
+          </TR>                                                                  
+          <TR>
+            <TD> sdm_retry_timer </TD> <TD> Retry Timer for TEMPORARY ERROR or CP ERROR </TD>
+          </TR>    
+          <TR>
+            <TD> imcsms_retry_for_202_rev </TD> <TD> retry SMS via CS if 202 is not recevied when sending IMS SMS </TD>
+          </TR>    
+          <TR>
+            <TD> ims_smart_congestion_report_to_ap </TD> <TD> Report to AP start and end of an MO SMS over IP</TD>
+          </TR>       
+          <TR>
+            <TD> allow_stk_over_ims </TD> <TD> To enable STK SMS over IMS capability</TD>
+          </TR>                                                                                                 
+        </TABLE>    
+  </DESCRIPTION>
+  <CATEGORY> IMS_VOLTE </CATEGORY>
+  <NVRAM>NVRAM_EF_SDM_ADS_PROFILE_LID</NVRAM>
+
+  <CONFIG_EXT>
+    <TABLE_VALUE caption="always_cs_when_2g"> 
+      <VALUE value="0">Disable</VALUE>
+      <VALUE value="1">Enable</VALUE>
+    </TABLE_VALUE>
+
+    <TABLE_VALUE caption="always_cs_when_3g"> 
+      <VALUE value="0">Disable</VALUE>
+      <VALUE value="1">Enable</VALUE>
+    </TABLE_VALUE>
+    
+    <TABLE_VALUE caption="try_cs_when_2g_voice_call"> 
+      <VALUE value="0">Disable</VALUE>
+      <VALUE value="1">Enable</VALUE>
+    </TABLE_VALUE>
+
+    <TABLE_VALUE caption="enable_sms_over_sgs"> 
+      <VALUE value="0">Disable</VALUE>
+      <VALUE value="1">Enable</VALUE>
+    </TABLE_VALUE>
+    
+    <TABLE_VALUE caption="enable_sms_over_wifi"> 
+      <VALUE value="0">Disable</VALUE>
+      <VALUE value="1">Enable</VALUE>
+    </TABLE_VALUE>
+
+    <TABLE_VALUE caption="retry_cs_when_ims_tr1m_expiry"> 
+      <VALUE value="0">Disable</VALUE>
+      <VALUE value="1">Enable</VALUE>
+    </TABLE_VALUE>
+
+    <TABLE_VALUE caption="sdm_retry_timer"> 
+      <VALUE value="sec">the wating time for next retry if TEMPORARY ERROR or CP ERROR</VALUE>
+    </TABLE_VALUE>        
+
+    <TABLE_VALUE caption="imcsms_retry_for_202_rev"> 
+      <VALUE value="0">Disable</VALUE>
+      <VALUE value="1">Enable</VALUE>
+    </TABLE_VALUE>
+    
+    <TABLE_VALUE caption="ims_smart_congestion_report_to_ap"> 
+      <VALUE value="0">Disable</VALUE>
+      <VALUE value="1">Enable</VALUE>
+    </TABLE_VALUE>
+
+    <TABLE_VALUE caption="allow_stk_over_ims"> 
+      <VALUE value="0">Disable</VALUE>
+      <VALUE value="1">Enable</VALUE>
+    </TABLE_VALUE>
+   
+    <TABLE_VALUE caption="prefer_retry_domain.when_ims_fail"> 
+      <VALUE value="0">Never Retry if SMS over IMS is failing</VALUE>
+      <VALUE value="1">Retry CS doamin if SMS over IMS is failing</VALUE>
+      <VALUE value="2">Retry IMS doamin if SMS over IMS is failing</VALUE>      
+    </TABLE_VALUE>
+    
+    <TABLE_VALUE caption="prefer_retry_domain.when_cs_fail"> 
+      <VALUE value="0">Never Retry if SMS over CS is failing</VALUE>
+      <VALUE value="1">Retry CS doamin if SMS over CS is failing</VALUE>
+      <VALUE value="2">Retry IMS doamin if SMS over CS is failing</VALUE>      
+    </TABLE_VALUE>    
+
+  </CONFIG_EXT>
+  
+  <DEFAULT>
+    Defaults setting 
+        <TABLE column="2" caption="NVRAM_EF_SDM_ADS_PROFILE_LID">
+          <TR>
+            <TD > SBP </TD> <TD > Default Setting </TD> 
+          </TR>            
+          <TR>
+            <TD> always_cs_when_2g </TD> <TD> 0 (Disable) </TD>
+          </TR>
+          <TR>
+            <TD> always_cs_when_3g </TD> <TD> 0 (Disable) </TD>
+          </TR>
+          <TR>
+            <TD> try_cs_when_2g_voice_call </TD> <TD> 0 (Disable) </TD>
+          </TR>
+          <TR>
+            <TD> enable_sms_over_sgs </TD> <TD> 1 (Enable) </TD>
+          </TR>                              
+          <TR>
+            <TD> prefer_sms_over_sgs_to_ims </TD> <TD> 0 (Disable) </TD>
+          </TR>    
+          <TR>
+            <TD> prefer_retry_domain </TD> 
+            <TD> 
+              when_ims_fail = 1 (Retry CS if IMS SMS fail)\n 
+              when_cs_fail = 0 (Never Retry if CS SMS fail)
+            </TD>
+          </TR>  
+          <TR>
+            <TD> enable_sms_over_wifi </TD> <TD> 1 (Enable) </TD>
+          </TR>  
+          <TR>
+            <TD> retry_cs_when_ims_tr1m_expiry </TD> <TD> 0 (Disable) </TD>
+          </TR>                                                                  
+          <TR>
+            <TD> sdm_retry_timer </TD> <TD> 0 (Disable) </TD>
+          </TR>    
+          <TR>
+            <TD> imcsms_retry_for_202_rev </TD> <TD> 0 (Disable) </TD>
+          </TR>    
+          <TR>
+            <TD> ims_smart_congestion_report_to_ap </TD> <TD> 0 (Disable) </TD>
+          </TR>       
+          <TR>
+            <TD> allow_stk_over_ims </TD> <TD> 0 (Disable) </TD>
+          </TR>                                                                                                 
+        </TABLE>  
+       
+          
+  </DEFAULT>
+  <OP>
+    <TABLE column="2" caption="CMCC">
+      <TR>
+        <TD width="0.7"> SBP  </TD> <TD width="0.3"> setting </TD> 
+      </TR>       
+      <TR>
+        <TD width="0.7"> imcsms_retry_for_202_rev  </TD> <TD width="0.3"> 1 </TD> 
+      </TR> 
+      <TR>
+        <TD width="0.7"> always_cs_when_2g  </TD> <TD width="0.3"> 1 </TD> 
+      </TR>
+      <TR>
+        <TD width="0.7"> always_cs_when_3g  </TD> <TD width="0.3"> 1 </TD> 
+      </TR>  
+    </TABLE>    
+             
+    <TABLE column="2" caption="Orange">
+      <TR>
+        <TD width="0.7"> SBP  </TD> <TD width="0.3"> setting </TD> 
+      </TR>       
+      <TR>
+        <TD width="0.7"> enable_sms_over_wifi  </TD> <TD width="0.3"> 0 </TD> 
+      </TR> 
+      <TR>
+        <TD width="0.7"> prefer_retry_domain.when_cs_fail  </TD> <TD width="0.3"> NO_RETRY </TD> 
+      </TR> 
+    </TABLE>             
+        
+    <TABLE column="2" caption="ATT">
+      <TR>
+        <TD width="0.7"> SBP  </TD> <TD width="0.3"> setting </TD> 
+      </TR>       
+      <TR>
+        <TD width="0.7"> try_cs_when_2g_voice_call  </TD> <TD width="0.3"> 1 </TD> 
+      </TR> 
+      <TR>
+        <TD width="0.7"> prefer_retry_domain.when_ims_fail  </TD> <TD width="0.3"> NO_RETRY </TD> 
+      </TR>
+      <TR>
+        <TD width="0.7"> ims_smart_congestion_report_to_ap  </TD> <TD width="0.3"> 1 </TD> 
+      </TR>  
+    </TABLE>              
+
+    <TABLE column="2" caption="T-Mobile">
+      <TR>
+        <TD width="0.7"> SBP  </TD> <TD width="0.3"> setting </TD> 
+      </TR>       
+      <TR>
+        <TD width="0.7"> prefer_retry_domain.when_ims_fail  </TD> <TD width="0.3"> RETRY_CS </TD> 
+      </TR> 
+    </TABLE>             
+
+    <TABLE column="2" caption="CT">
+      <TR>
+        <TD width="0.7"> SBP  </TD> <TD width="0.3"> setting </TD> 
+      </TR>       
+      <TR>
+        <TD width="0.7"> sdm_retry_timer  </TD> <TD width="0.3"> 30s </TD> 
+      </TR> 
+      <TR>
+        <TD width="0.7"> prefer_retry_domain.when_ims_fail  </TD> <TD width="0.3"> RETRY_IMS </TD> 
+      </TR>       
+    </TABLE>
+
+    <TABLE column="2" caption="VzW">
+      <TR>
+        <TD width="0.7"> SBP  </TD> <TD width="0.3"> setting </TD> 
+      </TR>       
+      <TR>
+        <TD width="0.7"> sdm_retry_timer  </TD> <TD width="0.3"> 30s </TD> 
+      </TR> 
+      <TR>
+        <TD width="0.7"> prefer_retry_domain.when_ims_fail  </TD> <TD width="0.3"> RETRY_IMS </TD> 
+      </TR>       
+    </TABLE>      
+
+    <TABLE column="2" caption="DOCOMO">
+      <TR>
+        <TD width="0.7"> SBP  </TD> <TD width="0.3"> setting </TD> 
+      </TR>       
+      <TR>
+        <TD width="0.7"> retry_cs_when_ims_tr1m_expiry  </TD> <TD width="0.3"> 1 </TD> 
+      </TR> 
+      <TR>
+        <TD width="0.7"> prefer_retry_domain.when_ims_fail  </TD> <TD width="0.3"> NO_RETRY </TD> 
+      </TR>       
+    </TABLE> 
+    
+    <TABLE column="2" caption="RJIL">
+      <TR>
+        <TD width="0.7"> SBP  </TD> <TD width="0.3"> setting </TD> 
+      </TR>       
+      <TR>
+        <TD width="0.7"> prefer_retry_domain.when_ims_fail  </TD> <TD width="0.3"> RETRY_IMS </TD> 
+      </TR> 
+      <TR>
+        <TD width="0.7"> prefer_retry_domain.when_cs_fail  </TD> <TD width="0.3"> RETRY_IMS </TD> 
+      </TR>       
+    </TABLE>   
+        
+  </OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk12265</AUTHOR>
+</SBP>
+
+<SBP title="Voice domain preference">
+  <DESCRIPTION>
+      This is voice domain preference setting for EUTRAN defined in TS 27.007 and TS 24.167.
+      It's used for informing NW about UE preference for voice call domain.
+      for example, voice call may go on CS or IMS domain depend on setting is CS voice only or IMS voice prefer.
+  </DESCRIPTION>
+  <CATEGORY>L4</CATEGORY>
+  <NVRAM>Byte[1](2nd byte) of NVRAM_EF_LTE_PREFERENCE_LID</NVRAM>
+  <CONFIG value_width="0.2">
+    <VALUE value="1">CS voice only.</VALUE>
+    <VALUE value="2">CS voice prefer and IMS voice as secondary </VALUE>
+    <VALUE value="3">IMS voice prefer and CS voice as secondary </VALUE>
+    <VALUE value="4">IMS voice only </VALUE>
+  </CONFIG>
+  <DEFAULT>1, if not support VoLTE project</DEFAULT>
+  <DEFAULT>3, if support VoLTE project</DEFAULT>
+  <OP>
+    N/A
+  </OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk12592</AUTHOR>
+</SBP>
+
+<SBP title="UE's usage setting">
+  <DESCRIPTION>
+      This is UE's usage setting for EUTRAN defined in TS 24.301.
+      It's used for informing NW about UE usage is voice or data service mainly.      
+  </DESCRIPTION>
+  <CATEGORY>L4</CATEGORY>
+  <NVRAM>Byte[0](1st byte) of NVRAM_EF_LTE_PREFERENCE_LID</NVRAM>
+  <CONFIG value_width="0.2">
+    <VALUE value="0">Voice Centric.</VALUE>
+    <VALUE value="1">Data Centric. </VALUE>   
+  </CONFIG>
+  <DEFAULT>0, Voice Centric</DEFAULT>
+  <OP>
+    N/A
+  </OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk12592</AUTHOR>
+</SBP>
+
+<SBP title="SAIC and DARP support">
+  <DESCRIPTION>
+      This is Single Antenna Interference Cancellation(SAIC) and Downlink Advanced Receiver Performance capability(DARP).
+      this technique helps improve the receiver performance of GSM enabled DARP-1 compliant UE.
+  </DESCRIPTION>
+  <CATEGORY>GAS</CATEGORY>
+  <NVRAM>bit5 and bit4 in byte17 of NVRAM_EF_CLASSMARK_RACAP_LID</NVRAM>
+  <CONFIG>
+    <TABLE_VALUE caption="configurable values for SAIC AND DARP Support">
+       <VALUE value="00">Downlink Advanced Receiver Performance not supported by UE </VALUE>
+       <VALUE value="01">Downlink Advanced Receiver Performance Phase-1 supported by UE </VALUE>
+       <VALUE value="10">Downlink Advanced Receiver Performance Phase-2 supported by UE </VALUE>
+       <VALUE value="11">not used, if sent to NW, NW assumes as 10 </VALUE>
+    </TABLE_VALUE>
+  </CONFIG>
+  <DEFAULT>
+    01
+  </DEFAULT>
+  <OP>
+    N/A
+  </OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    The modification only changes capability reporting, but does not change real supported functionalities.
+  </NOTE>   
+  <AUTHOR>mtk12655</AUTHOR>
+</SBP>
+
+<SBP title="SMS domain preference">
+  <DESCRIPTION>
+      This feature is used to select the preference of bearer service to send SMS.
+  </DESCRIPTION>
+  <CATEGORY>SMS</CATEGORY>
+  <NVRAM>byte[0](1st byte) of NVRAM_EF_SMSAL_COMMON_PARAM_LID</NVRAM>
+  <CONFIG value_width="0.4">
+    <VALUE value="byte[0] is 0"> MO SMS will go through PS only </VALUE>
+    <VALUE value="byte[0] is 1"> MO SMS will go through CS only </VALUE>
+    <VALUE value="byte[0] is 2"> MO SMS will go through PS prefer </VALUE>
+    <VALUE value="byte[0] is 3"> MO SMS will go through CS prefer </VALUE>
+  </CONFIG>
+  <DEFAULT>
+	If both compile option __CS_SERVICE__ and __SMS_OVER_PS_SUPPORT__ are defined, default is 1(CS only).
+	If only compile option __SMS_OVER_PS_SUPPORT__ is defined, default is 0(PS only).
+	Any other combinations of these 2 options, default is 1(CS only).
+  </DEFAULT>
+  <OP>
+    N/A
+  </OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+	The default value is decided by 2 compile options, __CS_SERVICE__ and __SMS_OVER_PS_SUPPORT__.
+    If both compile option __CS_SERVICE__ and __SMS_OVER_PS_SUPPORT__ are defined, default is 1(CS only).
+	If only compile option __SMS_OVER_PS_SUPPORT__ is defined, default is 0(PS only).
+	Any other combinations of these 2 options, default is 1(CS only).
+  </NOTE>   
+  <AUTHOR>mtk09358</AUTHOR>
+</SBP>
+
+<SBP title="CB(Cell Broadcast) default on/off">
+  <DESCRIPTION>
+      This feature is used to set the default value of CB(cell Broadcast) on/off.
+  </DESCRIPTION>
+  <CATEGORY>L4</CATEGORY>
+  <NVRAM>byte[7](8th byte) of NVRAM_EF_SMSAL_COMMON_PARAM_LID</NVRAM>
+  <CONFIG value_width="0.4">
+    <VALUE value="byte[7] is 0"> CB off, UE cannot receive CB </VALUE>
+    <VALUE value="byte[7] is 1"> CB on, UE can receive CB </VALUE>
+  </CONFIG>
+  <DEFAULT>
+	If on UE simulator, default is ON ; if not on UE simulator, default is OFF.
+  </DEFAULT>
+  <OP>
+    N/A
+  </OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk09358</AUTHOR>
+</SBP>
+
+<SBP title="UE receive all language of CB(Cell Broadcast)">
+  <DESCRIPTION>
+      This feature is used to set the UE can receive all language of CB(cell Broadcast) or not.
+  </DESCRIPTION>
+  <CATEGORY>L4</CATEGORY>
+  <NVRAM>byte[8](9th byte) of NVRAM_EF_SMSAL_COMMON_PARAM_LID</NVRAM>
+  <CONFIG value_width="0.4">
+    <VALUE value="byte[8] is 0"> Off. UE cannot receive all language of CB </VALUE>
+    <VALUE value="byte[8] is 1"> On. allow UE can receive all language of CB </VALUE>
+  </CONFIG>
+  <DEFAULT>ON</DEFAULT>
+  <OP>
+    N/A
+  </OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk09358</AUTHOR>
+</SBP>
+
+<SBP title="CB(Cell Broadcast) channels and languages configuration">
+  <DESCRIPTION>
+      This feature is used to configure CBMI, CBMIR and CB DCS (data coding scheme, language).
+  </DESCRIPTION>
+  <CATEGORY>L4</CATEGORY>
+  <NVRAM>NVRAM_EF_CB_CH_INFO_LID</NVRAM>
+  <CONFIG_EXT>
+    <PARAG>To modify CBMI: </PARAG>
+      <LI>
+         cbmi[40] is in 81th ~ 160th byte (It allows 40 CBMI)
+               cbmi_me_mask[5] is in 73th ~ 77th byte (each bit controls 1 CBMI in cbmi[])
+               You can put CBMI to cbmi[40] and set related mask to enable the CBMI.
+               e.g. to enable CBMI 4370. Set "cbmi[0]=4370(81th byte 81 is 43, 82th byte is 70)" and set "first bit of cbmi_me_mask[0](most significant bit of 73th byte)" to 1.
+      </LI>    
+    <PARAG>To modify CBMIR: </PARAG>
+      <LI>
+         You can configure CB channels in a range, for example 4370~4375.
+               cbmir[30] is in 161th ~ 280th byte (It allows 30 ranges)
+               cbmir_me_mask[4] is in 5th ~ 8th byte (each bit controls 1 range)
+         e.g. to set a range 4370 ~ 4375. Set cbmir[0]=4370(161th byte is 43, 162th byte is 70), cbmir[1]=4375(163th byte is 43, 164th byte is 75) and set first bit of cbmir_me_mask[0](most significant bit of 5th byte) to 1.
+      </LI>
+    <PARAG>To modify DCS: </PARAG>
+      <LI>
+             dcs[30] is in 13th ~ 72th byte (It allows 30 languages)
+               dcs_mask[4] is in 9th ~ 12th byte (each bit controls1 DCS in dcs[])
+               You can put language (according to TS23.038) to dcs[30] and set related mask to enable.
+               e.g. to enable English and French. Set dcs[0]=1 (English), and set the first bit of dcs_mask[0](most significant bit of 9th byte) to 1.
+      </LI>
+  </CONFIG_EXT>
+  <DEFAULT>
+    all CBMI and DCS are empty(0xFF). all cbmir_mask[], cbmir_me_mask[], dcs_mask[], cbmi_me_mask[] and cbmi_sim_mask[] are ON (0xFF).
+  </DEFAULT>
+  <OP>
+    N/A
+  </OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk09358</AUTHOR>
+</SBP>
+
+<SBP title="Multislot Class Configuration">
+  <DESCRIPTION>
+      GPRS multislot class / EGPRS multislot class refers to the different mobile station capabilities to transmit and receive on different combinations of multiple PDCHs. The multislot classes are defined in 3GPP TS 45.002.
+      This field is to configure multislot class capability.
+  </DESCRIPTION>
+  <CATEGORY>GAS</CATEGORY>
+  <NVRAM>Bit6 to Bit2 of byte10 of NVRAM_EF_CLASSMARK_RACAP_LID</NVRAM>
+  <CONFIG value_width="0.4">
+    <TABLE_VALUE caption="Configurable Value of Multislot Class Configuration">
+       <VALUE value="01010">Multislot Class 10</VALUE>
+       <VALUE value="01100">Multislot Class 12</VALUE>
+    </TABLE_VALUE>
+  </CONFIG>
+  <DEFAULT>
+    01100 : Multislot Class 12
+  </DEFAULT>
+  <OP>
+    N/A
+  </OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    MTK Modem Supports upto Multislot Class 12.
+  </NOTE>   
+  <AUTHOR>mtk08983</AUTHOR>
+</SBP>
+
+<SBP title="GPRS GEA Cipher Algorithm Support">
+  <DESCRIPTION>
+      This field is to configure different type of ciphering algorithms for Encryption during GPRS/EGPRS data transfer.
+      Encryption algorithm is used to protect user data from unauthorised access and misuse.
+  </DESCRIPTION>
+  <CATEGORY>GAS</CATEGORY>
+  <NVRAM>
+    <PARAG>Bit7 to Bit1 of byte11 of NVRAM_EF_CLASSMARK_RACAP_LID</PARAG>
+    <PARAG>Each Bit represents GEA/1 to GEA/7 independently.</PARAG>
+  </NVRAM>
+  <CONFIG value_width="0.4">
+    <TABLE_VALUE caption="Configurable Value of GPRS GEA Cipher Algorithm Support">
+       <VALUE value="Bit7 in byte11 is 1">GPRS Encryption Algorithm GEA/1 is Supported</VALUE>
+       <VALUE value="Bit6 in byte11 is 1">GPRS Encryption Algorithm GEA/2 is Supported</VALUE>
+       <VALUE value="Bit5 in byte11 is 1">GPRS Encryption Algorithm GEA/3 is Supported</VALUE>
+       <VALUE value="Bit4 in byte11 is 1">GPRS Encryption Algorithm GEA/4 is Supported</VALUE>
+       <VALUE value="Bit3 in byte11 is 1">GPRS Encryption Algorithm GEA/5 is Supported</VALUE>
+       <VALUE value="Bit2 in byte11 is 1">GPRS Encryption Algorithm GEA/6 is Supported</VALUE>
+       <VALUE value="Bit1 in byte11 is 1">GPRS Encryption Algorithm GEA/7 is Supported</VALUE>
+       <VALUE value="Bit7 in byte11 is 0">GPRS Encryption Algorithm GEA/1 is Not Supported</VALUE>
+       <VALUE value="Bit6 in byte11 is 0">GPRS Encryption Algorithm GEA/2 is Not Supported</VALUE>
+       <VALUE value="Bit5 in byte11 is 0">GPRS Encryption Algorithm GEA/3 is Not Supported</VALUE>
+       <VALUE value="Bit4 in byte11 is 0">GPRS Encryption Algorithm GEA/4 is Not Supported</VALUE>
+       <VALUE value="Bit3 in byte11 is 0">GPRS Encryption Algorithm GEA/5 is Not Supported</VALUE>
+       <VALUE value="Bit2 in byte11 is 0">GPRS Encryption Algorithm GEA/6 is Not Supported</VALUE>
+       <VALUE value="Bit1 in byte11 is 0">GPRS Encryption Algorithm GEA/7 is Not Supported</VALUE>
+    </TABLE_VALUE>
+  </CONFIG>
+  <DEFAULT>
+  1110000 : 0xE0 : GPRS Encryption Algorithm GEA/1, GEA/2 and GEA/3 is Supported.
+  </DEFAULT>
+  <OP>
+    N/A
+  </OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    MTK Modem Supports GEA/1, GEA/2 and GEA/3 only. Please DO NOT modify GEA/4, GEA/5, GEA/6, and GEA/7 to be supported, otherwise it may cause GPRS Attach failure.
+  </NOTE>   
+  <AUTHOR>mtk08983</AUTHOR>
+</SBP>
+
+<SBP title="Prefer IMS as voice domain for emergency call in LTE limited service">
+  <DESCRIPTION>
+    This feature is used to set IMS as the voice domain preference for emergency call when
+    the UE is under LTE limited service and both IMS and CS are available.
+  </DESCRIPTION>
+  <CATEGORY>IMS-VoLTE</CATEGORY>
+  <NVRAM>Byte[96](97th byte) of NVRAM_EF_VDM_ADS_PROFILE_LID</NVRAM>
+  <CONFIG value_width="0.4">
+    <VALUE value="Byte[96] is 00">Not prefer IMS. UE will choose CS domain as first emergency call attempt domain.</VALUE>
+    <VALUE value="Byte[96] is 01">Prefer IMS. UE will choose IMS domain as first emergency call attempt domain</VALUE>
+  </CONFIG>
+  <DEFAULT>01</DEFAULT>
+  <OP>
+    N/A
+  </OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    This feature is available after UMOLY.
+  </NOTE>   
+  <AUTHOR>mtk09297</AUTHOR>
+</SBP>
+
+<SBP title="Allow IMS emergency call with negative IMS voice over PS session indicator">
+  <DESCRIPTION>
+    This feature is used to control whether UE is allowed to attempt IMS emergency call under
+    the circumstances that Network indicates IMS voice over PS session indicator is FALSE in Attach/TAU Accept.
+  </DESCRIPTION>
+  <CATEGORY>IMS-VoLTE</CATEGORY>
+  <NVRAM>byte[71](72nd byte) of NVRAM_EF_VDM_ADS_PROFILE_LID</NVRAM>
+  <CONFIG value_width="0.4">
+    <VALUE value="byte[71] is 00">Not allowed. UE will not attemp IMS emergency call wehn IMSVoPS is not supported.</VALUE>
+    <VALUE value="byte[71] is 01">Allowed. UE could attemp IMS emergency call when IMSVoPS is not supported.</VALUE>
+  </CONFIG>
+  <DEFAULT>01</DEFAULT>
+  <OP>
+    N/A
+  </OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    This feature is available after UMOLY.
+  </NOTE>   
+  <AUTHOR>mtk09297</AUTHOR>
+</SBP>
+
+<SBP title="Orange Fast Dormancy">
+  <DESCRIPTION>
+      As per the Orange operator requirement, this feature is to guard two consecutive SCRIs due to FastDormancy with 15sec when timer T323 sent by the network is 0.
+  </DESCRIPTION>
+  <CATEGORY>UAS</CATEGORY>
+  <NVRAM>Bit4 in rrce_feature_cap of NVRAM_EF_UMTS_USIME_RRC_DYNAMIC_CAP_FDD_LID</NVRAM>
+  <CONFIG value_width="0.2">
+    <VALUE value="Bit4 in rrce_feature_cap is 0">Disable Orange Fast Dormancy. i.e no change in T323 when network send as 0 </VALUE>
+    <VALUE value="Bit4 in rrce_feature_cap is 1">Enable  Orange Fast Dormancy. i.e when network send T323 as 0, update T323 to 15 sec </VALUE>
+  </CONFIG>
+  <DEFAULT>Disable Orange Fast Dormancy</DEFAULT>
+  <OP>
+    ORANGE
+  </OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    This feature can be turned on or off only if the modem supports Release 8 FastDormancy.
+  </NOTE>   
+  <AUTHOR>mtk9178</AUTHOR>
+</SBP>
+
+<SBP title="EDPDCH Power Interpolation">
+  <DESCRIPTION>
+      This feature is to control whether to enable EDPDCH power interpolation or not.
+  </DESCRIPTION>
+  <CATEGORY>UAS</CATEGORY>
+  <NVRAM>Bit3 in r7_cap2 of NVRAM_EF_UMTS_USIME_RRC_DYNAMIC_CAP_FDD_LID</NVRAM>
+  <CONFIG value_width="0.2">
+    <VALUE value="Bit3 in r7_cap2 is 0">Disable EDPDCH power interpolation</VALUE>
+    <VALUE value="Bit3 in r7_cap2 is 1">Enable  EDPDCH power interpolation</VALUE>
+  </CONFIG>
+  <DEFAULT>Disable EDPDCH power interpolation</DEFAULT>
+  <OP>DTAG</OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk9178</AUTHOR>
+</SBP>
+
+<SBP title="Slot Format4">
+  <DESCRIPTION>
+      This feature is to control whether to enable slot format4 or not.
+  </DESCRIPTION>
+  <CATEGORY>UAS</CATEGORY>
+  <NVRAM>Bit0 in r7_cap2 of NVRAM_EF_UMTS_USIME_RRC_DYNAMIC_CAP_FDD_LID</NVRAM>
+  <CONFIG value_width="0.2">
+    <VALUE value="Bit0 in r7_cap2 is 0">Disable Slot format4</VALUE>
+    <VALUE value="Bit0 in r7_cap2 is 1">Enable  Slot format4</VALUE>
+  </CONFIG>
+  <DEFAULT>Enable Slot format4</DEFAULT>
+  <OP>DTAG</OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk9178</AUTHOR>
+</SBP>
+
+<SBP title="UMTS integrity and ciphering">
+  <DESCRIPTION>
+      This feature is used to enable/disable UMTS integrity and ciphering
+  </DESCRIPTION>
+  <CATEGORY>UAS</CATEGORY>
+  <NVRAM>
+    Bit 1 in integrity_cap2 of NVRAM_EF_UMTS_USIME_RRC_DYNAMIC_CAP_FDD_LID
+    Bit 2 of integrity_cap2 of NVRAM_EF_UMTS_USIME_RRC_DYNAMIC_CAP_FDD_LID
+    Bit 0 of cipher_cap2    of NVRAM_EF_UMTS_USIME_RRC_DYNAMIC_CAP_FDD_LID
+    Bit 1 of cipher_cap2    of NVRAM_EF_UMTS_USIME_RRC_DYNAMIC_CAP_FDD_LID
+    Bit 2 of cipher_cap2    of NVRAM_EF_UMTS_USIME_RRC_DYNAMIC_CAP_FDD_LID
+  </NVRAM>
+  <CONFIG value_width="0.2">
+    <VALUE value="Bit 1 of integrity_cap2 is 0">Disable UIA1</VALUE>
+    <VALUE value="Bit 1 of integrity_cap2 is 1">Enable UIA1</VALUE>
+    <VALUE value="Bit 2 of integrity_cap2 is 0">Disable UIA2</VALUE>
+    <VALUE value="Bit 2 of integrity_cap2 is 1">Enable UIA2</VALUE>
+    <VALUE value="Bit 0 of    cipher_cap2 is 0">Disable UEA0</VALUE>
+    <VALUE value="Bit 0 of    cipher_cap2 is 1">Enable UEA0</VALUE>
+    <VALUE value="Bit 1 of    cipher_cap2 is 0">Disable UEA1</VALUE>
+    <VALUE value="Bit 1 of    cipher_cap2 is 1">Enable UEA1</VALUE>
+    <VALUE value="Bit 2 of    cipher_cap2 is 0">Disable UEA2</VALUE>
+    <VALUE value="Bit 2 of    cipher_cap2 is 1">Enable UEA2</VALUE>
+  </CONFIG>
+  <DEFAULT>
+    Support integrity algorithm UIA1 and ciphering algorithms UEA0|UEA1.
+  </DEFAULT>
+  <OP>N/A</OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk9178</AUTHOR>
+</SBP>
+
+<SBP title="CPC(DTX-DRX) Configuration">
+  <DESCRIPTION>
+      This feature is to perform Continuous Packet Connectivity (CPC) DTX/DRX operation in CELL_DCH state.
+  </DESCRIPTION>
+  <CATEGORY>UAS</CATEGORY>
+  <NVRAM>Bit7 in r7_cap1 of NVRAM_EF_UMTS_USIME_RRC_DYNAMIC_CAP_FDD_LID</NVRAM>
+  <CONFIG value_width="0.2">
+    <VALUE value="Bit7 in r7_cap1 is 0">Turn off CPC DTX/DRX feature</VALUE>
+    <VALUE value="Bit7 in r7_cap1 is 1">Turn on CPC DTX/DRX feature</VALUE>
+  </CONFIG>
+  <DEFAULT>Turn on CPC DTX/DRX operation feature</DEFAULT>
+  <OP>N/A</OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk9178</AUTHOR>
+</SBP>
+
+<SBP title="eFDPCH Configuration">
+  <DESCRIPTION>
+      This feature is to support enhanced fractional DPCH.
+  </DESCRIPTION>
+  <CATEGORY>UAS</CATEGORY>
+  <NVRAM>Bit4 in r7_cap1 of NVRAM_EF_UMTS_USIME_RRC_DYNAMIC_CAP_FDD_LID</NVRAM>
+  <CONFIG value_width="0.2">
+    <VALUE value="Bit4 in r7_cap1 is 0">Turn off enhanced FDPCH support</VALUE>
+    <VALUE value="Bit4 in r7_cap1 is 1">Turn on enhanced FDPCH support</VALUE>
+  </CONFIG>
+  <DEFAULT>Turn on enhanced FDPCH support</DEFAULT>
+  <OP>N/A</OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk9178</AUTHOR>
+</SBP>
+
+<SBP title="FDPCH Configuration">
+  <DESCRIPTION>
+      This feature is to support fractional DPCH.
+  </DESCRIPTION>
+  <CATEGORY>UAS</CATEGORY>
+  <NVRAM>Bit1 in r6_cap1 of NVRAM_EF_UMTS_USIME_RRC_DYNAMIC_CAP_FDD_LID</NVRAM>
+  <CONFIG value_width="0.2">
+    <VALUE value="Bit1 in r6_cap1 is 0">Turn off FDPCH support</VALUE>
+    <VALUE value="Bit1 in r6_cap1 is 1">Turn on FDPCH support</VALUE>
+  </CONFIG>
+  <DEFAULT>Turn on FDPCH support</DEFAULT>
+  <OP>N/A</OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk9178</AUTHOR>
+</SBP>
+
+<SBP title="UMTS Band Priority">
+  <DESCRIPTION>
+      This feature is used to change the band priority order during PLMN search in 3G. UE will search 3G cell according to the priority setting.
+  </DESCRIPTION>
+  <CATEGORY>UAS</CATEGORY>
+  <NVRAM>NVRAM_EF_UMTS_BAND_PRIORITY_LID</NVRAM>
+  <CONFIG_EXT>
+      <PARAG>To modify Band Priority: </PARAG>
+      <LI> Total size: 22 bytes (one byte for each band) </LI>
+      <LI> Value (Priority) range: 0x00(highest) ~ 0xFF(lowest) </LI>
+      <TABLE_VALUE caption="Band Priority Setting" value_width="0.2"> 
+          <VALUE value="0xFF">Band I</VALUE>
+          <VALUE value="0xFF">Band II</VALUE>
+          <VALUE value="0xFF">Band III</VALUE>
+          <VALUE value="0xFF">Band IV</VALUE>
+          <VALUE value="0xFF">Band V</VALUE>
+          <VALUE value="0xFF">Band VI</VALUE>
+          <VALUE value="0xFF">Band VII</VALUE>
+          <VALUE value="0xFF">Band VIII</VALUE>
+          <VALUE value="0xFF">Band IX</VALUE>
+          <VALUE value="0xFF">Band X</VALUE>
+          <VALUE value="0xFF">Band XI</VALUE>
+          <VALUE value="0xFF">Band XII</VALUE>
+          <VALUE value="0xFF">Band XIII</VALUE>
+          <VALUE value="0xFF">Band XIV</VALUE>
+          <VALUE value="0xFF">Band XV</VALUE>
+          <VALUE value="0xFF">Band XVI</VALUE>
+          <VALUE value="0xFF">Band XVII</VALUE>
+          <VALUE value="0xFF">Band XVIII</VALUE>
+          <VALUE value="0xFF">Band XIX</VALUE>
+          <VALUE value="0xFF">Band XX</VALUE>
+          <VALUE value="0xFF">Band XXI</VALUE>
+          <VALUE value="0xFF">Band XXII</VALUE>
+      </TABLE_VALUE>          
+  </CONFIG_EXT>
+  <DEFAULT>0xFF for all bands</DEFAULT>
+  <OP>N/A</OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk9178</AUTHOR>
+</SBP>
+
+<SBP title="Inter-RAT PS Handover to EUTRA capability">
+  <DESCRIPTION>
+      The feature is used to disable/enable capability of inter-RAT PS Handover to EUTRA FDD/TDD.
+  </DESCRIPTION>
+  <CATEGORY>UAS</CATEGORY>
+  <NVRAM>
+      Bit3 in r8_cap1 of NVRAM_EF_UMTS_USIME_RRC_DYNAMIC_CAP_FDD_LID for EUTRA FDD
+      Bit7 in r8_cap2 of NVRAM_EF_UMTS_USIME_RRC_DYNAMIC_CAP_FDD_LID for EUTRA TDD
+  </NVRAM>
+  <CONFIG value_width="0.2">
+    <VALUE value="Bit3 in r8_cap1 is 0">Disable inter-RAT PS Handover to EUTRA FDD capability</VALUE>
+    <VALUE value="Bit3 in r8_cap1 is 1">Enable  inter-RAT PS Handover to EUTRA FDD capability</VALUE>
+    <VALUE value="Bit7 in r8_cap1 is 0">Disable inter-RAT PS Handover to EUTRA TDD capability</VALUE>
+    <VALUE value="Bit7 in r8_cap1 is 1">Enable  inter-RAT PS Handover to EUTRA TDD capability</VALUE>
+  </CONFIG>
+  <DEFAULT>Enable capability for inter-RAT PS Handover to EUTRA</DEFAULT>
+  <OP>DTAG</OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk9178</AUTHOR>
+</SBP>
+
+<SBP title="UMTS DMCR setting ">
+  <DESCRIPTION>
+      User can use this setting to control which operator (PLMN) need to disable DMCR feature. If UE try to camp on cells of these PLMNs, DMCR feature is disabled.
+  </DESCRIPTION>
+  <CATEGORY>UAS</CATEGORY>
+  <NVRAM>
+      NVRAM_EF_UMTS_DMCR_SETTING_LID
+  </NVRAM>
+  <CONFIG value_width="0.2">
+    <VALUE value="disable_PLMN[i].plmnid">The PLMN for which DMCR feature is disabled</VALUE>    
+  </CONFIG>
+  <DEFAULT>
+      Default setting of this NVRAM file is empty (DMCR disabled for no PLMN)
+      (i.e. disable_PLMN[i].plmnid.mcc1 = disable_PLMN[i].plmnid.mcc2 = disable_PLMN[i].plmnid.mcc3 = disable_PLMN[i].plmnid.mnc1 = disable_PLMN[i].plmnid.mnc2 = disable_PLMN[i].plmnid.mnc3 = 0x0f).
+  </DEFAULT>
+  <OP>N/A</OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    i = 0~15
+  </NOTE>   
+  <AUTHOR>mtk9178</AUTHOR>
+</SBP>
+
+<SBP title="UMTS SIB SKIP setting ">
+  <DESCRIPTION>
+      User can use this setting to control which operator (PLMN) need to enable SIB11/12 skipping for CSFB to 3G. 
+      If UE try to camp on cells of these PLMNs while CSFB is ongoing, SIB11/12 skipping is enable if DMCR not supported.
+  </DESCRIPTION>
+  <CATEGORY>UAS</CATEGORY>
+  <NVRAM>
+      NVRAM_EF_UMTS_SIB_SKIP_SETTING_LID
+  </NVRAM>
+  <CONFIG value_width="0.2">
+    <VALUE value="enable_PLMN[i].plmnid">The PLMN which enable DMCR feature.</VALUE>    
+  </CONFIG>
+  <DEFAULT>
+      Default setting of this NVRAM file is empty 
+      empty (i.e. enable_PLMN[i].plmnid.mcc1 = enable_PLMN[i].plmnid.mcc2 = enable_PLMN[i].plmnid.mcc3 = enable_PLMN[i].plmnid.mnc1 = enable_PLMN[i].plmnid.mnc2 = enable_PLMN[i].plmnid.mnc3 = 0x0f).
+  </DEFAULT>
+  <OP>N/A</OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    i = 0~15
+    If DMCR is not supported by some operators, may use this setting to speed up the CSFB time. But there are highly potential risks those side effects (ex: call drop) may happen if implicitly skipping SIB11/12.  Highly recommend 'NOT' to use this setting.
+  </NOTE>   
+  <AUTHOR>mtk9178</AUTHOR>
+</SBP>
+
+<SBP title="Enable Fast Dormancy in CPC">
+  <DESCRIPTION>
+      The feature is used to enable Fast Dormancy when CPC is configured.
+  </DESCRIPTION>
+  <CATEGORY>UAS</CATEGORY>
+  <NVRAM>
+      Bit4 in rrce_feature_cap of NVRAM_EF_UMTS_USIME_RRC_DYNAMIC_CAP_FDD_LID.
+  </NVRAM>
+  <CONFIG value_width="0.2">
+    <VALUE value="Bit3 in rrce_feature_cap is 0">Disable Fast Dormancy if CPC is configured.</VALUE>
+    <VALUE value="Bit3 in rrce_feature_cap is 1">Enable Fast Dormancy if CPC is configured.</VALUE>
+  </CONFIG>
+  <DEFAULT>Enable Fast Dormancy when CPC is configured</DEFAULT>
+  <OP>EU T-Mobile may need to disable Fast Dormancy when CPC is configured.</OP>
+  <DEPENDENCY>
+    This feature can be turned on/off only if the platform supports R8 FastDormancy.
+  </DEPENDENCY>
+  <NOTE>  
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk9178</AUTHOR>
+</SBP>
+
+<SBP title="Inhibit sending SCRI in CELL_PCH/URA_PCH">
+  <DESCRIPTION>
+      The feature is used to inhibit sending SCRI due to Fast Dormancy in CELL_PCH/URA_PCH if configured.
+  </DESCRIPTION>
+  <CATEGORY>UAS</CATEGORY>
+  <NVRAM>
+      Bit1 in rrce_feature_cap  of NVRAM_EF_UMTS_USIME_RRC_DYNAMIC_CAP_FDD_LID.
+  </NVRAM>
+  <CONFIG value_width="0.2">
+    <VALUE value="Bit0 in rrce_feature_cap  is 0">Don\'t send SCRI due to FastDormancy in Cell_PCH/URA_PCH state</VALUE>
+    <VALUE value="Bit0 in rrce_feature_cap  is 1">Send SCRI due to FastDormancy in Cell_PCH/URA_PCH state</VALUE>
+  </CONFIG>
+  <DEFAULT>Don\'t send SCRI due to FastDormancy in Cell_PCH/URA_PCH state.</DEFAULT>
+  <OP>N/A</OP>
+  <DEPENDENCY>
+    This feature can be turned on/off only if the modem supports Rel-8 FastDormancy
+  </DEPENDENCY>
+  <NOTE>  
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk9178</AUTHOR>
+</SBP>
+
+<SBP title="High Speed Cell FACH">
+  <DESCRIPTION>
+      The feature is used to enable High Speed Cell FACH if configured.
+  </DESCRIPTION>
+  <CATEGORY>UAS</CATEGORY>
+  <NVRAM>
+      Bit5 in r7_cap1 of NVRAM_EF_UMTS_USIME_RRC_DYNAMIC_CAP_FDD_LID.
+  </NVRAM>
+  <CONFIG value_width="0.2">
+  	<VALUE value="Bit5 in r7_cap1 is  0">HSDSCH Reception Disabled in CELL_FACH state</VALUE>
+    <VALUE value="Bit5 in r7_cap1 is  1">HSDSCH Reception Enabled in CELL_FACH state</VALUE>
+  </CONFIG>
+  <DEFAULT>High Speed Cell FACH feature is enabled</DEFAULT>
+  <OP>N/A</OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>  
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk9178</AUTHOR>
+</SBP>
+
+<SBP title="High Speed Cell PCH">
+  <DESCRIPTION>
+      The feature is used to enable High Speed Cell PCH if configured.
+  </DESCRIPTION>
+  <CATEGORY>UAS</CATEGORY>
+  <NVRAM>
+      Bit6 in r7_cap1 of NVRAM_EF_UMTS_USIME_RRC_DYNAMIC_CAP_FDD_LID.
+  </NVRAM>
+  <CONFIG value_width="0.2">
+  	<VALUE value="Bit6 in r7_cap1 is  0">HSDSCH Reception Disabled in CELL_PCH and URA_PCH state</VALUE>    
+    <VALUE value="Bit6 in r7_cap1 is  1">HSDSCH Reception Enabled in CELL_PCH and URA_PCH state</VALUE>    
+  </CONFIG>
+  <DEFAULT>High Speed Cell/URA PCH feature is enabled</DEFAULT>
+  <OP>N/A</OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>  
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk9178</AUTHOR>
+</SBP>
+
+<SBP title="High Speed RACH">
+  <DESCRIPTION>
+      The feature is used to enable High Speed RACH if configured.
+  </DESCRIPTION>
+  <CATEGORY>UAS</CATEGORY>
+  <NVRAM>
+      Bit1 in r8_cap2 of NVRAM_EF_UMTS_USIME_RRC_DYNAMIC_CAP_FDD_LID.
+  </NVRAM>
+  <CONFIG value_width="0.2">
+    <VALUE value="Bit1 in r8_cap2 is 0">High Speed RACH feature is disabled</VALUE>
+    <VALUE value="Bit1 in r8_cap2 is 1">High Speed RACH feature is enabled</VALUE>
+  </CONFIG>
+  <DEFAULT>High Speed RACH feature is enabled.</DEFAULT>
+  <OP>N/A</OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>  
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk9178</AUTHOR>
+</SBP>
+
+<SBP title="TWO DRX SCHEMES">
+  <DESCRIPTION>
+      The feature is used to enable two DRX Schemes in CELL_PCH/URA_PCH states.
+  </DESCRIPTION>
+  <CATEGORY>UAS</CATEGORY>
+  <NVRAM>
+      Bit2 in r7_cap2 of NVRAM_EF_UMTS_USIME_RRC_DYNAMIC_CAP_FDD_LID.
+  </NVRAM>
+  <CONFIG value_width="0.2">
+    <VALUE value="Bit2 in r7_cap2 is 0">Two DRX Scheme in CELL_PCH/URA_PCH states is disabled</VALUE>
+    <VALUE value="Bit2 in r7_cap2 is 1">Two DRX Scheme in CELL_PCH/URA_PCH states is enabled</VALUE>
+  </CONFIG>
+  <DEFAULT>Two DRX Scheme in CELL_PCH/URA_PCH states is enabled.</DEFAULT>
+  <OP>N/A</OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>  
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk9178</AUTHOR>
+</SBP>
+
+<SBP title="HSSCCH-less HSDSCH Operation">
+  <DESCRIPTION>
+      This feature is to enable HSSCCH-less HSDSCH operation.
+  </DESCRIPTION>
+  <CATEGORY>UAS</CATEGORY>
+  <NVRAM>Bit3 in r7_cap1 of NVRAM_EF_UMTS_USIME_RRC_DYNAMIC_CAP_FDD_LID</NVRAM>
+  <CONFIG value_width="0.2">
+    <VALUE value="Bit3 in r7_cap1 is 0">Turn off HSSCCH-less HSDSCH feature</VALUE>
+    <VALUE value="Bit3 in r7_cap1 is 1">Turn on  HSSCCH-less HSDSCH feature</VALUE>
+  </CONFIG>
+  <DEFAULT>Turn on HSSCCH-less HSDSCH feature</DEFAULT>
+  <OP>N/A</OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk9178</AUTHOR>
+</SBP>
+
+<SBP title="HSDSCH DRX operation">
+  <DESCRIPTION>
+      This feature is to enable support for HSDSCH DRX operation.
+  </DESCRIPTION>
+  <CATEGORY>UAS</CATEGORY>
+  <NVRAM>Bit1 in r8_cap1 of NVRAM_EF_UMTS_USIME_RRC_DYNAMIC_CAP_FDD_LID</NVRAM>
+  <CONFIG value_width="0.2">
+    <VALUE value="Bit1 in r8_cap1 is 0">Turn off HSDSCH DRX operation feature</VALUE>
+    <VALUE value="Bit1 in r8_cap1 is 1">Turn on  HSDSCH DRX operation feature</VALUE>
+  </CONFIG>
+  <DEFAULT>Turn on HSDSCH DRX operation feature</DEFAULT>
+  <OP>N/A</OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk9178</AUTHOR>
+</SBP>
+
+<SBP title="Support for MAC-iis">
+  <DESCRIPTION>
+      This feature is to enable support for MAC-iis.
+  </DESCRIPTION>
+  <CATEGORY>UAS</CATEGORY>
+  <NVRAM>Bit2 in r8_cap2 of NVRAM_EF_UMTS_USIME_RRC_DYNAMIC_CAP_FDD_LID</NVRAM>
+  <CONFIG value_width="0.2">
+    <VALUE value="Bit2 in r8_cap2 is 0">Turn off support for MAC-iis feature</VALUE>
+    <VALUE value="Bit2 in r8_cap2 is 1">Turn on  support for MAC-iis feature</VALUE>
+  </CONFIG>
+  <DEFAULT>Turn on support for MAC-iis feature</DEFAULT>
+  <OP>N/A</OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk9178</AUTHOR>
+</SBP>
+
+<SBP title="Support for MAC-ehs">
+  <DESCRIPTION>
+      This feature is to enable support for MAC-ehs.
+  </DESCRIPTION>
+  <CATEGORY>UAS</CATEGORY>
+  <NVRAM>Bit2 in r7_cap1 of NVRAM_EF_UMTS_USIME_RRC_DYNAMIC_CAP_FDD_LID</NVRAM>
+  <CONFIG value_width="0.2">
+    <VALUE value="Bit2 in r7_cap1 is 0">Turn off support for MAC-ehs feature</VALUE>
+    <VALUE value="Bit2 in r7_cap1 is 1">Turn on  support for MAC-ehs feature</VALUE>
+  </CONFIG>
+  <DEFAULT>Turn on support for MAC-ehs feature</DEFAULT>
+  <OP>N/A</OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk9178</AUTHOR>
+</SBP>
+
+<SBP title="Change supported GSM,WCDMA,TD-SCDMA Bands">
+  <DESCRIPTION>
+      Supported GSM, TD-SCDMA, WCDMA bands can be modified by NVRAM
+  </DESCRIPTION>
+  <CATEGORY>GAS,UAS,TAS</CATEGORY>
+  <NVRAM>Bits 0~7 in member "gsm_band" of NVRAM_EF_AS_BAND_SETTING_LID</NVRAM>
+  <CONFIG_EXT>
+      <PARAG> Bits 0~7 in member "gsm_band" of NVRAM_EF_AS_BAND_SETTING_LID </PARAG>
+      <TABLE_VALUE caption="Band Settings of GSM">
+          <VALUE value="0x02">GSM900</VALUE>
+          <VALUE value="0x08">DCS1800</VALUE>
+          <VALUE value="0x10">PCS1900</VALUE>
+          <VALUE value="0x20">GSM450</VALUE>
+          <VALUE value="0x80">GSM900</VALUE>
+      </TABLE_VALUE>    
+      
+      <PARAG>Bytes 0~3 in member "fdd_umts_band" of NVRAM_EF_AS_BAND_SETTING_LID</PARAG>
+      <PARAG> i=0~7, j=0~7</PARAG>
+      <TABLE_VALUE caption="Band Settings of WCDMA">
+          <VALUE value="Bit j in fdd_umts_band[i] is 1">Support UMTS Band (i*8+j+1)</VALUE>
+          <VALUE value="Bit j in fdd_umts_band[i] is 0">Not Support UMTS Band (i*8+j+1)</VALUE>
+      </TABLE_VALUE>	
+      
+      <PARAG> Bytes 0~3 in member "tdd_umts_band" of NVRAM_EF_AS_BAND_SETTING_LID </PARAG>
+      <TABLE_VALUE caption="Band Settings of GSM">
+          <VALUE value="0x01">Support_UMTS_BAND_A</VALUE>
+          <VALUE value="0x02">Support_UMTS_BAND_B</VALUE>
+          <VALUE value="0x04">Support_UMTS_BAND_C</VALUE>
+          <VALUE value="0x08">Support_UMTS_BAND_D</VALUE>
+          <VALUE value="0x10">Support_UMTS_BAND_E</VALUE>
+          <VALUE value="0x20">Support_UMTS_BAND_F</VALUE>
+      </TABLE_VALUE>    
+  </CONFIG_EXT>
+  <DEFAULT>All Bands are supported</DEFAULT>
+  <OP>N/A</OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk9178</AUTHOR>
+</SBP>
+
+<SBP title="LTE AFR (Autonomous Fast Return) timer">
+  <DESCRIPTION>
+    <PARAG>This feature is used to set LTE AFR timer.</PARAG>
+    <PARAG>When this feature is enabled, during AFR to LTE procedure, UE would start AFR timer. 
+           If AFR timer expires and AFR procedure is not completed yet, it means AFR procedure fails.</PARAG>
+    <PARAG>When this feature is disabled, UE would not start AFR timer.</PARAG>
+  </DESCRIPTION>
+  <CATEGORY>EAS</CATEGORY>
+  <NVRAM>'afr_timer' of NVRAM_EF_ERRC_PERFORMANCE_PARA_LID</NVRAM>
+  <CONFIG>
+    <VALUE value="0">Disable. UE would not start AFR timer.</VALUE>
+    <VALUE value="1~255">Enable. UE would start AFR timer with interval=1~255 seconds.</VALUE>
+  </CONFIG>
+  <DEFAULT>2</DEFAULT>
+  <OP>N/A</OP>
+  <DEPENDENCY>N/A</DEPENDENCY>
+  <NOTE>This feature is available on LR9/LR11/LR12/LR12A.</NOTE>
+  <AUTHOR>mtk02481</AUTHOR>
+</SBP>
+
+<SBP title="LTE Priority Band">
+  <DESCRIPTION>
+    <PARAG>This feature is used to set LTE Priority Band.</PARAG>
+    <PARAG>When this feature is enabled, LTE band search order would be changed according to LTE Priority Band setting.</PARAG>
+    <PARAG>When this feature is disabled, LTE band search order would be decided by MTK internal algorithm.</PARAG>
+    <PARAG>A Priority Band record includes a PLMN/MCC and a band array. UE would apply band array as LTE band search order if PLMN/MCC is matched. 
+           If PLMN/MCC=0xffffff, it would match any PLMNs. You can set multiple records with different PLMN/MCCs. 
+           If none of records is matched, LTE band search order would be decided by MTK internal algorithm.</PARAG>
+    <TABLE column="5" caption="Priority Band records example">
+      <TR><TD width="0.1">PLMN/MCC</TD><TD width="0.1">band_list[0]</TD><TD width="0.1">band_list[1]</TD><TD width="0.1">band_list[2]</TD><TD width="0.1">band_list[3]</TD></TR>
+      <TR><TD>0x46692f</TD><TD>17</TD><TD>3</TD><TD>1</TD><TD>21</TD></TR>
+      <TR><TD>0x466fff</TD><TD>3</TD><TD>17</TD><TD>1</TD><TD>21</TD></TR>
+      <TR><TD>0xffffff</TD><TD>1</TD><TD>3</TD><TD>17</TD><TD>21</TD></TR>
+    </TABLE>
+    <PARAG>For example, if you set Priority Band records as above,</PARAG>
+    <LI>If selected PLMN is 46692f, LTE band search order would be 17->3->1->21.</LI>
+    <LI>If selected PLMN is 46630f, LTE band search order would be 3->17->1->21.</LI>
+    <LI>If selected PLMN is 45001f, LTE band search order would be 1->3->17->21.</LI>
+  </DESCRIPTION>
+  <CATEGORY>EAS</CATEGORY>
+  <NVRAM>'designated_carrier_inf' of NVRAM_EF_ERRC_PERFORMANCE_PARA_LID</NVRAM>
+  <CONFIG>
+    <VALUE value="priority_band_inf_num">Number of LTE Priority Band records. Range=0~8. If priority_band_inf_num=0, it means disable.</VALUE>
+    <VALUE value="priority_band_inf[i].plmn_id">PLMN id of the i-th LTE Priority Band record</VALUE>
+    <VALUE value="priority_band_inf[i].band_num">Band number of the i-th LTE Priority Band record. Range=1~64.</VALUE>
+    <VALUE value="priority_band_inf[i].band_list">Band array of the i-th LTE Priority Band record. band_list[]=N means band N.
+           band_list[0] is the first search band, band_list[1] is the second search band, and so on.</VALUE>
+  </CONFIG>
+  <DEFAULT>priority_band_inf_num = 0</DEFAULT>
+  <OP>N/A</OP>
+  <DEPENDENCY>N/A</DEPENDENCY>
+  <NOTE>This feature is available on LR9/LR11/LR12/LR12A.</NOTE>
+  <AUTHOR>mtk02481</AUTHOR>
+</SBP>
+
+<SBP title="Repeated ACCH feature">
+  <DESCRIPTION>
+      The repeated SACCH prodecure is explined below.
+      If a downlink SACCH is incorrectly decoded and the next downlink is not the repitition, then as UE sets the SACCH REPITITION request in the next uplink SACCH block to - Repeated SACCH Required.
+      If a downlink SACCH is correctly decoded and the next downlink is not the repitition as per Repeated Sacch procedure, then as UE sets the SACCH REPITITION request in the next uplink SACCH block to - Repeated SACCH notrequired.
+  </DESCRIPTION>
+  <CATEGORY>GAS</CATEGORY>
+  <NVRAM> Bit1 in byte17 of NVRAM_EF_CLASSMARK_RACAP_LID</NVRAM>
+  <CONFIG_EXT>
+      <TABLE_VALUE caption="configurable values for Repeated ACCH feature">
+        <VALUE value="0">Repeated ACCH feature is not supported by UE </VALUE>
+        <VALUE value="1">Repeated ACCH feature is supported by UE </VALUE>
+      </TABLE_VALUE>
+  </CONFIG_EXT>
+  <DEFAULT>01</DEFAULT>
+  <OP>
+    N/A
+  </OP>
+  <DEPENDENCY>
+    The feature is controlled by a flag named __REPEATED_ACCH__. 
+  </DEPENDENCY>
+  <NOTE>
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk11225</AUTHOR>
+</SBP>
+
+<SBP title="Inter-RAT PS Handover to EUTRA capability (3G TDD)">
+  <DESCRIPTION>
+      The feature is used to disable/enable capability of inter-RAT PS Handover to EUTRA TDD/FDD.
+  </DESCRIPTION>
+  <CATEGORY>UAS</CATEGORY>
+  <NVRAM>
+      Bit3 in r9_cap1 of NVRAM_EF_UMTS_USIME_RRC_DYNAMIC_CAP_TDD_LID for EUTRA TDD. 
+      Bit6 in r9_cap3 of NVRAM_EF_UMTS_USIME_RRC_DYNAMIC_CAP_TDD_LID for EUTRA FDD.
+  </NVRAM>
+  <CONFIG value_width="0.2">
+    <VALUE value="Bit3 in r9_cap1 is 0">Disable inter-RAT PS Handover to EUTRA TDD capability</VALUE>
+    <VALUE value="Bit3 in r9_cap1 is 1">Enable inter-RAT PS Handover to EUTRA TDD capability</VALUE>
+    <VALUE value="Bit6 in r9_cap3 is 0">Disable inter-RAT PS Handover to EUTRA FDD capability</VALUE>
+    <VALUE value="Bit6 in r9_cap3 is 1">Enable inter-RAT PS Handover to EUTRA FDD capability</VALUE>
+  </CONFIG>
+  <DEFAULT>Enable capability of inter-RAT PS Handover to EUTRA</DEFAULT>
+  <OP>
+    N/A
+  </OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk80702</AUTHOR>
+</SBP>
+
+<SBP title="UMTS integrity and ciphering (3G TDD)">
+  <DESCRIPTION>
+      This feature is used to enable/disable UMTS integrity and ciphering
+  </DESCRIPTION>
+  <CATEGORY>UAS</CATEGORY>
+  <NVRAM>
+    Bit1/Bit0 in integrity_cap2 and Bit2/Bit1/Bit0 in cipher_cap2 of NVRAM_EF_UMTS_USIME_RRC_DYNAMIC_CAP_TDD_LID.
+  </NVRAM>
+  <CONFIG value_width="0.2">
+    <VALUE value="Bit 0 of integrity_cap2 is 0">Disable UIA1</VALUE>
+    <VALUE value="Bit 0 of integrity_cap2 is 1">Enable UIA1</VALUE>
+    <VALUE value="Bit 1 of integrity_cap2 is 0">Disable UIA2</VALUE>
+    <VALUE value="Bit 1 of integrity_cap2 is 1">Enable UIA2</VALUE>
+    <VALUE value="Bit 0 of    cipher_cap2 is 0">Disable UEA0</VALUE>
+    <VALUE value="Bit 0 of    cipher_cap2 is 1">Enable UEA0</VALUE>
+    <VALUE value="Bit 1 of    cipher_cap2 is 0">Disable UEA1</VALUE>
+    <VALUE value="Bit 1 of    cipher_cap2 is 1">Enable UEA1</VALUE>
+    <VALUE value="Bit 2 of    cipher_cap2 is 0">Disable UEA2</VALUE>
+    <VALUE value="Bit 2 of    cipher_cap2 is 1">Enable UEA2</VALUE>
+  </CONFIG>
+  <DEFAULT>
+    Support integrity algorithm UIA1 and ciphering algorithms UEA0.
+  </DEFAULT>
+  <OP>
+    N/A
+  </OP>
+  <DEPENDENCY>
+    N/A
+  </DEPENDENCY>
+  <NOTE>
+    N/A
+  </NOTE>   
+  <AUTHOR>mtk80702</AUTHOR>
+</SBP>
+
+</SBP_DOC_ROOT>

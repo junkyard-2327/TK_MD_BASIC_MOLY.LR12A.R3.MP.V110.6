@@ -1,0 +1,2 @@
+         * (DSPRAM_ZI_CORE1*)
+         . = ALIGN(8);

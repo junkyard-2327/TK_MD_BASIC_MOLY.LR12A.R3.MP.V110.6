@@ -1,0 +1,199 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; MT6763 MD Frequency Meter
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;Below you should change for each project;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+LOCAL &clksw_base         ;; MD CLKSW base address
+&clksw_base=0xA0150000    ;; MD view APB
+;&clksw_base=0xA0096000    ;; MD view debug APB
+;&clksw_base=0x20150000    ;; AP view MD system bus
+;&clksw_base=0x0D0D6000    ;; AP view MD debug sys
+
+LOCAL &pll_base           ;; MD PLLMIXED base address
+&pll_base=0xA0140000      ;; MD view APB
+;&pll_base=0xA0094000      ;; MD view debug APB
+;&pll_base=0x20140000      ;; AP view MD system bus
+;&pll_base=0x0D0D4000      ;; AP view MD debug sys
+
+&fqmtr_fcksel_32k_index=0x17
+
+;;;;;;;;;;;;;;;;;;;;;;;Above you should change for each project;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+LOCAL &fqmtr_winset     ;; Frequency Meter Windoiw Setting (= Number of FIXED clock cycle)
+&fqmtr_winset=0x1ff
+&fqmtr_winset_for_32k=0x1E000
+
+LOCAL &fqmtr_fcksel_val ;; Frequency Meter FIXED clock selection
+&fqmtr_fcksel_val=0x1a  ;; Select 26Mhz by default
+
+&SRC_STR_10="TRACE_MON_clock"
+&SRC_STR_11="MDSYS_208M_clock"
+&SRC_STR_12="mdrxsys_rake_clock"
+&SRC_STR_13="mdrxsys_brp_clock"
+&SRC_STR_14="mdrxsys_vdsp_clock"
+&SRC_STR_15="mdtop_log_atb_clock"
+&SRC_STR_16="fesys_csys_clock"
+&SRC_STR_17="fesys_txsys_clock"
+&SRC_STR_18="fesys_bsi_clock"
+&SRC_STR_19="mdsys_mdcore_clock"
+&SRC_STR_20="mdsys_bus2x_nodcm_clock"
+&SRC_STR_21="mdsys_bus2x_clock"
+&SRC_STR_22="mdtop_dbg_clock"
+&SRC_STR_23="mdtop_f32k_clock"
+&SRC_STR_24="MDBPIPLL_0_DIV2_clock"
+&SRC_STR_25="MDBPIPLL_2_clock"
+&SRC_STR_26="MDBPIPLL_1_clock"
+&SRC_STR_27="MDBPIPLL_0_clock"
+&SRC_STR_28="MDTXPLL_clock"
+&SRC_STR_29="MDBRPPLL_clock"
+&SRC_STR_30="MDVDSPPLL_clock"
+&SRC_STR_31="MDMCUPLL_clock"
+
+LOCAL &idx
+LOCAL &str
+&idx = 0xA;
+&str = "TRACE_MON_clock"
+GOSUB fqmtr_query
+&idx = 0xB;
+&str = "MDSYS_208M_clock"
+GOSUB fqmtr_query
+&idx = 0xC;
+&str = "mdrxsys_rake_clock"
+GOSUB fqmtr_query
+&idx = 0xD;
+&str = "mdrxsys_brp_clock"
+GOSUB fqmtr_query
+&idx = 0xE;
+&str = "mdrxsys_vdsp_clock" 
+GOSUB fqmtr_query
+&idx = 0xF;
+&str = "mdtop_log_atb_clock"
+GOSUB fqmtr_query
+&idx = 0x10;
+&str = "fesys_csys_clock"
+GOSUB fqmtr_query
+&idx = 0x11;
+&str = "fesys_txsys_clock"
+GOSUB fqmtr_query
+&idx = 0x12;
+&str = "fesys_bsi_clock"
+GOSUB fqmtr_query
+&idx = 0x13;
+&str = "mdsys_mdcore_clock"
+GOSUB fqmtr_query
+&idx = 0x14;
+&str = "mdsys_bus2x_nodcm_clock"
+GOSUB fqmtr_query
+&idx = 0x15;
+&str = "mdsys_bus2x_clock"
+GOSUB fqmtr_query
+&idx = 0x16;
+&str = "mdtop_dbg_clock"
+GOSUB fqmtr_query
+&idx = 0x17;
+&str = "mdtop_f32k_clock"
+GOSUB fqmtr_query
+&idx = 0x18;
+&str = "MDBPIPLL_0_DIV2_clock"
+GOSUB fqmtr_query
+&idx = 0x19;
+&str = "MDBPIPLL_2_clock"
+GOSUB fqmtr_query
+&idx = 0x1A;
+&str = "MDBPIPLL_1_clock"
+GOSUB fqmtr_query
+&idx = 0x1B;
+&str = "MDBPIPLL_0_clock"
+GOSUB fqmtr_query
+&idx = 0x1C;
+&str = "MDTXPLL_clock"
+GOSUB fqmtr_query
+&idx = 0x1D;
+&str = "MDBRPPLL_clock"
+GOSUB fqmtr_query
+&idx = 0x1E;
+&str = "MDVDSPPLL_clock"
+GOSUB fqmtr_query
+&idx = 0x1F;
+&str = "MDMCUPLL_clock"
+GOSUB fqmtr_query
+
+&idx = 0x20;
+
+;;;;;The main function to get the Frequency. &idx==> the clock you select, &str==> clock name, &info==>list more info and wait 5ms in the function
+;; &info=1 ==> for printing many PLLs at one time
+fqmtr_query:
+    LOCAL &unit
+    LOCAL &fqmtr_winset_26M	
+    LOCAL &fqmtr_result
+    LOCAL &fqmtr_result_raw
+    LOCAL &safe_wait_cnt
+    LOCAL &safe_wait_cnt_max
+    LOCAL &mul_for_32k	
+
+    &safe_wait_cnt=0
+    IF &idx==0x20
+    (
+       RETURN
+    )
+    ELSE
+    (  
+        IF &fqmtr_fcksel_val==0x1a ;; base on 26M, unit:MHz
+        (
+            IF &idx==&fqmtr_fcksel_32k_index ;; measure 32K 
+            (	
+                &unit="Khz"
+                &fqmtr_winset_26M=&fqmtr_winset_for_32k
+                &safe_wait_cnt_max=500 ;;5000 ms = 5s ==> in real test, longer than 5s, so reduce it
+                &mul_for_32k=0x3E8
+            )
+            ELSE ;; measure PLL and other module
+            (		
+                &unit="Mhz"
+                &fqmtr_winset_26M=&fqmtr_winset	
+                &safe_wait_cnt_max=32 ;;32 ms
+                &mul_for_32k=1
+            )		
+        )
+		
+    	;;div 8 and select src
+    	Data.Set (&clksw_base+0x0104) %LE %LONG 0x0 ;reset frequency meter
+    	Data.Set (&clksw_base+0x0100) %LE %LONG (0x0300)|(&idx)
+    	Data.Set (&clksw_base+0x0108) %LE %LONG &fqmtr_winset_26M
+    	Data.Set (&clksw_base+0x0104) %LE %LONG 0x1 ;enable frequency meter
+
+        ;; read status, to check polling done or not
+        &fqmtr_busy=DATA.LONG(&clksw_base+0x0104)&(1<<1)
+		
+        WHILE &fqmtr_busy==0
+        (
+;           PRINT ". &fqmtr_busy"
+            &fqmtr_busy=DATA.LONG(&clksw_base+0x0104)&(1<<1)
+            &safe_wait_cnt=&safe_wait_cnt+1
+            IF &safe_wait_cnt==&safe_wait_cnt_max
+            (
+                PRINT "[&str] Wait Fail, exit"
+                RETURN
+            )
+            ELSE 
+            (		
+;                PRINT "Waiting result. safe_wait_cnt=" "&safe_wait_cnt"			
+            )		
+            WAIT 1000.us
+
+        )
+	
+        ;; Calculate the result
+        &fqmtr_result_raw=DATA.LONG(&clksw_base+0x10c)
+        &fqmtr_result=&fqmtr_result_raw*&fqmtr_fcksel_val*8*&mul_for_32k/(&fqmtr_winset_26M+3)
+        &fqmtr_result_dec=&fqmtr_result
+        &fqmtr_result_dec=FORMAT.DECIMAL( 0 , &fqmtr_result )
+
+        PRINT " &idx , &fqmtr_result_dec &unit , &str "
+
+        WAIT 1000.us
+
+        RETURN
+    )

@@ -1,0 +1,2 @@
+parse.tcl HSCTRL CUIF_WCDMA
+parse.tcl HSEQ CUIF_WCDMA

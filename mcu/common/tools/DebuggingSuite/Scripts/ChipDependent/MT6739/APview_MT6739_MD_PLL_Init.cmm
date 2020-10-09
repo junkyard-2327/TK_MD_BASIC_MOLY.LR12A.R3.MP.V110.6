@@ -1,0 +1,126 @@
+; /* Step 6 config PLL setting */
+;;==============================PLL init start==================================================
+;;sys.m prepare
+&MEM_CLASS="AXI"
+
+&BASE_MADDR_APMIXEDSYS=(0x1000C000)
+&BASE_MADDR_MDTOP_PLLMIXED=(0x20140000)
+&BASE_MADDR_MDTOP_CLKSW=(0x20150000)
+
+&REG_APMIXEDSYS_AP_PLL_CON0=(&BASE_MADDR_APMIXEDSYS+0x0)
+
+&REG_MDTOP_PLLMIXED_DCXO_PLL_SETTLE_CTL=(&BASE_MADDR_MDTOP_PLLMIXED+0x4)
+&REG_MDTOP_PLLMIXED_PLL_ON_CTL=(&BASE_MADDR_MDTOP_PLLMIXED+0x10)
+&REG_MDTOP_PLLMIXED_PLL_SW_CTL0=(&BASE_MADDR_MDTOP_PLLMIXED+0x14)
+&REG_MDTOP_PLLMIXED_MDMCUPLL_CTL0=(&BASE_MADDR_MDTOP_PLLMIXED+0x40)
+&REG_MDTOP_PLLMIXED_MDVDSPPLL_CTL0=(&BASE_MADDR_MDTOP_PLLMIXED+0x48)
+&REG_MDTOP_PLLMIXED_MDBRPPLL_CTL0=(&BASE_MADDR_MDTOP_PLLMIXED+0x50)
+&REG_MDTOP_PLLMIXED_MDTXPLL_CTL0=(&BASE_MADDR_MDTOP_PLLMIXED+0x58)
+&REG_MDTOP_PLLMIXED_MDBPIPLL_CTL0=(&BASE_MADDR_MDTOP_PLLMIXED+0x60)
+&REG_MDTOP_PLLMIXED_MDBPIPLL_CTL1=(&BASE_MADDR_MDTOP_PLLMIXED+0x64)
+&REG_MDTOP_PLLMIXED_MDPLL_CTL0=(&BASE_MADDR_MDTOP_PLLMIXED+0x100)
+&REG_MDTOP_PLLMIXED_MDPLL_CTL1=(&BASE_MADDR_MDTOP_PLLMIXED+0x104)
+&REG_MDTOP_PLLMIXED_MDPLL_CTL2=(&BASE_MADDR_MDTOP_PLLMIXED+0x108)
+&REG_MDTOP_PLLMIXED_PLL_HP_RDY_IRQ=(&BASE_MADDR_MDTOP_PLLMIXED+0x314)
+&REG_MDTOP_PLLMIXED_PLL_HP_RDY_IRQ_MASK=(&BASE_MADDR_MDTOP_PLLMIXED+0x318)
+&REG_MDTOP_PLLMIXED_MDMCUPLL_STS=(&BASE_MADDR_MDTOP_PLLMIXED+0xC00)
+&REG_MDTOP_PLLMIXED_PLL_DUMMY=(&BASE_MADDR_MDTOP_PLLMIXED+0xF00)
+
+
+&REG_MDTOP_CLKSW_CLKON_CTL=(&BASE_MADDR_MDTOP_CLKSW+0x20)
+&REG_MDTOP_CLKSW_CLKSEL_CTL=(&BASE_MADDR_MDTOP_CLKSW+0x24)
+&REG_MDTOP_CLKSW_SDF_CK_CTL=(&BASE_MADDR_MDTOP_CLKSW+0x28)
+&REG_MDTOP_CLKSW_MDSYS_BUS_FLEXCKGEN_STS=(&BASE_MADDR_MDTOP_CLKSW+0x84)
+
+&MD_PLL_MAGIC_NUM=(0x62930000)
+
+;;// initial CLKSQ_LPF
+d.s &MEM_CLASS:&REG_APMIXEDSYS_AP_PLL_CON0 %long %le data.long(&MEM_CLASS:&REG_APMIXEDSYS_AP_PLL_CON0)|0x2
+;;// 100us
+wait 1.ms
+
+;;// Default md_srclkena_ack settle time = 136T 32K
+;;//d.s &MEM_CLASS:&REG_MDTOP_PLLMIXED_DCXO_PLL_SETTLE_CTL %long %le 0x02020E88
+
+;;//fixed 600MHz(/4), 260MHz(/7) /* Fvco = 1820M 
+d.s &MEM_CLASS:&REG_MDTOP_PLLMIXED_MDBPIPLL_CTL0 %long %le 0x80118000
+;;/ 300MHz                                   /* Fvco = 1200M */
+d.s &MEM_CLASS:&REG_MDTOP_PLLMIXED_MDTXPLL_CTL0 %long %le 0x800B8A00
+;;// 300MHz                                   /* Fvco = 1800M */
+d.s &MEM_CLASS:&REG_MDTOP_PLLMIXED_MDBRPPLL_CTL0 %long %le 0x80114E00
+;;// 450MHz                                   /* Fvco = 1800M */
+d.s &MEM_CLASS:&REG_MDTOP_PLLMIXED_MDVDSPPLL_CTL0 %long %le 0x80114E00
+;;// 600MHz                                   /* Fvco = 1200M */
+d.s &MEM_CLASS:&REG_MDTOP_PLLMIXED_MDMCUPLL_CTL0 %long %le 0x800B8A00
+
+;;// Polling until MDMCUPLL complete frequency adjustment
+;WHILE ((data.long(&MEM_CLASS:&REG_MDTOP_PLLMIXED_MDMCUPLL_STS)>>14)&0x1)!=0
+;(
+;)
+wait 1.ms
+
+;;//In L17, MDPLL should be turn-on first manually, since first calabration requires longer time (100us).
+;;/*TINFO="MDSYS_INIT: MDPLL_208M_OUT_EN off"*/
+d.s &MEM_CLASS:&REG_MDTOP_PLLMIXED_MDPLL_CTL2 %long %le data.long(&MEM_CLASS:&REG_MDTOP_PLLMIXED_MDPLL_CTL2)&(~0x10000)
+
+;;/*TINFO="MDSYS_INIT: SW Force ON MDPLL"*/
+d.s &MEM_CLASS:&REG_MDTOP_PLLMIXED_PLL_SW_CTL0 %long %le 0x10000
+d.s &MEM_CLASS:&REG_MDTOP_PLLMIXED_PLL_SW_CTL0 %long %le 0x10001
+
+;;// 100us
+wait 1.ms
+
+;;/*TINFO="MDSYS_INIT: SW Force OFF MDPLL"*/
+d.s &MEM_CLASS:&REG_MDTOP_PLLMIXED_PLL_SW_CTL0 %long %le 0x10000
+d.s &MEM_CLASS:&REG_MDTOP_PLLMIXED_PLL_SW_CTL0 %long %le 0x0
+
+;;/*TINFO="MDSYS_INIT: MDPLL_208M_OUT_EN on"*/
+d.s &MEM_CLASS:&REG_MDTOP_PLLMIXED_MDPLL_CTL2 %long %le data.long(&MEM_CLASS:&REG_MDTOP_PLLMIXED_MDPLL_CTL2)|(0x10000)
+
+;;// 1us
+wait 1.ms
+
+;;/*TINFO="MDSYS_INIT: Disable AUTOK_EN, MDPLL settle time is 20us NOW (AUTOK_EN can only be setting when MDPLL_EN is OFF, so we add 1us to avoid signals competition)"*/
+d.s &MEM_CLASS:&REG_MDTOP_PLLMIXED_MDPLL_CTL1 %long %le data.long(&MEM_CLASS:&REG_MDTOP_PLLMIXED_MDPLL_CTL1)&(~0x4000000)
+
+;;/*TINFO="MDSYS_INIT: Wait 1us"*/
+;;// 1us
+wait 1.ms
+	
+;;/* Force TXPLL ON due to TOPSM couldn't enable this PLL by default, TXPLL would be disable after DVFS Init. 
+;;   other PLL ON controlled by HW" */
+d.s &MEM_CLASS:&REG_MDTOP_PLLMIXED_PLL_ON_CTL %long %le 0x100010
+
+;;    /*
+;;    * Wait MD bus clock ready
+;;    * Once MD bus ready, other clock should be ready too
+;;    * In FPGA, the following status checking must be removed since there is no flex ck gen in FPGA.
+;;    */
+;WHILE (data.long(&MEM_CLASS:&REG_MDTOP_CLKSW_MDSYS_BUS_FLEXCKGEN_STS)&0x8000)!=0x8000
+;(
+;)
+wait 1.ms
+
+;;// Switch MDMCU & MD BUS clock to PLL frequency
+d.s &MEM_CLASS:&REG_MDTOP_CLKSW_CLKSEL_CTL %long %le data.long(&MEM_CLASS:&REG_MDTOP_CLKSW_CLKSEL_CTL)|(0x3)
+
+;;// Switch all clock to PLL frequency
+d.s &MEM_CLASS:&REG_MDTOP_CLKSW_CLKSEL_CTL %long %le data.long(&MEM_CLASS:&REG_MDTOP_CLKSW_CLKSEL_CTL)|(0x58103FC)
+
+;;// Switch SDF clock to PLL frequency
+d.s &MEM_CLASS:&REG_MDTOP_CLKSW_SDF_CK_CTL %long %le data.long(&MEM_CLASS:&REG_MDTOP_CLKSW_SDF_CK_CTL)|(0x10)
+    
+;;// Turn off all SW clock request, except ATB
+d.s &MEM_CLASS:&REG_MDTOP_CLKSW_CLKON_CTL %long %le data.long(&MEM_CLASS:&REG_MDTOP_CLKSW_CLKON_CTL)|(0x1)
+
+;;// Clear PLL ADJ RDY IRQ fired by initial period adjustment
+d.s &MEM_CLASS:&REG_MDTOP_PLLMIXED_PLL_HP_RDY_IRQ %long %le 0xFFFF
+
+;;// Mask all PLL ADJ RDY IRQ
+d.s &MEM_CLASS:&REG_MDTOP_PLLMIXED_PLL_HP_RDY_IRQ_MASK %long %le 0xFFFF
+
+;;// Make a record that means MD pll has been initialized. 
+;;/* Note: We use "MD_PLL_MAGIC_NUM|0x1" to know PLL init in MD C code. 
+;;           If AP init PLL, it would be "MD_PLL_MAGIC_NUM". */
+d.s &MEM_CLASS:&REG_MDTOP_PLLMIXED_PLL_DUMMY %long %le &MD_PLL_MAGIC_NUM
+	

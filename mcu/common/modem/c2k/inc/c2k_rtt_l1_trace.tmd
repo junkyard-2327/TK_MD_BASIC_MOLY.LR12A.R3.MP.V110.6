@@ -1,0 +1,230 @@
+/*************************************************************
+*
+* This Software is the property of MTK, Inc. and may only be used pursuant to a license from MTK, Inc.  
+* 
+* Any unauthorized use inconsistent with the terms of such license is strictly prohibited.
+* 
+* Copyright (c) 2002-2016 MTK, Inc.  All rights reserved.
+*
+*************************************************************/
+[Default]
+  C2K_RTT_L1
+  On
+  Buffer
+  TCMFORCE
+
+[MODEM_TYPE]
+  C2K_L1
+
+[Class]
+  RTT_L1_UT_TRACE       ON
+  RTT_L1_IT_TRACE       ON
+  RTT_L1_MP_TRACE       ON
+  RTT_L1_FULL_FT_TRACE  ON
+  RTT_L1_KERNAL_TRACE   ON
+  RTT_L1_WARN           OFF
+
+
+
+[String]
+  L1d_Init_String
+  {
+    "l1d init",
+    "L1dFmpNonActSetFingerPrune():",
+    "L1dFmpPathFingerMerge():",
+    "L1dFmpFingerInsert():",
+    "L1dFmpFingerStatusUpdate():",
+    "L1dFmpAllocListGen():",
+    "L1dSchStart():",
+    "L1dSchListStateChange():",
+    "L1dSchActivePwrRpt():",
+    "L1dSchCandidatePwrRpt():",
+    "L1dSchNeighborPwrRpt():",
+    "L1dSchCfgGen():",
+    "L1dFmpAjacentPathPrune():",
+    "L1dFmpSideLobePrune():",
+    "L1dFmpMergedFingerRelease():",
+    "L1dFmpShadowFingerRelease():",
+    "L1dFmpWeakestFingerReplace():",
+    "L1dFmpWeakFingerRelease():",
+    "L1dSchSortProc():",
+    "L1dSchListAveraging():",
+    "l1dmain.c",
+    "l1dspage.c",    
+    "L1D_AFLT_TRACE_ID",
+    "L1dFmpOorFingerRelease():",
+    "L1dSchNeighborPilotSetGen():"
+  }
+
+
+[Message]
+  info   CL1TRACE_L1d_Rec_Msg_Dbg             RTT_L1_UT_TRACE            "l1d task receive msg: %d"
+  info   XL1TRACE_FWD_INIT                    RTT_L1_MP_TRACE            "L1dFwdInit()"
+  info   XL1TRACE_FWD_SYNC_CFG                RTT_L1_MP_TRACE            "L1dFwdSyncCfg():Enalbe=%b"
+  info   XL1TRACE_FWD_PCH_CFG                 RTT_L1_MP_TRACE            "L1dFwdPchCfg():Enalbe=%b,PN=%d, WalshCode=%d,Rate=%ML1dPagingDataRateT,LcMask0=%xl, LcMask1=%xl"
+  info   XL1TRACE_FWD_FCH_CFG                 RTT_L1_MP_TRACE            "L1dFwdFchCfg():Enalbe=%b,ForRc=%d, NotUpdateRake=%b,QLicEn=%b,LcMask0=%xl, LcMask1=%xl,FrameOffset=%d"
+  info   XL1TRACE_FWD_SCH_CFG                 RTT_L1_MP_TRACE            "L1dFwdSchCfg():Enalbe=%b,ForRc=%d,Rate=%d,isTurbo=%b,ActiveSetBit=%xl"
+  info   XL1TRACE_FWD_LC_MASK                 RTT_L1_MP_TRACE            "L1dFwdLcMaskCfg():LcMask0=%xl, LcMask1=%xl"
+  info   XL1TRACE_FWD_FCH_RECFG               RTT_L1_MP_TRACE            "L1dFwdFchReCfg():ForRc=%d"
+  info   XL1TRACE_FWD_FCH_SET                 RTT_L1_MP_TRACE            "L1dFwdFchActiveSet:ActSetBits=%xl,Pn0=%d,Pn1=%d,Pn2=%d,Pn3=%d,Pn4=%d,Pn5=%d"
+  info   XL1TRACE_NST_FSCH_CFG                RTT_L1_MP_TRACE            "L1dProcessTstFschCfgMsg:ForSchEn=%b,ForSchRate=%d,ForSchCcIndex=%d,QofMaskIdSch=%d,IsTrubo=%b"
+  info   XL1TRACE_CfsSendCfRequest            RTT_L1_MP_TRACE            "CfsSendCfRequest: CurrentTime.MostSignificant32Bits=%xl,CurrentTime.LeastSignificant4Bits=%xl,PcgMask=%xl"
+  info   XL1TRACE_CfsTunePlls                 RTT_L1_MP_TRACE            "CfsTunePlls: TuneOffsetPcg=%xl,CurrentTime.MostSignificant32Bits=%xl,CandFreqSearchStartData.TotalOffTimeFwd=%xl,AdjustedActTime=%xl,FramePCGOffset=%xl,L1dDiversityState=%ML1dDiversityStateT"
+  info   XL1TRACE_CfsRestorePlls              RTT_L1_MP_TRACE            "CfsRestorePlls: gXl1RfActionSharePara.ReqType[0]=%MXl1fhReqTypeT,gXl1RfActionSharePara.ReqType[1]=%MXl1fhReqTypeT,gXl1fhCdmaBand=%xl,gXl1fhFreqChan=%xl"
+  info   XL1TRACE_L1dSchCfsSrch               RTT_L1_MP_TRACE            "L1dSchCfsSrch: SchStatus.Neighbor.CfsListNum=%xl"
+  info   XL1TRACE_L1dSchPilotPwrUpdate        RTT_L1_MP_TRACE            "L1dSchPilotPwrUpdateCfs: SortQ[j].Metric=%xl,SchDivisor=%xl,SchPwrNormIo=%xl,AntCntr=%xl"
+  info   XL1TRACE_L1dSchPilotPwrUpdateAct     RTT_L1_MP_TRACE            "L1dSchPilotPwrUpdateCfsAct: SortQ[j].Metric=%xl,SchDivisor=%xl,SchPwrNormIo=%xl,AntCntr=%xl" 
+  info   XL1TRACE_UpdateCFSList               RTT_L1_MP_TRACE            "UpdateCFSList: i=%xl, winSize=%xl"
+  info   XL1TRACE_FPC_CFG_PCG                 RTT_L1_MP_TRACE            "L1dFpcToPcg:Rc=%d,ChChanged=%xl,FpcMode=%d,FpcSubchanGain=%d,FchSetPtQ8dB=%d,FchSetMet=%d,SchSetPtQ8dB=%d,SchSetMet=%d"
+  info   XL1TRACE_FPC_CFG                     RTT_L1_MP_TRACE            "L1dFpcConfig:chTyp=%d,MaxSetPt=%d,MinSetPt=%d,OLdBUp=%d,OLdBDown=%d,CurrSetPt=%d,ChChanged=%xl"
+  info   XL1TRACE_FPC_EBNT_TO_METRIC          RTT_L1_MP_TRACE            "L1dSetPtEbNt2Metric:CurrSetPtQ12dB = %xl,Rc=%MRadioConfigT,ChnlGain=%d,Temp1=%xl,Temp2=%xl,Temp1Liner=%xl,Temp2Liner=%xl,StMetric = %xl"
+  info   XL1TRACE_L1d_Init_Dbg                RTT_L1_MP_TRACE            "L1d %s"
+  info   XL1TRACE_L1D_TRACE0                  RTT_L1_MP_TRACE            "L1dAntennaRequest():AntMask=%d,RxDState=%d,RxMNum=%d,RxDNum=%d,TxNum=%d"
+  info   XL1TRACE_L1D_TRACE1                  RTT_L1_MP_TRACE            "L1dAntennaRelease():AntMask=%d,RxDState=%d,RxMNum=%d,RxDNum=%d,TxNum=%d"
+  info   XL1TRACE_L1D_TRACE2                  RTT_L1_MP_TRACE            "L1dChnlRegisterRequest():ReqType=%MXl1fhReqTypeT"
+  info   XL1TRACE_L1D_TRACE3                  RTT_L1_MP_TRACE            "L1dChnlCancelRequest():ReqType=%MXl1fhReqTypeT"
+  info   XL1TRACE_L1D_TRACE4                  RTT_L1_MP_TRACE            "ProcessL1dSearchRslt():MiniAcqFlag=%Mkal_bool,L1dSearchPilotPn=%d,MiniAcqPilotPn=%d"
+  info   XL1TRACE_L1D_TRACE5                  RTT_L1_MP_TRACE            "L1dMdmTask():MsgId=%ML1dMsgIdTypeT,L1dState=%ML1dStateType,CoreId=%xl"
+  info   XL1TRACE_L1D_TRACE7                  RTT_L1_MP_TRACE            "ProcessL1dTimeChgSignal():LCodeStateCurrent,Upper10=%xl,Lower32=%xl,SysTime32=%xl"
+  info   XL1TRACE_L1D_TRACE8                  RTT_L1_MP_TRACE            "ProcessL1dTimingChangeMsg():ActFrameNum=%xl"  
+  info   XL1TRACE_L1D_TRACE9                  RTT_L1_MP_TRACE            "Warning: %s %d %xl %xl %xl"  
+  info   XL1TRACE_GPS_TRACE                   RTT_L1_MP_TRACE            "GPS_STATE: num = %d, state = %ML1dGpsStateT"  
+  info   XL1TRACE_L1D_TRACE10                 RTT_L1_MP_TRACE            "L1dInitMsg(): L1dInTMCH=%Mkal_bool,L1dSyncChStartCnt=%xl,L1dAltSyncChStartCnt=%xl,L1dSyncChRegCbAcT=%xl,SignalsEnabled=%xl,L1dTMCHM.ActFrame=%xl,L1dInitSrchCbAcT=%xl"  
+  info   XL1TRACE_L1D_TRACE11                 RTT_L1_MP_TRACE            "ProcessL1dSearchRslt():ActListNum=%d,SchSeqNum=%d,ListSeqNum=%d"
+  info   XL1TRACE_L1D_TRACE12                 RTT_L1_MP_TRACE            "l1dmain.c,Line:%d,ListSeqNum:%d"
+  info   XL1TRACE_L1D_TRACE13                 RTT_L1_MP_TRACE            "L1dTimerCallBack():TimerId=%ML1dTimerIds"
+  info   XL1TRACE_L1D_TRACE14                 RTT_L1_MP_TRACE            "PilotAcqStart():systime=%xl,L1dHopSystemTime=%xl,Xl1ShFlData.RakeInitData.LcFrame=%xl"
+  info   XL1TRACE_L1D_TRACE15                 RTT_L1_MP_TRACE            "miniacq and sync cancel,CurrSysTimeToLastLongCodeTime1=%xl,CurrSysTimeToLastLongCodeTime2=%xl"
+
+  info   XL1TRACE_SCH_TRACE0                  RTT_L1_MP_TRACE            "L1dSchActiveListInit():Mode=%MSchSwModeT,PilotPN=%d,StartPnOffset=%xl,CurrentPnOffset=%xl,EndPnOffset=%xl"
+  info   XL1TRACE_SCH_TRACE1                  RTT_L1_MP_TRACE            "L1dSchCfgGen():Mode=%MSchSwModeT,Ctrl=%xl,Corr=%xl,NCoh=%xl,AuxPilot=%xl,D1Thr=%xl,AuxOff=%xl,SortThr=%xl,PnNum=%d"
+  info   XL1TRACE_SCH_TRACE2                  RTT_L1_MP_TRACE            "L1dSchDoneReady():TotalSearchTime=%d,QpchInd=%d,QpchMetric=%xl,EsNt=%xl,PilotComb=%xl,Ec_Io=%xl,Pilot_PN=%xl"
+  info   XL1TRACE_SCH_TRACE3                  RTT_L1_MP_TRACE            "L1dSchSpageNextState():CurrState=%MSchSpageStateT,Command=%MSchSpageCmdT,NextState=%MSchSpageStateT"
+  info   XL1TRACE_SCH_TRACE4                  RTT_L1_MP_TRACE            "L1dSchSpageListProc():ActListNum=%d,NghbrListNum=%d,Ec_Io=%xl,PnPhase[0]=%xl"
+  info   XL1TRACE_SCH_TRACE5                  RTT_L1_MP_TRACE            "L1dSchCoarseAfcDone():FreqErr=%d,CenterPnOffset=%xl,WinSize=%d"
+  info   XL1TRACE_SCH_TRACE6                  RTT_L1_MP_TRACE            "L1dSchRecovery():StartPnOffset=%d,CurrentPnOffset=%d,EndPnOffset=%d,ActListNum=%d"
+  info   XL1TRACE_SCH_TRACE7                  RTT_L1_MP_TRACE            "L1dSchInit():Type=%d" 
+  info   XL1TRACE_SCH_TRACE8                  RTT_L1_MP_TRACE            "%sMode=%MSchSpageSrchModeT,ListStatus=%MSchListStatusT,CurrFrc=%xl,TotalSrchTime=%d,RptTimer=%d,LastDlyTimer=%d,NextSrchRound=%Mkal_bool"
+  info   XL1TRACE_SCH_TRACE9                  RTT_L1_MP_TRACE            "L1dSchObfReady():Mode=%MSchSwModeT,ListStatus=%MSchListStatusT,SystemTimingCntr=%d,DoneReadyCntr=%d,StartPnOffset=%xl,CurrentPnOffset=%xl,EndPnOffset=%xl"
+  info   XL1TRACE_SCH_TRACE10                 RTT_L1_MP_TRACE            "L1dSchObfReady():Offset0=%xl,Metric0=%xl,Offset1=%xl,Metric1=%xl,Offset2=%xl,Metric2=%xl,Offset3=%xl,Metric3=%xl,NCohStartTime=%xl"
+  info   XL1TRACE_SCH_TRACE11                 RTT_L1_MP_TRACE            "L1dSchObfReady():Offset=%xl,Metric=%xl,CohIaqThresh=%xl"
+  info   XL1TRACE_SCH_TRACE12                 RTT_L1_MP_TRACE            "L1dSchCoarseAfcDone():Offset0=%xl,Metric0=%xl,BinNum0=%xl,Offset1=%xl,Metric1=%xl,BinNum1=%xl,BinDistance=%d,FdsThreshVerif=%xl"
+  info   XL1TRACE_SCH_TRACE13                 RTT_L1_MP_TRACE            "%sPnIdx=%d,NumMetrics=%d,Metric0=%xl,Offset0=%xl,Metric1=%xl,Offset1=%xl,Metric2=%xl,Offset2=%xl,Metric3=%xl,Offset3=%xl"
+  info   XL1TRACE_SCH_TRACE14                 RTT_L1_MP_TRACE            "L1dSchUsablePathGen():NumPaths=%d"
+  info   XL1TRACE_SCH_TRACE15                 RTT_L1_MP_TRACE            "L1dSchUsablePathGen():Pn=%d,OffsetQ3=%xl,Metric=%xl"
+  info   XL1TRACE_SCH_TRACE17                 RTT_L1_MP_TRACE            "%sRestart=%Mkal_bool,DlyEn=%Mkal_bool,NextDlyTimer=%d"
+  info   XL1TRACE_SCH_TRACE18                 RTT_L1_MP_TRACE            "L1dSchNeighborListInit():NumPn=%d,StartSetIndex=%d,LastSetIndex=%d"
+  info   XL1TRACE_SCH_TRACE19                 RTT_L1_MP_TRACE            "L1dSchSortDone():ListStatus=%MSchListStatusT,DoneReadyCntr=%d,SchListQPnNum=%d"
+  info   XL1TRACE_SCH_TRACE20                 RTT_L1_MP_TRACE            "L1dSchDoneReady():SpageSchMode=%MSchSpageSrchModeT,SchMode=%MSchSwModeT,QpchState=%MSchQpchStateT,MultiPathCntr=%d,NumUsablePath=%d,PnOffsetInt=%xl,DataCnt=%xl,IndicatorNum=%d"
+  info   XL1TRACE_SCH_TRACE21                 RTT_L1_MP_TRACE            "L1dSchDoneReady():ObfCntr=%xl,PnEven=%d,Pilot_I=%xl,Pilot_Q=%xl,NoiseVar=%xl"
+  info   XL1TRACE_SCH_TRACE22                 RTT_L1_MP_TRACE            "L1dSchDoneReady():EsNt=%xl,EsNtSqrRoot=%xl"
+  info   XL1TRACE_SCH_TRACE23                 RTT_L1_MP_TRACE            "L1dSchDoneReady():IndicatorNum=%d,QpchInd=%d"
+  info   XL1TRACE_SCH_TRACE24                 RTT_L1_MP_TRACE            "L1dSchHwProgramSystemTiming():SchQpchState=%MSchQpchStateT,RxTxOffsetQ3=%d,SymbolOffset=%d,CompPn=%xl,PNOffsetInt=%xl"
+  info   XL1TRACE_SCH_TRACE25                 RTT_L1_MP_TRACE            "L1dSchQpchNorm():NoiseNorm=%Mkal_bool,NoiseVar=%xl,NoiseNormMF=%d,NoiseNormShift=%d"
+  info   XL1TRACE_SCH_TRACE26                 RTT_L1_MP_TRACE            "L1dSchDoneReady():ObfCntr=%d,SchDivident=%xl,SchDivisor=%xl,EcNt=%xl,EsNt=%xl,QpchSnrAdj=%d"
+  info   XL1TRACE_SCH_TRACE27                 RTT_L1_MP_TRACE            "L1dSchDoneReady():MultiPathCntr=%d,SignalNormMF=%xl,SignalNormShift=%xl,QPRatio=%d,PilotComb=%xl"
+  info   XL1TRACE_SCH_TRACE28                 RTT_L1_MP_TRACE            "L1dSchDoneReady():QpchState=%MSchQpchStateT,sumQpchIQ=%xl,QpchNoiseNorm=%xl,QpchNoiseNormComb=%xl"
+  info   XL1TRACE_SCH_TRACE29                 RTT_L1_MP_TRACE            "L1dSchDoneReady():MultiPathCntr=%d,QpchSignalNorm=%xl,QpchMetric=%xl,EsNt=%xl,EsNtSqrRoot=%xl"
+  info   XL1TRACE_SCH_TRACE30                 RTT_L1_MP_TRACE            "L1dSchDoneReady():QpchSnrMarginal=%xl,QpchSnrThresh=%xl,QpchT1LowSnrSlope=%xl,QpchT1LowSnrIntercept=%xl"
+  info   XL1TRACE_SCH_TRACE31                 RTT_L1_MP_TRACE            "L1dSchDoneReady():QpchT2LowSnrSlope=%xl,QpchT2LowSnrIntercept=%xl,QpchT1HighSnrSlope=%xl,QpchT1HighSnrIntercept=%xl"
+  info   XL1TRACE_SCH_TRACE32                 RTT_L1_MP_TRACE            "L1dSchDoneReady():IndicatorNum=%d,QpchInd=%d,QpchT1=%xl,QpchT2=%xl"
+  info   XL1TRACE_SCH_TRACE33                 RTT_L1_MP_TRACE            "L1dSchDoneReady():ObfCntr=%d,NoiseNormMF=%xl,NoiseNormShift=%xl,NoiseVar=%xl"
+  info   XL1TRACE_SCH_TRACE34                 RTT_L1_MP_TRACE            "L1dSchPilotPwrUpdate():ListStatus=%MSchListStatusT,AverageNum=%d,PnPhase=%xl,PwrEst=%d,AccNum=%d"
+  info   XL1TRACE_FMP_TRACE0                  RTT_L1_MP_TRACE            "L1dFmpFingerAlloc():PwrTshdA2OH=%xl,PwrTshdO2AH=%xl,FngIdx=%d,FngEnFlag=%Mkal_bool,FngStatus=%MCph1xFngStatus,FngReassignFlag=%Mkal_bool,PnOffset=%xl,FngAccuDrift=%xl,FngInitPower=%xl"
+  info   XL1TRACE_FMP_TRACE1                  RTT_L1_MP_TRACE            "%sFngIdx=%d,AllocStatus=%MAllocStatT,FngrState=%MFmpFingerStateT,Pn=%d,OffsetQ3=%xl,AccDrift=%xl,InitPwr=%xl,MicPwr=%xl"
+  info   XL1TRACE_FMP_TRACE2                  RTT_L1_MP_TRACE            "%sSortIdx=%d,Pn=%d,OffsetQ3=%xl,Metric=%xl"
+  info   XL1TRACE_FMP_TRACE3                  RTT_L1_MP_TRACE            "L1dFmpInit()"
+  info   XL1TRACE_FMP_TRACE4                  RTT_L1_MP_TRACE            "L1dFmpFingerAlloc():FastTrk=%Mkal_bool,RevInitFlag=%d"  
+  info   XL1TRACE_FMP_TRACE5                  RTT_L1_MP_TRACE            "L1dFmpFingerAlloc():FmpEarliest=%d,OffsetQ3=%xl,PilotPN=%d,RxTxOffset=%d,FastTrkNum=%d,FastTrkPcg=%d,SlowTrkPcg=%d"
+  info   XL1TRACE_FMP_TRACE6                  RTT_L1_MP_TRACE            "L1dFmpEarliestCalc():FngIdx=%d,Earliest=%d,Assigned=%Mkal_bool,MpsPwr=%xl,EcIoThres=%xl,DeltaOffsetQ3=%xl"
+  info   XL1TRACE_FMP_TRACE7                  RTT_L1_MP_TRACE            "L1dFmpPwrThresCalc():MaxMicPwr=%d,PwrThrObs2Act=%d,PwrThrAct2Obs=%d,PwrThrObs2Rel=%d"  
+  info   XL1TRACE_FMP_TRACE8                  RTT_L1_MP_TRACE            "%sFngIdx=%d,AllocStatus=%MAllocStatT,FngrAllocMap=%xl,FngrCnt=%d"
+  info   XL1TRACE_SPAGE_TRACE0                RTT_L1_MP_TRACE            "L1d32KhzCounterRead():DelataCnt32=%d"
+  info   XL1TRACE_SPAGE_TRACE1                RTT_L1_MP_TRACE            "L1dSPageSendPchCont():%ML1dSPageTraceTrackT,TrueLCode=%d,LCode2=%d,LCode1=%d,LCode0=%d,Status=%Mkal_bool,HscSpHistory1x=%Mkal_bool"
+  info   XL1TRACE_SPAGE_TRACE5                RTT_L1_MP_TRACE            "L1dSPageSendResyncDeniedInd():%ML1dSPageTraceTrackT,SysTime=%xl,CmdStatus=%MPswCmdStatusT,WakeMode=%MWakeModeT,SPageResyncInProgress=%Mkal_bool"      
+  info   XL1TRACE_SPAGE_TRACE7                RTT_L1_MP_TRACE            "L1dSPageResyncAccept():%ML1dSPageTraceTrackT,ExpectedResync=%xl,ActualResync=%xl,SubpcgFrmCntHisr=%xl,SpageState=%MSPageStateT,WakeMode=%MWakeModeT,PchWakeSystemTimeFrame=%xl,RxAnt=%d,sgL1dSpageTrapPend=%Mkal_bool"
+  info   XL1TRACE_SPAGE_TRACE8                RTT_L1_MP_TRACE            "L1dSPageResyncAccept():%ML1dSPageTraceTrackT,MpaMdmPathMain=%d,RxAnt=%d"
+  info   XL1TRACE_SPAGE_TRACE10               RTT_L1_MP_TRACE            "L1dSPageResyncAccept():%ML1dSPageTraceTrackT,QpchRate=%Mkal_bool,RxAgcStartSymbol=%xl,SystemTimeResync=%xl,NormWakeSystime.Upper6=%xl,NormWakeSystime.Lower32=%xl"
+  info   XL1TRACE_SPAGE_TRACE11               RTT_L1_MP_TRACE            "L1dSPageMiniAcqComplete():%ML1dSPageTraceTrackT,SysClkDevCntTC=%xl,SysClkDevCntTC8=%xl,Ec_Io=%d,MiniAcqCorrectionTc8=%xl,PilotPN=%d"
+  info   XL1TRACE_SPAGE_TRACE14               RTT_L1_MP_TRACE            "L1dSPageClkCalOnlineAdj():%ML1dSPageTraceTrackT,MiniAcqTimeErrFor32kOnlineCal=%l,CalSettleTime=%d,HscClkCalFastSettleEnabled=%d,Dbg=%d,PrevCal9MHzFiltDev=%Xl,Cal9MHzFileDevAppCorrection=%l,Cal9MHzFiltDev=%Xl"
+  info   XL1TRACE_SPAGE_TRACE16               RTT_L1_MP_TRACE            "L1dSPageSearcherTimeoutProcess():%ML1dSPageTraceTrackT,SPageState.PrevState=%MSPageStateT,SpageState=%MSPageStateT,QsearchTime=%xl"
+  info   XL1TRACE_SPAGE_TRACE17               RTT_L1_MP_TRACE            "L1dSPageStartDiffFreqSearch():%ML1dSPageTraceTrackT,SpageState=%MSPageStateT"
+  info   XL1TRACE_SPAGE_TRACE18               RTT_L1_MP_TRACE            "L1dSPageStateSet():%ML1dSPageTraceTrackT,PrevSpageState=%MSPageStateT,SpageState=%MSPageStateT,L1dSPageResyncInProgress=%Mkal_bool,sgL1dSpageChnlRegPend=%Mkal_bool"
+  info   XL1TRACE_SPAGE_TRACE19               RTT_L1_MP_TRACE            "L1dSPageEnable():L1dHopSystemTime=%xl,LCStateCurr.Upper10=%xl,LCStateCurr.Lower32=%xl" 
+  info   XL1TRACE_SPAGE_TRACE20               RTT_L1_MP_TRACE            "L1dLongCodeHop():%ML1dSPageTraceTrackT,StartState.Upper10=%xl,StartState.Lower32=%xl,NumFramesHop=%xl"
+  info   XL1TRACE_SPAGE_TRACE22               RTT_L1_MP_TRACE            "L1dSPageCalibrationDone():%ML1dSPageTraceTrackT,Cal9MHzFiltDev=%xl"
+  info   XL1TRACE_SPAGE_TRACE24               RTT_L1_MP_TRACE            "L1dSPageEnable():%ML1dSPageTraceTrackT,PageSlot=%d,SlotCycleIndex=%d,QpchEnabled=%Mkal_bool,QpageCh=%d,QpchRate=%Mkal_bool,CenteringBackoffInSymbolsPlusPLL=%xl,CenteringBackoffInSymbolsNoPll=%xl,MiniAcqCorrectionTc8=%xl"
+  info   XL1TRACE_SPAGE_TRACE25               RTT_L1_MP_TRACE            "L1dSPageDisable():%ML1dSPageTraceTrackT,SpageState=%MSPageStateT,SpageSpStatus=%MSpStatusT"
+  info   XL1TRACE_SPAGE_TRACE32               RTT_L1_MP_TRACE            "L1dSPageWakeCommand():%ML1dSPageTraceTrackT,ImmediateMode=%MWakeModeT,CurrentWakeMode=%MWakeModeT,SpageState=%MSPageStateT,L1dSPageResyncInProgress=%Mkal_bool"
+  info   XL1TRACE_SPAGE_TRACE33               RTT_L1_MP_TRACE            "L1dSPageWakePchFccch():%ML1dSPageTraceTrackT,PchWakeSystemTimeFrame=%xl,WakeMode=%MWakeModeT,SpageState=%MSPageStateT"
+  info   XL1TRACE_SPAGE_TRACE35               RTT_L1_MP_TRACE            "L1dSPageSleepTrap():%ML1dSPageTraceTrackT,PchWakeSystemTimeFrame=%xl,SpageState=%MSPageStateT,CurrentWakeMode=%MWakeModeT,WakeMode=%MWakeModeT,Q2RfShutDown=%Mkal_bool,SleepMode=%ML1dSleepModeT"
+  info   XL1TRACE_SPAGE_TRACE36               RTT_L1_MP_TRACE            "L1dSPageSleepTrap():NormWakeSystime=%xl,PchWakeSystemTimeFrame=%xl,SystemTime=%xl,SleepMode=%ML1dSleepModeT"
+  info   XL1TRACE_SPAGE_TRACE37               RTT_L1_MP_TRACE            "L1dSPageSleepTrap2():%ML1dSPageTraceTrackT,SystemTime=%xl,PchWakeSystemTimeFrame=%xl,SpageState=%MSPageStateT,WakeMode=%MWakeModeT,CurrentWakeMode=%MWakeModeT,Q2RfShutDown=%Mkal_bool,SleepMode=%ML1dSleepModeT,SystemTime=%xl"
+  info   XL1TRACE_SPAGE_TRACE38               RTT_L1_MP_TRACE            "L1dSPageSleepTrap2():NormWakeSystime=%xl,PchWakeSystemTimeFrame=%xl,SystemTime=%xl,SystemTimeResync=%xl,Resynctime9MHz=%xl,TargetSF=%xl,Target9MHz=%xl,Total9MHzDuration=%xl"
+  info   XL1TRACE_SPAGE_TRACE41               RTT_L1_MP_TRACE            "L1dSPageSleepTrap2():L1dHopSystemTime=%xl,LCStateCurr.Upper10=%xl,LCStateCurr.Lower32=%d=xl,PchWakeSystemTimeFrame=%xl,LCStateCurrNext.Upper10=%xl,LCStateCurrNext.Lower32=%xl,NumberOfHopFrames=%xl"
+  info   XL1TRACE_SPAGE_TRACE46               RTT_L1_MP_TRACE            "L1dSPageSendResyncDeniedIndForQpch():%ML1dSPageTraceTrackT,SysTime=%d,CmdStatus=%MPswCmdStatusT,WakeMode=%MWakeModeT,L1dSPageResyncInProgress=%Mkal_bool"
+  info   XL1TRACE_SPAGE_TRACE47               RTT_L1_MP_TRACE            "L1dSPageSleep():%ML1dSPageTraceTrackT,SystemTime=%xl,PiPosition=%xl,SpageState=%MSPageStateT,WakeMode=%MWakeModeT,currentPN=%d,TargetPN=%d,MiniAcqCorrectionTc8=%xl"
+  info   XL1TRACE_SPAGE_TRACE48               RTT_L1_MP_TRACE            "L1dSPageSleep():%ML1dSPageTraceTrackT,SystemTime=%xl,SysTime=%xl,SubFramecnt=%d,PiPosition=%xl"
+  info   XL1TRACE_SPAGE_TRACE49               RTT_L1_MP_TRACE            "L1dSPageSleep():NormWakeSystime=%xl,WakeSystemTimeFrame=%xl,ResyncFrame=%xl,BackOff9MHz=%xl,Resync.SuperFrame=%xl,Resync.Chip8xOffset=%xl"
+  info   XL1TRACE_SPAGE_TRACE52               RTT_L1_MP_TRACE            "L1dSPageSleep():L1dHopSystemTime=%xl,LCStateCurr.Upper10=%xl,LCStateCurr.Lower32=%xl,PchWakeSystemTimeFrame=%xl,LCStateCurrNext.Upper10=%xl,LCStateCurrNext.Lower32=%xl,NumberOfHopFrames=%xl"                                                                                                    
+  info   XL1TRACE_SPAGE_TRACE53               RTT_L1_MP_TRACE            "L1dSPageSleep():%ML1dSPageTraceTrackT,SleepMode=%ML1dSleepModeT"
+  info   XL1TRACE_SPAGE_TRACE54               RTT_L1_MP_TRACE            "L1dSPageSleep():%ML1dSPageTraceTrackT,QPch1WakeSystemTimeFrame=%xl,PiPosition=%xl,RateMultiplier=%xl,CenteringBackoffInSymbolsNoPll=%xl,CenteringBackoffInSymbolsPlusPLL=%xl,RxAgcStartSymbol=%xl,ResyncStartSymbol=%xl,WakeMode=%ML1dSleepModeT"
+  info   XL1TRACE_SPAGE_TRACE55               RTT_L1_MP_TRACE            "L1dSPageSleep():L1dHopSystemTime=%xl,LCStateCurr.Upper10=%xl,LCStateCurr.Lower32=%xl,LCSystemTimeRef=%xl,LCStateCurrNext.Upper10=%xl,LCStateCurrNext.Lower32=%xl,NumberOfHopFrames=%d" 
+  info   XL1TRACE_SPAGE_TRACE57               RTT_L1_MP_TRACE            "L1dSPageSleep():SleepMode=%ML1dSleepModeT,Target9MHz=%xl,Total9MHzDuration=%xl,SystemTimeResync=%xl,Resynctime9MHz=%xl,PiPositionOrdered=%xl"
+  info   XL1TRACE_SPAGE_TRACE58               RTT_L1_MP_TRACE            "L1dSPageSleep():%ML1dMonFaultTypesT,SystemTime=%xl,SleepMode=%ML1dSleepModeT,SpageState=%MSPageStateT,WakeMode=%MWakeModeT,TargetPN=%d"    
+  info   XL1TRACE_SPAGE_TRACE59               RTT_L1_MP_TRACE            "L1dSPageFakeWaitforStopAck():%ML1dSPageTraceTrackT,SystemTimeResync=%xl,SpageState=%MSPageStateT"
+  info   XL1TRACE_SPAGE_TRACE61               RTT_L1_MP_TRACE            "L1dSPageStateMachine():%ML1dSPageTraceTrackT,SpageState=%MSPageStateT,SpEvent=%ML1dSPageEventT,sgL1dSpageChnlRegPend=%Mkal_bool,sgL1dSpageTrapPend=%Mkal_bool,sgL1dSpageResyncRtbaDenied=%Mkal_bool,Q2RfShutDown=%Mkal_bool,SltPchBoostCount=%d"
+  info   XL1TRACE_SPAGE_TRACE62               RTT_L1_MP_TRACE            "L1dSPageStateMachine():SpageState=%MSPageStateT,SpEvent=%ML1dSPageEventT,PchWakeSystemTimeFrame=%d,SystemTime=%d"
+  info   XL1TRACE_SPAGE_TRACE64               RTT_L1_MP_TRACE            "L1dSPageStateMachine():%ML1dSPageTraceTrackT,systemtime=%d,ResyncFrame=%xl,subframecnt=%xl,QsearchDelta=%xl,sgL1dSpageTrapPend=%Mkal_bool"
+  info   XL1TRACE_SPAGE_TRACE65               RTT_L1_MP_TRACE            "L1dSPageStateMachine():%ML1dSPageTraceTrackT,NormWakeSystime=%xl,SystemTimeResync=%xl,systemtime=%xl,subframecnt=%xl,PiPosition=%xl"
+  info   XL1TRACE_SPAGE_TRACE66               RTT_L1_MP_TRACE            "L1dSPageStateMachine():%ML1dSPageTraceTrackT,systemtime=%xl,ResyncFrame=%xl,subframecnt=%xl,PiPosition=%xl"       
+  info   XL1TRACE_SPAGE_TRACE67               RTT_L1_MP_TRACE            "L1dSPageGetWakeMode():CurrentWakeMode=%MWakeModeT"
+  info   XL1TRACE_DFS_TRACE0                  RTT_L1_MP_TRACE            "UpdateDiffFreqNeighborListDFS(): FoundPn=%xl,Continue=%xl,L1dDiffFreqLastFreq=%xl,CurrentNeighborList.NumPilot=%xl,temp0=%xl,temp1=%xl,temp2=%xl"
+  info   XL1TRACE_DFS_TRACE1                  RTT_L1_MP_TRACE            "RfTuneDfSearchContinue(): pSchrResultsMsg=%xl,OkToSendSrchRsltsToPE=%xl,ListSequenceNumber=%xl"
+  info   XL1TRACE_DFS_TRACE2                  RTT_L1_MP_TRACE            "L1dDFSearchRslt(): DiffFreqSearchContinue=%xl,l1dState=%xl,JustDidDiffFreqSearch=%xl"                  
+  info   XL1TRACE_DFS_TRACE3                  RTT_L1_MP_TRACE            "L1dIdleDFSMsg(): gL1dDfsState=%xl,gL1dDfsType=%xl" 
+  info   XL1TRACE_DFS_TRACE4                  RTT_L1_MP_TRACE            "L1dSchNSetGen(): SchCfs.CfsSrchType=%MSchCfsSrchTypeT" 
+  info   XL1TRACE_DFS_TRACE5                  RTT_L1_MP_TRACE            "L1dSchObfReady(): SchCfs.CfsSrchType=%MSchCfsSrchTypeT, SchStatus.Neighbor.DoneReadyCntr==%xl"
+  info   XL1TRACE_TxCdmaMsgHandler            RTT_L1_MP_TRACE            "L1dTstTxCdmaMsgHandler():CurrTime(Echip)=%l, ChnType=%d,TxDfeFifoWin=%l,TxDfeWin=%l,TxDacWin=%l"  
+  info   XL1TRACE_L1dTstNstRfPathOnOff        RTT_L1_MP_TRACE            "L1dTstNstRfPathOnOff():CurrTime(Echip)=%l,RxStartOffset=%xl,TxStartOffset=%xl"     
+  info   XL1TRACE_L1dTstNstRfTpcCfg           RTT_L1_MP_TRACE            "L1dTstNstRfPathOnOff():CurrTime(Echip)=%l,RxStartOffset=%xl,TxStartOffset=%xl"     
+  info   XL1TRACE_ATPAL_TRACE0                RTT_L1_MP_TRACE            "AtpalXl1Handler(): channelNum0=%xl,channelNum1=%xl,Channel=%xl,PilotPn=%xl"       
+  info   XL1TRACE_AFLT_TRACE                  RTT_L1_MP_TRACE            "L1dAFLTMsg(): i=%xl,PilotPN=%xl,PnPhaseOffset=%xl,Strength=%xl"
+  info   XL1TRACE_AFLT_TRACE1                 RTT_L1_MP_TRACE            "L1dAFLTMsg1(): j=%xl,SchSort.SortQ[j].Metric=%xl,SchSort.SortQ[j].Offset=%xl"
+  info   XL1TRACE_AFLT_TRACE2                 RTT_L1_MP_TRACE            "L1dAFLTMsg2(): j=%xl,PilotPN=%xl,PnPhase=%xl,Strength=%xl"
+  info   XL1TRACE_AFLT_TRACE3                 RTT_L1_MP_TRACE            "%s %xl %s"
+  info   XL1TRACE_AFLT_TRACE4                 RTT_L1_MP_TRACE            "%s %xl %s L1dAfltState=%xl,ReferencePN=%xl,TimingCnt=%xl,NumAflt=%xl"
+  info   XL1TRACE_AFLT_TRACE5                 RTT_L1_MP_TRACE            "%s %xl %s PilotPN=%xl,PnPhaseOffset=%xl,Strength=%xl"
+  info   XL1TRACE_DIV_TRACE                   RTT_L1_MP_TRACE            "L1dDiv: L1dDiversityState=%xl,L1dCdmaDiversityIsEnabled=%xl,PilotEbNtAvg=%xl"
+  info   XL1TRACE_DIV_TRACE1                  RTT_L1_MP_TRACE            "L1dDiv1: Cl1TstGetAntennaTestMode=%xl,L1dCurrentSvcType=%xl,L1dFchFer=%xl,L1dDivAntStateLock=%xl"
+  info   XL1TRACE_DIV_TRACE2                  RTT_L1_MP_TRACE            "L1dDiv2: L1dCurrentSvcType=%xl,L1dDivAntCtrl=%xl"
+  info   XL1TRACE_DIV_TRACE3                  RTT_L1_MP_TRACE            "L1dDiv3: L1dDiversityState=%xl,RxPower=%xl,RxDivPower=%xl"
+  info   XL1TRACE_RXPOWER_TRACE               RTT_L1_MP_TRACE            "%s %s %xl %s"
+  info   XL1TRACE_ANTASSIGN_TRACE             RTT_L1_MP_TRACE            "ProAntAssign: Enabled=%xl,AntType=%xl,RfAntenna=%xl,L1dState=%xl,L1dDiversityState=%xl,MainHandler=%xl,DivHandler=%xl,TxHandler=%xl"
+  info   XL1TRACE_L1dRevIs95GatingPro         RTT_L1_MP_TRACE            "L1dRevIs95GatingPro: RevLcScramble=%d,FchRate=%MRevFchRateTypeT"
+  info   XL1TRACE_L1dRevTxAgcDetValidPcg      RTT_L1_MP_TRACE            "RfcRpcValidPcgMap: RfcRpcValidPcgMap=%xd,RfcRpcNextFrmValidPcgMap=%xd"
+  info   XL1TRACE_ProcessL1dAccessSigMsg      RTT_L1_MP_TRACE            "ProcessL1dAccessSigMsg: isFirstProbe=%d,MaxPwrAdjRa=%d"
+  info   XL1TRACE_FHMpaBitmapSet              RTT_L1_MP_TRACE            "Xl1FhMpaBitmapSet: Index=%xl,Mpa=%xl,gXl1fhMpaBitmap=%xl"
+  info   XL1TRACE_FHMpaBitmapClr              RTT_L1_MP_TRACE            "Xl1FhMpaBitmapClr: Index=%xl,Mpa=%xl,gXl1fhMpaBitmap=%xl"
+  info   XL1TRACE_AFLT_TRACE6                 RTT_L1_MP_TRACE            "L1dAFLTMsg6(): k=%xl,SortQWrtP=%xl,CurrentPnOffset=%xl,PilotPN=%xl,SchTc8SampMap=%xl"
+  info   XL1TRACE_AFLT_TRACE7                 RTT_L1_MP_TRACE            "L1dAFLTMsg7(): i=%xl,Offset=%xl,peak_offset=%xl,Metric=%xl,peak=%xl"
+  info   XL1TRACE_AFLT_TRACE8                 RTT_L1_MP_TRACE            "L1dAFLTMsg8(): k=%xl,Offset=%xl,Metric0=%xl"
+  info   XL1TRACE_AFLT_TRACE9                 RTT_L1_MP_TRACE            "L1dAFLTMsg9(): i=%xl,CurrentPnOffset=%xl,CenterPnOffset=%xl,WinSize=%xl"
+  info   XL1TRACE_AFLT_TRACE10                RTT_L1_MP_TRACE            "L1dAFLTMsg10(): Offset=%xl,Metric=%xl,AccNum=%xl,CoarsePwr=%xl,TimeCorrect=%xl"
+  info   XL1TRACE_AFLT_TRACE11                RTT_L1_MP_TRACE            "L1dAFLTMsg11(): Offset=%xl,CenterPnOffset=%xl"
+  info   XL1TRACE_AFLT_TRACE12                RTT_L1_MP_TRACE            "L1dAFLTMsg12(): i=%xl,CurrentPnOffset=%xl,PilotPN=%xl,SearchSize=%xl,Metric=%xl"
+  info   XL1TRACE_AFLT_TRACE13                RTT_L1_MP_TRACE            "L1dAFLTMsg13(): i=%xl,Pilots.TimeCorrect=%xl,MobOffset=%xl"
+  info   XL1TRACE_AFLT_TRACE14                RTT_L1_MP_TRACE            "L1dAFLTMsg14(): i=%xl,Tm.PilotPN=%xl,Tm.OffsetQ3=%xl,Status.PilotPN=%xl,Status.OffsetQ3=%xl"
+  info   XL1TRACE_L1dUpperAntTxPwrLimitPro    RTT_L1_MP_TRACE            "L1dUpperAntTxPwrLimitPro: mode=%b,Band=%b,TxMaxPwrBackOffAnt1=%xd,TxMaxPwrBackOffAnt2=%xd"
+  info   XL1TRACE_ACCESS_PWR_OFFSET           RTT_L1_MP_TRACE            "AccessChannelConfiguration: L1dCdmaBand=%MSysCdmaBandT,accTxPwrOffsetNv=%d,OpenLoopPwrCorrQ6=%d"
+  info   XL1TRACE_ACCESS_MAX_PWR              RTT_L1_MP_TRACE            "AccessChannelConfiguration: L1dCdmaBand=%MSysCdmaBandT,maxPwrBackOffNv=%d,maxPwrBackOffQ6=%d"
+  info   XL1TRACE_FH_REGISTER_TRACE           RTT_L1_MP_TRACE            "Xl1FhSyncRegister(): SyncBoostFlag=%xl"
+  info   XL1TRACE_SH_BRPCFGPROC_TRACE         RTT_L1_MP_TRACE            "Xl1ShFlBrpCfgProc(): PCHBrpNormalMode=%xl,ChChange=%xl"
+  info   XL1TRACE_SCH_SPAGE_TRACE             RTT_L1_MP_TRACE            "L1dSchSpageListProc(): EcIoMain=%d"
+  info   XL1TRACE_List_TRACE0                 RTT_L1_MP_TRACE            "UpdateNeighborList(): PilotInc=%xl,PilotPN=%xl,SrchOffsetNghbr=%xl"
+  info   XL1TRACE_List_TRACE2                 RTT_L1_MP_TRACE            "UpdateTrafficNeighborList(): PilotInc=%xl,PilotPN=%xl,SrchOffset=%xl"
+  info   XL1TRACE_L1dMaxTxPwrLimitCmd         RTT_L1_MP_TRACE            "L1dMaxTxPwrLimitCmd: MaxTxPwrLimit=%d"
+  info   XL1TRACE_FH_EVENT_IGNORE_IHO_TRACE   RTT_L1_MP_TRACE            "Xl1FhEvtIgnoreIho(): Xl1FhEvtNum=%xl,Xl1FhReqType0=%xl,Xl1FhReqType1=%xl,Xl1FhReqType2=%xl"
+  info   XL1TRACE_AFLT_TRACE19                RTT_L1_MP_TRACE            "L1dAFLTMsg19(): k=%xl,Metric=%xl"  
+  info   XL1TRACE_L1dTmgChgInfo               RTT_L1_MP_TRACE            "L1dTmgChgInfo(): CurrEchip=%xl, TargetEchip=%xl, TmgChgTimer=%xl"
+  info   XL1TRACE_HandleTmgChgTimer           RTT_L1_MP_TRACE            "HandleTmgChgTimer(): L1dInitFlag=%Mkal_bool, gL1dMpaRelCmplt=%Mkal_bool, gL1dInTimeChange=%Mkal_bool, gL1dDeactiveCnfDelay=%Mkal_bool, gL1dWaitforTmgChg=%Mkal_bool"

@@ -1,0 +1,240 @@
+/*************************************************************
+*
+* This Software is the property of MTK, Inc. and may only be used pursuant to a license from MTK, Inc.  
+* 
+* Any unauthorized use inconsistent with the terms of such license is strictly prohibited.
+* 
+* Copyright (c) 2002-2016 MTK, Inc.  All rights reserved.
+*
+*************************************************************/
+[Default]
+  C2K_L1D_RFD
+  On
+  Buffer
+  TCMFORCE
+
+[MODEM_TYPE]
+  C2K_L1
+
+[Class]
+  RFD_HAL_L             OFF
+  RFD_HAL_M             ON
+  RFD_HAL_H             ON
+  RFD_DFE_L             OFF
+  RFD_DFE_M             ON
+  RFD_DFE_H             ON
+  RFD_FEM_L             OFF
+  RFD_FEM_M             ON
+  RFD_FEM_H             ON
+  RFD_CUIF_L            OFF
+  RFD_CUIF_M            ON
+  RFD_CUIF_H            ON
+  RFD_DEV_L             OFF
+  RFD_DEV_M             ON
+  RFD_DEV_H             ON
+  RFD_CUST_NV_L         OFF
+  RFD_CUST_NV_M         ON
+  RFD_CUST_NV_H         ON
+  RFD_UT_L              OFF
+  RFD_UT_M              OFF
+  RFD_UT_H              ON
+  RFD_IT_L              OFF
+  RFD_IT_M              OFF
+  RFD_IT_H              ON
+  
+  RFD_WARN              OFF
+  
+  
+/*Add string or message as you need*/  
+[String]
+
+
+[Message]
+  
+  /*RFD RX path control log*/
+  info    CL1_RF_RXPATH_ON_START                     RFD_HAL_H         "[CL1D][RFD][RXPATH ON START] FRCCounter = %ul, RX_SYSTIME = %l, rat_type = %MCL1D_RF_RAT_TYPE_E, rx_stime = %l, band_class = %MCL1D_RF_BAND_CLASS_TYPE_E, channel = %d, path_bmp = %MCL1D_RF_RX_PATH_BMP_E, foe_hz = %l, power_mode = %MCL1D_RF_PWR_MODE_E, agc_fsm = %MCL1D_RF_AGC_FSM_E, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1_RF_RXPATH_ON_PINGPONG_PRE              RFD_HAL_M         "[CL1D][RFD][RXPATH ON][PINGPONG PRE] rat_type = %MCL1D_RF_RAT_TYPE_E, path_bmp = %MCL1D_RF_RX_PATH_BMP_E, cur_index = %d, index_chk = %d, INI_BUF[0]_VLD=%d, INI_BUF[1]_VLD=%d"
+  info    CL1_RF_RXPATH_ON_PINGPONG_POST             RFD_HAL_M         "[CL1D][RFD][RXPATH ON][PINGPONG POST] rat_type = %MCL1D_RF_RAT_TYPE_E, INI_BUF[0]_VLD=%d, INI_BUF[0]_ini_timer[M]=%l, INI_BUF[0]_ini_timer[D]=%l, INI_BUF[0]_ini_timer[S]=%l, INI_BUF[1]_VLD=%d, INI_BUF[1]_ini_timer[M]=%l, INI_BUF[1]_ini_timer[D]=%l, INI_BUF[1]_ini_timer[S]=%l"
+  info    CL1_RF_RXPATH_ON_END                       RFD_HAL_H         "[CL1D][RFD][RXPATH ON END] FRCCounter = %ul, RX_SYSTIME = %l"
+  info    CL1_RF_RXPATH_OFF_START                    RFD_HAL_H         "[CL1D][RFD][RXPATH OFF START] FRCCounter = %ul, RX_SYSTIME = %l, rat_type = %MCL1D_RF_RAT_TYPE_E, rx_stime = %l, path_bmp = %MCL1D_RF_RX_PATH_BMP_E, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1_RF_RXPATH_OFF_END                      RFD_HAL_H         "[CL1D][RFD][RXPATH OFF END] FRCCounter = %ul, RX_SYSTIME = %l"
+
+  /*RFD TX path control log*/
+  info    CL1_RF_TXPATH_ON_START                     RFD_HAL_H         "[CL1D][RFD][TXPATH ON START] FRCCounter = %ul, RX_SYSTIME = %l, TX_SYSTIME = %l, rat_type = %MCL1D_RF_RAT_TYPE_E, rx_stime = %l, tx_time = %l, band_class = %MCL1D_RF_BAND_CLASS_TYPE_E, channel = %d, foe_hz = %l, pwr_ref = %d, rssi_wi_filter = %d, txagc_sw_mode_ctrl = %l, div_only_en = %l, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1_RF_TXPATH_ON_END                       RFD_HAL_H         "[CL1D][RFD][TXPATH ON END] FRCCounter = %ul, RX_SYSTIME = %l, TX_SYSTIME = %l"
+  info    CL1_RF_TXPATH_OFF_START                    RFD_HAL_H         "[CL1D][RFD][TXPATH OFF START] FRCCounter = %ul, RX_SYSTIME = %l, TX_SYSTIME = %l, rat_type = %MCL1D_RF_RAT_TYPE_E, rx_stime = %l, tx_time = %l, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1_RF_TXPATH_OFF_END                      RFD_HAL_H         "[CL1D][RFD][TXPATH OFF END] FRCCounter = %ul, RX_SYSTIME = %l, TX_SYSTIME = %l"
+  info    CL1_RF_TXGATE_ON_START                     RFD_HAL_H         "[CL1D][RFD][TXGATE ON START] FRCCounter = %ul, RX_SYSTIME = %l, TX_SYSTIME = %l, rat_type = %MCL1D_RF_RAT_TYPE_E, rx_stime = %l, tx_time = %l, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1_RF_TXGATE_ON_END                       RFD_HAL_H         "[CL1D][RFD][TXGATE ON END] FRCCounter = %ul, RX_SYSTIME = %l, TX_SYSTIME = %l"
+  info    CL1_RF_TXGATE_OFF_START                    RFD_HAL_H         "[CL1D][RFD][TXGATE OFF START] FRCCounter = %ul, RX_SYSTIME = %l, TX_SYSTIME = %l, rat_type = %MCL1D_RF_RAT_TYPE_E, rx_stime = %l, tx_time = %l, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1_RF_TXGATE_OFF_END                      RFD_HAL_H         "[CL1D][RFD][TXGATE OFF END] FRCCounter = %ul, RX_SYSTIME = %l, TX_SYSTIME = %l"
+
+  /*RFD TPC control log*/
+  info    CL1TRACE_RF_TPC_CFG_RTT                    RFD_HAL_H         "[CL1D][RFD][TPC CFG RTT] RX_SYSTIME = %l, TX_SYSTIME = %l, rat_type = %MCL1D_RF_RAT_TYPE_E, tx_stime = %l, tq_en = %Mkal_bool, hpcg_pctrl_en = %Mkal_bool, pcg_vld = %Mkal_bool, cl_step_up = %d, cl_step_down = %d, cl_adj_max = %d, cl_adj_min = %d, max_pwr_adj = %d, rpc_bit_sw = %d, ks_value_sw = %d, rpc_sym_pos_sw = %d, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_TPC_CFG_DO                     RFD_HAL_H         "[CL1D][RFD][TPC CFG DO] RX_SYSTIME = %l, TX_SYSTIME = %l, rat_type = %MCL1D_RF_RAT_TYPE_E, tx_stime = %l, cl_valid = %Mkal_bool, cl_step_up = %d, cl_step_down = %d, cl_adj_max = %d, cl_adj_min = %d, max_pwr_adj = %d, rpc_bit_sw = %d, ks_value_sw = %d, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_TPC_INFO_QUERY_RTT             RFD_HAL_H         "[CL1D][RFD][TPC INFO QUERY RTT] rat_type = %MCL1D_RF_RAT_TYPE_E, pcg_num = %d, cl_accum_pre = %d, ol_rx_pwr_filter_pre = %d, pwr_max = %d, target_pwr = %d, ks = %d, rpc_sym_pos = %d, tx_upc_trig = %d, rpc_bit = %d, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_TPC_INFO_QUERY_DO              RFD_HAL_H         "[CL1D][RFD][TPC INFO QUERY DO] rat_type = %MCL1D_RF_RAT_TYPE_E, slot_num = %d, cl_accum_pre = %d, ol_rx_pwr_filter_pre = %d, pwr_max = %d, target_pwr = %d, max_limit_thd_clip = %d, ks = %d, rpc_bit = %d, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_TPC_CFG_TEST_FIX               RFD_HAL_H         "[CL1D][RFD][TPC CFG TEST FIX] RX_SYSTIME = %l, TX_SYSTIME = %l, rat_type = %MCL1D_RF_RAT_TYPE_E, test_mode = %MCL1D_RF_TPC_TEST_MODE_E, tx_stime = %l, target_power = %l, ilpc_en = %Mkal_bool, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_TPC_CFG_TEST_MANUAL            RFD_HAL_H         "[CL1D][RFD][TPC CFG TEST MANUAL] RX_SYSTIME = %l, TX_SYSTIME = %l, rat_type = %MCL1D_RF_RAT_TYPE_E, test_mode = %MCL1D_RF_TPC_TEST_MODE_E, tx_stime = %l, target_power = %l, cpl_gain = %l, ilpc_en = %Mkal_bool, pa_ctrl_mode = %d, pa_tbl_idx = %d, ref_target_power = %l, pa_gain = %l, pa_mode = %MCL1D_RF_PA_MODE_E, pa_vdd = %d, pa_vm0 = %d, pa_vm1 = %d, dpd_am = %d, dpd_pm = %d, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_TPC_ANTENNA_POWER_QUERY        RFD_HAL_H         "[CL1D][RFD][TPC ANTENNA POWER QUERY] ant_power = %d, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_TPC_PA_GAIN_TBL                RFD_HAL_M         "[CL1D][RFD][TPC PA GAIN TABLE] pa_tbl_idx = %b, ref_power_Q5(pth) = %l, pa_gain_Q5(gpa) = %l, EMI_DATA[pth,gpa] = %-10Xl, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_TPC_CPL_GAIN_TBL               RFD_HAL_M         "[CL1D][RFD][TPC CPL GAIN TABLE] pa_mode = %b, cpl_gain_Q5 = %l, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_TPC_PGA_GAIN_TBL               RFD_HAL_M         "[CL1D][RFD][TPC PGA GAIN TABLE] pga_mode = %b, pga_index = %b, pga_gain_Q5 = %l, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_TPC_DET_GAIN_TBL               RFD_HAL_M         "[CL1D][RFD][TPC DET GAIN TABLE] det_index = %b, det_gain_Q5 = %l, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_TPC_INIT_TIMEINFO              RFD_HAL_H         "[CL1D][RFD][TPC INIT TIME INFO] 1x_RX_SYSTIME = %l, 1x_TX_SYSTIME = %l, DO_RX_SYSTIME = %l, DO_TX_SYSTIME = %l"
+  
+  /*RFD RF conflict BPI FRCCounter log*/
+  info    CL1TRACE_RF_FEM_BPI_FRC                    RFD_FEM_M         "[CL1D][RFD][RF CONFLICT BPI] FRCCounter = %ul, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  
+  /*RFD AFC log*/
+  info    CL1TRACE_RF_AFC_SYNTH_OFFSET_UPDATE        RFD_HAL_H         "[CL1D][RFD][AFC UPDATE] rat_type = %MCL1D_RF_RAT_TYPE_E, rx_stime = %l, path_type = %MCL1D_RF_PATH_E, foe_hz = %l, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_AFC_INIT_FOE_PPB_QUERY         RFD_HAL_H         "[CL1D][RFD][AFC INIT FOE PPB QUERY] foe_ppb = %l, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_AFC_S_CURVE_PARAM_QUERY        RFD_HAL_H         "[CL1D][RFD][AFC S CURVE PARAM QUERY] c0Fac = %f, c1Fac = %f, c2Fac = %f, c3Fac = %f, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_AFC_FOE_PPB_TO_DAC             RFD_HAL_H         "[CL1D][RFD][AFC FOE PPB TO DAC] foe_ppb = %l, afc_dac = %l, initDacValue = %l, afcSlopeInv = %l, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_AFC_DAC_TO_FOE_PPB             RFD_HAL_H         "[CL1D][RFD][AFC DAC TO FOE PPB] afc_dac = %l, foe_ppb = %l, initDacValue = %l, afcSlopeInv = %l, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_AFC_RX_CHANNEL_TO_FREQUENCY    RFD_HAL_H         "[CL1D][RFD][AFC RX CHANNEL TO FREQ] band_class = %MCL1D_RF_BAND_CLASS_TYPE_E, channel = %d, freq_khz = %l, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_AFC_TX_CHANNEL_TO_FREQUENCY    RFD_HAL_H         "[CL1D][RFD][AFC RX CHANNEL TO FREQ] band_class = %MCL1D_RF_BAND_CLASS_TYPE_E, channel = %d, freq_khz = %l, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_AFC_CAP_ID_UPDATE              RFD_HAL_H         "[CL1D][RFD][AFC CAP ID UPDATE] cap_id = %b, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_AFC_DAC_UPDATE                 RFD_HAL_H         "[CL1D][RFD][AFC DAC UPDATE] afc_dac = %d, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+
+  /*RFD temperature feature log*/
+  info    CL1TRACE_RF_TEMPERATURE_QUERY              RFD_HAL_H         "[CL1D][RFD][TEMPERATURE QUERY] temp_type = %b, temperature = %l, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_TEMPERATURE_MEAS               RFD_HAL_H         "[CL1D][RFD][TEMPERATURE MEAS] temperature meas rat=%d, tmp_mode=%d, dac=%d, tmper=%d,rx_on=%d, rx_path=%d, tx_on=%d, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_TEMPERATURE_MEAS_PROC          RFD_HAL_L         "[CL1D][RFD][TEMPERATURE MEAS PROC] proc P1=%l, P2=%l, P3=%l, P4=%l, P5=%l, P6=%l, P7=%l, P8=%l"
+  info    CL1TRACE_RF_TEMPERATURE_MEAS_TBL_RX_MAIN   RFD_HAL_L         "[CL1D][RFD][TEMPERATURE MEAS TBL RX MAIN]tbl P1=%l, P2=%l, P3=%l, P4=%l, P5=%l, P6=%l, P7=%l, P8=%l"
+  info    CL1TRACE_RF_TEMPERATURE_MEAS_TBL_RX_DIV    RFD_HAL_L         "[CL1D][RFD][TEMPERATURE MEAS TBL RX DIV]tbl P1=%l, P2=%l, P3=%l, P4=%l, P5=%l, P6=%l, P7=%l, P8=%l"
+  info    CL1TRACE_RF_TEMPERATURE_MEAS_TBL_RX_SEC    RFD_HAL_L         "[CL1D][RFD][TEMPERATURE MEAS TBL RX SEC]tbl P1=%l, P2=%l, P3=%l, P4=%l, P5=%l, P6=%l, P7=%l, P8=%l"
+  info    CL1TRACE_RF_TEMPERATURE_MEAS_TBL_TX        RFD_HAL_L         "[CL1D][RFD][TEMPERATURE MEAS TBL TX]tbl P1=%l, P2=%l, P3=%l, P4=%l, P5=%l, P6=%l, P7=%l, P8=%l"
+  info    CL1TRACE_RF_TEMPERATURE_MEAS_TBL_DET       RFD_HAL_L         "[CL1D][RFD][TEMPERATURE MEAS TBL DET]tbl P1=%l, P2=%l, P3=%l, P4=%l, P5=%l, P6=%l, P7=%l, P8=%l"
+
+  /*RFD AGC control log*/
+  info    CL1TRACE_RF_AGC_CFG_RTT                    RFD_HAL_H         "[CL1D][RFD][AGC CFG RTT] RX_SYSTIME = %l, TX_SYSTIME = %l, rat_type = %MCL1D_RF_RAT_TYPE_E, rx_stime = %l, path_bmp = %MCL1D_RF_RX_PATH_BMP_E, power_mode_vld = %Mkal_bool, power_mode = %MCL1D_RF_PWR_MODE_E, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_AGC_CFG_DO                     RFD_HAL_H         "[CL1D][RFD][AGC CFG DO] RX_SYSTIME = %l, TX_SYSTIME = %l, rat_type = %MCL1D_RF_RAT_TYPE_E, rx_stime = %l, path_bmp = %MCL1D_RF_RX_PATH_BMP_E, agc_fsm_vld = %Mkal_bool, agc_fsm = %MCL1D_RF_AGC_FSM_E, power_mode_vld = %Mkal_bool, power_mode = %MCL1D_RF_PWR_MODE_E, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_AGC_RSSI_QUERY                 RFD_HAL_H         "[CL1D][RFD][AGC RSSI QUERY] rat_type = %MCL1D_RF_RAT_TYPE_E, path_bmp = %MCL1D_RF_RX_PATH_BMP_E, rssi[main] = %d, rssi[div] = %d, rssi[sec] = %d, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_AGC_CFG_TEST_FIX_GAIN          RFD_HAL_H         "[CL1D][RFD][AGC CFG TEST FIX GAIN] RX_SYSTIME = %l, TX_SYSTIME = %l, rat_type = %MCL1D_RF_RAT_TYPE_E, path_bmp = %MCL1D_RF_RX_PATH_BMP_E, rx_stime = %l, test_mode = %MCL1D_RF_AGC_TEST_MODE_E, agc_fsm = %MCL1D_RF_AGC_FSM_E, power_mode = %MCL1D_RF_PWR_MODE_E, lna_idx = %MCL1D_RF_LNA_MODE_E, rssi_avg_start_time = %l, rssi_avg_end_time = %l, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  //info    CL1TRACE_RF_AGC_CFG_TEST_RSSI_SCAN       RFD_HAL_L         "[CL1D][RFD][AGC CFG TEST RSSI SCAN] rat_type = %MCL1D_RF_RAT_TYPE_E, path_bmp = %MCL1D_RF_RX_PATH_BMP_E, rx_stime = %l, test_mode = %MCL1D_RF_AGC_TEST_MODE_E, agc_fsm = %MCL1D_RF_AGC_FSM_E, power_mode = %MCL1D_RF_PWR_MODE_E, lna_idx = %MCL1D_RF_LNA_MODE_E, rssi_avg_start_time = %l, rssi_avg_end_time = %l"
+  info    CL1TRACE_RF_AGC_BACKUP_INFO_QUERY          RFD_HAL_H         "[CL1D][RFD][AGC BACKUP INFO QUERY] rat_type = %MCL1D_RF_RAT_TYPE_E, path_bmp = %MCL1D_RF_RX_PATH_BMP_E, cell_index[main] = %d, cell_index[div] = %d, cell_index[sec] = %d, power_mode[main] = %MCL1D_RF_PWR_MODE_E, power_mode[div] = %MCL1D_RF_PWR_MODE_E, power_mode[sec] = %MCL1D_RF_PWR_MODE_E, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+
+  /*RFD DFE control log*/
+  info    CL1TRACE_RF_RXDFE_IQC_UPDATE               RFD_DFE_H         "[CL1D][RFD][RXDFE IQC UPDATE] RX_SYSTIME = %l, TX_SYSTIME = %l, rat_type = %MCL1D_RF_RAT_TYPE_E, rx_stime = %l, path_bmp = %MCL1D_RF_RX_PATH_BMP_E, power_mode = %MCL1D_RF_PWR_MODE_E, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_RXDFE_NCO_UPDATE               RFD_DFE_H         "[CL1D][RFD][RXDFE NCO UPDATE] RX_SYSTIME = %l, TX_SYSTIME = %l, rat_type = %MCL1D_RF_RAT_TYPE_E, rx_stime = %l, path_bmp = %MCL1D_RF_RX_PATH_BMP_E, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_RXDFE_NBIF_UPDATE              RFD_DFE_H         "[CL1D][RFD][RXDFE NBIF UPDATE] RX_SYSTIME = %l, TX_SYSTIME = %l, rat_type = %MCL1D_RF_RAT_TYPE_E, rx_stime = %l, path_bmp = %MCL1D_RF_RX_PATH_BMP_E, nbif_bmp = %l, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_RXDFE_SORT_DONE                RFD_DFE_H         "[CL1D][RFD][RXDFE SORT DONE] RX_SYSTIME = %l, TX_SYSTIME = %l, rat_type = %MCL1D_RF_RAT_TYPE_E, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_TXDFE_TGG_CFG                  RFD_DFE_L         "[CL1D][RFD][TXDFE TGG CFG] rat_type = %MCL1D_RF_RAT_TYPE_E, ttg_en = %MCL1D_RF_TXDFE_TTG_SENARIO_E, ttg_freq = %l, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_RXDFE_TQ_QUERY                 RFD_DFE_H         "[CL1D][RFD][RXDFE TQ ACTION] RX_SYSTIME = %l, TX_SYSTIME = %l, rat_type = %MCL1D_RF_RAT_TYPE_E, tq_query = %Mkal_bool, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_RXDFE_NBIF_DETAIL              RFD_DFE_H         "[CL1D][RFD][RXDFE NBIF DETAIL] is_alid = %Mkal_bool, AI = %l, AQ = %l, P = %l"
+  info    CL1_RF_RXDFE_Dump_Start                    RFD_DFE_M         "[CL1D][RFD][RF RXDFE] Reg Dump Start, Type=%MCL1_RF_TST_RXDFE_RG_TYPE_E"
+  info    CL1_RF_RXDFE_Dump_End                      RFD_DFE_M         "[CL1D][RFD][RF RXDFE] Reg Dump End, Type=%MCL1_RF_TST_RXDFE_RG_TYPE_E"
+  info    CL1_RF_RXDFE_FRC                           RFD_DFE_M         "[CL1D][RFD][RF RXDFE] Current FRC=%ul(us)"
+  info    CL1_RF_TRC_RXDFE_Sort_Done                 RFD_DFE_M         "[CL1D][RFD][RF RXDFE] Sort Done. RAT=%MCL1D_RF_RAT_TYPE_E, TQ Set Index=%d, FC Set Index=%d, TQ Start Addr=%8XL, FC Start Addr=%8XL"
+  info    CL1_RF_TXDFE_Dump_Start                    RFD_DFE_M         "[CL1D][RFD][RF TXDFE] Reg Dump Start, Type=%MCL1_RF_TST_TXDFE_RG_TYPE_E"
+  info    CL1_RF_TXDFE_Dump_End                      RFD_DFE_M         "[CL1D][RFD][RF TXDFE] Reg Dump End, Type=%MCL1_RF_TST_TXDFE_RG_TYPE_E"
+  info    CL1_RF_TXKDFE_Dump_Start                   RFD_DFE_M         "[CL1D][RFD][RF TXKDFE] Reg Dump Start, Type=%MCL1_RF_TST_TXKDFE_RG_TYPE_E"
+  info    CL1_RF_TXKDFE_Dump_End                     RFD_DFE_M         "[CL1D][RFD][RF TXKDFE] Reg Dump End, Type=%MCL1_RF_TST_TXKDFE_RG_TYPE_E"
+
+  /*RFD test control log*/
+  info    CL1TRACE_RF_TST_MODE_REQ                   RFD_HAL_H         "[CL1D][RFD][TST MODE REQUEST] rat_type = %MCL1D_RF_RAT_TYPE_E, test_mode_en = %Mkal_bool, test_mode_bmp = %b, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+
+  /*RFD CUST/NV log*/
+  info    CL1TRACE_RF_NV_GET                         RFD_CUST_NV_M     "[CL1D][RFD][NV GET] nvram_lid = %l, , oper_bmp = %l, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_NV_SET                         RFD_CUST_NV_M     "[CL1D][RFD][NV SET] nvram_lid = %l, , oper_bmp = %l, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_NV_RE_INIT                     RFD_CUST_NV_M     "[CL1D][RFD][NV RE INIT] oper_bmp = %l, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_BAND_C2K_TO_RF                 RFD_CUST_NV_M     "[CL1D][RFD][BAND CONVERSION FROM C2K TO RF] c2k_band = %b, rf_band = %b, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+  info    CL1TRACE_RF_TAS_DEBUG                      RFD_CUST_NV_M     "[CL1D][RFD][TAS] c2k_band = %d, ant = %d, state = %d, time = %d, delay = %d, AT_CMD_INFO = %Mkal_bool"
+  info    CL1TRACE_RF_TAS_BPI_DEBUG                  RFD_CUST_NV_M     "[CL1D][RFD][TAS] bpi_data = %xl, bpi_time = %d"
+  info    CL1TRACE_RF_TAS_MIPI_DEBUG                 RFD_CUST_NV_M     "[CL1D][RFD][TAS] mipi_ctrl = %xl"
+  info    CL1TRACE_RF_TAS_ENABLE                     RFD_CUST_NV_M     "[CL1D][RFD][TAS] tas_enable = %Mkal_bool, tas_enable_bitmap = %xl, big_switch_bitmap = %xl, ATcmdInfo = %Mkal_bool, FinalTas_enable = %Mkal_bool"
+  info    CL1TRACE_RF_TAS_INIT_STATE                 RFD_CUST_NV_M     "[CL1D][RFD][TAS] rf_band = %MCL1D_RF_BAND_E, tas_bitmap_mask = %xl, tas_bitmap_data = %xl, tas_table_idx = %MCL1D_RF_TAS_YABL_INIT_IDX_T, tas_switch_enable = %Mkal_bool, tas_init_state = %MC2K_CUSTOM_TAS_STATE_E"
+  info    CL1TRACE_RF_TAS_CURRENT_CONFIG             RFD_CUST_NV_M     "[CL1D][RFD][TAS] rf_band = %MCL1D_RF_BAND_E, tas_state = %MC2K_CUSTOM_TAS_STATE_E, rf_tasVersion = %MC2K_CUSTOM_TAS_VER_E, tas_state_valid = %Mkal_bool, tas_enable = %Mkal_bool, cat_a_route_num = %l, cat_b_route_num = %l, tas_close = %Mkal_bool, tuner_main = %l, tuner_div = %l, tuner_close = %Mkal_bool"
+  info    CL1TRACE_RF_TAS_FORCE_STATE                RFD_CUST_NV_M     "[CL1D][RFD][TAS][FORCE] force_enable = %d, force_state = %d"
+  info    CL1TRACE_RF_TAS_BPI_TIME                   RFD_CUST_NV_M     "[CL1D][RFD][TAS] FRCCounter = %ul, RX_SYSTIME = %l, core_id = %l, vpe_id = %l, is_hisr = %Mkal_bool, is_lisr = %Mkal_bool, tc_name = %c%c%c%c%c%c%c%c"
+
+  /*BPI conflict*/
+  error   CL1TRACE_RF_CONFICT_RAT                    RFD_HAL_L         "[CL1D][RFD][RF CONFICT] FRCCounter = %ul, rat0 = %MMML1_RF_RAT_T, rat1 = %MMML1_RF_RAT_T, rat_bmp = %l"
+
+  /*ELNA debug */
+  info    CL1TRACE_RF_ELNA_DEBUG                     RFD_FEM_H         "[CL1D][RFD][ELNA] elna_ctrl_data = %xl, bpi_data = %xl"
+  info    CL1TRACE_RF_ELNA_FOOT_DEBUG                RFD_FEM_L         "[CL1D][RFD][ELNA] FootPrint =%l"
+  info    CL1TRACE_RF_ELNA_BPI_DEBUG                 RFD_FEM_L         "[CL1D][RFD][ELNA][BPI]RF_BAND = %l, PR =%l, Original = %xl, Parsing = %xl, Interface =%xl"
+  info    CL1TRACE_RF_ELNA_FEM_PARM_DEBUG            RFD_FEM_L         "[CL1D][RFD][ELNA][FEM][PARAM] rat = %l, senario = %l"
+  info    CL1TRACE_RF_ELNA_INDEX_DEBUG               RFD_FEM_L         "[CL1D][RFD][ELNA][INDEX]RX_ELNA_index =%l, RXD_ELNA_index =%l"
+  info    CL1TRACE_RF_ELNA_INTERFACE_DEBUG           RFD_FEM_L         "[CL1D][RFD][ELNA][MML1]RX_BAND =%l, ELNA_index =%l, ELNA_bpi_mask =%xl"
+  info    CL1TRACE_RF_ELNA_AGC_DEBUG                 RFD_CUIF_L        "[CL1D][RFD][ELNA][AGC]p1 =%l, p2 =%l, p3 =%l, p4 =%l, p5 =%l, p6 =%l, p7 =%l, p8 =%l, p9 =%l"
+
+  /*PA TPC Pin Mask debug */
+  info    CL1TRACE_RF_PA_TPC_PIN_MASK_DEBUG          RFD_HAL_L         "[CL1D][RFD][TPC][PA][PinMsk] pa_pin_mask = %xl, bpi_data = %xl"
+  info    CL1TRACE_RF_PA_CTRL_MODE_DEBUG             RFD_HAL_L         "[CL1D][RFD][TPC][PA][CtrlM] pa_ctrl_mode = %l"
+  info    CL1TRACE_RF_PA_VM_VALUE_DEBUG              RFD_HAL_L         "[CL1D][RFD][TPC][PA][VM] vm0 = %l, vm1 = %l, cw = %l"
+  /*HPUE*/
+  info    CL1TRACE_RF_HPUE_VPA_EN                 	 RFD_HAL_L         "[CL1D][RFD][HPUE][EN] FRCCounter = %ul, C2K_BAND = %l, RF_BAND = %l, PA_VDD_CTRL = %l, Status = %Mkal_bool"
+  info	  CL1TRACE_RF_HPUE_VPA_SOURCE_CTRL			 RFD_HAL_L		   "[CL1D][RFD][HPUE][SOURCE] pa_source_ctrl = %l"
+  info	  CL1TRACE_RF_HPUE_VPA_CWTBL				 RFD_HAL_L		   "[CL1D][RFD][HPUE] hpue_lvl_100mv = %l, mipi_data = %l, mipi_port = %l, mipi_length = %l, mipi_lock = %l, data_cfg = %l"
+  info	  CL1TRACE_RF_PMIC_VPA_CWTBL				 RFD_HAL_L		   "[CL1D][RFD][HPUE] dc2dc_lvl_100mv = %l, bsi_data = %l"
+  info	  CL1TRACE_RF_HPUE_VPA_SOURCE_CTRL_SHM		 RFD_HAL_L		   "[CL1D][RFD][HPUE][SOURCE][SHM] pa_source_ctrl_shm = %l"
+  /*TAS NVRAM debug */
+  info    CL1TRACE_RF_TAS_NV_RW_DEBUG              	 RFD_HAL_L         "[CL1D][RFD][TAS][NV][RW] only_enable = %Mkal_bool, tas_state = %l, nvram_write = %Mkal_bool, rw_flag = %l, force_tas_en = %l, force_tas_state = %l"
+  info    CL1TRACE_RF_TAS_NV_STATE_QUERY_DEBUG       RFD_HAL_L         "[CL1D][RFD][TAS][NV][STATE][QUERY] c2k_band = %l, rf_band = %l, tst_sim_en = %Mkal_bool, force_state = %l, real_sim_state = %l, tst_sim_state = %l, ret_state = %l"
+  info    CL1TRACE_RF_TAS_FORCE_BY_BAND              RFD_HAL_L         "[CL1D][RFD][TAS][FORCE][BYBAND] c2k_band = %l, rf_band = %l, force_tas_state = %l, tas_enable_by_band = %Mkal_bool, current_state_1X = %l, current_state_DO = %l"
+  
+  /*RFD UT/IT debug */
+  info    CL1_RF_TRC_Tst_Slot_Tick                   RFD_IT_L          "[CL1D][RFD][RF TST] Slot Tick, RAT=%MCL1D_RF_RAT_TYPE_E, Frame=%d, Slot=%d, Case_have_run=%d(slots)"
+  info    CL1_RF_TRC_Tst_Case_Start                  RFD_IT_L          "[CL1D][RFD][RF TST] Case Start, Case_Idx=%MCL1D_RF_TST_CASE_IDX_E, Start_Slot=%d, Duration=%d(slots)"
+  info    CL1_RF_TRC_Tst_Case_End                    RFD_IT_L          "[CL1D][RFD][RF TST] Case End, Case_Idx=%MCL1D_RF_TST_CASE_IDX_E, End_Slot=%d, Duration=%d(slots)"
+  error   CL1_RF_TRC_DEBUG1                          RFD_IT_L          "[CL1D][RFD][RF TST] Debug type=%ud, var1=%l"
+  error   CL1_RF_TRC_DEBUG2                          RFD_IT_L          "[CL1D][RFD][RF TST] Debug type=%ud, var1=%l, var2=%l"
+  error   CL1_RF_TRC_DEBUG3                          RFD_IT_L          "[CL1D][RFD][RF TST] Debug type=%ud, var1=%l, var2=%l, var3=%l"
+  error   CL1_RF_TRC_DEBUG4                          RFD_IT_L          "[CL1D][RFD][RF TST] Debug type=%ud, var1=%l, var2=%l, var3=%l, var4=%l"
+  error   CL1_RF_TRC_DEBUG5                          RFD_IT_L          "[CL1D][RFD][RF TST] Debug type=%ud, var1=%l, var2=%l, var3=%l, var4=%l, var5=%l"
+  error   CL1_RF_TRC_DEBUG6                          RFD_IT_L          "[CL1D][RFD][RF TST] Debug type=%ud, var1=%l, var2=%l, var3=%l, var4=%l, var5=%l, var6=%l"
+  error   CL1_RF_TRC_DEBUG7                          RFD_IT_L          "[CL1D][RFD][RF TST] Debug type=%ud, var1=%l, var2=%l, var3=%l, var4=%l, var5=%l, var6=%l, var7=%l"
+  error   CL1_RF_TRC_HEX_DEBUG1                      RFD_UT_L          "[CL1D][RFD][RF TST] Debug type=%ud, var1=%Xl"
+  error   CL1_RF_TRC_HEX_DEBUG2                      RFD_UT_L          "[CL1D][RFD][RF TST] Debug type=%ud, var1=%Xl, var2=%Xl"
+  error   CL1_RF_TRC_HEX_DEBUG3                      RFD_UT_L          "[CL1D][RFD][RF TST] Debug type=%ud, var1=%Xl, var2=%Xl, var3=%Xl"
+  error   CL1_RF_TRC_HEX_DEBUG4                      RFD_UT_L          "[CL1D][RFD][RF TST] Debug type=%ud, var1=%Xl, var2=%Xl, var3=%Xl, var4=%Xl"
+  error   CL1_RF_TRC_HEX_DEBUG5                      RFD_UT_L          "[CL1D][RFD][RF TST] Debug type=%ud, var1=%Xl, var2=%Xl, var3=%Xl, var4=%Xl, var5=%Xl"
+  error   CL1_RF_TRC_HEX_DEBUG6                      RFD_UT_L          "[CL1D][RFD][RF TST] Debug type=%ud, var1=%Xl, var2=%Xl, var3=%Xl, var4=%Xl, var5=%Xl, var6=%Xl"
+  error   CL1_RF_TRC_HEX_DEBUG7                      RFD_UT_L          "[CL1D][RFD][RF TST] Debug type=%ud, var1=%Xl, var2=%Xl, var3=%Xl, var4=%Xl, var5=%Xl, var6=%Xl, var7=%Xl"
+  info    CL1_RF_TRC_REG_DUMP1                       RFD_IT_H          "[CL1D][RFD][RF TST] Reg Dump, Reg_0=%8Xl, Val_0=%8Xl"
+  info    CL1_RF_TRC_REG_DUMP2                       RFD_IT_H          "[CL1D][RFD][RF TST] Reg Dump, Reg_0=%8XL, Val_0=%8Xl, Reg_1=%8XL, Val_1=%8XL"
+  info    CL1_RF_TRC_REG_DUMP3                       RFD_IT_H          "[CL1D][RFD][RF TST] Reg Dump, Reg_0=%8XL, Val_0=%8Xl, Reg_1=%8XL, Val_1=%8XL, Reg_2=%8Xl, Val_2=%8Xl"
+  info    CL1_RF_TRC_REG_DUMP4                       RFD_IT_H          "[CL1D][RFD][RF TST] Reg Dump, Reg_0=%8XL, Val_0=%8Xl, Reg_1=%8XL, Val_1=%8XL, Reg_2=%8Xl, Val_2=%8Xl, Reg_3=%8Xl, Val_3=%8Xl"
+
+  /*debug*/
+  info    CL1TRACE_RF_DPD_DEBUG1					 RFD_HAL_L		   "[CL1D][RFD][DPD] LID = %l"
+  info    CL1TRACE_RF_DPD_DEBUG2					 RFD_HAL_L		   "[CL1D][RFD][DPD] LID = %l, MAX_NUM = %l"
+  info    CL1TRACE_RF_DPD_NORM_GAIN					 RFD_HAL_L		   "[CL1D][RFD][DPD] NORM_GAIN_REG = %8Xl"
+  info    CL1TRACE_RF_DPD_PGA_IDX					 RFD_HAL_L		   "[CL1D][RFD][DPD] TX_PGA_IDX = %l"
+  info    CL1TRACE_RF_DPD_DET_PGA_IDX				 RFD_HAL_L		   "[CL1D][RFD][DPD] DET_TX_PGA_IDX = %l"
+  
+
+  /*DAT debug */
+  info    CL1TRACE_RF_DAT_CONFIG_DEBUG               RFD_HAL_L         "[CL1D][RFD][DAT][CONFIG] rat = %l, rf_band = %l, dev_senario = %l, freq_100khz = %l, state = %l, dat_enable = %l, cat_a_route_num = %l, cat_b_route_num = %l, dat_bpi_msk = %xl, dat_bpi_data = %xl, old_state = %l, tst_need_gap = %Mkal_bool"
+  info    CL1TRACE_RF_DAT_FEM_BPI                    RFD_HAL_L         "[CL1D][RFD][DAT][BPI] bpi_with_out_dat = %xl, bpi_with_dat = %xl"
+  info    CL1TRACE_RF_DAT_GAP_DEBUG                  RFD_HAL_L         "[CL1D][RFD][DAT][GAP] op_code = %l, old_rat = %l, old_rf_band = %l, old_state = %l, new_state = %l, need_gap = %Mkal_bool"
+  /*SAR debug */
+  info	  CL1TRACE_RF_SAR_INIT_DEBUG			     RFD_HAL_L		   "[CL1D][RFD][SAR][INIT]RAT = %l, RF_BAND =%l, chanNum =%l, chanNum_idx =%l"
+  info	  CL1TRACE_RF_SAR_INIT_DATA_DEBUG			 RFD_HAL_L		   "[CL1D][RFD][SAR][INIT][DATA]data_ant_1 = %l, data_ant_2 =%l, data_ant3 =%l"
+  info	  CL1TRACE_RF_SAR_GET_DEBUG			     	 RFD_HAL_L		   "[CL1D][RFD][SAR][GET]tbl_idx = %l, ant_state = %l, ant_idex = %l, sar_tx_power_offset = %l"
+  info	  CL1TRACE_RF_SAR_RESET_DEBUG			     RFD_HAL_L		   "[CL1D][RFD][SAR][RESET]reset_done = %l,tst_data = %l"
+  info	  CL1TRACE_RF_SAR_PERIOD_DEBUG			     RFD_HAL_L		   "[CL1D][RFD][SAR][PERIOD]shm_sar_tx_power_offset_period = %l"
+  info	  CL1TRACE_RF_SAR_SINGLE_DEBUG			     RFD_HAL_L		   "[CL1D][RFD][SAR][SINGLE]shm_sar_tx_power_offset_single = %l"
+
+  /*TAS update state */
+  info	  CL1TRACE_RF_TAS_STATE_UPDATE			     RFD_HAL_L		   "[CL1D][RFD][TAS][STATE][UPDATE]rf_band = %l, rat = %l, state = %l"
+  info	  CL1TRACE_RF_TAS_ATcmd_INFO_UPDATE		     RFD_HAL_L		   "[CL1D][RFD][TAS][ATcmdInfo][UPDATE]AtCmdInfoPtr = %Mkal_bool, AtCmdInfo = %Mkal_bool"
+  info	  CL1TRACE_RF_TAS_SIMtype_UPDATE		     RFD_HAL_L		   "[CL1D][RFD][TAS][SIMtype][UPDATE]TstSimType = %Mkal_bool, FinalTstSimType = %Mkal_bool"
+
+  /*TAS mipi event debug */
+  /*send tas mipi in FEM */
+  info	  CL1TRACE_RF_TAS_MipiEvent_DBG		     	RFD_FEM_H		   "[CL1D][RFD][TAS][MipiEvent][DBG]FEM_senario = %l, TAS_mipi_event_type = %l"
+  info	  CL1TRACE_RF_TAS_MipiDetail_DBG_A		RFD_FEM_H		   "[CL1D][RFD][TAS][MipiDetail][DBG_A]		event_type = %l, event_num = %l, total_data_num = %l, current_data_idx = %l"
+  info	  CL1TRACE_RF_TAS_MipiDataDetail_DBG_A 	 	RFD_FEM_H		   "[CL1D][RFD][TAS][MipiDataDetail][DBG_A]	mipi_data = %xl, mipi_port = %l, mipi_lock = %l, mipi_wlen = %l"
+  info	  CL1TRACE_RF_TAS_MipiDetail_DBG_B		RFD_FEM_H		   "[CL1D][RFD][TAS][MipiDetail][DBG_B]		event_type = %l, event_num = %l, total_data_num = %l, current_data_idx = %l"
+  info	  CL1TRACE_RF_TAS_MipiDataDetail_DBG_B 	 	RFD_FEM_H		   "[CL1D][RFD][TAS][MipiDataDetail][DBG_B]	mipi_data = %xl, mipi_port = %l, mipi_lock = %l, mipi_wlen = %l"
+  
+  /*choose subband index */
+  info	  CL1TRACE_RF_TAS_SubbandIndex_DBG		RFD_FEM_H		   "[CL1D][RFD][TAS][MipiSubbandIdex][DBG]catType = %l, input_freq_100khz = %l, subbandI = %l, subbandFreq = %l, dstSubband = %l"
+
+
+
+

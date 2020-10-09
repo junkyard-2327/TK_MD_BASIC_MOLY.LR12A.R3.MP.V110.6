@@ -1,0 +1,67 @@
+[Default]
+DHL_L1
+On
+Buffer
+
+[Modem_Type]
+dhl
+
+[Class]
+L1_Time_Info ON
+L1_Info ON
+RTOS_Time_Info ON
+L1_ULSP_DEBUG ON
+
+[String]
+
+[Message]
+info (hw_cond)          UMTS_3G_GEMINI_TIME                L1_Time_Info                "sim_idx=%b frame=%d ebit=%l bsfn=%d timestamp=%l"
+info (hw_cond)          UMTS_3G_TIME                       L1_Time_Info                "frame=%d ebit=%l bsfn=%d timestamp=%l"
+info (hw_cond)          UMTS_2G_GEMINI_TIME                L1_Time_Info                "sim_idx=%b frame=%f ebit=%d timestamp=%l"
+info (hw_cond)          UMTS_2G_TIME                       L1_Time_Info                "frame=%f ebit=%d timestamp=%l"
+info (hw_cond)          UMTS_2G_HANDOVER_TIME              L1_Time_Info                "frame=%f time=%l"
+info (hw_cond)          UMTS_3G_HANDOVER_TIME              L1_Time_Info                "frame=%f time=%l"
+info (hw_cond)          LTE_4G_TIME                        L1_Time_Info                "phy_timer=%l sample=%d timestamp=%l sfn=%d"
+info (hw_cond)          LTE_4G_TIME_2                      L1_Time_Info                "phy_timer=%l sample=%d timestamp=%l sfn=%d _4g_time=%l"
+info (force_l2)         LTE_4G_L2_TIME                     L1_Time_Info                "padding=%d timestamp=%l celltime=%l abstick=%l"
+info (ex_force_l1)      L1_TRC_REDUMP                      L1_Info                     " !!!!!Redump L1 Trace at System Crash!!!!! "
+info (hw_cond)          LTE_4G_TIME_GFRC                   L1_Time_Info                "phy_timer=%l sample=%d timestamp=%l sfn=%d"
+info (hw_cond)          LTE_4G_TIME_MET_RTOS               RTOS_Time_Info              "rtos_time=%ul timestamp=%ul timestamp_H=%ul"
+info (hw_cond)          DHL_HIGH_RESOLUTION_TIME           L1_Time_Info                "hs_time_msb=%d hs_time_lsb=%l"
+info (hw_cond)          DHL_LOW_RESOLUTION_TIME            L1_Time_Info                "ls_time=%l"
+info (hw_cond)          DHL_PERIODIC_TIME                  L1_Time_Info                "periodic_time=%l"
+info (hw_cond)          DHL_INCREMENTAL_TIME               L1_Time_Info                "incremental_time=%b"
+info (hw_cond)          LTE_4G_TIME_MET_WCLK               RTOS_Time_Info              "rtos_time=%ul timestamp=%ul timestamp_H=%ul WCLK=%ul"
+info (hw_cond)          C2K_1X_TIME                        L1_Time_Info                "[C2K][1x] Fn(Upper6)=%xb, Fn(Lower32)=%xl, Slot=%b, Echip=%xl, FRC=%l" 
+info (hw_cond)          C2K_DO_TIME                        L1_Time_Info                "[C2K][Do] Fn(Upper6)=%xb, Fn(Lower32)=%xl, Slot=%b, Echip=%xl, FRC=%l"
+info (hw_cond)          LTE_4G_TIME_GFRC_2                 L1_Time_Info                "phy_time=%l, timestamp=%l, cell_time=%d, abs_time=%l:%l"
+info (ex_force_l2)      L2_TRC_REDUMP                      L1_Info                     " !!!!!Redump L2 Trace at System Crash!!!!! "
+info                    L1_DHL_DEBUG_TRC1                  L1_Time_Info                "DHL Debug Trace 1 variables v1=%l"
+info                    L1_DHL_DEBUG_TRC2                  L1_Time_Info                "DHL Debug Trace 2 variables v1=%l v2=%l"
+info                    L1_DHL_DEBUG_TRC3                  L1_Time_Info                "DHL Debug Trace 3 variables v1=%l v2=%l v3=%l"
+info                    L1_DHL_DEBUG_TRC4                  L1_Time_Info                "DHL Debug Trace 4 variables v1=%l v2=%l v3=%l v4=%l"
+info                    L1_DHL_DEBUG_TRC5                  L1_Time_Info                "DHL Debug Trace 5 variables v1=%l v2=%l v3=%l v4=%l v5=%l"
+info                    L1_DHL_DEBUG_TRC6                  L1_Time_Info                "DHL Debug Trace 6 variables v1=%l v2=%l v3=%l v4=%l v5=%l v6=%l"
+info                    L1_DHL_DEBUG_TRC7                  L1_Time_Info                "DHL Debug Trace 7 variables v1=%l v2=%l v3=%l v4=%l v5=%l v6=%l v7=%l"
+info                    L1_DHL_DEBUG_TRC8                  L1_Time_Info                "DHL Debug Trace 8 variables v1=%l v2=%l v3=%l v4=%l v5=%l v6=%l v7=%l v8=%l"
+info (force_l2)         L2_DHL_DEBUG_TRC1                  L1_Time_Info                "DHL Debug Trace 1 variables v1=%l"
+info (force_l2)         L2_DHL_DEBUG_TRC2                  L1_Time_Info                "DHL Debug Trace 2 variables v1=%l v2=%l"
+info (force_l2)         L2_DHL_DEBUG_TRC3                  L1_Time_Info                "DHL Debug Trace 3 variables v1=%l v2=%l v3=%l"
+info (force_l2)         L2_DHL_DEBUG_TRC4                  L1_Time_Info                "DHL Debug Trace 4 variables v1=%l v2=%l v3=%l v4=%l"
+info (force_l2)         L2_DHL_DEBUG_TRC5                  L1_Time_Info                "DHL Debug Trace 5 variables v1=%l v2=%l v3=%l v4=%l v5=%l"
+info (force_l2)         L2_DHL_DEBUG_TRC6                  L1_Time_Info                "DHL Debug Trace 6 variables v1=%l v2=%l v3=%l v4=%l v5=%l v6=%l"
+info (force_l2)         L2_DHL_DEBUG_TRC7                  L1_Time_Info                "DHL Debug Trace 7 variables v1=%l v2=%l v3=%l v4=%l v5=%l v6=%l v7=%l"
+info (force_l2)         L2_DHL_DEBUG_TRC8                  L1_Time_Info                "DHL Debug Trace 8 variables v1=%l v2=%l v3=%l v4=%l v5=%l v6=%l v7=%l v8=%l"
+info                    DHL_DEBUGL1_L1_WAKE_INFO           L1_ULSP_DEBUG               "[DHL][HD][Time][L1] Debug wake up time = %l"
+info (force_l2)         DHL_DEBUGL1_L2_WAKE_INFO           L1_ULSP_DEBUG               "[DHL][HD][Time][L2] Debug wake up time = %l"
+error (ex_force_l1)     L1_TRC_STOP_BEFORE_EE              L1_Time_Info                " !!!!![WARNING] Logging was stopped before MD exception. Trace before MD exception is lost and redump is out-of-date.!!!!! "
+error (ex_force_l2)     L2_TRC_STOP_BEFORE_EE              L1_Time_Info                " !!!!![WARNING] Logging was stopped before MD exception. Trace before MD exception is lost and redump is out-of-date.!!!!! "
+info (ex_force_l1)      DUMP_COND_L1_TRC_START             L1_Info                     " !!!!! Start of Conditional L1 Trace !!!!! "
+info (ex_force_l1)      DUMP_COND_L1_TRC_END               L1_Info                     " !!!!! End of Conditional L1 Trace !!!!"
+info (ex_force_l1)      L1_TRC_REDUMP_END                  L1_Info                     " !!!!!Redump L1 Trace END!!!!! "
+info (ex_force_l2)      L2_TRC_REDUMP_END                  L1_Info                     " !!!!!Redump L2 Trace END!!!!! "
+info                    DHL_DEBUG_ULSP_DSP_LOCK            L1_ULSP_DEBUG               "[DHL][ULSP] Debug lock dsp power %Mkal_bool at FRC %l"
+info                    DHL_DEBUG_ULSP_DSP_UNLOCK          L1_ULSP_DEBUG               "[DHL][ULSP] Debug unlock dsp power at FRC %l"
+// this tmd is specail since ELT use hard code to get trace id
+// For any new trace you can only add in the last, you cannot add it in two existing trace 
+// you also need to update DHL doc for user/ELT know

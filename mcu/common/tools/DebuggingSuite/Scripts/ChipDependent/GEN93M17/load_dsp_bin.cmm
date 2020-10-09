@@ -1,0 +1,19 @@
+
+system.mode attach
+&dsp_bin="D:/dsp.bin"
+&load_addr=0x0E800000 
+
+
+PRINT "-----------Start load DSP!--------------"
+
+D.S 0x1FC100D4 %LE %LONG 0x02030202
+steal monitor mips32 fastchannel 0 1 0x6f800000
+
+DATA.LOAD.BINARY "&dsp_bin" &load_addr
+
+steal monitor mips32 fastchannel 0 0 0x6f800000
+D.S 0x1FC100D4 %LE %LONG 0x02020202
+
+PRINT "-----------Load DSP Done!--------------"
+
+ENDDO

@@ -1,0 +1,230 @@
+/*****************************************************************************
+*  Copyright Statement:
+*  --------------------
+*  This software is protected by Copyright and the information contained
+*  herein is confidential. The software may not be copied and the information
+*  contained herein may not be used or disclosed except with the written
+*  permission of MediaTek Inc. (C) 2005
+*
+*  BY OPENING THIS FILE, BUYER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+*  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("MEDIATEK SOFTWARE")
+*  RECEIVED FROM MEDIATEK AND/OR ITS REPRESENTATIVES ARE PROVIDED TO BUYER ON
+*  AN "AS-IS" BASIS ONLY. MEDIATEK EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES,
+*  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+*  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NONINFRINGEMENT.
+*  NEITHER DOES MEDIATEK PROVIDE ANY WARRANTY WHATSOEVER WITH RESPECT TO THE
+*  SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY, INCORPORATED IN, OR
+*  SUPPLIED WITH THE MEDIATEK SOFTWARE, AND BUYER AGREES TO LOOK ONLY TO SUCH
+*  THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO. MEDIATEK SHALL ALSO
+*  NOT BE RESPONSIBLE FOR ANY MEDIATEK SOFTWARE RELEASES MADE TO BUYER'S
+*  SPECIFICATION OR TO CONFORM TO A PARTICULAR STANDARD OR OPEN FORUM.
+*
+*  BUYER'S SOLE AND EXCLUSIVE REMEDY AND MEDIATEK'S ENTIRE AND CUMULATIVE
+*  LIABILITY WITH RESPECT TO THE MEDIATEK SOFTWARE RELEASED HEREUNDER WILL BE,
+*  AT MEDIATEK'S OPTION, TO REVISE OR REPLACE THE MEDIATEK SOFTWARE AT ISSUE,
+*  OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE CHARGE PAID BY BUYER TO
+*  MEDIATEK FOR SUCH MEDIATEK SOFTWARE AT ISSUE. 
+*
+*  THE TRANSACTION CONTEMPLATED HEREUNDER SHALL BE CONSTRUED IN ACCORDANCE
+*  WITH THE LAWS OF THE STATE OF CALIFORNIA, USA, EXCLUDING ITS CONFLICT OF
+*  LAWS PRINCIPLES.  ANY DISPUTES, CONTROVERSIES OR CLAIMS ARISING THEREOF AND
+*  RELATED THERETO SHALL BE SETTLED BY ARBITRATION IN SAN FRANCISCO, CA, UNDER
+*  THE RULES OF THE INTERNATIONAL CHAMBER OF COMMERCE (ICC).
+*
+*****************************************************************************/
+
+/*******************************************************************************
+ * Filename:
+ * ---------
+ *   hif_usb_data_path_trace.tmd
+ *
+ * Project:
+ * --------
+ *   UMOLYA
+ *
+ * Description:
+ * ------------
+ *   HIF USB data path trace Log.
+ *
+ * Author:
+ * -------
+ *   TJ Chang
+ *
+ *==============================================================================
+ *                 HISTORY
+ * Below this line, this part is controlled by PVCS VM. DO NOT MODIFY!! 
+ *------------------------------------------------------------------------------
+ * $Log$
+ *
+ * 04 07 2017 tj.chang
+ * [MOLY00240146] [MDT] RNDIS/ETHERCORE/NMU support MDT
+ * 	
+ * 	[MDT] RNDIS/ETHC support MDT.
+ *
+ *------------------------------------------------------------------------------
+ * Upper this line, this part is controlled by PVCS VM. DO NOT MODIFY!! 
+ *==============================================================================
+ *******************************************************************************/
+
+/*
+Notes:
+    MAX MAX_ARG is 7, But the best MIPS is 4.
+    Set MAX_ARG bigger than 4, only affect MIPS of log use more than 4 ARG.
+*/
+
+[Default]
+    HIF_USB
+    ON
+    L2_Buffer
+    TCMFORCE
+    MAX_ARG 7
+    L2_BUFFER_SETTING   L2_BUFFER_HIF
+
+[Modem_Type]
+    Generic
+
+[Class]
+    USBCORE_POLL_QUEUE                   on
+    USBCORE_CLASS_REQUEST                on
+    ETHC                                 on
+    RNDIS                                on
+    MBIM                                 on
+    ECM                                  on
+
+[String]
+
+[Message]
+    info    USBCORE_POLL_QUEUE_TX                   USBCORE_POLL_QUEUE "[USBCORE] polling Tx_q[%d], returns %l GPD(s), first gpd %xl, last gpd %xl"
+    info    USBCORE_POLL_QUEUE_TX_NOTIFY_END        USBCORE_POLL_QUEUE "[USBCORE] finishing notifing poll Tx queue complete:  class id = %d"
+    info    USBCORE_POLL_QUEUE_RX                   USBCORE_POLL_QUEUE "[USBCORE] polling Rx_q[%d], returns %l GPD(s), first gpd %xl, last gpd %xl"
+    info    USBCORE_POLL_QUEUE_RX_NOTIFY_END        USBCORE_POLL_QUEUE "[USBCORE] finishing notifing poll Rx queue complete:  class id = %d"
+    info    USBCORE_POLL_QUEUE_LEN_TX               USBCORE_POLL_QUEUE "[USBCORE] polling Tx_q[%d], GPD length = %xl, BD_length = %xl, SPD length = %xl"
+    info    USBCORE_POLL_QUEUE_LEN_RX               USBCORE_POLL_QUEUE "[USBCORE] polling Rx_q[%d], GPD length = %xl, BD_length = %xl, SPD length = %xl"
+    info    USBCORE_CLASS_SUBMIT_IO_REQUEST_HWQ     USBCORE_CLASS_REQUEST "[USBCORE] submit hw_q type/q_no = %xd, first gpd %xl, last gpd %xl"
+    info    USBCORE_CLASS_SUBMIT_IO_REQUEST_SWQ     USBCORE_CLASS_REQUEST "[USBCORE] submit sw_q type/q_no = %xd, first gpd %xl, last gpd %xl"
+    info    USBCORE_CLASS_FLUSH_HW_QUEUE            USBCORE_CLASS_REQUEST "[USBCORE] flush HW_q[%xd], returns %l GPD(s), first gpd %xl, last gpd %xl"
+    info    USBCORE_CLASS_FLUSH_SW_QUEUE            USBCORE_CLASS_REQUEST "[USBCORE] flush SW_q[%xd], returns %l GPD(s), first gpd %xl, last gpd %xl"
+    info    USBCORE_RESTORE_RX_GPD_SWQ2HWQ          USBCORE_CLASS_REQUEST "[USBCORE] restore Rx GPDs from sw_q to hw_q: type/q_no = %xd"
+    info    USBCORE_RESTORE_TX_GPD_SWQ2HWQ          USBCORE_CLASS_REQUEST "[USBCORE] restore Tx GPDs from sw_q to hw_q: type/q_no = %xd"
+    info    USBCORE_DIRECT_POLL_QUEUE               USBCORE_POLL_QUEUE  "[USBCORE] direct polling dir = %d, md_q = %l, ap_q = %l"
+    info    USBCORE_DIRECT_SUBMIT_IO_REQUEST        USBCORE_CLASS_REQUEST "[USBCORE] direct submitIO dir = %d, md_q = %l, ap_q = %l"
+    info    USBCORE_DIRECT_FLUSH_HW_QUEUE           USBCORE_CLASS_REQUEST "[USBCORE] direct flush_hw_q dir = %d, md_q = %l, ap_q = %l"
+    info    USBCORE_DIRECT_FLUSH_SW_QUEUE           USBCORE_CLASS_REQUEST "[USBCORE] direct flush_sw_q dir = %d, md_q = %l, ap_q = %l"
+    info    USBCORE_DIRECT_CHK_QUEUE_EMPTY          USBCORE_CLASS_REQUEST "[USBCORE] direct check queue empty isTx = %d, md_q = %l, ap_q = %l, isEmpty = %l"
+    info    USBCORE_POLL_QUEUE_DRB                  USBCORE_POLL_QUEUE "[USBCORE] polling drb_q[%d], returns %l field(s), startIdx %l, endIdx %l"
+    info    USBCORE_POLL_QUEUE_XIT                  USBCORE_POLL_QUEUE "[USBCORE] polling xit_q[%d], returns %l field(s), startIdx %l, endIdx %l"
+    info    USBCORE_CHK_UL_META                     USBCORE_POLL_QUEUE "[USBCORE] CHK UL META: type = %d, startIdx %l, endIdx %l"
+    info    USBCORE_DEBUG_XIT_ENQ1                  USBCORE_POLL_QUEUE "[USBCORE] DBG XIT: index = %d, len = %l, data_addr = %l"
+    info    USBCORE_DEBUG_XIT_ENQ2                  USBCORE_POLL_QUEUE "[USBCORE] DBG_XIT: dump: %d, %l, %l, %l"
+    info    ETHC_HANDLE_ARP                         ETHC "[ETHERCORE] handle_arp_packet(): hrd(%d), pro(%ul), hln(%ul), pln(%ul), op(%ul)"
+    info    ETHC_HANDLE_ARP_SHA_NOT_MATCH_NG        ETHC "[ETHERCORE] handle_arp_packet(): eth%d, sha 0-1(%xl) 2-5(%xl) not match"
+    info    ETHC_HANDLE_ARP_THA_NOT_MATCH_NG        ETHC "[ETHERCORE] handle_arp_packet(): eth%d, tha 0-1(%xl) 2-5(%xl) not match"
+    info    ETHC_HANDLE_ARP_GRATUITOUS_NG           ETHC "[ETHERCORE] handle_arp_packet(): eth%d, spa(%ul %ul %ul %ul) is gratuitous"
+    info    ETHC_HANDLE_ARP_ZERO_IP_NG              ETHC "[ETHERCORE] handle_arp_packet(): eth%d, spa(%ul %ul %ul %ul) is zero ip"
+    info    ETHC_HANDLE_ARP_ALLOC_NET_DL_NG         ETHC "[ETHERCORE] handle_arp_packet(): failed to allocate NET_DL to handle ARP request(%xl), drop it!"
+    info    ETHC_HANDLE_ARP_DONE                    ETHC "[ETHERCORE] handle_arp_packet(): eth%d, result(%ul), parse_arp_req(%ul), gpd(%xl), tx_gpd(%xl)"
+    info    ETHC_PROC_RX_GPD                        ETHC "[ETHERCORE] [%d] process rx gpd(%xl), result(%l), ether_type(%l), qos_priority(%l)"
+    info    ETHC_PROC_RX_GPD_TYPE_IP                ETHC "[ETHERCORE] [%d] process rx gpd(%xl) w/ ipv4, ip_proto_type(%l)"
+    info    ETHC_PROC_RX_GPD_TYPE_ARP               ETHC "[ETHERCORE] [%d] process rx gpd(%xl) w/ arp"
+    info    ETHC_PROC_RX_GPD_TYPE_IPV6              ETHC "[ETHERCORE] [%d] process rx gpd(%xl) w/ ipv6, next_header(%l)"
+    info    ETHC_PROC_RX_GPD_TYPE_UNSUPPORTED       ETHC "[ETHERCORE] [%d] process unsupported rx gpd(%xl)"
+    info    ETHC_PROC_TX_TYPE_GPD_BD                ETHC "[ETHERCORE] [%d] process_tx_gpd_list(): insert a header bd into tx gpd(%xl)"
+    info    ETHC_PROC_TX_ALLOC_BD_NG                ETHC "[ETHERCORE] [%d] process_tx_gpd_list(): fail to allocate a header bd, current_gpd(%xl), first_gpd(%xl), last_gpd(%xl)"
+    info    ETHC_RB_TX_FREE_ALL_VRB_ENUM            ETHC "[ETHERCORE] ethc_rb_tx_free_all_vrb(): enumerate did_sit list, did(%xl), handled_seg_cnt(%ul), curr_sit(%xl), p_data(%xl), len(%ul)"
+    info    ETHC_RB_TX_FREE_ALL_VRB_DONE            ETHC "[ETHERCORE] ethc_rb_tx_free_all_vrb(): enumerate done, did(%xl), handled_seg_cnt(%ul)"
+    info    ETHC_RB_TX_ENCAP_ETHER_HEADER_DONE      ETHC "[ETHERCORE] ethc_rb_encap_ether_header(): ip_packet(%xl), ip_ver(%xl), ether_type_idx(%ul), vlan_enable_idx(%ul), fh_idx(%ul), fh_len(%ul)"
+    info    ETHC_RB_PROC_TX_PKT                     ETHC "[ETHERCORE] ethc_rb_process_tx_pkt(): process TX packet, did(%xl), seg_num(%ul)"
+    info    ETHC_RB_PROC_TX_PKT_INVALID_DID_FORMAT  ETHC "[ETHERCORE] ethc_rb_process_tx_pkt(): invalid did format, i(%d), did(%xl)!"
+    info    ETHC_RB_PROC_TX_PKT_ENUM                ETHC "[ETHERCORE] ethc_rb_process_tx_pkt(): enumerate did list, i(%d), curr_sit(%xl), p_data(%xl), len(%xl), pkt_cnt(%ul), byte_cnt(%ul), is_first_gpd(%ul)"
+    info    ETHC_BUF_ENCAP_ETHER_HEADER_DONE        ETHC "[ETHERCORE] ethc_buf_encap_ether_header(): encap ether header done, type(%ul), out_data(%xl), out_data_len(%ul)"
+    info    ETHC_RB_IPC_TX_SUBMIT_DONE              ETHC "[ETHERCORE] ethc_rb_ipc_tx_submit(): ethcore tx submit done, ret(%d), did(%xl)"
+    info    ETHC_RB_IPC_TX_SUBMIT_NOT_LINK_UP       ETHC "[ETHERCORE] ethc_rb_ipc_tx_submit(): device state is not link up, did(%xl)"
+    info    ETHC_RB_DECAP_ETHER_HEADER              ETHC "[ETHERCORE] ethc_rb_decap_ether_header(): ether_type(%d), eth_hdr(%xl), vrb_addr(%xl), length(%ul)"
+    info    ETHC_RB_DECAP_ETHER_HEADER_INVALID_VLAN_FORMAT ETHC "[ETHERCORE] ethc_rb_decap_ether_header(): invalid vlan format, vlan_cfi(%d)"
+    info    ETHC_RB_DECAP_ETHER_HEADER_2            ETHC "[ETHERCORE] ethc_rb_decap_ether_header(): decap ether header_2, data_addr(%xl), data_len(%ul), remove_len(%ul)"
+    info    ETHC_RB_PROC_RX_PKT                     ETHC "[ETHERCORE] ethc_rb_process_rx_pkt(): result(%d), ul_meta(%xl), ether_type(%ul), qos_priority(%ul)"
+    info    ETHC_RB_PROC_RX_PKT_TYPE_IP             ETHC "[ETHERCORE] ethc_rb_process_rx_pkt(): ipv4 type, ul_meta(%xl), ip_pro(%ul)"
+    info    ETHC_RB_PROC_RX_PKT_TYPE_ARP            ETHC "[ETHERCORE] ethc_rb_process_rx_pkt(): arp type, ul_meta(%xl)"
+    info    ETHC_RB_PROC_RX_PKT_TYPE_IPV6           ETHC "[ETHERCORE] ethc_rb_process_rx_pkt(): ipv6 type, ul_meta(%xl), next_header(%ul)"
+    info    ETHC_PROC_RX_PKT_TYPE_UNSUPPORTED       ETHC "[ETHERCORE] ethc_rb_process_rx_pkt(): unknown type, ul_meta(%xl)"
+    info    RNDIS_DL_GPD_ADD_HEADERS_BEGIN  RNDIS "[RNDIS] rndis_add_headers(): eth_length(%d) is_first_gpd(%ul) is_last_gpd(%ul) last_padding(%ul) data_ptr(%xl)"
+    info    RNDIS_DL_GPD_WITH_VLAN_PRI      RNDIS "[RNDIS] rndis_add_headers(): eth_length(%d) with vlan_pri_info: %2xl %2xl %2xl %2xl"
+    info    RNDIS_DL_GPD_PPI_VLAN_PRI_ADDED RNDIS "[RNDIS] rndis_add_headers(): eth_length(%d) add ppi for vid: %3xl pri: %xl"
+    info    RNDIS_DL_GPD_DATA_OFFSET        RNDIS "[RNDIS] rndis_add_headers(): data_offset: %d"
+    info    RNDIS_DL_GPD_CASE1              RNDIS "[RNDIS] rndis_add_headers(): Case 1, last_padding(%d)"
+    info    RNDIS_DL_GPD_CASE2              RNDIS "[RNDIS] rndis_add_headers(): Case 2.%d last_padding(%l)"
+    info    RNDIS_DL_GPD_ADD_RNDIS_PKT_MSG  RNDIS "[RNDIS] rndis_add_headers(): RNDIS_PACKET_MSG added: message_length: %d, data_offset: %ul, data_length: %ul, data_ptr: %xl"
+    info    RNDIS_DL_IOR_ENUMERATION        RNDIS "[RNDIS] rndis_on_downlink(): netif_id(%d) curr_ior(%xl) next_ior(%xl) first_ior(%xl)"
+    info    RNDIS_DL_GPD_ENUMERATION        RNDIS "[RNDIS] rndis_on_downlink(): netif_id(%d) curr_gpd: %xl, next_gpd: %xl, first_gpd: %xl, last_gpd: %xl"
+    info    RNDIS_DL_SPD_SINGLE_PKT_BEGIN   RNDIS "[RNDIS] rndis_process_tx_spd(): Begin DL single packet transfer in SPD: spd_entry_num(%d), spd1_header_len(%ul), curr_gpd(%xl)"
+    info    RNDIS_DL_SPD_SINGLE_PKT_END     RNDIS "[RNDIS] rndis_process_tx_spd(): End DL single packet transfer in SPD: spd_entry_num(%d), total_header_len(%ul), total_data_len(%ul), flush_len(%ul)"
+    info    RNDIS_DL_SPD_MULTI_PKT_BEGIN    RNDIS "[RNDIS] rndis_process_tx_spd(): Begin DL multi packet transfer in SPD: spd_entry_num(%d), total_payload_len(%ul), curr_gpd(%xl)"
+    info    RNDIS_DL_SPD_MULTI_PKT_END      RNDIS "[RNDIS] rndis_process_tx_spd(): End DL multi packet transfer in SPD: spd_entry_num(%d), total_header_len(%ul), total_data_len(%ul), flush_len(%ul)"
+    info    RNDIS_DL_SPD_ADD_RNDIS_PKT_MSG  RNDIS "[RNDIS] rndis_add_headers(): RNDIS_PACKET_MSG added: message_length: %d, data_length: %ul"
+    info    RNDIS_DL_AGG_CHECK_ROOM_FOR_NEXT RNDIS "[RNDIS] rndis_on_downlink(): checking room for next msg: is_first_gpd: %d, is_last_gpd: %ul, last_padding: %ul, total_len: %ul"
+    info    RNDIS_DL_AGG_NO_ROOM_FOR_NEXT   RNDIS "[RNDIS] rndis_on_downlink(): no room to aggregate next msg: total_len(%d)+curr_msg_len(%ul)+next_msg_len(%ul)=%ul > dl_max_trans_size(%ul)"
+    info    RNDIS_DL_ADD_HEADER             RNDIS "[RNDIS] rndis_on_downlink(): add RNDIS headers => curr_msg_len: %d total_len: %ul"
+    info    RNDIS_DL_AGG_END_NORMAL         RNDIS "[RNDIS] rndis_on_downlink(): aggregation ends normally, netif_id(%d)"
+    info    RNDIS_DL_AGG_END_AND_RESTART    RNDIS "[RNDIS] rndis_on_downlink(): end this aggregation and restart it from next msg, netif_id(%d)"
+    info    RNDIS_DL_SUBMIT_IOR_NG          RNDIS "[RNDIS] rndis_on_downlink(): submit IOR, dl_gpd_num=%d, dl_pkt_num=%ul to usbcore because usb_state is not ready. ior=%xl, next_ior=%xl, first_gpd=%xl, last_gpd=%xl"
+    info    RNDIS_UL_START_DP_CONNECTED     RNDIS "[RNDIS] set start data path indicate CONNECTED, netif_id(%d)"
+    info    RNDIS_UL_START_DP_RETRY_TIMEOUT RNDIS "[RNDIS] start data path retry timer callback, netif_id(%d)"
+    info    RNDIS_UL_START_DP_RETRY_TIMER   RNDIS "[RNDIS] set start data path retry timer, netif_id(%d)"
+    info    RNDIS_PPI_IN_FIRST_BUF          RNDIS "[RNDIS] PPI case 1, ppi_offset: %d, ppi_length: %ul <= 1st buf length: %ul"
+    info    RNDIS_PPI_RECORD                RNDIS "[RNDIS] PPI size(%d), type(%ul), offset(%ul)"
+    info    RNDIS_PPI_MATCHED               RNDIS "[RNDIS] PPI matched, ppi_length(%d)"
+    info    RNDIS_PPI_VLAN_PRI_FOUND        RNDIS "[RNDIS] PPI vlan_pri_info: %d, vid: %3xl, pri:%xl"
+    info    RNDIS_PPI_NOT_MATCHED           RNDIS "[RNDIS] PPI NOT matched, ppi_type(%d)"
+    info    RNDIS_PPI_CROSS_BUF             RNDIS "[RNDIS] PPI case 2, ppi_offset: %d, ppi_length: %ul > 1st buf length: %ul"
+    info    RNDIS_UL_STRIP_PKT_MSG          RNDIS "[RNDIS] rndis_strip_off_headers(): msg_length:%d, data_offset:%ul, gpd:%xl"
+    info    RNDIS_UL_STRIP_PADDING_BD_CASE  RNDIS "[RNDIS] rndis_strip_off_headers(): BD list case, strip off pendding bytes:%d, curr desc is EOL:%ul"
+    info    RNDIS_UL_FREE_PADDING_BD        RNDIS "[RNDIS] rndis_strip_off_headers(): free padding BD, data_len:%d, is_eol:%ul"
+    info    RNDIS_UL_STRIP_PADDING_GPD_CASE RNDIS "[RNDIS] rndis_strip_off_headers(): GPD case, strip off pendding bytes, MSG length:%d Previous GPD data length:%ul"
+    info    RNDIS_UL_RELOAD_BY_START_DATA_PATH_REQ  RNDIS "[RNDIS] rndis_reload_ul_buffers() called by MSG_ID_RNDIS_START_DATA_PATH_REQ, netif_id(%d)"
+    info    RNDIS_UL_GPD_SUBMITTED          RNDIS "[RNDIS] UL GPD submitted, in HIF: %d"
+    info    RNDIS_UL_BULKOUT_EMPTY_IOR      RNDIS "[RNDIS] rndis_on_bulk_out_complete(): empty IOR => drop it, num_gpd(%d)"
+    info    RNDIS_BUF_DOWNLINK              RNDIS "[RNDIS] rndis_buf_downlink(): queue_no(%d), payload(%xl), payload_len(%d)"
+    info    RNDIS_BUF_DL_MSG_INFO           RNDIS "[RNDIS] rndis_buf_downlink(): header_drb_idx(%d), payload_drb_idx(%d), header_addr(%xl), msg_len(%d), payload_prb(%xl), payload_len(%d)"
+    info    RNDIS_BUF_DL_SUBMIT_DRB         RNDIS "[RNDIS] rndis_buf_downlink(): submit DRB to USBCore: queue_no(%d), submit_urb_cnt(%d)"
+    info    RNDIS_RB_DOWNLINK               RNDIS "[RNDIS] rndis_rb_downlink(): queue_no(%d), did(%xl), pkt_num(%d), seg_num(%d)"
+    info    RNDIS_RB_DL_ENUMERATION         RNDIS "[RNDIS] rndis_rb_downlink(): dl enumeration: i(%d), did(%xl), curr_sit(%xl), hif_type(%d), handled_seg_cnt(%d), seg_num(%d), total_len(%d)"
+    info    RNDIS_RB_DL_USB_PACKET          RNDIS "[RNDIS] rndis_rb_downlink(): usb dl packet: i(%d), data_addr(%xl), data_len(%ul), is_first_pkt(%d), is_last_pkt(%d), last_padding(%d), ethc_drb_fh_idx(%d)"
+    info    RNDIS_RB_DL_AGG_NO_ROOM_FOR_NEXT RNDIS "[RNDIS] rndis_rb_downlink(): no room to aggregate next msg: total_len(%d)+curr_msg_len(%ul)+next_msg_len(%ul)=%ul > dl_max_trans_size(%ul)"
+    info    RNDIS_RB_DL_AGG_CONTINUE_1      RNDIS "[RNDIS] rndis_rb_downlink(): add aggregation msg(1): header_drb_idx(%d), header_addr(%xl), curr_msg_len(%ul), curr_payload_len(%ul), ethc_drb_fh_len(%ul), total_len(%ul)"
+    info    RNDIS_RB_DL_AGG_CONTINUE_2      RNDIS "[RNDIS] rndis_rb_downlink(): add aggregation msg(2): header_drb_idx(%d), agg_cnt(%d), sit_cnt(%d), submit_drb_cnt(%ul)"
+    info    RNDIS_RB_DL_ADD_PAYLOAD_DRB_1   RNDIS "[RNDIS] rndis_rb_add_payload_drb(): add payload drb(1), queue_no(%d), i(%ul), j(%ul), p_data(%xl), len(%ul), seg_num(%ul)"
+    info    RNDIS_RB_DL_ADD_PAYLOAD_DRB_2   RNDIS "[RNDIS] rndis_rb_add_payload_drb(): add payload drb(2), create 1st prb, i(%ul), j(%ul), payload_drb_idx(%ul), phyAddr(%xl), phyLen(%ul), submit_urb_cnt(%ul)"
+    info    RNDIS_RB_DL_ADD_PAYLOAD_DRB_3   RNDIS "[RNDIS] rndis_rb_add_payload_drb(): add payload drb(3), 1st prb, set fixed header idx, i(%ul), j(%ul), payload_drb_idx(%ul), ethc_drb_fh_idx(%ul)"
+    info    RNDIS_RB_DL_ADD_PAYLOAD_DRB_4   RNDIS "[RNDIS] rndis_rb_add_payload_drb(): add payload drb(4), corss-page case, 2nd prb, i(%ul), j(%ul), payload_drb_idx(%ul), phyAddr(%xl), phyLen(%ul), submit_urb_cnt(%ul)"
+    info    RNDIS_RB_DL_ADD_PAYLOAD_DRB_5   RNDIS "[RNDIS] rndis_rb_add_payload_drb(): add payload drb(5), set EOT, i(%ul), j(%ul), payload_drb_idx(%ul)"
+    info    RNDIS_RB_DL_ADD_HEADERS_BEGIN   RNDIS "[RNDIS] rndis_rb_add_headers(): payload_len(%d), is_first_pkt(%d), is_last_pkt(%d), last_padding(%d)"
+    info    RNDIS_RB_DL_CASE1               RNDIS "[RNDIS] rndis_rb_add_headers(): Case 1"
+    info    RNDIS_RB_DL_CASE2               RNDIS "[RNDIS] rndis_rb_add_headers(): Case 2: %d, curr_padding(%d)"
+    info    RNDIS_RB_DL_ADD_RNDIS_PKT_MSG   RNDIS "[RNDIS] rndis_rb_add_headers(): RNDIS_PACKET_MSG added: message_length(%d), data_offset(%d), data_length(%d), msg(%xl)"
+    info    RNDIS_RB_UL_ENUMERATION         RNDIS "[RNDIS] rndis_rb_bulk_out_complete(): ul enumeration: curr_idx(%d), ul_meta(%xl), qtype(%d), net_type(%d), next_idx(%d), end_of_list(%d)"
+    info    RNDIS_RB_UL_STRIP_PKT_MSG       RNDIS "[RNDIS] rndis_rb_strip_off_headers(): msg_length(%d), data_length(%ul), data_offset(%d)"
+    info    MBIM_RB_DOWNLINK                MBIM "[MBIM] mbim_rb_downlink(): queue_no(%d), did(%xl), pkt_num(%d), seg_num(%d)"
+    info    MBIM_RB_DL_ENUMERATION          MBIM "[MBIM] mbim_rb_downlink(): dl enumeration: i(%d), did(%xl), curr_sit(%xl), hif_type(%d), handled_seg_cnt(%d), seg_num(%d), agg_cnt(%d)"
+    info    MBIM_RB_DL_MULTI_PACKET         MBIM "[MBIM] mbim_rb_downlink(): dl multi-packet transfer in DID_SIT: i(%d), curr_sit(%ul), address(%xl), length(%ul)"
+    info    MBIM_RB_DL_AGG_CONTINUE_1       MBIM "[MBIM] mbim_rb_downlink(): add aggregation msg: i(%d), agg_cnt(%d), header_drb_idx(%d), header_len(%ul), curr_total_len(%ul)"
+    info    MBIM_RB_DL_AGG_CONTINUE_2       MBIM "[MBIM] mbim_rb_downlink(): end to add aggregation msg: i(%d), agg_cnt(%d), payload_len(%ul), header_addr(%xl), sit_cnt(%d), submit_drb_cnt(%d), last_total_len(%ul)"
+    info    MBIM_RB_DL_AGG_FIRST_NDP_1      MBIM "[MBIM] mbim_rb_downlink(): add first NDP header: i(%d), agg_cnt(%d), header_len(%ul), curr_total_len(%ul)"
+    info    MBIM_RB_DL_AGG_FIRST_NDP_2      MBIM "[MBIM] mbim_rb_downlink(): end to add first NDP header: i(%d), payload_len(%ul), ndp_drb_idx(%d), header_len(%ul), sit_cnt(%d), submit_drb_cnt(%d)"
+    info    MBIM_RB_DL_AGG_END_EOL          MBIM "[MBIM] mbim_rb_downlink(): aggregation done: i(%d), trans_cnt(%d), agg_cnt(%d), handled_seg_cnt(%d), submit_drb_cnt(%d)"
+    info    MBIM_RB_UL_ENUMERATION          MBIM "[MBIM] mbim_rb_bulk_out_complete(): ul enumeration: curr_idx(%d), ul_meta(%xl), qtype(%d), net_type(%d), next_idx(%d), end_of_list(%d)"
+    info    MBIM_LOOPBACK_ENUMERATION       MBIM "[MBIM] mbim_rb_process_loopback(): loopback enumeration: curr_idx(%d), ul_meta(%xl), net_type(%d), next_idx(%d), end_of_list(%d)"
+    info    MBIM_LOOPBACK_DL_MSG_INFO       MBIM "[MBIM] mbim_rb_loopback_downlink(): payload_drb_idx(%d), payload_prb(%xl), payload_len(%d)"
+    info    MBIM_LOOPBACK_DL_SUBMIT_DRB     MBIM "[MBIM] mbim_rb_loopback_downlink(): submit DRB to USBCore: queue_no(%d), submit_urb_cnt(%d)"
+    info    CDCECM_BUF_DOWNLINK             ECM "[ECM] cdcecm_buf_downlink(): queue_no(%d), payload(%xl), payload_len(%d)"
+    info    CDCECM_BUF_DL_MSG_INFO          ECM "[ECM] cdcecm_buf_downlink(): td_drb_idx(%d), payload_drb_idx(%d), payload_prb(%xl), payload_len(%d)"
+    info    CDCECM_RB_DOWNLINK              ECM "[ECM] cdcecm_rb_downlink(): queue_no(%d), did(%xl), pkt_num(%d), seg_num(%d), state(%d), is_usb_suspend(%d)"
+    info    CDCECM_RB_DL_ENUMERATION        ECM "[ECM] cdcecm_rb_downlink(): dl enumeration: i(%d), did(%xl), curr_sit(%xl), hif_type(%d), handled_seg_cnt(%d), seg_num(%d), total_len(%d)"
+    info    CDCECM_RB_DL_PACKET             ECM "[ECM] cdcecm_rb_downlink(): dl packet: i(%d), data_addr(%xl), data_len(%ul)"
+    info    CDCECM_RB_PWR_FILTER_NUM        ECM "[ECM] cdcecm_rb_downlink(): power management pattern filter check: filter_idx(%d)"
+    info    CDCECM_RB_PWR_FILTER_DROP       ECM "[ECM] cdcecm_rb_downlink(): power management pattern filter drop: xmit_frames(%d)"
+    info    CDCECM_RB_BULK_OUT_COMPLT       ECM "[ECM] cdcecm_rb_bulk_out_complete(): ul enumeration: curr_idx(%d), ul_meta(%xl), qtype(%d), net_type(%d), next_idx(%d), end_of_list(%d)"
+    info    RNDIS_DL_SUBMIT_IOR             RNDIS "[RNDIS][USB_DL] rndis_on_downlink(): submit IOR, dl_gpd_num=%d, dl_pkt_num=%ul to usbcore. ior=%xl, next_ior=%xl, first_gpd=%xl, last_gpd=%xl"
+    info    RNDIS_UL_ALLOC_GPD              RNDIS "[RNDIS][USB_UL_RELOAD] rndis_reload_ul_buffers(): usb_ul_gpd_want_allocate=%d, usb_ul_gpd_to_allocate=%ul, usb_ul_gpd_in_hif=%ul"
+    info    RNDIS_UL_BULKOUT_COMPLETE       RNDIS "[RNDIS][USB_UL] rndis_on_bulk_out_complete(): usb_ul_gpd_received=%d, usb_ul_gpd_in_hif=%ul"
+    info    RNDIS_RB_DL_SUBMIT_DRB          RNDIS "[RNDIS][USB_DL] rndis_rb_downlink(): submit DRB to USBCore: queue_no(%d), submit_urb_cnt(%d)"
+    info    RNDIS_RB_UL_BULKOUT_COMPLETE    RNDIS "[RNDIS][USB_UL] rndis_rb_bulk_out_complete(): usb_ul_received=%d"

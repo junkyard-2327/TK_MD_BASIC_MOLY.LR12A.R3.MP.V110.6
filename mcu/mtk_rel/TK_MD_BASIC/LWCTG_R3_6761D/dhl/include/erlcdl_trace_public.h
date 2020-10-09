@@ -1,0 +1,1165 @@
+#ifndef L1TRC_ERLCDL_PUBLIC_DEF_H
+#define L1TRC_ERLCDL_PUBLIC_DEF_H
+
+/******************************/
+/* String category definition */
+/******************************/
+#define ERLCDL_RB_CFG_TYPE(v1)  (unsigned char)(v1+0)
+#define ERLCDL_RB_MODE_Type(v1)  (unsigned char)(v1+5)
+
+
+/****************************/
+/* Message macro definition */
+/****************************/
+#include "L1Trc.h"
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_PUBLIC_DUMMY(v1) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x001B,0x001B);\
+			TRC_OUTPUT_32_LAST_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_PUBLIC_DUMMY(v1)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_RB_CFG(v1, v2, v3) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x011B,0x011B);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_RB_CFG(v1, v2, v3)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_DEL_OLD_DRB(v1, v2, v3) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x021B,0x021B);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_DEL_OLD_DRB(v1, v2, v3)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_DEL_NEW_DRB(v1, v2, v3) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x031B,0x031B);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_DEL_NEW_DRB(v1, v2, v3)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_ADD_2ND_DRB(v1, v2, v3) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x041B,0x041B);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_ADD_2ND_DRB(v1, v2, v3)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_SETUP_AM_TIMER(v1, v2, v3, v4) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v4,v4);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v4,v4);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x051B,0x051B);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v4,v4);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_SETUP_AM_TIMER(v1, v2, v3, v4)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_SETUP_UM_TIMER(v1, v2, v3) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x061B,0x061B);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_SETUP_UM_TIMER(v1, v2, v3)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_RB_PARAM_ERR() do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_START_FILL_L2();\
+			TRC_OUTPUT_16_SINGLE_WRAPPER_L2(0x071B,0x071B);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_RB_PARAM_ERR()
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_RB_STUS_ERR() do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_START_FILL_L2();\
+			TRC_OUTPUT_16_SINGLE_WRAPPER_L2(0x081B,0x081B);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_RB_STUS_ERR()
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_MBMS_ADD_MCCH(v1) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x091B,0x091B);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_MBMS_ADD_MCCH(v1)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_MBMS_DEL_MCCH(v1) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x0A1B,0x0A1B);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_MBMS_DEL_MCCH(v1)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_MBMS_ADD_MRB(v1) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x0B1B,0x0B1B);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_MBMS_ADD_MRB(v1)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_MBMS_DEL_MRB(v1) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x0C1B,0x0C1B);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_MBMS_DEL_MRB(v1)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_MBMS_PC_REQ(v1, v2) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x0D1B,0x0D1B);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_MBMS_PC_REQ(v1, v2)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_MBMS_LB_ACT(v1) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x0E1B,0x0E1B);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_MBMS_LB_ACT(v1)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_MBMS_LB_DEACT(v1) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x0F1B,0x0F1B);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_MBMS_LB_DEACT(v1)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_SLI_LI11_1(v1) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x101B,0x101B);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_SLI_LI11_1(v1)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_SLI_LI11_2(v1) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x111B,0x111B);\
+			TRC_OUTPUT_32_LAST_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_SLI_LI11_2(v1)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_SLI_LI11_3(v1, v5) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x121B,0x121B);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_SLI_LI11_3(v1, v5)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_SLI_LI11_4(v1, v5) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x131B,0x131B);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_LAST_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_SLI_LI11_4(v1, v5)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_SLI_LI15_1(v1, v2) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x141B,0x141B);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_SLI_LI15_1(v1, v2)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_SLI_LI15_2(v1, v3) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x151B,0x151B);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_SLI_LI15_2(v1, v3)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_SLI_LI15_3(v1, v3, v4) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v4,v4);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v4,v4);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x161B,0x161B);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_24_LAST_WRAPPER_L2(cgen_local_v4,v4);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_SLI_LI15_3(v1, v3, v4)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_SLI_LI15_4(v1, v3, v5) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x171B,0x171B);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_32_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_32_LAST_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_SLI_LI15_4(v1, v3, v5)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_RX_AM_PDU(v1, v3, v4) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v4,v4);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v4,v4);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x181B,0x181B);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v4,v4);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_RX_AM_PDU(v1, v3, v4)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_RX_AM_SEG(v1, v3, v4, v5) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v4,v4);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v4,v4);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x191B,0x191B);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v4,v4);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_RX_AM_SEG(v1, v3, v4, v5)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_RX_UM10_PDU(v1, v3, v4) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v4,v4);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v4,v4);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x1A1B,0x1A1B);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v4,v4);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_RX_UM10_PDU(v1, v3, v4)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_RX_UM5_PDU(v1, v3, v4, v6) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v4,v4);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v6,v6);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v4,v4);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v6,v6);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x1B1B,0x1B1B);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v4,v4);\
+			TRC_OUTPUT_32_LAST_WRAPPER_L2(cgen_local_v6,v6);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_RX_UM5_PDU(v1, v3, v4, v6)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_RX_MBMS_PDU(v1, v5, v6) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v6,v6);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v5,v5);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v6,v6);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x1C1B,0x1C1B);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v5,v5);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v6,v6);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_RX_MBMS_PDU(v1, v5, v6)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_DISC_OLD_DUP_SEG(v1, v2, v3) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x1D1B,0x1D1B);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_DISC_OLD_DUP_SEG(v1, v2, v3)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_TRUNC_OLD_DUP_SEG(v1, v2) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x1E1B,0x1E1B);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_TRUNC_OLD_DUP_SEG(v1, v2)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_TRUNC_NEW_DUP_SEG(v1, v2) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x1F1B,0x1F1B);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_TRUNC_NEW_DUP_SEG(v1, v2)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_TRUNC_RESULT(v1, v2, v3, v4) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v4,v4);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v2,v2);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v4,v4);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x201B,0x201B);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v2,v2);\
+			TRC_OUTPUT_8_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v4,v4);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_TRUNC_RESULT(v1, v2, v3, v4)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_DISC_OOW() do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_START_FILL_L2();\
+			TRC_OUTPUT_16_SINGLE_WRAPPER_L2(0x211B,0x211B);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_DISC_OOW()
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_DISC_OOD() do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_START_FILL_L2();\
+			TRC_OUTPUT_16_SINGLE_WRAPPER_L2(0x221B,0x221B);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_DISC_OOD()
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_DISC_DUP() do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_START_FILL_L2();\
+			TRC_OUTPUT_16_SINGLE_WRAPPER_L2(0x231B,0x231B);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_DISC_DUP()
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_UM_PDU_LOSS(v1) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x241B,0x241B);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_UM_PDU_LOSS(v1)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_AM_STATE_VAR_1(v1, v3) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x251B,0x251B);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_24_LAST_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_AM_STATE_VAR_1(v1, v3)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_AM_STATE_VAR_2(v1) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x261B,0x261B);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_AM_STATE_VAR_2(v1)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_UM_STATE_VAR_1(v1, v3) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x271B,0x271B);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_UM_STATE_VAR_1(v1, v3)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_UM_STATE_VAR_2(v1) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x281B,0x281B);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_UM_STATE_VAR_2(v1)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_AM_RO_TMR_START(v1) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x291B,0x291B);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_AM_RO_TMR_START(v1)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_AM_RO_TMR_EXPIRE(v1) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x2A1B,0x2A1B);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_AM_RO_TMR_EXPIRE(v1)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_UM_RO_TMR_START(v1) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x2B1B,0x2B1B);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_UM_RO_TMR_START(v1)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_UM_RO_TMR_EXPIRE(v1) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x2C1B,0x2C1B);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_UM_RO_TMR_EXPIRE(v1)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_XM_RO_TMR_STOP(v1) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x2D1B,0x2D1B);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_XM_RO_TMR_STOP(v1)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_STATUS_PROH_TMR_EXPIRE(v1) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x2E1B,0x2E1B);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_STATUS_PROH_TMR_EXPIRE(v1)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_STATUS_PROH_TMR_STOP(v1) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x2F1B,0x2F1B);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_STATUS_PROH_TMR_STOP(v1)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_AM_FLUSH(v1, v3) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x301B,0x301B);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_AM_FLUSH(v1, v3)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_UM_FLUSH(v1, v3) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x311B,0x311B);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_UM_FLUSH(v1, v3)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_GEN_STATUS_PDU(v1, v3) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x321B,0x321B);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_GEN_STATUS_PDU(v1, v3)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_REGEN_STATUS_PDU(v1, v3) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x331B,0x331B);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_REGEN_STATUS_PDU(v1, v3)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_RESEG_STATUS_PDU(v1, v3) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x341B,0x341B);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_8_LAST_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_RESEG_STATUS_PDU(v1, v3)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_RPT_NACK_PDU(v1) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x351B,0x351B);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_RPT_NACK_PDU(v1)
+#endif
+
+#if defined(L1_CATCHER) && ( !defined(_L1_DISABLE_TRACE_LEVEL_) || (_L1_DISABLE_TRACE_LEVEL_ < 1) )
+	#define ERLCDL_LOG_RPT_NACK_SEG(v1, v3, v4) do {\
+		{\
+			TRC_START_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION1_L2(cgen_local_v4,v4);\
+			TRC_START_FILL_L2();\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v1,v1);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v3,v3);\
+			TRC_PREPROCESS_DATA_SECTION2_L2(cgen_local_v4,v4);\
+			TRC_OUTPUT_16_FIRST_WRAPPER_L2(0x361B,0x361B);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v1,v1);\
+			TRC_OUTPUT_16_MID_WRAPPER_L2(cgen_local_v3,v3);\
+			TRC_OUTPUT_16_LAST_WRAPPER_L2(cgen_local_v4,v4);\
+			TRC_END_FILL_L2();\
+			TRC_END_FILTER_CHECK_L2(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01);\
+		}\
+	} while(0)
+#else
+	#define ERLCDL_LOG_RPT_NACK_SEG(v1, v3, v4)
+#endif
+
+
+
+/*******************************/
+/* declaration of filter array */
+/*******************************/
+EXTERN_TMD_FILTER(unsigned char, ERLCDL_PUBLIC_Trace_Filter, 5);
+/*************************/
+/* Function declarations */
+/*************************/
+#ifdef L1_CATCHER
+
+void Set_ERLCDL_PUBLIC_Filter(unsigned char *setting);
+
+#endif
+
+/************************************/
+/* Filter checking API declarations */
+/************************************/
+
+#define ChkL1ModFltr_ERLCDL_PUBLIC()	(FILTER_CHECK(ERLCDL_PUBLIC_Trace_Filter, 0, 1))
+#define ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()	(ChkL1ModFltr_ERLCDL_PUBLIC()&&(FILTER_CHECK(ERLCDL_PUBLIC_Trace_Filter, 1, 0x01)))
+#define ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_DUMP()	(ChkL1ModFltr_ERLCDL_PUBLIC()&&(FILTER_CHECK(ERLCDL_PUBLIC_Trace_Filter, 1, 0x02)))
+#define ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_DEV()	(ChkL1ModFltr_ERLCDL_PUBLIC()&&(FILTER_CHECK(ERLCDL_PUBLIC_Trace_Filter, 1, 0x04)))
+#define ChkL1MsgFltr_ERLCDL_LOG_PUBLIC_DUMMY()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_RB_CFG()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_DEL_OLD_DRB()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_DEL_NEW_DRB()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_ADD_2ND_DRB()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_SETUP_AM_TIMER()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_SETUP_UM_TIMER()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_RB_PARAM_ERR()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_RB_STUS_ERR()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_MBMS_ADD_MCCH()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_MBMS_DEL_MCCH()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_MBMS_ADD_MRB()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_MBMS_DEL_MRB()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_MBMS_PC_REQ()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_MBMS_LB_ACT()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_MBMS_LB_DEACT()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_SLI_LI11_1()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_DUMP()
+#define ChkL1MsgFltr_ERLCDL_LOG_SLI_LI11_2()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_DUMP()
+#define ChkL1MsgFltr_ERLCDL_LOG_SLI_LI11_3()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_DUMP()
+#define ChkL1MsgFltr_ERLCDL_LOG_SLI_LI11_4()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_DUMP()
+#define ChkL1MsgFltr_ERLCDL_LOG_SLI_LI15_1()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_DUMP()
+#define ChkL1MsgFltr_ERLCDL_LOG_SLI_LI15_2()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_DUMP()
+#define ChkL1MsgFltr_ERLCDL_LOG_SLI_LI15_3()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_DUMP()
+#define ChkL1MsgFltr_ERLCDL_LOG_SLI_LI15_4()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_DUMP()
+#define ChkL1MsgFltr_ERLCDL_LOG_RX_AM_PDU()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_DUMP()
+#define ChkL1MsgFltr_ERLCDL_LOG_RX_AM_SEG()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_DUMP()
+#define ChkL1MsgFltr_ERLCDL_LOG_RX_UM10_PDU()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_DUMP()
+#define ChkL1MsgFltr_ERLCDL_LOG_RX_UM5_PDU()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_DUMP()
+#define ChkL1MsgFltr_ERLCDL_LOG_RX_MBMS_PDU()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_DUMP()
+#define ChkL1MsgFltr_ERLCDL_LOG_DISC_OLD_DUP_SEG()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_DUMP()
+#define ChkL1MsgFltr_ERLCDL_LOG_TRUNC_OLD_DUP_SEG()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_DUMP()
+#define ChkL1MsgFltr_ERLCDL_LOG_TRUNC_NEW_DUP_SEG()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_DUMP()
+#define ChkL1MsgFltr_ERLCDL_LOG_TRUNC_RESULT()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_DUMP()
+#define ChkL1MsgFltr_ERLCDL_LOG_DISC_OOW()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_DISC_OOD()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_DISC_DUP()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_UM_PDU_LOSS()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_AM_STATE_VAR_1()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_AM_STATE_VAR_2()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_UM_STATE_VAR_1()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_UM_STATE_VAR_2()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_AM_RO_TMR_START()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_AM_RO_TMR_EXPIRE()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_UM_RO_TMR_START()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_UM_RO_TMR_EXPIRE()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_XM_RO_TMR_STOP()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_STATUS_PROH_TMR_EXPIRE()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_STATUS_PROH_TMR_STOP()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_AM_FLUSH()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_UM_FLUSH()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_GEN_STATUS_PDU()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_REGEN_STATUS_PDU()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_RESEG_STATUS_PDU()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_RPT_NACK_PDU()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+#define ChkL1MsgFltr_ERLCDL_LOG_RPT_NACK_SEG()	ChkL1ClsFltr_ERLCDL_PUBLIC_ERLCDL_INFO()
+
+
+#endif

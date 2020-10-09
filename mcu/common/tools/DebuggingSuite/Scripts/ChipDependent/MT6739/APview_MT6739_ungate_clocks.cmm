@@ -1,0 +1,9 @@
+;/* Ungate MD related clocks */
+&MEM_CLASS="AXI"
+
+&BASE_MADDR_CLK=0x10000000
+
+; Clear BIT8 and BIT9 to ungate MD1 32K and 26M
+D.S &MEM_CLASS:&BASE_MADDR_CLK %LE %LONG data.long(&MEM_CLASS:&BASE_MADDR_CLK)&(0xFFFFFCFF)
+
+

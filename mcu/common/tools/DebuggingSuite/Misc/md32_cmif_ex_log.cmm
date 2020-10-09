@@ -1,0 +1,50 @@
+; show md32 debug information
+&BRP_CMIF_BASE=0xF9358000
+&DFE_CMIF_BASE=0xF7B58000
+&RAKE_CMIF_BASE=0xF9B58000
+
+&EX_CMIF_LOG_OFFSET=0x50
+
+&BRP_CMIF_EX_LOG=&BRP_CMIF_BASE+&EX_CMIF_LOG_OFFSET
+&DFE_CMIF_EX_LOG=&DFE_CMIF_BASE+&EX_CMIF_LOG_OFFSET
+&RAKE_CMIF_EX_LOG=&RAKE_CMIF_BASE+&EX_CMIF_LOG_OFFSET
+
+; See the MD32 CMIF excpetion log 
+;Var.AddWatch (MD32_EX_CMIF_Log*)&BRP_CMIF_EX_LOG
+;Var.AddWatch (MD32_EX_CMIF_Log*)&RAKE_CMIF_EX_LOG
+;Var.AddWatch (MD32_EX_CMIF_Log*)&DFE_CMIF_EX_LOG
+
+Var.AddWatch (MD32_ExceptionLogCore_T*)&BRP_CMIF_EX_LOG
+Var.AddWatch (MD32_ExceptionLogCore_T*)&RAKE_CMIF_EX_LOG
+Var.AddWatch (MD32_ExceptionLogCore_T*)&DFE_CMIF_EX_LOG
+
+
+PRINT "BRP CMIF exception log addr &BRP_CMIF_EX_LOG" 
+PRINT "DFE CMIF exception log addr &DFE_CMIF_EX_LOG"
+PRINT "RAKE CMIF exception log addr &RAKE_CMIF_EX_LOG"
+
+; md32 debug mode enable
+d.s 0xf935101c %long 0x62910001
+d.s 0xf7b5101c %long 0x62910001
+d.s 0xf9b5101c %long 0x62910001
+
+; read md32 ex_log address
+;&BRP_EX_LOG=MREAD("S32",ASD:0xF93580A0)+0xF93E0000
+;&DFE_EX_LOG=MREAD("S32",ASD:0xF9B580A0)+0xF7BE0000
+;&RAKE_EX_LOG=MREAD("S32",ASD:0xF7B580A0)+0xF9BE0000
+
+&BRP_EX_LOG=MREAD("S32",ASD:0xF93580A8)+0xF93E0000
+&DFE_EX_LOG=MREAD("S32",ASD:0xF9B580A8)+0xF7BE0000
+&RAKE_EX_LOG=MREAD("S32",ASD:0xF7B580A8)+0xF9BE0000
+
+Var.AddWatch (MD32_EX_Log*)&BRP_EX_LOG
+Var.AddWatch (MD32_EX_Log*)&RAKE_EX_LOG
+Var.AddWatch (MD32_EX_Log*)&DFE_EX_LOG
+
+PRINT "BRP full exception log addr &BRP_EX_LOG" 
+PRINT "DFE full exception log addr &DFE_EX_LOG"
+PRINT "RAKE full exception log addr &RAKE_EX_LOG"
+
+
+; show md32 debug information
+;SYMbolWAtchView

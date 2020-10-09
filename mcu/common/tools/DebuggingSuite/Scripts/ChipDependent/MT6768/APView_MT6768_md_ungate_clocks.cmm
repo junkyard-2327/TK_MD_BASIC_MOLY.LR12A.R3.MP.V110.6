@@ -1,0 +1,4 @@
+; Clear BIT8 and BIT9 to ungate MD1 32K and 26M
+; *((volatile unsigned int*)0x10000000) &= ~0x300; 
+
+d.s &MEM_CLASS:0x10000000 %long %le data.long(&MEM_CLASS:0x10000000)&(0xfffffcff)

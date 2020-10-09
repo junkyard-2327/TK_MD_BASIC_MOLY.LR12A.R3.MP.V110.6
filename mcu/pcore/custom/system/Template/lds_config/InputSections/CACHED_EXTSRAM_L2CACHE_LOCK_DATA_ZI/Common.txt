@@ -1,0 +1,14 @@
+        /* COMMON ZI */
+        . = ALIGN(64);
+        L2CACHE_LOCK_ZI$$Base = .;
+        * (L2CACHE_LOCK_ZI) /* L2 cache lock! align base and end to 64 bytes */
+        . = ALIGN(64);
+        L2CACHE_LOCK_ZI$$Limit = .;
+        L2CACHE_LOCK_ZI$$Length = ABSOLUTE(L2CACHE_LOCK_ZI$$Limit - L2CACHE_LOCK_ZI$$Base);
+
+#if defined (__ESL_MASE__) || defined (__GEN93_SPV_UFPS_LOAD__)
+        . = ALIGN(0x8000);  /* align end to 32KB = 0x8000 */
+#endif
+        L2CACHE_LOCK$$Limit = .;
+        L2CACHE_LOCK$$Length = ABSOLUTE(L2CACHE_LOCK$$Limit - L2CACHE_LOCK$$Base);
+		

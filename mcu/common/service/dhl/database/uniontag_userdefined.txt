@@ -1,0 +1,1097 @@
+/*****************************************************************************
+*  Copyright Statement:
+*  --------------------
+*  This software is protected by Copyright and the information contained
+*  herein is confidential. The software may not be copied and the information
+*  contained herein may not be used or disclosed except with the written
+*  permission of MediaTek Inc. (C) 2007
+*
+*  BY OPENING THIS FILE, BUYER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+*  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("MEDIATEK SOFTWARE")
+*  RECEIVED FROM MEDIATEK AND/OR ITS REPRESENTATIVES ARE PROVIDED TO BUYER ON
+*  AN "AS-IS" BASIS ONLY. MEDIATEK EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES,
+*  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+*  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NONINFRINGEMENT.
+*  NEITHER DOES MEDIATEK PROVIDE ANY WARRANTY WHATSOEVER WITH RESPECT TO THE
+*  SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY, INCORPORATED IN, OR
+*  SUPPLIED WITH THE MEDIATEK SOFTWARE, AND BUYER AGREES TO LOOK ONLY TO SUCH
+*  THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO. MEDIATEK SHALL ALSO
+*  NOT BE RESPONSIBLE FOR ANY MEDIATEK SOFTWARE RELEASES MADE TO BUYER'S
+*  SPECIFICATION OR TO CONFORM TO A PARTICULAR STANDARD OR OPEN FORUM.
+*
+*  BUYER'S SOLE AND EXCLUSIVE REMEDY AND MEDIATEK'S ENTIRE AND CUMULATIVE
+*  LIABILITY WITH RESPECT TO THE MEDIATEK SOFTWARE RELEASED HEREUNDER WILL BE,
+*  AT MEDIATEK'S OPTION, TO REVISE OR REPLACE THE MEDIATEK SOFTWARE AT ISSUE,
+*  OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE CHARGE PAID BY BUYER TO
+*  MEDIATEK FOR SUCH MEDIATEK SOFTWARE AT ISSUE.
+*
+*  THE TRANSACTION CONTEMPLATED HEREUNDER SHALL BE CONSTRUED IN ACCORDANCE
+*  WITH THE LAWS OF THE STATE OF CALIFORNIA, USA, EXCLUDING ITS CONFLICT OF
+*  LAWS PRINCIPLES.  ANY DISPUTES, CONTROVERSIES OR CLAIMS ARISING THEREOF AND
+*  RELATED THERETO SHALL BE SETTLED BY ARBITRATION IN SAN FRANCISCO, CA, UNDER
+*  THE RULES OF THE INTERNATIONAL CHAMBER OF COMMERCE (ICC).
+*
+*****************************************************************************/
+/*
+This file is used by cgen for union Tag information.
+Usage:
+
+structure_name   tag_field_name   union_name:
+{ 
+        tag_fileld_value   field_of_union_name;
+	    tag_fileld_value   field_of_union_name;
+};
+
+For Example:
+
+InvokeChoice ChoiceId a:
+{
+    1 localValue;
+    2 globalValue;        
+};
+
+*/
+/*
+unpack_msg msg_type rr_peer_msg:
+{
+
+   STRUCT_ID_RR_PEER_ADDITIONAL_ASSIGNMENT_STRUCT 	additional_assignment;
+   STRUCT_ID_IMMEDIATE_ASSIGN_MESSAGE 			immediate_assign_msg;
+   STRUCT_ID_IMMEDIATE_ASSIGN_EXT_MESSAGE 		immediate_assign_ext_msg;
+   STRUCT_ID_IMM_ASGN_REJ_MSG_STRUCT			imm_asgn_rej_msg;
+   STRUCT_ID_CIPHER_MODE_COMMAND_STRUCT			cipher_mode_command;
+   STRUCT_ID_CIPHER_MODE_COMPLETE_STRUCT		cipher_mode_complete;
+   STRUCT_ID_ASSIGNMENT_COMMAND_STRUCT			assignment_command;
+   STRUCT_ID_PDCH_ASSIGNMENT_COMMAND_STRUCT		pdch_assignment_command;
+   STRUCT_ID_HANDOVER_COMMAND_STRUCT			handover_command;
+   STRUCT_ID_HANDOVER_COMPLETE_STRUCT			handover_complete;
+   STRUCT_ID_RR_CELL_CHANGE_ORDER_STRUCT		rr_cell_change_order;
+   STRUCT_ID_PHYSICAL_INFORMATION_STRUCT		physical_information;
+   STRUCT_ID_CHANNEL_RELEASE_STRUCT			channel_release;
+   STRUCT_ID_RR_PEER_PARTIAL_RELEASE_STRUCT		partial_release;
+   STRUCT_ID_RR_PEER_PARTIAL_RELEASE_COMPLETE_STRUCT	rr_peer_partial_release_complete;
+   STRUCT_ID_PAGING_REQUEST_TYPE1_STRUCT			paging_request_1;
+   STRUCT_ID_PAGING_REQUEST_TYPE2_STRUCT			paging_request_2;
+   STRUCT_ID_PAGING_REQUEST_TYPE3_STRUCT			paging_request_3;
+   STRUCT_ID_SI_1_STRUCT				si_1;
+   STRUCT_ID_SI_2_STRUCT				si_2;
+   STRUCT_ID_SI_2BIS_STRUCT				si_2bis;
+   STRUCT_ID_SI_2TER_STRUCT				si_2ter;
+   STRUCT_ID_SI_2QUATER_STRUCT				si_2quater;
+   STRUCT_ID_SI_3_STRUCT				si_3;
+   STRUCT_ID_SI_4_STRUCT				si_4;
+   STRUCT_ID_SI_5_STRUCT				si_5;
+   STRUCT_ID_SI_5BIS_STRUCT				si_5bis;
+   STRUCT_ID_SI_5TER_STRUCT				si_5ter;
+   STRUCT_ID_SI_6_STRUCT				si_6;
+   STRUCT_ID_SI_7_STRUCT				si_7;
+   STRUCT_ID_SI_8_STRUCT				si_8;
+   STRUCT_ID_SI_9_STRUCT				si_9;
+   STRUCT_ID_SI_13_STRUCT				si_13;
+   STRUCT_ID_SI_16_STRUCT				si_16;
+   STRUCT_ID_SI_17_STRUCT				si_17;
+   STRUCT_ID_SI_18_STRUCT				si_18;
+   STRUCT_ID_SI_19_STRUCT				si_19;
+   STRUCT_ID_SI_20_STRUCT				si_20;
+   STRUCT_ID_EXTENDED_MEASUREMENT_ORDER_STRUCT		extended_measurement_order;
+   STRUCT_ID_CHANNEL_MODE_MODIFY_STRUCT			channel_mode_modify;
+   STRUCT_ID_CHANNEL_MODE_MODIFY_ACK_STRUCT		channel_mode_modify_ack_struct;
+   STRUCT_ID_RR_PEER_CLASSMARK_CHANGE_STRUCT		classmark_change;
+   STRUCT_ID_RR_PEER_CLASSMARK_ENQUIRY_STRUCT		classmark_enquiry;
+   STRUCT_ID_FREQUENCY_REDEFINITION_STRUCT		frequency_redefinition;
+   STRUCT_ID_RR_STATUS_STRUCT				rr_status;
+   STRUCT_ID_CONFIGURATION_CHANGE_COMMAND_STRUCT	configuration_change_command;
+   STRUCT_ID_PACKET_ACCESS_REJECT			paj;
+   STRUCT_ID_PACKET_QUEING_NOTIFICATION			pqn;
+   STRUCT_ID_PKT_RESOURCE_REQUEST_STRUCT		prr;
+   STRUCT_ID_PKT_UPLINK_ASSIGNMENT_MSG			puas;
+   STRUCT_ID_PKT_DOWNLINK_ASSIGN			pdas;
+   STRUCT_ID_PKT_TBFRELEASE_STRUCT			pkt_tbf_releasel;
+   STRUCT_ID_PACKET_PAGING_REQUEST			pkt_paging;
+   STRUCT_ID_PKT_DN_LINK_ACK_NACK			pdan;
+   STRUCT_ID_PKT_UPLINK_ACK_NACK			puan;
+   STRUCT_ID_PSI1MSG					psi1;
+   STRUCT_ID_PSI2MSG					psi2;
+   STRUCT_ID_PSI3MSG					psi3;
+   STRUCT_ID_PSI3BISMSG					psi3bis;
+   STRUCT_ID_PSI4MSG					psi4;
+   STRUCT_ID_PSI5MSG					psi5;
+   STRUCT_ID_PSI13MSG					psi13;
+   STRUCT_ID_PKT_CTRL_ACK_STRUCT			pca;
+   STRUCT_ID_PKT_CELL_CHANGE_FAILURE			pkt_cell_change_failure;
+   STRUCT_ID_PKT_CELL_CHANGE_ORDER			pcco;
+   STRUCT_ID_PKT_DOWNLINK_DUMMY_CTRL_BLK		pkt_dl_dummy;
+   STRUCT_ID_PKT_UPLINK_DUMMY				pkt_ul_dummy;
+   STRUCT_ID_PKT_MEAS_REPORT_STRUCT			pkt_meas_report;
+   STRUCT_ID_PKT_MEASUREMENT_ORDER_STRUCT		pmo;
+   STRUCT_ID_PKT_MOBILE_TBFSTATUS			ptk_tbfstatus;
+   STRUCT_ID_PACKET_PDCHRELEASE				pdch_release;
+   STRUCT_ID_PACKET_POLLING_REQUEST			packet_polling;
+   STRUCT_ID_PKT_PWR_CTRL_TIM_ADV_STRUCT		pkt_pc_n_ta;
+   STRUCT_ID_PKT_PRACH_PARAMS_STRUCT			pkt_prach_params;
+   STRUCT_ID_PKTPSISTATUS				psistatus;
+   STRUCT_ID_PKT_TIMESLOT_RECONFIGURE			pkt_timeslot_reconfig;
+};
+*/
+
+#ifdef __CGEN_UMTS_FDD_MODE__
+FDD_urlc_sufi_struct selection choice:
+{
+      FDD_Sufi_NO_MORE_selected Sufi_NO_MORE;
+      FDD_Sufi_ACK_selected Sufi_ACK;
+      FDD_Sufi_WINDOW_selected Sufi_WINDOW;
+      FDD_Sufi_LIST_selected Sufi_LIST;
+      FDD_Sufi_BITMAP_selected Sufi_BITMAP;
+      FDD_Sufi_RLIST_selected Sufi_RLIST;
+      FDD_Sufi_MRW_selected Sufi_MRW;
+      FDD_Sufi_MRWACK_selected Sufi_MRWACK;
+};
+#endif /* __CGEN_UMTS_FDD_MODE__ */
+
+#ifdef __SGLTE__
+emm_mm_context_info_struct which_context context:
+{
+    MM_TO_EMM_CONTEXT mm2emm_context;
+    EMM_TO_MM_CONTEXT emm2mm_context;
+    MM_TO_MM_CONTEXT  mm2mm_context;
+};
+#endif /*__SGLTE__*/
+
+#ifdef __CGEN_UMTS_TDD128_MODE__
+TDD_urlc_am_pdu_decode_struct PduType pdu:
+{
+    TDD_AM_DATA_PDU      AM_Data_PDU;    
+    TDD_AM_STATUS_PDU    AM_Status_PDU;  
+    TDD_AM_RESERT_PDU    AM_Reset_PDU;   
+    TDD_AM_RESETACK_PDU  AM_ResetAck_PDU;
+};
+
+TDD_urlc_pdu_decode_struct EntityMode mode:
+{
+    RLC_AM 	AM_Mode;
+		RLC_UM 	UM_Mode;
+		RLC_TM 	TM_Mode;
+};
+
+tdd_rrce_meme_move_to_state_req_struct selection choice:
+{
+     TDD_MEME_CELL_DCH cellDCH;
+     TDD_MEME_CELL_FACH cellFACH;
+     TDD_MEME_IDLE idle;
+     TDD_MEME_INACTIVE inactive;
+     TDD_MEME_PCH pch;      
+};
+
+TDD_msg_buf_unpack_T msg_id buffer:
+{
+    MSG_ID_TDD_CPHY_PCH_SETUP_REQ                  cphy_pch_setup_req;
+    MSG_ID_TDD_CPHY_PCH_MODIFY_REQ                 cphy_pch_modify_req;
+    MSG_ID_TDD_CPHY_PCH_RELEASE_REQ                cphy_pch_release_req;
+    MSG_ID_TDD_CPHY_FACH_SETUP_REQ                 cphy_fach_setup_req;                                          
+    MSG_ID_TDD_CPHY_FACH_RELEASE_REQ               cphy_fach_release_req;
+    MSG_ID_TDD_CPHY_DCH_SETUP_REQ                  cphy_dch_setup_req;
+    MSG_ID_TDD_CPHY_DCH_MODIFY_REQ                 cphy_dch_modify_req;
+    MSG_ID_TDD_CPHY_DCH_RELEASE_REQ                cphy_dch_release_req;
+    MSG_ID_TDD_CPHY_RACH_SETUP_REQ                 cphy_rach_setup_req;
+    MSG_ID_TDD_CPHY_RACH_RELEASE_REQ               cphy_rach_release_req;
+#ifdef __HSDPA_SUPPORT__                           
+    MSG_ID_TDD_CPHY_HSDSCH_SETUP_REQ               cphy_hsdsch_setup_req;
+    MSG_ID_TDD_CPHY_HSDSCH_MODIFY_REQ              cphy_hsdsch_modify_req;
+    MSG_ID_TDD_CPHY_HSDSCH_RELEASE_REQ             cphy_hsdsch_release_req;
+#endif                                             
+#ifdef __HSUPA_SUPPORT__                           
+    MSG_ID_TDD_CPHY_EDCH_SETUP_REQ                 cphy_edch_setup_req;
+    MSG_ID_TDD_CPHY_EDCH_MODIFY_REQ                cphy_edch_modify_req;
+    MSG_ID_TDD_CPHY_EDCH_RELEASE_REQ               cphy_edch_release_req;
+#endif                                 
+    MSG_ID_TDD_CPHY_MEASUREMENT_CONFIG_DMO_REQ     cphy_measurement_config_dmo_req;
+};
+#endif
+/* FDD part */
+FDD_msg_buf_unpack_T msg_id buffer:
+{
+    MSG_ID_FDD_CPHY_PCH_SETUP_REQ              cphy_pch_setup_req;
+    MSG_ID_FDD_CPHY_PCH_MODIFY_REQ             cphy_pch_modify_req;
+    MSG_ID_FDD_CPHY_PCH_RELEASE_REQ            cphy_pch_release_req;
+    MSG_ID_FDD_CPHY_FACH_SETUP_REQ             cphy_fach_setup_req;
+                                               
+    MSG_ID_FDD_CPHY_FACH_MODIFY_REQ            cphy_fach_modify_req;
+                                               
+    MSG_ID_FDD_CPHY_FACH_RELEASE_REQ           cphy_fach_release_req;
+    MSG_ID_FDD_CPHY_DCH_SETUP_REQ              cphy_dch_setup_req;
+    MSG_ID_FDD_CPHY_DCH_MODIFY_REQ             cphy_dch_modify_req;
+    MSG_ID_FDD_CPHY_DCH_RELEASE_REQ            cphy_dch_release_req;
+    MSG_ID_FDD_CPHY_RACH_SETUP_REQ             cphy_rach_setup_req;
+    MSG_ID_FDD_CPHY_RACH_RELEASE_REQ           cphy_rach_release_req;
+#ifdef __HSDPA_SUPPORT__     
+    MSG_ID_FDD_CPHY_HSDSCH_SETUP_REQ           cphy_hsdsch_setup_req;
+    MSG_ID_FDD_CPHY_HSDSCH_MODIFY_REQ          cphy_hsdsch_modify_req;
+    MSG_ID_FDD_CPHY_HSDSCH_RELEASE_REQ         cphy_hsdsch_release_req;
+#endif    
+#ifdef __HSUPA_SUPPORT__    
+    MSG_ID_FDD_CPHY_EDCH_SETUP_REQ             cphy_edch_setup_req;
+    MSG_ID_FDD_CPHY_EDCH_MODIFY_REQ            cphy_edch_modify_req;
+    MSG_ID_FDD_CPHY_EDCH_RELEASE_REQ           cphy_edch_release_req;
+#endif
+};
+#ifdef __CGEN_UMTS_TDD128_MODE__
+tdd_cmac_config_tfc_subset_req_struct selection choice:
+{
+  1 fullList;
+  2 explicitList;
+};
+    
+TDD_ul_dpch_tfc_T gain_factor_ind gain_factor:
+{
+  TDD_GAIN_FACTOR_SIGNAL   sig_gain; 
+  TDD_GAIN_FACTOR_COMPUTE  computed_gain_id;
+};
+#endif
+
+/* FDD part */
+FDD_ul_dpch_tfc_T sig_gain_ind gain_factor:
+{
+  KAL_FALSE   sig_gain; 
+  KAL_TRUE    computed_gain_id;
+};
+
+#if 0
+#ifdef __UMTS_TDD128_MODE__  
+CsceCseSelectedCellTechnology selection choice:
+{
+     RRC_DB_Cell_cellTechnology_umts_selected umts;
+     RRC_DB_Cell_cellTechnology_gsm_selected gsm;
+};
+#endif
+#endif
+
+#ifdef __UMTS_FDD_MODE__
+RRC_FDD_DB_SelectedCellTechnology selection choice:
+{
+   RRC_FDD_DB_SelectedCellTechnology_umts_selected umts;
+   RRC_FDD_DB_SelectedCellTechnology_gsm_selected gsm;
+   RRC_FDD_DB_SelectedCellTechnology_eutra_selected eutra;
+};
+
+#ifdef __UMTS_R8__
+FDD_CsceMemeAPBLayer selection choice:
+{
+    FDD_CSCE_MEME_APB_UTRAN_INTER_FREQ uarfcn;
+    FDD_CSCE_MEME_APB_GERAN            gsmCellGroup;
+    FDD_CSCE_MEME_APB_EUTRAN           earfcn;
+};
+#endif
+#endif
+
+#ifdef __CGEN_UMTS_TDD128_MODE__
+RRC_TDD_DB_SelectedCellTechnology selection choice:
+{
+   RRC_TDD_DB_SelectedCellTechnology_umts_selected umts;
+   RRC_TDD_DB_SelectedCellTechnology_gsm_selected gsm;
+   RRC_TDD_DB_SelectedCellTechnology_eutra_selected eutra;
+};
+
+#ifdef __UMTS_R8__
+TDD_CsceMemeAPBLayer selection choice:
+{
+    TDD_CSCE_MEME_APB_UTRAN_INTER_FREQ uarfcn;
+    TDD_CSCE_MEME_APB_GERAN            gsmCellGroup;
+    TDD_CSCE_MEME_APB_EUTRAN           earfcn;
+};
+#endif
+#endif
+
+#if defined(__UMTS_FDD_MODE__) || defined(__UMTS_TDD128_MODE__)
+uas_gas_activate_gcell_req_struct ir_cell_change_trigger target_gcell_info:
+{
+   IR_CELL_RESELECTION  target_gcell_reselect_info;
+   IR_REDIRECTION       target_gcell_redirect_list;
+};
+
+GSM_Redirect_Info redirection_type redirection_info:
+{
+   UAS_GAS_REDIRECTION_INFO  uas_redirectInfo;
+   EAS_GAS_REDIRECTION_INFO  eas_redirectInfo;
+};
+#endif
+
+l4c_nbr_cell_info_ind_struct    rat_mode    ps_nbr_cell_info_union:
+{
+#ifdef __GSM_RAT__
+    1    gas_nbr_cell_info;
+#endif
+#ifdef __UMTS_RAT__
+    2    uas_nbr_cell_info;
+#endif
+#ifdef __LTE_RAT__
+    4    eas_nbr_cell_info;
+#endif
+};
+
+l4c_nbr_cell_info_reg_cnf_struct    rat_mode    ps_nbr_cell_info_union:
+{
+#ifdef __GSM_RAT__
+    1    gas_nbr_cell_info;
+#endif
+#ifdef __UMTS_RAT__
+    2    uas_nbr_cell_info;
+#endif
+#ifdef __LTE_RAT__
+    4    eas_nbr_cell_info;
+#endif
+};
+
+#ifdef __UMTS_RAT__
+uas_freq_info_mode_specific_info_struct	mode	choice:
+{
+    1    fdd;
+    2    tdd;
+};
+
+uas_cell_measured_results_mode_specific_info_struct    mode	choice:
+{
+    UAS_CELL_MEASURED_RESULTS_MODE_FDD    fdd;
+    UAS_CELL_MEASURED_RESULTS_MODE_TDD    tdd;
+};
+#endif
+
+FDD_RRC_InterSystem_TargetInfo selection choice:
+{
+   FDD_RRC_InterSystem_TargetInfo_gsm_TargetCellInfoList_selected    gsm_TargetCellInfoList;
+#ifdef __UMTS_R8__
+   FDD_RRC_InterSystem_TargetInfo_eutra_TargetFreqInfoList_selected  eutra_TargetFreqInfoList;
+#endif
+};
+
+#ifdef __CGEN_UMTS_TDD128_MODE__
+TDD_RRC_InterSystem_TargetInfo selection choice:
+{
+   TDD_RRC_InterSystem_TargetInfo_gsm_TargetCellInfoList_selected    gsm_TargetCellInfoList;
+#ifdef __UMTS_R8__
+   TDD_RRC_InterSystem_TargetInfo_eutra_TargetFreqInfoList_selected  eutra_TargetFreqInfoList;
+#endif
+};
+#endif
+
+#ifdef __MMDS_DC__
+
+ sim_intsim_access_req_struct op req_field :
+ {
+      SIM_INTSIM_ACCESS_FLIE_INFO  file_info_req;
+      SIM_INTSIM_ACCESS_READ_BINARY  read_req;
+      SIM_INTSIM_ACCESS_READ_RECORD  read_req;
+      SIM_INTSIM_ACCESS_UPDATE_BINARY  update_req;
+      SIM_INTSIM_ACCESS_UPDATE_RECORD  update_req;
+      SIM_INTSIM_ACCESS_AUTHENTICATION  auth_req;
+      SIM_INTSIM_ACCESS_INCREASE  increase_req;
+      SIM_INTSIM_ACCESS_INVALIDATE  invalidate_req;
+      SIM_INTSIM_ACCESS_REHABILITATE  rehabilitate_req;
+}; 
+ 
+#endif
+
+at_cgev_ind_struct event info :
+{
+    CGEV_EVENT_NW_PDN_ACT   nw_pdn_act;          
+    CGEV_EVENT_ME_PDN_ACT   me_pdn_act;  
+    CGEV_EVENT_NW_ACT       nw_act;      
+    CGEV_EVENT_ME_ACT       me_act;      
+    CGEV_EVENT_NW_PDN_DEACT nw_pdn_deact;
+    CGEV_EVENT_ME_PDN_DEACT me_pdn_deact;
+    CGEV_EVENT_NW_DEACT     nw_deact;    
+    CGEV_EVENT_ME_DEACT     me_deact;    
+    CGEV_EVENT_NW_MODIFY    nw_modify;   
+    CGEV_EVENT_ME_MODIFY    me_modify;   
+    CGEV_EVENT_REJECT       reject;      
+    CGEV_EVENT_NW_REACT     nw_react;    
+};
+
+
+at_egev_ind_struct event info :
+{
+    EGEV_EVENT_REVIVE_START  revive_start;
+    EGEV_EVENT_REVIVE_SUCCESS  revive_success;
+    EGEV_EVENT_REVIVE_FINISH  revive_finish;
+};
+
+#ifdef __LPP_SUPPORT__
+
+LPP_CellGlobalIdEUTRA_AndUTRA_cellIdentity selection choice :
+{
+    LPP_CellGlobalIdEUTRA_AndUTRA_cellIdentity_eutra_selected eutra;
+    LPP_CellGlobalIdEUTRA_AndUTRA_cellIdentity_utra_selected utra;
+};
+
+LPP_Velocity selection choice :
+{
+    LPP_Velocity_horizontalVelocity_selected horizontalVelocity;
+    LPP_Velocity_horizontalWithVerticalVelocity_selected horizontalWithVerticalVelocity;
+    LPP_Velocity_horizontalVelocityWithUncertainty_selected horizontalVelocityWithUncertainty;
+    LPP_Velocity_horizontalWithVerticalVelocityAndUncertainty_selected horizontalWithVerticalVelocityAndUncertainty;
+    LPP_Velocity_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_PRS_Info_prs_MutingInfo_r9 selection choice :
+{
+    LPP_PRS_Info_prs_MutingInfo_r9_po2_r9_selected po2_r9;
+    LPP_PRS_Info_prs_MutingInfo_r9_po4_r9_selected po4_r9;
+    LPP_PRS_Info_prs_MutingInfo_r9_po8_r9_selected po8_r9;
+    LPP_PRS_Info_prs_MutingInfo_r9_po16_r9_selected po16_r9;
+    LPP_PRS_Info_prs_MutingInfo_r9_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_NetworkTime_cellID_uTRA_mode selection choice :
+{
+    LPP_NetworkTime_cellID_uTRA_mode_fdd_selected fdd;
+    LPP_NetworkTime_cellID_uTRA_mode_tdd_selected tdd;
+};
+
+LPP_NetworkTime_cellID selection choice :
+{
+    LPP_NetworkTime_cellID_eUTRA_selected eUTRA;
+    LPP_NetworkTime_cellID_uTRA_selected uTRA;
+    LPP_NetworkTime_cellID_gSM_selected gSM;
+    LPP_NetworkTime_cellID_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_LocationCoordinates selection choice :
+{
+    LPP_LocationCoordinates_ellipsoidPoint_selected ellipsoidPoint;
+    LPP_LocationCoordinates_ellipsoidPointWithUncertaintyCircle_selected ellipsoidPointWithUncertaintyCircle;
+    LPP_LocationCoordinates_ellipsoidPointWithUncertaintyEllipse_selected ellipsoidPointWithUncertaintyEllipse;
+    LPP_LocationCoordinates_polygon_selected polygon;
+    LPP_LocationCoordinates_ellipsoidPointWithAltitude_selected ellipsoidPointWithAltitude;
+    LPP_LocationCoordinates_ellipsoidPointWithAltitudeAndUncertaintyEllipsoid_selected ellipsoidPointWithAltitudeAndUncertaintyEllipsoid;
+    LPP_LocationCoordinates_ellipsoidArc_selected ellipsoidArc;
+    LPP_LocationCoordinates_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_OTDOA_Error selection choice :
+{
+    LPP_OTDOA_Error_locationServerErrorCauses_selected locationServerErrorCauses;
+    LPP_OTDOA_Error_targetDeviceErrorCauses_selected targetDeviceErrorCauses;
+    LPP_OTDOA_Error_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_GNSS_OrbitModel selection choice :
+{
+    LPP_GNSS_OrbitModel_keplerianSet_selected keplerianSet;
+    LPP_GNSS_OrbitModel_nav_KeplerianSet_selected nav_KeplerianSet;
+    LPP_GNSS_OrbitModel_cnav_KeplerianSet_selected cnav_KeplerianSet;
+    LPP_GNSS_OrbitModel_glonass_ECEF_selected glonass_ECEF;
+    LPP_GNSS_OrbitModel_sbas_ECEF_selected sbas_ECEF;
+    LPP_GNSS_OrbitModel_UnKnowItem_selected UnKnowItem;
+    LPP_GNSS_OrbitModel_bds_KeplerianSet_r12_selected bds_KeplerianSet_r12;
+};
+
+LPP_GNSS_UTC_Model selection choice :
+{
+    LPP_GNSS_UTC_Model_utcModel1_selected utcModel1;
+    LPP_GNSS_UTC_Model_utcModel2_selected utcModel2;
+    LPP_GNSS_UTC_Model_utcModel3_selected utcModel3;
+    LPP_GNSS_UTC_Model_utcModel4_selected utcModel4;
+    LPP_GNSS_UTC_Model_UnKnowItem_selected UnKnowItem;
+    LPP_GNSS_UTC_Model_utcModel5_r12_selected utcModel5_r12;
+};
+
+LPP_MeasurementReferenceTime_networkTime_uTRA_mode selection choice :
+{
+    LPP_MeasurementReferenceTime_networkTime_uTRA_mode_fdd_selected fdd;
+    LPP_MeasurementReferenceTime_networkTime_uTRA_mode_tdd_selected tdd;
+};
+
+LPP_MeasurementReferenceTime_networkTime selection choice :
+{
+    LPP_MeasurementReferenceTime_networkTime_eUTRA_selected eUTRA;
+    LPP_MeasurementReferenceTime_networkTime_uTRA_selected uTRA;
+    LPP_MeasurementReferenceTime_networkTime_gSM_selected gSM;
+    LPP_MeasurementReferenceTime_networkTime_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_A_GNSS_Error selection choice :
+{
+    LPP_A_GNSS_Error_locationServerErrorCauses_selected locationServerErrorCauses;
+    LPP_A_GNSS_Error_targetDeviceErrorCauses_selected targetDeviceErrorCauses;
+    LPP_A_GNSS_Error_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_ECID_Error selection choice :
+{
+    LPP_ECID_Error_locationServerErrorCauses_selected locationServerErrorCauses;
+    LPP_ECID_Error_targetDeviceErrorCauses_selected targetDeviceErrorCauses;
+    LPP_ECID_Error_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_GNSS_ClockModel selection choice :
+{
+    LPP_GNSS_ClockModel_standardClockModelList_selected standardClockModelList;
+    LPP_GNSS_ClockModel_nav_ClockModel_selected nav_ClockModel;
+    LPP_GNSS_ClockModel_cnav_ClockModel_selected cnav_ClockModel;
+    LPP_GNSS_ClockModel_glonass_ClockModel_selected glonass_ClockModel;
+    LPP_GNSS_ClockModel_sbas_ClockModel_selected sbas_ClockModel;
+    LPP_GNSS_ClockModel_UnKnowItem_selected UnKnowItem;
+    LPP_GNSS_ClockModel_bds_ClockModel_r12_selected bds_ClockModel_r12;
+};
+
+LPP_GNSS_AlmanacElement selection choice :
+{
+    LPP_GNSS_AlmanacElement_keplerianAlmanacSet_selected keplerianAlmanacSet;
+    LPP_GNSS_AlmanacElement_keplerianNAV_Almanac_selected keplerianNAV_Almanac;
+    LPP_GNSS_AlmanacElement_keplerianReducedAlmanac_selected keplerianReducedAlmanac;
+    LPP_GNSS_AlmanacElement_keplerianMidiAlmanac_selected keplerianMidiAlmanac;
+    LPP_GNSS_AlmanacElement_keplerianGLONASS_selected keplerianGLONASS;
+    LPP_GNSS_AlmanacElement_ecef_SBAS_Almanac_selected ecef_SBAS_Almanac;
+    LPP_GNSS_AlmanacElement_UnKnowItem_selected UnKnowItem;
+    LPP_GNSS_AlmanacElement_keplerianBDS_Almanac_r12_selected keplerianBDS_Almanac_r12;
+};
+
+LPP_GNSS_AuxiliaryInformation selection choice :
+{
+    LPP_GNSS_AuxiliaryInformation_gnss_ID_GPS_selected gnss_ID_GPS;
+    LPP_GNSS_AuxiliaryInformation_gnss_ID_GLONASS_selected gnss_ID_GLONASS;
+    LPP_GNSS_AuxiliaryInformation_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_GNSS_NavigationModelReq selection choice :
+{
+    LPP_GNSS_NavigationModelReq_storedNavList_selected storedNavList;
+    LPP_GNSS_NavigationModelReq_reqNavList_selected reqNavList;
+    LPP_GNSS_NavigationModelReq_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_RequestCapabilities_criticalExtensions_c1 selection choice :
+{
+    LPP_RequestCapabilities_criticalExtensions_c1_requestCapabilities_r9_selected requestCapabilities_r9;
+    LPP_RequestCapabilities_criticalExtensions_c1_spare3_selected spare3;
+    LPP_RequestCapabilities_criticalExtensions_c1_spare2_selected spare2;
+    LPP_RequestCapabilities_criticalExtensions_c1_spare1_selected spare1;
+};
+
+LPP_RequestCapabilities_criticalExtensions selection choice :
+{
+    LPP_RequestCapabilities_criticalExtensions_c1_selected c1;
+    LPP_RequestCapabilities_criticalExtensions_criticalExtensionsFuture_selected criticalExtensionsFuture;
+};
+
+LPP_RequestLocationInformation_criticalExtensions_c1 selection choice :
+{
+    LPP_RequestLocationInformation_criticalExtensions_c1_requestLocationInformation_r9_selected requestLocationInformation_r9;
+    LPP_RequestLocationInformation_criticalExtensions_c1_spare3_selected spare3;
+    LPP_RequestLocationInformation_criticalExtensions_c1_spare2_selected spare2;
+    LPP_RequestLocationInformation_criticalExtensions_c1_spare1_selected spare1;
+};
+
+LPP_RequestLocationInformation_criticalExtensions selection choice :
+{
+    LPP_RequestLocationInformation_criticalExtensions_c1_selected c1;
+    LPP_RequestLocationInformation_criticalExtensions_criticalExtensionsFuture_selected criticalExtensionsFuture;
+};
+
+LPP_Abort_criticalExtensions_c1 selection choice :
+{
+    LPP_Abort_criticalExtensions_c1_abort_r9_selected abort_r9;
+    LPP_Abort_criticalExtensions_c1_spare3_selected spare3;
+    LPP_Abort_criticalExtensions_c1_spare2_selected spare2;
+    LPP_Abort_criticalExtensions_c1_spare1_selected spare1;
+};
+
+LPP_Abort_criticalExtensions selection choice :
+{
+    LPP_Abort_criticalExtensions_c1_selected c1;
+    LPP_Abort_criticalExtensions_criticalExtensionsFuture_selected criticalExtensionsFuture;
+};
+
+LPP_Error selection choice :
+{
+    LPP_Error_error_r9_selected error_r9;
+    LPP_Error_criticalExtensionsFuture_selected criticalExtensionsFuture;
+};
+
+LPP_ProvideCapabilities_criticalExtensions_c1 selection choice :
+{
+    LPP_ProvideCapabilities_criticalExtensions_c1_provideCapabilities_r9_selected provideCapabilities_r9;
+    LPP_ProvideCapabilities_criticalExtensions_c1_spare3_selected spare3;
+    LPP_ProvideCapabilities_criticalExtensions_c1_spare2_selected spare2;
+    LPP_ProvideCapabilities_criticalExtensions_c1_spare1_selected spare1;
+};
+
+LPP_ProvideCapabilities_criticalExtensions selection choice :
+{
+    LPP_ProvideCapabilities_criticalExtensions_c1_selected c1;
+    LPP_ProvideCapabilities_criticalExtensions_criticalExtensionsFuture_selected criticalExtensionsFuture;
+};
+
+LPP_RequestAssistanceData_criticalExtensions_c1 selection choice :
+{
+    LPP_RequestAssistanceData_criticalExtensions_c1_requestAssistanceData_r9_selected requestAssistanceData_r9;
+    LPP_RequestAssistanceData_criticalExtensions_c1_spare3_selected spare3;
+    LPP_RequestAssistanceData_criticalExtensions_c1_spare2_selected spare2;
+    LPP_RequestAssistanceData_criticalExtensions_c1_spare1_selected spare1;
+};
+
+LPP_RequestAssistanceData_criticalExtensions selection choice :
+{
+    LPP_RequestAssistanceData_criticalExtensions_c1_selected c1;
+    LPP_RequestAssistanceData_criticalExtensions_criticalExtensionsFuture_selected criticalExtensionsFuture;
+};
+
+LPP_ProvideAssistanceData_criticalExtensions_c1 selection choice :
+{
+    LPP_ProvideAssistanceData_criticalExtensions_c1_provideAssistanceData_r9_selected provideAssistanceData_r9;
+    LPP_ProvideAssistanceData_criticalExtensions_c1_spare3_selected spare3;
+    LPP_ProvideAssistanceData_criticalExtensions_c1_spare2_selected spare2;
+    LPP_ProvideAssistanceData_criticalExtensions_c1_spare1_selected spare1;
+};
+
+LPP_ProvideAssistanceData_criticalExtensions selection choice :
+{
+    LPP_ProvideAssistanceData_criticalExtensions_c1_selected c1;
+    LPP_ProvideAssistanceData_criticalExtensions_criticalExtensionsFuture_selected criticalExtensionsFuture;
+};
+
+LPP_ProvideLocationInformation_criticalExtensions_c1 selection choice :
+{
+    LPP_ProvideLocationInformation_criticalExtensions_c1_provideLocationInformation_r9_selected provideLocationInformation_r9;
+    LPP_ProvideLocationInformation_criticalExtensions_c1_spare3_selected spare3;
+    LPP_ProvideLocationInformation_criticalExtensions_c1_spare2_selected spare2;
+    LPP_ProvideLocationInformation_criticalExtensions_c1_spare1_selected spare1;
+};
+
+LPP_ProvideLocationInformation_criticalExtensions selection choice :
+{
+    LPP_ProvideLocationInformation_criticalExtensions_c1_selected c1;
+    LPP_ProvideLocationInformation_criticalExtensions_criticalExtensionsFuture_selected criticalExtensionsFuture;
+};
+
+LPP_LPP_MessageBody_c1 selection choice :
+{
+    LPP_LPP_MessageBody_c1_requestCapabilities_selected requestCapabilities;
+    LPP_LPP_MessageBody_c1_provideCapabilities_selected provideCapabilities;
+    LPP_LPP_MessageBody_c1_requestAssistanceData_selected requestAssistanceData;
+    LPP_LPP_MessageBody_c1_provideAssistanceData_selected provideAssistanceData;
+    LPP_LPP_MessageBody_c1_requestLocationInformation_selected requestLocationInformation;
+    LPP_LPP_MessageBody_c1_provideLocationInformation_selected provideLocationInformation;
+    LPP_LPP_MessageBody_c1_abort_selected abort;
+    LPP_LPP_MessageBody_c1_error_selected error;
+    LPP_LPP_MessageBody_c1_spare7_selected spare7;
+    LPP_LPP_MessageBody_c1_spare6_selected spare6;
+    LPP_LPP_MessageBody_c1_spare5_selected spare5;
+    LPP_LPP_MessageBody_c1_spare4_selected spare4;
+    LPP_LPP_MessageBody_c1_spare3_selected spare3;
+    LPP_LPP_MessageBody_c1_spare2_selected spare2;
+    LPP_LPP_MessageBody_c1_spare1_selected spare1;
+    LPP_LPP_MessageBody_c1_spare0_selected spare0;
+};
+
+LPP_LPP_MessageBody selection choice :
+{
+    LPP_LPP_MessageBody_c1_selected c1;
+    LPP_LPP_MessageBody_messageClassExtension_selected messageClassExtension;
+};
+
+#endif /* __LPP_SUPPORT__ */
+
+#ifdef __LPP_EXT_SUPPORT__
+
+LPP_EXT_OMA_LPPe_Orientation selection choice :
+{
+    LPP_EXT_OMA_LPPe_Orientation_eulerAngles_selected eulerAngles;
+    LPP_EXT_OMA_LPPe_Orientation_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_HorizontalUncertaintyAndConfidence_uncShape selection choice :
+{
+    LPP_EXT_OMA_LPPe_HorizontalUncertaintyAndConfidence_uncShape_circle_selected circle;
+    LPP_EXT_OMA_LPPe_HorizontalUncertaintyAndConfidence_uncShape_ellipse_selected ellipse;
+    LPP_EXT_OMA_LPPe_HorizontalUncertaintyAndConfidence_uncShape_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_AGNSS_CodePhaseError selection choice :
+{
+    LPP_EXT_OMA_LPPe_AGNSS_CodePhaseError_codePhaseRMSError_selected codePhaseRMSError;
+    LPP_EXT_OMA_LPPe_AGNSS_CodePhaseError_cnr_selected cnr;
+    LPP_EXT_OMA_LPPe_AGNSS_CodePhaseError_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_AGNSS_AntennaDescription_antennaDescription selection choice :
+{
+    LPP_EXT_OMA_LPPe_AGNSS_AntennaDescription_antennaDescription_igsAntennaName_selected igsAntennaName;
+    LPP_EXT_OMA_LPPe_AGNSS_AntennaDescription_antennaDescription_proprietaryName_selected proprietaryName;
+    LPP_EXT_OMA_LPPe_AGNSS_AntennaDescription_antennaDescription_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_SRN_SRNid_srn_id selection choice :
+{
+    LPP_EXT_OMA_LPPe_SRN_SRNid_srn_id_mac_selected mac;
+    LPP_EXT_OMA_LPPe_SRN_SRNid_srn_id_nfc_selected nfc;
+    LPP_EXT_OMA_LPPe_SRN_SRNid_srn_id_mobileCode_selected mobileCode;
+    LPP_EXT_OMA_LPPe_SRN_SRNid_srn_id_other_selected other;
+    LPP_EXT_OMA_LPPe_SRN_SRNid_srn_id_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_CellGlobalIdEUTRA_AndUTRA_cellIdentity selection choice :
+{
+    LPP_EXT_CellGlobalIdEUTRA_AndUTRA_cellIdentity_eutra_selected eutra;
+    LPP_EXT_CellGlobalIdEUTRA_AndUTRA_cellIdentity_utra_selected utra;
+};
+
+LPP_EXT_PRS_Info_prs_MutingInfo_r9 selection choice :
+{
+    LPP_EXT_PRS_Info_prs_MutingInfo_r9_po2_r9_selected po2_r9;
+    LPP_EXT_PRS_Info_prs_MutingInfo_r9_po4_r9_selected po4_r9;
+    LPP_EXT_PRS_Info_prs_MutingInfo_r9_po8_r9_selected po8_r9;
+    LPP_EXT_PRS_Info_prs_MutingInfo_r9_po16_r9_selected po16_r9;
+    LPP_EXT_PRS_Info_prs_MutingInfo_r9_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_VendorOrOperatorID selection choice :
+{
+    LPP_EXT_OMA_LPPe_VendorOrOperatorID_standard_VendorOrOperatorID_selected standard_VendorOrOperatorID;
+    LPP_EXT_OMA_LPPe_VendorOrOperatorID_nonStandard_VendorOrOperatorID_selected nonStandard_VendorOrOperatorID;
+    LPP_EXT_OMA_LPPe_VendorOrOperatorID_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_IP_Address_local_IP_Address selection choice :
+{
+    LPP_EXT_OMA_LPPe_IP_Address_local_IP_Address_iPv4_selected iPv4;
+    LPP_EXT_OMA_LPPe_IP_Address_local_IP_Address_iPv6_selected iPv6;
+    LPP_EXT_OMA_LPPe_IP_Address_local_IP_Address_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_AGNSS_RleIonoElement_ionoIndex selection choice :
+{
+    LPP_EXT_OMA_LPPe_AGNSS_RleIonoElement_ionoIndex_noaaScales_selected noaaScales;
+    LPP_EXT_OMA_LPPe_AGNSS_RleIonoElement_ionoIndex_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_AGNSS_Error selection choice :
+{
+    LPP_EXT_OMA_LPPe_AGNSS_Error_agnss_locationServerErrorCauses_selected agnss_locationServerErrorCauses;
+    LPP_EXT_OMA_LPPe_AGNSS_Error_agnss_targetDeviceErrorCauses_selected agnss_targetDeviceErrorCauses;
+    LPP_EXT_OMA_LPPe_AGNSS_Error_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_OTDOA_Error selection choice :
+{
+    LPP_EXT_OMA_LPPe_OTDOA_Error_locationServerErrorCauses_selected locationServerErrorCauses;
+    LPP_EXT_OMA_LPPe_OTDOA_Error_targetDeviceErrorCauses_selected targetDeviceErrorCauses;
+    LPP_EXT_OMA_LPPe_OTDOA_Error_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_EOTD_ReferenceBTSForAssistance_btsPosition selection choice :
+{
+    LPP_EXT_OMA_LPPe_EOTD_ReferenceBTSForAssistance_btsPosition_ellipsoidPoint_selected ellipsoidPoint;
+    LPP_EXT_OMA_LPPe_EOTD_ReferenceBTSForAssistance_btsPosition_ellipsoidPointWithAltitudeAndUncertaintyEllipsoid_selected ellipsoidPointWithAltitudeAndUncertaintyEllipsoid;
+    LPP_EXT_OMA_LPPe_EOTD_ReferenceBTSForAssistance_btsPosition_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_EOTD_Error selection choice :
+{
+    LPP_EXT_OMA_LPPe_EOTD_Error_locationServerErrorCauses_selected locationServerErrorCauses;
+    LPP_EXT_OMA_LPPe_EOTD_Error_targetDeviceErrorCauses_selected targetDeviceErrorCauses;
+    LPP_EXT_OMA_LPPe_EOTD_Error_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_OTDOA_UTRA_RefPosAssist_cellPosition selection choice :
+{
+    LPP_EXT_OMA_LPPe_OTDOA_UTRA_RefPosAssist_cellPosition_ellipsoidPoint_selected ellipsoidPoint;
+    LPP_EXT_OMA_LPPe_OTDOA_UTRA_RefPosAssist_cellPosition_ellipsoidPointWithAltitude_selected ellipsoidPointWithAltitude;
+    LPP_EXT_OMA_LPPe_OTDOA_UTRA_RefPosAssist_cellPosition_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_OTDOA_UTRA_IPDL_Parameters_modeSpecificInfo selection choice :
+{
+    LPP_EXT_OMA_LPPe_OTDOA_UTRA_IPDL_Parameters_modeSpecificInfo_fdd_selected fdd;
+    LPP_EXT_OMA_LPPe_OTDOA_UTRA_IPDL_Parameters_modeSpecificInfo_tdd_selected tdd;
+};
+
+LPP_EXT_OMA_LPPe_OTDOA_UTRA_Error selection choice :
+{
+    LPP_EXT_OMA_LPPe_OTDOA_UTRA_Error_locationServerErrorCauses_selected locationServerErrorCauses;
+    LPP_EXT_OMA_LPPe_OTDOA_UTRA_Error_targetDeviceErrorCauses_selected targetDeviceErrorCauses;
+    LPP_EXT_OMA_LPPe_OTDOA_UTRA_Error_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_ECID_LTE_Error selection choice :
+{
+    LPP_EXT_OMA_LPPe_ECID_LTE_Error_locationServerErrorCauses_selected locationServerErrorCauses;
+    LPP_EXT_OMA_LPPe_ECID_LTE_Error_targetDeviceErrorCauses_selected targetDeviceErrorCauses;
+    LPP_EXT_OMA_LPPe_ECID_LTE_Error_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_ECID_GSM_Error selection choice :
+{
+    LPP_EXT_OMA_LPPe_ECID_GSM_Error_locationServerErrorCauses_selected locationServerErrorCauses;
+    LPP_EXT_OMA_LPPe_ECID_GSM_Error_targetDeviceErrorCauses_selected targetDeviceErrorCauses;
+    LPP_EXT_OMA_LPPe_ECID_GSM_Error_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_ECID_UTRA_CellData_modeSpecificInfo selection choice :
+{
+    LPP_EXT_OMA_LPPe_ECID_UTRA_CellData_modeSpecificInfo_fdd_selected fdd;
+    LPP_EXT_OMA_LPPe_ECID_UTRA_CellData_modeSpecificInfo_tdd_selected tdd;
+};
+
+LPP_EXT_OMA_LPPe_ECID_UTRA_CellMeasuredResults_modeSpecificInfo selection choice :
+{
+    LPP_EXT_OMA_LPPe_ECID_UTRA_CellMeasuredResults_modeSpecificInfo_fdd_selected fdd;
+    LPP_EXT_OMA_LPPe_ECID_UTRA_CellMeasuredResults_modeSpecificInfo_tdd_selected tdd;
+};
+
+LPP_EXT_OMA_LPPe_ECID_UTRA_Error selection choice :
+{
+    LPP_EXT_OMA_LPPe_ECID_UTRA_Error_locationServerErrorCauses_selected locationServerErrorCauses;
+    LPP_EXT_OMA_LPPe_ECID_UTRA_Error_targetDeviceErrorCauses_selected targetDeviceErrorCauses;
+    LPP_EXT_OMA_LPPe_ECID_UTRA_Error_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_WLAN_AP_Error selection choice :
+{
+    LPP_EXT_OMA_LPPe_WLAN_AP_Error_locationServerErrorCauses_selected locationServerErrorCauses;
+    LPP_EXT_OMA_LPPe_WLAN_AP_Error_targetDeviceErrorCauses_selected targetDeviceErrorCauses;
+    LPP_EXT_OMA_LPPe_WLAN_AP_Error_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_ECID_WiMax_Error selection choice :
+{
+    LPP_EXT_OMA_LPPe_ECID_WiMax_Error_locationServerErrorCauses_selected locationServerErrorCauses;
+    LPP_EXT_OMA_LPPe_ECID_WiMax_Error_targetDeviceErrorCauses_selected targetDeviceErrorCauses;
+    LPP_EXT_OMA_LPPe_ECID_WiMax_Error_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_Sensor_Error selection choice :
+{
+    LPP_EXT_OMA_LPPe_Sensor_Error_targetError_selected targetError;
+    LPP_EXT_OMA_LPPe_Sensor_Error_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_NetworkTime_cellID_uTRA_mode selection choice :
+{
+    LPP_EXT_NetworkTime_cellID_uTRA_mode_fdd_selected fdd;
+    LPP_EXT_NetworkTime_cellID_uTRA_mode_tdd_selected tdd;
+};
+
+LPP_EXT_NetworkTime_cellID selection choice :
+{
+    LPP_EXT_NetworkTime_cellID_eUTRA_selected eUTRA;
+    LPP_EXT_NetworkTime_cellID_uTRA_selected uTRA;
+    LPP_EXT_NetworkTime_cellID_gSM_selected gSM;
+    LPP_EXT_NetworkTime_cellID_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_Velocity selection choice :
+{
+    LPP_EXT_Velocity_horizontalVelocity_selected horizontalVelocity;
+    LPP_EXT_Velocity_horizontalWithVerticalVelocity_selected horizontalWithVerticalVelocity;
+    LPP_EXT_Velocity_horizontalVelocityWithUncertainty_selected horizontalVelocityWithUncertainty;
+    LPP_EXT_Velocity_horizontalWithVerticalVelocityAndUncertainty_selected horizontalWithVerticalVelocityAndUncertainty;
+    LPP_EXT_Velocity_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_AGNSS_CCPrequestControlParameters_ccpCommonRequest_refStation selection choice :
+{
+    LPP_EXT_OMA_LPPe_AGNSS_CCPrequestControlParameters_ccpCommonRequest_refStation_posBasedReferenceStationRequest_selected posBasedReferenceStationRequest;
+    LPP_EXT_OMA_LPPe_AGNSS_CCPrequestControlParameters_ccpCommonRequest_refStation_idBasedReferenceStationRequest_selected idBasedReferenceStationRequest;
+    LPP_EXT_OMA_LPPe_AGNSS_CCPrequestControlParameters_ccpCommonRequest_refStation_referenceStationKillList_selected referenceStationKillList;
+    LPP_EXT_OMA_LPPe_AGNSS_CCPrequestControlParameters_ccpCommonRequest_refStation_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_EOTD_NeighborIdentity selection choice :
+{
+    LPP_EXT_OMA_LPPe_EOTD_NeighborIdentity_bsicAndCarrier_selected bsicAndCarrier;
+    LPP_EXT_OMA_LPPe_EOTD_NeighborIdentity_ci_selected ci;
+    LPP_EXT_OMA_LPPe_EOTD_NeighborIdentity_multiFrameCarrier_selected multiFrameCarrier;
+    LPP_EXT_OMA_LPPe_EOTD_NeighborIdentity_requestIndex_selected requestIndex;
+    LPP_EXT_OMA_LPPe_EOTD_NeighborIdentity_systemInfoIndex_selected systemInfoIndex;
+    LPP_EXT_OMA_LPPe_EOTD_NeighborIdentity_ciAndLac_selected ciAndLac;
+    LPP_EXT_OMA_LPPe_EOTD_NeighborIdentity_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_OTDOA_UTRA_Neighbor_modeSpecificInfo selection choice :
+{
+    LPP_EXT_OMA_LPPe_OTDOA_UTRA_Neighbor_modeSpecificInfo_fdd_selected fdd;
+    LPP_EXT_OMA_LPPe_OTDOA_UTRA_Neighbor_modeSpecificInfo_tdd_selected tdd;
+};
+
+LPP_EXT_OMA_LPPe_UTRA_ModeSpecificInfo selection choice :
+{
+    LPP_EXT_OMA_LPPe_UTRA_ModeSpecificInfo_fdd_selected fdd;
+    LPP_EXT_OMA_LPPe_UTRA_ModeSpecificInfo_tdd_selected tdd;
+    LPP_EXT_OMA_LPPe_UTRA_ModeSpecificInfo_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_TimeStamp selection choice :
+{
+    LPP_EXT_OMA_LPPe_TimeStamp_gnssTime_selected gnssTime;
+    LPP_EXT_OMA_LPPe_TimeStamp_networkTime_selected networkTime;
+    LPP_EXT_OMA_LPPe_TimeStamp_relativeTime_selected relativeTime;
+    LPP_EXT_OMA_LPPe_TimeStamp_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_AGNSS_IonosphericModelReq selection choice :
+{
+    LPP_EXT_OMA_LPPe_AGNSS_IonosphericModelReq_staticModels_selected staticModels;
+    LPP_EXT_OMA_LPPe_AGNSS_IonosphericModelReq_periodicModels_selected periodicModels;
+    LPP_EXT_OMA_LPPe_AGNSS_IonosphericModelReq_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_MapDataReferenceElement_mapDataUrl selection choice :
+{
+    LPP_EXT_OMA_LPPe_MapDataReferenceElement_mapDataUrl_mapDataUrl_selected mapDataUrl;
+    LPP_EXT_OMA_LPPe_MapDataReferenceElement_mapDataUrl_mapDataRef_selected mapDataRef;
+};
+
+LPP_EXT_OMA_LPPe_MapDataReferenceElement_mapProvider selection choice :
+{
+    LPP_EXT_OMA_LPPe_MapDataReferenceElement_mapProvider_sameAsRefPointProvider_selected sameAsRefPointProvider;
+    LPP_EXT_OMA_LPPe_MapDataReferenceElement_mapProvider_notSameAsRefPointProvider_selected notSameAsRefPointProvider;
+    LPP_EXT_OMA_LPPe_MapDataReferenceElement_mapProvider_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_MapDataReferenceElement_mapAssociation selection choice :
+{
+    LPP_EXT_OMA_LPPe_MapDataReferenceElement_mapAssociation_referencePointUniqueID_selected referencePointUniqueID;
+    LPP_EXT_OMA_LPPe_MapDataReferenceElement_mapAssociation_otherID_selected otherID;
+    LPP_EXT_OMA_LPPe_MapDataReferenceElement_mapAssociation_mapOffset_selected mapOffset;
+    LPP_EXT_OMA_LPPe_MapDataReferenceElement_mapAssociation_origin_selected origin;
+    LPP_EXT_OMA_LPPe_MapDataReferenceElement_mapAssociation_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_AGNSS_CCPassistCommonProvide selection choice :
+{
+    LPP_EXT_OMA_LPPe_AGNSS_CCPassistCommonProvide_ccpProvideCommonParameters_selected ccpProvideCommonParameters;
+    LPP_EXT_OMA_LPPe_AGNSS_CCPassistCommonProvide_ccpProvideControlParameters_selected ccpProvideControlParameters;
+    LPP_EXT_OMA_LPPe_AGNSS_CCPassistCommonProvide_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_AGNSS_HAgnssProvide selection choice :
+{
+    LPP_EXT_OMA_LPPe_AGNSS_HAgnssProvide_controlParameters_selected controlParameters;
+    LPP_EXT_OMA_LPPe_AGNSS_HAgnssProvide_measurements_selected measurements;
+    LPP_EXT_OMA_LPPe_AGNSS_HAgnssProvide_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_EOTD_SystemInfoAssistBTS selection choice :
+{
+    LPP_EXT_OMA_LPPe_EOTD_SystemInfoAssistBTS_notPresent_selected notPresent;
+    LPP_EXT_OMA_LPPe_EOTD_SystemInfoAssistBTS_present_selected present;
+};
+
+LPP_EXT_OMA_LPPe_OTDOA_UTRA_ReferenceCellInfo_modeSpecificInfo selection choice :
+{
+    LPP_EXT_OMA_LPPe_OTDOA_UTRA_ReferenceCellInfo_modeSpecificInfo_fdd_selected fdd;
+    LPP_EXT_OMA_LPPe_OTDOA_UTRA_ReferenceCellInfo_modeSpecificInfo_tdd_selected tdd;
+};
+
+LPP_EXT_OMA_LPPe_OTDOA_UTRA_NeighborCellInfo_modeSpecificInfo selection choice :
+{
+    LPP_EXT_OMA_LPPe_OTDOA_UTRA_NeighborCellInfo_modeSpecificInfo_fdd_selected fdd;
+    LPP_EXT_OMA_LPPe_OTDOA_UTRA_NeighborCellInfo_modeSpecificInfo_tdd_selected tdd;
+};
+
+LPP_EXT_OMA_LPPe_OTDOA_UTRA_Measurement_modeSpecificInfoMeas selection choice :
+{
+    LPP_EXT_OMA_LPPe_OTDOA_UTRA_Measurement_modeSpecificInfoMeas_fdd_selected fdd;
+    LPP_EXT_OMA_LPPe_OTDOA_UTRA_Measurement_modeSpecificInfoMeas_tdd_selected tdd;
+};
+
+LPP_EXT_OMA_LPPe_OTDOA_UTRA_TimeStampData_nonUniqueCellID selection choice :
+{
+    LPP_EXT_OMA_LPPe_OTDOA_UTRA_TimeStampData_nonUniqueCellID_primaryScramblingCode_selected primaryScramblingCode;
+    LPP_EXT_OMA_LPPe_OTDOA_UTRA_TimeStampData_nonUniqueCellID_cellParametersId_selected cellParametersId;
+    LPP_EXT_OMA_LPPe_OTDOA_UTRA_TimeStampData_nonUniqueCellID_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_SRN_RequestAssistanceData_srnGroup selection choice :
+{
+    LPP_EXT_OMA_LPPe_SRN_RequestAssistanceData_srnGroup_srnGroupRequest_selected srnGroupRequest;
+    LPP_EXT_OMA_LPPe_SRN_RequestAssistanceData_srnGroup_srnGroupUpdateRequest_selected srnGroupUpdateRequest;
+    LPP_EXT_OMA_LPPe_SRN_RequestAssistanceData_srnGroup_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_SRN_Error selection choice :
+{
+    LPP_EXT_OMA_LPPe_SRN_Error_srnLocationServerErrorCauses_selected srnLocationServerErrorCauses;
+    LPP_EXT_OMA_LPPe_SRN_Error_srnTargetDeviceErrorCauses_selected srnTargetDeviceErrorCauses;
+    LPP_EXT_OMA_LPPe_SRN_Error_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_AssistanceContainerProvide_dataResult selection choice :
+{
+    LPP_EXT_OMA_LPPe_AssistanceContainerProvide_dataResult_simulationResult_selected simulationResult;
+    LPP_EXT_OMA_LPPe_AssistanceContainerProvide_dataResult_data_selected data;
+    LPP_EXT_OMA_LPPe_AssistanceContainerProvide_dataResult_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_SRN_AntennaPatternElement_antennaData selection choice :
+{
+    LPP_EXT_OMA_LPPe_SRN_AntennaPatternElement_antennaData_antennaPattern_selected antennaPattern;
+    LPP_EXT_OMA_LPPe_SRN_AntennaPatternElement_antennaData_antennaContainer_selected antennaContainer;
+    LPP_EXT_OMA_LPPe_SRN_AntennaPatternElement_antennaData_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_ReferencePoint_referencePointGeographicLocation selection choice :
+{
+    LPP_EXT_OMA_LPPe_ReferencePoint_referencePointGeographicLocation_location3D_selected location3D;
+    LPP_EXT_OMA_LPPe_ReferencePoint_referencePointGeographicLocation_location3DwithUncertainty_selected location3DwithUncertainty;
+    LPP_EXT_OMA_LPPe_ReferencePoint_referencePointGeographicLocation_locationwithhighaccuracy_selected locationwithhighaccuracy;
+    LPP_EXT_OMA_LPPe_ReferencePoint_referencePointGeographicLocation_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_AGNSS_IonosphericModel_waIono selection choice :
+{
+    LPP_EXT_OMA_LPPe_AGNSS_IonosphericModel_waIono_controlParameters_selected controlParameters;
+    LPP_EXT_OMA_LPPe_AGNSS_IonosphericModel_waIono_commonProvide_selected commonProvide;
+    LPP_EXT_OMA_LPPe_AGNSS_IonosphericModel_waIono_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_AGNSS_IonosphericModel selection choice :
+{
+    LPP_EXT_OMA_LPPe_AGNSS_IonosphericModel_staticModels_selected staticModels;
+    LPP_EXT_OMA_LPPe_AGNSS_IonosphericModel_waIono_selected waIono;
+    LPP_EXT_OMA_LPPe_AGNSS_IonosphericModel_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_SRN_ProvideAssistanceData_srnGroup selection choice :
+{
+    LPP_EXT_OMA_LPPe_SRN_ProvideAssistanceData_srnGroup_srnGroupList_selected srnGroupList;
+    LPP_EXT_OMA_LPPe_SRN_ProvideAssistanceData_srnGroup_srnGroupUpdateResponse_selected srnGroupUpdateResponse;
+    LPP_EXT_OMA_LPPe_SRN_ProvideAssistanceData_srnGroup_UnKnowItem_selected UnKnowItem;
+};
+
+LPP_EXT_OMA_LPPe_MessageExtensionBody selection choice :
+{
+    LPP_EXT_OMA_LPPe_MessageExtensionBody_requestCapabilities_selected requestCapabilities;
+    LPP_EXT_OMA_LPPe_MessageExtensionBody_provideCapabilities_selected provideCapabilities;
+    LPP_EXT_OMA_LPPe_MessageExtensionBody_requestAssistanceData_selected requestAssistanceData;
+    LPP_EXT_OMA_LPPe_MessageExtensionBody_provideAssistanceData_selected provideAssistanceData;
+    LPP_EXT_OMA_LPPe_MessageExtensionBody_requestLocationInformation_selected requestLocationInformation;
+    LPP_EXT_OMA_LPPe_MessageExtensionBody_provideLocationInformation_selected provideLocationInformation;
+    LPP_EXT_OMA_LPPe_MessageExtensionBody_error_selected error;
+    LPP_EXT_OMA_LPPe_MessageExtensionBody_abort_selected abort;
+    LPP_EXT_OMA_LPPe_MessageExtensionBody_UnKnowItem_selected UnKnowItem;
+};
+
+#endif /* __LPP_EXT_SUPPORT__ */
+
+smu_dump_sml_context_ind_struct nv data :
+{
+	NVRAM_EF_SML_LID sml_context;
+	NVRAM_EF_MS_SECURITY_LID ms_sec_context;
+	NVRAM_EF_SIM_LOCK_LID tmo_sml_context;
+    NVRAM_EF_SML_NONCE_LID uulk_nonce_context;
+    NVRAM_EF_SML_UNLOCK_CODE_LID uulk_unlock_code_context;
+    NVRAM_EF_SML_SIGNATURE_LID uulk_signature_context;
+#if defined(__SUBSIDY_LOCK__) || defined(__SMB_SIMME_LOCK_NV__)
+	NVRAM_EF_SUBSIDY_LOCK_LID sl_gblob_context;
+	NVRAM_EF_SUBSIDY_LOCK_ODM_DATA_LID sl_odm_data_context;
+#endif /* __SUBSIDY_LOCK__ || __SMB_SIMME_LOCK_NV__ */
+#if defined(__SMB_SIMME_LOCK__)
+ 	NVRAM_EF_SML_GBLOB_LID gblob_s_context;
+	NVRAM_EF_SML_GBLOB_KEY_LID gblob_key_s_context;
+	NVRAM_EF_SML_S_LID sml_s_context;
+#endif /* __SMB_SIMME_LOCK__ */
+#ifdef __SBP_OP129_SIMME_LOCK__
+    NVRAM_EF_SML_OP129_LID op129_lock_data_context;
+#endif	
+};

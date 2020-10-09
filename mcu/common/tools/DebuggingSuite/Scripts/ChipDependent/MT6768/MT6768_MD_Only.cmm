@@ -1,0 +1,56 @@
+;AP pmic workaround
+&MEM_CLASS="AXI"
+sys.m prepare
+wait 1.ms
+
+; Step 1 (AP CCCI only) Configure AP/MD shared buck through DVFSRC API
+; [Note] CVD script do NOT need this step
+; skip
+
+; Step 2 ungate MD related clocks (MD Owner:Wayne.Liu, WCT/CD1/DE1; AP Owner:Wendell Lin, WSD1/OSS1/SS18)
+; Ungate MD1 32K and 26M 
+do APView_MT6768_md_ungate_clocks.cmm
+
+; Step 3 config MD related Buck
+; [Note] CVD script do NOT need this step
+; AP preloader should set Modem related buck 
+; skip
+
+; Step 4 power on MTCMOS
+; [Note] CVD script do NOT need this step
+; skip
+
+; Step 5 disable MD access register (Owner:Justin Gu, SPD2/CD3/DE5)
+do APview_MT6768_MD2PERI_disable.cmm  
+
+; Step 6 config md_srclkena setting (Owner:Boyun.Lin, SPD2/CD1/DE1; Yuyang Hsiao, WCS/MSE2/CS1)
+do APview_MT6768_md_srclkena.cmm  
+
+; Step 7 config PLL setting (Owner:Jun-Ying.Huang, WCS/SSE/SS3)
+do APview_MT6768_MD_PLL_Init.cmm  
+
+; Step 8 Disable MD WDT (Owner:Yuke Ren, WSP/MPE2/SD9)
+do APview_MT6768_disable_WDT.cmm
+
+; Step 9 enable MD to Access AP Register (Owner:Justin Gu, SPD2/CD3/DE5)
+do APview_MT6768_AP2MD_enable.cmm
+
+; Step 10 Trigger MD MCU to run (AP view) (Owner:I-Chun.Liu, WCS/SSE/SS3)
+; [Note] Trigger MD MCU by debugger
+; skip
+
+; Step 11 set GPIO (MD view: step 7)
+do APview_MT6768_GPIO_MDUART0.cmm (Owner:Yao Xue, WSP/MPE2/SD9)
+do APview_MT6768_GPIO_SIM.cmm (Owner:Bernie Chang, WSP/MPE2/SD3)
+
+;Step 12 Force on Debug Sys clock (MD view: step 8) (Owner:Wade Huang, WCS/SSE/SS2)
+;do APview_MT6768_MD_ForceOnDebugSys.cmm  
+
+;Step 13 set MD EMI remap address (MD view: step 9)
+d.s &MEM_CLASS:0x10001300 %long %le 0x00430041
+d.s &MEM_CLASS:0x10001304 %long %le 0x00470045
+d.s &MEM_CLASS:0x10001308 %long %le 0x004b0049
+d.s &MEM_CLASS:0x1000130c %long %le 0x004f004d
+
+; Final Step: Trigger MD MCU to run 
+; skip

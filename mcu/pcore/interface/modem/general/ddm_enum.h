@@ -1,0 +1,44 @@
+#ifndef _DDM_ENUM_H
+#define _DDM_ENUM_H
+
+#ifdef __CMUX_SUPPORT__
+#include "cmux_vp_num.h"
+#define CMUX_CHANNELS_NUM ((CMUX_VP_NUM_FOR_SINGLE_SIM * MAX_SIM_NUM) + CMUX_VPEX_TOTAL_NUM)
+#else
+#define CMUX_CHANNELS_NUM (1)
+#endif
+
+#define D2_CHANNELS_NUM (8)
+#define DDM_CHANNELS_NUM (4)
+#define DDM_MAX_NUM_OF_APN    (16)
+#define APN_TYPE_STRING_LEN         (32)
+#define APN_TYPE_LIST_STRING_LEN    (256)
+
+typedef enum
+{
+    DDM_SRC_CMUX_START = 0,
+    DDM_SRC_CMUX_END = DDM_SRC_CMUX_START + (CMUX_CHANNELS_NUM - 1),
+    DDM_SRC_D2_START,
+    DDM_SRC_D2AM_IA_REUSE = DDM_SRC_D2_START,
+    DDM_SRC_D2_IMSM,
+    DDM_SRC_D2_END = DDM_SRC_D2_START + (D2_CHANNELS_NUM - 1),
+    DDM_SRC_START,
+    DDM_SRC_FALLBACK_IPv4,
+    DDM_SRC_FALLBACK_IPv6,
+    DDM_SRC_QOS_CHECK,
+    DDM_SRC_END = DDM_SRC_START + (DDM_CHANNELS_NUM - 1),
+    DDM_ALL,
+} ddm_source_id_enum;
+
+#define DDM_UNSOLICITED    DDM_ALL
+
+// flag
+#define DDM_IS_STANDARD   (0x00000001)
+#define DDM_IS_ACTTEST    (0x00000010)
+
+#define EIF_SUPPORT_HO    (1 << 0)
+#define EIF_SUPPORT_IPCHG (1 << 1)
+
+#define IGNORE_SRC_ID (0x7788)
+
+#endif

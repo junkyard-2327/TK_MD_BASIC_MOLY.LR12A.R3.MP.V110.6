@@ -1,0 +1,255 @@
+/*****************************************************************************
+*  Copyright Statement:
+*  --------------------
+*  This software is protected by Copyright and the information contained
+*  herein is confidential. The software may not be copied and the information
+*  contained herein may not be used or disclosed except with the written
+*  permission of MediaTek Inc. (C) 2005
+*
+*  BY OPENING THIS FILE, BUYER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+*  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("MEDIATEK SOFTWARE")
+*  RECEIVED FROM MEDIATEK AND/OR ITS REPRESENTATIVES ARE PROVIDED TO BUYER ON
+*  AN "AS-IS" BASIS ONLY. MEDIATEK EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES,
+*  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+*  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NONINFRINGEMENT.
+*  NEITHER DOES MEDIATEK PROVIDE ANY WARRANTY WHATSOEVER WITH RESPECT TO THE
+*  SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY, INCORPORATED IN, OR
+*  SUPPLIED WITH THE MEDIATEK SOFTWARE, AND BUYER AGREES TO LOOK ONLY TO SUCH
+*  THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO. MEDIATEK SHALL ALSO
+*  NOT BE RESPONSIBLE FOR ANY MEDIATEK SOFTWARE RELEASES MADE TO BUYER'S
+*  SPECIFICATION OR TO CONFORM TO A PARTICULAR STANDARD OR OPEN FORUM.
+*
+*  BUYER'S SOLE AND EXCLUSIVE REMEDY AND MEDIATEK'S ENTIRE AND CUMULATIVE
+*  LIABILITY WITH RESPECT TO THE MEDIATEK SOFTWARE RELEASED HEREUNDER WILL BE,
+*  AT MEDIATEK'S OPTION, TO REVISE OR REPLACE THE MEDIATEK SOFTWARE AT ISSUE,
+*  OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE CHARGE PAID BY BUYER TO
+*  MEDIATEK FOR SUCH MEDIATEK SOFTWARE AT ISSUE.
+*
+*  THE TRANSACTION CONTEMPLATED HEREUNDER SHALL BE CONSTRUED IN ACCORDANCE
+*  WITH THE LAWS OF THE STATE OF CALIFORNIA, USA, EXCLUDING ITS CONFLICT OF
+*  LAWS PRINCIPLES.  ANY DISPUTES, CONTROVERSIES OR CLAIMS ARISING THEREOF AND
+*  RELATED THERETO SHALL BE SETTLED BY ARBITRATION IN SAN FRANCISCO, CA, UNDER
+*  THE RULES OF THE INTERNATIONAL CHAMBER OF COMMERCE (ICC).
+*
+*****************************************************************************/
+
+/*******************************************************************************
+ * Filename:
+ * ---------
+ *  l4b_urc_table.def
+ *
+ *
+ * Description:
+ * ------------
+ *  define the items in l4b_urc_table, and expended for
+ *	MSG_ID_L4B_L4BXXX_YYY_URC_REQ
+ *
+ * Author:
+ * -------
+ *  Hong Yu
+ *
+ *==============================================================================
+ * 				HISTORY
+ * Below this line, this part is controlled by PVCS VM. DO NOT MODIFY!!
+ *------------------------------------------------------------------------------
+ * $Log$
+ *
+ * 09 17 2019 yilun.yang
+ * [MOLY00441040] [MT6765/MT6762][UICC] Request starting implementation of eUICC feature for Google Fi
+ * 	
+ * 	L4B interface.
+ *
+ * 08 21 2019 vishwas.hegde
+ * [MOLY00433257] [Rose][Cervino][Q0][BSP+]It will pops up SIM card close when tap the SIm card message Full notification.
+ * 	
+ * 	ESIMFULL L4B patch Main branch
+ *
+ * 06 27 2019 vijay.goyal
+ * [MOLY00417126] L4BCC build error after disabling __IMS_SUPPORT__ compilation flag
+ * .
+ *
+ * 06 19 2019 vend_mtb_mobiveil012
+ * [MOLY00414957] [Tinno][U303AF][VZW][phase 1][LTE AT Commands for Test Automation][AT_COM-2.16]  Failed at step 8 : UE failed to verify resspond with the new configuration as set in step 5.
+ * 	
+ * 	[MOLY00414957][ATP-L4BNW-L4C] REG_ILM instead of CxREG URC
+ *
+ * 09 21 2018 xuejing.chen
+ * [MOLY00352186] [DSBP] patch back "D-SBP enhancment for all modem" to LR12A.R3.MP (L4 part)(.header)
+ * interface.
+ *
+ * 09 13 2017 yilun.yang
+ * [MOLY00277917] 手机插入?通卡未提示重?
+ * [L4BSIM] Handle ESIMS when plug out and then reset dispatch rule.
+ *
+ * 05 04 2017 yingfui.hung
+ * [MOLY00247004] [BIANCO][MT6763][RDIT][CMCC][NSIOT][Anite][HQ][IMS_8.2.2.3]ERROR: DEACTIVATE PDP CONTEXT failed due to a timeout
+ * 	
+ * 	.
+ *
+ * 04 05 2017 wen.zhuang
+ * [MOLY00237411] [6293][PreIT] UTK/STK SMS Flow Merge
+ * 	
+ * 	M3 UTK L4B CL.
+ *
+ * 04 05 2017 tingwen.chen
+ * [MOLY00239345] [UMOLYA] Integration from UMOLY Gen93 to UMOLYA
+ *     - [SAT][M3] implement L4BSAT for STK CMD source
+ *
+ * 03 23 2017 wen.zhuang
+ * [MOLY00237274] [BIANCO][MT6763][UMOLYA][EVB][Full load][MD_Pre-Sanity][SIM1:CMCC] Assert fail: vdm_trk_rcv_msg.c 3915 - VDM
+ * 	
+ * 	ORIG,CONN,CEND only processed for l4bcc c2k part.
+ *
+ * 02 23 2017 yingfui.hung
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ * 	
+ * 	.
+ *
+ * 02 20 2017 ian-yw.chen
+ * [MOLY00205894] [MT6293] activities
+ * [Gen93][L4 Integration][Announcement] M2 check in UMOLYA trunk
+ *
+ * 02 20 2017 wen.zhuang
+ * [MOLY00221556] [Gen93]Merge SIM IO and CC related codes to check in
+ * 	
+ * 	M2 CTZE, Engineering mode AT commands and MT call flow.
+ * 	M2 dual-SIM IO AT command
+ *
+ * 12 20 2016 yilun.yang
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ * [l4bsim] Add URC +ESIMAPP for CRLA/CGLA channel_id.
+ *
+ * 12 01 2016 yingfui.hung
+ * [MOLY00216431] [Gen93][pre-IT][AP-MD] MT: fail???????????????????????????????????
+ * 	
+ * 	.
+ *
+ * 12 01 2016 hong.yu
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ * add command mode in l4b_atp_at_cmd_table and src_mod in l4b_urc_table
+ *
+ * 11 29 2016 wen.zhuang
+ * [MOLY00211531] [MT6799][PS][L4B]Add L4B code of SIM and CC related for 92 preIT
+ * 	
+ * 	ECPI 0 with call id.
+ *
+ * 11 29 2016 huang-da.chen
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ * [SAT] M2: STK command dispatch (L4BSAT)
+ *
+ * 11 21 2016 guanglong.wu
+ * [MOLY00214302] [6293][NW AT command]C2K Reg status and signal strength
+ *
+ * 	[MOLY00214302] [6293][NW AT command]C2K URC about Reg status and signal strength
+ *
+ * 11 15 2016 yingfui.hung
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ *
+ * 	.
+ *
+ * 11 10 2016 wenson.qiu
+ * [MOLY00212644] [Gen93][pre-IT] L4B and L4BCC codes for C2K CS call
+ * .
+ *
+ * 11 08 2016 yingfui.hung
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ *
+ * 	.
+ *
+ * 11 04 2016 ian-yw.chen
+ * [MOLY00211439] [MT6293][L4B][L4B_SMS] development
+ * M1 development (part 2)
+ *
+ * 11 04 2016 ian-yw.chen
+ * [MOLY00211439] [MT6293][L4B][L4B_SMS] development
+ *  M1 development (part 1)
+ *
+ * 11 01 2016 huang-da.chen
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ * L4BSAT part
+ *
+ * 10 14 2016 yingfui.hung
+ * [L4B][CC] CS implementation
+ * 	- add URC part
+ *
+ *
+ *------------------------------------------------------------------------------
+ * Upper this line, this part is controlled by PVCS VM. DO NOT MODIFY!!
+ *==============================================================================
+ *******************************************************************************/
+
+/*
+This table defines AT URC that will be handeled by L4B
+table item: {<ENUM_ID>,<URC_prefix>,<whether_send_to_ap>,<dest>,<forward_msg>,<forwrd_msg_func_ptr>}
+<ENUM_ID>
+	-For enum expansion. The name convention is L4B_URC_XXX
+<URC_prefix>
+    -The URC prefix for string compare. This string should be in upper case
+    -Please write in upper case
+<urc_src>
+    -The source of this URC
+    -For multi-SIM modules, only protocol stack 1 module is enough. L4B will help to increment according to Gemini
+    -MOD_NIL means no matter what source the URC comes from, L4B needs to filter
+<whether_send_to_ap>
+    -Indicate whether this URC shall be sent to AP after intercept
+    -If this field is KAL_TRUE, L4B will forward to <dest> first, and then send this URC to AP
+    -If this field is KAL_FALSE, L4B will not send this URC to AP, but only forward to <dest>
+<dest>
+    -The forward destination of this URC, currently only L4B groups are allowed
+    -For multi-SIM modules, only protocol stack 1 module is enough. L4B will help to increment according to Gemini
+<forward_msg>
+    -The MSG_ID_L4B_L4BXXX_YYY_URC_REQ to be sent by L4B to L4BXXX
+<forward_msg_func_ptr>
+    -The ilm constructor function pointer for <forward_msg>, which type is L4B_URC_TO_ILM_FUNC
+
+Other URC not defined in l4b_urc_table will be forwarded to AP directly by L4B
+*/
+
+/* L4BPWR URC begin */
+L4B_URC(L4B_URC_EIND128, "+EIND: 128", MOD_NIL, KAL_FALSE, MOD_L4BPWR, MSG_ID_L4B_L4BPWR_LWTG_POWERON_URC_REQ, l4bpwr_lwtg_poweron_urc_req_construct_func)
+L4B_URC(L4B_URC_VPUP, "+VPUP", MOD_NIL, KAL_FALSE, MOD_L4BPWR, MSG_ID_L4B_L4BPWR_C2K_POWERON_URC_REQ, l4bpwr_c2k_poweron_urc_req_construct_func)
+L4B_URC(L4B_URC_ETESTSIM, "+ETESTSIM", MOD_NIL, KAL_TRUE, MOD_L4BPWR, MSG_ID_L4B_L4BPWR_ETESTSIM_URC_REQ, l4bpwr_etestsim_urc_req_construct_func)
+/* L4BPWR URC end */
+
+/* L4BSMS URC begin */
+L4B_URC(L4B_URC_EIND1, "+EIND: 1", MOD_NIL, KAL_FALSE, MOD_L4BSMS, MSG_ID_L4B_L4BSMS_LWTG_SMS_READY_URC_REQ, l4bsms_sms_ready_urc_req_construct_func)
+L4B_URC(L4B_URC_EC2KSMSON, "+EC2KSMSON", MOD_NIL, KAL_FALSE, MOD_L4BSMS, MSG_ID_L4B_L4BSMS_C2K_SMS_READY_URC_REQ, l4bsms_sms_ready_urc_req_construct_func)
+L4B_URC(L4B_URC_ESMFULL, "+ESMFULL", MOD_NIL, KAL_FALSE, MOD_L4BSMS, MSG_ID_L4B_L4BSMS_C2K_SMS_FULL_URC_REQ, l4bsms_c2ksms_full_urc_req_construct_func)
+/* L4BSMS URC end */
+
+#ifdef __IMS_SUPPORT__
+/* L4BCC URC begin */
+L4B_URC(L4B_URC_ECPI, "+ECPI", MOD_NIL, KAL_TRUE, MOD_L4BCC, MSG_ID_L4B_L4BCC_CS_ECPI_URC_REQ, l4bcc_cs_ecpi_urc_req_construct_func)
+L4B_URC(L4B_URC_EAIC, "+EAIC:", MOD_ATCI, KAL_FALSE, MOD_L4BCC, MSG_ID_L4B_L4BCC_CS_EAIC_URC_REQ, l4bcc_cs_eaic_urc_req_construct_func)
+L4B_URC(L4B_URC_ESTKCNUM, "+ESTKCNUM:", MOD_NIL, KAL_FALSE, MOD_L4BCC, MSG_ID_L4B_L4BCC_ESTKCNUM_URC_REQ, l4bcc_estkcnum_urc_req_construct_func)
+#endif
+
+L4B_URC(L4B_URC_ORIG, "^ORIG", MOD_CVAL, KAL_FALSE, MOD_L4BCC, MSG_ID_L4B_L4BCC_C2K_CC_CALL_ID_REQ,   l4bcc_c2k_cs_orig_urc_req_construct_func)
+L4B_URC(L4B_URC_CONN, "^CONN", MOD_CVAL, KAL_FALSE, MOD_L4BCC, MSG_ID_L4B_L4BCC_C2K_CC_ECPI_NOTI_REQ, l4bcc_c2k_cs_conn_urc_req_construct_func)
+L4B_URC(L4B_URC_CEND, "^CEND", MOD_CVAL, KAL_FALSE, MOD_L4BCC, MSG_ID_L4B_L4BCC_C2K_CC_CEND_NOTI_REQ, l4bcc_c2k_cs_cend_urc_req_construct_func)
+L4B_URC(L4B_URC_RING, "RING", MOD_CVAL, KAL_FALSE, MOD_L4BCC, MSG_ID_L4B_L4BCC_C2K_ECPI_NOTI_REQ,    l4bcc_c2k_cs_ring_urc_req_construct_func)
+L4B_URC(L4B_URC_C2KEAIC,"+EAIC:", MOD_CVAL,KAL_FALSE, MOD_L4BCC, MSG_ID_L4B_L4BCC_C2K_MT_PRESENT_NOTI_REQ, l4bcc_c2k_eaic_urc_req_construct_func)
+
+/* L4BCC URC end */
+
+/* L4BNW URC begin */
+L4B_URC(L4B_URC_ECSQ, "+ECSQ", MOD_NIL, KAL_FALSE, MOD_L4BNW, MSG_ID_L4B_L4BNW_ECSQ_URC_REQ, l4bnw_ecsq_urc_req_construct_func)
+L4B_URC(L4B_URC_C2KEREG, "+C2KEREG", MOD_NIL, KAL_FALSE, MOD_L4BNW, MSG_ID_L4B_L4BNW_CVAL_EREG_URC_REQ, l4bnw_cval_ereg_urc_req_construct_func)
+L4B_URC(L4B_URC_C2KEGREG, "+C2KEGREG", MOD_NIL, KAL_FALSE, MOD_L4BNW, MSG_ID_L4B_L4BNW_CVAL_EGREG_URC_REQ, l4bnw_cval_egreg_urc_req_construct_func)
+L4B_URC(L4B_URC_CSQ, "+CSQ", MOD_NIL, KAL_FALSE, MOD_L4BNW, MSG_ID_L4B_L4BNW_CVAL_CSQ_URC_REQ, l4bnw_cval_csq_urc_req_construct_func)
+L4B_URC(L4B_URC_HDRCSQ, "+HDRCSQ", MOD_NIL, KAL_FALSE, MOD_L4BNW, MSG_ID_L4B_L4BNW_CVAL_HDRCSQ_URC_REQ, l4bnw_cval_hdrcsq_urc_req_construct_func)
+/* L4BNW URC end */
+
+/* L4BSIM URC begin */
+L4B_URC(L4B_URC_EUSIM, "+EUSIM:", MOD_NIL, KAL_TRUE, MOD_L4BSIM, MSG_ID_L4B_L4BSIM_EUSIM_URC_REQ, l4bsim_eusim_urc_req_construct_func)
+L4B_URC(L4B_URC_ESIMS, "+ESIMS:", MOD_NIL, KAL_TRUE, MOD_L4BSIM, MSG_ID_L4B_L4BSIM_ESIMS_URC_REQ, l4bsim_esims_urc_req_construct_func)
+L4B_URC(L4B_URC_ESIMAPP, "+ESIMAPP:", MOD_NIL, KAL_TRUE, MOD_L4BSIM, MSG_ID_L4B_L4BSIM_ESIMAPP_URC_REQ, l4bsim_esimapp_urc_req_construct_func)
+#ifdef __EUICC_SUPPORT__
+L4B_URC(L4B_URC_ESIMIND, "+ESIMIND:", MOD_NIL, KAL_TRUE, MOD_L4BSIM, MSG_ID_L4B_L4BSIM_ESIMIND_URC_REQ, l4bsim_esimind_urc_req_construct_func)
+#endif
+/* L4BSIM URC end */
+
+/* L4BSAT URC begin */
+L4B_URC(L4B_URC_STKPCI, "+STKPCI:", MOD_ATCI, KAL_TRUE, MOD_L4BSAT, MSG_ID_L4B_L4BSAT_STKPCI_ATCI_URC_REQ, l4bsat_stkpci_urc_req_construct_func)
+L4B_URC(L4B_URC_C2KSTKPCI, "+STKPCI:", MOD_CVAL, KAL_TRUE, MOD_L4BSAT, MSG_ID_L4B_L4BSAT_STKPCI_CVAL_URC_REQ, l4bsat_stkpci_urc_req_construct_func)
+/* L4BSAT URC end */

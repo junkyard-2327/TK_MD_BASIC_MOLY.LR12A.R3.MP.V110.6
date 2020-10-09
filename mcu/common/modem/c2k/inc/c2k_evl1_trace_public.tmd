@@ -1,0 +1,52 @@
+/*************************************************************
+*
+* This Software is the property of MTK, Inc. and may only be used pursuant to a license from MTK, Inc.
+*
+* Any unauthorized use inconsistent with the terms of such license is strictly prohibited.
+*
+* Copyright (c) 2002-2016 MTK, Inc.  All rights reserved.
+*
+*************************************************************/
+[Default]
+  C2K_EVL1_PUBLIC
+  On
+  Buffer
+  TCMFORCE
+
+[MODEM_TYPE]
+  C2K_L1
+
+[Class]
+  /* EVL1_UT_TRACE    ON
+  EVL1_IT_TRACE       ON    */
+  
+  EVL1_MP_TRACE       ON
+  
+  /* EVL1_FL_REGDUMP_TRACE    ON
+  EVL1_SCH_REGDUMP_TRACE      ON
+  EVL1_RL_REGDUMP_TRACE       ON
+  EVL1_FULL_FT_TRACE          ON
+  EVL1_KERNAL_TRACE           ON
+  EVL1_WARN                   OFF */
+
+
+
+[String]
+  Rmc_Init_String
+  {
+    "Rmc init"
+
+  }
+
+
+[Message]
+  info   EVL1TRACE_TxAgcPwrQuery             EVL1_MP_TRACE            "TxAgcPwrQuery: BufIdx=%d, SlotNum=%d, PwrBase=%d, OloopFilter=%d, CloopAccum=%d, TxMaxPwr=%d, SlotReqPwr=%d, HSlotReqPwr=%d, SlotKsAdj=%d, HSlotKsAdj=%d, RpcBit=%d, RpcBitCmif=%d"
+  info   EVL1TRACE_DRCLengthUpdate           EVL1_MP_TRACE            "EVL1DRCLengthUpdate: DrcLen=%d"
+  info   EVL1TRACE_ShRxAgcRssi               EVL1_MP_TRACE            "ShRxAgcRssi:Path=%MCL1D_RF_PATH_E,ImmRssidBmQ5=%d,Avg4SlotsRssidBmQ5=%d,Avg8FramesRssidBmQ5=%d,OpenLoopRxPwrFiltdBmQ5=%d,RxAgcState=%MCL1D_RF_AGC_FSM_E,PwrMode=%MCL1D_RF_PWR_MODE_E"
+  info   EVL1TRACE_SchPilotUpdateCmd         EVL1_MP_TRACE            "Evl1Sch_RmcSchPilotUpdateCmd: PilotSeq=%d,ConnSetupFlag=%d,TcaFlag=%d,RmcSchNeighborListUpdateFlag=%d,ActiveNumPilots=%d,ActiveWinSize=%d,CandidateNumPilots=%d,CandidateWinSize=%d,NeighborNumPilots=%d,RemainingNumPilots=%d,RemainingWinSize=%d,RmcSchMode=%MSchModeT"
+  info   EVL1TRACE_SpyDoSchUsablePathCand    EVL1_MP_TRACE            "Evl1Sch_RmcSchUsablePathCand:pwrEstQ16=%ul,offsetTc16=%l,sOffsetTc16=%l,assocAnt=%d,pilotPN=%ul,numUsablePaths=%d"
+  info   EVL1TRACE_SpyDoSchUsablePathNeibor  EVL1_MP_TRACE            "Evl1Sch_RmcSchUsablePathNeighbor:pwrEstQ16=%ul,offsetTc16=%l,sOffsetTc16=%l,assocAnt=%d,pilotPN=%ul,numUsablePaths=%d"
+  info   EVL1TRACE_SpyDoSchUsablePathActive  EVL1_MP_TRACE            "Evl1Sch_RmcSchUsablePathActive:pwrEstQ16=%ul,offsetTc16=%l,sOffsetTc16=%l,assocAnt=%d,pilotPN=%ul,macId=%d,pathCount=%d,numUsablePaths=%d"
+  info   EVL1TRACE_SpyRmcSchUsablePath       EVL1_MP_TRACE            "Evl1Sch_RmcSchUsablePathSpy: winSize=%ul,numSec=%d,numUsablePaths=%d,RefPilotPN=%ul"
+  info   EVL1TRACE_SchInspPilotFoundSend     EVL1_MP_TRACE            "Evl1Sch_RmcSchInspPilotFoundSend:pilotFound  = %b, pilotPN = %ul"
+  info   EVL1TRACE_SchSectorInfo             EVL1_MP_TRACE            "Evl1Sch_RmcSchSectorInfo:i=%d#, pilotPN=%ul,macId=%d,RABLength=%d,RABOffset=%d,RAChannelGain=%d,DRCCover=%d,DSC=%d,pwrEst=%ul,pcgId=%d"

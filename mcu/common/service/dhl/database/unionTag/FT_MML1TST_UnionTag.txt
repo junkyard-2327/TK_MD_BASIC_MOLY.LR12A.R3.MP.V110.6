@@ -1,0 +1,106 @@
+/*****************************************************************************
+*  Copyright Statement:
+*  --------------------
+*  This software is protected by Copyright and the information contained
+*  herein is confidential. The software may not be copied and the information
+*  contained herein may not be used or disclosed except with the written
+*  permission of MediaTek Inc. (C) 2005
+*
+*  BY OPENING THIS FILE, BUYER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+*  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("MEDIATEK SOFTWARE")
+*  RECEIVED FROM MEDIATEK AND/OR ITS REPRESENTATIVES ARE PROVIDED TO BUYER ON
+*  AN "AS-IS" BASIS ONLY. MEDIATEK EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES,
+*  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+*  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NONINFRINGEMENT.
+*  NEITHER DOES MEDIATEK PROVIDE ANY WARRANTY WHATSOEVER WITH RESPECT TO THE
+*  SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY, INCORPORATED IN, OR
+*  SUPPLIED WITH THE MEDIATEK SOFTWARE, AND BUYER AGREES TO LOOK ONLY TO SUCH
+*  THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO. MEDIATEK SHALL ALSO
+*  NOT BE RESPONSIBLE FOR ANY MEDIATEK SOFTWARE RELEASES MADE TO BUYER'S
+*  SPECIFICATION OR TO CONFORM TO A PARTICULAR STANDARD OR OPEN FORUM.
+*
+*  BUYER'S SOLE AND EXCLUSIVE REMEDY AND MEDIATEK'S ENTIRE AND CUMULATIVE
+*  LIABILITY WITH RESPECT TO THE MEDIATEK SOFTWARE RELEASED HEREUNDER WILL BE,
+*  AT MEDIATEK'S OPTION, TO REVISE OR REPLACE THE MEDIATEK SOFTWARE AT ISSUE,
+*  OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE CHARGE PAID BY BUYER TO
+*  MEDIATEK FOR SUCH MEDIATEK SOFTWARE AT ISSUE.
+*
+*  THE TRANSACTION CONTEMPLATED HEREUNDER SHALL BE CONSTRUED IN ACCORDANCE
+*  WITH THE LAWS OF THE STATE OF CALIFORNIA, USA, EXCLUDING ITS CONFLICT OF
+*  LAWS PRINCIPLES.  ANY DISPUTES, CONTROVERSIES OR CLAIMS ARISING THEREOF AND
+*  RELATED THERETO SHALL BE SETTLED BY ARBITRATION IN SAN FRANCISCO, CA, UNDER
+*  THE RULES OF THE INTERNATIONAL CHAMBER OF COMMERCE (ICC).
+*
+*****************************************************************************/
+/*
+ *  This file is used by cgen for union Tag information.
+ */
+mmrftst_req_struct type param:
+{
+    0 checkIfFuncExist;
+    1 getRfCapability;
+    2 dpd_fac_start_dim;
+    3 dpd_fac_get_dim;
+    4 dpd_fac_set_dim;
+    5 dpd_fac_en_dis;
+    6 cim3_fac_start_dim;
+    7 cim3_fac_get_dim;
+    8 cim3_fac_set_dim;
+    9 cim3_fac_en_dis;
+    10 startRfSelfKparam;
+    11 getRfSelfKResult;
+    12 setRfSelfKResult;
+    13 getRfSelfKRltLen;
+    14 startRfSelfKparamV2;
+    15 getRfSelfKResultV2;
+    16 setRfSelfKResultV2;
+    17 getRfSelfKDbgInfoV2;
+    18 getRfSelfKDbgInfo;
+    19 getRfSelfKResultStr;
+    20 getRfSelfKResultStrV2;
+    25 cfg_tas;
+    35 getTadcSetting;
+    36 setTadcSetting;
+    37 getRfTemp;
+    38 getTemperatureInfo;
+    44 queryVpaVoltageList;
+    54 startRFSelfTestAnalyzer;
+    56 getAfcSetting;
+    57 setAfcSetting;
+    58 getTasStateCfg;
+};
+
+mmrftst_cnf_struct type param:
+{
+    0 checkIfFuncExist;
+    1 getRfCapability;
+    2 dpd_fac_rpt;
+    3 get_dpd_fac_rpt;
+    4 set_dpd_fac_rpt;
+    5 dpd_fac_en_dis;
+    6 cim3_fac_rpt;
+    7 get_cim3_fac_rpt;
+    8 set_cim3_fac_rpt;
+    9 cim3_fac_en_dis;
+    10 rfSelfKStatus;
+    11 getRfSelfKResult;
+    12 setRfSelfKResult;
+    13 getRfSelfKRltLen;
+    14 rfSelfKStatusV2;
+    15 getRfSelfKResultV2;
+    16 setRfSelfKResultV2;
+    17 getRfSelfKDbgInfoV2;
+    18 getRfSelfKDbgInfo;
+    19 getRfSelfKResultStr;
+    20 getRfSelfKResultStrV2;
+    25 CfgTas;
+    35 getTadcSetting;
+    36 setTadcSetting;
+    37 getRfTemp;
+    38 getTemperatureInfo;
+    44 queryVpaVoltageList;
+    54 startRFSelfTestAnalyzer;
+    56 getAfcSetting;
+    57 setAfcSetting;
+    58 getTasStateCfg;
+};

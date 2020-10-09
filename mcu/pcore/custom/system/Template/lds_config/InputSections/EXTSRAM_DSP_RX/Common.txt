@@ -1,0 +1,2 @@
+        * (EXTRAM_RXDATA)
+        LONG(0); /* add this to avoid the last section to be empty section */

@@ -1,0 +1,29 @@
+{ Validation }
+Title 		= "[R11_LTE][05_MEAS]SCH_MEAS_CA_19: Deactivated SCELL intra-freq measurement with PCELL interruption in non-DRX/DRX (TDD inter-band CA + PCELL and SCELL have different UDC)"
+ModuleID 	= MOD_ERRC
+MsgID 		= MSG_ID_L1EDPS_SCH_MEASUREMENT_CA_19
+
+/******************************************************************************
+* Data Structure accomnying the above primitive
+typedef struct
+{
+   kal_uint8          ref_count;
+   kal_uint16         msg_len;
+   kal_uint32         test_pattern_id;
+
+} l1edps_sch_measurement_ca_19_struct;
+*
+*******************************************************************************/
+
+
+{Parameters}
+/******************************************************************************
+* 1. The following is the constrained range for the input of this value.
+* 2. Some combination of the following bit-fields may be suported
+* 3. The parameter range can be changed to support combinations of different bands
+*******************************************************************************/
+
+/* [Variable Name] "corresponding label showen on GUI" */
+[test_pattern_id] "test_pattern_id"
+0~9999999
+@1616005

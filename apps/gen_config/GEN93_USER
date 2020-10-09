@@ -1,0 +1,20 @@
+MTK_DEBUG=0
+MTK_MDGEN=93
+MTK_TOOLCHAIN=ndk
+MTK_TOOLCHAIN_DUMMY=dummy
+
+# below is the config setting for build flow, do not modify it
+CENTRAL_TOOL_CHAIN="/mtkoss/android-ndk/r14b/x86_64"
+TOOL_CHAIN_ROOT="./NDK/android-ndk-r14b"
+BUILD_MODULE_LIST=( bip epdg strongswan volte wfca mdagent verno common install sepolicy utinterface )
+CUS_PACK_RELEASE_PATH="./build/cus_rel"
+OF_PACKING_FILE=of_packing_list
+CUS_PACKING_FILE=cus_packing_list
+PACKING_FILE=packing_list
+
+#we do not support, yet
+#MTK_APP_ABI_32="armeabi-v7a x86 mips"
+#MTK_APP_ABI_64="arm64-v8a x86_64 mips64"
+MTK_APP_ABI_32="armeabi-v7a"
+MTK_APP_ABI_64="arm64-v8a"
+MTK_APP_PLATFORM="android-24"

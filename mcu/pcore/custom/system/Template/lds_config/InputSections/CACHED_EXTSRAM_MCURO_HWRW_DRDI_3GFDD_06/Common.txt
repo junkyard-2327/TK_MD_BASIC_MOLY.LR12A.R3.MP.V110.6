@@ -1,0 +1,3 @@
+            * (DRDIRODATA.3GFDD.SET6.*)
+            LONG(0); /* dummy word for avoiding empty section */
+            . = ALIGN(CACHELINESIZE); /* align base and len to cacheline size alignment*/

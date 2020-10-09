@@ -1,0 +1,9 @@
+        * (CACHED_EXTSRAM_NOINIT)
+        . = ALIGN(4);    
+        STACK_INIT$$ZI$$Base = . ;
+        *stack_init.obj (.sbss)
+        *stack_init.obj (.bss)
+        STACK_INIT$$ZI$$Limit = . ;
+        STACK_INIT$$ZI$$Length = ABSOLUTE(STACK_INIT$$ZI$$Limit - STACK_INIT$$ZI$$Base);
+ 
+       * (CACHED_EXTSRAM_ZI)

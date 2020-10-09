@@ -1,0 +1,344 @@
+; Copyright Statement:
+; --------------------
+; This software is protected by Copyright and the information contained
+; herein is confidential. The software may not be copied and the information
+; contained herein may not be used or disclosed except with the written
+; permission of MediaTek Inc. (C) 2005
+; 
+; BY OPENING THIS FILE, BUYER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+; THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("MEDIATEK SOFTWARE")
+; RECEIVED FROM MEDIATEK AND/OR ITS REPRESENTATIVES ARE PROVIDED TO BUYER ON
+; AN "AS-IS" BASIS ONLY. MEDIATEK EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES,
+; EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+; MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NONINFRINGEMENT.
+; NEITHER DOES MEDIATEK PROVIDE ANY WARRANTY WHATSOEVER WITH RESPECT TO THE
+; SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY, INCORPORATED IN, OR
+; SUPPLIED WITH THE MEDIATEK SOFTWARE, AND BUYER AGREES TO LOOK ONLY TO SUCH
+; THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO. MEDIATEK SHALL ALSO
+; NOT BE RESPONSIBLE FOR ANY MEDIATEK SOFTWARE RELEASES MADE TO BUYER'S
+; SPECIFICATION OR TO CONFORM TO A PARTICULAR STANDARD OR OPEN FORUM.
+; 
+; BUYER'S SOLE AND EXCLUSIVE REMEDY AND MEDIATEK'S ENTIRE AND CUMULATIVE
+; LIABILITY WITH RESPECT TO THE MEDIATEK SOFTWARE RELEASED HEREUNDER WILL BE,
+; AT MEDIATEK'S OPTION, TO REVISE OR REPLACE THE MEDIATEK SOFTWARE AT ISSUE,
+; OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE CHARGE PAID BY BUYER TO
+; MEDIATEK FOR SUCH MEDIATEK SOFTWARE AT ISSUE.
+; 
+; THE TRANSACTION CONTEMPLATED HEREUNDER SHALL BE CONSTRUED IN ACCORDANCE
+; WITH THE LAWS OF THE STATE OF CALIFORNIA, USA, EXCLUDING ITS CONFLICT OF
+; LAWS PRINCIPLES.  ANY DISPUTES, CONTROVERSIES OR CLAIMS ARISING THEREOF AND
+; RELATED THERETO SHALL BE SETTLED BY ARBITRATION IN SAN FRANCISCO, CA, UNDER
+; THE RULES OF THE INTERNATIONAL CHAMBER OF COMMERCE (ICC).
+
+; This cmm is for dumping memory on Target directly.
+
+system.down
+;system.cpu MIPSinterAptiv
+;SYStem.OPTION Endianess little
+
+;SYSTEM.OPTION.EnReset OFF
+;SYSTEM.OPTION.WaitReset OFF
+;System.Option ResBreak OFF
+;system.JtagClock 20MHz
+;system.multicore SWDP OFF
+;system.multicore COREBASE 0xF00A1000
+
+
+
+;system.up
+system.mode attach
+
+
+LOCAL &SWLA_DUMP
+GLOBAL &store_folder
+
+;dialog
+;(
+;	header "folder select"
+;	pos 1. 1. 27. 1.
+;	text "select memory dump folder:"
+
+;	pos 1. 2. 20. 1.
+;tmp:	edit "" "" 
+
+;	pos 22. 2. 5. 1.
+;	button "..."
+;	(
+;		dialog.setdir tmp "lib*"
+;	)
+;	pos 1. 3. 20. 1.
+;check:	checkbox "Dump SWLA?" ""
+	
+;	pos 11. 4. 5. 1.
+;	defbutton "OK" "continue"
+;)
+;stop
+;	&store_folder=dialog.string(tmp)
+;IF DIALOG.BOOLEAN(check)
+;(
+;	&SWLA_DUMP=1
+;)
+;ELSE
+;(
+;	&SWLA_DUMP=0
+;)
+;dialog.end	
+
+&store_folder="User define, but no space in the path"
+;AREA.RESet
+;mkdir "&store_folder"
+;cd "&store_folder"
+;=========================== +Dump MCU REGIONS+  ========================
+PRINT "Preparing to dump MCU regions..."
+[CMMAUTOGEN_DUMP_UC_COMMON_REGIONS]
+[CMMAUTOGEN_DUMP_UC_CORE_REGIONS]
+[CMMAUTOGEN_DUMP_C_COMMON_REGIONS]
+
+LOCAL &THREAD_NUM
+LOCAL &temp_addr
+LOCAL &THREAD_IDX
+LOCAL &ORG_CORE
+&temp_addr=0x0
+thread.num &temp_addr
+&THREAD_NUM=data.long(&temp_addr)
+&THREAD_NUM=&THREAD_NUM+1
+&THREAD_IDX=1
+&BYPASS=0
+&ORG_CORE=0xFF
+
+LOCAL &CORE_IDX     
+LOCAL &VPE_IDX      
+LOCAL &TC_IDX       
+WHILE (&THREAD_IDX<&THREAD_NUM)
+(
+ 
+  
+    ;switch thread[]
+    thread.select &THREAD_IDX
+    
+    ;get core_idx, vpe_idx, tc_idx
+    thread.findcore &temp_addr
+    &CORE_IDX=data.long(&temp_addr)
+    thread.findvpe &temp_addr
+    &VPE_IDX=data.long(&temp_addr)
+    thread.findtc &temp_addr
+    &TC_IDX=data.long(&temp_addr)
+    
+    ;dump core specific region
+    IF (&ORG_CORE!=&CORE_IDX)
+    (
+        GOSUB SUB_DUMP_BY_CORE &CORE_IDX
+        &ORG_CORE=&CORE_IDX
+    )
+
+    ;dump cpu registers
+    GOSUB SUB_DUMP_REG &CORE_IDX &VPE_IDX &TC_IDX
+    
+    &THREAD_IDX=&THREAD_IDX+1
+)
+
+PRINT "MCU dump regions - done!"
+stop
+
+;=========================== -Dump MCU REGIONS-  ========================
+
+
+
+;=========================== +Dump BBREG+  ========================
+
+
+;=========================== -Dump BBREG-  ========================
+
+;=========================== +Dump SWLA+  ========================
+IF (&SWLA_DUMP==1)
+(
+    PRINT "Preparing to dump SWLA..."
+    ;GOSUB SUB_DUMP_SWLA
+)
+;=========================== -Dump SWLA-  ========================
+
+
+
+
+PRINT "Dumping Finished!!! "
+
+ENDDO
+;STOP
+;END
+
+;========================================================================
+; function
+;========================================================================
+
+SUB_DUMP_CORE0_C_REGION:
+[CMMAUTOGEN_DUMP_CORE0_C_REGIONS]
+RETURN
+
+SUB_DUMP_CORE1_C_REGION:
+[CMMAUTOGEN_DUMP_CORE1_C_REGIONS]
+RETURN
+
+SUB_DUMP_CORE2_C_REGION:
+[CMMAUTOGEN_DUMP_CORE2_C_REGIONS]
+RETURN
+
+SUB_DUMP_CORE3_C_REGION:
+[CMMAUTOGEN_DUMP_CORE3_C_REGIONS]
+RETURN
+
+SUB_DUMP_BY_CORE:
+    ENTRY &CORE_NUM
+    IF (&CORE_NUM==0)
+    (
+        GOSUB SUB_DUMP_CORE0_C_REGION
+    )
+    IF (&CORE_NUM==1)
+    (
+        GOSUB SUB_DUMP_CORE1_C_REGION
+    )
+    IF (&CORE_NUM==2)
+    (
+        GOSUB SUB_DUMP_CORE2_C_REGION
+    )
+    IF (&CORE_NUM==3)
+    (
+        GOSUB SUB_DUMP_CORE3_C_REGION
+    )
+RETURN
+
+SUB_DUMP_REG:
+    ENTRY &core_id &vpe_id &tc_id
+    
+    LOCAL &BIN_FILE_NAME
+    &BIN_FILE_NAME="&store_folder\mips_regs_&core_id&vpe_id&tc_id.bin"
+    &REG_STORE_BASE_ADDR=0x0
+    
+    GOSUB SUB_DUMP_CPU_REG &REG_STORE_BASE_ADDR
+    ENTRY &REG_END_ADDR
+    print "Dumping mips_regs_&core_id&vpe_id&tc_id.bin..."
+    stop
+    D.SAVE.BINARY &BIN_FILE_NAME &REG_STORE_BASE_ADDR--&REG_END_ADDR
+
+RETURN
+
+SUB_DUMP_CPU_REG:
+    ENTRY &REG_STORE_BASE_ADDR
+    ;general register
+    D.S (&REG_STORE_BASE_ADDR+0x0000) %LONG r(R0)
+    D.S (&REG_STORE_BASE_ADDR+0x0004) %LONG r(R1)
+    D.S (&REG_STORE_BASE_ADDR+0x0008) %LONG r(R2)
+    D.S (&REG_STORE_BASE_ADDR+0x000C) %LONG r(R3)
+    D.S (&REG_STORE_BASE_ADDR+0x0010) %LONG r(R4)
+    D.S (&REG_STORE_BASE_ADDR+0x0014) %LONG r(R5)
+    D.S (&REG_STORE_BASE_ADDR+0x0018) %LONG r(R6)
+    D.S (&REG_STORE_BASE_ADDR+0x001C) %LONG r(R7)
+    D.S (&REG_STORE_BASE_ADDR+0x0020) %LONG r(R8)
+    D.S (&REG_STORE_BASE_ADDR+0x0024) %LONG r(R9)
+    D.S (&REG_STORE_BASE_ADDR+0x0028) %LONG r(R10)
+    D.S (&REG_STORE_BASE_ADDR+0x002C) %LONG r(R11)
+    D.S (&REG_STORE_BASE_ADDR+0x0030) %LONG r(R12)
+    D.S (&REG_STORE_BASE_ADDR+0x0034) %LONG r(R13)
+    D.S (&REG_STORE_BASE_ADDR+0x0038) %LONG r(R14)
+    D.S (&REG_STORE_BASE_ADDR+0x003C) %LONG r(R15)
+    D.S (&REG_STORE_BASE_ADDR+0x0040) %LONG r(R16)
+    D.S (&REG_STORE_BASE_ADDR+0x0044) %LONG r(R17)
+    D.S (&REG_STORE_BASE_ADDR+0x0048) %LONG r(R18)
+    D.S (&REG_STORE_BASE_ADDR+0x004C) %LONG r(R19)
+    D.S (&REG_STORE_BASE_ADDR+0x0050) %LONG r(R20)
+    D.S (&REG_STORE_BASE_ADDR+0x0054) %LONG r(R21)
+    D.S (&REG_STORE_BASE_ADDR+0x0058) %LONG r(R22)
+    D.S (&REG_STORE_BASE_ADDR+0x005C) %LONG r(R23)
+    D.S (&REG_STORE_BASE_ADDR+0x0060) %LONG r(R24)
+    D.S (&REG_STORE_BASE_ADDR+0x0064) %LONG r(R25)
+    D.S (&REG_STORE_BASE_ADDR+0x0068) %LONG r(R26)
+    D.S (&REG_STORE_BASE_ADDR+0x006C) %LONG r(R27)
+    D.S (&REG_STORE_BASE_ADDR+0x0070) %LONG r(R28)
+    D.S (&REG_STORE_BASE_ADDR+0x0074) %LONG r(R29)
+    D.S (&REG_STORE_BASE_ADDR+0x0078) %LONG r(R30)
+    D.S (&REG_STORE_BASE_ADDR+0x007C) %LONG r(R31)
+    D.S (&REG_STORE_BASE_ADDR+0x0080) %LONG r(HI)
+;    D.S (&REG_STORE_BASE_ADDR+0x0084) %LONG r(HI1)
+;    D.S (&REG_STORE_BASE_ADDR+0x008C) %LONG r(HI2)
+;    D.S (&REG_STORE_BASE_ADDR+0x0090) %LONG r(HI3)
+    D.S (&REG_STORE_BASE_ADDR+0x0094) %LONG r(LO)
+;    D.S (&REG_STORE_BASE_ADDR+0x0098) %LONG r(LO1)
+;    D.S (&REG_STORE_BASE_ADDR+0x00A0) %LONG r(LO2)
+;    D.S (&REG_STORE_BASE_ADDR+0x00A4) %LONG r(LO3)
+;    D.S (&REG_STORE_BASE_ADDR+0x00A8) %LONG r(EPC)
+;    D.S (&REG_STORE_BASE_ADDR+0x00AC) %LONG r(EEPC)
+    D.S (&REG_STORE_BASE_ADDR+0x00B0) %LONG r(CAUSE)
+;    D.S (&REG_STORE_BASE_ADDR+0x00B4) %LONG r(CNT)
+;    D.S (&REG_STORE_BASE_ADDR+0x00B8) %LONG r(CMP)
+    D.S (&REG_STORE_BASE_ADDR+0x00BC) %LONG r(PC)
+;    D.S (&REG_STORE_BASE_ADDR+0x00C0) %LONG r(SR)
+     D.S (&REG_STORE_BASE_ADDR+0x00C0) %LONG r(status)
+;    D.S (&REG_STORE_BASE_ADDR+0x00C4) %LONG r(PRID)
+;    D.S (&REG_STORE_BASE_ADDR+0x00C8) %LONG r(CNF)
+;    D.S (&REG_STORE_BASE_ADDR+0x00CC) %LONG r(DSPC)
+local &REG_END_ADDR
+&REG_END_ADDR=0      
+&REG_END_ADDR = &REG_STORE_BASE_ADDR+0x00CC 
+RETURN &REG_END_ADDR 
+
+
+
+SUB_DUMP_SWLA:
+;    LOCAL &BINNAME
+;    &BINNAME="_sla_mem_no_header.bin"
+;    IF Y.EXIST(SA_LoggingIndex)
+;    (
+;        &start_addr=V.VALUE(SA_LoggingStart)
+;        &stop_addr=V.VALUE(SA_LoggingStop)
+;        &cur_addr=V.VALUE(SA_LoggingIndex)
+;        &wrap=V.VALUE((unsigned int)SA_Wrap)
+;        &node_size=V.VALUE(SA_LoggingNodeSize)
+;        &addon_cnt=V.VALUE(SA_AddonInfoCnt)
+;        &header_size=&addon_cnt*V.SIZEOF(SA_FileHeader.addon_info[0])
+;        &header_size=&header_size+V.SIZEOF(SA_FileHeader.main_desc)
+;    
+;        PRINT "SA_LoggingStart=0x" format.hex(8,&start_addr)
+;        PRINT "SA_LoggingIndex=0x" format.hex(8,&cur_addr)
+;        PRINT "SA_LoggingStop=0x" format.hex(8,&stop_addr)
+;        PRINT "SA_Wrap=" &wrap
+;
+;        IF (&node_size!=0)
+;        (
+;            IF (&wrap!=0)
+;            (
+;                &total_size=&stop_addr-&start_addr
+;                &total_size=&total_size/&node_size
+;                &total_size=&total_size*&node_size
+;                &end_addr=&start_addr+&total_size
+;    
+;                PRINT "total_size=0x", format.hex(8,&total_size)
+;                PRINT "end_addr=", format.hex(8,&end_addr)
+;    
+;                PRINT "dumping sla_mem_no_header.bin(part1)..."
+;                data.save.binary "&store_folder\swla1.bin" &cur_addr--(&end_addr-1)
+;                PRINT "dumping sla_mem_no_header.bin(part2)..."
+;                data.save.binary "&store_folder\swla2.bin" &start_addr--(&cur_addr-1)
+;    
+;                OS.Area copy /b swla1.bin+swla2.bin &BINNAME
+;                OS.Area del swla1.bin
+;                OS.Area del swla2.bin
+;            )
+;            ELSE
+;            (
+;                &total_size=&cur_addr-&start_addr
+;                
+;                PRINT "total_size=0x" format.hex(8,&total_size)
+;                PRINT "dumping &BINNAME..."
+;                data.save.binary "&store_folder\&BINNAME" &start_addr--(&cur_addr-1)
+;            )
+;        )
+;        ELSE
+;        (
+;            PRINT "SWLA not enabled"
+;        )
+;    )
+;    ELSE
+;    (
+;        PRINT "SWLA not compiled"
+;    )
+
+RETURN

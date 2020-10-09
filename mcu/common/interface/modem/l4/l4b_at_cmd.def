@@ -1,0 +1,701 @@
+/*****************************************************************************
+*  Copyright Statement:
+*  --------------------
+*  This software is protected by Copyright and the information contained
+*  herein is confidential. The software may not be copied and the information
+*  contained herein may not be used or disclosed except with the written
+*  permission of MediaTek Inc. (C) 2005
+*
+*  BY OPENING THIS FILE, BUYER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+*  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("MEDIATEK SOFTWARE")
+*  RECEIVED FROM MEDIATEK AND/OR ITS REPRESENTATIVES ARE PROVIDED TO BUYER ON
+*  AN "AS-IS" BASIS ONLY. MEDIATEK EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES,
+*  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+*  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NONINFRINGEMENT.
+*  NEITHER DOES MEDIATEK PROVIDE ANY WARRANTY WHATSOEVER WITH RESPECT TO THE
+*  SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY, INCORPORATED IN, OR
+*  SUPPLIED WITH THE MEDIATEK SOFTWARE, AND BUYER AGREES TO LOOK ONLY TO SUCH
+*  THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO. MEDIATEK SHALL ALSO
+*  NOT BE RESPONSIBLE FOR ANY MEDIATEK SOFTWARE RELEASES MADE TO BUYER'S
+*  SPECIFICATION OR TO CONFORM TO A PARTICULAR STANDARD OR OPEN FORUM.
+*
+*  BUYER'S SOLE AND EXCLUSIVE REMEDY AND MEDIATEK'S ENTIRE AND CUMULATIVE
+*  LIABILITY WITH RESPECT TO THE MEDIATEK SOFTWARE RELEASED HEREUNDER WILL BE,
+*  AT MEDIATEK'S OPTION, TO REVISE OR REPLACE THE MEDIATEK SOFTWARE AT ISSUE,
+*  OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE CHARGE PAID BY BUYER TO
+*  MEDIATEK FOR SUCH MEDIATEK SOFTWARE AT ISSUE.
+*
+*  THE TRANSACTION CONTEMPLATED HEREUNDER SHALL BE CONSTRUED IN ACCORDANCE
+*  WITH THE LAWS OF THE STATE OF CALIFORNIA, USA, EXCLUDING ITS CONFLICT OF
+*  LAWS PRINCIPLES.  ANY DISPUTES, CONTROVERSIES OR CLAIMS ARISING THEREOF AND
+*  RELATED THERETO SHALL BE SETTLED BY ARBITRATION IN SAN FRANCISCO, CA, UNDER
+*  THE RULES OF THE INTERNATIONAL CHAMBER OF COMMERCE (ICC).
+*
+*****************************************************************************/
+
+/*******************************************************************************
+ * Filename:
+ * ---------
+ *  l4b_at_cmd.def
+ *
+ *
+ * Description:
+ * ------------
+ *  define the items in l4b_atp_at_cmd_table, and expended for
+ *	MSG_ID_L4B_L4BXXX_YYY_REQ and MSG_ID_L4B_L4BXXX_YYY_CNF
+ *
+ * Author:
+ * -------
+ *  Hong Yu
+ *
+ *==============================================================================
+ * 				HISTORY
+ * Below this line, this part is controlled by PVCS VM. DO NOT MODIFY!!
+ *------------------------------------------------------------------------------
+ * $Log$
+ *
+ * 09 17 2019 yilun.yang
+ * [MOLY00441040] [MT6765/MT6762][UICC] Request starting implementation of eUICC feature for Google Fi
+ * 	
+ * 	L4B interface.
+ *
+ * 08 08 2019 tingwen.chen
+ * [MOLY00428509] [HMD][MT6761][AL1670][FT][OA][Proximus BE]ALPS04670351  continue dialing via SIM toolkit/Proximenu, CSFB is always performed  - Header Part
+ *     - STKCALL / STKUSSD over IMS
+ *
+ * 06 21 2019 wen.zhuang
+ * [MOLY00415416] [Gen93]merge VzW and Sprint CL
+ * 	
+ * 	.
+ *
+ * 01 18 2019 vishal.sharma
+ * [MOLY00379922] [L4B Part][Edison][NFC][SmartcardService] is mtk platform(modem/telephony/smartcard) support 2E and 4E command, refer to TS27 13.3.6.3 and 13.3.6.4
+ *
+ * 	L4B Changes
+ *
+ * 10 11 2018 johnny.ding
+ * [MOLY00349634] [WIND][A461][Sprint][OTA][intertek][R&S][AGPS测试 ][AGPS测试各个角度测试值为0]
+ *
+ * 	[MOLY00353337] MTK modem log user sensitive data removal for C2K
+ *
+ * 	Add AT commands to control IS801 flow.
+ *
+ * 05 25 2018 wenson.qiu
+ * [MOLY00328333] AT+DDTM? return CME ERROR 100
+ *
+ * 	.
+ *
+ * 05 18 2018 johnny.ding
+ * [MOLY00327032] [URGENT][Zion][MT6739][O1][MP2][Sprint][C2K E911 AGPS][Sprint lab][AFLT] Measurement error is higher than Sprint Requirement
+ *
+ * 	add AT command to control report SV or not.
+ *
+ * 05 18 2018 johnny.ding
+ * [MOLY00327032] [URGENT][Zion][MT6739][O1][MP2][Sprint][C2K E911 AGPS][Sprint lab][AFLT] Measurement error is higher than Sprint Requirement
+ *
+ * 	add AT command to control report SV or not.
+ *
+ * 05 14 2018 wenson.qiu
+ * [MOLY00325447] [C210AE][SPRINT_HM-00063][AT]SIM卡相关 AT
+ *
+ * 	.
+ *
+ * 03 28 2018 derek.yang
+ * [MOLY00311623] 请帮忙提供MDVSIM2.0 C2K patch
+ *
+ * 	MDVSIM.
+ *
+ * 03 15 2018 wen.zhuang
+ * [MOLY00313519] [Zion][O1][SRLTE][TTY test][SH] UE can not disable SO68 by using AT+ECSETNAM=22,0
+ *
+ * 03 15 2018 wen.zhuang
+ * [MOLY00313519] [Zion][O1][SRLTE][TTY test][SH] UE can not disable SO68 by using AT+ECSETNAM=22,0
+ *
+ * 03 14 2018 wen.zhuang
+ * [MOLY00313519] [Zion][O1][SRLTE][TTY test][SH] UE can not disable SO68 by using AT+ECSETNAM=22,0
+ *
+ * 03 14 2018 wen.zhuang
+ * [MOLY00313519] [Zion][O1][SRLTE][TTY test][SH] UE can not disable SO68 by using AT+ECSETNAM=22,0
+ *
+ * 03 14 2018 wen.zhuang
+ * [MOLY00313519] [Zion][O1][SRLTE][TTY test][SH] UE can not disable SO68 by using AT+ECSETNAM=22,0
+ *
+ * 01 03 2018 lucien.li
+ * [MOLY00297979] [MT6763][Bianco][O1][MP2.0][MP2 Regression][SWIFT][Overnight][SZ][CU+CMCC][4GMM][Fatal error(buf)] err_code1:0x00000823 err_code2:0x00000020 err_code3:0xCCCCCCCC
+ * provide CGATT read mode
+ *
+ * 10 30 2017 allen.hsu
+ * [MOLY00280113] [93]Support ATQ,ATV,ATZ
+ *
+ * 	atzv.
+ *
+ * 09 19 2017 wen.zhuang
+ * [MOLY00271804] [C2K][Bianco][N1]should popup restrcited by FDN
+ *
+ * 09 07 2017 wen.zhuang
+ * [MOLY00266202] [C2K][MP1][MT6763][Bianco][N1][MTBF][PHONE][Overnight][HQ][Lab][Ericsson] md1:(MCU_core0,vpe0,tc0(VPE0))[ASSERT] file:mcu/common/modem/c2k/sys/cpbuf.c line:668
+ *
+ * 08 22 2017 johnny.ding
+ * [MOLY00257917] [MT6763][Umolya Trunk]merge code to Umolya Trunk
+ *
+ * 	merge CL to Umolya Trunk.
+ *
+ * 08 02 2017 lucien.li
+ * [MOLY00266121] [Bianco][N1][SRLTE][CT 6M C][Application][FT][ZG][Extend 11]SIM1-CT no service after modify EM setting
+ * [TRUNK] AP and L4 efun state not sync
+ *
+ * 07 14 2017 shih-che.chou
+ * [MOLY00263343] [Bianco][N1]SIM radio off when enable VSIM, can not camp on network when turn on radio
+ * .fix warning
+ *
+ * 07 04 2017 shih-che.chou
+ * [MOLY00261225] [Rose][Bianco][N1]FDN cannot enable after input correct PIN2.
+ * .
+ *
+ * 06 29 2017 shih-che.chou
+ * [MOLY00260720] [Rose][Bianco][N1]The SIM card PIN lock will can't set successfully,it will pop up "Incorrect SIM PIN code,you have 3 remaining attempts" dialog box.(5/5)
+ * .
+ *
+ * 05 12 2017 wen.zhuang
+ * [MOLY00249059] [BIANCO][MT6763][RDIT][FT][C2K only][SH][Functionality][Static][SIM1:CTC][TC-FT-13003]CTA command send fail
+ *
+ * 04 13 2017 wen.zhuang
+ * [MOLY00241813] [BIANCO]Add 93 C2K related AT command
+ *
+ * 	EM AT command.
+ *
+ * 04 11 2017 allen.hsu
+ * [MOLY00240939] [6293][Power-on/NW]AT+EFUN? query fail
+ * AT+EFUN? retun error.
+ *
+ * 04 05 2017 yingfui.hung
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ * 	- M3 patch back; patch 3706244 & 3706284
+ * 	.
+ *
+ * 04 05 2017 benjamin.kuo
+ * [MOLY00239357] L4 M3 patch-back for SBP
+ * L4 M3 - L4BSBP.
+ *
+ * 04 05 2017 shih-che.chou
+ * [MOLY00236783] [GEN93] CPIN related CMD
+ * .
+ *
+ * 03 30 2017 johnny.ding
+ * [MOLY00238514] [BIANCO][MT6763][C2K][RDIT][PHONE][CCF][Spirent][C.S0061][4.3.1.1]Fail to send Data burst message on RACH.
+ *
+ * 	modify AT+EC2KCCNMA to AT+EC2KCNMA.
+ *
+ * 03 09 2017 wen.zhuang
+ * [MOLY00221556] [Gen93]Merge SIM IO and CC related codes to check in
+ *
+ * 	modem only CS call.
+ *
+ * 03 01 2017 derek.yang
+ * [MOLY00221553] [Gen93] For CPON/CPOF
+ *
+ * 02 22 2017 johnny.ding
+ * [MOLY00226615] [Gen93][umolya]merge CL to umolya trunk.
+ *
+ * 	M2 Check in Umolya Trunk
+ *
+ * 02 20 2017 guanglong.wu
+ * [MOLY00230696] [6293][M2 DEV] M2 codes merge to umolya/trunk
+ *
+ * 	[93m] Merge M2's code to UMOLYA/TRUNK/
+ *
+ * 02 20 2017 wen.zhuang
+ * [MOLY00221556] [Gen93]Merge SIM IO and CC related codes to check in
+ *
+ * 	M2 CTZE, Engineering mode AT commands and MT call flow.
+ * 	M2 dual-SIM IO AT command
+ *
+ * 02 20 2017 wenson.qiu
+ * [MOLY00222456] [MT6799][PS][L4B]Add L4B code of c2k SMS for 92 preIT.
+ *
+ * 02 20 2017 hong.yu
+ * [MOLY00230416] [Gen93][L4 Integration] M2 check in
+ * L4B PWR and NW
+ *
+ * 02 20 2017 chen-wei.lan
+ * [MOLY00213843] [Gen93] SS feature development
+ * [UMOLYA trunk] M2 chech in
+ *
+ * 02 20 2017 yilun.yang
+ * [MOLY00230391] [MT6293] M2 check in plan
+ * [L4BSIM] Add AT+ECIMI.
+ *
+ * 02 20 2017 benjamin.kuo
+ * [MOLY00230354] [MT6293][SBP] L4/C2K Integration M2 patch-back
+ * L4BSBP.
+ *
+ * 12 29 2016 yilun.yang
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ * [L4BSIM] Add AT+ECIMI.
+ *
+ * 02 10 2017 guanglong.wu
+ * [93M] Merge CL3267889
+ *
+ * 01 12 2017 guanglong.wu
+ * [MOLY00224351] [6293][M2 COMMAND AT Cammand DEV] c2k side modified
+ * 		M2 Phase dev
+ *
+ * 01 03 2017 wenson.qiu
+ * [MOLY00222456] [MT6799][PS][L4B]Add L4B code of c2k SMS for 92 preIT
+ *
+ * 02 13 2017 shih-che.chou
+ * [MOLY00220414] [Gen93] relay SMU related CMDs
+ * .
+ *
+ * 01 20 2017 wen.zhuang
+ * [MOLY00221556] [Gen93]Merge SIM IO and CC related codes to check in
+ *
+ *
+ * 	AT+VIPSEND.
+ *
+ * 01 10 2017 wen.zhuang
+ * [MOLY00221556] [Gen93]Merge SIM IO and CC related codes to check in
+ *
+ * 	Add lock band and channel AT command AT+ECBAND.
+ *
+ * 12 21 2016 guanglong.wu
+ * [MOLY00220223] [6293][EM & Factory Mode AT command] c2k side modified
+ *      Added at command "C2KECSQ","ECBAND" forward to CVAL
+ *
+ * 12 19 2016 wen.zhuang
+ * [MOLY00211531] [MT6799][PS][L4B]Add L4B code of SIM and CC related for 92 preIT
+ *
+ * 	M2 SIM IO AT commands.
+ *
+ * 12 14 2016 allen.hsu
+ * [MOLY00212439] 93 Power-on/NW
+ * AT+EOPS.
+ *
+ * 12 14 2016 benjamin.kuo
+ * [MOLY00214810] add L4BSBP module
+ *
+ * 	implement interaction between L4B and L4BSBP.
+ *
+ * 12 20 2016 yilun.yang
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ * [l4bsim] Add URC +ESIMAPP for CRLA/CGLA channel_id.
+ *
+ * 12 19 2016 wen.zhuang
+ * [MOLY00211531] [MT6799][PS][L4B]Add L4B code of SIM and CC related for 92 preIT
+ *
+ * 	M2 SIM IO AT commands.
+ *
+ * 12 14 2016 allen.hsu
+ * [MOLY00212439] 93 Power-on/NW
+ * AT+EOPS.
+ *
+ * 12 14 2016 benjamin.kuo
+ * [MOLY00214810] add L4BSBP module
+ *
+ * 	implement interaction between L4B and L4BSBP.
+ *
+ * 12 06 2016 ian-yw.chen
+ * [MOLY00211439] [MT6293][L4B][L4B_SMS] development
+ *  M1 development (part 7  directly send to CVAL only when 6M and RAT=C only) +
+ *  M2 part 1 (AT cmds)
+ *
+ * 12 06 2016 wen.zhuang
+ * [MOLY00211531] [MT6799][PS][L4B]Add L4B code of SIM and CC related for 92 preIT
+ *
+ * 	Forward CCID to CVAL.
+ *
+ * 12 06 2016 allen.hsu
+ * [MOLY00215808] [6293][Power-on/NW] attach flow
+ * cgatt.
+ *
+ * 12 05 2016 allen.hsu
+ * [MOLY00212825] [6293][Power-on/NW]AT+ERAT
+ * only deal with SET_OR_EXECUTE_MODE in L4BNW.
+ *
+ * 12 02 2016 guanglong.wu
+ * [MOLY00214302] [6293][NW AT command]ADD CELL INFO QUERY AT CMD FOR C2K
+ *
+ * 	add AT+VLOCINFO FWD To CVAL
+ *
+ * 12 01 2016 hong.yu
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ * add command mode in l4b_atp_at_cmd_table and src_mod in l4b_urc_table
+ *
+ * 11 29 2016 huang-da.chen
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ * [SAT] M2: STK command dispatch (L4BSAT)
+ *
+ * 11 25 2016 allen.hsu
+ * [MOLY00212439] 93 Power-on/NW
+ * attach flow.
+ *
+ * 11 17 2016 yilun.yang
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ * [l4bsim] Forward +CCHO & +CCHC to L4BSIM.
+ *
+ * 11 17 2016 chen-wei.lan
+ * [MOLY00213843] [Gen93] SS feature development
+ * [Gen93][SS] M2+M3 commands
+ *
+ * 11 15 2016 yingfui.hung
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ *
+ * 	.
+ *
+ * 11 14 2016 wen.zhuang
+ * [MOLY00211531] [MT6799][PS][L4B]Add L4B code of SIM and CC related for 92 preIT
+ *
+ * 	dual SIM IO AT command.
+ *
+ * 11 11 2016 yilun.yang
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ * [l4bsim] Fix for null AT response. Update SAP for GEMINI UT.
+ *
+ * 11 11 2016 allen.hsu
+ * [MOLY00212825] [6293][Power-on/NW]AT+ERAT
+ * M1-AT+ERAT.
+ *
+ * 11 07 2016 chinte.chen
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ * ECSQ activate mode.
+ *
+ * 11 04 2016 ian-yw.chen
+ * [MOLY00211439] [MT6293][L4B][L4B_SMS] development
+ *  M1 development (part 1)
+ *
+ * 11 02 2016 yilun.yang
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ * Add SIM AT commands into L4B table.
+ *
+ * 11 02 2016 shih-che.chou
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ * . CPIN
+ *
+ * 11 01 2016 huang-da.chen
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ * L4BSAT part
+ *
+ *
+ *------------------------------------------------------------------------------
+ * Upper this line, this part is controlled by PVCS VM. DO NOT MODIFY!!
+ *==============================================================================
+ *******************************************************************************/
+
+/*
+This table defines at commands that will be handeled by L4B
+1. L4B_AT_CMD: (<ENUM_ID>,<AT_prefix>,<cmd_mode>,<dest>,<forward_msg>,<forwrd_msg_func_ptr>,<cnfrm_msg>,<at_rsp_func_ptr>)
+<ENUM_ID>
+	-For enum expansion. The name convention is L4B_AT_XXX
+<AT_prefix>
+    -The AT command prefix for string compare. Commands should be in upper case
+    -Please write in upper case
+<cmd_mode>
+	-Command mode in atp_cmd_mode_enum
+	-This field is a bitmask
+<dest>
+    -The forward destination of this AT command
+    -For multi-SIM modules, only protocol stack 1 module is enough. L4B will help to increment according to Gemini
+<forward_msg>
+    -L4B will send <forward_msg> to <dest> when receiving the matched AT command
+    -<forward_msg> shall be MSG_ID_L4B_L4BXXX_YYY_REQ
+<forward_msg_func_ptr>
+    -The ilm constructor function pointer for <forward_msg>, which type is L4B_AT_CMD_TO_ILM_FUNC
+<cnfrm_msg>
+    -The confirm message from L4BXXX to L4B
+    -<cnfrm_msg> shall be MSG_ID_L4B_L4BXXX_YYY_CNF, which is pair to <forward_msg>
+<at_rsp_func_ptr>
+    -The AT response constructor function pointer, which will be invoked by L4B when receiving <cnfrm_msg>
+    -The type of this function pointer is L4B_ILM_TO_AT_RSP_FUNC
+
+2. L4B_FORWARD_TO_ATCI_CMD: (<ENUM_ID>,<AT_prefix>,<cmd_mode>)
+<ENUM_ID>
+	-For enum expansion
+<AT_prefix>
+    -The AT command prefix for string compare. Commands should be in upper case
+<cmd_mode>
+	-Command mode in atp_cmd_mode_enum
+	-This field is bitmap
+L4B will forward this AT command from ATP to ATCI by MSG_ID_L4B_ATCI_AT_CMD_REQ
+
+3. L4B_FORWARD_TO_CVAL_CMD: (<ENUM_ID>,<AT_prefix>,<cmd_mode>)
+<ENUM_ID>
+	-For enum expansion
+<AT_prefix>
+    -The AT command prefix for string compare. Commands should be in upper case
+<cmd_mode>
+	-Command mode in atp_cmd_mode_enum
+	-This field is bitmap
+L4B will forward this AT command from ATP to CVAL by MSG_ID_L4B_CVAL_AT_CMD_REQ
+*/
+
+/* L4BPWR AT cmd begin */
+L4B_AT_CMD(L4B_AT_EFUN, "+EFUN", ATP_SET_OR_EXECUTE_OR_READ_MODE, MOD_L4BPWR, MSG_ID_L4B_L4BPWR_EFUN_REQ, l4bpwr_efun_req_construct_func, MSG_ID_L4B_L4BPWR_EFUN_CNF, l4bpwr_efun_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_EBOOT, "+EBOOT", ATP_ALL_CMD_MODE, MOD_L4BPWR, MSG_ID_L4B_L4BPWR_SILENT_REBOOT_REQ, l4bpwr_silent_reboot_req_construct_func, MSG_ID_L4B_L4BPWR_SILENT_REBOOT_CNF, l4bpwr_silent_reboot_cnf_construct_func)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_EPOF,"+EPOF", ATP_ALL_CMD_MODE)
+/* L4BPWR AT cmd end */
+
+
+/* L4BCC AT cmd begin */
+/* L4B_AT_CMD(L4B_AT_D, "D", ATP_ALL_CMD_MODE, MOD_L4BCC, MSG_ID_L4B_L4BCC_ATD_REQ, l4bcc_atd_req_construct_func, MSG_ID_L4B_L4BCC_ATD_CNF, l4bcc_atd_cnf_construct_func) */
+L4B_AT_CMD(L4B_AT_VMEMEXIT, "+VMEMEXIT", ATP_ALL_CMD_MODE, MOD_L4BCC, MSG_ID_L4B_L4BCC_COMMON_CMD_REQ, l4bcc_common_cmd_req_construct_func, MSG_ID_L4B_L4BCC_COMMON_CMD_CNF, l4bcc_common_cmd_cnf_construct_func)
+
+// To be forwarded to CVAL
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_CFSH,  "+CFSH",  ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_VP,  "+VP",  ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_CRM,  "+CRM",  ATP_ALL_CMD_MODE)
+
+#if defined(C2K_L4_AT_CMD)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_CDV, "+CDV", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_CHV, "+CHV", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_A, "A", ATP_ALL_CMD_MODE)
+#endif
+/* L4BCC AT cmd end */
+
+/* L4BNW AT cmd begin */
+L4B_AT_CMD(L4B_AT_ERAT, "+ERAT", ATP_SET_OR_EXECUTE_MODE, MOD_L4BNW, MSG_ID_L4B_L4BNW_ERAT_REQ, l4bnw_erat_req_construct_func, MSG_ID_L4B_L4BNW_ERAT_CNF, l4bnw_erat_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_EGTYPE, "+EGTYPE", ATP_SET_OR_EXECUTE_MODE, MOD_L4BNW, MSG_ID_L4B_L4BNW_EGTYPE_REQ, l4bnw_egtype_req_construct_func, MSG_ID_L4B_L4BNW_EGTYPE_CNF, l4bnw_egtype_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_CGATT, "+CGATT", ATP_SET_OR_EXECUTE_MODE, MOD_L4BNW, MSG_ID_L4B_L4BNW_CGATT_REQ, l4bnw_cgatt_req_construct_func, MSG_ID_L4B_L4BNW_CGATT_CNF, l4bnw_cgatt_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_EREG, "+EREG", ATP_ALL_CMD_MODE, MOD_L4BNW, MSG_ID_L4B_L4BNW_EREG_REQ, l4bnw_ereg_req_construct_func, MSG_ID_L4B_L4BNW_EREG_CNF, l4bnw_ereg_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_EGREG, "+EGREG", ATP_ALL_CMD_MODE, MOD_L4BNW, MSG_ID_L4B_L4BNW_EGREG_REQ, l4bnw_egreg_req_construct_func, MSG_ID_L4B_L4BNW_EGREG_CNF, l4bnw_egreg_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_ECSQ, "+ECSQ", ATP_ALL_CMD_MODE, MOD_L4BNW, MSG_ID_L4B_L4BNW_ECSQ_REQ, l4bnw_ecsq_req_construct_func, MSG_ID_L4B_L4BNW_ECSQ_CNF, l4bnw_ecsq_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_EOPS, "+EOPS", ATP_READ_MODE, MOD_L4BNW, MSG_ID_L4B_L4BNW_EOPS_REQ, l4bnw_eops_req_construct_func, MSG_ID_L4B_L4BNW_EOPS_CNF, l4bnw_eops_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_V, "+V", ATP_ALL_CMD_MODE, MOD_L4BNW, MSG_ID_L4B_L4BNW_ATV_REQ, l4bnw_atv_req_construct_func, MSG_ID_L4B_L4BNW_ATV_CNF, l4bnw_atv_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_Z, "+Z", ATP_ALL_CMD_MODE, MOD_L4BNW, MSG_ID_L4B_L4BNW_ATZ_REQ, l4bnw_atz_req_construct_func, MSG_ID_L4B_L4BNW_ATZ_CNF, l4bnw_atz_cnf_construct_func)
+
+// To be forwarded to CVAL
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_VLOCINFO,  "+VLOCINFO",  ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_ECBAND,    "+ECBAND", 	ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_C2KECSQ,   "+C2KECSQ",   ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_EIPRL,   "+EIPRL",   ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_EFCELL,   "+EFCELL",   ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_EDEFROAM,   "+EDEFROAM",   ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_EROAMBAR,   "+EROAMBAR",   ATP_ALL_CMD_MODE)
+/* L4BNW AT cmd end */
+
+/* L4BSAT AT cmd begin */
+
+// To be forwarded to ATCI
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_STKSS, "+STKSS", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_STKUSSD, "+STKUSSD", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_STKUSSI, "+STKUSSI", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_STKDTMF, "+STKDTMF", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_STKCTRL, "+STKCTRL", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_STKPCI, "+STKPCI", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CUSATA, "+CUSATA", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CUSATD, "+CUSATD", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CUSATR, "+CUSATR", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CUSATW, "+CUSATW", ATP_ALL_CMD_MODE)
+
+// To be forwarded to CVAL
+
+// To be controlled by L4BSAT
+L4B_AT_CMD(L4B_AT_CUSATE, "+CUSATE", ATP_ALL_CMD_MODE, MOD_L4BSAT, MSG_ID_L4B_L4BSAT_CUSATE_REQ, l4bsat_cusate_req_construct_func, MSG_ID_L4B_L4BSAT_CUSATE_CNF, l4bsat_cusate_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_STKTR, "+STKTR", ATP_ALL_CMD_MODE, MOD_L4BSAT, MSG_ID_L4B_L4BSAT_STKTR_REQ, l4bsat_generic_req_construct_func, MSG_ID_L4B_L4BSAT_STKTR_CNF, l4bsat_generic_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_STKCALL, "+STKCALL", ATP_ALL_CMD_MODE, MOD_L4BSAT, MSG_ID_L4B_L4BSAT_STKCALL_REQ, l4bsat_generic_req_construct_func, MSG_ID_L4B_L4BSAT_STKCALL_CNF, l4bsat_generic_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_STKSMS, "+STKSMS", ATP_ALL_CMD_MODE, MOD_L4BSAT, MSG_ID_L4B_L4BSAT_STKSMS_REQ, l4bsat_generic_req_construct_func, MSG_ID_L4B_L4BSAT_STKSMS_CNF, l4bsat_generic_cnf_construct_func)
+
+/* L4BSAT AT cmd end */
+
+
+/* L4BSIM AT cmd begin */
+
+// To be forwarded to ATCI
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ESCG, "+ESCG", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_EUSIM, "+EUSIM", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ETESTSIM, "+ETESTSIM", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ESIMS, "+ESIMS", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ESIMEXIST, "+ESIMEXIST", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CIMI, "+CIMI", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_EVSIM, "+EVSIM", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_EVSIMKEY, "+EVSIMKEY", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_EVSIMEF, "+EVSIMEF", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_EVSIMPRO, "+EVSIMPRO", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CPOL, "+CPOL", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CPLS, "+CPLS", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_PACSP, "+PACSP", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ESIMREC, "+ESIMREC", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CPUC, "+CPUC", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CSRM, "+CSRM", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ESIMAUTH, "+ESIMAUTH", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_EAUTH, "+EAUTH", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_EBTSAP, "+EBTSAP", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ESIMINFO, "+ESIMINFO", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ESIMTC, "+ESIMTC", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ESIMTEST, "+ESIMTEST", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_EDMSIM, "+EDMSIM", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CSUS, "+CSUS", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CUAD, "+CUAD", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ERSA, "+ERSA", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_EAPVSIM, "+EAPVSIM", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ESPN, "+ESPN", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ESADM, "+ESADM", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ES3G, "+ES3G", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ESIMMAP, "+ESIMMAP", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_USIMSMT, "+USIMSMT", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ESSTQ, "+ESSTQ", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ERMODE, "+ERMODE", ATP_ALL_CMD_MODE)
+
+
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CMOD, "+CMOD", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CRC, "+CRC", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CBST, "+CBST", ATP_ALL_CMD_MODE)
+
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ETMOEVT, "+ETMOEVT", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ETMOSLB, "+ETMOSLB", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ETMOSK, "+ETMOSK", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ESMLCK, "+ESMLCK", ATP_ALL_CMD_MODE)
+
+
+// To be forwarded to CVAL
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_VCIMI, "+VCIMI", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_CSNID, "+CSNID", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_VMIN, "+VMIN", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_VPRLID, "+VPRLID", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_EUIMCFG, "+EUIMCFG", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_ECSTQ, "+ECSTQ",ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_ECSQTH, "+ECSQTH",ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_ROAM, "$ROAM",ATP_ALL_CMD_MODE)
+
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_QCMIPGETP, "$QCMIPGETP",ATP_ALL_CMD_MODE)
+
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_GPSREP, "+GPSREPORT",ATP_ALL_CMD_MODE)
+
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_DDTM, "+DDTM",ATP_ALL_CMD_MODE)
+
+// To be controlled by L4BSIM
+L4B_AT_CMD(L4B_AT_ECRLA, "+ECRLA", ATP_ALL_CMD_MODE, MOD_L4BSIM, MSG_ID_L4B_L4BSIM_ECRLA_REQ, l4bsim_ecrla_req_construct_func, MSG_ID_L4B_L4BSIM_ECRLA_CNF, l4bsim_ecrla_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_ECRSM, "+ECRSM", ATP_ALL_CMD_MODE, MOD_L4BSIM, MSG_ID_L4B_L4BSIM_ECRSM_REQ, l4bsim_ecrsm_req_construct_func, MSG_ID_L4B_L4BSIM_ECRSM_CNF, l4bsim_ecrsm_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_ICCID, "+ICCID", ATP_ALL_CMD_MODE, MOD_L4BSIM, MSG_ID_L4B_L4BSIM_ICCID_REQ, l4bsim_iccid_req_construct_func, MSG_ID_L4B_L4BSIM_ICCID_CNF, l4bsim_iccid_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_CNUM, "+CNUM", ATP_ALL_CMD_MODE, MOD_L4BSIM, MSG_ID_L4B_L4BSIM_CNUM_REQ, l4bsim_cnum_req_construct_func, MSG_ID_L4B_L4BSIM_CNUM_CNF, l4bsim_cnum_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_ESIMAPP, "+ESIMAPP", ATP_ALL_CMD_MODE, MOD_L4BSIM, MSG_ID_L4B_L4BSIM_ESIMAPP_REQ, l4bsim_esimapp_req_construct_func, MSG_ID_L4B_L4BSIM_ESIMAPP_CNF, l4bsim_esimapp_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_CRLA, "+CRLA", ATP_ALL_CMD_MODE, MOD_L4BSIM, MSG_ID_L4B_L4BSIM_CRLA_REQ, l4bsim_crla_req_construct_func, MSG_ID_L4B_L4BSIM_CRLA_CNF, l4bsim_crla_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_CGLA, "+CGLA", ATP_ALL_CMD_MODE, MOD_L4BSIM, MSG_ID_L4B_L4BSIM_CGLA_REQ, l4bsim_cgla_req_construct_func, MSG_ID_L4B_L4BSIM_CGLA_CNF, l4bsim_cgla_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_CRSM, "+CRSM", ATP_ALL_CMD_MODE, MOD_L4BSIM, MSG_ID_L4B_L4BSIM_CRSM_REQ, l4bsim_crsm_req_construct_func, MSG_ID_L4B_L4BSIM_CRSM_CNF, l4bsim_crsm_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_CSIM, "+CSIM", ATP_ALL_CMD_MODE, MOD_L4BSIM, MSG_ID_L4B_L4BSIM_CSIM_REQ, l4bsim_csim_req_construct_func, MSG_ID_L4B_L4BSIM_CSIM_CNF, l4bsim_csim_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_CCHO, "+CCHO", ATP_ALL_CMD_MODE, MOD_L4BSIM, MSG_ID_L4B_L4BSIM_CCHO_REQ, l4bsim_ccho_req_construct_func, MSG_ID_L4B_L4BSIM_CCHO_CNF, l4bsim_ccho_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_CCHC, "+CCHC", ATP_ALL_CMD_MODE, MOD_L4BSIM, MSG_ID_L4B_L4BSIM_CCHC_REQ, l4bsim_cchc_req_construct_func, MSG_ID_L4B_L4BSIM_CCHC_CNF, l4bsim_cchc_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_ECIMI, "+ECIMI", ATP_ALL_CMD_MODE, MOD_L4BSIM, MSG_ID_L4B_L4BSIM_ECIMI_REQ, l4bsim_ecimi_req_construct_func, MSG_ID_L4B_L4BSIM_ECIMI_CNF, l4bsim_ecimi_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_ECPIN, "+ECPIN", ATP_ALL_CMD_MODE, MOD_L4BSIM, MSG_ID_L4B_L4BSIM_ECPIN_REQ, l4bsim_ecpin_req_construct_func, MSG_ID_L4B_L4BSIM_ECPIN_CNF, l4bsim_ecpin_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_CPIN, "+CPIN", ATP_ALL_CMD_MODE, MOD_L4BSIM, MSG_ID_L4B_L4BSIM_CPIN_REQ, l4bsim_cpin_req_construct_func, MSG_ID_L4B_L4BSIM_CPIN_CNF, l4bsim_cpin_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_EPIN1, "+EPIN1", ATP_ALL_CMD_MODE, MOD_L4BSIM, MSG_ID_L4B_L4BSIM_EPIN1_REQ, l4bsim_parse_cmd_mode_from_generic_at_cmd, MSG_ID_L4B_L4BSIM_EPIN1_CNF, l4bsim_repack_generic_at_rsp)
+L4B_AT_CMD(L4B_AT_EPIN2, "+EPIN2", ATP_ALL_CMD_MODE, MOD_L4BSIM, MSG_ID_L4B_L4BSIM_EPIN2_REQ, l4bsim_parse_cmd_mode_from_generic_at_cmd, MSG_ID_L4B_L4BSIM_EPIN2_CNF, l4bsim_repack_generic_at_rsp)
+L4B_AT_CMD(L4B_AT_EPINC, "+EPINC", ATP_ALL_CMD_MODE, MOD_L4BSIM, MSG_ID_L4B_L4BSIM_EPINC_REQ, l4bsim_parse_cmd_mode_from_generic_at_cmd, MSG_ID_L4B_L4BSIM_EPINC_CNF, l4bsim_epinc_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_CPWD, "+CPWD", ATP_ALL_CMD_MODE, MOD_L4BSIM, MSG_ID_L4B_L4BSIM_CPWD_REQ, l4bsim_parse_cmd_mode_from_generic_at_cmd, MSG_ID_L4B_L4BSIM_CPWD_CNF, l4bsim_repack_generic_at_rsp)
+L4B_AT_CMD(L4B_AT_ECLCK, "+ECLCK", ATP_ALL_CMD_MODE, MOD_L4BSIM, MSG_ID_L4B_L4BSIM_ECLCK_REQ, l4bsim_parse_e_cmd_app_id_at_req, MSG_ID_L4B_L4BSIM_ECLCK_CNF, l4bsim_eclck_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_CLCK, "+CLCK", ATP_ALL_CMD_MODE, MOD_L4BSIM, MSG_ID_L4B_L4BSIM_CLCK_REQ, l4bsim_parse_cmd_mode_from_generic_at_cmd, MSG_ID_L4B_L4BSIM_CLCK_CNF, l4bsim_repack_generic_at_rsp)
+L4B_AT_CMD(L4B_AT_EXCGLA, "+EXCGLA", ATP_ALL_CMD_MODE, MOD_L4BSIM, MSG_ID_L4B_L4BSIM_EXCGLA_REQ, l4bsim_excgla_req_construct_func, MSG_ID_L4B_L4BSIM_EXCGLA_CNF, l4bsim_excgla_cnf_construct_func)
+#ifdef __EUICC_SUPPORT__
+L4B_AT_CMD(L4B_AT_ESLOTSINFO, "+ESLOTSINFO", ATP_ALL_CMD_MODE, MOD_L4BSIM, MSG_ID_L4B_L4BSIM_ESLOTSINFO_REQ, l4bsim_eslotsinfo_req_construct_func, MSG_ID_L4B_L4BSIM_ESLOTSINFO_CNF, l4bsim_eslotsinfo_cnf_construct_func)
+#endif
+/* L4BSIM AT cmd end */
+
+
+/* L4BSMS AT cmd begin */
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CMGS,"+CMGS", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CNMA,"+CNMA", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CMGW,"+CMGW", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CMGD,"+CMGD", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CMGR,"+CMGR", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CSCA,"+CSCA", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CSAS,"+CSAS", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CSMS,"+CSMS", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CPMS,"+CPMS", ATP_ALL_CMD_MODE)
+// To be controlled by L4BSMS
+L4B_AT_CMD(L4B_AT_CNMI, "+CNMI", ATP_ALL_CMD_MODE, MOD_L4BSMS, MSG_ID_L4B_L4BSMS_CNMI_REQ, l4bsms_cnmi_req_construct_func, MSG_ID_L4B_L4BSMS_CNMI_CNF, l4bsms_proxy_cmd_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_CMGF, "+CMGF", ATP_ALL_CMD_MODE, MOD_L4BSMS, MSG_ID_L4B_L4BSMS_CMGF_REQ, l4bsms_cmgf_req_construct_func, MSG_ID_L4B_L4BSMS_CMGF_CNF, l4bsms_proxy_cmd_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_EMEMS, "+EMEMS", ATP_ALL_CMD_MODE, MOD_L4BSMS, MSG_ID_L4B_L4BSMS_EMEMS_REQ, l4bsms_emems_req_construct_func, MSG_ID_L4B_L4BSMS_EMEMS_CNF, l4bsms_proxy_emems_cmd_cnf_construct_func)
+ //M2
+// To be forwarded to ATCI
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CSCB,"+CSCB", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CMMS,"+CMMS", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CSMP,"+CSMP", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ETWS,"+ETWS", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ECBMR,"+ECBMR", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ECSCBSW,"+ECSCBSW", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ECSCBCFG,"+ECSCBCFG", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ESMSMOIP,"+ESMSMOIP", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ESMSMTIP,"+ESMSMTIP", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ESMMA,"+ESMMA", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ESMSMAIP,"+ESMSMAIP", ATP_ALL_CMD_MODE)
+
+#if (defined(__UE_SIMULATOR__)&& defined(__CDMA2000_RAT__))
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_CPON, "+CPON",ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_CPOF, "+CPOF",ATP_ALL_CMD_MODE)
+#endif
+
+/*commands forwarfed to CVAL*/
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_EC2KCNMA, "+EC2KCNMA", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_EC2KCMGW, "+EC2KCMGW", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_EC2KCMGD, "+EC2KCMGD", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_EC2KCPMS, "+EC2KCPMS", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_ECSCB, "+ECSCB", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_ECSCBCHA, "+ECSCBCHA", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_ECSCBLAN, "+ECSCBLAN", ATP_ALL_CMD_MODE)
+
+#ifdef __MDVSIM__
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_EC2KVSIMEF, "+EC2KVSIMEF", ATP_ALL_CMD_MODE)
+#endif
+
+
+/* L4BSMS AT cmd end */
+
+/* L4BSS AT cmd begin */
+
+// To be forwarded to ATCI
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ESSP, "+ESSP", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_ECUSD, "+ECUSD", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CUSD, "+CUSD", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CLIP, "+CLIP", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CLIR, "+CLIR", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_COLP, "+COLP", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CNAP, "+CNAP", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_ATCI_CMD(L4B_AT_CSSN, "+CSSN", ATP_ALL_CMD_MODE)
+
+// To be controlled by L4BSS
+
+/* L4BSS AT cmd end */
+
+/* L4B common AT cmd begin */
+
+// To be forwarded to CVAL
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_EC2KCMEE, "+EC2KCMEE", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_CCID, "+CCID", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_VIPSEND, "+VIPSEND", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_GSN, "+GSN", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_MEID, "^MEID", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_CTA, "+CTA", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_ECTBSR, "+ECTBSR", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_ECCONST, "+ECCONST", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_EVPMODE, "+EVPMODE", ATP_ALL_CMD_MODE)
+
+/* L4B common AT cmd end */
+
+/* L4BSBP AT cmd begin */
+L4B_AT_CMD(L4B_AT_EDSBP, "+EDSBP", ATP_ALL_CMD_MODE, MOD_L4BSBP, MSG_ID_L4B_L4BSBP_EDSBP_REQ, l4bsbp_edsbp_req_construct_func, MSG_ID_L4B_L4BSBP_EDSBP_CNF, l4bsbp_edsbp_cnf_construct_func)
+L4B_AT_CMD(L4B_AT_ESBP, "+ESBP", ATP_SET_OR_EXECUTE_MODE, MOD_L4BSBP, MSG_ID_L4B_L4BSBP_ESBP_REQ, l4bsbp_esbp_req_construct_func, MSG_ID_L4B_L4BSBP_ESBP_CNF, l4bsbp_esbp_cnf_construct_func)
+/* L4BSBP AT cmd end */
+/* L4B engineer mode AT cmd begin */
+
+// To be forwarded to CVAL
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_VMOBID, "+VMOBID", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_ECTM, "+ECTM", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_ECRFTX, "+ECRFTX", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_EHRPD, "+EHRPD", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_ECLSC, "+ECLSC", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_ENWINFO, "+ENWINFO", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_ECREGTYPE, "+ECREGTYPE", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_ECBANDCFG, "+ECBANDCFG", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_ERXTESTMODE, "+ERXTESTMODE", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_ECSETNAM, "+ECSETNAM", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_ECREADNAM, "+ECREADNAM", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_ECECCNUM, "+ECECCNUM", ATP_ALL_CMD_MODE)
+
+/* L4B engineer mode AT cmd end */
+
+/* To be forwarded to CVAL */
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_GPSTCPCONNIND, "^GPSTCPCONNIND", ATP_ALL_CMD_MODE)
+L4B_FORWARD_TO_CVAL_CMD(L4B_AT_EC2KGPSFLOW, "+EC2KGPSFLOW", ATP_ALL_CMD_MODE)
+/* L4B LBS AT cmd end */
+
+
+

@@ -1,0 +1,6 @@
+on boot
+     setprop ro.vendor.md_apps.support 1
+     setprop ro.vendor.md_apps.load_type $TARGET_BUILD_VARIANT
+     setprop ro.vendor.md_apps.load_verno "$LABEL"
+     setprop ro.vendor.md_apps.load_gencfg "$GEN_CFG"
+     setprop ro.vendor.md_apps.load_date "$DATE"

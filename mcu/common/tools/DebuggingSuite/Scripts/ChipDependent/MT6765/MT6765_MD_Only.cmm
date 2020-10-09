@@ -1,0 +1,52 @@
+;AP pmic workaround
+&MEM_CLASS="AXI"
+sys.m prepare
+wait 1.ms
+
+; Step 1 (AP CCCI only) Configure AP/MD shared buck through DVFSRC API
+; [Note] CVD script do NOT need this step
+; skip
+
+; Step 3 config MD related Buck
+; [Note] CVD script do NOT need this step
+; AP preloader should set Modem related buck 
+; skip
+
+; Step 4 power on MTCMOS
+; [Note] CVD script do NOT need this step
+; skip
+
+; Step 5 disable MD access register
+do APview_MT6765_MD2PERI_disable.cmm  
+
+; Step 6 config md_srclkena setting
+do APview_MT6765_md_srclkena.cmm  
+
+; Step 7 config PLL setting
+do APview_MT6765_MD_PLL_Init.cmm  
+
+; Step 8 Disable MD WDT
+do APview_MT6765_disable_WDT.cmm
+
+; Step 9 enable MD to Access AP Register
+do APview_MT6765_AP2MD_enable.cmm
+
+; Step 10 Trigger MD MCU to run (AP view)
+; [Note] Trigger MD MCU by debugger
+; skip
+
+; Step 11 set GPIO (MD view: step 7)
+do APview_MT6765_GPIO_MDUART0.cmm 
+do APview_MT6765_GPIO_SIM.cmm 
+
+;Step 12 Force on Debug Sys clock (MD view: step 8)
+;do APview_MT6765_MD_ForceOnDebugSys.cmm  
+
+;Step 13 set MD EMI remap address (MD view: step 9)
+d.s &MEM_CLASS:0x10001300 %long %le 0x00430041
+d.s &MEM_CLASS:0x10001304 %long %le 0x00470045
+d.s &MEM_CLASS:0x10001308 %long %le 0x004b0049
+d.s &MEM_CLASS:0x1000130c %long %le 0x004f004d
+
+; Final Step: Trigger MD MCU to run 
+; skip

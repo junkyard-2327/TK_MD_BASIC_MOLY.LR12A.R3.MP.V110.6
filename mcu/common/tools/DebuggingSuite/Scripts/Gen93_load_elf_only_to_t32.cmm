@@ -1,0 +1,53 @@
+system.down
+system.cpu MIPSinterAptiv
+SYSTEM.OPTION.ENDIANESS LITTLE
+SYStem.CONFIG.BaseCoreNumber 2.
+SYStem.CONFIG.CoreNumber 4.
+CORE.NUMber 4.
+
+system.config core 4
+system.config.core 1 1
+system.config.core 2 1
+system.config.core 3 2
+system.config.core 4 2
+
+system.up
+
+&SOURCE_STRING=""
+&ELF_STRING=""
+
+DIALOG
+(
+  HEADER "Download ELF"
+  POS 1. 1. 50. ,
+  TMP: TEXT "ELF-file" 
+  POS 1. 2. 50. ,
+  ELF: EDIT "" ""
+  POS 52. 2. 10. ,
+  BUTTON "[:edit]Browse..."
+  (
+    DIALOG.SetFile ELF ~~\*.elf
+  )
+  POS 1. 4. 50. ,
+  TMP2: TEXT "Source path (optional)"
+  POS 1. 5. 50. ,
+  SRC: EDIT "" ""
+  POS 52. 5. 10. ,
+  BUTTON "[:edit]Browse..."
+  (
+    DIALOG.SetDIR SRC ~~\*
+  )
+
+  POS 10. 7. 5. ,
+  DEFBUTTON "OK" "CONTinue"
+)
+STOP
+&SOURCE_STRING=DIALOG.STring(SRC)
+&ELF_STRING=DIALOG.STring(ELF)
+DIALOG.END
+;ENDDO
+
+PRINT "Loading elf-file... "
+B::D.LOAD.elf &ELF_STRING  /RELPATH /GNU /DWARF2 /CODESEC /PATH "&SOURCE_STRING"
+
+WINCLEAR

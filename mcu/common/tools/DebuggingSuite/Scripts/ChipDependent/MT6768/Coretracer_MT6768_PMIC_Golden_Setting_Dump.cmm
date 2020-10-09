@@ -1,0 +1,275 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; MT6779 PMIC golden setting dump
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+system.mode attach
+
+;; CLOCK & RESET
+PRINT "=== CLOCK & RESET ==="
+&MODULE_SW_CG_0_STA=0xC0001090
+&MODULE_SW_CG_2_STA=0xC00010AC
+&ULPOSC_CLK_SEL=0xC0006684
+&PMICW_CLOCK_CTRL=0xC0001108
+&CLK_CFG_7=0xC00000B0
+&INFRA_GLOBALCON_RST2_STA=0xC0001148 
+
+&tmp=DATA.LONG(&MODULE_SW_CG_0_STA)
+IF ((&tmp) & (0xF))!=0
+(
+    PRINT "FAIL!! MODULE_SW_CG_0_STA    &MODULE_SW_CG_0_STA = &tmp , [3:0] != 0"	
+)
+ELSE
+(
+    PRINT "Pass. MODULE_SW_CG_0_STA    &MODULE_SW_CG_0_STA = &tmp"
+)
+
+&tmp=DATA.LONG(&MODULE_SW_CG_2_STA)
+IF ((&tmp) & (0x100))!=0
+(
+    PRINT "FAIL!! MODULE_SW_CG_2_STA    &MODULE_SW_CG_2_STA = &tmp , [8] != 0"	
+)
+ELSE
+(
+    PRINT "Pass. MODULE_SW_CG_2_STA    &MODULE_SW_CG_2_STA = &tmp"
+)
+		
+&tmp=DATA.LONG(&ULPOSC_CLK_SEL)
+IF (&tmp)!=0
+(
+    PRINT "FAIL!! ULPOSC_CLK_SEL        &ULPOSC_CLK_SEL = &tmp != 0"	
+)
+ELSE
+(
+    PRINT "Pass. ULPOSC_CLK_SEL        &ULPOSC_CLK_SEL = &tmp"
+)
+
+&tmp=DATA.LONG(&PMICW_CLOCK_CTRL)
+IF (&tmp)!=0
+(
+    PRINT "FAIL!! PMICW_CLOCK_CTRL      &PMICW_CLOCK_CTRL = &tmp != 0xD"	
+)
+ELSE
+(
+    PRINT "Pass. PMICW_CLOCK_CTRL      &PMICW_CLOCK_CTRL = &tmp"
+)
+
+&tmp=DATA.LONG(&CLK_CFG_7)
+IF ((&tmp) & (0x97))!=0x3
+(
+    PRINT "FAIL!! CLK_CFG_7      &CLK_CFG_7 = &tmp , [2:0] != 0x3, [4] != 0x0, [7] != 0x0"    
+)
+ELSE
+(
+    PRINT "Pass. CLK_CFG_7      &CLK_CFG_7 = &tmp"
+)
+
+&tmp=DATA.LONG(&INFRA_GLOBALCON_RST2_STA)
+IF ((&tmp) & (0x1))!=0x0
+(
+    PRINT "FAIL!! INFRA_GLOBALCON_RST2_STA   &INFRA_GLOBALCON_RST2_STA = &tmp , [0] != 0"	
+)
+ELSE
+(
+    PRINT "Pass. INFRA_GLOBALCON_RST2_STA   &INFRA_GLOBALCON_RST2_STA = &tmp"
+)
+
+
+
+;; GPIO
+PRINT "=== GPIO ==="
+&GPIO_GPIO_MODE18=0xC0005420
+&IOCFG_LT_DRV_CFG1=0xC0002010
+
+&tmp=DATA.LONG(&GPIO_GPIO_MODE18)
+IF ((&tmp) & (0xFFFF))!=0x1111
+(
+    PRINT "FAIL!! GPIO_GPIO_MODE18      &GPIO_GPIO_MODE18 = &tmp != 0x1111"
+)
+ELSE
+(
+    PRINT "Pass. GPIO_GPIO_MODE18      &GPIO_GPIO_MODE18 = &tmp"
+)
+
+&tmp=DATA.LONG(&IOCFG_LT_DRV_CFG1)
+IF ((&tmp) & (0x7E00000))!=0x1200000
+(
+    PRINT "FAIL!! IOCFG_LT_DRV_CFG1     &IOCFG_LT_DRV_CFG1 = &tmp , [26:24] != 1, [23:21] != 1"	
+)
+ELSE
+(
+    PRINT "Pass. IOCFG_LT_DRV_CFG1     &IOCFG_LT_DRV_CFG1 = &tmp"
+)
+
+
+
+;; PMIC_WRAP
+PRINT "=== PMIC_WRAP ==="
+&MUX_SEL=0xC000D000
+&WRAP_EN=0xC000D004 
+&HPRIO_ARB_EN=0xC000D06C
+
+&WACS0_EN=0xC000D08C
+&INIT_DONE0=0xC000D090
+&WACS1_EN=0xC000D094
+&INIT_DONE1=0xC000D098
+&WACS2_EN=0xC000D09C
+&INIT_DONE2=0xC000D0A0
+&WACS3_EN=0xC000D0A4
+&INIT_DONE3=0xC000D0A8
+
+&WACS0_RDATA=0xC000DC04
+&WACS1_RDATA=0xC000DC14
+&WACS2_RDATA=0xC000DC24
+&WACS3_RDATA=0xC000DC34
+
+&tmp=DATA.LONG(&MUX_SEL)
+IF ((&tmp) & (0x1))!=0x0
+(
+    PRINT "FAIL!! MUX_SEL               &MUX_SEL = &tmp , [0] != 0"	
+)
+ELSE
+(
+    PRINT "Pass. MUX_SEL               &MUX_SEL = &tmp"
+)
+
+&tmp=DATA.LONG(&WRAP_EN)
+IF ((&tmp) & (0x1))!=0x1
+(
+    PRINT "FAIL!! WRAP_EN               &WRAP_EN = &tmp , [0] != 1"	
+)
+ELSE
+(
+    PRINT "Pass. WRAP_EN               &WRAP_EN = &tmp"
+)
+
+&tmp=DATA.LONG(&HPRIO_ARB_EN)
+IF ((&tmp) & (0xFFFFF))!=0xFB27F
+(
+    PRINT "FAIL!! HPRIO_ARB_EN          &HPRIO_ARB_EN = &tmp , [19:0] != 0xFB27F"	
+)
+ELSE
+(
+    PRINT "Pass. HPRIO_ARB_EN          &HPRIO_ARB_EN = &tmp"
+)
+
+&tmp=DATA.LONG(&WACS0_EN)
+IF ((&tmp) & (0x1))!=0x1
+(
+    PRINT "FAIL!! WACS0_EN            &WACS0_EN = &tmp , [0] != 1"	
+)
+ELSE
+(
+    PRINT "Pass. WACS0_EN              &WACS0_EN = &tmp"
+)			
+
+&tmp=DATA.LONG(&INIT_DONE0)
+IF ((&tmp) & (0x1))!=0x1
+(
+    PRINT "FAIL!! INIT_DONE0            &INIT_DONE0 = &tmp , [0] != 1"	
+)
+ELSE
+(
+    PRINT "Pass. INIT_DONE0            &INIT_DONE0 = &tmp"
+)
+
+&tmp=DATA.LONG(&WACS1_EN)
+IF ((&tmp) & (0x1))!=0x1
+(
+    PRINT "FAIL!! WACS1_EN            &WACS1_EN = &tmp , [0] != 1"	
+)
+ELSE
+(
+    PRINT "Pass. WACS1_EN              &WACS1_EN = &tmp"
+)			
+
+&tmp=DATA.LONG(&INIT_DONE1)
+IF ((&tmp) & (0x1))!=0x1
+(
+    PRINT "FAIL!! INIT_DONE1            &INIT_DONE1 = &tmp , [0] != 1"	
+)
+ELSE
+(
+    PRINT "Pass. INIT_DONE1            &INIT_DONE1 = &tmp"
+)
+
+&tmp=DATA.LONG(&WACS2_EN)
+IF ((&tmp) & (0x1))!=0x1
+(
+    PRINT "FAIL!! WACS2_EN            &WACS2_EN = &tmp , [0] != 1"	
+)
+ELSE
+(
+    PRINT "Pass. WACS2_EN              &WACS2_EN = &tmp"
+)			
+
+&tmp=DATA.LONG(&INIT_DONE2)
+IF ((&tmp) & (0x1))!=0x1
+(
+    PRINT "FAIL!! INIT_DONE2            &INIT_DONE2 = &tmp , [0] != 1"	
+)
+ELSE
+(
+    PRINT "Pass. INIT_DONE2            &INIT_DONE2 = &tmp"
+)
+
+&tmp=DATA.LONG(&WACS3_EN)
+IF ((&tmp) & (0x1))!=0x1
+(
+    PRINT "FAIL!! WACS3_EN            &WACS3_EN = &tmp , [0] != 1"	
+)
+ELSE
+(
+    PRINT "Pass. WACS3_EN              &WACS3_EN = &tmp"
+)			
+
+&tmp=DATA.LONG(&INIT_DONE3)
+IF ((&tmp) & (0x1))!=0x1
+(
+    PRINT "FAIL!! INIT_DONE3            &INIT_DONE3 = &tmp , [0] != 1"	
+)
+ELSE
+(
+    PRINT "Pass. INIT_DONE3            &INIT_DONE3 = &tmp"
+)
+
+&tmp=DATA.LONG(&WACS0_RDATA)
+IF ((&tmp) & (0x600000))!=0x600000
+(
+    PRINT "FAIL!! WACS0_RDATA           &WACS0_RDATA = &tmp , [21] != 1, [22] != 1"	
+)
+ELSE
+(
+    PRINT "Pass. WACS0_RDATA           &WACS0_RDATA = &tmp"
+)
+
+&tmp=DATA.LONG(&WACS1_RDATA)
+IF ((&tmp) & (0x600000))!=0x600000
+(
+    PRINT "FAIL!! WACS1_RDATA           &WACS1_RDATA = &tmp , [21] != 1, [22] != 1"	
+)
+ELSE
+(
+    PRINT "Pass. WACS1_RDATA           &WACS1_RDATA = &tmp"
+)
+
+&tmp=DATA.LONG(&WACS2_RDATA)
+IF ((&tmp) & (0x600000))!=0x600000
+(
+    PRINT "FAIL!! WACS2_RDATA           &WACS2_RDATA = &tmp , [21] != 1, [22] != 1"	
+)
+ELSE
+(
+    PRINT "Pass. WACS2_RDATA           &WACS2_RDATA = &tmp"
+)
+
+&tmp=DATA.LONG(&WACS3_RDATA)
+IF ((&tmp) & (0x600000))!=0x600000
+(
+    PRINT "FAIL!! WACS3_RDATA           &WACS3_RDATA = &tmp , [21] != 1, [22] != 1"	
+)
+ELSE
+(
+    PRINT "Pass. WACS3_RDATA           &WACS3_RDATA = &tmp"
+)
+
+ENDDO

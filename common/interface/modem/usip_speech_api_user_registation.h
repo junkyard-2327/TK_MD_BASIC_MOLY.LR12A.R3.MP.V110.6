@@ -1,0 +1,11 @@
+#ifndef USIP_SPEECH_API_USER_REGISTRATION_H
+#define USIP_SPEECH_API_USER_REGISTRATION_H
+
+/*****************************************
+* Prototype
+*       USIPAPI_USERNAME_SPEECH(DSP_CTRL_USIP_SPEECH_XXXXX)
+*****************************************/
+USIPAPI_USERNAME_SPEECH(uSIP_SPEECH_SS1_INIT) // This should be removed after el1d modify the code
+USIPAPI_USERNAME_SPEECH(DSP_CTRL_USIP_SPEECH_SS1_INIT)
+USIPAPI_USERNAME_SPEECH(DSP_CTRL_USIP_SPEECH)
+#endif  /* USIP_SPEECH_API_USER_REGISTRATION_H */

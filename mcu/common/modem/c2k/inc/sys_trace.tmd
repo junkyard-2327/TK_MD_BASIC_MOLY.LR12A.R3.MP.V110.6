@@ -1,0 +1,136 @@
+/*************************************************************
+*
+* This Software is the property of MTK, Inc. and may only be used pursuant to a license from MTK, Inc.  
+* 
+* Any unauthorized use inconsistent with the terms of such license is strictly prohibited.
+* 
+* Copyright (c) 2002-2016 MTK, Inc.  All rights reserved.
+*
+*************************************************************/
+[Default]
+  C2K_SYS
+  On
+  Buffer
+  TCMFORCE
+
+[MODEM_TYPE]
+  C2K_L1
+
+[Class]
+  SYS_UT_TRACE       OFF
+  SYS_IT_TRACE       ON
+  SYS_MP_TRACE       ON
+  SYS_FULL_FT_TRACE  ON
+  SYS_KERNAL_TRACE   ON
+  SYS_WARN           OFF
+  
+
+
+[String]
+  SYS_Init_String
+  {
+    "SYS fr init"
+
+  }
+
+
+[Message]
+  info   CL1TRACE_FRMSGEXE                   SYS_MP_TRACE           "CL1TRACE_FRMSGEXE: Src=%MFrModuleT, RdIdx=%d, MsgId=%Mmsg_type, MsgSestMod=%Mmodule_type"
+  info   CL1TRACE_FRMSGEXE_DETAIL            SYS_UT_TRACE           "CL1TRACE_FRMSGEXE_DETAIL: WrIdx=%d, Depth=%d, DataStartPtr=%-10Xl, DataEndPtr=%-10Xl, DataWrPtr=%-10Xl, DataRdPtr=%-10Xl, UseDm=%Mkal_bool, MsgLength=%-10Xl"
+  info   CL1TRACE_FRSWITRIG                  SYS_MP_TRACE           "CL1TRACE_FRSWITRIG: Trigger sleep RI"
+  info   CL1TRACE_FRSENDEVT                  SYS_MP_TRACE           "CL1TRACE_FRSENDEVT: Src=%MFrModuleT, Dest=%MFrModuleT, EvtId=%MFrEvtIdT, QueIdx=%d, WrIdx=%d"
+  info   CL1TRACE_FRSENDEVT_DETAIL           SYS_UT_TRACE           "CL1TRACE_FRSENDEVT_DETAIL: RdIdx=%d, Depth=%d, DataStartPtr=%-10Xl, DataEndPtr=%-10Xl, DataWrPtr=%-10Xl, DataRdPtr=%-10Xl, UseDm=%Mkal_bool, EvtLength=%-10Xl"
+  info   CL1TRACE_FRSENDEVT_DUMP             SYS_MP_TRACE           "CL1TRACE_FRSENDEVT_DUMP: EvtId=%MFrEvtIdT, DataPtr=%-10Xl, Length=%-10Xl, Timestamp=%ul"
+  info   CL1TRACE_FRIRQSENDMSG               SYS_MP_TRACE           "CL1TRACE_FRIRQSENDMSG: Src=%MFrModuleT, DestMod=%Mmodule_type, MsgId=%Mmsg_type, WrIdx=%d"
+  info   CL1TRACE_FRIRQSENDMSG_DETAIL        SYS_UT_TRACE           "CL1TRACE_FRIRQSENDMSG_DETAIL: RdIdx=%d, Depth=%d, DataStartPtr=%-10Xl, DataEndPtr=%-10Xl, DataWrPtr=%-10Xl, DataRdPtr=%-10Xl, UseDm=%Mkal_bool, [(OrigLength<<16)|MsgLength]=%-10Xl"
+  info   CL1TRACE_FRIRQSENDMSG_DUMP          SYS_MP_TRACE           "CL1TRACE_FRIRQSENDMSG_DUMP: DestMod=%Mmodule_type, MsgId=%Mmsg_type, DataPtr=%-10Xl, Length=%-10Xl, Timestamp=%ul"
+  info   CL1TRACE_FREVTEXE                   SYS_MP_TRACE           "CL1TRACE_FREVTEXE: QueIdx=%d, RdIdx=%d, EvtId=%MFrEvtIdT"
+  info   CL1TRACE_FREVTEXE_DETAIL            SYS_UT_TRACE           "CL1TRACE_FREVTEXE_DETAIL: WrIdx=%d, Depth=%d, DataStartPtr=%-10Xl, DataEndPtr=%-10Xl, DataWrPtr=%-10Xl, DataRdPtr=%-10Xl, UseDm=%Mkal_bool, EvtLength=%-10Xl"
+  info   CL1TRACE_FREVTEXE_BYPASS            SYS_MP_TRACE           "CL1TRACE_FREVTEXE_BYPASS: QueIdx=%d, RdIdx=%d, EvtId=%MFrEvtIdT"
+  info   CL1TRACE_FRTST_MSGHANDLE            SYS_UT_TRACE           "CL1TRACE_FRTST_MSGHANDLE: MsgId=%Mmsg_type, CaseId=%d, Ongong=%Mkal_bool, Cmd=%-10Xl"
+  info   CL1TRACE_FRTST_CASEPROCS_START      SYS_UT_TRACE           "CL1TRACE_FRTST_CASEPROCS_START: CaseId=%d, Ongong=%Mkal_bool, Cmd=%-10Xl"
+  info   CL1TRACE_FRTST_CASEPROCS_END        SYS_UT_TRACE           "CL1TRACE_FRTST_CASEPROCS_END: CaseId=%d, Ongong=%Mkal_bool, Cmd=%-10Xl"
+  info   CL1TRACE_FRTST_CMDTRANS_START       SYS_UT_TRACE           "CL1TRACE_FRTST_CMDTRANS_START: Src=%MFrModuleT, Cmd=%-10Xl, Maker=%-10Xl"
+  info   CL1TRACE_FRTST_CMDTRANS_END         SYS_UT_TRACE           "CL1TRACE_FRTST_CMDTRANS_END: Src=%MFrModuleT, Cmd=%-10Xl, Maker=%-10Xl"
+  info   CL1TRACE_SEFNPURGE                  SYS_MP_TRACE           "CL1TRACE_SEFNPURGE: SeFnIdx=%d"
+  info   CL1TRACE_SEFNADD                    SYS_MP_TRACE           "CL1TRACE_SEFNADD: SeFnIdx=%d, Ts=%-10Xl, CurrTs=%-10Xl, FuncId=%MFrSeFnFuncIdT, Param=%-10Xl"
+  info   CL1TRACE_SEFNADD_DUMP               SYS_MP_TRACE           "CL1TRACE_SEFNADD_DUMP: SeFnIdx=%d, Item=%d, Ts=%-10Xl, CurrTs=%-10Xl, FuncId=%MFrSeFnFuncIdT, Param=%-10Xl"
+  info   CL1TRACE_SEFNREMOVE                 SYS_MP_TRACE           "CL1TRACE_SEFNREMOVE: SeFnIdx=%d, FuncId=%MFrSeFnFuncIdT, Success=%Mkal_bool"
+  info   CL1TRACE_SEFNRUN                    SYS_MP_TRACE           "CL1TRACE_SEFNRUN: SeFnIdx=%d, CurrTs=%-10Xl, FuncId=%MFrSeFnFuncIdT, Param=%-10Xl"
+  info   CL1TRACE_SEFN_DBG                   SYS_UT_TRACE           "CL1TRACE_SEFN_DBG: SeFnIdx=%d, FreeEntry: %6Xl %6Xl %6Xl, ActiveEntry: %6Xl %6Xl %6Xl"
+
+  info   CL1TRACE_FRFTSYNC                   SYS_MP_TRACE           "CL1TRACE_FRFTSYNC: SyncFrc=%ul, SyncGpt=%ul, Period0=%ul, Period1=%ul, CurrFtTime=%ul"
+  info   CL1TRACE_FRFTOPEN                   SYS_MP_TRACE           "CL1TRACE_FRFTOPEN: SyncFrc=%ul, SyncGpt=%ul, Period0=%ul, Period1=%ul, CurrFtTime=%ul"
+  info   CL1TRACE_FRFHINFT                   SYS_MP_TRACE           "CL1TRACE_FRFHINFT: CurrFtTime=%ul, CurrFtNum=%ul, CurrFrc=%ul"
+  info   CL1TRACE_FRFHINRI                   SYS_MP_TRACE           "CL1TRACE_FRFHINRI: OwnerBitmap=%Xl"
+  info   CL1TRACE_FRFTNUMGET                 SYS_MP_TRACE           "CL1TRACE_FRFTNUMGET: Curr=%Mkal_bool, Frc=%ul, RevFtNum=%ul"
+  info   CL1TRACE_FRFTTIMEGET                SYS_MP_TRACE           "CL1TRACE_FRFTTIMEGET: Curr=%Mkal_bool, FtNum=%ul, RevFrc=%ul"
+
+  info   CL1TRACE_FRC_STARTSYNC              SYS_MP_TRACE           "CL1TRACE_FRC_STARTSYNC: Interface=%MSysAirInterfaceT, ActionTime=%-10Xl, [(SnapIdx<<16)|SFn(Upper)]=%-10Xl, SFn(Lower32)=%-10Xl, Chip8xOffset=%-10Xl, Frc=%-10Xl"
+  info   CL1TRACE_FRC_STOTSYNC               SYS_MP_TRACE           "CL1TRACE_FRC_STOTSYNC: Interface=%MSysAirInterfaceT, Valid=%Mkal_bool"
+  info   CL1TRACE_FRC_1XSNAPSHOT             SYS_MP_TRACE           "CL1TRACE_FRC_1XSNAPSHOT: Interface=SYS_MODE_1xRTT, ActionTime=%-10Xl, [(SnapIdx<<16)|SFn(Upper)]=%-10Xl, SFn(Lower32)=%-10Xl, Chip8xOffset=%-10Xl, Frc=%-10Xl"
+  info   CL1TRACE_FRC_DOSNAPSHOT             SYS_MP_TRACE           "CL1TRACE_FRC_DOSNAPSHOT: Interface=SYS_MODE_EVDO, ActionTime=%-10Xl, [(SnapIdx<<16)|SFn(Upper)]=%-10Xl, SFn(Lower32)=%-10Xl, Chip8xOffset=%-10Xl, Frc=%-10Xl"
+  info   CL1TRACE_FRC_SNAPSHOT_WARN          SYS_WARN               "CL1TRACE_FRC_SNAPSHOT_WARN: Interface=%MSysAirInterfaceT, CurrFn=%-10Xl, ActionTime=%-10Xl"
+  info   CL1TRACE_CONV_FRC2ST                SYS_MP_TRACE           "CL1TRACE_CONV_FRC2ST: Interface=%MSysAirInterfaceT, Frc=%-10Xl, SFn(Upper)=%-4Xb, SFn(Lower32)=%-10Xl, Chip8xOffset=%-10Xl"
+  info   CL1TRACE_CONV_ST2FRC                SYS_MP_TRACE           "CL1TRACE_CONV_ST2FRC: Interface=%MSysAirInterfaceT, SFn(Upper)=%-4Xb, SFn(Lower32)=%-10Xl, Chip8xOffset=%-10Xl, Frc=%-10Xl"
+
+  info   CL1TRACE_CLEAR_TIME_QUEUE_WRAP      SYS_MP_TRACE           "CL1TRACE_CLEAR_TIME_QUEUE_WRAP: Interface=%MSysAirInterfaceT, FirstP=%-10Xl, SystemTimeQtrSlot=%-10Xl, Trigger=%-10Xl"
+  info   CL1TRACE_CALLBACK_CANCEL_GROUP      SYS_UT_TRACE           "CL1TRACE_CALLBACK_CANCEL_GROUP: Interface=%MSysAirInterfaceT, module_id=%Mmodule_type, Msg=%Mmsg_type, Cnt=%d"
+  info   CL1TRACE_ERR_Q_FULL                 SYS_WARN               "CL1TRACE_ERR_Q_FULL: Interface=%MSysAirInterfaceT, TotalRegNum=%d, Other_TotalRegNum=%d, Q0_RegNum=%d, Q1_RegNum=%d, Q2_RegNum=%d, Other_Q0_RegNum=%d, Other_Q1_RegNum=%d, Other_Q2_RegNum=%d"
+  info   CL1TRACE_ERR_MEMORY_FULL            SYS_WARN               "CL1TRACE_ERR_MEMORY_FULL: TotalRegNum=%d, Other_TotalRegNum=%d"
+  info   CL1TRACE_CALLBACK_REG_FRAMEOFT      SYS_UT_TRACE           "CL1TRACE_CALLBACK_REG_FRAMEOFT: [(module_id<<16)|TagType]=%-10Xl, [(EventType<<16)|QueueType]=%-10Xl, Routine/Msg=%-10Xl, OrigTime=%-10Xl, ActionTime=%-10Xl, [(OrigSlot<<16)|SlotNum]=%-10Xl, Offset=%d"
+  info   CL1TRACE_ERR_REG_INVALID_TIME       SYS_WARN               "CL1TRACE_ERR_REG_INVALID_TIME: [(module_id<<16)|TagType]=%-10Xl, [(EventType<<16)|QueueType]=%-10Xl, Routine/Msg=%-10Xl, SystemTimeQtrSlot=%-10Xl, Trigger=%-10Xl"
+  info   CL1TRACE_CALLBACK_REG_SUCCESS       SYS_UT_TRACE           "CL1TRACE_CALLBACK_REG_SUCCESS: [(module_id<<16)|TagType]=%-10Xl, [(EventType<<16)|(QueueType<<8)|SlotNum]=%-10Xl, Routine/Msg=%-10Xl, ActionTime=%-10Xl, Trigger=%-10Xl, [(TotalRegNum<<16)|RegNum]=%-10Xl"
+  info   CL1TRACE_CALLBACK_CANCEL_SUCCESS    SYS_UT_TRACE           "CL1TRACE_CALLBACK_CANCEL_SUCCESS: [(module_id<<16)|TagType]=%-10Xl, [(EventType<<16)|QueueType]=%-10Xl, Trigger=%-10Xl, Trigger2=%-10Xl, Routine/Msg=%-10Xl, [(TotalRegNum<<16)|RegNum]=%-10Xl"
+  info   CL1TRACE_CALLBACK_CANEL_FRAMEOFT    SYS_UT_TRACE           "CL1TRACE_CALLBACK_CANEL_FRAMEOFT: [(module_id<<16)|TagType]=%-10Xl, [(EventType<<16)|QueueType]=%-10Xl, Routine/Msg=%-10Xl, OrigTime=%-10Xl, ActionTime=%-10Xl, [(OrigSlot<<16)|SlotNum]=%-10Xl, Offset=%d, [(TotalRegNum<<16)|RegNum]=%-10Xl"
+  info   CL1TRACE_ERR_CANCEL_INVALID_TIME    SYS_WARN               "CL1TRACE_ERR_CANCEL_INVALID_TIME: [(module_id<<16)|TagType]=%-10Xl, [(EventType<<16)|QueueType]=%-10Xl, Routine/Msg=%-10Xl, SystemTimeQtrSlot=%-10Xl, Trigger=%-10Xl"
+  info   CL1TRACE_ERR_CANCEL_FAILED          SYS_WARN               "CL1TRACE_ERR_CANCEL_FAILED: [(module_id<<16)|TagType]=%-10Xl, [(EventType<<16)|QueueType]=%-10Xl, Routine/Msg=%-10Xl, ActionTime=%-10Xl, SlotNum=%d, TotalRegNum=%d"
+  info   CL1TRACE_TRANSITION                 SYS_MP_TRACE           "CL1TRACE_TRANSITION: [(TransitionType<<24)|(AirInterfaceBM<<16| NewAirInterface]=%-10Xl, [(SysTimeControlBitMap<<16)|Other_SysTimeControlBitMap]=%-10Xl"
+  info   CL1TRACE_TRANSITION_2               SYS_MP_TRACE           "CL1TRACE_TRANSITION_2: Interface=%MSysAirInterfaceT, AirInterfaceBM=%d, FreeRun.Enabled=%Mkal_bool, FreeRun.FrameSize=%-10Xl"
+  info   CL1TRACE_TRANSITION_3               SYS_MP_TRACE           "CL1TRACE_TRANSITION_3: Interface=%MSysAirInterfaceT, AirInterfaceBM=%d, SysTimeControlBitMap=%d, Other_SysTimeControlBitMap=%d"
+  info   CL1TRACE_SWITCH_2                   SYS_MP_TRACE           "CL1TRACE_SWITCH_2: Interface=%MSysAirInterfaceT, SysTimeControlBitMap=%d, Other_SysTimeControlBitMap=%d, [(TransitionType<<16)|Enable]=%-10Xl"
+  info   CL1TRACE_TIME_STATUS_UPDATE         SYS_MP_TRACE           "CL1TRACE_TIME_STATUS_UPDATE: Interface=%MSysAirInterfaceT, UpdateReason=%MHscSsmMpaReasonT, 1X_Status=%MSysTimeStatusT, DO_Status=%MSysTimeStatusT"
+  info   CL1TRACE_ACTION_HISR_ACTION_SLOT    SYS_UT_TRACE           "CL1TRACE_ACTION_HISR_ACTION_SLOT: [(module_id<<16)|TagType]=%-10Xl, CurrT=%-10Xl, Routine/Msg=%-10Xl, Slot_Trigger=%-10Xl, SystemTimeQtrSlot=%-10Xl"
+  info   CL1TRACE_DOTIME_FULL_SET            SYS_MP_TRACE           "CL1TRACE_DOTIME_FULL_SET: Fn(Upper6)=%-4Xb, Fn(Lower32)=%-10Xl"
+  info   CL1TRACE_FRAMEOFT_NEW               SYS_MP_TRACE           "CL1TRACE_FRAMEOFT_NEW: FrameOffsetPrev=%d, FrameOffset=%d, RegNum[SLOT_QUEUE]=%d, RegNum[ACTION_QUEUE]=%d"
+  info   CL1TRACE_FRAMEOFT_DONE              SYS_MP_TRACE           "CL1TRACE_FRAMEOFT_DONE: RegNum[SLOT_QUEUE]=%d, RegNum[ACTION_QUEUE]=%d"
+  info   CL1TRACE_9MHZCNT_INIT_REQ           SYS_MP_TRACE           "CL1TRACE_9MHZCNT_INIT_REQ: Flag=%Mkal_bool, AckRequired=%Mkal_bool, 1X_Status=%MSysTimeStatusT, DO_Status=%MSysTimeStatusT"
+  info   CL1TRACE_9MHZCNT_INIT_WRT           SYS_MP_TRACE           "CL1TRACE_9MHZCNT_INIT_WRT: CurrEchipDo=%-10Xl, EchipDo=%-10Xl, Echip1x=%-10Xl, SupFn(Upper8)=%-4Xb, SupFn(Lower32)=%-10Xl"
+  info   CL1TRACE_9MHZCNT_INIT_COMPLETE      SYS_MP_TRACE           "CL1TRACE_9MHZCNT_INIT_COMPLETE: EchipDo=%-10Xl, Echip1x=%-10Xl"
+  info   CL1TRACE_TIME_RESET                 SYS_MP_TRACE           "CL1TRACE_TIME_RESET: 1X_Fn(Upper6)=%-4Xb, 1X_Fn(Lower32)=%-10Xl"
+  info   CL1TRACE_TIME_DATA_GET              SYS_MP_TRACE           "CL1TRACE_TIME_DATA_GET: [(ValidCalendar<<16)|FreeRun.Enabled]=%-10Xl, [(AirInterfaceBM<<16)|Interface]=%-10Xl, [(1X_Status<<16)|DO_Status]=%-10Xl, Fn(Upper6)=%-4Xb, Fn(Lower32)=%-10Xl"
+  info   CL1TRACE_TIME_2SEC                  SYS_MP_TRACE           "CL1TRACE_TIME_2SEC: Seconds=%d, Milliseconds=%d, Fn(Upper6)=%-4Xb, Fn(Lower32)=%-10Xl, LpSec=%d, LtmOff=%b, DayLt=%b, sec=%d, ms=%d"
+  info   CL1TRACE_SYSTIME_SYNC               SYS_MP_TRACE           "CL1TRACE_SYSTIME_SYNC: Fn(Upper6)=%-4Xb, Fn(Lower32)=%-10Xl, FrameSize=%-10Xl, LpSec=%d, LtmOff=%b, DayLt=%b"
+  info   CL1TRACE_TIME_DATA_COPY             SYS_MP_TRACE           "CL1TRACE_TIME_DATA_COPY: Interface=%MSysAirInterfaceT, FrameSize=%-10Xl, Fn(Upper6)=%-4Xb, Fn(Lower32)=%-10Xl, 1X_Status=%MSysTimeStatusT, DO_Status=%MSysTimeStatusT"
+  info   CL1TRACE_TIME_DATA_FLUSH            SYS_MP_TRACE           "CL1TRACE_TIME_DATA_FLUSH: Interface=%MSysAirInterfaceT, Fn(Upper6)=%-4Xb, Fn(Lower32)=%-10Xl, 1X_Status=%MSysTimeStatusT, DO_Status=%MSysTimeStatusT"
+
+  info   CL1TRACE_MON_SLEEP_CANCEL           SYS_MP_TRACE           "CL1TRACE_MON_SLEEP_CANCEL: Interface=%MSysAirInterfaceT, SleepStatus:[1xHw|1xSw|DoHw|DoSw]=%-10Xl, RequestFlag:[1xPend|1xReq|1xInf|1xFly|DoPend|DoReq|DoInf|DoFly]=%-10Xl"
+  info   CL1TRACE_MON_SLEEP_REQUEST          SYS_MP_TRACE           "CL1TRACE_MON_SLEEP_REQUEST: Interface=%MSysAirInterfaceT, WakeTime:Sfn=(Upper6)%-4Xb(Lower32)%-10Xl Echip=%-10Xl, TimeTillWake:(H)%-10Xl(L)%-10Xl, SleepStatus:[1xHw|1xSw|DoHw|DoSw]=%-10Xl, RequestFlag:[1xPend|1xReq|1xInf|1xFly|DoPend|DoReq|DoInf|DoFly]=%-10Xl"
+  info   CL1TRACE_MON_SLEEP_SUSPEND          SYS_MP_TRACE           "CL1TRACE_MON_SLEEP_SUSPEND: Interface=%MSysAirInterfaceT, BitMask=%-10Xl, 1X_Veto=%-10Xl, DO_Veto=%-10Xl, SS_Veto=%-10Xl, RequestFlag:[1xPend|1xReq|1xInf|1xFly|DoPend|DoReq|DoInf|DoFly]=%-10Xl"
+  info   CL1TRACE_MON_SLEEP_RESUME           SYS_MP_TRACE           "CL1TRACE_MON_SLEEP_RESUME: Interface=%MSysAirInterfaceT, BitMask=%-10Xl, 1X_Veto=%-10Xl, DO_Veto=%-10Xl, SS_Veto=%-10Xl, RequestFlag:[1xPend|1xReq|1xInf|1xFly|DoPend|DoReq|DoInf|DoFly]=%-10Xl"
+
+  info   CL1TRACE_WAKE_HISR_TRACE_SLP1       SYS_MP_TRACE           "CL1TRACE_WAKE_HISR_TRACE_SLP1: Interface=%MSysAirInterfaceT, TIME_START=[%Xl,%Xl,%Xl], SLTBD=[%Xl,%Xl,%Xl], WAKEUP_START=[%Xl,%Xl,%Xl]"
+  info   CL1TRACE_WAKE_HISR_TRACE_SLP2       SYS_MP_TRACE           "CL1TRACE_WAKE_HISR_TRACE_SLP2: Interface=%MSysAirInterfaceT, F32K=[%Xl,%Xl,%Xl,%Xl], PAUSE_TIME=%Xl, FINAL_PAUSE_DURATION=%Xl, PRESLP_CNT=%Xl, START_TIME=%Xl, SM_CON(TimeBased/Imm)=%Xl"
+  info   CL1TRACE_WAKE_HISR                  SYS_MP_TRACE           "CL1TRACE_MON_SLEEP_WAKE_HISR: Interface=%MSysAirInterfaceT, SleepStatus:[1xHw|1xSw|DoHw|DoSw]=%-10Xl"
+  info   CL1TRACE_WAKE_LISR                  SYS_MP_TRACE           "CL1TRACE_WAKE_LISR: Interface=%MSysAirInterfaceT, ST_SM_STA=%Xl, ST_SM_SLEEP_OFFSET=%Xl, ST_SM_STEP_FRAC=%Xl, CurrFRC=%Xl, Curr9M=%Xl"
+  info   CL1TRACE_WAKE_LISR_WARNING          SYS_MP_TRACE           "CL1TRACE_WAKE_LISR_WARNING:Wake LISR Execution > 30us,Interface=%MSysAirInterfaceT, ExeTime[0]=%Xl, ExeTime[1]=%Xl, ExeTime[2]=%Xl, ExeTime[3]=%Xl, ExeTime[4]=%Xl,ExeTime[5]=%Xl,ExeTime[6]=%Xl,ExeTime[7]=%Xl"
+
+  info   CL1TRACE_FTIME_REG                  SYS_MP_TRACE           "CL1TRACE_FTIME_REG: Mode=%MSysAirInterfaceT, SuperFrameTar=%-10Xl, Chip8xOffsetTar=%-10Xl, SuperFrameTar=%-10Xl, Chip8xOffsetCur=%-10Xl, FtimerStarus=%MSysFTimerStatusT"
+  info   CL1TRACE_FTIME_CANCEL               SYS_MP_TRACE           "CL1TRACE_FTIME_CANCEL: Mode=%MSysAirInterfaceT"
+  info   CL1TRACE_FTIME_LISR                 SYS_MP_TRACE           "CL1TRACE_FTIME_LISR: Mode=%MSysAirInterfaceT, Chip8xOffsetCur=%-10Xl"
+  info   CL1TRACE_FTIME_CONF                 SYS_MP_TRACE           "CL1TRACE_FTIME_CONF: Mode=%MSysAirInterfaceT, Chip8xOffsetTar=%-10Xl"
+
+  info   CL1TRACE_LPMDIV_UPDATE              SYS_MP_TRACE           "CL1TRACE_LPMDIV_UPDATE: [(ForceUpdate<<8)|Adjuster]=%-6Xl, [FreqOffsetTotal<<16)|LpmFreqOffset]=%-10Xl, [TimeDrift<<16)|K_reslt]=%-10Xl, LastUpdateAttempt=%-10Xl, LastUpdateTime=%-10Xl, CurrLpmCnt=%-10Xl"
+  info   CL1TRACE_FPMDIV_UPDATE              SYS_MP_TRACE           "CL1TRACE_FPMDIV_UPDATE: Adjuster=%MSysAirInterfaceT, AfcFreqOffset=%l"
+
+  info   CL1TRACE_DSP_1STBOOT_DBG            SYS_MP_TRACE           "CL1TRACE_DSP_1STBOOT_DBG: Line#%d, var1=%Xl, var2=%Xl, var3=%Xl, var4=%Xl, var5=%Xl, var6=%Xl, var7=%Xl, var8=%Xl, var9=%Xl"
+
+  info   CL1TRACE_SLOT_TIME_PROFILE          SYS_MP_TRACE           "CL1TRACE_SLOT_TIME_PROFILE: %MSysAirInterfaceT, CpIntOffset=%Xl, EchipEntry=%Xl, EchipExit=%Xl, r_latency=%ul, r_trans=%ul, w_latency=%ul, w_trans=%ul"
+  info   CL1TRACE_FT_TIME_PROFILE            SYS_MP_TRACE           "CL1TRACE_FT_TIME_PROFILE: FrcEntry=%ul, FrcExit=%ul, r_latency=%l, r_trans=%l, w_latency=%l, w_trans=%l"
+  info   CL1TRACE_FT_TIME_PROFILE_ERR        SYS_MP_TRACE           "CL1TRACE_FT_TIME_PROFILE_ERR: FrcEntry=%ul, FrcExit=%ul, FtNum=%ul"
+  info   CL1TRACE_Cl1TimeProfile1            SYS_MP_TRACE           "CL1TimeProfiling1: Mode=%MTimeProfileModeT, T1=%ud, T2=%ud, T3=%ud, T4=%ud, T5=%ud, T6=%ud, T7=%ud, T8=%ud, T9=%ud"
+  info	 CL1TRACE_Cl1TimeProfile2	     SYS_MP_TRACE	    "CL1TimeProfiling2: Mode=%MTimeProfileModeT, T10=%ud, T11=%ud, T12=%ud, T13=%ud, T14=%ud, T15=%ud, T16=%ud, T17=%ud, T18=%ud"
+  info	 CL1TRACE_Cl1TimeProfile3	     SYS_MP_TRACE           "CL1TimeProfiling3: Mode=%MTimeProfileModeT, T19=%ud, T20=%ud, T21=%ud, T22=%ud, T23=%ud, T24=%ud, T25=%ud, T26=%ud, T27=%ud"
+  info	 CL1TRACE_Cl1TimeProfile4	     SYS_MP_TRACE           "CL1TimeProfiling4: Mode=%MTimeProfileModeT, T28=%ud, T29=%ud, T30=%ud, T31=%ud, T32=%ud, T33=%ud, T34=%ud, T35=%ud, T36=%ud"
+  info	 CL1TRACE_CHECKEVENTINT2FQ	     SYS_MP_TRACE           "CL1TRACE_CHECKEVENTINT2FQ: FrcEntry=%ul, FrcExit=%ul,EvtNum = %d"
+

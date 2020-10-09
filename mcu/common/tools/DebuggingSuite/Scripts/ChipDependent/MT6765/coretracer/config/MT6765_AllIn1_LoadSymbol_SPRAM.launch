@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="com.mediatek.ide.launch.gdbjtag.launchConfigurationType">
+<stringAttribute key="com.mediatek.ide.dsf.gdb.core.BREAKPOINT_LIST" value="[{&quot;number&quot;:11,&quot;type&quot;:&quot;hw breakpoint&quot;,&quot;disp&quot;:&quot;keep&quot;,&quot;enabled&quot;:true,&quot;address&quot;:&quot;0x9f005180&quot;,&quot;func&quot;:&quot;&quot;,&quot;fullName&quot;:&quot;Z:\\Perforce\\chia-fu.lee_mtkslt206_137\\ws_chia-fu.lee_Sylvia_BringUp_TCM\\UMOLYA_CBr\\ap.wang\\LR12A.R2.MP.MT6771.SB.DEV_PreBringupWithDSP\\mcu\\common\\service\\sst\\src\\ex_hdlr_gcc.S&quot;,&quot;file&quot;:&quot;common/service/sst/src/ex_hdlr_gcc.S&quot;,&quot;line&quot;:458,&quot;cond&quot;:&quot;&quot;,&quot;times&quot;:0,&quot;exp&quot;:&quot;&quot;,&quot;threadId&quot;:&quot;0&quot;,&quot;ignore&quot;:0,&quot;commands&quot;:&quot;&quot;,&quot;originalLocation&quot;:&quot;*0x9f005180&quot;,&quot;passcount&quot;:0,&quot;isWpt&quot;:false,&quot;isAWpt&quot;:false,&quot;isRWpt&quot;:false,&quot;isWWpt&quot;:false,&quot;isHdw&quot;:true,&quot;isTpt&quot;:false,&quot;isCatchpoint&quot;:false,&quot;isDynPrintf&quot;:false,&quot;pending&quot;:false,&quot;groupIds&quot;:[&quot;i1&quot;]},{&quot;number&quot;:12,&quot;type&quot;:&quot;hw breakpoint&quot;,&quot;disp&quot;:&quot;keep&quot;,&quot;enabled&quot;:true,&quot;address&quot;:&quot;0x9f205691&quot;,&quot;func&quot;:&quot;IdleTask&quot;,&quot;fullName&quot;:&quot;Z:\\Perforce\\chia-fu.lee_mtkslt206_137\\ws_chia-fu.lee_Sylvia_BringUp_TCM\\UMOLYA_CBr\\ap.wang\\LR12A.R2.MP.MT6771.SB.DEV_PreBringupWithDSP\\mcu\\common\\driver\\sys_drv\\init\\src\\idle_task.c&quot;,&quot;file&quot;:&quot;common/driver/sys_drv/init/src/idle_task.c&quot;,&quot;line&quot;:96,&quot;cond&quot;:&quot;&quot;,&quot;times&quot;:0,&quot;exp&quot;:&quot;&quot;,&quot;threadId&quot;:&quot;0&quot;,&quot;ignore&quot;:0,&quot;commands&quot;:&quot;&quot;,&quot;originalLocation&quot;:&quot;IdleTask&quot;,&quot;passcount&quot;:0,&quot;isWpt&quot;:false,&quot;isAWpt&quot;:false,&quot;isRWpt&quot;:false,&quot;isWWpt&quot;:false,&quot;isHdw&quot;:true,&quot;isTpt&quot;:false,&quot;isCatchpoint&quot;:false,&quot;isDynPrintf&quot;:false,&quot;pending&quot;:false,&quot;groupIds&quot;:[&quot;i1&quot;]}]"/>
+<stringAttribute key="com.mediatek.ide.dsf.gdb.core.EXPRESSION_LIST" value="[]"/>
+<stringAttribute key="com.mediatek.ide.util.PROGRAM_NAME" value="[CMMAUTOGEN_ELFPath]"/>
+<stringAttribute key="com.mediatek.ide.util.actionAwarenessConfiguration" value=""/>
+<booleanAttribute key="com.mediatek.ide.util.autoTerminate" value="false"/>
+<stringAttribute key="com.mediatek.ide.util.cache.FilePath" value=""/>
+<booleanAttribute key="com.mediatek.ide.util.clearBreakpoint" value="true"/>
+<booleanAttribute key="com.mediatek.ide.util.clearExpression" value="true"/>
+<stringAttribute key="com.mediatek.ide.util.connection" value="com.mediatek.ide.util.LocalTarget"/>
+<stringAttribute key="com.mediatek.ide.util.connectorArguments" value=""/>
+<booleanAttribute key="com.mediatek.ide.util.doReset" value="false"/>
+<stringAttribute key="com.mediatek.ide.util.gdbArguments" value=""/>
+<intAttribute key="com.mediatek.ide.util.gdbPortNumber" value="3333"/>
+<stringAttribute key="com.mediatek.ide.util.imageFileName" value=""/>
+<stringAttribute key="com.mediatek.ide.util.imageOffset" value=""/>
+<stringAttribute key="com.mediatek.ide.util.initCommands" value="monitor mips32 ispram 2 0x9f000000 0x9f02d000 0x9f200000 0x9f224000"/>
+<stringAttribute key="com.mediatek.ide.util.ipAddress" value="localhost"/>
+<booleanAttribute key="com.mediatek.ide.util.loadImage" value="false"/>
+<booleanAttribute key="com.mediatek.ide.util.loadSymbols" value="true"/>
+<stringAttribute key="com.mediatek.ide.util.osAwarenessProgram" value="osawareness.exe"/>
+<stringAttribute key="com.mediatek.ide.util.osAwarenessProgramArguments" value=""/>
+<stringAttribute key="com.mediatek.ide.util.pcRegister" value=""/>
+<booleanAttribute key="com.mediatek.ide.util.profileAccumulativeMode" value="false"/>
+<stringAttribute key="com.mediatek.ide.util.profileDisableValue" value=""/>
+<booleanAttribute key="com.mediatek.ide.util.profileEnable" value="true"/>
+<stringAttribute key="com.mediatek.ide.util.profileEnableValue" value=""/>
+<stringAttribute key="com.mediatek.ide.util.profileRawData" value="./profile_data"/>
+<stringAttribute key="com.mediatek.ide.util.profileType" value="Profile.Address"/>
+<stringAttribute key="com.mediatek.ide.util.runCommands" value="hb general_ex_handler&#13;&#10;hb INT_TEMP_general_ex_vector"/>
+<booleanAttribute key="com.mediatek.ide.util.setPcRegister" value="false"/>
+<booleanAttribute key="com.mediatek.ide.util.setResume" value="false"/>
+<booleanAttribute key="com.mediatek.ide.util.setStopAt" value="false"/>
+<stringAttribute key="com.mediatek.ide.util.stopAt" value=""/>
+<stringAttribute key="com.mediatek.ide.util.substitute_path" value=""/>
+<booleanAttribute key="com.mediatek.ide.util.substitute_path_no_translate" value="false"/>
+<stringAttribute key="com.mediatek.ide.util.symbolsFileName" value=""/>
+<stringAttribute key="com.mediatek.ide.util.symbolsOffset" value=""/>
+<stringAttribute key="com.mediatek.ide.util.target" value="MT6293_Chip"/>
+<stringAttribute key="com.mediatek.ide.util.targetopt.args" value="-f board/mips/mt6293_mips_chip.cfg -c &quot;adapter_khz 10000&quot;"/>
+<stringAttribute key="com.mediatek.ide.util.targetopt.cmds" value=""/>
+<stringAttribute key="com.mediatek.ide.util.targetopt.widget.args" value="{&quot;Clock_10000&quot;:&quot;10000&quot;}"/>
+<booleanAttribute key="com.mediatek.ide.util.useActionAwareness" value="false"/>
+<booleanAttribute key="com.mediatek.ide.util.useFileForImage" value="false"/>
+<booleanAttribute key="com.mediatek.ide.util.useFileForSymbols" value="false"/>
+<booleanAttribute key="com.mediatek.ide.util.useOsAwareness" value="false"/>
+<booleanAttribute key="com.mediatek.ide.util.useProjBinaryForImage" value="true"/>
+<booleanAttribute key="com.mediatek.ide.util.useProjBinaryForSymbols" value="true"/>
+<stringAttribute key="org.eclipse.cdt.debug.mi.core.commandFactory" value="Standard (Windows)"/>
+<stringAttribute key="org.eclipse.cdt.debug.mi.core.protocol" value="mi"/>
+<booleanAttribute key="org.eclipse.cdt.debug.mi.core.verboseMode" value="false"/>
+<stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_START_MODE" value="attach"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROGRAM_NAME" value=""/>
+<booleanAttribute key="org.eclipse.debug.core.capture_output" value="true"/>
+<booleanAttribute key="org.eclipse.debug.ui.ATTR_CONSOLE_OUTPUT_ON" value="true"/>
+<booleanAttribute key="org.eclipse.debug.ui.ATTR_LAUNCH_IN_BACKGROUND" value="false"/>
+<stringAttribute key="org.eclipse.dsf.launch.MEMORY_BLOCKS" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#13;&#10;&lt;memoryBlockExpressionList context=&quot;reserved-for-future-use&quot;/&gt;&#13;&#10;"/>
+<stringAttribute key="process_factory_id" value="org.eclipse.cdt.dsf.gdb.GdbProcessFactory"/>
+<stringAttribute key="saved_expressions&lt;seperator&gt;Unknown" value="0xa0350000,0xa0330000,0x9ff02400,0x9f00ff80,0x9f000000,0x9f000300,0x9f200000,0xa0210800,0xa02100000,0xa0210000,0x90005b04,0xa0310000"/>
+</launchConfiguration>

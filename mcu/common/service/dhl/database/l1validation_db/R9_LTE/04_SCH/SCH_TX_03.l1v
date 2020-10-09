@@ -1,0 +1,26 @@
+{ Validation }
+Title 		= "[R9_LTE][04_SCH]SCH_TX_03: Test of ACK/NACK Repetition Procedure" 
+ModuleID 	= MOD_ERRC
+MsgID 		= MSG_ID_L1EDPS_SCH_TX_03
+
+/******************************************************************************
+* Data Structure accomnying the above primitive
+typedef struct
+{
+   kal_uint8          ref_count;
+   kal_uint16         msg_len;
+} l1edps_sch_tx_03_struct;
+*
+*******************************************************************************/
+
+
+{Parameters}
+/******************************************************************************
+* 1. The following is the constrained range for the input of this value.
+* 2. Some combination of the following bit-fields may be suported
+* 3. The parameter range can be changed to support combinations of different bands
+*******************************************************************************/
+
+/* [Variable Name] "corresponding label showen on GUI" */
+
+

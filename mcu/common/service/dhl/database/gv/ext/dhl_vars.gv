@@ -1,0 +1,5 @@
+VARS kal_bool  "" 
+{
+      {tst_is_PsTrc_open}   TST_IS_PSTRC_OPEN;
+};
+

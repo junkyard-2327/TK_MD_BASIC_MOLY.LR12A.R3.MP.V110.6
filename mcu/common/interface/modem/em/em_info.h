@@ -1,0 +1,1492 @@
+/*****************************************************************************
+*  Copyright Statement:
+*  --------------------
+*  This software is protected by Copyright and the information contained
+*  herein is confidential. The software may not be copied and the information
+*  contained herein may not be used or disclosed except with the written
+*  permission of MediaTek Inc. (C) 2015
+*
+*  BY OPENING THIS FILE, BUYER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+*  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("MEDIATEK SOFTWARE")
+*  RECEIVED FROM MEDIATEK AND/OR ITS REPRESENTATIVES ARE PROVIDED TO BUYER ON
+*  AN "AS-IS" BASIS ONLY. MEDIATEK EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES,
+*  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+*  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NONINFRINGEMENT.
+*  NEITHER DOES MEDIATEK PROVIDE ANY WARRANTY WHATSOEVER WITH RESPECT TO THE
+*  SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY, INCORPORATED IN, OR
+*  SUPPLIED WITH THE MEDIATEK SOFTWARE, AND BUYER AGREES TO LOOK ONLY TO SUCH
+*  THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO. MEDIATEK SHALL ALSO
+*  NOT BE RESPONSIBLE FOR ANY MEDIATEK SOFTWARE RELEASES MADE TO BUYER'S
+*  SPECIFICATION OR TO CONFORM TO A PARTICULAR STANDARD OR OPEN FORUM.
+*
+*  BUYER'S SOLE AND EXCLUSIVE REMEDY AND MEDIATEK'S ENTIRE AND CUMULATIVE
+*  LIABILITY WITH RESPECT TO THE MEDIATEK SOFTWARE RELEASED HEREUNDER WILL BE,
+*  AT MEDIATEK'S OPTION, TO REVISE OR REPLACE THE MEDIATEK SOFTWARE AT ISSUE,
+*  OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE CHARGE PAID BY BUYER TO
+*  MEDIATEK FOR SUCH MEDIATEK SOFTWARE AT ISSUE.
+*
+*  THE TRANSACTION CONTEMPLATED HEREUNDER SHALL BE CONSTRUED IN ACCORDANCE
+*  WITH THE LAWS OF THE STATE OF CALIFORNIA, USA, EXCLUDING ITS CONFLICT OF
+*  LAWS PRINCIPLES.  ANY DISPUTES, CONTROVERSIES OR CLAIMS ARISING THEREOF AND
+*  RELATED THERETO SHALL BE SETTLED BY ARBITRATION IN SAN FRANCISCO, CA, UNDER
+*  THE RULES OF THE INTERNATIONAL CHAMBER OF COMMERCE (ICC).
+*
+*****************************************************************************/
+ /*******************************************************************************
+ * Filename:
+ * ---------
+ *   em_info.h
+ *
+ * Project:
+ * --------
+ *   UMOLY
+ *
+ * Description:
+ * ------------
+ *   This header file is provided for macro used. It will define the module which
+ * registers the EM service.
+ *
+ * Author:
+ * -A------
+ * Bart Liang
+ *
+ *==============================================================================
+ *             HISTORY
+ * Below this line, this part is controlled by PVCS VM. DO NOT MODIFY!!
+ *------------------------------------------------------------------------------
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ *
+ *------------------------------------------------------------------------------
+ * Upper this line, this part is controlled by PVCS VM. DO NOT MODIFY!!
+ *==============================================================================
+ *******************************************************************************/
+
+/********************************************************************************
+*  Copyright Statement:
+*  --------------------
+*
+*  This product has been developed using a protocol stack
+*  developed by Sasken Communication Technologies Limited.
+*
+********************************************************************************/
+
+/*
+ *  Format: EM_INFO(EM_SRV,X,Y,X_BM,Y_BM,MSGID)
+ *
+ *      Description:
+ *          Regist your module ID with specific EM info num.
+ *          EM_SRV  : the em type defined in em_info_enum
+ *          X       : the module ID whom L4C shall send MSG_ID_L4CPS_EM_UPDATE_REQ to
+ *          Y       : receive MSG_ID_L4CPS_EM_UPDATE_REQ from L4C allong with X.
+ *                    L4C helps to broadcast to two modules at most. This design is due to some EM modules are
+ *                    separated into FDD and TDD modules in UBIN activity, but they still share the same EM type
+ *          X_BM    : the bitmask for X, to indicates the supported modules in multi-SIM porject.
+ *                    for example, if module X is extended to module (X+1) in dual SIM project, and both modules
+ *                    support EM_SRV independently, please use 0x02 in X_BM, and so on. If EM_SRV is only supported
+ *                    in one module X even in multi-SIM project, please just use 0x01.
+ *          Y_BM    : the same as X_BM but for Y
+ *          MSGID   : the inication message sent from EM module, which carries the EM information
+ *
+ *      Example:
+ *          EM_INFO(UEM_EM_BATTERY_INFO, MOD_UEM, MOD_NIL, MSG_ID_UEM_EM_BATTERY_INFO)
+ *              -> Notify MOD_UEM if UEM_EM_BATTERY_INFO service has changed.
+ *
+ *  1.  Expand in em_info_req_mod_tbl[]
+ *          EM_INFO(EM_SRV,X,Y,X_BM,Y_BM,MSGID) -> Mapping em_info: EM_SRV to mod_id: X & Y
+ *
+ *  2.  Expand in em_msgid.h
+ *          EM_INFO(EM_SRV,X,Y,X_BM,Y_BM,MSGID) -> MSGID
+ *
+ *      Description:
+ *          Define the MSGID in em_msgid.h
+ *
+ *  3.  Expand in msg_id_to_em_info_map
+ *          EM_INFO(EM_SRV,X,Y,X_BM,Y_BM,MSGID) -> MAPPED_MSGID = EM_SRV
+ *
+ *      Description:
+ *          Define the MAPPED_MSGID in msg_id_to_em_info_map and its value (=EM_SRV).
+ *
+ */
+
+#define ZERO_BITMASK  0
+#define SINGLE_BITMASK 0x01
+
+#if defined(__GEMINI__) || defined(__SGLTE__)
+#if (GEMINI_PLUS >= 4)
+#define GEMINI_BITMASK 0x0F
+#elif (GEMINI_PLUS >= 3)
+#define GEMINI_BITMASK 0x07
+#else
+#define GEMINI_BITMASK 0x03
+#endif
+#else
+#define GEMINI_BITMASK SINGLE_BITMASK
+#endif /* __GEMINI__ || __SGLTE__ */
+
+#ifdef __GEMINI_WCDMA__
+#if (GEMINI_PLUS_WCDMA >= 4)
+#define WCDMA_BITMASK 0x0F
+#elif (GEMINI_PLUS_WCDMA >= 3)
+#define WCDMA_BITMASK 0x07
+#else
+#define WCDMA_BITMASK 0x03
+#endif
+#else
+#define WCDMA_BITMASK SINGLE_BITMASK
+#endif /* __GEMINI_WCDMA__ */
+
+#ifdef __GEMINI_LTE__
+#if (GEMINI_PLUS_LTE >= 4)
+#define LTE_BITMASK 0x0F
+#elif (GEMINI_PLUS_LTE >= 3)
+#define LTE_BITMASK 0x07
+#else
+#define LTE_BITMASK 0x03
+#endif
+#else
+#define LTE_BITMASK SINGLE_BITMASK
+#endif /* __GEMINI_LTE__ */
+
+#if defined(__UMTS_TDD128_MODE__) || defined(__TDD_MODEM__) || defined(__TDD_2G_OP01__)
+#define EM_MOD_RRM_TDD  MOD_RRM_TDD
+#else
+#define EM_MOD_RRM_TDD  MOD_NIL
+#endif
+
+#ifdef __UMTS_TDD128_MODE__
+#define EM_MOD_URR_TDD  MOD_URR_TDD
+#define EM_MOD_CSR_TDD MOD_CSR_TDD
+#define EM_MOD_UL2_TDD MOD_UL2_TDD
+#else
+#define EM_MOD_URR_TDD  MOD_NIL
+#define EM_MOD_CSR_TDD MOD_NIL
+#define EM_MOD_UL2_TDD MOD_NIL
+#endif
+
+    /*RRM*/
+#if !defined(RR_NOT_PRESENT)
+EM_INFO(RR_EM_CELL_SELECT_PARA_INFO,    MOD_RRM_FDD, EM_MOD_RRM_TDD,   GEMINI_BITMASK, GEMINI_BITMASK, MSG_ID_EM_RRM_CELL_SELECT_PARA_INFO_IND)
+EM_INFO(RR_EM_CHANNEL_DESCR_INFO,       MOD_RRM_FDD, EM_MOD_RRM_TDD,   GEMINI_BITMASK, GEMINI_BITMASK, MSG_ID_EM_RRM_CHANNEL_DESCR_INFO_IND)
+EM_INFO(RR_EM_CTRL_CHANNEL_DESCR_INFO,  MOD_RRM_FDD, EM_MOD_RRM_TDD,   GEMINI_BITMASK, GEMINI_BITMASK, MSG_ID_EM_RRM_CTRL_CHANNEL_DESCR_INFO_IND)
+EM_INFO(RR_EM_RACH_CTRL_PARA_INFO,      MOD_RRM_FDD, EM_MOD_RRM_TDD,   GEMINI_BITMASK, GEMINI_BITMASK, MSG_ID_EM_RRM_RACH_CTRL_PARA_INFO_IND)
+EM_INFO(RR_EM_LAI_INFO,                 MOD_RRM_FDD, EM_MOD_RRM_TDD,   GEMINI_BITMASK, GEMINI_BITMASK, MSG_ID_EM_RRM_LAI_INFO_IND)
+EM_INFO(RR_EM_RADIO_LINK_COUNTER_INFO,  MOD_RRM_FDD, EM_MOD_RRM_TDD,   GEMINI_BITMASK, GEMINI_BITMASK, MSG_ID_EM_RRM_RADIO_LINK_COUNTER_INFO_IND)
+EM_INFO(RR_EM_MEASUREMENT_REPORT_INFO,  MOD_RRM_FDD, EM_MOD_RRM_TDD,   GEMINI_BITMASK, GEMINI_BITMASK, MSG_ID_EM_RRM_MEASUREMENT_REPORT_INFO_IND)
+EM_INFO(RR_EM_CA_LIST_INFO,             MOD_RRM_FDD, EM_MOD_RRM_TDD,   GEMINI_BITMASK, GEMINI_BITMASK, MSG_ID_EM_RRM_CA_LIST_INFO_IND)
+EM_INFO(RR_EM_CONTROL_MSG_INFO,         MOD_RRM_FDD, EM_MOD_RRM_TDD,   GEMINI_BITMASK, GEMINI_BITMASK, MSG_ID_EM_RRM_CONTROL_MSG_INFO_IND)
+EM_INFO(RR_EM_CONTROL_MSG_INFO,         MOD_NIL,     MOD_NIL,       ZERO_BITMASK,   ZERO_BITMASK,   MSG_ID_EM_MAC_CONTROL_MSG_INFO_IND)
+EM_INFO(RR_EM_SI2Q_INFO_STRUCT_INFO,    MOD_RRM_FDD, EM_MOD_RRM_TDD,   GEMINI_BITMASK, GEMINI_BITMASK, MSG_ID_EM_RRM_SI2Q_INFO_IND)
+EM_INFO(RR_EM_MI_INFO_STRUCT_INFO,      MOD_RRM_FDD, EM_MOD_RRM_TDD,   GEMINI_BITMASK, GEMINI_BITMASK, MSG_ID_EM_RRM_MI_INFO_IND)
+EM_INFO(RR_EM_BLK_INFO,                 MOD_RRM_FDD, EM_MOD_RRM_TDD,   GEMINI_BITMASK, GEMINI_BITMASK, MSG_ID_EM_MAC_BLK_INFO_IND)
+EM_INFO(RR_EM_TBF_INFO,                 MOD_RRM_FDD, EM_MOD_RRM_TDD,   GEMINI_BITMASK, GEMINI_BITMASK, MSG_ID_EM_MAC_TBF_INFO_IND)
+EM_INFO(RR_EM_GPRS_GENERAL_INFO,        MOD_RRM_FDD, EM_MOD_RRM_TDD,   GEMINI_BITMASK, GEMINI_BITMASK, MSG_ID_EM_RRM_GPRS_GENERAL_INFO_IND)
+#if defined(__UMTS_RAT__) || defined(__LTE_RAT__)
+EM_INFO(RRM_EM_FDD_IR_PARAMETER_STATUS_IND_STRUCT_INFO, MOD_RRM_FDD, MOD_NIL,       GEMINI_BITMASK, ZERO_BITMASK,   MSG_ID_FDD_EM_RRM_IR_PARAMETER_STATUS_IND)
+EM_INFO(RRM_EM_TDD_IR_PARAMETER_STATUS_IND_STRUCT_INFO, EM_MOD_RRM_TDD, MOD_NIL,       GEMINI_BITMASK, ZERO_BITMASK,   MSG_ID_TDD_EM_RRM_IR_PARAMETER_STATUS_IND)
+EM_INFO(RRM_EM_IR_RESELECT_STATUS_IND_STRUCT_INFO,      MOD_RRM_FDD, EM_MOD_RRM_TDD,   GEMINI_BITMASK, GEMINI_BITMASK, MSG_ID_EM_RRM_IR_RESELECT_STATUS_IND)
+#endif /* defined(__UMTS_RAT__) || defined(__LTE_RAT__) */
+#ifdef __UMTS_RAT__
+EM_INFO(RRM_EM_IR_3G_NEIGHBOR_MEAS_STATUS_IND_STRUCT_INFO,  MOD_RRM_FDD, EM_MOD_RRM_TDD, GEMINI_BITMASK, GEMINI_BITMASK, MSG_ID_EM_RRM_IR_3G_NEIGHBOR_MEAS_STATUS_IND)
+EM_INFO(RRM_EM_IR_3G_NEIGHBOR_MEAS_INFO_IND_STRUCT_INFO,    MOD_RRM_FDD, EM_MOD_RRM_TDD, GEMINI_BITMASK, GEMINI_BITMASK, MSG_ID_EM_RRM_IR_3G_NEIGHBOR_MEAS_INFO_IND)
+#endif /* __UMTS_RAT__ */
+#ifdef __LTE_RAT__
+EM_INFO(RRM_EM_IR_4G_NEIGHBOR_MEAS_STATUS_IND_STRUCT_INFO,  MOD_RRM_FDD, EM_MOD_RRM_TDD, GEMINI_BITMASK, GEMINI_BITMASK, MSG_ID_EM_RRM_IR_4G_NEIGHBOR_MEAS_STATUS_IND)
+EM_INFO(RRM_EM_IR_4G_NEIGHBOR_MEAS_INFO_IND_STRUCT_INFO,    MOD_RRM_FDD, EM_MOD_RRM_TDD, GEMINI_BITMASK, GEMINI_BITMASK, MSG_ID_EM_RRM_IR_4G_NEIGHBOR_MEAS_INFO_IND)
+#endif /* __LTE_RAT__ */
+EM_INFO(RRM_EM_SERV_CELL_POWER_STATUS_IND_STRUCT_INFO,      EM_MOD_RRM_TDD, MOD_NIL,     GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_RRM_SERV_CELL_POWER_STATUS_IND)
+EM_INFO(RRM_EM_IR_3G_NEIGHBOR_CELL_STATUS_IND_STRUCT_INFO,  EM_MOD_RRM_TDD, MOD_NIL,     GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_RRM_IR_3G_NEIGHBOR_CELL_STATUS_IND)
+EM_INFO(RRM_EM_IR_4G_NEIGHBOR_CELL_STATUS_IND_STRUCT_INFO,  EM_MOD_RRM_TDD, MOD_NIL,     GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_RRM_IR_4G_NEIGHBOR_CELL_STATUS_IND)
+EM_INFO(RRM_EM_SUCCESS_RATE_KPI_INFO,                       MOD_RRM_FDD, EM_MOD_RRM_TDD, GEMINI_BITMASK, GEMINI_BITMASK, MSG_ID_EM_RRM_SUCCESS_RATE_KPI_IND)
+EM_INFO(RRM_EM_MT_T3126_TIMEOUT_INFO,                       MOD_RRM_FDD, EM_MOD_RRM_TDD, GEMINI_BITMASK, GEMINI_BITMASK, MSG_ID_EM_RRM_MT_T3126_TIMEOUT_IND)
+EM_INFO(RRM_EM_CS_RLF_INFO,                                 MOD_RRM_FDD, EM_MOD_RRM_TDD, GEMINI_BITMASK, GEMINI_BITMASK, MSG_ID_EM_RRM_CS_RLF_INFO_IND)
+EM_INFO(RRM_EM_GAS_SEARCH_INFO,                             MOD_RRM_FDD, MOD_NIL,     GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_RRM_GAS_SEARCH_INFO_IND)
+EM_INFO(RRM_EM_RR_STATE_INFO,                               MOD_RRM_FDD, MOD_NIL,     GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_RRM_RR_STATE_INFO_IND)
+EM_INFO(RRM_EM_DOWNLINK_SIGNALLING_COUNTER_INFO,            MOD_RRM_FDD, EM_MOD_RRM_TDD, GEMINI_BITMASK, GEMINI_BITMASK, MSG_ID_EM_RRM_DOWNLINK_SIGNALLING_COUNTER_INFO_IND)
+EM_INFO(RRM_EM_RACH_FAIL,                                   MOD_RRM_FDD, EM_MOD_RRM_TDD,     GEMINI_BITMASK, GEMINI_BITMASK, MSG_ID_EM_RRM_RACH_FAIL_IND)
+EM_INFO(RRM_EM_N200_EXP,                                    MOD_RRM_FDD, EM_MOD_RRM_TDD,     GEMINI_BITMASK, GEMINI_BITMASK, MSG_ID_EM_RRM_N200_EXP_IND)
+EM_INFO(RRM_EM_HO_FAIL,                                     MOD_RRM_FDD, EM_MOD_RRM_TDD,     GEMINI_BITMASK, GEMINI_BITMASK, MSG_ID_EM_RRM_HO_FAIL_IND)
+EM_INFO(RRM_EM_OOS_IND,                                     MOD_RRM_FDD, MOD_NIL,     GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_RRM_OOS_IND)
+#endif /* !defined(RR_NOT_PRESENT) */
+
+    /*CC*/
+#if !defined(CC_NOT_PRESENT)
+EM_INFO(CC_EM_CHANNEL_INFO, MOD_CC, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_CC_CHANNEL_INFO_IND)
+EM_INFO(CC_EM_CALL_INFO,    MOD_CC, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_CC_CALL_INFO_IND)
+#endif
+
+    /*MM*/
+#if !defined(MM_NOT_PRESENT)
+EM_INFO(MM_EM_INFO,              MOD_MM, MOD_NIL,    GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_MM_INFO_IND)
+EM_INFO(GMM_EM_INFO,             MOD_MM, MOD_NIL,    GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_GMM_INFO_IND)
+
+EM_INFO(MM_EM_MTC_TIMER_INFO,    MOD_MM, MOD_NIL,    GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_MM_MTC_TIMER_INFO_IND)
+EM_INFO(MM_EM_LU_INFO,           MOD_MM, MOD_NIL,    GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_MM_LU_INFO_IND)
+EM_INFO(MM_EM_RAU_INFO,          MOD_MM, MOD_NIL,    GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_GMM_RAU_INFO_IND)
+
+EM_INFO(MM_EM_MT_CSFB_INFO,      MOD_MM, MOD_NIL,    GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_MM_MT_CSFB_INFO_IND)
+EM_INFO(MM_EM_CSFB_STATUS,       MOD_MM, MOD_NIL,    GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_MM_CSFB_STATUS_IND)
+EM_INFO(MM_EM_REG_REJ_INFO,      MOD_MM, MOD_NIL,    GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_REG_REJ_INFO_IND)
+EM_INFO(MM_EM_AUTH_REJ_INFO,     MOD_MM, MOD_NIL,    GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_AUTH_REJ_INFO_IND)
+EM_INFO(MM_EM_AS_FAIL_INFO,      MOD_MM, MOD_NIL,    GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_AS_FAIL_INFO_IND)
+EM_INFO(MM_EM_MTCS_MTCSFB_STATUS,MOD_MM, MOD_NIL,	 GEMINI_BITMASK,	 ZERO_BITMASK, MSG_ID_EM_MM_MTCS_MTCSFB_STATUS_IND)
+EM_INFO(MM_EM_MOCS_MOCSFB_STATUS,MOD_MM, MOD_NIL,    GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_MM_MOCS_MOCSFB_STATUS_IND)
+EM_INFO(MM_EM_MM_GMM_PROC_REJ_INFO,MOD_MM, MOD_NIL,	 GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_MM_GMM_PROC_REJ_INFO_IND)
+#endif
+
+    /*NWSEL*/
+#if !defined(NWSEL_NOT_PRESENT)
+EM_INFO(MMRR_EM_PLMN_INFO_STRUCT_INFO,           MOD_NWSEL, MOD_NIL,     GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_NWSEL_PLMN_INFO_IND)
+EM_INFO(MMRR_EM_PLMN_LOSS_INFO_STRUCT_INFO,      MOD_NWSEL, MOD_NIL,     GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_NWSEL_PLMN_LOSS_INFO_IND)
+EM_INFO(MMRR_EM_PLMN_SEARCH_CNF_INFO_STRUCT_INFO,MOD_NWSEL, MOD_NIL,     GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_NWSEL_PLMN_SEARCH_CNF_INFO_IND)
+EM_INFO(NWSEL_EM_TIMER_INFO,                     MOD_NWSEL, MOD_NIL,     GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_NWSEL_TIMER_INFO_IND)
+EM_INFO(NWSEL_EM_PLMN_LIST_REQ_INFO,             MOD_NWSEL, MOD_NIL,     GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_NWSEL_PLMN_LIST_REQ_INFO_IND)
+EM_INFO(MMRR_EM_PLMN_LIST_CNF_STRUCT_INFO,       MOD_NWSEL, MOD_NIL,     GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_NWSEL_PLMN_LIST_CNF_INFO_IND)
+EM_INFO(NWSEL_EM_PLMN_SEARCH_REQ_INFO,           MOD_NWSEL, MOD_NIL,     GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_NWSEL_PLMN_SEARCH_REQ_INFO_IND)
+EM_INFO(NWSEL_EM_HPLMN_INFO_INFO,                MOD_NWSEL, MOD_NIL,     GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_NWSEL_HPLMN_INFO_IND)
+EM_INFO(NWSEL_EM_OPLMN_INFO_INFO,                MOD_NWSEL, MOD_NIL,     GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_NWSEL_OPLMN_INFO_IND)
+EM_INFO(NWSEL_EM_STATIC_APPLMN_INFO,             MOD_NWSEL, MOD_NIL,     GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_NWSEL_STATIC_APPLMN_INFO_IND)
+EM_INFO(NWSEL_EM_DYNAMIC_APPLMN_INFO,            MOD_NWSEL, MOD_NIL,     GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_NWSEL_DYNAMIC_APPLMN_INFO_IND)
+EM_INFO(NWSEL_EM_EUTRAN_DISABLE_INFO,            MOD_NWSEL, MOD_NIL,     GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_NWSEL_EUTRAN_DISABLE_INFO_IND)
+#endif
+
+    /*GMSS*/
+#if !defined(GMSS_NOT_PRESENT)
+EM_INFO(GMSS_EM_WORLD_PHONE_INFO, MOD_GMSS, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_GMSS_WORLD_PHONE_INFO_IND)
+#endif
+
+    /*UEM*/
+EM_INFO(UEM_EM_BATTERY_INFO, MOD_UEM, MOD_NIL,  SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_UEM_EM_BATTERY_INFO)  // No MGS ID
+
+#ifdef __PS_SERVICE__
+    /*LLC*/
+EM_INFO(LLC_EM_INFO, MOD_LLC, MOD_NIL,   GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_LLC_STATUS_IND)
+
+    /*SM*/
+EM_INFO(SM_EM_INFO, MOD_SM,  MOD_NIL,    GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_SM_NSAPI5_STATUS_IND)
+EM_INFO(SM_EM_INFO, MOD_NIL, MOD_NIL,    ZERO_BITMASK,   ZERO_BITMASK, MSG_ID_EM_SM_NSAPI6_STATUS_IND)
+EM_INFO(SM_EM_INFO, MOD_NIL, MOD_NIL,    ZERO_BITMASK,   ZERO_BITMASK, MSG_ID_EM_SM_NSAPI7_STATUS_IND)
+EM_INFO(SM_EM_INFO, MOD_NIL, MOD_NIL,    ZERO_BITMASK,   ZERO_BITMASK, MSG_ID_EM_SM_NSAPI8_STATUS_IND)
+EM_INFO(SM_EM_INFO, MOD_NIL, MOD_NIL,    ZERO_BITMASK,   ZERO_BITMASK, MSG_ID_EM_SM_NSAPI9_STATUS_IND)
+EM_INFO(SM_EM_INFO, MOD_NIL, MOD_NIL,    ZERO_BITMASK,   ZERO_BITMASK, MSG_ID_EM_SM_NSAPI10_STATUS_IND)
+EM_INFO(SM_EM_INFO, MOD_NIL, MOD_NIL,    ZERO_BITMASK,   ZERO_BITMASK, MSG_ID_EM_SM_NSAPI11_STATUS_IND)
+EM_INFO(SM_EM_INFO, MOD_NIL, MOD_NIL,    ZERO_BITMASK,   ZERO_BITMASK, MSG_ID_EM_SM_NSAPI12_STATUS_IND)
+EM_INFO(SM_EM_INFO, MOD_NIL, MOD_NIL,    ZERO_BITMASK,   ZERO_BITMASK, MSG_ID_EM_SM_NSAPI13_STATUS_IND)
+EM_INFO(SM_EM_INFO, MOD_NIL, MOD_NIL,    ZERO_BITMASK,   ZERO_BITMASK, MSG_ID_EM_SM_NSAPI14_STATUS_IND)
+EM_INFO(SM_EM_INFO, MOD_NIL, MOD_NIL,    ZERO_BITMASK,   ZERO_BITMASK, MSG_ID_EM_SM_NSAPI15_STATUS_IND)
+
+    /* GL1 */
+EM_INFO( GL1_EM_TAS_INFO, MOD_L1, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_GSM_TAS_INFO_IND )
+#ifdef __2G_RX_DIVERSITY_PATH_SUPPORT__
+EM_INFO( GL1_EM_RXD_INFO, MOD_L1, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_GSM_RXD_INFO_IND )
+#endif
+
+    /*TCM*/
+EM_INFO(EM_TCM_INFO_IND, MOD_TCM, MOD_NIL,   GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_TCM_INFO_IND)
+#endif
+
+EM_INFO(EM_SIM_MONITOR_EVENT_INFO, MOD_SIM, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_SIM_MONITOR_EVENT_INFO_IND)
+
+
+#ifdef __UMTS_RAT__ //For MAUI, MONZA2G exclude 3G
+    /*URR*/
+EM_INFO(FDD_EM_URR_3G_GENERAL_STATUS_IND,           MOD_URR_FDD, MOD_NIL,   WCDMA_BITMASK,     ZERO_BITMASK,     MSG_ID_FDD_EM_URR_3G_GENERAL_STATUS_IND)
+EM_INFO(EM_SIBE_3G_SIB_IND_STRUCT_INFO,             MOD_URR_FDD, EM_MOD_URR_TDD,   WCDMA_BITMASK,     SINGLE_BITMASK, MSG_ID_EM_SIBE_SIB_STATUS_IND)
+EM_INFO(FDD_EM_CSCE_SERV_CELL_IND_STRUCT_INFO,      MOD_URR_FDD, MOD_NIL,   WCDMA_BITMASK,     ZERO_BITMASK,     MSG_ID_FDD_EM_CSCE_SERV_CELL_S_STATUS_IND)
+EM_INFO(FDD_EM_CSCE_NEIGH_CELL_IND_STRUCT_INFO,     MOD_URR_FDD, MOD_NIL,   WCDMA_BITMASK,     ZERO_BITMASK,     MSG_ID_FDD_EM_CSCE_NEIGH_CELL_S_STATUS_IND)
+EM_INFO(FDD_EM_CSCE_R_STATUS_IND_STRUCT_INFO,       MOD_URR_FDD, MOD_NIL,   WCDMA_BITMASK,     ZERO_BITMASK,     MSG_ID_FDD_EM_CSCE_CELL_R_STATUS_IND)
+EM_INFO(FDD_EM_CSCE_H_STATUS_IND_STRUCT_INFO,       MOD_URR_FDD, MOD_NIL,   WCDMA_BITMASK,     ZERO_BITMASK,     MSG_ID_FDD_EM_CSCE_CELL_H_STATUS_IND)
+EM_INFO(FDD_EM_CSCE_APBCR_STATUS_IND_STRUCT_INFO,   MOD_URR_FDD, MOD_NIL,   WCDMA_BITMASK,     ZERO_BITMASK,     MSG_ID_FDD_EM_CSCE_APBCR_STATUS_IND)
+EM_INFO(FDD_EM_CSCE_MEAS_RULE_STATUS_IND_STRUCT_INFO,MOD_URR_FDD, MOD_NIL,  WCDMA_BITMASK,     ZERO_BITMASK,    MSG_ID_FDD_EM_CSCE_MEAS_RULE_STATUS_IND)
+EM_INFO(FDD_EM_CSCE_MULTIPLE_PLMN_IND_STRUCT_INFO,  MOD_URR_FDD, MOD_NIL,   WCDMA_BITMASK,     ZERO_BITMASK,     MSG_ID_FDD_EM_CSCE_MULTIPLE_PLMN_IND)
+EM_INFO(EM_FDD_MEME_INFO_DCH_UMTS_CELL_INFO,        MOD_URR_FDD, MOD_NIL,   WCDMA_BITMASK,     ZERO_BITMASK,     MSG_ID_FDD_EM_MEME_DCH_UMTS_CELL_INFO_IND)
+EM_INFO(EM_FDD_MEME_INFO_DCH_GSM_CELL_INFO,         MOD_URR_FDD, MOD_NIL,   WCDMA_BITMASK,     ZERO_BITMASK,     MSG_ID_FDD_EM_MEME_DCH_GSM_CELL_INFO_IND)
+EM_INFO(EM_FDD_MEME_INFO_DCH_LTE_CELL_INFO,         MOD_URR_FDD, MOD_NIL,   WCDMA_BITMASK,     ZERO_BITMASK,     MSG_ID_FDD_EM_MEME_DCH_LTE_CELL_INFO_IND)
+EM_INFO(EM_FDD_MEME_INFO_DCH_H_SERVING_CELL_INFO,   MOD_URR_FDD, MOD_NIL,   WCDMA_BITMASK,     ZERO_BITMASK,     MSG_ID_FDD_EM_MEME_DCH_H_SERVING_CELL_INFO_IND)
+EM_INFO(EM_FDD_MEME_INFO_DCH_3G_BLER_INFO,          MOD_URR_FDD, MOD_NIL,   WCDMA_BITMASK,     ZERO_BITMASK,     MSG_ID_FDD_EM_MEME_DCH_BLER_INFO_IND)
+EM_INFO(EM_FDD_MEME_INFO_FACH_LTE_CELL_INFO,        MOD_URR_FDD, MOD_NIL,   WCDMA_BITMASK,     ZERO_BITMASK,     MSG_ID_FDD_EM_MEME_FACH_LTE_CELL_INFO_IND)
+EM_INFO(EM_FDD_MEME_INFO_EVENT_TYPE_3_PARAMETER_INFO, MOD_URR_FDD, MOD_NIL,     WCDMA_BITMASK,     ZERO_BITMASK,     MSG_ID_FDD_EM_MEME_EVENT_TYPE_3_PARAMETER_INFO_IND)
+EM_INFO(EM_FDD_MEME_INFO_REPORT_INFO,               MOD_URR_FDD, MOD_NIL,   WCDMA_BITMASK,     ZERO_BITMASK,     MSG_ID_FDD_EM_MEME_REPORT_INFO_IND)
+EM_INFO(EM_RRCE_NW_PEER_MSG_INFO,  MOD_URR_FDD, MOD_NIL,   WCDMA_BITMASK,     ZERO_BITMASK,     MSG_ID_EM_RRCE_NW_PEER_MSG_INFO_IND)
+EM_INFO(EM_RRCE_TGPS_STATUS_IND,                    MOD_URR_FDD, EM_MOD_URR_TDD,   WCDMA_BITMASK,     SINGLE_BITMASK, MSG_ID_EM_RRCE_TGPS_STATUS_IND)
+EM_INFO(EM_SLCE_SRNCID_STATUS_IND,                  MOD_URR_FDD, EM_MOD_URR_TDD,   WCDMA_BITMASK,     SINGLE_BITMASK, MSG_ID_EM_SLCE_SRNCID_STATUS_IND)
+EM_INFO(EM_RRCE_3G_SECURITY_CONFIGURATION_INFO_IND, MOD_URR_FDD, EM_MOD_URR_TDD,   WCDMA_BITMASK,     SINGLE_BITMASK, MSG_ID_EM_RRCE_3G_SECURITY_CONFIGURATION_STATUS_IND)
+EM_INFO(EM_UAS_3G_TDD128_HANDOVER_SEQUENCE_IND,     MOD_URR_FDD, EM_MOD_URR_TDD,   SINGLE_BITMASK,     SINGLE_BITMASK, MSG_ID_EM_UAS_3G_TDD128_HANDOVER_SEQUENCE_IND)
+EM_INFO(EM_RRCE_3G4_REDIR_EVENT,                    MOD_URR_FDD, EM_MOD_URR_TDD,   SINGLE_BITMASK,     SINGLE_BITMASK, MSG_ID_EM_RRCE_3G4_REDIR_EVENT_IND)  // No MGS ID
+EM_INFO(EM_RRCE_KPI_STATUS_IND,                     MOD_URR_FDD, EM_MOD_URR_TDD,   WCDMA_BITMASK,     SINGLE_BITMASK, MSG_ID_EM_RRCE_KPI_STATUS_IND)
+EM_INFO(EM_SLCE_PS_DATA_RATE_STATUS_IND,            MOD_URR_FDD, EM_MOD_URR_TDD,   WCDMA_BITMASK,     SINGLE_BITMASK, MSG_ID_EM_SLCE_PS_DATA_RATE_STATUS_IND)
+EM_INFO(EM_RRCE_DCH_STATE_CONFIGURATION_STATUS_IND, MOD_URR_FDD, EM_MOD_URR_TDD,   WCDMA_BITMASK,     SINGLE_BITMASK, MSG_ID_EM_RRCE_DCH_STATE_CONFIGURATION_STATUS_IND)
+EM_INFO(EM_RRCE_FACH_STATE_CONFIGURATION_STATUS_IND,MOD_URR_FDD, EM_MOD_URR_TDD,   WCDMA_BITMASK,     SINGLE_BITMASK, MSG_ID_EM_RRCE_FACH_STATE_CONFIGURATION_STATUS_IND)
+EM_INFO(EM_RRCE_CS_OVER_HSPA_STATUS_IND,            MOD_URR_FDD, EM_MOD_URR_TDD,   WCDMA_BITMASK,     SINGLE_BITMASK, MSG_ID_EM_RRCE_CS_OVER_HSPA_STATUS_IND)
+EM_INFO(EM_RRCE_HSPA_CONFIG_IND,                    MOD_URR_FDD, EM_MOD_URR_TDD,   WCDMA_BITMASK,     SINGLE_BITMASK, MSG_ID_EM_RRCE_HSPA_CONFIG_IND) /* MOLY00100048, Jack Chu, HSPA configuration in 3G dedicated */
+EM_INFO(EM_RRCE_FD_CONFIGURATION_STATUS_IND,        MOD_URR_FDD, EM_MOD_URR_TDD,   WCDMA_BITMASK,     SINGLE_BITMASK, MSG_ID_EM_RRCE_FD_CONFIGURATION_STATUS_IND)
+/* __ALPS02506878_SUPPORT__ */
+EM_INFO(EM_RRCE_RLF_IND, 						 		 MOD_URR_FDD, EM_MOD_URR_TDD,   WCDMA_BITMASK,		SINGLE_BITMASK, MSG_ID_EM_RRCE_RLF_IND)
+EM_INFO(EM_RRCE_3G_CELL_UARFCN_DL_UL_INFO_IND,  	MOD_URR_FDD, EM_MOD_URR_TDD,   WCDMA_BITMASK,	   SINGLE_BITMASK, MSG_ID_EM_RRCE_3G_CELL_UARFCN_DL_UL_INFO_IND)
+EM_INFO(EM_RRCE_RACH_FAIL_IND, 						MOD_URR_FDD, EM_MOD_URR_TDD,   WCDMA_BITMASK,		SINGLE_BITMASK, MSG_ID_EM_RRCE_RACH_FAIL_IND)
+EM_INFO(EM_RRCE_MO_RLF_IND, 						MOD_URR_FDD, EM_MOD_URR_TDD,   WCDMA_BITMASK,		SINGLE_BITMASK, MSG_ID_EM_RRCE_MO_RLF_IND)
+EM_INFO(EM_RRCE_3G3_HO_FAIL_IND, 					MOD_URR_FDD, EM_MOD_URR_TDD,   WCDMA_BITMASK,		SINGLE_BITMASK, MSG_ID_EM_RRCE_3G3_HO_FAIL_IND)
+EM_INFO(EM_RRCE_3G2_HO_FAIL_IND, 					MOD_URR_FDD, EM_MOD_URR_TDD,   WCDMA_BITMASK,		SINGLE_BITMASK, MSG_ID_EM_RRCE_3G2_HO_FAIL_IND)
+EM_INFO(TDD_EM_URR_3G_GENERAL_STATUS_IND,           EM_MOD_URR_TDD, MOD_NIL,   SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_TDD_EM_URR_3G_GENERAL_STATUS_IND)
+EM_INFO(TDD_EM_RRCE_CONN_STATUS_IND,           EM_MOD_URR_TDD, MOD_NIL,   SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_TDD_EM_RRCE_CONN_STATUS_IND)
+EM_INFO(TDD_EM_CSCE_SERV_CELL_IND_STRUCT_INFO,      EM_MOD_URR_TDD, MOD_NIL,   SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_TDD_EM_CSCE_SERV_CELL_S_STATUS_IND)
+EM_INFO(TDD_EM_CSCE_NEIGH_CELL_IND_STRUCT_INFO,        EM_MOD_URR_TDD, MOD_NIL,    SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_TDD_EM_CSCE_NEIGH_CELL_S_STATUS_IND)
+EM_INFO(TDD_EM_CSCE_R_STATUS_IND_STRUCT_INFO,       EM_MOD_URR_TDD, MOD_NIL,   SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_TDD_EM_CSCE_CELL_R_STATUS_IND)
+EM_INFO(TDD_EM_CSCE_H_STATUS_IND_STRUCT_INFO,       EM_MOD_URR_TDD, MOD_NIL,   SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_TDD_EM_CSCE_CELL_H_STATUS_IND)
+EM_INFO(TDD_EM_CSCE_APBCR_STATUS_IND_STRUCT_INFO,      EM_MOD_URR_TDD, MOD_NIL,    SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_TDD_EM_CSCE_APBCR_STATUS_IND)
+EM_INFO(TDD_EM_CSCE_MEAS_RULE_STATUS_IND_STRUCT_INFO,  EM_MOD_URR_TDD, MOD_NIL,    SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_TDD_EM_CSCE_MEAS_RULE_STATUS_IND)
+EM_INFO(TDD_EM_CSCE_MULTIPLE_PLMN_IND_STRUCT_INFO,     EM_MOD_URR_TDD, MOD_NIL,    SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_TDD_EM_CSCE_MULTIPLE_PLMN_IND)
+EM_INFO(EM_TDD_MEME_INFO_DCH_UMTS_CELL_INFO,        EM_MOD_URR_TDD, MOD_NIL,   SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_TDD_EM_MEME_DCH_UMTS_CELL_INFO_IND)
+EM_INFO(EM_TDD_MEME_INFO_DCH_GSM_CELL_INFO,         EM_MOD_URR_TDD, MOD_NIL,   SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_TDD_EM_MEME_DCH_GSM_CELL_INFO_IND)
+EM_INFO(EM_TDD_MEME_INFO_DCH_LTE_CELL_INFO,         EM_MOD_URR_TDD, MOD_NIL,   SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_TDD_EM_MEME_DCH_LTE_CELL_INFO_IND)
+EM_INFO(EM_TDD_MEME_INFO_EVENT_TYPE_1_PARAMETER_STRUCT_INFO, EM_MOD_URR_TDD, MOD_NIL,  SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_TDD_EM_MEME_EVENT_TYPE_1_PARAMETER_INFO_IND)
+EM_INFO(EM_TDD_MEME_INFO_EVENT_TYPE_2_PARAMETER_STRUCT_INFO, EM_MOD_URR_TDD, MOD_NIL,  SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_TDD_EM_MEME_EVENT_TYPE_2_PARAMETER_INFO_IND)
+EM_INFO(EM_TDD_MEME_INFO_EVENT_TYPE_3_PARAMETER_STRUCT_INFO, EM_MOD_URR_TDD, MOD_NIL,  SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_TDD_EM_MEME_EVENT_TYPE_3_PARAMETER_INFO_IND)
+//EM_INFO(EM_TDD_MEME_INFO_DCH_3G_BLER_INFO,          EM_MOD_URR_TDD, MOD_NIL, MSG_ID_EM_TDD_MEME_INFO_DCH_3G_BLER_INFO)  // No MGS ID, remove
+EM_INFO(EM_TDD_MEME_INFO_GSM_CELL_INFO,             EM_MOD_URR_TDD, MOD_NIL,   SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_TDD_EM_MEME_GSM_NCELL_INFO_IND)   // for CMCC FT Tool
+EM_INFO(EM_TDD_MEME_INFO_LTE_CELL_INFO,             EM_MOD_URR_TDD, MOD_NIL,   SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_TDD_EM_MEME_LTE_NCELL_INFO_IND)   // for CMCC FT Tool
+EM_INFO(EM_TDD_MEME_INFO_REPORT_INFO,             EM_MOD_URR_TDD, MOD_NIL,     SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_TDD_EM_MEME_REPORT_INFO_IND)
+
+    /* USIME */
+EM_INFO(USIME_EM_INFO_CAPABILITY,               MOD_URR_FDD, MOD_NIL,   WCDMA_BITMASK,     ZERO_BITMASK,     MSG_ID_FDD_EM_USIME_CAPABILITY_INFO_IND)
+
+    /*CSR*/
+EM_INFO(EM_CSR_STATUS_IND, MOD_CSR_FDD, EM_MOD_CSR_TDD, WCDMA_BITMASK, SINGLE_BITMASK, MSG_ID_EM_CSR_STATUS_IND)
+
+
+    /*UL1*/
+EM_INFO(UL1_EM_HS_DSCH_CONFIGURATION_INFO,  MOD_UL1, MOD_NIL,   SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_FDD_EM_UL1_HS_DSCH_CONFIG_IND)
+EM_INFO(UL1_EM_EDCH_CONFIGURATION_INFO,     MOD_UL1, MOD_NIL,   SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_FDD_EM_UL1_EDCH_CONFIG_IND)
+EM_INFO(UL1_EM_CPC_CONFIGURATION_INFO,      MOD_UL1, MOD_NIL,   SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_FDD_EM_UL1_CPC_CONFIG_IND)
+EM_INFO(UL1_EM_SECONDARY_HS_CONFIGURATION_STATUS_INFO, MOD_UL1, MOD_NIL,    SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_FDD_EM_UL1_SEC_HS_DSCH_CONFIG_IND)
+EM_INFO(UL1_EM_PRIMARY_HS_DSCH_BLER_INFO,   MOD_UL1, MOD_NIL,   SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_FDD_EM_UL1_PRI_HS_DSCH_BLER_IND)
+EM_INFO(UL1_EM_SECONDARY_HS_DSCH_BLER_INFO, MOD_UL1, MOD_NIL,   SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_FDD_EM_UL1_SEC_HS_DSCH_BLER_IND)
+EM_INFO(UL1_EM_EDCH_ACK_RATE_INFO,          MOD_UL1, MOD_NIL,   SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_FDD_EM_UL1_EDCH_ACK_RATE_IND)
+EM_INFO(UL1_EM_PRX_DRX_MEASUREMENT_INFO,    MOD_UL1, MOD_NIL,   WCDMA_BITMASK,     ZERO_BITMASK, MSG_ID_FDD_EM_UL1_PRX_DRX_MEASUREMENT_IND)
+EM_INFO(UL1_EM_HSPA_INFO_GROUP,             MOD_UL1, MOD_NIL,   WCDMA_BITMASK,     ZERO_BITMASK, MSG_ID_FDD_EM_UL1_HSPA_INFO_GROUP_IND)
+EM_INFO(UL1_EM_TAS_INFO,                    MOD_UL1, MOD_NIL,   WCDMA_BITMASK,     ZERO_BITMASK, MSG_ID_FDD_EM_UL1_TAS_INFO_IND)
+EM_INFO(UL1_EM_RADIO_LINK_SYNC_STATUS,      MOD_UL1, MOD_NIL,   WCDMA_BITMASK,     ZERO_BITMASK, MSG_ID_EM_UL1_RADIO_LINK_SYNC_STATUS_IND)
+EM_INFO(UL1_EM_UL1_RXD_STATUS,              MOD_UL1, MOD_NIL,   WCDMA_BITMASK,     ZERO_BITMASK, MSG_ID_FDD_EM_UL1_RXD_STATUS_IND)
+EM_INFO(UL1_EM_FS_UARFCN_INFO,              MOD_UL1, MOD_NIL,   WCDMA_BITMASK,     ZERO_BITMASK, MSG_ID_EM_UL1_FREQ_RAT_INFO_DURING_SEARCH_IND)
+
+    /*UL2*/
+EM_INFO(UL2_EM_WCDMA_RLC_STATS_STRUCT_INFO, MOD_URLC_FDD, MOD_NIL,  WCDMA_BITMASK,     ZERO_BITMASK, MSG_ID_FDD_EM_URLC_STATUS_IND)  // No MGS ID
+EM_INFO(UL2_EM_URLC_LAYER_TPUT_INFO,        MOD_URLC_FDD, MOD_NIL,  WCDMA_BITMASK,     ZERO_BITMASK, MSG_ID_FDD_EM_URLC_LAYER_TPUT_IND)  // No MGS ID
+EM_INFO(UL2_EM_URLC_ATT_RLC_STATISTICS_INFO,        MOD_URLC_FDD, MOD_NIL,  WCDMA_BITMASK,     ZERO_BITMASK, MSG_ID_FDD_EM_URLC_ATT_RLC_STATISTICS_IND)  // No MGS ID
+EM_INFO(UL2_EM_URLC_ATT_RLC_RESET_INFO,             MOD_URLC_FDD, MOD_NIL,  WCDMA_BITMASK,     ZERO_BITMASK, MSG_ID_FDD_EM_URLC_ATT_RLC_RESET_IND)  // No MGS ID
+
+EM_INFO(UL2_EM_ADM_POOL_STATUS_IND_STRUCT_INFO,     EM_MOD_UL2_TDD, MOD_NIL,   SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_UL2_ADM_POOL_STATUS_IND)
+EM_INFO(UL2_EM_PS_DATA_RATE_STATUS_IND_STRUCT_INFO, EM_MOD_UL2_TDD, MOD_NIL,   SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_UL2_PS_DATA_RATE_STATUS_IND)
+EM_INFO(UL2_EM_HSDSCH_RECONFIG_STATUS_IND_STRUCT_INFO, EM_MOD_UL2_TDD, MOD_NIL,    SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_UL2_HSDSCH_RECONFIG_STATUS_IND)
+EM_INFO(UL2_EM_URLC_EVENT_STATUS_IND_STRUCT_INFO,   EM_MOD_UL2_TDD, MOD_NIL,   SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_UL2_URLC_EVENT_STATUS_IND)
+EM_INFO(UL2_EM_3G_BLER_IND_STRUCT_INFO,             EM_MOD_UL2_TDD, MOD_NIL,   SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_UL2_3G_BLER_IND)
+EM_INFO(UL2_EM_HSUPA_SI_IND_STRUCT_INFO,            EM_MOD_UL2_TDD, MOD_NIL,   SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_UL2_HSUPA_SI_IND)
+EM_INFO(UL2_EM_UMAC_PCH_CRC_ERR_INFO,			EM_MOD_UL2_TDD, MOD_NIL,	SINGLE_BITMASK, 	ZERO_BITMASK, MSG_ID_TDD_EM_UL2_PCH_CRC_IND)
+
+    /* UMAC */
+EM_INFO(UL2_EM_UMAC_PCH_INFO,                   MOD_UMAC_FDD, MOD_NIL,  WCDMA_BITMASK,     ZERO_BITMASK, MSG_ID_FDD_EM_UMAC_INFO_PCH_IND)
+EM_INFO(UL2_EM_UMAC_DCH_INFO,                   MOD_UMAC_FDD, MOD_NIL,  WCDMA_BITMASK,     ZERO_BITMASK, MSG_ID_FDD_UMAC_EM_INFO_DCH_IND)
+EM_INFO(UL2_EM_UMAC_EDCH_INFO,                  MOD_UMAC_FDD, MOD_NIL,  WCDMA_BITMASK,     ZERO_BITMASK, MSG_ID_FDD_EM_UMAC_INFO_EDCH_IND)
+EM_INFO(UL2_EM_UMAC_HSDSCH_INFO,                MOD_UMAC_FDD, MOD_NIL,  WCDMA_BITMASK,     ZERO_BITMASK, MSG_ID_FDD_EM_UMAC_INFO_HSDSCH_IND)
+EM_INFO(UL2_EM_UMAC_LCHID_TRCH_MAPPING_INFO,    MOD_UMAC_FDD, MOD_NIL,  SINGLE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_UMAC_LCHID_TRCH_MAPPING_INFO_IND)
+EM_INFO(UL2_EM_UMAC_RACH_FAILURE_INFO,          MOD_UMAC_FDD, MOD_NIL,  WCDMA_BITMASK,     ZERO_BITMASK, MSG_ID_EM_UMAC_RACH_FAILURE_INFO_IND)
+#endif
+
+#ifdef __LTE_RAT__
+    /*ERRC*/
+EM_INFO(ERRC_EM_MOB_MEAS_INTRARAT_INFO,         MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_MOB_MEAS_INTRARAT_INFO_IND)
+EM_INFO(ERRC_EM_MOB_MEAS_INTERRAT_UTRAN_INFO,   MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_MOB_MEAS_INTERRAT_UTRAN_INFO_IND)
+EM_INFO(ERRC_EM_MOB_MEAS_INTERRAT_GERAN_INFO,   MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_MOB_MEAS_INTERRAT_GERAN_INFO_IND)
+EM_INFO(ERRC_EM_MOB_MEAS_INTERRAT_C2K_INFO,     MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_MOB_MEAS_INTERRAT_C2K_INFO_IND)
+EM_INFO(ERRC_EM_AUTOS_CSG_INFO,                 MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_AUTOS_CSG_INFO_IND)
+EM_INFO(ERRC_EM_CARRS_EVENT_IND,                MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_CARRS_EVENT_IND)
+EM_INFO(ERRC_EM_SIB_EVENT_IND,                  MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_SIB_EVENT_IND)
+EM_INFO(ERRC_EM_MOB_EVENT_IND,                  MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_MOB_EVENT_IND)
+EM_INFO(ERRC_EM_SEC_PARAM,                      MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_SEC_PARAM_IND)
+EM_INFO(ERRC_EM_REEST_INFO,                     MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_REEST_INFO_IND)
+EM_INFO(ERRC_EM_RECONF_INFO,                    MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_RECONF_INFO_IND)
+EM_INFO(ERRC_EM_RCM_SIM_STS_INFO,               MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_RCM_SIM_STS_INFO_IND)
+EM_INFO(ERRC_EM_SYS_SIB_RX_STS_INFO,            MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_SYS_SIB_RX_STS_INFO_IND)
+EM_INFO(ERRC_EM_ERRC_STATE_IND,                 MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_STATE_IND)
+EM_INFO(ERRC_EM_OVER_PROC_DELAY_WARNING,        MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_OVER_PROC_DELAY_WARNING_IND)
+EM_INFO(ERRC_EM_LTE_SUPPORTED_BAND_INFO,        MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_LTE_SUPPORTED_BAND_INFO_IND)
+EM_INFO(ERRC_EM_ERRC_KPI_INFO,                  MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_SUCCESS_RATE_KPI_IND)
+EM_INFO(ERRC_EM_SERV_IR_NEIGHBOR_INFO,          MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_SERV_IR_NEIGHBOR_INFO_IND)
+EM_INFO(ERRC_EM_IR_REDIR_EVENT,                 MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_IR_REDIR_EVENT_IND)
+EM_INFO(ERRC_EM_IRAT_MEAS_CFG,                  MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_IRAT_MEAS_CFG_IND)
+EM_INFO(ERRC_EM_CONN_INFO,                      MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_CONN_INFO_IND)
+EM_INFO(ERRC_EM_MOB_MEAS_CONFIG_INFO_IND,       MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_MOB_MEAS_CONFIG_INFO_IND)
+EM_INFO(ERRC_EM_MOB_MEAS_REPORT_INFO_IND,       MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_MOB_MEAS_REPORT_INFO_IND)
+EM_INFO(ERRC_EM_LTE_RRC_STATE_IND,              MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_LTE_RRC_STATE_IND)
+EM_INFO(ERRC_EM_SERVING_INFO,                   MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_SERVING_INFO_IND)
+EM_INFO(ERRC_EM_RLF_EVENT,                      MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_RLF_EVENT_IND)
+EM_INFO(ERRC_EM_TIMER_EXPIRY_EVENT,             MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_TIMER_EXPIRY_EVENT_IND)
+EM_INFO(ERRC_EM_PAGING_FAIL,                    MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_PAGING_FAIL_IND)
+EM_INFO(ERRC_EM_FEATURE_DETECTION,              MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_FEATURE_DETECTION_IND)
+EM_INFO(ERRC_EM_HO_EVENT,                       MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_HO_EVENT_IND)
+EM_INFO(ERRC_EM_MFROM_INFO,                     MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_MFROM_INFO_IND)
+EM_INFO(ERRC_EM_SRVCC_BSIC_INFO,                MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_SRVCC_BSIC_INFO_IND)
+EM_INFO(ERRC_EM_CA_INFO,                        MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_CA_INFO_IND)
+EM_INFO(ERRC_EM_ERRC_SYS_MIB_SIB_READEVENT_INFO,   MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_SYS_MIB_SIB_READEVENT_INFO_IND)
+EM_INFO(ERRC_EM_EUTRA_RRC_MESSAGE_S,            MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_EUTRA_RRC_MESSAGE_S_IND)
+EM_INFO(ERRC_EM_EUTRA_RRC_MESSAGE_M,            MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_EUTRA_RRC_MESSAGE_M_IND)
+EM_INFO(ERRC_EM_EUTRA_RRC_MESSAGE_L,            MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_EUTRA_RRC_MESSAGE_L_IND)
+EM_INFO(ERRC_EM_SEARCHING_STATE,                MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_SEARCHING_STATE_IND)
+EM_INFO(ERRC_EM_LTE_BAND_TIME,                  MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_LTE_BAND_TIME_IND)
+EM_INFO(ERRC_EM_REEST_BY_L2,                    MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_REEST_BY_L2_IND)
+EM_INFO(ERRC_EM_SRVCC_CELL_INFO,                MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_SRVCC_CELL_INFO_IND)
+EM_INFO(ERRC_EM_SRVCC_HO_FAIL_EVENT,            MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_SRVCC_HO_FAIL_EVENT_IND)
+EM_INFO(ERRC_EM_OOS_EVENT,                      MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_OOS_EVENT_IND)
+EM_INFO(ERRC_EM_CELL_BLACK_LIST_EVENT,          MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_CELL_BLACK_LIST_EVENT_IND)
+EM_INFO(ERRC_EM_EL1_CONFIG_INFO,                MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_EL1_CONFIG_INFO_IND)
+EM_INFO(ERRC_EM_CONNECTTIME_EVENT,              MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_CONNECTTIME_INFO_IND)
+EM_INFO(ERRC_EM_CONNECTFAIL_EVENT,              MOD_ERRC, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERRC_CONNECTFAIL_INFO_IND)
+
+    /*EL2EM*/
+EM_INFO(EM_EL2_OV_STATUS,         MOD_EL2EM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EL2_OV_STATUS_IND)
+EM_INFO(EM_EL2_PUB_STATUS,        MOD_EL2EM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EL2_PUB_STATUS_IND)
+EM_INFO(EM_EL2_FEATURE_DETECTION, MOD_EL2EM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EL2_FEATURE_DETECTION_IND)
+EM_INFO(EM_EMAC_RACH_TRIGGER,     MOD_EL2EM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMAC_RACH_TRIGGER_IND)
+EM_INFO(EM_EMAC_RACH_FINISH,      MOD_EL2EM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMAC_RACH_FINISH_IND)
+EM_INFO(EM_EMAC_MSG2_REPORT,      MOD_EL2EM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMAC_MSG2_REPORT_IND)
+EM_INFO(EM_EMAC_MSG4_REPORT,      MOD_EL2EM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMAC_MSG4_REPORT_IND)
+EM_INFO(EM_EMAC_OV_STATUS_500,    MOD_EL2EM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMAC_OV_STATUS_500_IND)
+EM_INFO(EM_EMAC_TIMER_EXPIRE,     MOD_EL2EM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMAC_TIMER_EXPIRE_IND)
+EM_INFO(EM_EMAC_CONFIG_REPORT,    MOD_EL2EM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMAC_CONFIG_REPORT_IND)
+EM_INFO(EM_EMAC_RACH_SUCCESS,     MOD_EL2EM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMAC_RACH_SUCCESS_IND)
+EM_INFO(EM_EMAC_RACH_FAILURE,     MOD_EL2EM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMAC_RACH_FAILURE_IND)
+EM_INFO(EM_EMAC_EMBMS_REPORT,     MOD_EL2EM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMAC_EMBMS_REPORT_IND)
+EM_INFO(EM_EMAC_DL_TBS_REPORT,    MOD_EL2EM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMAC_DL_TBS_REPORT_IND)
+EM_INFO(EM_EPDCP_DATA_INACTV_IND, MOD_EL2EM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EPDCP_DATA_INACTV_IND)
+EM_INFO(EM_ERLC_DATA_STALL,       MOD_EL2EM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ERLC_DATA_STALL_IND)
+
+    /*EL1*/
+EM_INFO(EM_EL1_OV_STATUS,         MOD_EL1,   MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EL1_OV_STATUS_IND)
+EM_INFO(EM_EL1_B3B39_INFO,        MOD_EL1,   MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_B3B39_OV_STATUS_IND)
+
+    /*EL1TX*/
+EM_INFO(EM_EL1_INFO,            MOD_EL1, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EL1_STATUS_IND)
+
+    /*EL1 MDMI*/
+EM_INFO(EM_EL1_STATUS_CSR_RPT_INFO, 	   MOD_EL1, MOD_NIL,   LTE_BITMASK,	   ZERO_BITMASK, MSG_ID_EM_EL1_STATUS_CSR_RPT_IND)
+EM_INFO(EM_EL1_STATUS_SRV_MEAS_RPT_INFO,   MOD_EL1, MOD_NIL,   LTE_BITMASK,	   ZERO_BITMASK, MSG_ID_EM_EL1_STATUS_SRV_MEAS_RPT_IND)
+EM_INFO(EM_EL1_STATUS_PBCH_RPT_INFO,	   MOD_EL1, MOD_NIL,   LTE_BITMASK,	   ZERO_BITMASK, MSG_ID_EM_EL1_STATUS_PBCH_RPT_IND)
+EM_INFO(EM_EL1_STATUS_PCFICH_RPT_INFO,	   MOD_EL1, MOD_NIL,   LTE_BITMASK,	   ZERO_BITMASK, MSG_ID_EM_EL1_STATUS_PCFICH_RPT_IND)
+EM_INFO(EM_EL1_STATUS_PDCCH_RPT_INFO,	   MOD_EL1, MOD_NIL,   LTE_BITMASK,	   ZERO_BITMASK, MSG_ID_EM_EL1_STATUS_PDCCH_RPT_IND)
+EM_INFO(EM_EL1_STATUS_PDSCH_RPT_INFO,	   MOD_EL1, MOD_NIL,   LTE_BITMASK,	   ZERO_BITMASK, MSG_ID_EM_EL1_STATUS_PDSCH_RPT_IND)
+EM_INFO(EM_EL1_STATUS_PHICH_RPT_INFO,	   MOD_EL1, MOD_NIL,   LTE_BITMASK,	   ZERO_BITMASK, MSG_ID_EM_EL1_STATUS_PHICH_RPT_IND)
+EM_INFO(EM_EL1_STATUS_PMCH_RPT_INFO,	   MOD_EL1, MOD_NIL,   LTE_BITMASK,	   ZERO_BITMASK, MSG_ID_EM_EL1_STATUS_PMCH_RPT_IND)
+EM_INFO(EM_EL1_STATUS_DCI_RPT_INFO, 	   MOD_EL1, MOD_NIL,   LTE_BITMASK,	   ZERO_BITMASK, MSG_ID_EM_EL1_STATUS_DCI_RPT_IND)
+EM_INFO(EM_EL1_STATUS_PUCCH_RPT_INFO,	   MOD_EL1, MOD_NIL,   LTE_BITMASK,	   ZERO_BITMASK, MSG_ID_EM_EL1_STATUS_PUCCH_RPT_IND)
+EM_INFO(EM_EL1_STATUS_PUCCH_CSI_RPT_INFO,  MOD_EL1, MOD_NIL,   LTE_BITMASK,	   ZERO_BITMASK, MSG_ID_EM_EL1_STATUS_PUCCH_CSI_RPT_IND)
+EM_INFO(EM_EL1_STATUS_PUSCH_RPT_INFO,	   MOD_EL1, MOD_NIL,   LTE_BITMASK,	   ZERO_BITMASK, MSG_ID_EM_EL1_STATUS_PUSCH_RPT_IND)
+EM_INFO(EM_EL1_STATUS_PUSCH_CSI_RPT_INFO,  MOD_EL1, MOD_NIL,   LTE_BITMASK,	   ZERO_BITMASK, MSG_ID_EM_EL1_STATUS_PUSCH_CSI_RPT_IND)
+EM_INFO(EM_EL1_STATUS_SRS_RPT_INFO, 	   MOD_EL1, MOD_NIL,   LTE_BITMASK,	   ZERO_BITMASK, MSG_ID_EM_EL1_STATUS_SRS_RPT_IND)
+EM_INFO(EM_EL1_STATUS_CELLTIME_RPT_INFO,   MOD_EL1, MOD_NIL,   LTE_BITMASK,	   ZERO_BITMASK, MSG_ID_EM_EL1_STATUS_CELLTIME_RPT_IND)
+EM_INFO(EM_EL1_STATUS_SR_CFG_INFO,		   MOD_EL1, MOD_NIL,   LTE_BITMASK,	   ZERO_BITMASK, MSG_ID_EM_EL1_STATUS_SR_CFG_IND)
+EM_INFO(EM_EL1_STATUS_PRACH_INFO,		   MOD_EL1, MOD_NIL,   LTE_BITMASK,	   ZERO_BITMASK, MSG_ID_EM_EL1_STATUS_PRACH_IND)
+EM_INFO(EM_EL1_STATUS_RACH_INFO,		   MOD_EL1, MOD_NIL,   LTE_BITMASK,	   ZERO_BITMASK, MSG_ID_EM_EL1_STATUS_RACH_IND)
+EM_INFO(EM_EL1_STATUS_PCH_INFO, 		   MOD_EL1, MOD_NIL,   LTE_BITMASK,	   ZERO_BITMASK, MSG_ID_EM_EL1_STATUS_PCH_IND)
+EM_INFO(EM_EL1_STATUS_TA_INFO,			   MOD_EL1, MOD_NIL,   LTE_BITMASK,	   ZERO_BITMASK, MSG_ID_EM_EL1_STATUS_TA_IND)
+EM_INFO(EM_EL1_STATUS_PHR_INFO, 		   MOD_EL1, MOD_NIL,   LTE_BITMASK,	   ZERO_BITMASK, MSG_ID_EM_EL1_STATUS_PHR_IND)
+EM_INFO(EM_EL1_STATUS_DL_TPUT_INFO, 	   MOD_EL1, MOD_NIL,   LTE_BITMASK,	   ZERO_BITMASK, MSG_ID_EM_EL1_STATUS_DL_TPUT_IND)
+EM_INFO(EM_EL1_STATUS_UL_TPUT_INFO, 	   MOD_EL1, MOD_NIL,   LTE_BITMASK,	   ZERO_BITMASK, MSG_ID_EM_EL1_STATUS_UL_TPUT_IND)
+EM_INFO(EM_EL1_STATUS_PDSCH_INFO,          MOD_EL1, MOD_NIL,   LTE_BITMASK,    ZERO_BITMASK, MSG_ID_EM_EL1_STATUS_PDSCH_IND)
+
+	/*EL1 CIQ*/
+EM_INFO(EM_EL1_CIQ_RLF_STATUS_INFO, 	   MOD_EL1, MOD_NIL,   LTE_BITMASK,	   ZERO_BITMASK, MSG_ID_EM_EL1_CIQ_RLF_STATUS_IND)
+EM_INFO(EM_EL1_CIQ_PUSCH_INFO,			   MOD_EL1, MOD_NIL,   LTE_BITMASK,	   ZERO_BITMASK, MSG_ID_EM_EL1_CIQ_PUSCH_IND)
+EM_INFO(EM_EL1_STATUS_CSR_INFO,            MOD_EL1, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EL1_STATUS_CSR_IND)
+    /*EMM*/
+EM_INFO(EMM_EM_SEC_INFO,        MOD_EMM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMM_SEC_INFO_IND)
+EM_INFO(EMM_EM_PLMNSEL_INFO,    MOD_EMM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMM_PLMNSEL_INFO_IND)
+EM_INFO(EMM_EM_CONN_INFO,       MOD_EMM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMM_CONN_INFO_IND)
+EM_INFO(EMM_EM_NASMSG_INFO,     MOD_EMM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMM_NASMSG_INFO_IND)
+EM_INFO(EMM_EM_CALL_INFO,       MOD_EMM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMM_CALL_INFO_IND)
+EM_INFO(EMM_EM_REG_ATTACH_INFO, MOD_EMM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMM_REG_ATTACH_INFO_IND)
+EM_INFO(EMM_EM_REG_DETACH_INFO, MOD_EMM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMM_REG_DETACH_INFO_IND)
+EM_INFO(EMM_EM_REG_TAU_INFO,    MOD_EMM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMM_REG_TAU_INFO_IND)
+EM_INFO(EMM_EM_REG_COMMON_INFO, MOD_EMM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMM_REG_COMMON_INFO_IND)
+EM_INFO(EMM_EM_SV_INFO,         MOD_EMM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMM_SV_INFO_IND)
+EM_INFO(EMM_EM_RATBAND_INFO,    MOD_EMM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMM_RATBAND_INFO_IND)
+EM_INFO(EMM_EM_TIMERSRV_INFO,   MOD_EMM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMM_TIMERMNG_INFO_IND)
+EM_INFO(EMM_EM_USIMSRV_INFO,    MOD_EMM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMM_USIMSRV_INFO_IND)
+EM_INFO(EMM_EM_NVMSRV_INFO,     MOD_EMM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMM_NVMSRV_INFO_IND)
+EM_INFO(EMM_L4C_EMM_INFO,       MOD_EMM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMM_L4C_EMM_INFO_IND)  //report when em_src is RMMI
+EM_INFO(EMM_L4C_LAI_CHANGE_INFO,MOD_EMM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMM_L4C_LAI_CHANGE_INFO_IND)  //report when em_src is RMMI
+EM_INFO(EMM_L4C_CALL_INFO,      MOD_EMM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMM_L4C_CALL_INFO_IND)
+EM_INFO(EMM_EM_REG_EVENT_INFO,  MOD_EMM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMM_REG_EVENT_INFO_IND)
+EM_INFO(EMM_EM_TIMERSRV_TIMER_START_INFO,  MOD_EMM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMM_TIMERMNG_TIMER_START_INFO_IND)
+EM_INFO(EMM_EM_EMM_STATE_INFO,  MOD_EMM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMM_STATE_INFO_IND)
+EM_INFO(EMM_EM_SEC_EVENT_INFO,  MOD_EMM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMM_SEC_EVENT_INFO_IND)
+EM_INFO(EMM_L4C_CSFB_INFO,      MOD_EMM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_EMM_L4C_CSFB_INFO_IND)  //report when em_src is RMMI
+
+    /*ESM*/
+EM_INFO(ESM_ESM_INFO,           MOD_ESM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ESM_ESM_INFO_IND)
+EM_INFO(ESM_L4C_ESM_INFO,       MOD_ESM, MOD_NIL,   LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_ESM_L4C_ESM_INFO_IND)  // No MGS ID
+#endif
+
+#ifdef __UMTS_TDD128_MODE__
+EM_INFO(TDD_EM_L1_TAS_INFO, MOD_TL1, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_TDD_L1_TAS_INFO_IND)
+#endif
+
+    /*UPCM*/
+EM_INFO(EM_QBM_STATUS,          MOD_UPCM, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_QBM_STATUS_IND)
+EM_INFO(EM_UPCM_STATUS,         MOD_UPCM, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_UPCM_STATUS_IND)
+EM_INFO(EM_UPCM_PS_TPUT_INFO,   MOD_UPCM, MOD_NIL,  LTE_BITMASK,     ZERO_BITMASK, MSG_ID_EM_UPCM_PS_TPUT_INFO_IND)
+
+    /*RAC*/
+EM_INFO(RAC_EM_INFO,     MOD_RAC, MOD_NIL,   GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_RAC_INFO_IND)
+EM_INFO(EM_ABNORMAL_EVENT_RAC_NO_SERVICE,     MOD_RAC, MOD_NIL,   GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_RAC_ABNORMAL_EVENT_NO_SERVICE_IND)
+EM_INFO(RAC_EM_NETWORK_TYPE_INFO,     MOD_RAC, MOD_NIL,   GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_RAC_NETWORK_TYPE_INFO_IND)
+EM_INFO(RAC_EM_REG_STATE_INFO,     MOD_RAC, MOD_NIL,   GEMINI_BITMASK,     ZERO_BITMASK, MSG_ID_EM_RAC_REG_STATE_INFO_IND)
+
+
+    /*IPCORE*/
+EM_INFO(IPC_EM_UL_THROTTLE_STATUS, MOD_IPCORE, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_IPC_UL_THROTTLE_STATUS_IND)
+
+    /*RATCM*/
+EM_INFO(RATCM_EM_23G_RAT_CHANGE_IND, MOD_RATCM, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_RATCM_23G_RAT_CHANGE_IND)  // No MGS ID
+
+
+    /*For msg mapping*/
+EM_INFO(ERRC_EM_ERRC_CONFIG_INFO, MOD_ERRC, MOD_NIL, LTE_BITMASK, ZERO_BITMASK, MSG_ID_EM_ERRC_CONFIG_INFO_IND)
+
+    /* VDM */
+#ifdef __IMS_SUPPORT__
+EM_INFO(EM_VDM_CALL_INFO_IND, MOD_VDM, MOD_NIL, LTE_BITMASK, ZERO_BITMASK, MSG_ID_EM_VDM_CALL_INFO_IND)
+#endif
+
+#ifndef __MULTIPLE_IMS_SUPPORT__
+#ifdef __IMS_SUPPORT__
+    /* Call Information */
+EM_INFO(EM_CALL_INFO_IND, MOD_IMC, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_CALL_INFO_IND)
+    /* SIP Information */
+EM_INFO(EM_IMC_SIP_INFO_IND, MOD_IMC, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_SIP_INFO_IND)
+
+    /* IMS EM Information*/
+EM_INFO(IMC_EM_IMC_INFO_IND, MOD_IMC, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_IMC_INFO_IND)
+EM_INFO(IMC_EM_BEARER_INFO_IND, MOD_IMC, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_BEARER_INFO_IND)
+EM_INFO(IMC_EM_REG_INFO_IND, MOD_IMC, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_REG_INFO_IND)
+EM_INFO(IMC_EM_SMS_INFO_IND, MOD_IMC, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_SMS_INFO_IND)
+EM_INFO(IMC_EM_CALL_INFO_IND, MOD_IMC, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_CALL_INFO_IND)
+EM_INFO(IMC_EM_CONF_INFO_IND, MOD_IMC, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_CONF_INFO_IND)
+EM_INFO(IMC_EM_SRVCC_INFO_IND, MOD_IMC, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_SRVCC_INFO_IND)
+EM_INFO(IMC_EM_PCSCF_INFO_IND, MOD_IMC, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_PCSCF_INFO_IND)
+EM_INFO(IMC_EM_MEDIA_INFO_IND, MOD_IMC, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_MEDIA_INFO_IND)
+EM_INFO(IMC_EM_CALL_DROP_IND, MOD_IMC, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_CALL_DROP_IND)
+EM_INFO(IMC_EM_IMS_EVENT_INFO_IND, MOD_IMC, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_IMS_EVENT_INFO_IND)
+
+    /* IMC */
+EM_INFO(IMC_EM_IPSEC_INFO_IND, MOD_IMC, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_IPSEC_INFO_FLUSH_IND)
+EM_INFO(IMC_EM_IPSEC_INFO_IND, MOD_IMC, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_IPSEC_INFO_ADD_IND)
+EM_INFO(IMC_EM_IPSEC_INFO_IND, MOD_IMC, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_IPSEC_INFO_DELETE_IND)
+#endif /* __IMS_SUPPORT__ */
+#else
+#ifdef __IMS_SUPPORT__
+    /* Call Information */
+EM_INFO(EM_CALL_INFO_IND, MOD_IMC, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_CALL_INFO_IND)
+    /* SIP Information */
+EM_INFO(EM_IMC_SIP_INFO_IND, MOD_IMC, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_SIP_INFO_IND)
+
+    /* IMS EM Information*/
+EM_INFO(IMC_EM_IMC_INFO_IND, MOD_IMC, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_IMC_INFO_IND)
+EM_INFO(IMC_EM_BEARER_INFO_IND, MOD_IMC, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_BEARER_INFO_IND)
+EM_INFO(IMC_EM_REG_INFO_IND, MOD_IMC, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_REG_INFO_IND)
+EM_INFO(IMC_EM_SMS_INFO_IND, MOD_IMC, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_SMS_INFO_IND)
+EM_INFO(IMC_EM_CALL_INFO_IND, MOD_IMC, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_CALL_INFO_IND)
+EM_INFO(IMC_EM_CONF_INFO_IND, MOD_IMC, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_CONF_INFO_IND)
+EM_INFO(IMC_EM_SRVCC_INFO_IND, MOD_IMC, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_SRVCC_INFO_IND)
+EM_INFO(IMC_EM_PCSCF_INFO_IND, MOD_IMC, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_PCSCF_INFO_IND)
+EM_INFO(IMC_EM_MEDIA_INFO_IND, MOD_IMC, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_MEDIA_INFO_IND)
+EM_INFO(IMC_EM_CALL_DROP_IND, MOD_IMC, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_CALL_DROP_IND)
+EM_INFO(IMC_EM_IMS_EVENT_INFO_IND, MOD_IMC, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_IMS_EVENT_INFO_IND)
+
+    /* IMC */
+EM_INFO(IMC_EM_IPSEC_INFO_IND, MOD_IMC, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_IPSEC_INFO_FLUSH_IND)
+EM_INFO(IMC_EM_IPSEC_INFO_IND, MOD_IMC, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_IPSEC_INFO_ADD_IND)
+EM_INFO(IMC_EM_IPSEC_INFO_IND, MOD_IMC, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_IMC_IPSEC_INFO_DELETE_IND)
+#endif /* __IMS_SUPPORT__ */
+#endif /* __MULTIPLE_IMS_SUPPORT__ */
+
+
+    /* LTECSR */
+#ifdef __IMS_SUPPORT__
+EM_INFO(LTECSR_EM_RTP_CODEC,                MOD_LTECSR, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_LTECSR_RTP_CODEC_IND)
+EM_INFO(LTECSR_EM_RTP_PACKET_LOSS,          MOD_LTECSR, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_LTECSR_RTP_PACKET_LOSS_IND)
+EM_INFO(LTECSR_EM_RTP_ONE_WAY_DELAY,        MOD_LTECSR, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_LTECSR_RTP_ONE_WAY_DELAY_IND)
+EM_INFO(LTECSR_EM_RTP_JITTER,               MOD_LTECSR, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_LTECSR_RTP_JITTER_IND)
+EM_INFO(LTECSR_EM_RTP_JITTER_BUFFER_DELAY,  MOD_LTECSR, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_LTECSR_RTP_JITTER_BUFFER_DELAY_IND)
+EM_INFO(LTECSR_EM_RTP_OTA_MSG,              MOD_LTECSR, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_LTECSR_RTP_OTA_MSG_IND)
+EM_INFO(LTECSR_EM_SESSION_STAT,             MOD_LTECSR, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_LTECSR_SESSION_STAT_IND)
+EM_INFO(LTECSR_EM_XMIT_PKT,                 MOD_LTECSR, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_LTECSR_XMIT_PKT_IND)
+EM_INFO(LTECSR_EM_RECV_PKT,                 MOD_LTECSR, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_LTECSR_RECV_PKT_IND)
+EM_INFO(LTECSR_EM_XMIT_STAT,                MOD_LTECSR, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_LTECSR_XMIT_STAT_IND)
+EM_INFO(LTECSR_EM_RECV_STAT,                MOD_LTECSR, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_LTECSR_RECV_STAT_IND)
+EM_INFO(LTECSR_EM_RTP_INFO,                 MOD_LTECSR, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_LTECSR_RTP_INFO_IND)
+EM_INFO(LTECSR_EM_RTCP_INFO,                MOD_LTECSR, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_LTECSR_RTCP_INFO_IND)
+EM_INFO(LTECSR_EM_RTP_EVENT,                MOD_LTECSR, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_LTECSR_RTP_EVENT_IND)
+EM_INFO(LTECSR_EM_RTP_PERIODIC_RPT,         MOD_LTECSR, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_LTECSR_RTP_PERIODIC_RPT_IND)
+#endif
+
+EM_INFO(LPP_EM_MSG_STATUS_STATISTICS, MOD_LPP, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_LPP_MSG_STATUS_STATISTICS_IND)
+EM_INFO(LPP_EM_MSG_INFO, MOD_LPP, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_LPP_MSG_INFO_IND)
+
+EM_INFO(MMRF_EM_MIPI_HW_INFO, MOD_MMRF, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_MMRF_MIPI_HW_INFO_IND)
+    /* L4C */
+EM_INFO(EM_L4C_RAT_CHANGE_IND, MOD_NIL, MOD_NIL, ZERO_BITMASK, ZERO_BITMASK, MSG_ID_EM_L4C_RAT_CHANGE_IND)
+
+EM_INFO(EM_SPEECH_INFO_SPH_CODEC, MOD_MED, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_SPEECH_INFO_SPH_CODEC_IND)
+
+
+EM_INFO(EM_L4C_MD_EVENT_INFO, MOD_L4C, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_L4C_MD_EVENT_IND)
+
+    /* L4C */
+EM_INFO(EM_L4C_MDMI_RAT_INFO_IND, MOD_NIL, MOD_NIL, ZERO_BITMASK, ZERO_BITMASK, MSG_ID_EM_L4C_MDMI_RAT_INFO_IND)
+
+    /* L4C */
+EM_INFO(EM_L4C_ECSQ_IND, MOD_NIL, MOD_NIL, ZERO_BITMASK, ZERO_BITMASK, MSG_ID_EM_L4C_ECSQ_IND)
+
+
+#ifdef __CDMA2000_RAT__
+
+    /* C2K EVDO L1 */
+EM_INFO(EM_EVL1_GENERAL_INFO, MOD_CL1TST, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_EVL1_GENERAL_INFO_IND)
+EM_INFO(EM_EVL1_TXAGC_POWER_INFO, MOD_CL1TST, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_EVL1_TXAGC_POWER_INFO_IND)
+EM_INFO(EM_EVL1_CELL_SWITCH_INFO, MOD_CL1TST, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_EVL1_CELL_SWITCH_INFO_IND)
+EM_INFO(EM_EVL1_RXAGC_INFO, MOD_CL1TST, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_EVL1_RXAGC_INFO_IND)
+EM_INFO(EM_EVL1_AFC_INFO, MOD_CL1TST, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_EVL1_AFC_INFO_IND)
+EM_INFO(EM_EVL1_MBP_SECTOR_INFO, MOD_CL1TST, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_EVL1_MBP_SECTOR_INFO_IND)
+EM_INFO(EM_EVL1_FMP_FINGER_INFO, MOD_CL1TST, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_EVL1_FMP_FINGER_INFO_IND)
+EM_INFO(EM_EVL1_TIMING_TRACK_STATUS, MOD_CL1TST, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_EVL1_TIMING_TRACK_STATUS_IND)
+EM_INFO(EM_EVL1_SCH_STATUS, MOD_CL1TST, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_EVL1_SCH_STATUS_IND)
+EM_INFO(EM_EVL1_ACC_DATA_RATE_INFO, MOD_CL1TST, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_EVL1_ACC_DATA_RATE_INFO_IND)
+EM_INFO(EM_EVL1_TRAFFIC_RRI_VALUE_INFO, MOD_CL1TST, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_EVL1_TRAFFIC_RRI_VALUE_INFO_IND)
+EM_INFO(EM_EVL1_FMP_SECTOR_INFO, MOD_CL1TST, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_EVL1_FMP_SECTOR_INFO_IND)
+EM_INFO(EM_EVL1_SCH_PILOT_UPDATE_INFO, MOD_CL1TST, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_EVL1_SCH_PILOT_UPDATE_INFO_IND)
+EM_INFO(EM_EVL1_SCH_RESULT_INFO, MOD_CL1TST, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_EVL1_SCH_RESULT_INFO_IND)
+
+    /* C2K 1xRTT L1 */
+EM_INFO(EM_XL1_TX_PATH_INFO, MOD_L1D_MDM, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_XL1_TX_PATH_INFO_IND)
+EM_INFO(EM_XL1_TX_AGC_INFO, MOD_L1D_MDM, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_XL1_TX_AGC_INFO_IND)
+EM_INFO(EM_XL1_AFC_INFO, MOD_L1D_MDM, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_XL1_AFC_INFO_IND)
+EM_INFO(EM_XL1_STATUS_INFO, MOD_L1D_MDM, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_XL1_STATUS_INFO_IND)
+EM_INFO(EM_XL1_MEAS_INFO, MOD_L1D_MDM, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_XL1_MEAS_INFO_IND)
+EM_INFO(EM_XL1_MAIN_RXAGC_INFO, MOD_L1D_MDM, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_XL1_MAIN_RXAGC_INFO_IND)
+EM_INFO(EM_XL1_DIV_RXAGC_INFO, MOD_L1D_MDM, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_XL1_DIV_RXAGC_INFO_IND)
+EM_INFO(EM_XL1_RAKE_INFO, MOD_L1D_MDM, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_XL1_RAKE_INFO_IND)
+EM_INFO(EM_XL1_CRC_INFO, MOD_L1D_MDM, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_XL1_CRC_INFO_IND)
+EM_INFO(EM_XL1_MMAFC_INIT_FOE_INFO, MOD_L1D_MDM, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_XL1_MMAFC_INIT_FOE_INFO_IND)
+EM_INFO(EM_XL1_TAS_INFO, MOD_L1D_MDM, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_XL1_TAS_INFO_IND)
+EM_INFO(EM_XL1_TIMING_LOOP_INFO, MOD_L1D_MDM, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_XL1_TIMING_LOOP_INFO_IND)
+
+    /* C2K HSC */
+EM_INFO(EM_C2K_RTBA_CHANNEL_STATUS_INFO, MOD_CHSC, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_RTBA_CHANNEL_STATUS_INFO_IND)
+EM_INFO(EM_C2K_DO_SPAGE_STATE_INFO, MOD_CHSC, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_DO_SPAGE_STATE_INFO_IND)
+EM_INFO(EM_C2K_HSC_MPA_STATUS_INFO, MOD_CHSC, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_HSC_MPA_STATUS_INFO_IND)
+EM_INFO(EM_C2K_LL1A_STATE_MODE_INFO, MOD_CHSC, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_LL1A_STATE_MODE_INFO_IND)
+EM_INFO(EM_C2K_LL1A_STANDBY_GAP_INFO, MOD_CHSC, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_LL1A_STANDBY_GAP_INFO_IND)
+EM_INFO(EM_C2K_LL1A_ACTIVE_GAP_INFO, MOD_CHSC, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_LL1A_ACTIVE_GAP_INFO_IND)
+
+    /* C2K 1xRTT L3 */
+EM_INFO(EM_XL3_CP_STATUS, MOD_CPSW, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_XL3_CP_STATUS_IND)
+EM_INFO(EM_XL3_SLOTTED_MODE_INFO, MOD_CPSW, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_XL3_SLOTTED_MODE_INFO_IND)
+EM_INFO(EM_1XRTT_CALL_EVENTS, MOD_CPSW, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_1XRTT_CALL_EVENTS_IND)
+EM_INFO(EM_C2K_RSVAS_INFO, MOD_CPSW, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_RSVAS_INFO_IND)
+EM_INFO(EM_XL3_CP_EVENTS, MOD_CPSW, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_XL3_CP_EVENTS_IND)
+EM_INFO(EM_XL3_PAGING_INFO, MOD_CPSW, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_XL3_PAGING_INFO_IND)
+EM_INFO(EM_XL3_SET_INFO, MOD_CPSW, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_XL3_SET_INFO_IND)
+EM_INFO(EM_XL3_SYSTEM_SEARCH_INFO, MOD_CPSW, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_XL3_SYSTEM_SEARCH_INFO_IND)
+EM_INFO(EM_XL3_CALL_FAIL_REASON, MOD_CPSW, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_XL3_CALL_FAIL_REASON_IND)
+
+    /* C2K EVDO L3 */
+EM_INFO(EM_EVL3_STATE, MOD_EVCLC, MOD_NIL, SINGLE_BITMASK, SINGLE_BITMASK, MSG_ID_EM_EVL3_STATE_IND)
+EM_INFO(EM_EVL3_SERVING_CELL_INFO, MOD_EVCLC, MOD_NIL, SINGLE_BITMASK, SINGLE_BITMASK,MSG_ID_EM_EVL3_SERVING_CELL_INFO_IND)
+EM_INFO(EM_EVL3_SLOTTED_MODE_INFO, MOD_EVCLC, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK,MSG_ID_EM_EVL3_SLOTTED_MODE_INFO_IND)
+EM_INFO(EM_EVL3_ACCESS_PROCEDURE_INFO, MOD_EVCLC, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK,MSG_ID_EM_EVL3_ACCESS_PROCEDURE_INFO_IND)
+EM_INFO(EM_EVL3_CP_EVENTS, MOD_EVCLC, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_EVL3_CP_EVENTS_IND)
+EM_INFO(EM_EVL3_SYSTEM_SEARCH_INFO, MOD_EVCLC, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_EVL3_SYSTEM_SEARCH_INFO_IND)
+
+    /* C2K EVDO L2 */
+EM_INFO(EM_EVL2_FWD_CHANNEL_INFO, MOD_EVFCP, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_EVL2_FWD_CHANNEL_INFO_IND)
+EM_INFO(EM_EVL2_REV_TRAFFIC_INFO, MOD_EVRCP, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_EVL2_REV_TRAFFIC_INFO_IND)
+EM_INFO(EM_EVL2_ACCESS_STATE_INFO, MOD_EVRCP, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_EVL2_ACCESS_STATE_INFO_IND)
+EM_INFO(EM_EVL2_RTM3_T2P_INFO, MOD_EVRCP, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_EVL2_RTM3_T2P_INFO_IND)
+
+    /* C2K 1xRTT L2 */
+EM_INFO(EM_XL2_REV_STATE, MOD_LMD, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_XL2_REV_STATE_IND)
+EM_INFO(EM_XL2_ACH_PROBE_INFO, MOD_CPSW, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_XL2_ACH_PROBE_INFO_IND)
+EM_INFO(EM_XL2_VOICE_RATE_INFO, MOD_LMD, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_XL2_VOICE_RATE_INFO_IND)
+EM_INFO(EM_XL2_RLP_INFO, MOD_XRLP, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_XL2_RLP_INFO_IND)
+EM_INFO(EM_XL2_PS_RATE_INFO, MOD_LMD, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_XL2_PS_RATE_INFO_IND)
+EM_INFO(EM_XL2_SCH_ASSIGNED_RATE, MOD_LMD, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK,MSG_ID_EM_XL2_SCH_ASSIGNED_RATE_IND)
+
+
+    /* C2K HLP */
+EM_INFO(EM_C2K_HLP_TIMER_STATUS, MOD_CHLP, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_HLP_TIMER_STATUS_IND)
+EM_INFO(EM_C2K_HLP_CAM_STATE, MOD_CHLP, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_HLP_CAM_STATE_IND)
+EM_INFO(EM_C2K_HLP_NSPE_STATE, MOD_CHLP, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_HLP_NSPE_STATE_IND)
+EM_INFO(EM_C2K_HLP_PDN_STATUS, MOD_CHLP, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_HLP_PDN_STATUS_IND)
+EM_INFO(EM_C2K_HLP_PPPHA_STATUS, MOD_CHLP, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_HLP_PPPHA_STATUS_IND)
+EM_INFO(EM_C2K_HLP_PPP_STATUS, MOD_CHLP, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_HLP_PPP_STATUS_IND)
+EM_INFO(EM_C2K_HLP_RM_BUFQ_INFO, MOD_CHLP, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_HLP_RM_BUFQ_INFO_IND)
+EM_INFO(EM_C2K_HLP_UM_BUFQ_INFO, MOD_CHLP, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_HLP_UM_BUFQ_INFO_IND)
+EM_INFO(EM_C2K_HLP_PACKET_INFO, MOD_CHLP, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_HLP_PACKET_INFO_IND)
+EM_INFO(EM_C2K_HLP_ABNORMAL_EVENT_INFO, MOD_CHLP, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_HLP_ABNORMAL_EVENT_INFO_IND)
+
+/* C2K L4(CVAL) */
+EM_INFO(EM_C2K_L4_RTT_RADIO_INFO, MOD_CVAL, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_L4_RTT_RADIO_INFO_IND)
+EM_INFO(EM_C2K_L4_RTT_INFO, MOD_CVAL, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_L4_RTT_INFO_IND)
+EM_INFO(EM_C2K_L4_RTT_SCH_INFO, MOD_CVAL, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_L4_RTT_SCH_INFO_IND)
+EM_INFO(EM_C2K_L4_RTT_STAT_INFO, MOD_CVAL, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_L4_RTT_STAT_INFO_IND)
+EM_INFO(EM_C2K_L4_RTT_SERVING_NEIGHBR_SET_INFO, MOD_CVAL, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_L4_RTT_SERVING_NEIGHBR_SET_INFO_IND)
+EM_INFO(EM_C2K_L4_EVDO_SERVING_INFO, MOD_CVAL, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_L4_EVDO_SERVING_INFO_IND)
+EM_INFO(EM_C2K_L4_EVDO_ACTIVE_SET_INFO, MOD_CVAL, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_L4_EVDO_ACTIVE_SET_INFO_IND)
+EM_INFO(EM_C2K_L4_EVDO_CAND_SET_INFO, MOD_CVAL, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_L4_EVDO_CAND_SET_INFO_IND)
+EM_INFO(EM_C2K_L4_EVDO_NGHDR_SET_INFO, MOD_CVAL, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_L4_EVDO_NGHDR_SET_INFO_IND)
+EM_INFO(EM_C2K_L4_EVDO_FL_INFO, MOD_CVAL, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_L4_EVDO_FL_INFO_IND)
+EM_INFO(EM_C2K_L4_EVDO_RL_INFO, MOD_CVAL, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_L4_EVDO_RL_INFO_IND)
+EM_INFO(EM_C2K_L4_EVDO_STATE_INFO, MOD_CVAL, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_L4_EVDO_STATE_INFO_IND)
+EM_INFO(EM_C2K_L4_SPRINT_XRTT_INFO, MOD_CVAL, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_L4_SPRINT_XRTT_INFO_IND)
+EM_INFO(EM_C2K_L4_SPRINT_EVDO_INFO, MOD_CVAL, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_L4_SPRINT_EVDO_INFO_IND)
+EM_INFO(EM_C2K_XCAL_OTA_FDSCH_INFO, MOD_CVAL, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_XCAL_OTA_FDSCH_INFO_IND)
+EM_INFO(EM_C2K_XCAL_OTA_RDSCH_INFO, MOD_CVAL, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_XCAL_OTA_RDSCH_INFO_IND)
+EM_INFO(EM_C2K_XCAL_OTA_EVENT_INFO, MOD_CVAL, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_C2K_XCAL_OTA_EVENT_INFO_IND)
+
+#endif
+
+
+
+/* WO */
+#if !defined(WO_NOT_PRESENT) && !defined(__WO_TASK_DISABLE__)
+EM_INFO(EM_WO_IKE_SRCPORT_INFO, MOD_WO, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_WO_IKE_SRCPORT_INFO_IND)
+EM_INFO(EM_WO_IKE_NATT_SRCPORT_INFO, MOD_WO, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_WO_IKE_NATT_SRCPORT_INFO_IND)
+EM_INFO(EM_WO_IKE_DECRYPT_INFO_ADD, MOD_WO, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_WO_IKE_DECRYPT_INFO_ADD_IND)
+EM_INFO(EM_WO_IKE_DECRYPT_INFO_DEL, MOD_WO, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_WO_IKE_DECRYPT_INFO_DEL_IND)
+EM_INFO(EM_WO_ESP_DECRYPT_INFO_ADD, MOD_WO, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_WO_ESP_DECRYPT_INFO_ADD_IND)
+EM_INFO(EM_WO_ESP_DECRYPT_INFO_DEL, MOD_WO, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_WO_ESP_DECRYPT_INFO_DEL_IND)
+EM_INFO(EM_WO_DPD_INTERVAL_INFO, MOD_WO, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_WO_DPD_INTERVAL_INFO_IND)
+#endif
+
+EM_INFO(EM_LBS_GPS_OPEN_STATISTIC, MOD_LBS, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_LBS_GPS_OPEN_STATISTIC_IND)
+EM_INFO(EM_LBS_LR_STATISTIC, MOD_LBS, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_LBS_LR_STATISTIC_IND)
+EM_INFO(EM_LBS_AP_SETTING, MOD_LBS, MOD_NIL, SINGLE_BITMASK, ZERO_BITMASK, MSG_ID_EM_LBS_AP_SETTING_IND)
+
+
+/* DDM */
+EM_INFO(EM_DDM_IP_INFO, MOD_D2CM, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_DDM_IP_INFO_IND)
+EM_INFO(EM_DDM_LAST_ERROR_CODE_INFO, MOD_D2RM, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_DDM_LAST_ERROR_CODE_INFO_IND)
+EM_INFO(EM_DDM_W2LHO_EVENT_INFO, MOD_D2RM, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_DDM_W2LHO_EVENT_IND)
+EM_INFO(EM_DDM_L2WHO_EVENT_INFO, MOD_D2RM, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_DDM_L2WHO_EVENT_IND)
+EM_INFO(EM_DDM_PDN_EVENT_INFO, MOD_D2AT, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_DDM_PDN_INFO_IND)
+
+/* SIM */
+EM_INFO(EM_SIM_APDU_INFO, MOD_SIM, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_SIM_APDU_INFO_IND)
+
+/*SMS*/
+EM_INFO( EM_MT_SMS_OVER_IMS_INFO, MOD_IMCSMS, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_MT_SMS_OVER_IMS_INFO_IND)
+EM_INFO( EM_MO_SMS_OVER_IMS_INFO, MOD_IMCSMS, MOD_NIL, GEMINI_BITMASK, ZERO_BITMASK, MSG_ID_EM_MO_SMS_OVER_IMS_INFO_IND)

@@ -1,0 +1,10 @@
+;Core1 force on
+d.s &MEM_CLASS:0x200D0004 %long %le 0xB2002383
+;ForceOn debug sys
+d.s &MEM_CLASS:0x20150010 %long %le data.long(&MEM_CLASS:0x20150010)|(0x00080008)
+d.s &MEM_CLASS:0x200D04B0 %long %le data.long(&MEM_CLASS:0x200D04B0)|(0x00000008)
+&temp=data.long(&MEM_CLASS:0x200D0590)
+IF (&temp&0x8008)!=0x8008
+(
+    PRINT "Force on debug sys clock fail"
+)

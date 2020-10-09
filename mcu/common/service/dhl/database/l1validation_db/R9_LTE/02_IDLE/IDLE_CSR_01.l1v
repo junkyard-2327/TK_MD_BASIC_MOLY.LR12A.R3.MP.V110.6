@@ -1,0 +1,84 @@
+{ Validation }
+Title 		= "[R9_LTE][02_IDLE]IDLE_CSR_01: Test of Carrier Search with Band Configuration and Band Report on PCH state"
+ModuleID 	= MOD_ERRC
+MsgID 		= MSG_ID_L1EDPS_IDLE_CSR_01
+
+/******************************************************************************
+* Data Structure accomnying the above primitive
+typedef struct
+{
+   kal_uint8           ref_count;
+   kal_uint16         msg_len;
+   kal_bool           is_user_define_fullband_scan;
+   kal_bool           is_speed_mode;
+   kal_uint8          number_of_report_cell;
+   kal_uint8          number_of_total_band;
+   kal_uint8          band_info_1;
+   kal_uint8          band_info_2;
+   kal_uint8          band_info_3;
+   kal_uint8          band_info_4;
+   kal_uint8          band_info_5;
+   kal_uint8          band_info_6;
+   kal_uint8          band_info_7;
+   kal_uint8          band_info_8;
+
+    
+} l1edps_idle_csr_01_struct;
+*
+*******************************************************************************/
+
+
+{Parameters}
+/******************************************************************************
+* 1. The following is the constrained range for the input of this value.
+* 2. Some combination of the following bit-fields may be suported
+* 3. The parameter range can be changed to support combinations of different bands
+*******************************************************************************/
+
+/* [Variable Name] "corresponding label showen on GUI" */
+
+[is_user_define_fullband_scan] "is_fullband_scan"
+@KAL_FALSE
+
+[is_speed_mode] "is_speed_mode"
+@KAL_TRUE
+
+[number_of_report_cell] "number_of_report_cell"
+1~8
+@1
+
+[number_of_total_band] "number_of_total_band"
+1~8
+@2
+
+[band_info_1] "band_info_1"
+1~64
+@1
+
+[band_info_2] "band_info_2"
+1~64
+@39
+
+[band_info_3] "band_info_3"
+1~64
+@5
+
+[band_info_4] "band_info_4"
+1~64
+@7
+
+[band_info_5] "band_info_5"
+1~64
+@13
+
+[band_info_6] "band_info_6"
+1~64
+@38
+
+[band_info_7] "band_info_7"
+1~64
+@40
+
+[band_info_8] "band_info_8"
+1~64
+@3

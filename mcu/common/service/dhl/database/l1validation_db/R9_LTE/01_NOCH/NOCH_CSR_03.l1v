@@ -1,0 +1,55 @@
+{ Validation }
+Title 		= "[R9_LTE][01_NOCH]NOCH_CSR_03: Test of Carrier Search with Skip Bandwidth"
+ModuleID 	= MOD_ERRC
+MsgID 		= MSG_ID_L1EDPS_NOCH_CSR_03
+
+/******************************************************************************
+* Data Structure accomnying the above primitive
+typedef struct
+{
+   kal_uint8           ref_count;
+   kal_uint16         msg_len;
+   kal_bool           csr_config_by_band;
+   kal_bool           csr_report_by_band;
+   kal_bool           csr_is_skip_bw;
+   el1_bandwidth_enum csr_skip_bandwidth;
+   el1_csr_search_type_enum search_type;    
+   kal_bool           csr_is_priority_assign;  
+ 
+} l1edps_noch_csr_03_struct;
+*
+*******************************************************************************/
+
+
+{Parameters}
+/******************************************************************************
+* 1. The following is the constrained range for the input of this value.
+* 2. Some combination of the following bit-fields may be suported
+* 3. The parameter range can be changed to support combinations of different bands
+*******************************************************************************/
+
+/* [Variable Name] "corresponding label showen on GUI" */
+[csr_config_by_band] "csr_config_by_band"
+@KAL_TRUE
+
+[csr_report_by_band] "csr_report_by_band"
+@KAL_FALSE
+
+[csr_is_skip_bw] "csr_skip_bw"
+@KAL_TRUE
+
+[csr_skip_bandwidth] "skip bandwidth"
+@BW_100_RB    
+BW_15_RB   
+BW_25_RB   
+BW_50_RB   
+BW_75_RB   
+BW_100_RB  
+BW_INVALID 
+
+[search_type] "search_type"
+@EL1_CSR_SEARCH_TYPE_SPEED_MODE
+EL1_CSR_SEARCH_TYPE_ACCURACY_MODE
+
+[csr_is_priority_assign] "csr_is_priority_assign"
+@KAL_TRUE

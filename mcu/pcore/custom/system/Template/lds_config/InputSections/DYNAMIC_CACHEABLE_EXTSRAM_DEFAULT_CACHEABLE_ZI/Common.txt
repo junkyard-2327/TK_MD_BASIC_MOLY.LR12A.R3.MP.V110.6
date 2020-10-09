@@ -1,0 +1,9 @@
+        * (DYNAMICCACHEABLEZI_C*)
+
+
+        /********************** A. need to be confirmed in 93 **********************/
+        /********************** B. need to be moved to right section in 93 **********************/
+        /********************** C. will be removed in 93 **********************/
+        . = ALIGN(CACHELINESIZE);
+        * (DYNAMICCACHEABLEZI_C_CORE2)            /* base and end align to cache line size */
+        . = ALIGN(CACHELINESIZE);

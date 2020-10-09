@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="com.mediatek.ide.launch.gdbjtag.launchConfigurationType">
+<stringAttribute key="com.mediatek.ide.dsf.gdb.core.BREAKPOINT_LIST" value="[]"/>
+<stringAttribute key="com.mediatek.ide.dsf.gdb.core.EXPRESSION_LIST" value="[]"/>
+<stringAttribute key="com.mediatek.ide.util.PROGRAM_NAME" value="[CMMAUTOGEN_ELFPath]"/>
+<stringAttribute key="com.mediatek.ide.util.actionAwarenessConfiguration" value=""/>
+<booleanAttribute key="com.mediatek.ide.util.autoTerminate" value="false"/>
+<booleanAttribute key="com.mediatek.ide.util.cacheFile" value="true"/>
+<booleanAttribute key="com.mediatek.ide.util.clearBreakpoint" value="true"/>
+<booleanAttribute key="com.mediatek.ide.util.clearExpression" value="true"/>
+<stringAttribute key="com.mediatek.ide.util.connection" value="com.mediatek.ide.util.RemoteTarget"/>
+<stringAttribute key="com.mediatek.ide.util.connectorArguments" value=""/>
+<booleanAttribute key="com.mediatek.ide.util.doReset" value="false"/>
+<stringAttribute key="com.mediatek.ide.util.gdbArguments" value=""/>
+<intAttribute key="com.mediatek.ide.util.gdbPortNumber" value="3668"/>
+<stringAttribute key="com.mediatek.ide.util.imageFileName" value=""/>
+<stringAttribute key="com.mediatek.ide.util.imageOffset" value=""/>
+<stringAttribute key="com.mediatek.ide.util.initCommands" value=""/>
+<stringAttribute key="com.mediatek.ide.util.ipAddress" value="localhost"/>
+<booleanAttribute key="com.mediatek.ide.util.loadImage" value="false"/>
+<booleanAttribute key="com.mediatek.ide.util.loadSymbols" value="true"/>
+<stringAttribute key="com.mediatek.ide.util.osAwarenessProgram" value="osawareness.exe"/>
+<stringAttribute key="com.mediatek.ide.util.osAwarenessProgramArguments" value=""/>
+<stringAttribute key="com.mediatek.ide.util.pcRegister" value=""/>
+<booleanAttribute key="com.mediatek.ide.util.profileAccumulativeMode" value="false"/>
+<stringAttribute key="com.mediatek.ide.util.profileDisableValue" value=""/>
+<booleanAttribute key="com.mediatek.ide.util.profileEnable" value="true"/>
+<stringAttribute key="com.mediatek.ide.util.profileEnableValue" value=""/>
+<stringAttribute key="com.mediatek.ide.util.profileRawData" value="./profile_data"/>
+<stringAttribute key="com.mediatek.ide.util.profileType" value="Profile.Address"/>
+<stringAttribute key="com.mediatek.ide.util.runCommands" value="hb general_ex_handler"/>
+<booleanAttribute key="com.mediatek.ide.util.setPcRegister" value="false"/>
+<booleanAttribute key="com.mediatek.ide.util.setResume" value="false"/>
+<booleanAttribute key="com.mediatek.ide.util.setStopAt" value="false"/>
+<stringAttribute key="com.mediatek.ide.util.stopAt" value=""/>
+<stringAttribute key="com.mediatek.ide.util.substitute_path" value="[CMMAUTOGEN_ROOT]"/>
+<stringAttribute key="com.mediatek.ide.util.symbolsFileName" value=""/>
+<stringAttribute key="com.mediatek.ide.util.symbolsOffset" value=""/>
+<stringAttribute key="com.mediatek.ide.util.target" value="Bianco_evb_amp"/>
+<booleanAttribute key="com.mediatek.ide.util.useActionAwareness" value="false"/>
+<booleanAttribute key="com.mediatek.ide.util.useFileForImage" value="false"/>
+<booleanAttribute key="com.mediatek.ide.util.useFileForSymbols" value="false"/>
+<booleanAttribute key="com.mediatek.ide.util.useOsAwareness" value="false"/>
+<booleanAttribute key="com.mediatek.ide.util.useProjBinaryForImage" value="true"/>
+<booleanAttribute key="com.mediatek.ide.util.useProjBinaryForSymbols" value="true"/>
+<stringAttribute key="org.eclipse.cdt.debug.mi.core.commandFactory" value="Standard (Windows)"/>
+<stringAttribute key="org.eclipse.cdt.debug.mi.core.protocol" value="mi"/>
+<booleanAttribute key="org.eclipse.cdt.debug.mi.core.verboseMode" value="false"/>
+<stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_START_MODE" value="attach"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROGRAM_NAME" value=""/>
+<booleanAttribute key="org.eclipse.debug.ui.ATTR_LAUNCH_IN_BACKGROUND" value="false"/>
+<stringAttribute key="org.eclipse.dsf.launch.MEMORY_BLOCKS" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#13;&#10;&lt;memoryBlockExpressionList context=&quot;reserved-for-future-use&quot;/&gt;&#13;&#10;"/>
+<stringAttribute key="process_factory_id" value="org.eclipse.cdt.dsf.gdb.GdbProcessFactory"/>
+</launchConfiguration>

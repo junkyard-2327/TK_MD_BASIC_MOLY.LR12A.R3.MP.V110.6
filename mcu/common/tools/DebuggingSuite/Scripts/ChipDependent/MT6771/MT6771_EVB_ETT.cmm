@@ -1,0 +1,53 @@
+;winclear
+
+
+system.reset
+SYSTEM.OPTION ENRESET ON
+SYStem.Option ResBreak OFF
+SYStem.Option WaitReset OFF
+SYStem.JtagClock 10.MHz
+
+SYStem.CPU CORTEXA53; 
+Setting Core debug register access
+SYStem.CONFIG CORENUMBER 1;
+SYStem.CONFIG COREBASE 0x8D410000 0x8D510000 0x8D610000 0x8D710000 0x8D810000 0x8D910000 0x8DA10000 0x8DB10000;
+SYStem.CONFIG CTIBASE  0x8D420000 0x8D520000 0x8D620000 0x8D720000 0x8D820000 0x8D920000 0x8DA20000 0x8DB20000;
+;SYStem.CONFIG CORENUMBER 2;
+;SYStem.CONFIG COREBASE 0x80410000 0x80810000;
+;SYStem.CONFIG CTIBASE 0x80420000 0x80820000;
+
+
+
+SYStem.Up
+SETUP.IMASKHLL ON
+SETUP.IMASKASM ON
+SYStem.CONFIG SWDP ON
+
+; disable WDT
+d.s c:0x10007000 %le %long 0x22000064
+;d.s c:0x0 %le %long 0xEAFFFFFE
+;D.S SD:0x10202008 %LE %LONG 0x01
+D.S SD:0x0C5307F0 %LE %LONG 0x00000300 ;Enable L2C share SRAM (256K), cluster 0
+D.S SD:0x0C5307F0 %LE %LONG 0x00000301 ;Enable L2C share SRAM (256K), cluster 0
+
+
+d.load.elf ../out/MT6771_ETT/BIN/MT6771_ETT.elf /long
+
+core.select 0
+
+y.spath.reset
+Y.SPATH.SRD ../ett/ett
+Y.SPATH.SRD ../ett/Preloader/drivers
+;y.spath.srd ../inc
+;y.spath.srd ../inc/MT6771
+;y.spath.srd ../core/inc
+;y.spath.srd ../core/src
+;y.spath.srd ../arch/arm/inc
+y.spath.srd ../arch/arm/src
+;y.spath.srd ../arch/soc/inc
+y.spath.srd ../arch/soc/src
+;y.spath.srd ../ett/ett/inc/MT6771
+;y.spath.srd ../ett/ett/
+;y.spath.srd ../ett/Preloader/drivers/inc
+;y.spath.srd ../ett/Preloader/drivers
+d.l

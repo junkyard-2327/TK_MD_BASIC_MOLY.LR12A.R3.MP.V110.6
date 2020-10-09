@@ -1,0 +1,201 @@
+#ifndef __RSTCTL_REG_H__
+#define __RSTCTL_REG_H__
+
+#include <reg_base.h>
+#include <irqid.h>
+
+#define BASE_ADDR_MDRSTCTL	            (BASE_ADDR_MDRGU)
+#define BASE_ADDR_APRSTCTL	            (BASE_ADDR_APRGU)
+
+#define REG_APRSTCTL_SRBER_APINFRA     	(BASE_ADDR_APRSTCTL+0x031C)		//For Yts's reset CLDMA
+#define REG_APRSTCTL_SRBER_APPERI      	(BASE_ADDR_APRSTCTL+0x0310)		//For Yts's reset CLDMA_AO
+
+#define REG_APRSTCTL_SRSTR_APPERI       (BASE_ADDR_APRSTCTL+0x0158)		//For Yts's reset CLDMA_AO
+#define REG_APRSTCTL_SRSTR_APINFRA      (BASE_ADDR_APRSTCTL+0x0160)		//For Yts's reset CLDMA
+#define REG_APRSTCTL_SRCMR	         	(BASE_ADDR_APRSTCTL+0x0300)		//For Yts's reset CLDMA & CLDMA_AO
+
+#define REG_APRSTCTL_WDTSR				(BASE_ADDR_APRSTCTL+0x0130)		//For Elbrus FPGA RGU IT	
+#define REG_APRSTCTL_WDTCR              (BASE_ADDR_APRSTCTL+0x0100)		//For Elbrus FPGA RGU IT
+#define REG_APRSTCTL_WDTIR              (BASE_ADDR_APRSTCTL+0x0110)  	//For Elbrus FPGA RGU IT
+#define REG_APRSTCTL_WDTRR              (BASE_ADDR_APRSTCTL+0x0114) 	//For Elbrus FPGA RGU IT
+#define REG_APRSTCTL_SRCMR_SWDT       	(BASE_ADDR_APRSTCTL+0x0304)		//For Elbrus FPGA RGU IT
+#define REG_APRSTCTL_WDTSR_MD1			(BASE_ADDR_APRSTCTL+0x0134)		//For Elbrus FPGA RGU IT
+#define REG_APRSTCTL_MDWDTCFG_MD1      	(BASE_ADDR_APRSTCTL+0x0330)		//For Elbrus FPGA RGU IT
+#define REG_APRSTCTL_WDT_DUMMY      	(BASE_ADDR_APRSTCTL+0x0358)		//For Elbrus FPGA RGU IT	  
+#define REG_APRSTCTL_DUMMY              (BASE_ADDR_APRSTCTL+0x0190)		//For Elbrus FPGA RGU IT	
+
+
+#define REG_MDRSTCTL_WDTCR              (BASE_ADDR_MDRSTCTL+0x0100) 		
+#define REG_MDRSTCTL_WDTRR              (BASE_ADDR_MDRSTCTL+0x0110)  			
+/*
+#define REG_MDRSTCTL_WDTER_MDPERI       (BASE_ADDR_MDRSTCTL+0x0114) 			
+#define REG_MDRSTCTL_WDTER_MDMCU       	(BASE_ADDR_MDRSTCTL+0x0118)			
+#define REG_MDRSTCTL_WDTER_MDINFRA		(BASE_ADDR_MDRSTCTL+0x011C)   		
+#define REG_MDRSTCTL_WDTER_LTEL2		(BASE_ADDR_MDRSTCTL+0x0120)   		
+#define REG_MDRSTCTL_WDTER_HSPAL2		(BASE_ADDR_MDRSTCTL+0x0124)					
+*/
+#define REG_MDRSTCTL_WDTER_MDSYS        (BASE_ADDR_MDRSTCTL+0x0128) 			
+
+#define REG_MDRSTCTL_WDTSR				(BASE_ADDR_MDRSTCTL+0x0134)			
+		
+/*
+#define REG_MDRSTCTL_SRSTR_MDPERI       (BASE_ADDR_MDRSTCTL+0x0144)			
+#define REG_MDRSTCTL_SRSTR_MDMCU       	(BASE_ADDR_MDRSTCTL+0x0148)			
+#define REG_MDRSTCTL_SRSTR_MDINFRA      (BASE_ADDR_MDRSTCTL+0x014C)			
+#define REG_MDRSTCTL_SRSTR_LTEL2        (BASE_ADDR_MDRSTCTL+0x0150)			
+#define REG_MDRSTCTL_SRSTR_HSPAL2       (BASE_ADDR_MDRSTCTL+0x0154)			
+*/
+#define REG_MDRSTCTL_SRSTR_MDSYS        (BASE_ADDR_MDRSTCTL+0x0158)
+
+//#define REG_MDRSTCTL_RESET_UNLOCK       (BASE_ADDR_MDRSTCTL+0x0168)			
+#define REG_MDRSTCTL_DUMMY       		(BASE_ADDR_MDRSTCTL+0x016C)	
+
+/*
+#define REG_MDRSTCTL_APWDTER_MDPERI		(BASE_ADDR_MDRSTCTL+0x0170)			//AP software reset MD
+#define REG_MDRSTCTL_APWDTER_MDMCU		(BASE_ADDR_MDRSTCTL+0x0174)			//AP software reset MD
+#define REG_MDRSTCTL_APWDTER_MDINFRA	(BASE_ADDR_MDRSTCTL+0x0178)			//AP software reset MD
+#define REG_MDRSTCTL_APWDTER_LTEL2		(BASE_ADDR_MDRSTCTL+0x017C)			//AP software reset MD
+#define REG_MDRSTCTL_APWDTER_HSPAL2		(BASE_ADDR_MDRSTCTL+0x0180)			//AP software reset MD
+*/
+
+#define REG_MDRSTCTL_CHECK_BIT_SET		(BASE_ADDR_MDRSTCTL+0x0184)
+#define REG_MDRSTCTL_CHECK_BIT_CLR		(BASE_ADDR_MDRSTCTL+0x0188)
+#define REG_MDRSTCTL_KICK_BIT_SET		(BASE_ADDR_MDRSTCTL+0x018C)
+#define REG_MDRSTCTL_KICK_BIT_CLR		(BASE_ADDR_MDRSTCTL+0x0190)
+#define REG_MDRSTCTL_CHECK_BIT_STS		(BASE_ADDR_MDRSTCTL+0x0194)
+#define REG_MDRSTCTL_KICK_BIT_STS		(BASE_ADDR_MDRSTCTL+0x0198)
+
+#define REG_MDRSTCTL_V0_KICK_FRC        (BASE_ADDR_MDRSTCTL+0x019C)
+#define REG_MDRSTCTL_V1_KICK_FRC        (BASE_ADDR_MDRSTCTL+0x01A0)
+#define REG_MDRSTCTL_V2_KICK_FRC        (BASE_ADDR_MDRSTCTL+0x01A4)
+#define REG_MDRSTCTL_V3_KICK_FRC        (BASE_ADDR_MDRSTCTL+0x01A8)
+
+#define REG_MDRSTCTL_RESTART_FRC        (BASE_ADDR_MDRSTCTL+0x01BC)
+#define REG_MDRSTCTL_WDT_CNT            (BASE_ADDR_MDRSTCTL+0x01C0)
+#define REG_MDRSTCTL_AUXWDT_CNT         (BASE_ADDR_MDRSTCTL+0x01C4)
+#define REG_MDRSTCTL_WDT1_STS           (BASE_ADDR_MDRSTCTL+0x01C8)
+
+#define REG_MDRSTCTL_SRCMR              (BASE_ADDR_MDRSTCTL+0x0300)			
+#define REG_MDRSTCTL_SRCMR_SWDT    		(BASE_ADDR_MDRSTCTL+0x0304)	
+
+/*
+#define REG_MDRSTCTL_SRBER_MDPERI 		(BASE_ADDR_MDRSTCTL+0x0308)																			
+#define REG_MDRSTCTL_SRBER_MDMCU		(BASE_ADDR_MDRSTCTL+0x030C)
+#define REG_MDRSTCTL_SRBER_MDINFRA      (BASE_ADDR_MDRSTCTL+0x0310)			
+#define REG_MDRSTCTL_SRBER_LTEL2        (BASE_ADDR_MDRSTCTL+0x0314)			
+#define REG_MDRSTCTL_SRBER_HSPAL2       (BASE_ADDR_MDRSTCTL+0x0318)						
+*/
+#define REG_MDRSTCTL_SRBER_MDSYS 		(BASE_ADDR_MDRSTCTL+0x0308)	
+
+#define REG_MDRSTCTL_WDTIR              (BASE_ADDR_MDRSTCTL+0x033C)  
+#define REG_MDRSTCTL_WDTIR_AUX          (BASE_ADDR_MDRSTCTL+0x0340)		
+#define REG_MDRSTCTL_WDT_DUMMY      	(BASE_ADDR_MDRSTCTL+0x0358)  
+
+#define _RST_DURATION_LOOP_DEFAULT_VALUE	    (10000)		/* Just a magic number for reset duration */
+
+
+/**< REG_MDRGU_CHECK(KICK)_BIT_SET(CLR) */
+#define RSTCTL_MD_CHECK_AND_KICK_KEY_OFFSET		(16)
+#define RSTCTL_MD_CHECK_AND_KICK_KEY			(0x87E8)
+#define RSTCTL_MD_CHECK_AND_KICK_0				(1 << 0)
+#define RSTCTL_MD_CHECK_AND_KICK_1				(1 << 1)
+#define RSTCTL_MD_CHECK_AND_KICK_2				(1 << 2)
+#define RSTCTL_MD_CHECK_AND_KICK_3				(1 << 3)
+#define RSTCTL_MD_CHECK_AND_KICK_4				(1 << 4)
+#define RSTCTL_MD_CHECK_AND_KICK_5				(1 << 5)
+#define RSTCTL_MD_CHECK_AND_KICK_6				(1 << 6)
+#define RSTCTL_MD_CHECK_AND_KICK_7				(1 << 7)
+#define RSTCTL_MD_CHECK_AND_KICK_KEY_0			((0x87E8+0) << RSTCTL_MD_CHECK_AND_KICK_KEY_OFFSET)
+#define RSTCTL_MD_CHECK_AND_KICK_KEY_1			((0x87E8+1) << RSTCTL_MD_CHECK_AND_KICK_KEY_OFFSET)
+#define RSTCTL_MD_CHECK_AND_KICK_KEY_2			((0x87E8+2) << RSTCTL_MD_CHECK_AND_KICK_KEY_OFFSET)
+#define RSTCTL_MD_CHECK_AND_KICK_KEY_3			((0x87E8+3) << RSTCTL_MD_CHECK_AND_KICK_KEY_OFFSET)
+#define RSTCTL_MD_CHECK_AND_KICK_KEY_4			((0x87E8+4) << RSTCTL_MD_CHECK_AND_KICK_KEY_OFFSET)
+#define RSTCTL_MD_CHECK_AND_KICK_KEY_5			((0x87E8+5) << RSTCTL_MD_CHECK_AND_KICK_KEY_OFFSET)
+#define RSTCTL_MD_CHECK_AND_KICK_KEY_6			((0x87E8+6) << RSTCTL_MD_CHECK_AND_KICK_KEY_OFFSET)
+#define RSTCTL_MD_CHECK_AND_KICK_KEY_7			((0x87E8+7) << RSTCTL_MD_CHECK_AND_KICK_KEY_OFFSET)
+
+//For Yts's reset CLDMA(< REG_APRSTCTL_SRBER_APINFRA>)
+#define RSTCTL_APSRBER_CLDMA_RST			(1 << 16)		/**< Soft reset of CLDMA 		 */
+#define RSTCTL_APSRBER_CLDMA_AO_RST			(1 << 15)		/**< Soft reset of CLDMA_AO 		 */
+
+
+/**< REG_MDRSTCTL_SRBER_MDSYS */
+#define RSTCTL_MDSRBER_IA_LOGGER_RST			(1 << 0)		/**< Soft reset of USIM1      */
+#define RSTCTL_MDSRBER_MDUART0_RST			    (1 << 16)		/**< Soft reset of MDUART0      */
+#define RSTCTL_MDSRBER_MDUART1_RST		        (1 << 17)		/**< Soft reset of MDUART1 */
+#define RSTCTL_MDSRBER_SOE_RST					(1 << 18)		/**< Soft reset of SOE (security offload engine)    */	
+#define RSTCTL_MDSRBER_USIM1_RST				(1 << 19)		/**< Soft reset of USIM1      */
+#define RSTCTL_MDSRBER_USIM2_RST				(1 << 20)		/**< Soft reset of USIM2      */
+#define RSTCTL_MDSRBER_MDGPTM_RST				(1 << 21)		/**< Soft reset of MDGPTM      */
+#define RSTCTL_MDSRBER_MDTOPSM_RST			    (1 << 22)		/**< Soft reset of MDTOPSM     */
+#define RSTCTL_MDSRBER_MDOST_RST				(1 << 23)		/**< Soft reset of MDOST       */
+#define RSTCTL_MDSRBER_TRACE_RST				(1 << 24)       /**< Soft reset of TRACE 			 */											
+#define RSTCTL_MDSRBER_L1SYS_RST				(1 << 25)		/**< Soft reset of L1SYS 			: only valid for MDARM */											
+#define RSTCTL_MDSRBER_MML2_RST				    (1 << 26)		/**< Soft reset of L1SYS 			: only valid for MDARM */											
+
+/**< REG_MDRGU_WDTCR */
+#define RSTCTL_WDTCR_KEY_CONTROL_OFFSET		    (24)
+#define RSTCTL_WDTCR_KEY					    (0x55 << RSTCTL_WDTCR_KEY_CONTROL_OFFSET)
+#define RSTCTL_WDTCR_WDT_SPD_UP       		    (1 << 15)       /* watch dog timer speed up mode (timer will decrease by 256 per cycle if enable)*/
+#define RSTCTL_WDTCR_AUX_WDT_IRQEN				(1 << 5)		/*watch dog timer interrupt enable for WDT2*/
+#define RSTCTL_WDTCR_WDT_IRQEN				    (1 << 4)		/* watch dog timer interrupt enable (select "intterrupt" or "reset" when watch dog timeout) */
+#define RSTCTL_WDTCR_AUX_WDT_EN					(1 << 1)		/* watch dog timer enable for WDT2*/
+#define RSTCTL_WDTCR_WDT_EN					    (1 << 0)		/* watch dog timer enable */
+
+
+/**< REG_MDRSTCTL_WDTIR */
+#define RSTCTL_WDTIR_KEY_INTV_OFFSET		    (24)
+#define RSTCTL_WDTIR_KEY					    (0x67 << RSTCTL_WDTIR_KEY_INTV_OFFSET)
+#define RSTCTL_WDTIR_AUX_KEY				    (0x68 << RSTCTL_WDTIR_KEY_INTV_OFFSET)
+#define RSTCTL_WDTIR_INTERVAL_MASK			    (0x3FFFFF)		/* Watch dog timer down count interval (the real interval is 1/32.768k */
+#define RSTCTL_WDTIR_INTERVAL_OFFSET		    (0)
+
+
+/**< REG_MDRSTCTL_WDTRR */
+#define RSTCTL_WDTRR_KEY_RESTART_OFFSET		    (16)
+#define RSTCTL_WDTRR_KEY					    (0x7208 << RSTCTL_WDTRR_KEY_RESTART_OFFSET)
+#define RSTCTL_WDTRR_WDT_RESTART				(1 << 0)
+
+/**< REG_MDRSTCTL_RESET_UNLOCK */
+#define RSTCTL_MIPS_RESET_UNLOCK_STS			(1 << 16)
+#define RSTCTL_MIPS_RESET_UNLOCK_CMD			(1 << 0)
+
+
+/**< REG_MDRSTCTL_WDTSR */
+#define RSTCTL_WDTSR_KEY_OFFSET					(16)
+#define RSTCTL_WDTSR_KEY					    (0x7662 << RSTCTL_WDTSR_KEY_OFFSET)
+#define RSTCTL_WDTSR_STATUS_MASK			    (0x7)		/* Watchdog status */
+#define RSTCTL_WDTSR_AUX_STATUS_MASK			(0x7)		/* Watchdog status for WDT2*/
+#define RSTCTL_WDTSR_STATUS_OFFSET            	(0)
+#define RSTCTL_WDTSR_AUX_STATUS_OFFSET        	(8)
+#define RSTCTL_WDTSR_STS_CLR_OFFSET           	(4)
+#define RSTCTL_WDTSR_AUX_STS_CLR_OFFSET       	(12)
+#define RSTCTL_WDTSR_MD_HWDT                  	(1 << 0)
+#define RSTCTL_WDTSR_MD_SWDT		          	(1 << 1)
+#define RSTCTL_WDTSR_OST_TIMEOUT              	(1 << 2)
+#define RSTCTL_WDTSR_AUX_MD_HWDT              	(1 << 8)
+#define RSTCTL_WDTSR_AUX_MD_SWDT		      	(1 << 9)
+#define RSTCTL_WDTSR_AUX_OST_TIMEOUT		  	(1 << 10)
+
+
+
+
+/**< REG_MDRSTCTL_SRCMR_SWDT */
+#define RSTCTL_MDSRCMR_SWDT_KEY_MASK			(0xffff)
+#define RSTCTL_MDSRCMR_SWDT_KEY_OFFSET          (16)
+#define RSTCTL_MDSRCMR_SWDT_KEY                 (0x1688 <<  RSTCTL_MDSRCMR_SWDT_KEY_OFFSET)
+#define RSTCTL_MDSRCMR_SWDT_RST                 (1 << 0)
+#define RSTCTL_MDSRCMR_AUX_SWDT_RST             (1 << 7)
+#define RSTCTL_SRCMR_KEY_SWDT				    (RSTCTL_MDSRCMR_SWDT_KEY | 0x1)	/* Key to enable software watch dog reset */
+#define RSTCTL_AUX_SRCMR_KEY_SWDT				(RSTCTL_MDSRCMR_SWDT_KEY | RSTCTL_MDSRCMR_AUX_SWDT_RST)	/* Key to enable WDT2 software watch dog reset */
+
+
+/**< REG_MDRSTCTL_SRCMR */
+#define RSTCTL_MDSRCMR_KEY_MASK			   (0xffff)
+#define RSTCTL_MDSRCMR_KEY_OFFSET          (16)
+#define RSTCTL_MDSRCMR_SRCMR_KEY           (0x2593 <<  RSTCTL_MDSRCMR_KEY_OFFSET)
+#define RSTCTL_MDSRCMR_SWDT_RST            (1 << 0)
+#define RSTCTL_SRCMR_KEY_SWRST			   (RSTCTL_MDSRCMR_SRCMR_KEY | 0x1)	/* Key to enable software reset */
+
+#endif /* end of __GPT_REG_H__ */
+

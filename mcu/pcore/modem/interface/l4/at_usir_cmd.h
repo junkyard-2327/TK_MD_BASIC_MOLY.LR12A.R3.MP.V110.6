@@ -1,0 +1,256 @@
+/*****************************************************************************
+*  Copyright Statement:
+*  --------------------
+*  This software is protected by Copyright and the information contained
+*  herein is confidential. The software may not be copied and the information
+*  contained herein may not be used or disclosed except with the written
+*  permission of MediaTek Inc. (C) 2005
+*
+*  BY OPENING THIS FILE, BUYER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+*  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("MEDIATEK SOFTWARE")
+*  RECEIVED FROM MEDIATEK AND/OR ITS REPRESENTATIVES ARE PROVIDED TO BUYER ON
+*  AN "AS-IS" BASIS ONLY. MEDIATEK EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES,
+*  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+*  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NONINFRINGEMENT.
+*  NEITHER DOES MEDIATEK PROVIDE ANY WARRANTY WHATSOEVER WITH RESPECT TO THE
+*  SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY, INCORPORATED IN, OR
+*  SUPPLIED WITH THE MEDIATEK SOFTWARE, AND BUYER AGREES TO LOOK ONLY TO SUCH
+*  THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO. MEDIATEK SHALL ALSO
+*  NOT BE RESPONSIBLE FOR ANY MEDIATEK SOFTWARE RELEASES MADE TO BUYER'S
+*  SPECIFICATION OR TO CONFORM TO A PARTICULAR STANDARD OR OPEN FORUM.
+*
+*  BUYER'S SOLE AND EXCLUSIVE REMEDY AND MEDIATEK'S ENTIRE AND CUMULATIVE
+*  LIABILITY WITH RESPECT TO THE MEDIATEK SOFTWARE RELEASED HEREUNDER WILL BE,
+*  AT MEDIATEK'S OPTION, TO REVISE OR REPLACE THE MEDIATEK SOFTWARE AT ISSUE,
+*  OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE CHARGE PAID BY BUYER TO
+*  MEDIATEK FOR SUCH MEDIATEK SOFTWARE AT ISSUE. 
+*
+*  THE TRANSACTION CONTEMPLATED HEREUNDER SHALL BE CONSTRUED IN ACCORDANCE
+*  WITH THE LAWS OF THE STATE OF CALIFORNIA, USA, EXCLUDING ITS CONFLICT OF
+*  LAWS PRINCIPLES.  ANY DISPUTES, CONTROVERSIES OR CLAIMS ARISING THEREOF AND
+*  RELATED THERETO SHALL BE SETTLED BY ARBITRATION IN SAN FRANCISCO, CA, UNDER
+*  THE RULES OF THE INTERNATIONAL CHAMBER OF COMMERCE (ICC).
+*
+*****************************************************************************/
+
+/*****************************************************************************
+ *
+ * Filename:
+ * ---------
+ *  at_usir_cmd.h
+ *
+ * Project:
+ * --------
+ *   
+ *
+ * Description:
+ * ------------
+ *   This file is intends for ....
+ *
+ * Author:
+ * -------
+ * 
+ *
+ *============================================================================
+ *             HISTORY
+ * Below this line, this part is controlled by PVCS VM. DO NOT MODIFY!!
+ *------------------------------------------------------------------------------
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ *
+ *------------------------------------------------------------------------------
+ * Upper this line, this part is controlled by PVCS VM. DO NOT MODIFY!!
+ *============================================================================
+ ****************************************************************************/
+
+/* Please add EXTEND_CMD() in the following*/
+EXTEND_CMD("atd", 2208,0 ,"",USIR_CMD_ATD,rmmi_atd_hdlr)
+EXTEND_CMD("creg", 190805, 0, "", USIR_CMD_ATCREG, rmmi_creg_hdlr)
+EXTEND_CMD("cgreg", 6665701, 0, "", USIR_CMD_ATCGREG, rmmi_cgreg_hdlr)
+EXTEND_CMD("cereg", 6555957, 0, "", USIR_CMD_ATCEREG, rmmi_cereg_hdlr)
+EXTEND_CMD("ereg", 300549, 0, "", USIR_CMD_EREG, rmmi_ereg_hdlr)
+EXTEND_CMD("egreg", 10835973, 0, "", USIR_CMD_EGREG, rmmi_egreg_hdlr)
+EXTEND_CMD("cops", 186903, 0, "", USIR_CMD_ATCOPS, rmmi_cops_hdlr)
+EXTEND_CMD("eops", 296647, 0, "", USIR_CMD_ATEOPS, rmmi_eops_hdlr)
+EXTEND_CMD("cpol", 188302, 0, "", USIR_CMD_ATCPOL, rmmi_cpol_hdlr)
+EXTEND_CMD("csim", 192407, 0, "", USIR_CMD_ATCSIM, rmmi_csim_hdlr)
+EXTEND_CMD("cgla", 175181, 0, "", USIR_CMD_ATCGLA, rmmi_cgla_hdlr)
+EXTEND_CMD("crla", 191065, 0, "", USIR_CMD_ATCRLA, rmmi_crla_hdlr)
+EXTEND_CMD("emccmnc", 11143475, 535, "", USIR_CMD_ATEMCCMNC, rmmi_emccmnc_hdlr)
+EXTEND_CMD("ecell", 10597984, 0, "", USIR_CMD_ATECELL, rmmi_ecell_hdlr)
+EXTEND_CMD("iccid", 18935518, 0, "", USIR_CMD_ICCID, rmmi_iccid_hdlr)
+EXTEND_CMD("ecmpcid", 10609679, 346 , "", USIR_CMD_ATECMPCID, rmmi_ecmpcid_hdlr)
+EXTEND_CMD("eapprove", 10504282, 22501, "", USIR_CMD_ATEAPPROVE, rmmi_eapprove_hdlr)
+EXTEND_CMD("eimscp", 10939025, 16, "", USIR_CMD_ATEIMSCP, rmmi_eimscp_hdlr)
+EXTEND_CMD("eimsinfo", 10939031, 20459, "", USIR_CMD_ATEIMSINFO, rmmi_eimsinfo_hdlr)
+EXTEND_CMD("eimsxui", 10939046, 807, "", USIR_CMD_ATEIMSXUI, rmmi_eimsxui_hdlr)
+EXTEND_CMD("epbum", 11307331, 0, "", USIR_CMD_ATEPBUM, rmmi_epbum_hdlr)
+EXTEND_CMD("cgcontrdp", 6644428,1123600 , "", USIR_CMD_CGCONTRDP, rmmi_cgcontrdp_hdlr)
+EXTEND_CMD("cgscontrdp", 6667077, 30315504, "", USIR_CMD_CGSCONTRDP, rmmi_cgscontrdp_hdlr)
+EXTEND_CMD("epdn", 297630, 0, "", USIR_CMD_EPDN, rmmi_epdn_hdlr)
+EXTEND_CMD("cpin", 188076, 0, "", USIR_CMD_ATCPIN, rmmi_cpin_hdlr)
+EXTEND_CMD("epin", 297820, 0, "", USIR_CMD_ATEPIN, rmmi_epin_hdlr)
+EXTEND_CMD("epin1", 11317188, 0, "", USIR_CMD_ATEPIN1, rmmi_epin1_hdlr)
+EXTEND_CMD("epin2", 11317189, 0, "", USIR_CMD_ATEPIN2, rmmi_epin2_hdlr)
+EXTEND_CMD("epinc", 11317163, 0, "", USIR_CMD_ATEPINC, rmmi_epinc_hdlr)
+EXTEND_CMD("esimauth", 11481739, 31092, "", USIR_CMD_ATESIMAUTH, rmmi_esimauth_hdlr)
+EXTEND_CMD("esmsmaip", 11487755,1802, "", USIR_CMD_ATESMSMAIP, rmmi_esmsmaip_hdlr)
+EXTEND_CMD("esmsmoip", 11487755,22018, "", USIR_CMD_ATESMSMOIP, rmmi_esmsmoip_hdlr)
+EXTEND_CMD("esmsmtip", 11487755,29238, "", USIR_CMD_ATESMSMTIP, rmmi_esmsmtip_hdlr)
+EXTEND_CMD("eauth", 10511644, 0, "", USIR_CMD_ATEAUTH, rmmi_eauth_hdlr)
+EXTEND_CMD("cpuc", 188521, 0, "", USIR_CMD_ATCPUC, rmmi_cpuc_hdlr)
+EXTEND_CMD("esmlck", 11487479, 11, "", USIR_CMD_ATESMLCK, rmmi_esmlck_hdlr)
+EXTEND_CMD("ecpi", 279309, 0, "", USIR_CMD_ATECPI, rmmi_ecpi_hdlr)
+EXTEND_CMD("clcc", 182061, 0, "", USIR_CMD_ATCLCC, rmmi_clcc_hdlr)
+EXTEND_CMD("clccs", 6918337, 0, "", USIR_CMD_ATCLCCS, rmmi_clcc_hdlr)
+EXTEND_CMD("clip", 182302, 0, "", USIR_CMD_ATCLIP, rmmi_clip_hdlr)
+EXTEND_CMD("eaic", 276149, 0, "", USIR_CMD_ATEAIC, rmmi_eaic_hdlr)
+EXTEND_CMD("colp", 186748, 0, "", USIR_CMD_ATCOLP, rmmi_colp_hdlr)
+EXTEND_CMD("cacm", 166187, 0, "", USIR_CMD_ATCACM, rmmi_cacm_hdlr)
+EXTEND_CMD("camm", 166567, 0, "", USIR_CMD_ATCAMM, rmmi_camm_hdlr)
+EXTEND_CMD("cmgs", 183673, 0, "", USIR_CMD_ATCMGS, rmmi_cmgs_dispatch_hdlr)
+EXTEND_CMD("emgs", 293417, 0, "", USIR_CMD_ATEMGS, rmmi_emgs_hdlr)
+EXTEND_CMD("cmss", 184129, 0, "", USIR_CMD_ATCMSS, rmmi_cmss_hdlr)
+EXTEND_CMD("cmt", 4846, 0, "", USIR_CMD_ATCMT, rmmi_cmgs_cmt_hdlr)
+EXTEND_CMD("clck", 182069, 0, "", USIR_CMD_ATCLCK, rmmi_clck_hdlr)
+EXTEND_CMD("cpwd", 188598, 0, "", USIR_CMD_ATCPWD, rmmi_cpwd_hdlr)
+EXTEND_CMD("ciev", 177824, 0, "", USIR_CMD_ATCIEV, rmmi_ciev_hdlr)
+EXTEND_CMD("stkctrl", 40731042, 696, "", USIR_CMD_ATSTKCTRL, rmmi_stkctrl_hdlr)
+EXTEND_CMD("cmgw", 183677, 0, "", USIR_CMD_ATCMGW, rmmi_cmgw_dispatch_hdlr)
+EXTEND_CMD("emgw", 293421, 0, "", USIR_CMD_ATEMGW, rmmi_emgw_hdlr)
+EXTEND_CMD("esimind", 11481747, 536, "", USIR_CMD_ATESIMIND, rmmi_esimind_hdlr)
+EXTEND_CMD("cpbw", 187819, 0, "", USIR_CMD_ATCPBW, rmmi_cpbw_hdlr)
+EXTEND_CMD("ecpbw", 10613499, 0, "", USIR_CMD_ATECPBW, rmmi_cpbw_hdlr)
+EXTEND_CMD("epbw", 297563, 0, "", USIR_CMD_ATEPBW, rmmi_cpbw_hdlr)
+EXTEND_CMD("cpbr", 187814, 0, "", USIR_CMD_ATCPBR, rmmi_cpbr_hdlr)
+EXTEND_CMD("ecpbr", 10613494, 0, "", USIR_CMD_ATECPBR, rmmi_cpbr_hdlr)
+EXTEND_CMD("etmosk", 11542481, 11, "", USIR_CMD_ATETMOSK, rmmi_etmosk_hdlr)
+EXTEND_CMD("etmoslb", 11542481, 458, "", USIR_CMD_ATETMOSLB, rmmi_etmoslb_hdlr)
+EXTEND_CMD("eslblob", 11485664, 572, "", USIR_CMD_ATESLBLOB, rmmi_eslblob_hdlr)
+EXTEND_CMD("eslblobf", 11485664, 21742, "", USIR_CMD_ATESLBLOBF, rmmi_eslblobf_hdlr)
+EXTEND_CMD("egmr", 284980, 0, "", USIR_CMD_ATEGMR, rmmi_egmr_hdlr)
+EXTEND_CMD("egmrext", 10829245, 932, "", USIR_CMD_ATEGMREXT, rmmi_egmrext_hdlr)
+EXTEND_CMD("crsm", 191343, 0, "", USIR_CMD_ATCRSM, rmmi_crsm_hdlr)
+EXTEND_CMD("ersa", 301075, 0, "", USIR_CMD_ERSA, rmmi_ersa_hdlr)
+EXTEND_CMD("espn", 302418, 0, "", USIR_CMD_ATESPN, rmmi_espn_hdlr)
+EXTEND_CMD("esimapp", 11481739, 624, "", USIR_CMD_ATESIMAPP, rmmi_esimapp_hdlr)
+EXTEND_CMD("stkenv", 40731112, 22, "", USIR_CMD_ATSTKENV, rmmi_stkenv_hdlr)
+EXTEND_CMD("stkpci", 40731519, 9, "", USIR_CMD_ATSTKPCI, rmmi_stkpci_hdlr)
+EXTEND_CMD("stktr", 40731686, 0, "", USIR_CMD_ATSTKTR, rmmi_stktr_hdlr)
+EXTEND_CMD("cusate", 7435214, 5, "", USIR_CMD_CUSATE, rmmi_cusate_hdlr)
+EXTEND_CMD("ecusd", 10621346, 0, "", USIR_CMD_ATECUSD, rmmi_ecusd_hdlr)
+EXTEND_CMD("ccfc", 169179, 0, "", USIR_CMD_ATCCFC, rmmi_ccfc_hdlr)
+EXTEND_CMD("ccwa", 169823, 0, "", USIR_CMD_ATCCWA, rmmi_ccwa_hdlr)
+EXTEND_CMD("cnap", 184886, 0, "", USIR_CMD_ATCNAP, rmmi_cnap_hdlr)
+EXTEND_CMD("ersaind", 11440859, 536, "", USIR_CMD_ATERSAIND, rmmi_ersaind_hdlr)
+EXTEND_CMD("ecrla", 10616745, 0, "", USIR_CMD_ATECRLA, rmmi_ecrla_hdlr)
+EXTEND_CMD("emsdtnum", 169636960, 21027, "", USIR_CMD_ATEMSDTNUM, rmmi_emsdtnum_hdlr)
+EXTEND_CMD("emsdrnum", 169636958, 21027, "", USIR_CMD_ATEMSDRNUM, rmmi_emsdrnum_hdlr)
+EXTEND_CMD("cgdcont", 6645417, 552, "", USIR_CMD_ATCGDCONT,rmmi_cgdcont_hdlr)
+EXTEND_CMD("cgauth", 6641774, 8, "", USIR_CMD_ATCGAUTH, rmmi_cgauth_hdlr)
+EXTEND_CMD("egpco", 10833017, 0, "", USIR_CMD_EGPCO, rmmi_egpco_hdlr)
+EXTEND_CMD("cgtft", 6668640, 0, "", USIR_CMD_ATCGTFT, rmmi_cgtft_hdlr)
+EXTEND_CMD("vlocinfo", 46553239, 20459, "", USIR_CMD_ATVLOCINFO, rmmi_vlocinfo_hdlr)
+EXTEND_CMD("ec2kcell", 10632593, 7688, "", USIR_CMD_ATEC2KCELL, rmmi_ec2kcell_hdlr)
+EXTEND_CMD("eclck", 10607749, 0, "", USIR_CMD_ATECLCK, rmmi_eclck_hdlr)
+EXTEND_CMD("hmlck", 17411877, 0, "", USIR_CMD_ATHMLCK, rmmi_hmlck_hdlr)
+
+
+/* Please add CMD_ENUM() in the following and do not wrap with compile option*/
+CMD_ENUM(USIR_CMD_ATD)
+CMD_ENUM(USIR_CMD_ATCREG)
+CMD_ENUM(USIR_CMD_ATCGREG)
+CMD_ENUM(USIR_CMD_ATCEREG)
+CMD_ENUM(USIR_CMD_EREG)
+CMD_ENUM(USIR_CMD_EGREG)
+CMD_ENUM(USIR_CMD_ATCOPS)
+CMD_ENUM(USIR_CMD_ATEOPS)
+CMD_ENUM(USIR_CMD_ATCPOL)
+CMD_ENUM(USIR_CMD_ATCSIM)
+CMD_ENUM(USIR_CMD_ATCGLA)
+CMD_ENUM(USIR_CMD_ATCRLA)
+CMD_ENUM(USIR_CMD_ATEMCCMNC)
+CMD_ENUM(USIR_CMD_ATECELL)
+CMD_ENUM(USIR_CMD_ICCID)
+CMD_ENUM(USIR_CMD_ATECMPCID)
+CMD_ENUM(USIR_CMD_ATEAPPROVE)
+CMD_ENUM(USIR_CMD_ATEIMSCP)
+CMD_ENUM(USIR_CMD_ATEIMSINFO)
+CMD_ENUM(USIR_CMD_ATEIMSXUI)
+CMD_ENUM(USIR_CMD_ATEPBUM)
+CMD_ENUM(USIR_CMD_CGCONTRDP)
+CMD_ENUM(USIR_CMD_CGSCONTRDP)
+CMD_ENUM(USIR_CMD_EPDN)
+CMD_ENUM(USIR_CMD_ATCPIN)
+CMD_ENUM(USIR_CMD_ATEPIN)
+CMD_ENUM(USIR_CMD_ATEPIN1)
+CMD_ENUM(USIR_CMD_ATEPIN2)
+CMD_ENUM(USIR_CMD_ATEPINC)
+CMD_ENUM(USIR_CMD_ATESIMAUTH)
+CMD_ENUM(USIR_CMD_ATESMSMAIP)
+CMD_ENUM(USIR_CMD_ATESMSMOIP)
+CMD_ENUM(USIR_CMD_ATESMSMTIP)
+CMD_ENUM(USIR_CMD_ATEAUTH)
+CMD_ENUM(USIR_CMD_ATCPUC)
+CMD_ENUM(USIR_CMD_ATESMLCK)
+CMD_ENUM(USIR_CMD_ATECPI)
+CMD_ENUM(USIR_CMD_ATCLCC)
+CMD_ENUM(USIR_CMD_ATCLCCS)
+CMD_ENUM(USIR_CMD_ATCLIP)
+CMD_ENUM(USIR_CMD_ATEAIC)
+CMD_ENUM(USIR_CMD_ATCOLP)
+CMD_ENUM(USIR_CMD_ATCACM)
+CMD_ENUM(USIR_CMD_ATCAMM)
+CMD_ENUM(USIR_CMD_ATCMGS)
+CMD_ENUM(USIR_CMD_ATEMGS)
+CMD_ENUM(USIR_CMD_ATCMSS)
+CMD_ENUM(USIR_CMD_ATCMT)
+CMD_ENUM(USIR_CMD_ATCLCK)
+CMD_ENUM(USIR_CMD_ATCPWD)
+CMD_ENUM(USIR_CMD_ATCIEV)
+CMD_ENUM(USIR_CMD_ATSTKCTRL)
+CMD_ENUM(USIR_CMD_ATCMGW)
+CMD_ENUM(USIR_CMD_ATEMGW)
+CMD_ENUM(USIR_CMD_ATESIMIND)
+CMD_ENUM(USIR_CMD_ATCPBW)
+CMD_ENUM(USIR_CMD_ATECPBW)
+CMD_ENUM(USIR_CMD_ATEPBW)
+CMD_ENUM(USIR_CMD_ATCPBR)
+CMD_ENUM(USIR_CMD_ATECPBR)
+CMD_ENUM(USIR_CMD_ATETMOSK)
+CMD_ENUM(USIR_CMD_ATETMOSLB)
+CMD_ENUM(USIR_CMD_ATESLBLOB)
+CMD_ENUM(USIR_CMD_ATESLBLOBF)
+CMD_ENUM(USIR_CMD_ATEGMR)
+CMD_ENUM(USIR_CMD_ATEGMREXT)
+CMD_ENUM(USIR_CMD_ATCRSM)
+CMD_ENUM(USIR_CMD_ERSA)
+CMD_ENUM(USIR_CMD_ATESPN)
+CMD_ENUM(USIR_CMD_ATESIMAPP)
+CMD_ENUM(USIR_CMD_ATSTKTR)
+CMD_ENUM(USIR_CMD_ATSTKENV)
+CMD_ENUM(USIR_CMD_CUSATE)
+CMD_ENUM(USIR_CMD_ATSTKPCI)
+CMD_ENUM(USIR_CMD_ATECUSD)
+CMD_ENUM(USIR_CMD_ATCCFC)
+CMD_ENUM(USIR_CMD_ATERSAIND)
+CMD_ENUM(USIR_CMD_ATECRLA)
+CMD_ENUM(USIR_CMD_ATEMSDTNUM)
+CMD_ENUM(USIR_CMD_ATEMSDRNUM)
+CMD_ENUM(USIR_CMD_ATCGDCONT)
+CMD_ENUM(USIR_CMD_ATCGAUTH)
+CMD_ENUM(USIR_CMD_EGPCO)
+CMD_ENUM(USIR_CMD_ATCGTFT)  
+CMD_ENUM(USIR_CMD_ATVLOCINFO)
+CMD_ENUM(USIR_CMD_ATEC2KCELL)
+CMD_ENUM(USIR_CMD_ATECLCK)
+CMD_ENUM(USIR_CMD_ATHMLCK)

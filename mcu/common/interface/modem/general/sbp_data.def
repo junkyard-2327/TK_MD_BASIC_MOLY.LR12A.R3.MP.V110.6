@@ -1,0 +1,2222 @@
+#ifndef SBP_DATA_DEF
+#define SBP_DATA_DEF(ID, FEATURE, ATTR, DESC)
+#endif
+#ifndef SBP_DATA_DEF_VAL
+#define SBP_DATA_DEF_VAL(VAL, DESC)
+#endif
+#ifndef SBP_DATA_DEF_END
+#define SBP_DATA_DEF_END
+#endif
+ 
+#ifndef SBP_DATA_DEF_BIT_VAL
+#define SBP_DATA_DEF_BIT_VAL(NAME, DESC, DESC_V0, DESC_V1)
+#endif
+#ifndef SBP_DATA_DEF_BIT
+#define SBP_DATA_DEF_BIT(ID, FEATURE, ATTR)
+#endif
+#ifndef SBP_DATA_DEF_BIT_END
+#define SBP_DATA_DEF_BIT_END
+#endif
+
+#ifndef SBP_DATA_DEFAULT_VAL
+#define SBP_DATA_DEFAULT_VAL(DEFAULT_VALUE)
+#endif
+
+/* Please remember to modify the following NVRAM VERNO when your modification will change NVRAM*/
+#ifdef SBP_DEFINE_NVRAM_VERNO
+	#define NVRAM_EF_SBP_MODEM_DATA_CONFIG_LID_VERNO "044"
+#endif
+
+/*
+ * Format: 
+ *
+ * SBP_DATA_DEF(ID, FEATURE, ATTR, DESC)			// define a SBP DATA
+ *    SBD_DATA_DEF_VAL(VAL, VAL_DESC)			// define the possible value of this SBP DATA and the description of this value.
+ *    ...											// there could be 0 or multiple SBP_DATA_DEF_VAL
+ *    SBP_DATA_DEFAULT_VAL(DEFAULT_VAL)			// define the default value of this SBP DATA, there is one and only one default value for this SBP DATA
+ * SBP_DATA_DEF_END								// END of the definition for this SBP DATA
+ *
+ * Meaning:
+ *  - ID: the real value of the SBP Data enum
+ *  - FEATURE: the SBP Data enum
+ *  - ATTR: 
+ *    	SBP_ATTR_NONE = 0,
+ *    	SBP_ATTR_NOT_SUPPORT_DYNAMIC_SBP = 0x01,       //  bit 1 is for current SBP NV will keep when Dynamic SBP change
+ *    	SBP_ATTR_ALL = 0xff,
+ *
+ * - DESC: the field description in sbp_nvram_editor.h for this SBP DATA
+ * - VAL: the possible value for this SBP Data which will be defined in the sbp_nvram_editor.h
+ * - VAL_DESC: the description of the corresponding possible value for this SBP Data which will be defined in the sbp_nvram_editor.h
+ * - DEFAULT_VAL: the default value defined in nvram_data_items.c (the value may be replaced by sbp_utility.c)
+ *
+ * Note: ifdef/ifndef is supported but only for SBP_DATA_DEFAULT_VAL or adding different ATTR
+ *
+ */
+ 
+/******* SBP Doc Info Begin *******
+<SBP_DOC_INFO>
+	<HISTORY>
+	</HISTORY>
+</SBP_DOC_INFO>
+******* SBP Doc End ********/
+ 
+ /*0~7*/
+ /****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_DATA_VAMOS - VAMOS(Voice services over Adaptive Multi-user Channels on One Slot)">
+    <DESCRIPTION>
+        This feature is defined in 3GPP TS45.001 Ch.13(after R9). 
+        If the MS support VAMOS, the VAMOS level could be VAMOS-I or VAMOS-II. 
+        The MS will report its capability on the CLASSMARK to the network and the NW may assign channel mode with VAMOS mode.
+    </DESCRIPTION>
+    <CATEGORY>GAS</CATEGORY>
+    <CONFIG>
+    	<VALUE value="0">Not Supported(Doc)</VALUE>
+    	<VALUE value="1">VAMOS_1 Supported(Doc)</VALUE>
+    	<VALUE value="2">VAMOS_2 Supported(Doc)</VALUE>
+    </CONFIG>
+    <DEFAULT>2 (VAMOS-II)</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>
+        The VAMOS_SUPPORT flag in makefile shall always be TRUE. (non-switchable) 
+        <PARAG>
+            If VAMOS_SUPPORT set to FALSE, this VAMOS feature will be set to not support.
+        </PARAG>
+    </DEPENDENCY>
+    <NOTE>N/A</NOTE>		
+    <AUTHOR>mtk09470</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(0, SBP_DATA_VAMOS, SBP_ATTR_NONE, "support of VAMOS level is defined")
+        SBP_DATA_DEF_VAL(0x00, "Not Supported")
+        SBP_DATA_DEF_VAL(0x01, "VAMOS_1 Supported")
+        SBP_DATA_DEF_VAL(0x02, "VAMOS_2 Supported")
+        /* The first Hex is for FDD and the second is for TDD. */
+        #if defined(__VAMOS_2__)
+            SBP_DATA_DEFAULT_VAL(0x02 | 0x00)
+        #elif defined(__VAMOS_1__)
+            SBP_DATA_DEFAULT_VAL(0x01 | 0x00)
+        #else
+            SBP_DATA_DEFAULT_VAL(0x00 | 0x00)
+        #endif
+    SBP_DATA_DEF_END
+
+ /****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_IDC_EN - IDC(In-device Coexistence)">
+    <DESCRIPTION>
+        <PARAG>
+            This feature is used to cooperate with CONSYS to eliminate interference between LTE and CONSYS(WiFi, BT, GPS). 
+            If IDC is enabled, it will apply TDM, FDM or Power backoff according to LTE serving frequency and CONSYS frequency. 
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>EAS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0">IDC is not enabled</VALUE>
+        <VALUE value="1">IDC is enabled, Interference mitigation between LTE and CONSYS will be applied</VALUE>
+    </CONFIG>
+    <DEFAULT>
+        1 (IDC is enabled)
+    </DEFAULT>
+    <OP>
+        N/A
+    </OP>
+    <DEPENDENCY>
+        N/A
+    </DEPENDENCY>
+    <NOTE>
+        N/A
+    </NOTE>		
+    <AUTHOR>mtk13382</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(1, SBP_IDC_EN, SBP_ATTR_NONE, "Enable IDC feature")
+        SBP_DATA_DEF_VAL(0x00, "IDC disable")
+        SBP_DATA_DEF_VAL(0x01, "IDC enable")
+        #if defined(__DISABLE_IDC__)
+            SBP_DATA_DEFAULT_VAL(0x00)
+        #else
+            SBP_DATA_DEFAULT_VAL(0x01)
+        #endif
+    SBP_DATA_DEF_END
+
+ /****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_IDC_IM_TX_PWR">
+    <DESCRIPTION>
+        <PARAG>
+            The value is applied to LTE Tx max power after CONSYS notifies LTE to reduce Tx max power
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>EAS</CATEGORY>
+    <CONFIG>
+        <VALUE value="1">LTE max Tx power is set to 1 dBm</VALUE>
+        <VALUE value="2">LTE max Tx power is set to 2 dBm</VALUE>
+        <VALUE value="3">LTE max Tx power is set to 3 dBm</VALUE>
+        <VALUE value="4">LTE max Tx power is set to 4 dBm</VALUE>
+        <VALUE value="5">LTE max Tx power is set to 5 dBm</VALUE>
+        <VALUE value="6">LTE max Tx power is set to 6 dBm</VALUE>
+        <VALUE value="7">LTE max Tx power is set to 7 dBm</VALUE>
+        <VALUE value="8">LTE max Tx power is set to 8 dBm</VALUE>
+        <VALUE value="9">LTE max Tx power is set to 9 dBm</VALUE>
+        <VALUE value="10">LTE max Tx power is set to 10 dBm</VALUE>
+        <VALUE value="11">LTE max Tx power is set to 11 dBm</VALUE>
+        <VALUE value="12">LTE max Tx power is set to 12 dBm</VALUE>
+        <VALUE value="13">LTE max Tx power is set to 13 dBm</VALUE>
+        <VALUE value="14">LTE max Tx power is set to 14 dBm</VALUE>
+        <VALUE value="15">LTE max Tx power is set to 15 dBm</VALUE>
+        <VALUE value="16">LTE max Tx power is set to 16 dBm</VALUE>
+        <VALUE value="17">LTE max Tx power is set to 17 dBm</VALUE>
+        <VALUE value="18">LTE max Tx power is set to 18 dBm</VALUE>
+        <VALUE value="19">LTE max Tx power is set to 19 dBm</VALUE>
+        <VALUE value="20">LTE max Tx power is set to 20 dBm</VALUE>
+        <VALUE value="21">LTE max Tx power is set to 21 dBm</VALUE>
+        <VALUE value="22">LTE max Tx power is set to 22 dBm</VALUE>
+        <VALUE value="23">LTE max Tx power is set to 23 dBm</VALUE>
+    </CONFIG>
+    <DEFAULT>18 (LTE max Tx power is set to 18 dBm when CONSYS notifies LTE to deduce LTE max Tx power)</DEFAULT>
+    <OP>
+        N/A
+    </OP>
+    <DEPENDENCY>
+        N/A
+    </DEPENDENCY>
+    <NOTE>
+        N/A
+    </NOTE>		
+    <AUTHOR>mtk13382</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(2, SBP_IDC_IM_TX_PWR, SBP_ATTR_NONE, "Set LTE max Tx power when IDC is enabled")
+        SBP_DATA_DEF_VAL(0x01, "TX_PWR_1")
+        SBP_DATA_DEF_VAL(0x02, "TX_PWR_2")
+        SBP_DATA_DEF_VAL(0x03, "TX_PWR_3")
+        SBP_DATA_DEF_VAL(0x04, "TX_PWR_4")
+        SBP_DATA_DEF_VAL(0x05, "TX_PWR_5")
+        SBP_DATA_DEF_VAL(0x06, "TX_PWR_6")
+        SBP_DATA_DEF_VAL(0x07, "TX_PWR_7")
+        SBP_DATA_DEF_VAL(0x08, "TX_PWR_8")
+        SBP_DATA_DEF_VAL(0x09, "TX_PWR_9")
+        SBP_DATA_DEF_VAL(0x0a, "TX_PWR_10")
+        SBP_DATA_DEF_VAL(0x0b, "TX_PWR_11")
+        SBP_DATA_DEF_VAL(0x0c, "TX_PWR_12")
+        SBP_DATA_DEF_VAL(0x0d, "TX_PWR_13")
+        SBP_DATA_DEF_VAL(0x0e, "TX_PWR_14")
+        SBP_DATA_DEF_VAL(0x0f, "TX_PWR_15")
+        SBP_DATA_DEF_VAL(0x10, "TX_PWR_16")
+        SBP_DATA_DEF_VAL(0x11, "TX_PWR_17")
+        SBP_DATA_DEF_VAL(0x12, "TX_PWR_18")
+        SBP_DATA_DEF_VAL(0x13, "TX_PWR_19")
+        SBP_DATA_DEF_VAL(0x14, "TX_PWR_20")
+        SBP_DATA_DEF_VAL(0x15, "TX_PWR_21")
+        SBP_DATA_DEF_VAL(0x16, "TX_PWR_22")
+        SBP_DATA_DEF_VAL(0x17, "TX_PWR_23")
+        SBP_DATA_DEFAULT_VAL(0x12)
+    SBP_DATA_DEF_END
+       
+ /****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_IDC_GPS_BLANK_EN">
+    <DESCRIPTION>
+        <PARAG>
+            This feature is used to notify GPS that there will have LTE Tx, and GPS should ignore signals received in the notified subframes.
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>EAS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0">GPS_BLANK is not enabled. LTE will not notify GPS that if there is any LTE Tx later</VALUE>
+        <VALUE value="1">GPS_BLANK is enabled. LTE will notify GPS that if there is any LTE Tx later</VALUE>
+    </CONFIG>
+    <DEFAULT>
+        1 (GPS_BLANK is enabled)
+    </DEFAULT>
+    <OP>
+        N/A
+    </OP>
+    <DEPENDENCY>
+        N/A
+    </DEPENDENCY>
+    <NOTE>
+        N/A
+    </NOTE>		
+  <AUTHOR>mtk13382</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(3, SBP_IDC_GPS_BLANK_EN, SBP_ATTR_NONE, "Enable GPS blanking feature")
+        SBP_DATA_DEF_VAL(0x00, "GPS_BLANK is disabled")
+        SBP_DATA_DEF_VAL(0x01, "GPS_BLANK is enabled")
+        #if defined(MT6739)
+            SBP_DATA_DEFAULT_VAL(0x00)  //Disable GPS blanking
+        #else
+            SBP_DATA_DEFAULT_VAL(0x01)  //Enable GPS blanking
+        #endif
+    SBP_DATA_DEF_END
+    
+ /****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_IDC_802_ANT_ISOLATION - Set antenna isolation between LTE and WiFi">
+    <DESCRIPTION>
+        It is used to set the antenna isolation between LTE and WiFi. This sbp is reserved for future usage. Currently, MD load will not apply this value.
+    </DESCRIPTION>
+    <CATEGORY>EAS</CATEGORY>
+    <CONFIG>
+        <VALUE value="7">Antenna isolation between LTE and WiFi is 7dBm</VALUE>
+        <VALUE value="8">Antenna isolation between LTE and WiFi is 8dBm</VALUE>
+        <VALUE value="9">Antenna isolation between LTE and WiFi is 9dBm</VALUE>
+        <VALUE value="10">Antenna isolation between LTE and WiFi is 10dBm</VALUE>
+        <VALUE value="11">Antenna isolation between LTE and WiFi is 11dBm</VALUE>
+        <VALUE value="12">Antenna isolation between LTE and WiFi is 12dBm</VALUE>
+        <VALUE value="13">Antenna isolation between LTE and WiFi is 13dBm</VALUE>
+        <VALUE value="14">Antenna isolation between LTE and WiFi is 14dBm</VALUE>
+        <VALUE value="15">Antenna isolation between LTE and WiFi is 15dBm</VALUE>
+        <VALUE value="16">Antenna isolation between LTE and WiFi is 16dBm</VALUE>
+        <VALUE value="17">Antenna isolation between LTE and WiFi is 17dBm</VALUE>
+        <VALUE value="18">Antenna isolation between LTE and WiFi is 18dBm</VALUE>
+        <VALUE value="19">Antenna isolation between LTE and WiFi is 19dBm</VALUE>
+        <VALUE value="20">Antenna isolation between LTE and WiFi is 20dBm</VALUE>
+        <VALUE value="21">Antenna isolation between LTE and WiFi is 21dBm</VALUE>
+        <VALUE value="22">Antenna isolation between LTE and WiFi is 22dBm</VALUE>
+        <VALUE value="23">Antenna isolation between LTE and WiFi is 23dBm</VALUE>
+        <VALUE value="24">Antenna isolation between LTE and WiFi is 24dBm</VALUE>
+    </CONFIG>
+    <DEFAULT>
+        1 (Antenna isolation between LTE and WiFi is 12dBm)
+    </DEFAULT>
+    <OP>
+        N/A
+    </OP>
+    <DEPENDENCY>
+        N/A
+    </DEPENDENCY>
+    <NOTE>
+        N/A
+    </NOTE>		
+    <AUTHOR>mtk13382</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(4, SBP_IDC_802_ANT_ISOLATION, SBP_ATTR_NONE, "Set antenna isolation between LTE and WiFi") 
+        SBP_DATA_DEF_VAL(0x07, "ANT_ISOLATION_7")
+        SBP_DATA_DEF_VAL(0x08, "ANT_ISOLATION_8")
+        SBP_DATA_DEF_VAL(0x09, "ANT_ISOLATION_9")
+        SBP_DATA_DEF_VAL(0x0a, "ANT_ISOLATION_10")
+        SBP_DATA_DEF_VAL(0x0b, "ANT_ISOLATION_11")
+        SBP_DATA_DEF_VAL(0x0c, "ANT_ISOLATION_12")
+        SBP_DATA_DEF_VAL(0x0d, "ANT_ISOLATION_13")
+        SBP_DATA_DEF_VAL(0x0e, "ANT_ISOLATION_14")
+        SBP_DATA_DEF_VAL(0x0f, "ANT_ISOLATION_15")
+        SBP_DATA_DEF_VAL(0x10, "ANT_ISOLATION_16")
+        SBP_DATA_DEF_VAL(0x11, "ANT_ISOLATION_17")
+        SBP_DATA_DEF_VAL(0x12, "ANT_ISOLATION_18")
+        SBP_DATA_DEF_VAL(0x13, "ANT_ISOLATION_19")
+        SBP_DATA_DEF_VAL(0x14, "ANT_ISOLATION_20")
+        SBP_DATA_DEF_VAL(0x15, "ANT_ISOLATION_21")
+        SBP_DATA_DEF_VAL(0x16, "ANT_ISOLATION_22")
+        SBP_DATA_DEF_VAL(0x17, "ANT_ISOLATION_23")
+        SBP_DATA_DEF_VAL(0x18, "ANT_ISOLATION_24")
+        SBP_DATA_DEFAULT_VAL(0x0c)
+    SBP_DATA_DEF_END
+    
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_IDC_DISABLE_CUSTOM - Set whether to apply MTK solution or not">
+    <DESCRIPTION>
+        It is used to set whether IDC should force to apply MTK solution or not.
+    </DESCRIPTION>
+    <CATEGORY>EAS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0"> WiFi sidelobe: not force, BT sidelobe: not force, Harmonic: not force, Intermodulation: not force</VALUE>
+        <VALUE value="1"> WiFi sidelobe:     force, BT sidelobe: not force, Harmonic: not force, Intermodulation: not force</VALUE>
+        <VALUE value="2"> WiFi sidelobe: not force, BT sidelobe:     force, Harmonic: not force, Intermodulation: not force</VALUE>
+        <VALUE value="3"> WiFi sidelobe:     force, BT sidelobe:     force, Harmonic: not force, Intermodulation: not force</VALUE>
+        <VALUE value="4"> WiFi sidelobe: not force, BT sidelobe: not force, Harmonic:     force, Intermodulation: not force</VALUE>
+        <VALUE value="5"> WiFi sidelobe:     force, BT sidelobe: not force, Harmonic:     force, Intermodulation: not force</VALUE>
+        <VALUE value="6"> WiFi sidelobe: not force, BT sidelobe:     force, Harmonic:     force, Intermodulation: not force</VALUE>
+        <VALUE value="7"> WiFi sidelobe:     force, BT sidelobe:     force, Harmonic:     force, Intermodulation: not force</VALUE>
+        <VALUE value="8"> WiFi sidelobe: not force, BT sidelobe: not force, Harmonic: not force, Intermodulation:     force</VALUE>
+        <VALUE value="9"> WiFi sidelobe:     force, BT sidelobe: not force, Harmonic: not force, Intermodulation:     force</VALUE>
+        <VALUE value="10">WiFi sidelobe: not force, BT sidelobe:     force, Harmonic: not force, Intermodulation:     force</VALUE>
+        <VALUE value="11">WiFi sidelobe:     force, BT sidelobe:     force, Harmonic: not force, Intermodulation:     force</VALUE>
+        <VALUE value="12">WiFi sidelobe: not force, BT sidelobe: not force, Harmonic:     force, Intermodulation:     force</VALUE>
+        <VALUE value="13">WiFi sidelobe:     force, BT sidelobe: not force, Harmonic:     force, Intermodulation:     force</VALUE>
+        <VALUE value="14">WiFi sidelobe: not force, BT sidelobe:     force, Harmonic:     force, Intermodulation:     force</VALUE>
+        <VALUE value="15">WiFi sidelobe:     force, BT sidelobe:     force, Harmonic:     force, Intermodulation:     force</VALUE>
+    </CONFIG>
+    <DEFAULT>N/A</DEFAULT>
+    <OP>
+        N/A
+    </OP>
+    <DEPENDENCY>
+        N/A
+    </DEPENDENCY>
+    <NOTE>
+        N/A
+    </NOTE>		
+  <AUTHOR>mtk13382</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(5, SBP_IDC_DISABLE_CUSTOM, SBP_ATTR_NONE, "Set whether to apply MTK solution or not") 
+        SBP_DATA_DEF_VAL(0x00, "WiFi sidelobe: not force, BT sidelobe: not force, Harmonic: not force, Intermodulation: not force")
+        SBP_DATA_DEF_VAL(0x01, "WiFi sidelobe:     force, BT sidelobe: not force, Harmonic: not force, Intermodulation: not force")
+        SBP_DATA_DEF_VAL(0x02, "WiFi sidelobe: not force, BT sidelobe:     force, Harmonic: not force, Intermodulation: not force")
+        SBP_DATA_DEF_VAL(0x03, "WiFi sidelobe:     force, BT sidelobe:     force, Harmonic: not force, Intermodulation: not force")
+        SBP_DATA_DEF_VAL(0x04, "WiFi sidelobe: not force, BT sidelobe: not force, Harmonic:     force, Intermodulation: not force")
+        SBP_DATA_DEF_VAL(0x05, "WiFi sidelobe:     force, BT sidelobe: not force, Harmonic:     force, Intermodulation: not force")
+        SBP_DATA_DEF_VAL(0x06, "WiFi sidelobe: not force, BT sidelobe:     force, Harmonic:     force, Intermodulation: not force")
+        SBP_DATA_DEF_VAL(0x07, "WiFi sidelobe:     force, BT sidelobe:     force, Harmonic:     force, Intermodulation: not force")
+        SBP_DATA_DEF_VAL(0x08, "WiFi sidelobe: not force, BT sidelobe: not force, Harmonic: not force, Intermodulation:     force")
+        SBP_DATA_DEF_VAL(0x09, "WiFi sidelobe:     force, BT sidelobe: not force, Harmonic: not force, Intermodulation:     force")
+        SBP_DATA_DEF_VAL(0x0a, "WiFi sidelobe: not force, BT sidelobe:     force, Harmonic: not force, Intermodulation:     force")
+        SBP_DATA_DEF_VAL(0x0b, "WiFi sidelobe:     force, BT sidelobe:     force, Harmonic: not force, Intermodulation:     force")
+        SBP_DATA_DEF_VAL(0x0c, "WiFi sidelobe: not force, BT sidelobe: not force, Harmonic:     force, Intermodulation:     force")
+        SBP_DATA_DEF_VAL(0x0d, "WiFi sidelobe:     force, BT sidelobe: not force, Harmonic:     force, Intermodulation:     force")
+        SBP_DATA_DEF_VAL(0x0e, "WiFi sidelobe: not force, BT sidelobe:     force, Harmonic:     force, Intermodulation:     force")
+        SBP_DATA_DEF_VAL(0x0f, "WiFi sidelobe:     force, BT sidelobe:     force, Harmonic:     force, Intermodulation:     force")
+        SBP_DATA_DEFAULT_VAL(0x00)
+    SBP_DATA_DEF_END
+    
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_GERAN_TO_EUTRAN_SUPPORT_IN_GERAN_PTM - GERAN to E-UTRA support in GERAN packet transfer mode">
+    <DESCRIPTION>
+        This feature is used to configure GERAN to E-UTRA support in GERAN packet transfer mode in MS Radio Access capability
+        UE report this capability to network in MS Radio Access capability IE and based on UE capability value, Network will take further action.
+    </DESCRIPTION>
+    <CATEGORY>GAS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0x00">None</VALUE>
+        <VALUE value="0x01">
+            E-UTRAN Neighbour Cell measurements and MS autonomous cell reselection to E-UTRAN supported
+        </VALUE>
+        <VALUE value="0x02">
+            CCN towards E-UTRAN, E-UTRAN Neighbour Cell measurement reporting and Network controlled cell reselection 
+            to E-UTRAN supported in addition to capabilities indicated by '0x01'
+        </VALUE>
+        <VALUE value="0x03">
+            PS Handover to EUTRAN supported in addition to capabilities indicated by 0x01 and 0x10 (currently not supported)'
+        </VALUE>
+    </CONFIG>
+    <DEFAULT>
+        0x02
+    </DEFAULT>
+    <OP>
+        N/A
+    </OP>
+    <DEPENDENCY>
+        N/A
+    </DEPENDENCY>
+    <NOTE>
+        N/A
+    </NOTE>		
+    <AUTHOR>mtk11618</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/    
+    
+    SBP_DATA_DEF(6, SBP_GERAN_TO_EUTRAN_SUPPORT_IN_GERAN_PTM, SBP_ATTR_NONE, "GERAN to EUTRAN support in GERAN PTM capability")
+        SBP_DATA_DEF_VAL(0x00, "None")
+        SBP_DATA_DEF_VAL(0x01, "EUTRAN neighbor cell measurements and MS autonomous cell reselection to E-UTRAN supported")
+        SBP_DATA_DEF_VAL(0x02, "CCN towards E-UTRAN, E-UTRAN neighbor cell measurement reporting and network controlled cell reselection to EUTRAN supported in addition to capabilities indicated by 0x01")
+        SBP_DATA_DEF_VAL(0x03, "PS Handover to EUTRAN supported in addition to capabilities indicated by 0x01 and 0x10 (currently not supported)")
+        SBP_DATA_DEFAULT_VAL(0x02)
+    SBP_DATA_DEF_END
+    
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_DATA_LTE_EDDA - define if UE supports LTE EDDA and with which periodical timer">
+    <DESCRIPTION>
+        To define whether UE support eDDA and with which periodical timer(to query current power preference).
+        <LI>If turn on EDDA, UE can include powerPrefIndicationConfig-r11 in UECapabilityInformation to NW.</LI>
+        <LI>When UE is configured by RRCConnectionReconfiguration with powerPrefIndicationConfig,
+            UE send UEAssistanceInformation(set powerPrefIndication) to NW according to TS36.331.</LI>
+    </DESCRIPTION>
+    <CATEGORY>EAS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0x00">Not Supported.</VALUE>
+        <VALUE value="0x01">Turn on EDDA with periodical timer 1</VALUE>
+        <VALUE value="0x02">Turn on EDDA with periodical timer 2</VALUE>
+        <VALUE value="0x03">Turn on EDDA with periodical timer 3</VALUE>
+        <VALUE value="0x04">Turn on EDDA with periodical timer 4</VALUE>
+        <VALUE value="0x05">Turn on EDDA with periodical timer 5</VALUE>
+        <VALUE value="0x06">Turn on EDDA with no periodical timer</VALUE>
+    </CONFIG>
+    <DEFAULT>
+        0x00
+    </DEFAULT>
+    <OP>
+        N/A
+    </OP>
+    <DEPENDENCY>
+        default 0x04, when both compile option __LTE_R11__ and __LTE_A_EDDA__ are defined.
+    </DEPENDENCY>
+    <NOTE>
+        This feature is available since R11 UMOLY.
+    </NOTE>		
+    <AUTHOR>mtk08088</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/    
+    SBP_DATA_DEF(7, SBP_DATA_LTE_EDDA, SBP_ATTR_NONE, "define if UE supports LTE EDDA and with which periodical timer")
+        SBP_DATA_DEF_VAL(0x00, "Not Supported")
+        SBP_DATA_DEF_VAL(0x01, "Turn on EDDA with periodical timer 1")
+        SBP_DATA_DEF_VAL(0x02, "Turn on EDDA with periodical timer 2")
+        SBP_DATA_DEF_VAL(0x03, "Turn on EDDA with periodical timer 3")
+        SBP_DATA_DEF_VAL(0x04, "Turn on EDDA with periodical timer 4")
+        SBP_DATA_DEF_VAL(0x05, "Turn on EDDA with periodical timer 5")
+        SBP_DATA_DEF_VAL(0x06, "Turn on EDDA with no periodical timer")
+        #if defined(__LTE_R11__) && defined(__LTE_A_EDDA__)
+            SBP_DATA_DEFAULT_VAL(0x04)    //LTE_EDDA ON
+        #else
+            SBP_DATA_DEFAULT_VAL(0x00)    //LTE_EDDA OFF
+        #endif
+    SBP_DATA_DEF_END
+
+ /*8~15*/
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_WORLD_MODE - World mode id configuration for universal bin">
+    <DESCRIPTION>
+        <PARAG>
+            This SBP define the world mode id for universal bin feature, 
+            modem will use this value to decide modem's RAT combination.
+        </PARAG>
+        <PARAG>
+            IMPORTANT NOTICE: Please do not change this setting manually, AP will auto configure this value when modem start up.
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>NWSEL</CATEGORY>
+    <CONFIG>
+        <VALUE value="0x13">Change UE world mode to LTE-TDD/UMTS-TDD/GSM</VALUE>
+        <VALUE value="0x17">Change UE world mode to LTE-TDD/UMTS-TDD/GSM/CDMA</VALUE>
+        <VALUE value="0x19">Change UE world mode to LTE-TDD/UMTS-FDD/GSM</VALUE>
+        <VALUE value="0x1d">Change UE world mode to LTE-TDD/UMTS-FDD/GSM/CDMA</VALUE>
+        <VALUE value="0x23">Change UE world mode to LTE-FDD/UMTS-TDD/GSM</VALUE>
+        <VALUE value="0x27">Change UE world mode to LTE-FDD/UMTS-TDD/GSM/CDMA</VALUE>
+        <VALUE value="0x29">Change UE world mode to LTE-FDD/UMTS-FDD/GSM</VALUE>
+        <VALUE value="0x2d">Change UE world mode to LTE-FDD/UMTS-FDD/GSM/CDMA</VALUE>
+        <VALUE value="0x33">Change UE world mode to LTE-FDD/LTE-TDD/UMTS-TDD/GSM</VALUE>
+        <VALUE value="0x37">Change UE world mode to LTE-FDD/LTE-TDD/UMTS-TDD/GSM/CDMA</VALUE>
+        <VALUE value="0x39">Change UE world mode to LTE-FDD/LTE-TDD/UMTS-FDD/GSM</VALUE>
+        <VALUE value="0x3b">Change UE world mode to LTE-FDD/LTE-TDD/UMTS-FDD/UMTS-TDD/GSM</VALUE>
+        <VALUE value="0x3d">Change UE world mode to LTE-FDD/LTE-TDD/UMTS-FDD/GSM/CDMA</VALUE>
+        <VALUE value="0x3f">Change UE world mode to LTE-FDD/LTE-TDD/UMTS-FDD/UMTS-TDD/GSM/CDMA</VALUE>
+    </CONFIG>
+    <DEFAULT>AP will auto configure this value when modem start up.</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>N/A</DEPENDENCY>
+    <NOTE>N/A</NOTE>
+    <AUTHOR>mtk06816</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/  
+    SBP_DATA_DEF_BIT(8, SBP_WORLD_MODE, SBP_ATTR_NOT_SUPPORT_DYNAMIC_SBP)
+        SBP_DATA_DEF_BIT_VAL(WORLD_MODE_G, "World Mode: GSM", "Not Supported", "Supported")
+        SBP_DATA_DEF_BIT_VAL(WORLD_MODE_T, "World Mode: UMTS-TDD", "Not Supported", "Supported")
+        SBP_DATA_DEF_BIT_VAL(WORLD_MODE_C, "World Mode: CDMA", "Not Supported", "Supported")
+        SBP_DATA_DEF_BIT_VAL(WORLD_MODE_W, "World Mode: UMTS-FDD", "Not Supported", "Supported")
+        SBP_DATA_DEF_BIT_VAL(WORLD_MODE_LT, "World Mode: LTE-TDD", "Not Supported", "Supported")
+        SBP_DATA_DEF_BIT_VAL(WORLD_MODE_LF, "World Mode: LTE-FDD", "Not Supported", "Supported")
+        SBP_DATA_DEFAULT_VAL(DEFAULT_WORLD_MODE_ID)
+    SBP_DATA_DEF_BIT_END
+    
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_DATA_HIF_MTU_256BYTES_BASE - Packet Filtering Size" obsolete="1">
+    <AUTHOR>mtk10494</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(9,SBP_DATA_HIF_MTU_256BYTES_BASE, SBP_ATTR_NONE, "Obsolete from all generations")
+        SBP_DATA_DEFAULT_VAL(0x00) // 0x00=1500 Bytes. Otherwise, times of 256 Bytes
+    SBP_DATA_DEF_END
+    
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_EUTRAN_DISABLE_TIMER_VALUE- EUTRAN disable timer value">
+    <DESCRIPTION>
+        <PARAG>TS 24.301:</PARAG>
+        <PARAG>As an implementation option, the UE may start a timer for enabling E-UTRA when the UE's attach attempt 
+            counter or tracking area updating attempt counter reaches 5 and the UE disables E-UTRA capability for cases described 
+            in subclauses 5.5.1.2.6, 5.5.1.3.4.3, 5.5.1.3.6, 5.5.3.2.6, 5.5.3.3.4.3 and 5.5.3.3.6.</PARAG>
+        <PARAG>For other cases, it is up to the UE implementation when to enable the E-UTRA capability.</PARAG>
+        <PARAG>Since this timer value is up to UE implementation, we provide this SBP for customization.</PARAG>
+    </DESCRIPTION>
+    <CATEGORY>NWSEL</CATEGORY>
+    <DEFAULT>0xFF</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>N/A</DEPENDENCY>
+    <NOTE>For Softbank requirement, this value is set to 54 minutes.</NOTE>
+    <AUTHOR>mtk01591</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(10,SBP_EUTRAN_DISABLE_TIMER_VALUE, SBP_ATTR_NONE, "EUTRAN Disable timer value")
+        SBP_DATA_DEF_VAL(0x01, "1 minutes")
+        SBP_DATA_DEF_VAL(0x02, "2 minutes")
+        SBP_DATA_DEF_VAL(0x03, "3 minutes")
+        SBP_DATA_DEF_VAL(0x04, "4 minutes")
+        SBP_DATA_DEF_VAL(0x05, "5 minutes")
+        SBP_DATA_DEF_VAL(0x06, "6 minutes")
+        SBP_DATA_DEF_VAL(0x07, "7 minutes")
+        SBP_DATA_DEF_VAL(0x08, "8 minutes")
+        SBP_DATA_DEF_VAL(0x09, "9 minutes")
+        SBP_DATA_DEF_VAL(0x0a, "10 minutes")
+        SBP_DATA_DEF_VAL(0x0b, "11 minutes")
+        SBP_DATA_DEF_VAL(0x0c, "12 minutes")
+        SBP_DATA_DEF_VAL(0x0d, "13 minutes")
+        SBP_DATA_DEF_VAL(0x0e, "14 minutes")
+        SBP_DATA_DEF_VAL(0x0f, "15 minutes")
+        SBP_DATA_DEF_VAL(0x10, "16 minutes")
+        SBP_DATA_DEF_VAL(0x11, "17 minutes")
+        SBP_DATA_DEF_VAL(0x12, "18 minutes")
+        SBP_DATA_DEF_VAL(0x13, "19 minutes")
+        SBP_DATA_DEF_VAL(0x14, "20 minutes")
+        SBP_DATA_DEF_VAL(0x15, "21 minutes")
+        SBP_DATA_DEF_VAL(0x16, "22 minutes")
+        SBP_DATA_DEF_VAL(0x17, "23 minutes")
+        SBP_DATA_DEF_VAL(0x18, "24 minutes")
+        SBP_DATA_DEF_VAL(0x19, "25 minutes")
+        SBP_DATA_DEF_VAL(0x1a, "26 minutes")
+        SBP_DATA_DEF_VAL(0x1b, "27 minutes")
+        SBP_DATA_DEF_VAL(0x1c, "28 minutes")
+        SBP_DATA_DEF_VAL(0x1d, "29 minutes")
+        SBP_DATA_DEF_VAL(0x1e, "30 minutes")
+        SBP_DATA_DEF_VAL(0xff, "Use default value 12 min. If T3402 is available, use T3402 value instead.")
+        SBP_DATA_DEFAULT_VAL(0xFF)   // 0xFF means no preference, use default 12min.
+    SBP_DATA_DEF_END
+    
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_SS_DISABLE_AFR_TIMER_PERIOD- SS disable AFR timer value">
+    <DESCRIPTION>
+        <PARAG>
+            If CSFB is triggered by CS-SS(Supplementary Service), disable AFR for a period defined by SBP_SS_DISABLE_AFR_TIMER_PERIOD.
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>NAS</CATEGORY>
+    <CONFIG>
+    	<VALUE value="0x00">not to disable AFR</VALUE>
+    	<VALUE value="0x03">Disable AFR for 3 seconds</VALUE>
+    	<VALUE value="0x04">Disable AFR for 4 seconds</VALUE>
+    	<VALUE value="0x05">Disable AFR for 5 seconds</VALUE>
+    	<VALUE value="0x06">Disable AFR for 6 seconds</VALUE>
+    	<VALUE value="0x07">Disable AFR for 7 seconds</VALUE>
+    	<VALUE value="0x08">Disable AFR for 8 seconds</VALUE>
+    	<VALUE value="0x09">Disable AFR for 9 seconds</VALUE>
+    	<VALUE value="0x0A">Disable AFR for 10 seconds</VALUE>
+    	<VALUE value="0x0B">Disable AFR for 11 seconds</VALUE>
+    	<VALUE value="0x0C">Disable AFR for 12 seconds</VALUE>
+    	<VALUE value="0x0D">Disable AFR for 13 seconds</VALUE>
+    	<VALUE value="0x0E">Disable AFR for 14 seconds</VALUE>
+    	<VALUE value="0x0F">Disable AFR for 15 seconds</VALUE>
+    </CONFIG>
+    <DEFAULT>0x04</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>N/A</DEPENDENCY>
+    <NOTE>
+        This feature is only used to disable AFR for a period, UE may go back to 4G for reasons other than AFR (ex: reselection) before timer expiry.
+        When timer expired, it is not guaranteed UE can go back to 4G in a short period because there might be some other connection or Network behavior which keeps UE staying in 2/3G.
+    </NOTE>
+    <AUTHOR>mtk10708</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+
+    SBP_DATA_DEF(11,SBP_SS_DISABLE_AFR_TIMER_PERIOD, SBP_ATTR_NONE, "SS disable AFR timer value")
+        SBP_DATA_DEF_VAL(0x00, "not to disable AFR")
+        SBP_DATA_DEF_VAL(0x03, "3s")
+        SBP_DATA_DEF_VAL(0x04, "4s")
+        SBP_DATA_DEF_VAL(0x05, "5s")
+        SBP_DATA_DEF_VAL(0x06, "6s")
+        SBP_DATA_DEF_VAL(0x07, "7s")
+        SBP_DATA_DEF_VAL(0x08, "8s")
+        SBP_DATA_DEF_VAL(0x09, "9s")
+        SBP_DATA_DEF_VAL(0x0a, "10s")
+        SBP_DATA_DEF_VAL(0x0b, "11s")
+        SBP_DATA_DEF_VAL(0x0c, "12s")
+        SBP_DATA_DEF_VAL(0x0d, "13s")
+        SBP_DATA_DEF_VAL(0x0e, "14s")
+        SBP_DATA_DEF_VAL(0x0f, "15s")
+        SBP_DATA_DEFAULT_VAL(0x04)
+    SBP_DATA_DEF_END
+    
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_SMS_MAX_TL_RETRY- Maximum retry count for SMS at TL layer">
+    <DESCRIPTION>
+        <PARAG> This provides the value for the maximum count of the retries allowed at TL layer for the SMS pdu. 
+            If any SMS is failed due to some temporary cause as per MTK design we retry the SMS.  
+            This SBP value specifies the number of times the retry needs to be done. 
+            Customer can modify it according to them but we recommend to use the default value only. 
+            Anyway customer can use any value above 3 sec but we suggest to use from the ones provided below. 
+            While modifying this customer should note that increasing retry count will increase the response time for sending the SMS in case of multiple failures.
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>SMS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0">No Retry</VALUE>
+        <VALUE value="1">1 Retry</VALUE>
+        <VALUE value="2">2 Retries</VALUE>
+        <VALUE value="3">3 Retries</VALUE>
+    </CONFIG>
+    <DEFAULT>0x01</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>N/A</DEPENDENCY>
+    <NOTE>N/A</NOTE>
+    <AUTHOR>mtk08505</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(12,SBP_SMS_MAX_TL_RETRY, SBP_ATTR_NONE, "SMS max TL retry")
+        SBP_DATA_DEFAULT_VAL(0x01)
+    SBP_DATA_DEF_END
+    
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_SMS_TL_RETRY_TIMER- Timeout value for the TL retry timer (in seconds)">
+    <DESCRIPTION>
+        <PARAG> This provides the value of the TL Retry timer (in seconds).  
+            If any SMS is failed due to some temporary cause as per MTK design we retry the SMS.  
+            This SBP value specifies the time(in sec) after which the retry needs to be done. 
+            Customer can modify it according to them but we recommend to use the default value only. 
+            Anyway customer can use any value above 3 sec but we suggest to use from the ones provided below.
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>SMS</CATEGORY>
+    <CONFIG>
+        <VALUE value="4">Timeout Value 4 seconds</VALUE>
+        <VALUE value="5">Timeout Value 5 seconds</VALUE>
+        <VALUE value="6">Timeout Value 6 seconds</VALUE>
+        <VALUE value="7">Timeout Value 7 seconds</VALUE>
+        <VALUE value="...">.... seconds</VALUE>
+        <VALUE value="30">Timeout Value 30 seconds</VALUE>
+    </CONFIG>
+    <DEFAULT>12 sec</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>N/A</DEPENDENCY>
+    <NOTE>N/A</NOTE>
+    <AUTHOR>mtk08505</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(13,SBP_SMS_TL_RETRY_TIMER, SBP_ATTR_NONE, "SMS TL retry timer (in second)")
+        SBP_DATA_DEFAULT_VAL(0x0c)
+    SBP_DATA_DEF_END
+    
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_EUTRAN_DISABLE_TD_TIMER_VALUE- EUTRAN disable TD timer value">
+    <DESCRIPTION>
+        <PARAG>TS 23.122:</PARAG>
+        <PARAG>If MS that has disabled its E-UTRA capability re-enables it when PLMN selection is performed, 
+                then the MS should, for duration of timer TD, memorize the PLMNs where E-UTRA capability was disabled 
+                as PLMNs where voice service was not possible.</PARAG>
+        <PARAG>The value of timer TD is MS implementation specific, but shall not exceed the maximum possible value of 
+            background scanning timer T as specified in subclause 4.4.3.3.1.</PARAG>
+        <PARAG>Since this timer value is up to UE implementation, we provide this SBP for customization.</PARAG>
+    </DESCRIPTION>
+    <CATEGORY>NWSEL</CATEGORY>
+    <DEFAULT>0xFF</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>N/A</DEPENDENCY>
+    <NOTE>For Softbank requirement, this value is set to 54 minutes.</NOTE>
+    <AUTHOR>mtk01591</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(14,SBP_EUTRAN_DISABLE_TD_TIMER_VALUE, SBP_ATTR_NONE, "EUTRAN Disable TD timer value")
+        SBP_DATA_DEF_VAL(0x01, "1 minutes")
+        SBP_DATA_DEF_VAL(0x02, "2 minutes")
+        SBP_DATA_DEF_VAL(0x03, "3 minutes")
+        SBP_DATA_DEF_VAL(0x04, "4 minutes")
+        SBP_DATA_DEF_VAL(0x05, "5 minutes")
+        SBP_DATA_DEF_VAL(0x06, "6 minutes")
+        SBP_DATA_DEF_VAL(0x07, "7 minutes")
+        SBP_DATA_DEF_VAL(0x08, "8 minutes")
+        SBP_DATA_DEF_VAL(0x09, "9 minutes")
+        SBP_DATA_DEF_VAL(0x0a, "10 minutes")
+        SBP_DATA_DEF_VAL(0x0b, "11 minutes")
+        SBP_DATA_DEF_VAL(0x0c, "12 minutes")
+        SBP_DATA_DEF_VAL(0x0d, "13 minutes")
+        SBP_DATA_DEF_VAL(0x0e, "14 minutes")
+        SBP_DATA_DEF_VAL(0x0f, "15 minutes")
+        SBP_DATA_DEF_VAL(0x10, "16 minutes")
+        SBP_DATA_DEF_VAL(0x11, "17 minutes")
+        SBP_DATA_DEF_VAL(0x12, "18 minutes")
+        SBP_DATA_DEF_VAL(0x13, "19 minutes")
+        SBP_DATA_DEF_VAL(0x14, "20 minutes")
+        SBP_DATA_DEF_VAL(0x15, "21 minutes")
+        SBP_DATA_DEF_VAL(0x16, "22 minutes")
+        SBP_DATA_DEF_VAL(0x17, "23 minutes")
+        SBP_DATA_DEF_VAL(0x18, "24 minutes")
+        SBP_DATA_DEF_VAL(0x19, "25 minutes")
+        SBP_DATA_DEF_VAL(0x1a, "26 minutes")
+        SBP_DATA_DEF_VAL(0x1b, "27 minutes")
+        SBP_DATA_DEF_VAL(0x1c, "28 minutes")
+        SBP_DATA_DEF_VAL(0x1d, "29 minutes")
+        SBP_DATA_DEF_VAL(0x1e, "30 minutes")
+        SBP_DATA_DEF_VAL(0xff, "Use default value of high priority search period T")
+        SBP_DATA_DEFAULT_VAL(0xFF)   // 0xFF means no preference, use default 12min.
+    SBP_DATA_DEF_END
+    
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_ECBM_MODE_TIMER_SEC - Emergency callback mode timer (in second)" obsolete="1">
+    <AUTHOR>mtk09297</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(15,SBP_ECBM_MODE_TIMER_SEC, SBP_ATTR_NONE, "Obsolete after UMOLY.")
+        SBP_DATA_DEFAULT_VAL(0x00)
+    SBP_DATA_DEF_END
+
+ /*16~23*/
+ /****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_ECBM_MODE_TIMER_MIN - Emergency callback mode timer (in minute)" obsolete="1">
+    <AUTHOR>mtk09297</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(16,SBP_ECBM_MODE_TIMER_MIN, SBP_ATTR_NONE, "Obsolete after UMOLY.")
+        SBP_DATA_DEFAULT_VAL(0x00)
+    SBP_DATA_DEF_END
+    
+    /****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_2G_PWR_SCAN_PRD_IN_VM - 2G power scan period in virtual mode">
+    <DESCRIPTION>
+            This control the GSM power scan period in virtual mode
+    </DESCRIPTION>
+    <CATEGORY>GAS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0x00">Use MTK Default value (51 or 102 frames)</VALUE>
+        <VALUE value="0x01">Period: 1 GSM TDMA frame</VALUE>
+        <VALUE value="0x02">Period: 2 GSM TDMA frame</VALUE>
+    </CONFIG>
+    <DEFAULT>0</DEFAULT>
+    <OP>
+        N/A
+    </OP>
+    <DEPENDENCY>
+        N/A
+    </DEPENDENCY>
+    <NOTE>
+        N/A
+    </NOTE>     
+    <AUTHOR>mtk11225</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/  
+    SBP_DATA_DEF(17,SBP_2G_PWR_SCAN_PRD_IN_VM, SBP_ATTR_NONE, "2G power scan period in virtual mode")
+        SBP_DATA_DEF_VAL(0x00, "Use MTK Default value (51 or 102 frames)")
+        SBP_DATA_DEF_VAL(0x01, "Period: 1 GSM TDMA frame")
+        SBP_DATA_DEF_VAL(0x02, "Period: 2 GSM TDMA frames, and so on.")
+        SBP_DATA_DEFAULT_VAL(0x00)
+    SBP_DATA_DEF_END
+    
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_2G_SCAN_NUM_PER_PRD_IN_VM - 2G power scan, number of frames to be scanned in virtual mode per period">
+    <DESCRIPTION>
+            This control the number of frames to be scanned in virtual mode per period in GSM
+    </DESCRIPTION>
+    <CATEGORY>GAS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0x00">Use MTK Default value (4 or 8 frames)</VALUE>
+        <VALUE value="0x01">Period: 1 GSM TDMA frame</VALUE>
+        <VALUE value="0x02">Period: 2 GSM TDMA frame</VALUE>
+    </CONFIG>
+    <DEFAULT>0</DEFAULT>
+    <OP>
+        N/A
+    </OP>
+    <DEPENDENCY>
+        N/A
+    </DEPENDENCY>
+    <NOTE>
+        N/A
+    </NOTE>     
+    <AUTHOR>mtk11225</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/ 
+    SBP_DATA_DEF(18,SBP_2G_SCAN_NUM_PER_PRD_IN_VM, SBP_ATTR_NONE, "2G power scan, number of frames to be scanned in virtual mode per period")
+        SBP_DATA_DEF_VAL(0x00, "Use MTK Default value (4 or 8 frames)")
+        SBP_DATA_DEF_VAL(0x01, "Scan 1 GSM TDMA frame")
+        SBP_DATA_DEF_VAL(0x02, "Scan 2 GSM TDMA frames, and so on.")
+        SBP_DATA_DEFAULT_VAL(0x00)
+    SBP_DATA_DEF_END
+    
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_2G_FB_DECODE_INTV_IN_VM - 2G FB/SB decode interval, number of frames between two FB/SB decode attempt">
+    <DESCRIPTION>
+            This control GSM FB/SB decode interval, number of frames between two FB/SB decode attempt
+    </DESCRIPTION>
+    <CATEGORY>GAS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0x00">Use MTK Default value (16 frames)</VALUE>
+        <VALUE value="0x01">Period: 1 GSM TDMA frame</VALUE>
+        <VALUE value="0x02">Period: 2 GSM TDMA frame</VALUE>
+    </CONFIG>
+    <DEFAULT>0</DEFAULT>
+    <OP>
+        N/A
+    </OP>
+    <DEPENDENCY>
+        N/A
+    </DEPENDENCY>
+    <NOTE>
+        N/A
+    </NOTE>     
+    <AUTHOR>mtk11225</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/    
+    SBP_DATA_DEF(19,SBP_2G_FB_DECODE_INTV_IN_VM, SBP_ATTR_NONE, "2G FB/SB decode interval, number of frames between two FB/SB decode attempt")
+        SBP_DATA_DEF_VAL(0x00, "Use MTK Default value (16 frames)")
+        SBP_DATA_DEF_VAL(0x01, "1 GSM TDMA frame")
+        SBP_DATA_DEF_VAL(0x02, "2 GSM TDMA frames, and so on.")
+        SBP_DATA_DEFAULT_VAL(0x00)
+    SBP_DATA_DEF_END
+    
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_MDVSIM_KI_IDX - MDVSIM Private Keys Configuration Parameters - Index of Ki">
+    <DESCRIPTION>
+        <PARAG>Provide the index of Secret Key (Ki) needed for (U)SIM authentication in modem virtual SIM environment.</PARAG>
+        <LI>Configured together with Operator Variant Algorithm Configuration Field (OPc) by user through 
+            proprietary AT command AT+EVSIMKEY=\<op\>,\<profileid\>[,\<keylen\>,"\<Ki_OPc\>"]</LI>
+    </DESCRIPTION>
+    <CATEGORY>SIM_SAT</CATEGORY>
+    <CONFIG>
+        <VALUE value="n, n=0~16">Index of Ki is [n] (Ki has length of 16 bytes).</VALUE>
+    </CONFIG>
+    <DEFAULT>0</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>N/A</DEPENDENCY>
+    <NOTE>MDVSIM feature is disabled by default under compilation switch __MDVSIM__.</NOTE>
+    <AUTHOR>mtk02674</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(20,SBP_MDVSIM_KI_IDX, SBP_ATTR_NONE, "MDVSIM Ki start index value")
+        SBP_DATA_DEF_VAL(0x00, "Default Ki start index:0")
+        SBP_DATA_DEFAULT_VAL(0x00)    // MDVSIM Ki(16 Bytes)      Byte[0~15]
+    SBP_DATA_DEF_END
+    
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_MDVSIM_OPC_IDX - MDVSIM Private Keys Configuration Parameters - Index of OPc">
+    <DESCRIPTION>
+        <PARAG>Provide the index of Operator Variant Algorithm Configuration Field (OPc) needed for (U)SIM authentication in modem virtual SIM environment.</PARAG>
+        <LI>Configured together with Secret Key (Ki) by user through proprietary AT command AT+EVSIMKEY=\<op\>,\<profileid\>[,\<keylen\>,"\<Ki_OPc\>"]</LI>
+    </DESCRIPTION>
+    <CATEGORY>SIM_SAT</CATEGORY>
+    <CONFIG>
+        <VALUE value="n, n=0~16">Index of OPc is [n] (OPc has length of 16 bytes).</VALUE>
+    </CONFIG>
+    <DEFAULT>16</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>N/A</DEPENDENCY>
+    <NOTE>MDVSIM feature is disabled by default under compilation switch __MDVSIM__.</NOTE>
+    <AUTHOR>mtk02674</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(21,SBP_MDVSIM_OPC_IDX, SBP_ATTR_NONE, "MDVSIM OPc start index value")
+        SBP_DATA_DEF_VAL(0x10, "Default OPc start index:16")
+        SBP_DATA_DEFAULT_VAL(0x10)   // MDVSIM OPc (16 Bytes)    Byte[16~31]
+    SBP_DATA_DEF_END
+    
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_SDM_RETRY_TIMER - SDM SMS retry timer (in second) for both 3GPP/3GPP2 SMS" obsolete="1">
+    <AUTHOR>mtk12265</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/    
+    SBP_DATA_DEF(22,SBP_SDM_RETRY_TIMER, SBP_ATTR_NONE, "Obsolete. Please refer to NVRAM_EF_SDM_ADS_PROFILE_LID for same funtionality")
+        SBP_DATA_DEFAULT_VAL(0x00)
+    SBP_DATA_DEF_END
+    
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_HVOLTE_MODE - Default hVoLTE Mode">
+    <DESCRIPTION>
+        <PARAG>
+            This SBP define the default hVoLTE mode (SRLTE mode or LTE-Only mode)
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>NWSEL</CATEGORY>
+    <CONFIG>
+        <VALUE value="0">hVoLTE SRLTE mode</VALUE>
+        <VALUE value="1">hVoLTE LTE only mode</VALUE>
+    </CONFIG>
+    <DEFAULT>1</DEFAULT>
+    <OP>Verizon</OP>
+    <DEPENDENCY>This SBP only available when SBP_STATUS_HVOLTE is enabled</DEPENDENCY>
+    <NOTE>N/A</NOTE>
+  <AUTHOR>mtk06816</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(23,SBP_HVOLTE_MODE, SBP_ATTR_NONE, "Default hVoLTE Mode")
+        SBP_DATA_DEF_VAL(0x00, "hVoLTE SRLTE mode")
+        SBP_DATA_DEF_VAL(0x01, "hVoLTE LTE only mode")
+        SBP_DATA_DEFAULT_VAL(0x01)		// 0: SRLTE_MODE, 1: LTE-only mode
+    SBP_DATA_DEF_END
+
+ /*24~31*/ 
+ /****** SBP Document BEGIN ************************************************************************
+ <SBP title="SBP_LTE_CONN_RACH_FAIL- Decide RACH failure handling">
+    <DESCRIPTION>
+        <PARAG> If UE establishs connection but the connection cannot be established due to RACH failure, the behavior will
+         be different depend on different setting
+        </PARAG>
+        <LI> value = 0x00
+             <PARAG> If UE establishs connection for ATTACH/TAU/SR but the connection cannot be established due to RACH failure,
+             UE will retry to establish connection immediately.
+             </PARAG>
+        </LI>
+        <LI> value = 0x01, LTE_CONN_RACH_FAIL_PROFILE_1
+             <PARAG> If UE establishs connection for ATTACH/TAU/SR but the connection cannot be established due to RACH failure,
+             the UE's behavior will follow TS 24.301 5.5.1.2.6(b) /5.5.3.2.6(b) /5.6.1.6(b) according to its procedure. It is 
+             the same behavior as SBP_EMM_CONN_FAIL_ABNORMAL_B.
+             </PARAG>
+        </LI>
+        <LI> value = 0x02, LTE_CONN_RACH_FAIL_PROFILE_2
+             <PARAG> This is for Korea KT operator.</PARAG>
+             <PARAG> If UE establishs connection for ATTACH but the connection cannot be established due to RACH failure,
+             the UE's behavior will follow TS 24.301 5.5.1.2.6 (b) to increase attach attempt counter. If 5 consecutive times 
+             RACH failure for ATTACH, UE will disable EUTRAN and the length of disable EUTRAN timer is the same as that of T3402.
+             </PARAG>
+             <PARAG> If UE establishs connection for TAU but the connection cannot be established due to RACH failure,
+             the UE's behavior will follow TS 24.301 5.5.3.2.6 (b) to increase tau attempt counter. If 5 consecutive times RACH 
+             failure for TAU, UE will disable EUTRAN and the length of disable EUTRAN timer is the same as that of T3402.
+             </PARAG>
+             <PARAG> If UE establishs connection for SR but the connection cannot be established due to RACH failure,
+             the UE's behavior will follow TS 24.301 5.6.1.6 (b). If 5 consecutive times RACH failure for SR, UE will disable 
+             EUTRAN and the length of disable EUTRAN timer is 3 minute.
+             </PARAG>
+        </LI>
+        <LI> value = 0x03, LTE_CONN_RACH_FAIL_PROFILE_3
+             <PARAG> This is for Korea SKT operator.</PARAG>
+             <PARAG> If UE establishs connection for ATTACH but the connection cannot be established due to RACH failure,
+             the UE's behavior will follow TS 24.301 5.5.1.2.6 (b) to increase attach attempt counter. If 5 consecutive times 
+             RACH failure for ATTACH, UE will disable EUTRAN and the length of disable EUTRAN timer is 1/3 length of T3402.
+             </PARAG>
+             <PARAG> If UE establishs connection for TAU but the connection cannot be established due to RACH failure,
+             the UE's behavior will follow TS 24.301 5.5.3.2.6 (b) to increase tau attempt counter. If 5 consecutive times 
+             RACH failure for TAU, UE will disable EUTRAN and the length of disable EUTRAN timer is 1/3 length of T3402.
+             </PARAG>
+   
+        </LI>
+        <LI> value = 0x04, LTE_CONN_RACH_FAIL_PROFILE_4
+             <PARAG> This is for Korea LGU+ operator.</PARAG>
+             <PARAG> If UE which is LTE single mode establishs connection for TAU but the connection cannot be established
+             due to RACH failure, the UE's behavior will follow TS 24.301 5.5.3.2.6 (b) to increase tau attempt counter. 
+             If 5 consecutive times RACH failure for TAU, UE will start T3402 but its length is 2 minute.
+             </PARAG>
+        </LI>
+    </DESCRIPTION>
+    <CATEGORY>NAS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0">Not Support</VALUE>
+        <VALUE value="1">LTE_CONN_RACH_FAIL_PROFILE_1, see doc description</VALUE>
+        <VALUE value="2">LTE_CONN_RACH_FAIL_PROFILE_2, see doc description</VALUE>
+        <VALUE value="3">LTE_CONN_RACH_FAIL_PROFILE_3, see doc description</VALUE>
+        <VALUE value="4">LTE_CONN_RACH_FAIL_PROFILE_4, see doc description</VALUE>
+    </CONFIG>
+    <DEFAULT>0</DEFAULT>
+    <OP>KT/SKT/LGU+</OP>
+    <DEPENDENCY>User could use compile option __SBP_EMM_CONN_FAIL_ABNORMAL_B__ to turn on PROFILE_1. </DEPENDENCY>
+    <NOTE>This feature is available on all MTK modem.</NOTE>
+    <AUTHOR>mtk05301</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(24,SBP_LTE_CONN_RACH_FAIL, SBP_ATTR_NONE, "Decide RACH failure handling")
+        SBP_DATA_DEF_VAL(0x00, "Not Supported")
+        SBP_DATA_DEF_VAL(0x01, "LTE_CONN_RACH_FAIL_PROFILE_1")
+        SBP_DATA_DEF_VAL(0x02, "LTE_CONN_RACH_FAIL_PROFILE_2")
+        SBP_DATA_DEF_VAL(0x03, "LTE_CONN_RACH_FAIL_PROFILE_3")
+        SBP_DATA_DEF_VAL(0x04, "LTE_CONN_RACH_FAIL_PROFILE_4")
+        #if defined(__EMM_CONN_FAIL_ABNORMAL_B__)
+            SBP_DATA_DEFAULT_VAL(0x01)
+        #else
+            SBP_DATA_DEFAULT_VAL(0x00)
+        #endif
+    SBP_DATA_DEF_END
+    
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_VDM_ADS_SEL_ALGO_MASK_WFCP_VDP_PRIORITY_GROUP1 - VDM ads selection algorithm mask of WFCP and VDP priority group1 (WFCP=Cellular Only and WIFI Only)" obsolete="1">
+    <AUTHOR>mtk09297</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(25,SBP_VDM_ADS_SEL_ALGO_MASK_WFCP_VDP_PRIORITY_GROUP1, SBP_ATTR_NONE, "Obsolete after UMOLY.")
+        SBP_DATA_DEFAULT_VAL(0xFF)
+    SBP_DATA_DEF_END
+    
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_VDM_ADS_SEL_ALGO_MASK_WFCP_VDP_PRIORITY_GROUP2 - VDM ads selection algorithm mask of WFCP and VDP priority group1 (WFCP=Cellular Preferred and WIFI Preferred)" obsolete="1">
+    <AUTHOR>mtk09297</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(26,SBP_VDM_ADS_SEL_ALGO_MASK_WFCP_VDP_PRIORITY_GROUP2, SBP_ATTR_NONE, "Obsolete after UMOLY.")
+        SBP_DATA_DEFAULT_VAL(0xFE)
+    SBP_DATA_DEF_END
+    
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_BAR_CELL_TIME - Bar timer for the RA failure weak signal cell (in second)">
+    <DESCRIPTION>
+        When UE RA error occurred on a weak signal cell,UE may bar this cell for SBP_BAR_CELL_TIME seconds.
+        <LI>when cell SINR \<= SBP_BAR_CELL_SINR_THRESHOLD, and</LI>
+        <LI>cell RSRP \<= SBP_BAR_CELL_RSRP_THRESHOLD.</LI>		
+    </DESCRIPTION>
+    <CATEGORY>EAS</CATEGORY>
+    <CONFIG>
+        <VALUE value="1">1 second</VALUE>
+        <VALUE value="2">2 seconds</VALUE>
+        <VALUE value="3">3 seconds</VALUE>
+        <VALUE value="...">... seconds</VALUE>
+        <VALUE value="30">30 seconds</VALUE>
+    </CONFIG>
+    <DEFAULT>5 (seconds)</DEFAULT>
+    <OP>
+        N/A
+    </OP>
+    <DEPENDENCY>
+        N/A
+    </DEPENDENCY>
+    <NOTE>
+        This feature is available in LR11.W1552.MD.TC10.SP, LR11.W1630.MD.MP, and since LR12.
+    </NOTE>		
+    <AUTHOR>mtk08088</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/    
+    SBP_DATA_DEF(27,SBP_BAR_CELL_TIME, SBP_ATTR_NONE, "Bar timer for the RA failure weak signal cell (in second)")
+        SBP_DATA_DEF_VAL(0x01, "1 seconds")
+        SBP_DATA_DEF_VAL(0x02, "2 seconds")
+        SBP_DATA_DEF_VAL(0x03, "3 seconds")
+        SBP_DATA_DEF_VAL(0x04, "4 seconds")
+        SBP_DATA_DEF_VAL(0x05, "5 seconds")
+        SBP_DATA_DEF_VAL(0x06, "6 seconds")
+        SBP_DATA_DEF_VAL(0x07, "7 seconds")
+        SBP_DATA_DEF_VAL(0x08, "8 seconds")
+        SBP_DATA_DEF_VAL(0x09, "9 seconds")
+        SBP_DATA_DEF_VAL(0x0a, "10 seconds")
+        SBP_DATA_DEF_VAL(0x0b, "11 seconds")
+        SBP_DATA_DEF_VAL(0x0c, "12 seconds")
+        SBP_DATA_DEF_VAL(0x0d, "13 seconds")
+        SBP_DATA_DEF_VAL(0x0e, "14 seconds")
+        SBP_DATA_DEF_VAL(0x0f, "15 seconds")
+        SBP_DATA_DEF_VAL(0x10, "16 seconds")
+        SBP_DATA_DEF_VAL(0x11, "17 seconds")
+        SBP_DATA_DEF_VAL(0x12, "18 seconds")
+        SBP_DATA_DEF_VAL(0x13, "19 seconds")
+        SBP_DATA_DEF_VAL(0x14, "20 seconds")
+        SBP_DATA_DEF_VAL(0x15, "21 seconds")
+        SBP_DATA_DEF_VAL(0x16, "22 seconds")
+        SBP_DATA_DEF_VAL(0x17, "23 seconds")
+        SBP_DATA_DEF_VAL(0x18, "24 seconds")
+        SBP_DATA_DEF_VAL(0x19, "25 seconds")
+        SBP_DATA_DEF_VAL(0x1a, "26 seconds")
+        SBP_DATA_DEF_VAL(0x1b, "27 seconds")
+        SBP_DATA_DEF_VAL(0x1c, "28 seconds")
+        SBP_DATA_DEF_VAL(0x1d, "29 seconds")
+        SBP_DATA_DEF_VAL(0x1e, "30 seconds")
+        SBP_DATA_DEFAULT_VAL(0x05)
+    SBP_DATA_DEF_END
+    
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_BAR_CELL_SINR_THRESHOLD - SINR threshold (in dB) to bar a RA failure cell">
+    <DESCRIPTION>
+        When UE RA error occurred on a weak signal cell,UE may bar this cell for SBP_BAR_CELL_TIME seconds.
+        <LI>when cell SINR \<= SBP_BAR_CELL_SINR_THRESHOLD, and</LI>
+        <LI>cell RSRP \<= SBP_BAR_CELL_RSRP_THRESHOLD.</LI>
+    </DESCRIPTION>
+    <CATEGORY>EAS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0x00">0 dB</VALUE>
+        <VALUE value="0x05">-5 dB</VALUE>
+        <VALUE value="0x0a">-10 dB</VALUE>
+        <VALUE value="0x0f">-15 dB</VALUE>
+        <VALUE value="0x14">-20 dB</VALUE>
+        <VALUE value="0x19">-25 dB</VALUE>
+        <VALUE value="0x1e">-30 dB</VALUE>
+        <VALUE value="0x23">-35 dB</VALUE>
+        <VALUE value="0x28">-40 dB</VALUE>
+    </CONFIG>
+    <DEFAULT>0x0a (-10 dB)</DEFAULT>
+    <OP>
+        N/A
+    </OP>
+    <DEPENDENCY>
+        N/A
+    </DEPENDENCY>
+    <NOTE>
+        This feature is available in LR11.W1552.MD.TC10.SP, LR11.W1630.MD.MP, and since LR12.
+    </NOTE>		
+    <AUTHOR>mtk08088</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/      
+    SBP_DATA_DEF(28,SBP_BAR_CELL_SINR_THRESHOLD, SBP_ATTR_NONE, "SINR threshold (in dB) to bar a RA failure cell")
+        SBP_DATA_DEF_VAL(0x00, "0 dB")
+        SBP_DATA_DEF_VAL(0x05, "-5 dB")
+        SBP_DATA_DEF_VAL(0x0a, "-10 dB")
+        SBP_DATA_DEF_VAL(0x0f, "-15 dB")
+        SBP_DATA_DEF_VAL(0x14, "-20 dB")
+        SBP_DATA_DEF_VAL(0x19, "-25 dB")
+        SBP_DATA_DEF_VAL(0x1e, "-30 dB")
+        SBP_DATA_DEF_VAL(0x23, "-35 dB")
+        SBP_DATA_DEF_VAL(0x28, "-40 dB")
+        SBP_DATA_DEFAULT_VAL(0x0a)
+    SBP_DATA_DEF_END
+    
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_BAR_CELL_RSRP_THRESHOLD - RSRP threshold (in dBm) to bar a RA failure cell">
+    <DESCRIPTION>
+        When UE RA error occurred on a weak signal cell,UE may bar this cell for SBP_BAR_CELL_TIME seconds.
+        <LI>when cell SINR \<= SBP_BAR_CELL_SINR_THRESHOLD, and</LI>
+        <LI>cell RSRP \<= SBP_BAR_CELL_RSRP_THRESHOLD.</LI>
+    </DESCRIPTION>
+    <CATEGORY>EAS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0x32">-50 dBm</VALUE>
+        <VALUE value="0x37">-55 dBm</VALUE>
+        <VALUE value="0x3C">-60 dBm</VALUE>
+        <VALUE value="0x41">-65 dBm</VALUE>
+        <VALUE value="0x46">-70 dBm</VALUE>
+        <VALUE value="0x4B">-75 dBm</VALUE>
+        <VALUE value="0x50">-80 dBm</VALUE>
+        <VALUE value="0x55">-85 dBm</VALUE>
+        <VALUE value="0x5A">-90 dBm</VALUE>
+    </CONFIG>
+    <DEFAULT>0x46 (-70 dBm)</DEFAULT>
+    <OP>
+        N/A
+    </OP>
+    <DEPENDENCY>
+        N/A
+    </DEPENDENCY>
+    <NOTE>
+        This feature is available in LR11.W1552.MD.TC10.SP, LR11.W1630.MD.MP, and since LR12.
+    </NOTE>		
+    <AUTHOR>mtk08088</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/     
+    SBP_DATA_DEF(29,SBP_BAR_CELL_RSRP_THRESHOLD, SBP_ATTR_NONE, "RSRP threshold (in dBm) to bar a RA failure cell")
+        SBP_DATA_DEF_VAL(0x32, "50 dBm")
+        SBP_DATA_DEF_VAL(0x37, "-55 dBm")
+        SBP_DATA_DEF_VAL(0x3c, "-60 dBm")
+        SBP_DATA_DEF_VAL(0x41, "-65 dBm")
+        SBP_DATA_DEF_VAL(0x46, "-70 dBm")
+        SBP_DATA_DEF_VAL(0x4B, "-75 dBm")
+        SBP_DATA_DEF_VAL(0x50, "-80 dBm")
+        SBP_DATA_DEF_VAL(0x55, "-85 dBm")
+        SBP_DATA_DEF_VAL(0x5A, "-90 dBm")
+        SBP_DATA_DEFAULT_VAL(0x46)
+    SBP_DATA_DEF_END
+    
+ /****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_IRAT_IN_VIRTUAL_MODE- IRAT Measure/Reselect in Virtual Mode">
+    <DESCRIPTION>
+        Originally in DSDS design, SIM in virtual mode does not perform IRAT measurement and thus no IRAT reselection happens in virtual mode. 
+        After introducing this feature, SIM in virtual mode can perform IRAT measurement and thus IRAT reselection can happen in virtual mode.
+    </DESCRIPTION>
+    <CATEGORY>EAS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0">No IRAT measurement/reselection in virtual mode.</VALUE>
+        <VALUE value="1">2/3G can measure/reselect to 2/3/4G in virtual mode, but 4G can not measure/reselect to 2/3G.</VALUE>
+        <VALUE value="2">2/3/4G can measure/reselect to 2/3/4G in virtual mode.</VALUE>
+    </CONFIG>
+    <DEFAULT>1</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>default value is "1" if with compile option __SBP_IRAT_IN_VIRTUAL_MODE_1__, is "2" when with __SBP_IRAT_IN_VIRTUAL_MODE_2__.</DEPENDENCY>
+    <NOTE>N/A</NOTE>
+    <AUTHOR>mtk04119</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/   
+    SBP_DATA_DEF(30,SBP_IRAT_IN_VIRTUAL_MODE, SBP_ATTR_NONE, "IRAT Measure/Reselect in Virtual Mode")
+        SBP_DATA_DEF_VAL(0x00, "All off")
+        SBP_DATA_DEF_VAL(0x01, "Partial on: 2G measure/reselect 3/4G and 3G measure/reselect 2/4G")
+        SBP_DATA_DEF_VAL(0x02, "All on: 2G measure/reselect 3/4G, 3G measure/reselect 2/4G, 4G measure/reselect 2/3G")
+        #if defined(__SBP_IRAT_IN_VIRTUAL_MODE_1__)
+            SBP_DATA_DEFAULT_VAL(0x01)  /* 2G mreasure/reselect 3/4G, 3G measure/reselect 3/4G */
+        #elif defined(__SBP_IRAT_IN_VIRTUAL_MODE_2__)
+            SBP_DATA_DEFAULT_VAL(0x02)  /* all on */
+        #else
+            SBP_DATA_DEFAULT_VAL(0x01)  /* Default : 2G measure/reselect 3/4G, 3G measure/reselect 2/4G */
+        #endif
+    SBP_DATA_DEF_END
+    
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_DATA_SUPPORT_NAM_COUNT- modem of C2K rat supported NAM number">
+    <DESCRIPTION>
+        C2K supported NAM number.
+    </DESCRIPTION>
+    <CATEGORY>C2K</CATEGORY>
+    <CONFIG>
+        <VALUE value="1">1 NAM supported.</VALUE>
+        <VALUE value="2">2 NAMs supported.</VALUE>
+    </CONFIG>
+    <DEFAULT>1</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>N/A</DEPENDENCY>
+    <NOTE>Currently only 1 NAM is supported.</NOTE>
+    <AUTHOR>mtk08601</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/    
+    SBP_DATA_DEF(31,SBP_DATA_SUPPORT_NAM_COUNT, SBP_ATTR_NONE, "modem of C2K rat supported NAM number")
+        SBP_DATA_DEF_VAL(0x01, "1")
+        SBP_DATA_DEFAULT_VAL(0x01)  /* 0 - all off */
+    SBP_DATA_DEF_END  
+
+ /*32~39*/
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_DATA_RUIM - MDVSIM Private Keys Configuration Parameters - Index of Ki">
+    <DESCRIPTION>
+        <PARAG>provide the way to config whehthe use real sim card or emulator card data in NVRAM to register network.</PARAG>        
+    </DESCRIPTION>
+    <CATEGORY>C2K</CATEGORY>
+    <CONFIG>
+        <VALUE value="0">use emulator card data in NVRAM to register network in lab.</VALUE>
+        <VALUE value="1">use read card data in SIM to register network.</VALUE>
+    </CONFIG>
+    <DEFAULT>1</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>if want to use real sim card configuration, must keep the byte 1 of NVRAM_EF_C2K_UICC_LID is 0</DEPENDENCY>
+    <NOTE>if the value is 0,this configuration only can be used in CDMA modem only test in the lab.LR12 6M project has already support this feature</NOTE>
+    <AUTHOR>mtk08652</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/ 
+    SBP_DATA_DEF(32,SBP_DATA_RUIM, SBP_ATTR_NOT_SUPPORT_DYNAMIC_SBP, "SBP_DATA_RUIM")
+        SBP_DATA_DEF_VAL(0x00, "0")
+        SBP_DATA_DEF_VAL(0x01, "1")
+        SBP_DATA_DEFAULT_VAL(0x01)  /* 0 - all off */
+    SBP_DATA_DEF_END   
+    
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_2G_STANDBY_MEAS_PRD_IN_VM- 2G measurement period for 2G measurements in Virtual standby mode">
+    <DESCRIPTION>
+        This SBP is used to give measurement configurations to GL1 by GSM RR when UE is camped on other than 2G RAT
+        and other SIM is doing data transfer (current SIM is in virtual mode). In virtual mode, 2G cannot do continuous
+        measurements, hence, measurement period (in frames) is provided to GL1 by GRR via SBP.
+    </DESCRIPTION>
+    <CATEGORY>GAS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0">Follow normal IDLE mode measurements (51 or 102 frames)</VALUE>
+        <VALUE value="1">2G can measure in every 51 frame period in flight mode</VALUE>
+        <VALUE value="2">2G can measure in every 102 frame period in standby state</VALUE>
+    </CONFIG>
+    <DEFAULT>0</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>N/A</DEPENDENCY>
+    <NOTE>N/A</NOTE>
+    <AUTHOR>mtk09537</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(33,SBP_2G_STANDBY_MEAS_PRD_IN_VM, SBP_ATTR_NONE, "2G standby measurement period in virtual mode")
+        SBP_DATA_DEF_VAL(0x00, "Use MTK Default value (51 or 102 frames)")
+        SBP_DATA_DEF_VAL(0x01, "Period: 1 GSM TDMA frame")
+        SBP_DATA_DEF_VAL(0x02, "Period: 2 GSM TDMA frames, and so on.")
+        SBP_DATA_DEFAULT_VAL(0x00)
+    SBP_DATA_DEF_END
+    
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_2G_STANDBY_MEAS_NUM_PER_PRD_IN_VM- 2G measurement length for 2G measurements in Virtual standby mode">
+    <DESCRIPTION>
+        This SBP is used to give measurement configurations to GL1 by GSM RR when UE is camped on other than 2G RAT
+        and other SIM is doing data transfer (current SIM is in virtual mode). In virtual mode, 2G cannot do continuous
+        measurements, hence, measurement length (in frames) is provided to GL1 by GRR via SBP.
+    </DESCRIPTION>
+    <CATEGORY>GAS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0">Follow normal IDLE mode measurements (4 or 8 frames)</VALUE>
+        <VALUE value="1">2G can measure 8 frames in given frame period in flight mode</VALUE>
+        <VALUE value="2">2G can measure 4 frames in given frame period in standby state</VALUE>
+    </CONFIG>
+    <DEFAULT>0</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>N/A</DEPENDENCY>
+    <NOTE>N/A</NOTE>
+    <AUTHOR>mtk09537</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(34,SBP_2G_STANDBY_MEAS_NUM_PER_PRD_IN_VM, SBP_ATTR_NONE, "2G standby measurement, number of frames to be scanned in virtual mode per period")
+        SBP_DATA_DEF_VAL(0x00, "Use MTK Default value (4 or 8 frames)")
+        SBP_DATA_DEF_VAL(0x01, "Scan 1 GSM TDMA frame")
+        SBP_DATA_DEF_VAL(0x02, "Scan 2 GSM TDMA frames, and so on.")
+        SBP_DATA_DEFAULT_VAL(0x00)
+    SBP_DATA_DEF_END
+    
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_2G_STANDBY_MEAS_FB_DECODE_INTV_IN_VM- 2G measurement FB decode intervals for 2G measurements in Virtual standby mode">
+    <DESCRIPTION>
+        This SBP is used to give measurement configurations to GL1 by GSM RR when UE is camped on other than 2G RAT
+        and other SIM is doing data transfer (current SIM is in virtual mode). In virtual mode, 2G cannot do continuous
+        measurements, hence, measurement FB decode intervals (in frames) is provided to GL1 by GRR via SBP.
+    </DESCRIPTION>
+    <CATEGORY>GAS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0">Follow normal IDLE mode measurements</VALUE>
+        <VALUE value="1">Attempt 2G BSIC decoding every 16 frames in virtual mode</VALUE>
+    </CONFIG>
+    <DEFAULT>0</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>N/A</DEPENDENCY>
+    <NOTE>N/A</NOTE>
+    <AUTHOR>mtk09537</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(35,SBP_2G_STANDBY_MEAS_FB_DECODE_INTV_IN_VM, SBP_ATTR_NONE, "2G standby measurement FB/SB decode interval, number of frames between two FB/SB decode attempt") 
+        SBP_DATA_DEF_VAL(0x00, "Use MTK Default value (16 frames)")
+        SBP_DATA_DEF_VAL(0x01, "1 GSM TDMA frame")
+        SBP_DATA_DEF_VAL(0x02, "2 GSM TDMA frames, and so on.")
+        SBP_DATA_DEFAULT_VAL(0x00)
+    SBP_DATA_DEF_END
+
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_MDT_UI_LOCATION_OFF_STORE_REPORT_MODE- MDT store location report mode when UI location setting disable">
+    <DESCRIPTION>
+        <PARAG> 
+            If UE always activates GPS positioning when network send MDT request to UE, it might increase the power consumption. 
+            This SBP provides flexable configuration for MDT feature. According ERRC air message, UE might be requested to report 
+            current store location information or activate GPS positioning. This SBP is for store loaction information request.  
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>AGPS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0x00">Not report location information</VALUE>
+        <VALUE value="0x01">Report the lastest stored location</VALUE>
+    </CONFIG>
+    <DEFAULT>0x01</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>N/A</DEPENDENCY>
+    <NOTE>This feature needs corresponding AP load to provide UI location setting. </NOTE>
+    <AUTHOR>mtk07961</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(36,SBP_MDT_UI_LOCATION_OFF_STORE_REPORT_MODE, SBP_ATTR_NONE, "MDT store location reporting mode- when UI location setting OFF") 
+        SBP_DATA_DEF_VAL(0x00, "Not report")
+        SBP_DATA_DEF_VAL(0x01, "Report the lastest stored location")
+        SBP_DATA_DEFAULT_VAL(0x01)
+    SBP_DATA_DEF_END
+
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_MDT_UI_LOCATION_OFF_GPS_REPORT_MODE- MDT GPS location report mode when UI location setting disable">
+    <DESCRIPTION>
+        <PARAG>
+            If UE always activates GPS positioning when network send MDT request to UE, it might increase the power consumption. 
+            This SBP provides flexable configuration for MDT feature. According ERRC air message, UE might be requested to report 
+            current store location information or activate GPS positioning. This SBP is for GPS positioning request. 
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>AGPS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0x00">Not report location information</VALUE>
+        <VALUE value="0x01">Report the lastest stored location</VALUE>
+        <VALUE value="0x02">Open GPS chip to get and report location information</VALUE>
+    </CONFIG>
+    <DEFAULT>0x01</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>N/A</DEPENDENCY>
+    <NOTE>This feature needs corresponding AP load to provide UI location setting.</NOTE>
+    <AUTHOR>mtk07961</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(37,SBP_MDT_UI_LOCATION_OFF_GPS_REPORT_MODE, SBP_ATTR_NONE, "MDT GPS location reporting mode- when UI location setting OFF") 
+        SBP_DATA_DEF_VAL(0x00, "Not report")
+        SBP_DATA_DEF_VAL(0x01, "Report the lastest stored location")
+        SBP_DATA_DEF_VAL(0x02, "Open GPS chip to get and report location information")
+        SBP_DATA_DEFAULT_VAL(0x01)
+    SBP_DATA_DEF_END
+    
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_SMS_MAX_TL_RETRY_COUNT_DURING_CALL- Maximum retry count for SMS at TL layer when call is ongoing on other protocol stack">
+    <DESCRIPTION>
+        <PARAG> This provides the value for the maximum count of the retries allowed at TL layer for the SMS pdu when a call is ongoing on the other protocol stack.
+        When the SMS is ongoing on one protocol stack, and request for the call comes on the other protocol stack, the SMS will be affected by the call.
+        So in that case we provide this SBP to customize the number of retries when the SMS is interrupted by the call on the other protocol stack. 
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>SMS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0">No Retry</VALUE>
+        <VALUE value="1">1 Retry</VALUE>
+        <VALUE value="2">2 Retries</VALUE>
+        <VALUE value="3">3 Retries</VALUE>
+    </CONFIG>
+    <DEFAULT>0x01</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>This SBP is dependent on other compilation switch __ALLOW_CALL_DURING_SMS_IN_OTHER_STACK__</DEPENDENCY>
+    <NOTE>N/A</NOTE>
+    <AUTHOR>mtk08505</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(38,SBP_SMS_MAX_TL_RETRY_COUNT_DURING_CALL, SBP_ATTR_NONE, "SMS max TL retry count when call ongoing on peer Protocol Stack")
+        SBP_DATA_DEFAULT_VAL(0x01)
+    SBP_DATA_DEF_END
+
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_SMS_TL_RETRY_TIMER_DURING_CALL- SMS TL retry timer (in second) when call ongoing on peer Protocol Stack">
+    <DESCRIPTION>
+        <PARAG> This provides the value for the SMS TL retry timer when a call is ongoing on the other protocol stack.
+        When the SMS is ongoing on one protocol stack, and request for the call comes on the other protocol stack, the SMS will be affected by the call.
+        So in that case we provide this SBP to customize the SMS TL retry timer when the SMS is interrupted by the call on the other protocol stack. 
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>SMS</CATEGORY>
+    <CONFIG>
+        <VALUE value="1">Timeout Value 10 seconds</VALUE>
+        <VALUE value="2">Timeout Value 20 seconds</VALUE>
+        <VALUE value="3">Timeout Value 30 seconds</VALUE>
+        <VALUE value="4">Timeout Value 40 seconds</VALUE>
+        <VALUE value="...">.... seconds</VALUE>
+        <VALUE value="30">Timeout Value 300 seconds</VALUE>
+    </CONFIG>
+    <DEFAULT>30</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>This SBP is dependent on other compilation switch __ALLOW_CALL_DURING_SMS_IN_OTHER_STACK__</DEPENDENCY>
+    <NOTE>Please note that the minimum value of this timer is 10 sec. Also when the value for this SBP is set to x, the timer runs for x*10 secs</NOTE>
+    <AUTHOR>mtk08505</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(39,SBP_SMS_TL_RETRY_TIMER_DURING_CALL, SBP_ATTR_NONE, "SMS TL retry timer (in second) when call ongoing on peer Protocol Stack")
+        SBP_DATA_DEF_VAL(0x1e, "Timeout Value 300 seconds")
+        SBP_DATA_DEFAULT_VAL(0x1e)
+    SBP_DATA_DEF_END
+    
+ /*40~47*/  
+/****** SBP Document BEGIN ************************************************************************
+ <SBP title="SBP_EMERGENCY_CALLBACK_MODE -  define the working mode of emergency call back mode">
+    <DESCRIPTION>
+        <PARAG>
+          from customer's requirement: need to provide 3 options for the mode of ECBM.
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>C2K</CATEGORY>
+    <CONFIG>
+        <VALUE value="0">C2K will enter ECBM mode after ECC is disconnected</VALUE>
+        <VALUE value="1">C2K will not enter ECBM mode after ECC is disconnected</VALUE>
+        <VALUE value="2">C2K will not enter ECBM mode after ECC is disconnected in CHINA, BUT will enter ECBM mode after ECC is disconnected outside of CHINA</VALUE>
+    </CONFIG>
+    <DEFAULT>1</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>
+        N/A
+    </DEPENDENCY>
+    <NOTE>
+        This feature is available in UMOLYA/LR12A and branches after them.    
+    </NOTE>
+    <AUTHOR>mtk08624</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(40,SBP_EMERGENCY_CALLBACK_MODE, SBP_ATTR_NONE, "configure the mode of emergency call back mode to determine if UE need to enter ECBM mode or not after ECC is terminated")
+        SBP_DATA_DEF_VAL(0x00, "C2K will not enter ECBM mode after ECC is disconnected")
+        SBP_DATA_DEF_VAL(0x01, "C2K will enter ECBM mode after ECC is disconnected")
+        SBP_DATA_DEF_VAL(0x02, "C2K will not enter ECBM mode after ECC is disconnected in CHINA, BUT will enter ECBM mode after ECC is disconnected outside of CHINA")
+       #if defined(__TURN_OFF_ECBM_MODE_IN_CHINA__)
+       SBP_DATA_DEFAULT_VAL(0x02)
+       #else
+       SBP_DATA_DEFAULT_VAL(0x00)
+       #endif
+   SBP_DATA_DEF_END
+   
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_LPP_SERVER_UNSYNC_WITH_ENB_MFBI_WORKAROUND- Covert LPP server configuration OTDOA band to synchronize with eNB">
+    <DESCRIPTION>
+        <PARAG>
+            This SBP is to workaround network LPP server issue. When eNB support MFBI(Multi Frequency Band Indicator), UE identify the band through eNB MFBI setting.
+            When network LPP server is unsynchronized with eNB, it will send OTDOA measurement request with wrong band setting that conflict with eNB setting.
+            To workaround this network issue, UE converts LPP server configured band based on eNB setting and performs OTDOA measurement. 
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>AGPS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0x00">Disable MFBI workaround</VALUE>
+        <VALUE value="0x01">Convert network configure band to measure OTDOA but report results as network configured band</VALUE>
+        <VALUE value="0x02">Convert network configure band to measure OTDOA and report results as convered band</VALUE>
+    </CONFIG>
+    <DEFAULT>0x01</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>N/A</DEPENDENCY>
+    <NOTE>N/A</NOTE>
+    <AUTHOR>mtk07961</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(41,SBP_LPP_SERVER_UNSYNC_WITH_ENB_MFBI_WORKAROUND, SBP_ATTR_NONE, "Convert band setting when LPP OTDOA measurement request band setting is unsynchronized with eNB MFBI setting") 
+        SBP_DATA_DEF_VAL(0x00, "Not convert LPP server OTDOA measurement request band setting")
+        SBP_DATA_DEF_VAL(0x01, "Convert LPP server OTDOA measurement request band setting and report network originally configured band in measurement result")
+        SBP_DATA_DEF_VAL(0x02, "Convert LPP server OTDOA measurement request band setting and report converted band in measurement result")
+        SBP_DATA_DEFAULT_VAL(0x01)
+    SBP_DATA_DEF_END
+
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_MDT_BATTERY_LEVEL - Minimum battery level for MDT open GPS">
+    <DESCRIPTION>
+        <PARAG>
+            This SBP is to control the minimum battery level for MDT (Minimization of Drive Tests) open GPS.
+            Open GPS will consumes UE power, but when the available battery power is below a certain threshold, user may want to prevent MDT from opening GPS to extend the usage time.
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>AGPS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0x00">Do not check battery level</VALUE>
+        <VALUE value="0x0A">10% of available battery</VALUE>
+        <VALUE value="0x14">20% of available battery</VALUE>
+    </CONFIG>
+    <DEFAULT>0x0A</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>N/A</DEPENDENCY>
+    <NOTE>
+        This feature is available on LR12A.R3.MP and newer generation MTK modems.
+    </NOTE>
+    <AUTHOR>mtk00699</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(42,SBP_MDT_BATTERY_LEVEL, SBP_ATTR_NONE, "Minimum battery level to open GPS for MDT request")
+        SBP_DATA_DEF_VAL(0x00, "Do not check battery level")
+        SBP_DATA_DEF_VAL(0x0A, "10% of available battery")
+        SBP_DATA_DEF_VAL(0x14, "20% of available battery")
+        SBP_DATA_DEFAULT_VAL(0x0A)
+    SBP_DATA_DEF_END
+
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_3G_SIB_SKIP_ENABLE_FOR_ALL_PLMN- Read only essential SIBs during camping for all PLMNs">
+    <DESCRIPTION>
+        <PARAG>
+            This SBP provides flexable configuration for SIB SKIP feature. Even if NW does not configure DMCR in SIB3, 
+            UE shall skip reading non-essential SIBs during camping time to speed up camping. UE will read the non-essential 
+            SIBs later on.
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>UAS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0x00">Disabled</VALUE>
+        <VALUE value="0x01">Enabled only for CSFB calls</VALUE>
+        <VALUE value="0x02">Enabled unconditionally</VALUE>
+    </CONFIG>
+    <DEFAULT>0x00</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>Default value is "1" if with compile option __3G_SIB_SKIP_FOR_CSFB__, is "2" when with __3G_SIB_SKIP_FOR_ALL__</DEPENDENCY>
+    <NOTE>N/A</NOTE>
+    <AUTHOR>mtk09178</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(43,SBP_3G_SIB_SKIP_ENABLE_FOR_ALL_PLMN, SBP_ATTR_NONE, "Enable SIB Skip for all PLMNs") 
+        SBP_DATA_DEF_VAL(0x00, "Disabled")
+        SBP_DATA_DEF_VAL(0x01, "Enable SIB Skip for all PLMNs, only for CSFB")
+        SBP_DATA_DEF_VAL(0x02, "Enable SIB Skip for all PLMNs")
+#if defined(__3G_SIB_SKIP_FOR_CSFB__)
+        SBP_DATA_DEFAULT_VAL(0x01)
+#elif defined(__3G_SIB_SKIP_FOR_ALL__)
+        SBP_DATA_DEFAULT_VAL(0x02)
+#else
+        SBP_DATA_DEFAULT_VAL(0x00)
+#endif
+    SBP_DATA_DEF_END
+
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_MODIFY_RLC_FOR_SACCH_DECODE- Modify the Value of Radio Link Counter in 2G dedicated state ">
+    <DESCRIPTION>
+        <PARAG>
+            This SBP is used to modify the value of Radio Link Counter(RLC) which is received in System Information 6 from 2G NW. 
+			Instead of using NW given RLC value, we will use RLC value based on SBP value set.
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>GAS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0x00">default RLC value from Nw</VALUE>
+        <VALUE value="0x01">RLC received from n/w + 4</VALUE>
+        <VALUE value="0x02">RLC received from n/w + 12</VALUE>
+        <VALUE value="0x03">RLC received from n/w + 16</VALUE>
+        <VALUE value="0x04">RLC received from n/w + 20</VALUE>
+        <VALUE value="0x05">RLC received from n/w + 24</VALUE>
+        <VALUE value="0x06">RLC received from n/w + 28</VALUE>
+        <VALUE value="0x07">RLC received from n/w + 32</VALUE>
+        <VALUE value="0x08">RLC received from n/w + 36</VALUE>
+    </CONFIG>
+    <DEFAULT>0x00</DEFAULT>
+    <OP>TMO-US</OP>
+    <DEPENDENCY>N/A</DEPENDENCY>
+    <NOTE>N/A</NOTE>
+    <AUTHOR>mtk12655</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(44,SBP_MODIFY_RLC_FOR_SACCH_DECODE, SBP_ATTR_NONE, "To increase 2G Dedi RLC counter Value") 
+        SBP_DATA_DEF_VAL(0x00, "default RLC value from Nw") /* If the default value is 40 set SBP as 6 to make RLC as 64 */
+        SBP_DATA_DEF_VAL(0x01, "RLC received from n/w +4")
+        SBP_DATA_DEF_VAL(0x02, "RLC received from n/w +8")
+        SBP_DATA_DEF_VAL(0x03, "RLC received from n/w +12")
+        SBP_DATA_DEF_VAL(0x04, "RLC received from n/w +16")
+        SBP_DATA_DEF_VAL(0x05, "RLC received from n/w +20")
+        SBP_DATA_DEF_VAL(0x06, "RLC received from n/w +24")
+        SBP_DATA_DEF_VAL(0x07, "RLC received from n/w +28")
+        SBP_DATA_DEF_VAL(0x08, "RLC received from n/w +32")
+        SBP_DATA_DEF_VAL(0x09, "RLC received from n/w +36")
+        SBP_DATA_DEFAULT_VAL(0x00)
+    SBP_DATA_DEF_END
+
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_LCSP_RSP_TIME_ADJ - Location service response time adjustment">
+    <DESCRIPTION>
+        <PARAG>
+            This SBP is to control the locaion service response time in order to compensate for network latency.
+            When set as a non-zero value, the protocol stack will first reduce the response time value by the offset set here before begin of operation.
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>AGPS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0x00">Do not adjust response time</VALUE>
+        <VALUE value="0x02">Reduce UE internal response time by 2s</VALUE>
+        <VALUE value="0x03">Reduce UE internal response time by 3s</VALUE>
+    </CONFIG>
+    <DEFAULT>0</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>N/A</DEPENDENCY>
+    <NOTE>
+        This feature is available on LR12A.R3.MP and newer generation MTK modems.
+    </NOTE>
+    <AUTHOR>mtk00699</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(45, SBP_LCSP_RSP_TIME_ADJ, SBP_ATTR_NONE, "Location service response time adjustment to compensate for network latency")
+        SBP_DATA_DEF_VAL(0x00, "Do not adjust response time")
+        SBP_DATA_DEF_VAL(0x02, "Reduce UE internal response time by 2s")
+        SBP_DATA_DEF_VAL(0x03, "Reduce UE internal response time by 3s")
+#ifdef __LCSP_RSP_TIME_ADJ__
+        SBP_DATA_DEFAULT_VAL(0x02)
+#else
+        SBP_DATA_DEFAULT_VAL(0x00)
+#endif
+    SBP_DATA_DEF_END
+
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_LCSP_RSP_TIME_LB - Location service response time adjustment lower bound">
+    <DESCRIPTION>
+        <PARAG>
+            This SBP is to control the lower bound of locaion service response time.
+            When the protocol stack needs to adjust the response time to compensate for network latency, the minimum value after adjustment will be the value set here.
+            If original value given by network is already smaller than this value, no adjustement will be performed at all.
+            Please be noted it is not suggested to set a value smaller than 14 unless you have a strong reason to do so or the GPS performance may be downgraded due to not enough response time.
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>AGPS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0x0e">Response time adjustment lower bound is 14s</VALUE>
+        <VALUE value="0x0f">Response time adjustment lower bound is 15s</VALUE>
+        <VALUE value="0x10">Response time adjustment lower bound is 16s</VALUE>
+        <VALUE value="0x11">Response time adjustment lower bound is 17s</VALUE>
+        <VALUE value="0x12">Response time adjustment lower bound is 18s</VALUE>
+        <VALUE value="0x13">Response time adjustment lower bound is 19s</VALUE>
+        <VALUE value="0x14">Response time adjustment lower bound is 20s</VALUE>
+    </CONFIG>
+    <DEFAULT>0x0f</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>N/A</DEPENDENCY>
+    <NOTE>
+        This feature is available on LR12A.R3.MP and newer generation MTK modems.
+    </NOTE>
+    <AUTHOR>mtk00699</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(46, SBP_LCSP_RSP_TIME_LB, SBP_ATTR_NONE, "Location service response time adjustment lower bound")
+        SBP_DATA_DEF_VAL(0x0e, "Response time adjustment lower bound is 14s")
+        SBP_DATA_DEF_VAL(0x0f, "Response time adjustment lower bound is 15s")
+        SBP_DATA_DEF_VAL(0x10, "Response time adjustment lower bound is 16s")
+        SBP_DATA_DEF_VAL(0x11, "Response time adjustment lower bound is 17s")
+        SBP_DATA_DEF_VAL(0x12, "Response time adjustment lower bound is 18s")
+        SBP_DATA_DEF_VAL(0x13, "Response time adjustment lower bound is 19s")
+        SBP_DATA_DEF_VAL(0x14, "Response time adjustment lower bound is 20s")
+        SBP_DATA_DEFAULT_VAL(0x0f)
+    SBP_DATA_DEF_END
+    
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_DISPLAY_NOT_SELECTABLE_PLMN - Display Not-Selectable PLMN ID when PLMN list">
+    <DESCRIPTION>
+        <PARAG>
+            This SBP is to control the ways to show the result of PLMN list.
+            In legacy design, all PLMN IDs including those are barred or reserved for operator use will be showed in the UI.
+            If customers do not expect this behavior, we could configure the SBP data to change the way of showing these PLMN IDs in PLMN list.
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>EAS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0x00">Do not display this PLMN when all cells are not selectable</VALUE>
+        <VALUE value="0x01">Display this PLMN even all cells are barred</VALUE>
+        <VALUE value="0x02">Display this PLMN even all cells are reserved-for-operator-use</VALUE>
+        <VALUE value="0x03">Display this PLMN even all cells are barred or reserved-for-operator-use</VALUE>
+    </CONFIG>
+    <DEFAULT>0x03</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>N/A</DEPENDENCY>
+    <NOTE>
+        This feature is available on LR12A.R3.MP and newer generation MTK modems.
+    </NOTE>
+    <AUTHOR>mtk02481</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(47,SBP_DISPLAY_NOT_SELECTABLE_PLMN, SBP_ATTR_NONE, "Display Not-Selectable PLMN when PLMN List")
+        SBP_DATA_DEF_VAL(0x00, "do not display this PLMN when all cells are not selectable")
+        SBP_DATA_DEF_VAL(0x01, "display this PLMN even all cells are barred")
+        SBP_DATA_DEF_VAL(0x02, "display this PLMN even all cells are reserved-for-operator-use")
+        SBP_DATA_DEF_VAL(0x03, "display this PLMN even all cells are barred or reserved-for-operator-use")
+        #if defined(__DISPLAY_SELECTABLE_PLMN_ONLY__) 
+            SBP_DATA_DEFAULT_VAL(0x00)
+        #else
+            SBP_DATA_DEFAULT_VAL(0x03)
+        #endif
+    SBP_DATA_DEF_END
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_L2_REEST_TMR_THRESHOLD- A timer that ensures UE not to report EM of RRCConnectionReestablish caused by L2 events too frequently">
+    <DESCRIPTION>
+        <PARAG>
+            <LI>UE will report EM when RRCConnectionReestablish caused by L2 events happened SBP_L2_REEST_CNT_THRESHOLD times within SBP_L2_REEST_TMR_THRESHOLD seconds.</LI>
+            <LI>After the EM is reported, UE will not report another EM unless the SBP_L2_REEST_TMR_THRESHOLD timer expires.</LI>
+            <LI>When this timer timeout, the count used to report EM is reset to 0 and the next accumulation starts.</LI>
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>EAS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0x1E">Timeout value: 30 seconds</VALUE>
+        <VALUE value="0x23">Timeout value: 35 seconds</VALUE>
+        <VALUE value="0x28">Timeout value: 40 seconds</VALUE>
+        <VALUE value="0x2D">Timeout value: 45 seconds</VALUE>
+        <VALUE value="0x32">Timeout value: 50 seconds</VALUE>
+        <VALUE value="0x37">Timeout value: 55 seconds</VALUE>
+        <VALUE value="0x3C">Timeout value: 60 seconds</VALUE>
+    </CONFIG>
+    <DEFAULT>60 (seconds)</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>Compile option "__CHR_AB_INFO__" is wrapped in the code</DEPENDENCY>
+    <NOTE>N/A</NOTE>
+    <AUTHOR>mtk12764</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/    
+    SBP_DATA_DEF(48,SBP_L2_REEST_TMR_THRESHOLD, SBP_ATTR_NONE, "CHR timer threshold")
+    
+        SBP_DATA_DEF_VAL(0x1E, "30 seconds")
+        SBP_DATA_DEF_VAL(0x23, "35 seconds")
+        SBP_DATA_DEF_VAL(0x28, "40 seconds")
+        SBP_DATA_DEF_VAL(0x2D, "45 seconds")
+        SBP_DATA_DEF_VAL(0x32, "50 seconds")
+        SBP_DATA_DEF_VAL(0x37, "55 seconds")
+        SBP_DATA_DEF_VAL(0x3C, "60 seconds")
+    
+        SBP_DATA_DEFAULT_VAL(0x3C)
+    SBP_DATA_DEF_END
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_L2_REEST_CNT_THRESHOLD- A counter threshold to report the EM of RRCConnectionReestablish caused by L2 events">
+    <DESCRIPTION>
+        <PARAG>
+            <LI>UE will report EM when RRCConnectionReestablish caused by L2 events happened SBP_L2_REEST_CNT_THRESHOLD times within SBP_L2_REEST_TMR_THRESHOLD seconds.</LI>
+            <LI>After the SBP_L2_REEST_TMR_THRESHOLD timer expires, the count used to report EM is reset to 0 and the next accumulation starts.</LI>
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>EAS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0x02">L2 Reest count: 2</VALUE>
+        <VALUE value="0x03">L2 Reest count: 3</VALUE>
+        <VALUE value="0x04">L2 Reest count: 4</VALUE>
+        <VALUE value="0x05">L2 Reest count: 5</VALUE>
+        <VALUE value="0x06">L2 Reest count: 6</VALUE>
+    </CONFIG>
+    <DEFAULT>3</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>Compile option "__CHR_AB_INFO__" is wrapped in the code</DEPENDENCY>
+    <NOTE>N/A</NOTE>
+    <AUTHOR>mtk12764</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/    
+    SBP_DATA_DEF(49,SBP_L2_REEST_CNT_THRESHOLD, SBP_ATTR_NONE, "CHR count threshold")
+    
+        SBP_DATA_DEF_VAL(0x02, "L2 REEST counter thershold 2")
+        SBP_DATA_DEF_VAL(0x03, "L2 REEST counter thershold 3")
+        SBP_DATA_DEF_VAL(0x04, "L2 REEST counter thershold 4")
+        SBP_DATA_DEF_VAL(0x05, "L2 REEST counter thershold 5")
+        SBP_DATA_DEF_VAL(0x06, "L2 REEST counter thershold 6")
+    
+        SBP_DATA_DEFAULT_VAL(0x03)
+    SBP_DATA_DEF_END
+
+    /****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_EMM_PROC_FAIL_HANDLING_EXT - Extension options for EMM procedure fail handling">
+    <DESCRIPTION>
+        <PARAG>
+            This SBP provides exntension option for SBP_EMM_PROC_FAIL_HANDLING feature.
+        </PARAG>
+        <PARAG>
+			Option 1: Provide the functionality to bar strange cell in CMCC network that will always
+			give Attach/TAU result as EPS only and cause #16. So that can avoid DUT disable E-UTRAN according
+			to spec, and disturb user experience.
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>NAS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0x00">All disabled</VALUE>
+        <VALUE value="0x01">Enable extension options: 1</VALUE>
+    </CONFIG>
+    <DEFAULT>0x00</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>This is only effective when SBP_EMM_PROC_FAIL_HANDLING is enabled.</DEPENDENCY>
+    <NOTE>N/A</NOTE>
+    <AUTHOR>mtk07903</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/	
+	SBP_DATA_DEF(50, SBP_EMM_PROC_FAIL_HANDLING_EXT, SBP_ATTR_NONE, "Extension options for EMM procedure fail handling.")
+
+    SBP_DATA_DEF_VAL(0x00, "All disabled")
+    SBP_DATA_DEF_VAL(0x01, "Enable extension options: 1")
+	
+#if defined(__EMM_PROC_FAIL_HANDLING_EXT_1__)
+    SBP_DATA_DEFAULT_VAL(0x01)
+#else
+    SBP_DATA_DEFAULT_VAL(0x00)
+#endif 
+    SBP_DATA_DEF_END
+
+ /*48~55*/
+ 
+     /****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_EAS_POWER_LEVEL_IND_PERIOD_IN_MS_IDLE - Control POWER_LEVEL_IND sending frequency in idle by SBP_ID">
+    <DESCRIPTION>
+        <PARAG>
+            This SBP controls the POWER_LEVEL_IND sending frequency in idle mode.
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>ERRC</CATEGORY>
+    <CONFIG>
+        <VALUE value="0x00">1000 ms</VALUE>
+        <VALUE value="0x01">1500 ms</VALUE>
+        <VALUE value="0x02">2000 ms</VALUE>
+        <VALUE value="...">...</VALUE>
+        <VALUE value="0x12">10000 ms</VALUE>
+    </CONFIG>
+    <DEFAULT>0x08</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>N/A</DEPENDENCY>
+    <NOTE>N/A</NOTE>
+    <AUTHOR>mtk15708</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/	
+	SBP_DATA_DEF(51, SBP_EAS_POWER_LEVEL_IND_PERIOD_IDLE, SBP_ATTR_NONE, "Control POWER_LEVEL_IND sending frequency in idle by SBP_ID.")
+
+        SBP_DATA_DEF_VAL(0x00, "EAS_POWER_LEVEL_IND_PERIOD_CONN 1000")
+        SBP_DATA_DEF_VAL(0x01, "EAS_POWER_LEVEL_IND_PERIOD_CONN 1500")
+        SBP_DATA_DEF_VAL(0x02, "EAS_POWER_LEVEL_IND_PERIOD_CONN 2000")
+        SBP_DATA_DEF_VAL(0x03, "EAS_POWER_LEVEL_IND_PERIOD_CONN 2500")
+        SBP_DATA_DEF_VAL(0x04, "EAS_POWER_LEVEL_IND_PERIOD_CONN 3000")
+        SBP_DATA_DEF_VAL(0x05, "EAS_POWER_LEVEL_IND_PERIOD_CONN 3500")
+        SBP_DATA_DEF_VAL(0x06, "EAS_POWER_LEVEL_IND_PERIOD_CONN 4000")
+        SBP_DATA_DEF_VAL(0x07, "EAS_POWER_LEVEL_IND_PERIOD_CONN 4500")
+        SBP_DATA_DEF_VAL(0x08, "EAS_POWER_LEVEL_IND_PERIOD_CONN 5000")
+        SBP_DATA_DEF_VAL(0x09, "EAS_POWER_LEVEL_IND_PERIOD_CONN 5500")
+        SBP_DATA_DEF_VAL(0x0a, "EAS_POWER_LEVEL_IND_PERIOD_CONN 6000")
+        SBP_DATA_DEF_VAL(0x0b, "EAS_POWER_LEVEL_IND_PERIOD_CONN 6500")
+        SBP_DATA_DEF_VAL(0x0c, "EAS_POWER_LEVEL_IND_PERIOD_CONN 7000")
+        SBP_DATA_DEF_VAL(0x0d, "EAS_POWER_LEVEL_IND_PERIOD_CONN 7500")
+        SBP_DATA_DEF_VAL(0x0e, "EAS_POWER_LEVEL_IND_PERIOD_CONN 8000")
+        SBP_DATA_DEF_VAL(0x0f, "EAS_POWER_LEVEL_IND_PERIOD_CONN 8500")
+        SBP_DATA_DEF_VAL(0x10, "EAS_POWER_LEVEL_IND_PERIOD_CONN 9000")
+        SBP_DATA_DEF_VAL(0x11, "EAS_POWER_LEVEL_IND_PERIOD_CONN 9500")
+        SBP_DATA_DEF_VAL(0x12, "EAS_POWER_LEVEL_IND_PERIOD_CONN 10000")
+
+        SBP_DATA_DEFAULT_VAL(0x08)
+    SBP_DATA_DEF_END
+
+     /****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_EAS_POWER_LEVEL_IND_PERIOD_IN_MS_CONN - Control POWER_LEVEL_IND sending frequency in connected by SBP_ID">
+    <DESCRIPTION>
+        <PARAG>
+            This SBP controls the POWER_LEVEL_IND sending frequency in connected mode.
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>ERRC</CATEGORY>
+    <CONFIG>
+        <VALUE value="0x00">1000 ms</VALUE>
+        <VALUE value="0x01">1500 ms</VALUE>
+        <VALUE value="0x02">2000 ms</VALUE>
+        <VALUE value="...">...</VALUE>
+        <VALUE value="0x12">10000 ms</VALUE>
+    </CONFIG>
+    <DEFAULT>0x03</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>N/A</DEPENDENCY>
+    <NOTE>N/A</NOTE>
+    <AUTHOR>mtk15708</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/	
+	SBP_DATA_DEF(52, SBP_EAS_POWER_LEVEL_IND_PERIOD_CONN, SBP_ATTR_NONE, "Control POWER_LEVEL_IND sending frequency in connected by SBP_ID.")
+
+        SBP_DATA_DEF_VAL(0x00, "EAS_POWER_LEVEL_IND_PERIOD_CONN 1000")
+        SBP_DATA_DEF_VAL(0x01, "EAS_POWER_LEVEL_IND_PERIOD_CONN 1500")
+        SBP_DATA_DEF_VAL(0x02, "EAS_POWER_LEVEL_IND_PERIOD_CONN 2000")
+        SBP_DATA_DEF_VAL(0x03, "EAS_POWER_LEVEL_IND_PERIOD_CONN 2500")
+        SBP_DATA_DEF_VAL(0x04, "EAS_POWER_LEVEL_IND_PERIOD_CONN 3000")
+        SBP_DATA_DEF_VAL(0x05, "EAS_POWER_LEVEL_IND_PERIOD_CONN 3500")
+        SBP_DATA_DEF_VAL(0x06, "EAS_POWER_LEVEL_IND_PERIOD_CONN 4000")
+        SBP_DATA_DEF_VAL(0x07, "EAS_POWER_LEVEL_IND_PERIOD_CONN 4500")
+        SBP_DATA_DEF_VAL(0x08, "EAS_POWER_LEVEL_IND_PERIOD_CONN 5000")
+        SBP_DATA_DEF_VAL(0x09, "EAS_POWER_LEVEL_IND_PERIOD_CONN 5500")
+        SBP_DATA_DEF_VAL(0x0a, "EAS_POWER_LEVEL_IND_PERIOD_CONN 6000")
+        SBP_DATA_DEF_VAL(0x0b, "EAS_POWER_LEVEL_IND_PERIOD_CONN 6500")
+        SBP_DATA_DEF_VAL(0x0c, "EAS_POWER_LEVEL_IND_PERIOD_CONN 7000")
+        SBP_DATA_DEF_VAL(0x0d, "EAS_POWER_LEVEL_IND_PERIOD_CONN 7500")
+        SBP_DATA_DEF_VAL(0x0e, "EAS_POWER_LEVEL_IND_PERIOD_CONN 8000")
+        SBP_DATA_DEF_VAL(0x0f, "EAS_POWER_LEVEL_IND_PERIOD_CONN 8500")
+        SBP_DATA_DEF_VAL(0x10, "EAS_POWER_LEVEL_IND_PERIOD_CONN 9000")
+        SBP_DATA_DEF_VAL(0x11, "EAS_POWER_LEVEL_IND_PERIOD_CONN 9500")
+        SBP_DATA_DEF_VAL(0x12, "EAS_POWER_LEVEL_IND_PERIOD_CONN 10000")
+
+        SBP_DATA_DEFAULT_VAL(0x03)
+    SBP_DATA_DEF_END
+
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_IGNORE_IR_REDIRECT_TO_LTE_WHEN_NO_CELL_THRESHOLD - Ignore IR Redirect to LTE when no cell">
+    <DESCRIPTION>
+        <PARAG>
+            <LI>If NW redirects from 2/3G to LTE but LTE find no suitable cells around, UE would record the failure count.</LI>
+            <LI>Once the redirect failure count is >= threshold, then inter-RAT redirection to LTE would be ignored.</LI>
+            <LI>When UE camp on LTE cell successfully, the count will be reset to 0.</LI>
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>LTE AS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0x00">Disabled</VALUE>
+        <VALUE value="0x01">Threshold: 1 time</VALUE>
+        <VALUE value="0x02">Threshold: 2 times</VALUE>
+        <VALUE value="0x03">Threshold: 3 times</VALUE>
+        <VALUE value="0x04">Threshold: 4 times</VALUE>
+        <VALUE value="...">....</VALUE>
+        <VALUE value="0x14">Threshold: 20 times</VALUE>
+    </CONFIG>
+    <DEFAULT>0x00</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>N/A</DEPENDENCY>
+    <NOTE>N/A</NOTE>
+    <AUTHOR>mtk12544</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/	
+	SBP_DATA_DEF(53, SBP_IGNORE_IR_REDIRECT_TO_LTE_WHEN_NO_CELL_THRESHOLD, SBP_ATTR_NONE, "Extension options for EMM procedure fail handling.")
+
+    SBP_DATA_DEF_VAL(0x00, "All disabled")
+    SBP_DATA_DEF_VAL(0x01, "Threshold: 1 time")
+    SBP_DATA_DEF_VAL(0x02, "Threshold: 2 times")
+    SBP_DATA_DEF_VAL(0x03, "Threshold: 3 times")
+    SBP_DATA_DEF_VAL(0x04, "Threshold: 4 times")
+    SBP_DATA_DEF_VAL(0x05, "Threshold: 5 times")
+    SBP_DATA_DEF_VAL(0x06, "Threshold: 6 times")
+    SBP_DATA_DEF_VAL(0x07, "Threshold: 7 times")
+    SBP_DATA_DEF_VAL(0x08, "Threshold: 8 times")
+    SBP_DATA_DEF_VAL(0x09, "Threshold: 9 times")
+    SBP_DATA_DEF_VAL(0x0A, "Threshold: 10 times")
+    SBP_DATA_DEF_VAL(0x0B, "Threshold: 11 time")
+    SBP_DATA_DEF_VAL(0x0C, "Threshold: 12 times")
+    SBP_DATA_DEF_VAL(0x0D, "Threshold: 13 times")
+    SBP_DATA_DEF_VAL(0x0E, "Threshold: 14 times")
+    SBP_DATA_DEF_VAL(0x0F, "Threshold: 15 times")
+    SBP_DATA_DEF_VAL(0x10, "Threshold: 16 times")
+    SBP_DATA_DEF_VAL(0x11, "Threshold: 17 times")
+    SBP_DATA_DEF_VAL(0x12, "Threshold: 18 times")
+    SBP_DATA_DEF_VAL(0x13, "Threshold: 19 times")
+    SBP_DATA_DEF_VAL(0x14, "Threshold: 20 times")
+
+#if defined(__IGNORE_IR_REDIRECT_TO_LTE_WHEN_NO_CELL__)
+    SBP_DATA_DEFAULT_VAL(0x05)
+#else
+    SBP_DATA_DEFAULT_VAL(0x00)
+#endif 
+    SBP_DATA_DEF_END
+
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_HSDPA_CAT - HSDPA UE Category">
+    <DESCRIPTION>
+        <PARAG>
+            This SBP specifies the HSDPA UE category.
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>UL1</CATEGORY>
+    <CONFIG>
+        <VALUE value="0x18">HSDPA default UE category</VALUE>
+    </CONFIG>
+    <DEFAULT>24</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>N/A</DEPENDENCY>
+    <NOTE>
+        This feature is available on LR12A.R3.MP and newer generation MTK modems.
+    </NOTE>
+    <AUTHOR>mtk14669</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(54, SBP_HSDPA_CAT, SBP_ATTR_NONE, "HSDPA UE Category.")
+    SBP_DATA_DEF_VAL(0x18, "HSDPA UE category: 24")
+    SBP_DATA_DEFAULT_VAL(0x18)
+    SBP_DATA_DEF_END
+
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_HSUPA_CAT - HSUPA UE Category">
+    <DESCRIPTION>
+        <PARAG>
+            This SBP specifies the HSUPA UE category.
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>UL1</CATEGORY>
+    <CONFIG>
+        <VALUE value="0x07">HSUPA default UE category</VALUE>
+    </CONFIG>
+    <DEFAULT>7</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>N/A</DEPENDENCY>
+    <NOTE>
+        This feature is available on LR12A.R3.MP and newer generation MTK modems.
+    </NOTE>
+    <AUTHOR>mtk14669</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(55, SBP_HSUPA_CAT, SBP_ATTR_NONE, "HSUPA UE Category.")
+    SBP_DATA_DEF_VAL(0x07, "HSUPA UE category: 7")
+    SBP_DATA_DEFAULT_VAL(0x07)
+    SBP_DATA_DEF_END
+
+ /****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_POS_MODE_CAPABILITY_SWITCH - Switch the positioning mode in UE reporting positioning capability to NW">
+    <DESCRIPTION>
+        <PARAG>
+            This SBP can switch the positioning mode in UE reporting positioning capability to NW.
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>AGPS</CATEGORY>
+    <CONFIG>
+    	<VALUE value="0x00">UE does not support AGPS</VALUE>
+        <VALUE value="0x01">UE-Based</VALUE>
+        <VALUE value="0x02">UE-Assisted</VALUE>
+        <VALUE value="0x03">Both UE-Based and UE-Assisted</VALUE>
+    </CONFIG>
+    <DEFAULT>0x03</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>N/A</DEPENDENCY>
+    <NOTE>N/A</NOTE>
+    <AUTHOR>mtk15441</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/	
+	SBP_DATA_DEF(56, SBP_POS_MODE_CAPABILITY_SWITCH, SBP_ATTR_NONE, "Switch the positioning mode in UE reporting positioning capability to NW.")
+
+	SBP_DATA_DEF_VAL(0x00, "UE does not support AGPS")
+    SBP_DATA_DEF_VAL(0x01, "UE-Based")
+    SBP_DATA_DEF_VAL(0x02, "UE-Assisted")
+    SBP_DATA_DEF_VAL(0x03, "Both UE-Based and UE-Assisted")
+
+#if defined(__AGPS_SUPPORT__)
+    SBP_DATA_DEFAULT_VAL(0x03)
+#else
+    SBP_DATA_DEFAULT_VAL(0x00)
+#endif
+    SBP_DATA_DEF_END
+
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_DATA_GPRS_PRIORITIZE - Set preference to GPRS cell over GSM cell during cell selection and re-selection">
+    <DESCRIPTION>
+        This SBP is used to set the preference to GPRS cell.
+        <LI>0x00 : SBP OFF, follow the normal procedure</LI>
+        <LI>0x01 : Select only a GPRS supported cell</LI>
+        <LI>0x02 : First try to select a GPRS supported cell, if not found camp on a non-GPRS cell</LI>
+    </DESCRIPTION>
+    <CATEGORY>GAS</CATEGORY>
+    <CONFIG>
+        <VALUE value="0x00">Not Supported.</VALUE>
+        <VALUE value="0x01">Select only a GPRS supported cell</VALUE>
+        <VALUE value="0x02">First try to select only a GPRS supported cell, if not found camp on a non-GPRS cell</VALUE>
+    </CONFIG>
+    <DEFAULT>
+        0x00
+    </DEFAULT>
+    <OP>
+        N/A
+    </OP>
+    <DEPENDENCY>
+        N/A
+    </DEPENDENCY>
+    <NOTE>
+        This feature is available in LR12A.R2.MP onwards.
+    </NOTE>
+    <AUTHOR>mtk15231</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/    
+    SBP_DATA_DEF(57, SBP_DATA_GPRS_PRIORITIZE, SBP_ATTR_NONE, "Set preference to GPRS cell over GSM cell during cell selection and re-selection")
+    SBP_DATA_DEF_VAL(0x00, "Not Supported")
+    SBP_DATA_DEF_VAL(0x01, "Select only a GPRS supported cell")
+    SBP_DATA_DEF_VAL(0x02, "First try to select only a GPRS supported cell, if not found camp on a non-GPRS cell")
+
+    SBP_DATA_DEFAULT_VAL(0x00)
+    
+    SBP_DATA_DEF_END
+ 
+ /****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_IDC_IM_TX_PWR_FOR_GPS">
+    <DESCRIPTION>
+        <PARAG>
+            The value is applied to LTE Tx max power after IDC notifies lte Band 13, and GPS ON
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>EAS</CATEGORY>
+    <CONFIG>
+        <VALUE value="1">LTE max Tx power is set to 1 dBm</VALUE>
+        <VALUE value="2">LTE max Tx power is set to 2 dBm</VALUE>
+        <VALUE value="3">LTE max Tx power is set to 3 dBm</VALUE>
+        <VALUE value="4">LTE max Tx power is set to 4 dBm</VALUE>
+        <VALUE value="5">LTE max Tx power is set to 5 dBm</VALUE>
+        <VALUE value="6">LTE max Tx power is set to 6 dBm</VALUE>
+        <VALUE value="7">LTE max Tx power is set to 7 dBm</VALUE>
+        <VALUE value="8">LTE max Tx power is set to 8 dBm</VALUE>
+        <VALUE value="9">LTE max Tx power is set to 9 dBm</VALUE>
+        <VALUE value="10">LTE max Tx power is set to 10 dBm</VALUE>
+        <VALUE value="11">LTE max Tx power is set to 11 dBm</VALUE>
+        <VALUE value="12">LTE max Tx power is set to 12 dBm</VALUE>
+        <VALUE value="13">LTE max Tx power is set to 13 dBm</VALUE>
+        <VALUE value="14">LTE max Tx power is set to 14 dBm</VALUE>
+        <VALUE value="15">LTE max Tx power is set to 15 dBm</VALUE>
+        <VALUE value="16">LTE max Tx power is set to 16 dBm</VALUE>
+        <VALUE value="17">LTE max Tx power is set to 17 dBm</VALUE>
+        <VALUE value="18">LTE max Tx power is set to 18 dBm</VALUE>
+        <VALUE value="19">LTE max Tx power is set to 19 dBm</VALUE>
+        <VALUE value="20">LTE max Tx power is set to 20 dBm</VALUE>
+        <VALUE value="21">LTE max Tx power is set to 21 dBm</VALUE>
+        <VALUE value="22">LTE max Tx power is set to 22 dBm</VALUE>
+        <VALUE value="23">LTE max Tx power is set to 23 dBm</VALUE>
+    </CONFIG>
+    <DEFAULT>17 (LTE max Tx power is set to 17 dBm when IDC notifies MODEM's serving cell is on Band 13 and GPS on)</DEFAULT>
+    <OP>
+        N/A
+    </OP>
+    <DEPENDENCY>
+        N/A
+    </DEPENDENCY>
+    <NOTE>
+        N/A
+    </NOTE>		
+    <AUTHOR>mtk13109</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/
+    SBP_DATA_DEF(58, SBP_IDC_IM_TX_PWR_FOR_GPS, SBP_ATTR_NONE, "Set LTE max Tx power when IDC is enabled")
+        SBP_DATA_DEF_VAL(0x01, "TX_PWR_1")
+        SBP_DATA_DEF_VAL(0x02, "TX_PWR_2")
+        SBP_DATA_DEF_VAL(0x03, "TX_PWR_3")
+        SBP_DATA_DEF_VAL(0x04, "TX_PWR_4")
+        SBP_DATA_DEF_VAL(0x05, "TX_PWR_5")
+        SBP_DATA_DEF_VAL(0x06, "TX_PWR_6")
+        SBP_DATA_DEF_VAL(0x07, "TX_PWR_7")
+        SBP_DATA_DEF_VAL(0x08, "TX_PWR_8")
+        SBP_DATA_DEF_VAL(0x09, "TX_PWR_9")
+        SBP_DATA_DEF_VAL(0x0a, "TX_PWR_10")
+        SBP_DATA_DEF_VAL(0x0b, "TX_PWR_11")
+        SBP_DATA_DEF_VAL(0x0c, "TX_PWR_12")
+        SBP_DATA_DEF_VAL(0x0d, "TX_PWR_13")
+        SBP_DATA_DEF_VAL(0x0e, "TX_PWR_14")
+        SBP_DATA_DEF_VAL(0x0f, "TX_PWR_15")
+        SBP_DATA_DEF_VAL(0x10, "TX_PWR_16")
+        SBP_DATA_DEF_VAL(0x11, "TX_PWR_17")
+        SBP_DATA_DEF_VAL(0x12, "TX_PWR_18")
+        SBP_DATA_DEF_VAL(0x13, "TX_PWR_19")
+        SBP_DATA_DEF_VAL(0x14, "TX_PWR_20")
+        SBP_DATA_DEF_VAL(0x15, "TX_PWR_21")
+        SBP_DATA_DEF_VAL(0x16, "TX_PWR_22")
+        SBP_DATA_DEF_VAL(0x17, "TX_PWR_23")
+        SBP_DATA_DEFAULT_VAL(0x11)
+    SBP_DATA_DEF_END
+
+/****** SBP Document BEGIN ************************************************************************
+<SBP title="SBP_POS_VZW_MODE - This SBP indicates which NW performs positioning">
+    <DESCRIPTION>
+        <PARAG>
+            This SBP indicates which NW performs positioning.
+        </PARAG>
+    </DESCRIPTION>
+    <CATEGORY>AGPS</CATEGORY>
+    <CONFIG>
+    	<VALUE value="0">Non-VzW network</VALUE>
+        <VALUE value="1">VzW network</VALUE>
+    </CONFIG>
+    <DEFAULT>0</DEFAULT>
+    <OP>N/A</OP>
+    <DEPENDENCY>N/A</DEPENDENCY>
+    <NOTE>N/A</NOTE>
+    <AUTHOR>mtk12419</AUTHOR>
+</SBP>
+******* SBP Document END **************************************************************************/	
+	SBP_DATA_DEF(59, SBP_POS_VZW_MODE, SBP_ATTR_NONE, "This SBP indicates which NW performs positioning.")
+
+	SBP_DATA_DEF_VAL(0, "Non-VzW network")
+    SBP_DATA_DEF_VAL(1, "VzW network")
+    SBP_DATA_DEFAULT_VAL(0)
+
+    SBP_DATA_DEF_END   
+
+ /*60~63*/
+ /*64~71*/
+
+#undef SBP_DATA_DEF
+#undef SBP_DATA_DEFAULT_VAL
+#undef SBP_DATA_DEF_VAL
+#undef SBP_DATA_DEF_END
+#undef SBP_DATA_DEF_BIT_VAL
+#undef SBP_DATA_DEF_BIT
+#undef SBP_DATA_DEF_BIT_END

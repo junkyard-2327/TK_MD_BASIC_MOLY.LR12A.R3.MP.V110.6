@@ -1,0 +1,40 @@
+/*************************************************************
+*
+* This Software is the property of MTK, Inc. and may only be used pursuant to a license from MTK, Inc.  
+* 
+* Any unauthorized use inconsistent with the terms of such license is strictly prohibited.
+* 
+* Copyright (c) 2002-2016 MTK, Inc.  All rights reserved.
+*
+*************************************************************/
+[Default]
+  C2K_L1_COMMON
+  On
+  Buffer
+  TCMFORCE
+
+[MODEM_TYPE]
+  C2K_L1
+
+[Class]
+  L1_COMMON_UT_TRACE       ON
+  L1_COMMON_IT_TRACE       ON
+  L1_COMMON_MP_TRACE       ON
+  L1_COMMON_FULL_FT_TRACE  ON
+  L1_COMMON_KERNAL_TRACE   ON
+  L1_COMMON_WARN           OFF
+
+
+
+[String]
+  L1_Test_String
+  {
+    "l1 test"
+
+  }
+
+
+[Message]
+  info   CL1TRACE_HSC_Rec_Msg_Dbg                 L1_COMMON_MP_TRACE            "HSC task receive msg: %Mmsg_type"
+  
+  

@@ -1,0 +1,102 @@
+; Use traffic-gen (TRFG) *4 to test DRAM, range 0x1000_0000 (256MB)
+; CVD repare mode
+; Use EAHB to config TRFG*4
+;        start_addr   test_length  domain
+; TRFG0  0x0000_0000  0x0400_0000  1
+; TRFG1  0x0400_0000  0x0400_0000  1
+; TRFG2  0x0800_0000  0x0400_0000  1
+; TRFG3  0x0C00_0000  0x0400_0000  1
+; <VERSION-20150901A>
+
+system.Method Manual
+system.cpu cortexr4
+system.multicore SWDP ON
+system.JtagClock 1MHz
+sys.m prepare
+LOCAL &TYPE
+LOCAL &BASE_MADDR_MDRGU
+IF DATA.LONG(DBG:0x41000000)==0x5BA02477     ; AP DAP
+(
+    &TYPE="EAHB"
+    &BASE_MADDR_MDRGU=0x800F0000
+)
+ELSE ; DATA.LONG(DBG:0x41000000)==0x6BA02477 ; MD DAP
+(
+    sys.m down
+    MULtiCore.DEBUGACCESSPORT 1
+    MULtiCore.AXIACCESSPORT 0
+    sys.m prepare
+    &TYPE="AXI"
+    &BASE_MADDR_MDRGU=0xA00F0000
+)
+
+&TEST_LOOP=0x2          ; 0x0:infinite-loop; others:loop-N-times
+&TEST_CTRL=0x0          ; 0x0:config-and-start; others:bit-0:start,bit-1:pause,bit-2:resume.
+&TEST_RESULT=0x0        ; 0x0:pass; others:fail
+&TRFG_BASE=0xC3041000   ; TRFG 0~3 offset 0x100
+
+IF &TEST_CTRL!=0x0
+(
+    D.S &TYPE:&TRFG_BASE+0x000 %LONG %LE &TEST_CTRL
+    D.S &TYPE:&TRFG_BASE+0x100 %LONG %LE &TEST_CTRL
+    D.S &TYPE:&TRFG_BASE+0x200 %LONG %LE &TEST_CTRL
+    D.S &TYPE:&TRFG_BASE+0x300 %LONG %LE &TEST_CTRL
+    ENDDO
+)
+
+AREA.RESet
+AREA.Create TRFG_TEST
+AREA.Select TRFG_TEST
+AREA.View   TRFG_TEST
+AREA.Clear  TRFG_TEST
+
+; Config and start
+PRINT "TRFG config and start ..."
+&idx=0x0
+WHILE &idx<0x4
+(
+    &base=&TRFG_BASE+0x100*&idx
+    &start_addr=0x04000000*&idx
+    &pat_ctl=0x58FF0017+(&TEST_LOOP&0xF)<<8
+    D.S &TYPE:&base+0x00 %LONG %LE 0x00000000  ; TRFG_STRAT_CTL, [0]:start, [1]:pause, [2]:resume
+    D.S &TYPE:&base+0x04 %LONG %LE 0x5A5A5A5A  ; TRFG_INIT_PAT_MSB
+    D.S &TYPE:&base+0x08 %LONG %LE 0xA5A5A5A5  ; TRFG_INIT_PAT_LSB
+    D.S &TYPE:&base+0x0C %LONG %LE &start_addr ; TRFG_START_ADDR
+    D.S &TYPE:&base+0x10 %LONG %LE 0x00800000  ; TRFG_TEST_LEN * 8 byte
+    D.S &TYPE:&base+0x14 %LONG %LE &pat_ctl    ; TRFG_PAT_CTL, [11:8]:test_loop, [5:4]:pat_mode
+    D.S &TYPE:&base+0x18 %LONG %LE 0x0000010F  ; TRFG_BUS_CTL, [10:8]:domain, [3:0]:burst_len
+    D.S &TYPE:&base+0x00 %LONG %LE 0x00000001  ; TRFG_STRAT_CTL, [0]:start, [1]:pause, [2]:resume
+    &idx=&idx+0x1
+)
+; Wait done
+PRINT "Wait done"
+&idx=0x0
+WHILE &idx<0x4
+(
+    &base=&TRFG_BASE+0x100*&idx
+    WHILE (D.L(&TYPE:&base+0x20)&0x1)==0x1
+    (
+       PRINT "."
+       WAIT 1.S
+    )
+    IF (D.L(&TYPE:&base+0x20)&0x04)==0x0
+    (
+        &TEST_RESULT=&TEST_RESULT+0x1
+        PRINT "=> TRFG &idx test fail:"
+        PRINT "FAIL_ADDR     = " D.L(&TYPE:&base+0x24)
+        PRINT "EXP_DATA_MSB  = " D.L(&TYPE:&base+0x28)
+        PRINT "EXP_DATA_LSB  = " D.L(&TYPE:&base+0x2C)
+        PRINT "FAIL_DATA_MSB = " D.L(&TYPE:&base+0x30)
+        PRINT "FAIL_DATA_LSB = " D.L(&TYPE:&base+0x34)
+    )
+    &idx=&idx+0x1
+)
+
+IF &TEST_RESULT==0x0
+(
+    PRINT "=> Traffic-Gen dram test pass ...^_^"
+)
+ELSE
+(
+    PRINT "=> Traffic-Gen dram test fail ...>'<"
+)

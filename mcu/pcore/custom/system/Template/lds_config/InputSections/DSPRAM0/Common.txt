@@ -1,0 +1,12 @@
+        _gp_0 = ABSOLUTE(ORIGIN(DSPRAM0) + 0x8000);
+        SDATA0$$Base = . ;
+        * (.sdata_0)
+        * (.sdata_0.*)
+        SDATA0$$Limit = . ;
+        SDATA0$$ZI$$Base = . ;
+        * (.sbss_0)
+        * (.sbss_0.*)
+        SDATA0$$ZI$$Limit = . ;
+        * (DSPRAM_RODATA_CORE0*)
+        * (DSPRAM_RW_CORE0*)
+        . = ALIGN(8);

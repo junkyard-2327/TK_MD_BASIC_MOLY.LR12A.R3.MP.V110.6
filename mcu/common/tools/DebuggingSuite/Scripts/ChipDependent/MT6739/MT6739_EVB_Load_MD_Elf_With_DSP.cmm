@@ -1,0 +1,400 @@
+;sys.m prepare
+;LOCAL &TYPE
+LOCAL &BASE_MADDR_MDRGU
+LOCAL &BASE_MADDR_APRGU
+
+
+system.mode attach
+
+D.S 0x1F000020 %LE %LONG 0x0000000F
+D.S 0x1F000090 %LE %LONG 0xA0000000
+D.S 0x1F000098 %LE %LONG 0xE0000002
+D.S 0x1F0000A0 %LE %LONG 0xC0000000
+D.S 0x1F0000A8 %LE %LONG 0xC0000002
+
+
+
+; do orginal disable_WDT2_MIPS.cmm
+&BASE_MADDR_MDRGU=0xA00F0000
+&BASE_MADDR_APRGU=0xC3670000
+
+
+PRINT "=============================="
+PRINT "Disable MD WDT!"
+PRINT "=============================="
+
+;D.S &BASE_MADDR_MDRGU+0x0100 %LE %LONG (0x55000000|data.long(&BASE_MADDR_MDRGU+0x0100)&~(0x3))
+&temp=data.long(&BASE_MADDR_MDRGU+0x0100)
+&temp=&temp | 0x55000000
+&temp=&temp & ~(0x3)
+D.S &BASE_MADDR_MDRGU+0x0100 %LE %LONG &temp
+
+
+PRINT "=============================="
+PRINT "Disable AP WDT!"
+PRINT "=============================="
+
+D.S 0xC0007000 %LE %LONG 0x22000064
+
+
+
+PRINT "=============================="
+PRINT "config md_srclkena setting"
+PRINT "=============================="
+
+; /* Step 4 config md_srclkena setting */
+
+
+; /* (1) INFRA_MISC2 */
+&BASE_INFRACFG=(0xC0000000)
+; /* (2) SRCLKEN_O1 force on */
+&SPM_REG=(0xC0006000)
+
+
+
+; /* (1) INFRA_MISC2 */
+&INFRA_MISC2=(&BASE_INFRACFG+0x1F0C)
+; /* (2) SRCLKEN_O1 force on */
+&POWERON_CONFIG_EN=(&SPM_REG+0x0)
+&SPM_POWER_ON_VAL1=(&SPM_REG+0x8)
+
+
+
+; /* (1) INFRA_MISC2 */
+; /* [3:0] : mdsrc_req_0_en = 4'b0001 */
+;d.s (&MEM_CLASS:&INFRA_MISC2) %long %le data.long(&MEM_CLASS:&INFRA_MISC2)&(0xFFFFFFF0)
+;d.s (&MEM_CLASS:&INFRA_MISC2) %long %le data.long(&MEM_CLASS:&INFRA_MISC2)|(0x1)
+
+&temp=data.long(&INFRA_MISC2)
+&temp=&temp &(0xFFFFFFF0)
+D.S &INFRA_MISC2 %LE %LONG &temp
+
+&temp=data.long(&INFRA_MISC2)
+&temp=&temp |(0x1)
+D.S &INFRA_MISC2 %LE %LONG &temp
+
+
+
+
+; /* [7:4] : mdsrc_req_1_en = 4'b0010 */
+;d.s (&MEM_CLASS:&INFRA_MISC2) %long %le data.long(&MEM_CLASS:&INFRA_MISC2)&(0xFFFFFF0F)
+;d.s (&MEM_CLASS:&INFRA_MISC2) %long %le data.long(&MEM_CLASS:&INFRA_MISC2)|(0x20)
+
+
+&temp=data.long(&INFRA_MISC2)
+&temp=&temp &(0xFFFFFF0F)
+D.S &INFRA_MISC2 %LE %LONG &temp
+
+&temp=data.long(&INFRA_MISC2)
+&temp=&temp |(0x20)
+D.S &INFRA_MISC2 %LE %LONG &temp
+
+
+
+; /* (2) SRCLKEN_O1 force on */
+//MMRF request
+;D.S (&MEM_CLASS:&POWERON_CONFIG_EN) %LE %LONG  0x0B160001  //set SPM register for clkenal force on
+;D.S (&MEM_CLASS:&SPM_POWER_ON_VAL1) %LE %LONG  0x00215830  //set src clkena1 force on
+D.S &POWERON_CONFIG_EN %LE %LONG 0x0B160001
+D.S &SPM_POWER_ON_VAL1 %LE %LONG 0x00215830
+
+wait 1.ms
+
+
+
+PRINT "=============================="
+PRINT "config PLL setting"
+PRINT "=============================="
+
+; /* Step 5 config PLL setting */
+&BASE_MADDR_APMIXEDSYS=(0xC000C000)
+&BASE_MADDR_MDTOP_PLLMIXED=(0xA0140000)
+&BASE_MADDR_MDTOP_CLKSW=(0xA0150000)
+
+&REG_APMIXEDSYS_AP_PLL_CON0=(&BASE_MADDR_APMIXEDSYS+0x0)
+
+&REG_MDTOP_PLLMIXED_DCXO_PLL_SETTLE_CTL=(&BASE_MADDR_MDTOP_PLLMIXED+0x4)
+&REG_MDTOP_PLLMIXED_PLL_ON_CTL=(&BASE_MADDR_MDTOP_PLLMIXED+0x10)
+&REG_MDTOP_PLLMIXED_PLL_SW_CTL0=(&BASE_MADDR_MDTOP_PLLMIXED+0x14)
+&REG_MDTOP_PLLMIXED_MDMCUPLL_CTL0=(&BASE_MADDR_MDTOP_PLLMIXED+0x40)
+&REG_MDTOP_PLLMIXED_MDVDSPPLL_CTL0=(&BASE_MADDR_MDTOP_PLLMIXED+0x48)
+&REG_MDTOP_PLLMIXED_MDBRPPLL_CTL0=(&BASE_MADDR_MDTOP_PLLMIXED+0x50)
+&REG_MDTOP_PLLMIXED_MDTXPLL_CTL0=(&BASE_MADDR_MDTOP_PLLMIXED+0x58)
+&REG_MDTOP_PLLMIXED_MDBPIPLL_CTL0=(&BASE_MADDR_MDTOP_PLLMIXED+0x60)
+&REG_MDTOP_PLLMIXED_MDBPIPLL_CTL1=(&BASE_MADDR_MDTOP_PLLMIXED+0x64)
+&REG_MDTOP_PLLMIXED_MDPLL_CTL0=(&BASE_MADDR_MDTOP_PLLMIXED+0x100)
+&REG_MDTOP_PLLMIXED_MDPLL_CTL1=(&BASE_MADDR_MDTOP_PLLMIXED+0x104)
+&REG_MDTOP_PLLMIXED_MDPLL_CTL2=(&BASE_MADDR_MDTOP_PLLMIXED+0x108)
+&REG_MDTOP_PLLMIXED_PLL_HP_RDY_IRQ=(&BASE_MADDR_MDTOP_PLLMIXED+0x314)
+&REG_MDTOP_PLLMIXED_PLL_HP_RDY_IRQ_MASK=(&BASE_MADDR_MDTOP_PLLMIXED+0x318)
+&REG_MDTOP_PLLMIXED_MDMCUPLL_STS=(&BASE_MADDR_MDTOP_PLLMIXED+0xC00)
+&REG_MDTOP_PLLMIXED_PLL_DUMMY=(&BASE_MADDR_MDTOP_PLLMIXED+0xF00)
+
+&REG_MDTOP_CLKSW_CLKON_CTL=(&BASE_MADDR_MDTOP_CLKSW+0x20)
+&REG_MDTOP_CLKSW_CLKSEL_CTL=(&BASE_MADDR_MDTOP_CLKSW+0x24)
+&REG_MDTOP_CLKSW_SDF_CK_CTL=(&BASE_MADDR_MDTOP_CLKSW+0x28)
+&REG_MDTOP_CLKSW_MDSYS_BUS_FLEXCKGEN_STS=(&BASE_MADDR_MDTOP_CLKSW+0x84)
+
+&MD_PLL_MAGIC_NUM=(0x62930000)
+
+;;// initial CLKSQ_LPF
+&temp=data.long(AXI:&REG_APMIXEDSYS_AP_PLL_CON0)
+&temp=&temp|0x2
+d.s &REG_APMIXEDSYS_AP_PLL_CON0 %long %le &temp
+;;// 100us
+wait 1.ms
+
+;;// Default md_srclkena_ack settle time = 136T 32K
+d.s &REG_MDTOP_PLLMIXED_DCXO_PLL_SETTLE_CTL %long %le 0x02020E88
+
+;;//fixed 600MHz(/4), 260MHz(/7) /* Fvco = 1820M 
+d.s &REG_MDTOP_PLLMIXED_MDBPIPLL_CTL0 %long %le 0x80118000
+;;/ 300MHz                                   /* Fvco = 1200M */
+d.s &REG_MDTOP_PLLMIXED_MDTXPLL_CTL0 %long %le 0x800B8A00
+;;// 300MHz                                   /* Fvco = 1800M */
+d.s &REG_MDTOP_PLLMIXED_MDBRPPLL_CTL0 %long %le 0x80114E00
+;;// 450MHz                                   /* Fvco = 1800M */
+d.s &REG_MDTOP_PLLMIXED_MDVDSPPLL_CTL0 %long %le 0x80114E00
+;;// 600MHz                                   /* Fvco = 1200M */
+d.s &REG_MDTOP_PLLMIXED_MDMCUPLL_CTL0 %long %le 0x800B8A00
+
+;;// Polling until MDMCUPLL complete frequency adjustment
+;WHILE ((data.long(&REG_MDTOP_PLLMIXED_MDMCUPLL_STS)>>14)&0x1)!=0
+;(
+;)
+wait 1.ms
+
+;;//In L17, MDPLL should be turn-on first manually, since first calabration requires longer time (100us).
+;;/*TINFO="MDSYS_INIT: MDPLL_208M_OUT_EN off"*/
+&temp=data.long(&REG_MDTOP_PLLMIXED_MDPLL_CTL2)
+&temp=&temp&(~0x10000)
+d.s &REG_MDTOP_PLLMIXED_MDPLL_CTL2 %long %le &temp
+
+;;/*TINFO="MDSYS_INIT: SW Force ON MDPLL"*/
+d.s &REG_MDTOP_PLLMIXED_PLL_SW_CTL0 %long %le 0x10000
+d.s &REG_MDTOP_PLLMIXED_PLL_SW_CTL0 %long %le 0x10001
+
+;;// 100us
+wait 1.ms
+
+;;/*TINFO="MDSYS_INIT: SW Force OFF MDPLL"*/
+d.s &REG_MDTOP_PLLMIXED_PLL_SW_CTL0 %long %le 0x10000
+d.s &REG_MDTOP_PLLMIXED_PLL_SW_CTL0 %long %le 0x0
+
+;;/*TINFO="MDSYS_INIT: MDPLL_208M_OUT_EN on"*/
+&temp=data.long(&REG_MDTOP_PLLMIXED_MDPLL_CTL2)
+&temp=&temp|(0x10000)
+d.s &REG_MDTOP_PLLMIXED_MDPLL_CTL2 %long %le &temp
+
+;;// 1us
+wait 1.ms
+
+;;/*TINFO="MDSYS_INIT: Disable AUTOK_EN, MDPLL settle time is 20us NOW (AUTOK_EN can only be setting when MDPLL_EN is OFF, so we add 1us to avoid signals competition)"*/
+&temp=data.long(&REG_MDTOP_PLLMIXED_MDPLL_CTL1)
+&temp=&temp&(~0x4000000)
+d.s &REG_MDTOP_PLLMIXED_MDPLL_CTL1 %long %le &temp
+
+;;/*TINFO="MDSYS_INIT: Wait 1us"*/
+;;// 1us
+wait 1.ms
+	
+;;/* Force TXPLL ON due to TOPSM couldn't enable this PLL by default, TXPLL would be disable after DVFS Init. 
+;;   other PLL ON controlled by HW" */
+d.s &REG_MDTOP_PLLMIXED_PLL_ON_CTL %long %le 0x100010
+
+;;    /*
+;;    * Wait MD bus clock ready
+;;    * Once MD bus ready, other clock should be ready too
+;;    * In FPGA, the following status checking must be removed since there is no flex ck gen in FPGA.
+;;    */
+;WHILE (data.long(&REG_MDTOP_CLKSW_MDSYS_BUS_FLEXCKGEN_STS)&0x8000)!=0x8000
+;(
+)
+wait 2.ms
+
+;;// Switch MDMCU & MD BUS clock to PLL frequency
+&temp=data.long(&REG_MDTOP_CLKSW_CLKSEL_CTL)
+&temp=&temp|(0x3)
+d.s &REG_MDTOP_CLKSW_CLKSEL_CTL %long %le &temp
+
+;;// Switch all clock to PLL frequency
+&temp=data.long(&REG_MDTOP_CLKSW_CLKSEL_CTL)
+&temp=&temp|(0x58103FC)
+d.s &REG_MDTOP_CLKSW_CLKSEL_CTL %long %le &temp
+
+;;// Switch SDF clock to PLL frequency
+&temp=data.long(&REG_MDTOP_CLKSW_SDF_CK_CTL)
+&temp=|(0x10)
+d.s &REG_MDTOP_CLKSW_SDF_CK_CTL %long %le &temp
+    
+;;// Turn off all SW clock request, except ATB
+&temp=data.long(&REG_MDTOP_CLKSW_CLKON_CTL)
+&temp=&temp|(0x1)
+d.s &REG_MDTOP_CLKSW_CLKON_CTL %long %le &temp
+
+;;// Clear PLL ADJ RDY IRQ fired by initial period adjustment
+d.s &REG_MDTOP_PLLMIXED_PLL_HP_RDY_IRQ %long %le 0xFFFF
+
+;;// Mask all PLL ADJ RDY IRQ
+d.s &REG_MDTOP_PLLMIXED_PLL_HP_RDY_IRQ_MASK %long %le 0xFFFF
+
+;;// Make a record that means MD pll has been initialized. 
+;;/* Note: We use "MD_PLL_MAGIC_NUM|0x1" to know PLL init in MD C code. 
+;;           If AP init PLL, it would be "MD_PLL_MAGIC_NUM". */
+d.s &REG_MDTOP_PLLMIXED_PLL_DUMMY %long %le &MD_PLL_MAGIC_NUM
+
+
+PRINT "=============================="
+PRINT "Set GPIO!"
+PRINT "=============================="
+
+// Step 8: Set GPIO
+
+&BASE_ADDR_MDGPIO=0xC0005000
+;&BASE_ADDR_MDIOCFG=0xC1C10000
+
+// MD UART GPIO
+;D.S AXI:&BASE_ADDR_MDGPIO+0x338 %LE %LONG  0xFF000  //Clear GPIO mode configure
+;D.S AXI:&BASE_ADDR_MDGPIO+0x334 %LE %LONG  0x66000  //Set GPIO127/28 to UART mode.
+;D.S AXI:&BASE_ADDR_MDGPIO+0x64 %LE %LONG  0x2000   //Set URXD Pull up enable
+;D.S AXI:&BASE_ADDR_MDGPIO+0x48 %LE %LONG  0x2000   //Set URXD Pull down disable.
+
+D.S &BASE_ADDR_MDGPIO+0x338 %LE %LONG 0xFF000
+D.S &BASE_ADDR_MDGPIO+0x334 %LE %LONG 0x66000
+D.S &BASE_ADDR_MDGPIO+0x64 %LE %LONG 0x2000
+D.S &BASE_ADDR_MDGPIO+0x48 %LE %LONG 0x2000
+
+
+
+// SIM GPIO
+;d.s &MEM_CLASS:0x10005340 %long %le data.long(&MEM_CLASS:0x10005340)&(0x00000FFF)
+;d.s &MEM_CLASS:0x10005340 %long %le data.long(&MEM_CLASS:0x10005340)|(0x11111000)
+
+&temp=data.long(0x10005340)
+&temp=&temp &(0x00000FFF)
+D.S 0x10005340 %LE %LONG &temp
+
+&temp=data.long(0x10005340)
+&temp=&temp |(0x11111000)
+D.S 0x10005340 %LE %LONG &temp
+
+
+
+;d.s &MEM_CLASS:0x10005350 %long %le data.long(&MEM_CLASS:0x10005350)&(0xFFFFFFF0)
+;d.s &MEM_CLASS:0x10005350 %long %le data.long(&MEM_CLASS:0x10005350)|(0x00000001)
+
+&temp=data.long(0x10005350)
+&temp=&temp &(0xFFFFFFF0)
+D.S 0x10005350 %LE %LONG &temp
+
+&temp=data.long(0x10005350)
+&temp=&temp |(0x00000001)
+D.S 0x10005350 %LE %LONG &temp
+
+
+
+PRINT "=============================="
+PRINT "Set MD EMI Remap!"
+PRINT "=============================="
+
+
+;Step 10 set MD EMI remap address (MD view: step 9)  ==>review done 
+;d.s &MEM_CLASS:0xC0001300 %long %le 0x00430041
+;d.s &MEM_CLASS:0xC0001304 %long %le 0x00470045
+;d.s &MEM_CLASS:0xC0001308 %long %le 0x004b0049
+;d.s &MEM_CLASS:0xC000130c %long %le 0x004b0049
+D.S 0xC0001300 %LE %LONG 0x00430041
+D.S 0xC0001304 %LE %LONG 0x00470045
+D.S 0xC0001308 %LE %LONG 0x004b0049
+D.S 0xC000130c %LE %LONG 0x004b0049
+
+
+
+; do orginal emi_init.cmm
+LOCAL &CHIP_VER ; 0 is for FPGA, 1 is for E1, and so on
+&CHIP_VER=0
+&BASE_ADDR_EMI=0xC3000000
+&BASE_ADDR_DRAMC=0xC3010000
+&BASE_ADDR_DDRPHY=0xC3020000
+&BASE_ADDR_MEMSYSAOREG_MISC=0xC3080000
+&BASE_ADDR_AP_CLKSW=0xC3750000
+
+; Check if initialize
+
+
+&temp=DATA.LONG(&BASE_ADDR_EMI+0060)
+&temp=&temp & 0x00000400
+IF (&temp == 0x00000400)
+(
+    ENDDO
+)
+
+
+
+PRINT "=============================="
+PRINT "Set AP2MD PATH Disable!"
+PRINT "=============================="
+
+; do AP to MD path disable
+&BASE_ADDR_AP2MD_Dummy = 0xC0001370
+&BASE_ADDR_INFRA_PERI2MD_PROT_EN = 0xC0001220
+&BASE_ADDR_INFRA_MD2PERI_PROT_EN = 0xC0001250
+
+
+&temp=data.long(&BASE_ADDR_AP2MD_Dummy)
+&temp = &temp & 0xFFFFFFFE
+D.S &BASE_ADDR_AP2MD_Dummy %LE %LONG &temp
+wait 1.ms
+
+&temp=data.long(&BASE_ADDR_INFRA_PERI2MD_PROT_EN)
+&temp = &temp | 0x80
+D.S &BASE_ADDR_INFRA_PERI2MD_PROT_EN %LE %LONG &temp
+wait 1.ms
+
+&temp=data.long(&BASE_ADDR_INFRA_MD2PERI_PROT_EN)
+&temp = &temp & 0xFFFFFFBF
+D.S &BASE_ADDR_INFRA_MD2PERI_PROT_EN %LE %LONG &temp
+wait 1.ms
+
+&temp=data.long(&BASE_ADDR_AP2MD_Dummy)
+&temp = &temp | 0x1
+D.S &BASE_ADDR_AP2MD_Dummy %LE %LONG &temp
+wait 1.ms
+
+
+
+;Enalbe cache to speed loading
+register.set cdmmbase 0x1fc1407
+D.S 0x1FC100D4 %LE %LONG 0x02030202
+steal monitor adapter_khz 2000
+steal monitor mips32 fastchannel 0 1 0x6f800000
+
+
+PRINT "=============================="
+PRINT "Start to Load elf !"
+PRINT "=============================="
+
+thread.select 1
+steal lo
+
+steal source ../cmm/coretracer\config\easyLoader\load_dsp.py
+
+D.S 0x1FC100D4 %LE %LONG 0x02020202
+PRINT "=============================="
+PRINT "Load elf Done!"
+PRINT "=============================="
+
+thread.select 1
+
+;&t=var.address(INT_Initialize_Phase1)
+;wait 20.ms
+;stop
+;steal set $pc = &INT_Initialize_Phase1
+;register.set pc &t
+
+;PRINT "=============================="
+;PRINT "Set PC to INT_Initialize_Phase1: &t"
+;PRINT "=============================="
+
+ENDDO
+

@@ -1,0 +1,84 @@
+        STACK_INIT$$Base = . ;
+        *stack_init.obj (.data)
+        *stack_init.obj (.sdata)
+        STACK_INIT$$Limit = . ;
+        STACK_INIT$$Length = ABSOLUTE(STACK_INIT$$Limit - STACK_INIT$$Base);        
+        
+        * (.data*)
+        * (FORCE_EMI_DATA)  /* for PAE */
+        KEEP(* (Keep_DATA))
+        * (CACHED_EXTSRAM_RW)         
+
+        __preinit_array_start = .;
+        KEEP (*(.preinit_array))
+        __preinit_array_end = .;
+
+        /*. = ALIGN(4);*/
+        __init_array_start = .;
+        KEEP (*(SORT(.init_array.*)))
+        KEEP (*(.init_array))
+        __init_array_end = .;
+        /*. = ALIGN(4);*/
+        KEEP(*(.fini))
+
+        /*. = ALIGN(4);*/
+        __fini_array_start = .;
+        KEEP (*(.fini_array))
+        KEEP (*(SORT(.fini_array.*)))
+        __fini_array_end = .;
+
+        /*. = ALIGN(4);*/
+        __CTOR_LIST__ = .;
+        KEEP (*(SORT(.ctors.*)))
+        KEEP (*(.ctors))
+        __CTOR_END__ = .;
+                
+        RELEASE_VERNO_RW$$Base = .;
+        * (RELEASE_VERNO_RW)
+        RELEASE_VERNO_RW$$Limit = .;
+        RELEASE_VERNO_RW$$Length = ABSOLUTE(RELEASE_VERNO_RW$$Limit - RELEASE_VERNO_RW$$Base);
+        RELEASE_BRANCH_RW$$Base = .;
+        * (RELEASE_BRANCH_RW)
+        RELEASE_BRANCH_RW$$Limit = .;
+        RELEASE_BRANCH_RW$$Length = ABSOLUTE(RELEASE_BRANCH_RW$$Limit - RELEASE_BRANCH_RW$$Base);
+        BUILD_TIME_RW$$Base = .;
+        * (BUILD_TIME_RW)
+        BUILD_TIME_RW$$Limit = .;
+        BUILD_TIME_RW$$Length = ABSOLUTE(BUILD_TIME_RW$$Limit - BUILD_TIME_RW$$Base);
+
+        /***** remap to EMI in 92 *****/
+        * (INTSRAM_RODATA* INTSRAM_RW*)
+        *libnucleus_v2_critical_data.a: (.data*)
+        *libnucleus_v2_ctrl_code.a: (.data*)
+        *libnucleus_critical_data.a: (.data*)
+        *libnucleus_ctrl_code.a: (.data*)
+        * (INTERNBLOCK2_RW)
+        * (EMIINITRW)
+        * (L2SRAM_RW)
+        /***** remap to EMI in 92 *****/
+
+        
+        /********************** A. need to be confirmed in 93 **********************/
+        /********************** B. need to be moved to right section in 93 **********************/
+        /********************** C. will be removed in 93 **********************/
+        * (DYNAMIC_SECTION_L2SRAM_UBIN_W_RW)
+        * (DYNAMIC_SECTION_L2SRAM_UBIN_T_RW)
+        * (DATA_CORE2)
+        * (L2SRAM_L2C_RW)
+        * (L2SRAM_L2NC_RW)
+
+        _gp_2 = ABSOLUTE(ORIGIN(DSPRAM2) + 0x8000);
+        SDATA2$$Base = . ;
+        * (.sdata_2)
+        * (.sdata_2.*)
+        SDATA2$$Limit = . ;
+        SDATA2$$ZI$$Base = . ;
+        * (.sbss_2)
+        * (.sbss_2.*)
+        SDATA2$$ZI$$Limit = . ;
+        * (DSPRAM_RW_CORE2*)
+        . = ALIGN(8);
+
+
+        * (.sdata*)
+        _gp = . ;

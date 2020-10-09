@@ -1,0 +1,1826 @@
+/*****************************************************************************
+*  Copyright Statement:
+*  --------------------
+*  This software is protected by Copyright and the information contained
+*  herein is confidential. The software may not be copied and the information
+*  contained herein may not be used or disclosed except with the written
+*  permission of MediaTek Inc. (C) 2005
+*
+*  BY OPENING THIS FILE, BUYER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+*  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("MEDIATEK SOFTWARE")
+*  RECEIVED FROM MEDIATEK AND/OR ITS REPRESENTATIVES ARE PROVIDED TO BUYER ON
+*  AN "AS-IS" BASIS ONLY. MEDIATEK EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES,
+*  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+*  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NONINFRINGEMENT.
+*  NEITHER DOES MEDIATEK PROVIDE ANY WARRANTY WHATSOEVER WITH RESPECT TO THE
+*  SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY, INCORPORATED IN, OR
+*  SUPPLIED WITH THE MEDIATEK SOFTWARE, AND BUYER AGREES TO LOOK ONLY TO SUCH
+*  THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO. MEDIATEK SHALL ALSO
+*  NOT BE RESPONSIBLE FOR ANY MEDIATEK SOFTWARE RELEASES MADE TO BUYER'S
+*  SPECIFICATION OR TO CONFORM TO A PARTICULAR STANDARD OR OPEN FORUM.
+*
+*  BUYER'S SOLE AND EXCLUSIVE REMEDY AND MEDIATEK'S ENTIRE AND CUMULATIVE
+*  LIABILITY WITH RESPECT TO THE MEDIATEK SOFTWARE RELEASED HEREUNDER WILL BE,
+*  AT MEDIATEK'S OPTION, TO REVISE OR REPLACE THE MEDIATEK SOFTWARE AT ISSUE,
+*  OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE CHARGE PAID BY BUYER TO
+*  MEDIATEK FOR SUCH MEDIATEK SOFTWARE AT ISSUE. 
+* 
+*  THE TRANSACTION CONTEMPLATED HEREUNDER SHALL BE CONSTRUED IN ACCORDANCE
+*  WITH THE LAWS OF THE STATE OF CALIFORNIA, USA, EXCLUDING ITS CONFLICT OF
+*  LAWS PRINCIPLES.  ANY DISPUTES, CONTROVERSIES OR CLAIMS ARISING THEREOF AND
+*  RELATED THERETO SHALL BE SETTLED BY ARBITRATION IN SAN FRANCISCO, CA, UNDER
+*  THE RULES OF THE INTERNATIONAL CHAMBER OF COMMERCE (ICC).
+*
+*****************************************************************************/
+
+/*****************************************************************************
+ *
+ * Filename:
+ * ---------
+ * at_cmd.def
+ *
+ * Project:
+ * --------
+ *   MT6208
+ *
+ * Description:
+ * ------------
+ *   This file is intends for ...
+ *
+ * Author:
+ * -------
+ * Danny Kuo
+ *
+ ****************************************************************************/
+
+/********************************************************************************
+*  Copyright Statement:
+*  --------------------
+*
+*  This product has been developed using a protocol stack
+*  developed by Sasken Communication Technologies Limited.
+*
+********************************************************************************/
+#if defined(__ULC_AT__)
+#if !defined(__SLIM_AT__)
+#error "__SLIM_AT__ shall be defined if __ULC_AT__ is defined"
+#endif
+#endif
+
+/****************************************************************/
+/* Basic AT commands (defined in rmmi_basic_val.c)              */
+/****************************************************************/
+BASIC_CMD("a", 1, rmmi_ata_hdlr, RMMI_CMD_ATA)
+BASIC_CMD("d", 4, rmmi_atd_hdlr, RMMI_CMD_ATD)
+BASIC_CMD("e", 5, rmmi_ate_hdlr, RMMI_CMD_ATE)
+BASIC_CMD("h", 8, rmmi_ath_hdlr, RMMI_CMD_ATH)
+
+#if !defined(__ULC_AT__)
+BASIC_CMD("i", 9, rmmi_ati_hdlr, RMMI_CMD_ATI)
+BASIC_CMD("l", 12, rmmi_atl_hdlr, RMMI_CMD_ATL)
+BASIC_CMD("m", 13, rmmi_atm_hdlr, RMMI_CMD_ATM)
+BASIC_CMD("o", 15, rmmi_ato_hdlr, RMMI_CMD_ATO)
+BASIC_CMD("p", 16, rmmi_att_hdlr, RMMI_CMD_ATP)
+BASIC_CMD("q", 17, rmmi_atq_hdlr, RMMI_CMD_ATQ)
+#endif
+BASIC_CMD("s", 19, rmmi_ats_hdlr, RMMI_CMD_ATS)
+#if !defined(__ULC_AT__)
+BASIC_CMD("t", 20, rmmi_att_hdlr, RMMI_CMD_ATT)
+#endif
+BASIC_CMD("v", 22, rmmi_atv_hdlr, RMMI_CMD_ATV)
+#if !defined(__ULC_AT__)
+BASIC_CMD("w", 23, rmmi_atw_hdlr, RMMI_CMD_ATW)
+BASIC_CMD("x", 24, rmmi_atx_hdlr, RMMI_CMD_ATX)
+BASIC_CMD("z", 26, rmmi_atz_hdlr, RMMI_CMD_ATZ)
+BASIC_CMD("&", 37, rmmi_atamp_hdlr, RMMI_CMD_ATAMP)
+#endif /* !defined(__ULC_AT__) */
+
+
+/****************************************************************/
+/* CC AT commands (defined in rmmi_validator_cc.c)              */
+/****************************************************************/
+#if defined(__MOD_CSM__)
+#if !defined(__ULC_AT__)
+#ifdef __AOC_SUPPORT__
+EXTEND_CMD("cacm", 166187, 0, "", RMMI_CMD_ATCACM, rmmi_cacm_hdlr)
+EXTEND_CMD("camm", 166567, 0, "", RMMI_CMD_ATCAMM, rmmi_camm_hdlr)
+#endif
+#endif /* !defined(__ULC_AT__) */
+
+EXTEND_CMD("clcc", 182061, 0, "", RMMI_CMD_ATCLCC, rmmi_clcc_hdlr)
+EXTEND_CMD("clccs", 6918337, 0, "", RMMI_CMD_ATCLCCS, rmmi_clcc_hdlr)
+EXTEND_CMD("vts", 32547, 0, "+VTS: 0,1,2,3,4,5,6,7,8,9,A,B,C,D,#,*", RMMI_CMD_ATVTS, rmmi_vts_hdlr)
+EXTEND_CMD("chup", 176982, 0, "", RMMI_CMD_ATCHUP, rmmi_chup_hdlr)
+EXTEND_CMD("chld", 176628, 0, "+CHLD: (0, 1, 1x, 2, 2x, 3, 4, 5)", RMMI_CMD_ATCHLD, rmmi_chld_hdlr)
+EXTEND_CMD("ecpi", 279309, 0, "+ECPI: (0-4294967295)", RMMI_CMD_ATECPI, rmmi_ecpi_hdlr)
+#if defined(__BT_SUPPORT__)
+EXTEND_CMD("bldn", 127238, 0, "", RMMI_CMD_ATBLDN, rmmi_bldn_hdlr)
+#if defined(VRSI_ENABLE) || defined(VR_ENABLE)
+EXTEND_CMD("bvra", 142197, 0, "+BVRA: (0-1)", RMMI_CMD_ATBVRA, rmmi_bvra_hdlr)
+#endif /* defined(VRSI_ENABLE) */
+#endif
+#ifdef __ECALL_SUPPORT__
+EXTEND_CMD("emsd", 158764194, 0, "%EMSD: (0-1)", RMMI_CMD_ATEMSD, rmmi_emsd_hdlr)
+EXTEND_CMD("emsdset", 169636959, 210, "", RMMI_CMD_ATEMSDSET, rmmi_emsdset_hdlr)
+EXTEND_CMD("emsdpush", 169636956, 31054, "", RMMI_CMD_ATEMSDPUSH, rmmi_emsdpush_hdlr)
+EXTEND_CMD("emsdmod", 169636953, 574, "%EMSDMOD: (0-2)", RMMI_CMD_ATEMSDMOD, rmmi_emsdmod_hdlr)
+EXTEND_CMD("emsdtnum", 169636960, 21027, "", RMMI_CMD_ATEMSDTNUM, rmmi_emsdtnum_hdlr)
+EXTEND_CMD("emsdrnum", 169636958, 21027, "", RMMI_CMD_ATEMSDRNUM, rmmi_emsdrnum_hdlr)
+EXTEND_CMD("cecall", 6534150, 12, "+CECALL: (0,1,2,3)", RMMI_CMD_ATCECALL, rmmi_cecall_hdlr)
+#endif 
+#ifdef __ECALL_PSAP_SUPPORT__
+EXTEND_CMD("epsap", 169801458, 0, "", RMMI_CMD_ATEPSAP, rmmi_epsap_hdlr)
+EXTEND_CMD("epsappull", 169801458, 908744, "", RMMI_CMD_ATEPSAPPULL, rmmi_epsappull_hdlr)
+#endif 
+EXTEND_CMD("eccp", 278822, 0, "", RMMI_CMD_ATECCP, rmmi_eccp_hdlr)
+#if !defined(__SLIM_AT__)
+#ifdef __AOC_SUPPORT__
+EXTEND_CMD("caoc", 166633, 0, "+CAOC: (0-2)", RMMI_CMD_ATCAOC, rmmi_caoc_hdlr)
+EXTEND_CMD("ccwe", 169827, 0, "+CCWE: (0-1)", RMMI_CMD_ATCCWE, rmmi_ccwe_hdlr)
+#endif
+EXTEND_CMD("ccug", 169753, 0, "", RMMI_CMD_ATCCUG, rmmi_ccug_hdlr)
+EXTEND_CMD("cpas", 187777, 0, "+CPAS: (0-5)", RMMI_CMD_ATCPAS, rmmi_cpas_hdlr)
+EXTEND_CMD("cvhu", 196709, 0, "+CVHU: (0-1)", RMMI_CMD_CVHU, rmmi_cvhu_hdlr) //MAUI_02862643, mtk02285, support CVHU=1 to ignore ATH
+EXTEND_CMD("ctfr", 193742, 0, "", RMMI_CMD_ATCTFR, rmmi_ctfr_hdlr)
+EXTEND_CMD("ciwf", 178492, 0, "+CIWF: (0,1)", RMMI_CMD_ATCIWF, rmmi_ciwf_hdlr)
+EXTEND_CMD("crc", 5019, 0, "+CRC: (0, 1)", RMMI_CMD_ATCRC, rmmi_crc_hdlr) 
+EXTEND_CMD("cr", 132, 0, "+CR: (0, 1)", RMMI_CMD_ATCR, rmmi_cr_hdlr) 
+EXTEND_CMD("csta", 192813, 0, "+CSTA: (128-255)", RMMI_CMD_ATCSTA, rmmi_csta_hdlr)
+EXTEND_CMD("evts", 306907, 0, "+EVTS: 0,1,2,3,4,5,6,7,8,9,#,*", RMMI_CMD_ATEVTS, rmmi_evts_hdlr)
+EXTEND_CMD("eals", 276279, 0, "+EALS: (0,1)", RMMI_CMD_ATEALS, rmmi_eals_hdlr)
+EXTEND_CMD("echup", 10602662, 0, "+ECHUP: (1-7)", RMMI_CMD_ATECHUP, rmmi_echup_hdlr)
+EXTEND_CMD("eaic", 276149, 0, "+EAIC: (0,1,2,3)", RMMI_CMD_ATEAIC, rmmi_eaic_hdlr)
+EXTEND_CMD("crm", 5029, 0, "", RMMI_CMD_ATCRM, rmmi_crm_hdlr)
+EXTEND_CMD("esvc", 302635, 0, "+ESVC: (0-127)", RMMI_CMD_ATESVC, rmmi_esvc_hdlr)
+#ifdef __IMS_SUPPORT__
+EXTEND_CMD("esrvcctfr", 11495079, 193742, "", RMMI_CMD_ATESRVCCTFR, rmmi_esrvcctfr_hdlr)
+EXTEND_CMD("eimscp", 10939025, 16, "", RMMI_CMD_ATEIMSCP, rmmi_eimscp_hdlr)
+EXTEND_CMD("cscm", 192179, 0, "+CSCM: (0,1,2),(1,2)", RMMI_CMD_ATCSCM, rmmi_cscm_hdlr)
+#endif /* __IMS_SUPPORT__ */
+EXTEND_CMD("evocd", 11654642, 0, "+EVOCD: (0-1)", RMMI_CMD_ATEVOCD, rmmi_evocd_hdlr)
+EXTEND_CMD("erlm", 300821, 0, "+ERLM: (0-1)", RMMI_CMD_ATERLM, rmmi_erlm_hdlr)
+EXTEND_CMD("erttstr", 11443035, 778, "", RMMI_CMD_ATERTTSTR, rmmi_erttstr_hdlr)
+#endif /* !defined(__SLIM_AT__) */
+#endif /* __MOD_CSM__ */
+
+EXTEND_CMD("esbp", 301888, 0, "", RMMI_CMD_ATESBP, rmmi_esbp_hdlr)
+
+/****************************************************************/
+/* CTM AT commands (defined in rmmi_validator_ctm.c)            */
+/****************************************************************/
+#if defined(__CTM_SUPPORT__)
+#if defined(__CTM_AT_CMD_SUPPORT__)
+EXTEND_CMD("ctmset", 7372347, 20, "+CTMSET: (0, 1), (0, 1, 2, 3)", RMMI_CMD_ATCTMSET, rmmi_ctmset_hdlr)
+EXTEND_CMD("ctmopen", 7372206, 204, "", RMMI_CMD_ATCTMOPEN, rmmi_ctmopen_hdlr)
+EXTEND_CMD("ctmclose", 7371746, 22387, "", RMMI_CMD_ATCTMCLOSE, rmmi_ctmclose_hdlr)
+EXTEND_CMD("ctmconn", 7371749, 546, "", RMMI_CMD_ATCTMCONN, rmmi_ctmconn_hdlr)
+EXTEND_CMD("ctms", 194009, 0, "", RMMI_CMD_ATCTMS, rmmi_ctms_hdlr)
+EXTEND_CMD("ctmcfg", 7371740, 7, "", RMMI_CMD_ATCTMCFG, rmmi_ctmcfg_hdlr)
+#endif /* __CTM_AT_CMD_SUPPORT__ */
+EXTEND_CMD("ctmcall", 7371735, 468, "+CTMCALL: (0,1)", RMMI_CMD_ATCTMCALL, rmmi_ctmcall_hdlr)
+#endif /* __CTM_SUPPORT__ */
+
+/****************************************************************/
+/* CSD/FAX AT commands (defined in rmmi_validator_data.c)       */
+/****************************************************************/
+#if !defined(__ULC_AT__)
+EXTEND_CMD("fclass", 12692817, 19, "(0, 1, 2, 2.0)", RMMI_CMD_ATFCLASS, rmmi_fclass_hdlr)
+
+#if !defined(__SLIM_AT__)
+EXTEND_CMD("csns", 192603, 0, "+CSNS: (0-7)", RMMI_CMD_ATCSNS, rmmi_csns_hdlr)
+#endif
+
+#if defined(CSD_SUPPORT)
+#if defined(__VIDEO_CALL_SUPPORT__) && defined(__REL5__)
+#ifdef __CSD_T__
+#ifdef __CSD_NT_2400__
+EXTEND_CMD("cbst", 168246, 0, "+CBST: (0,4-7,12,14,68,70-71,75,134),(0-1,4),(0-3)", RMMI_CMD_ATCBST, rmmi_cbst_hdlr)
+#else  /* __CSD_NT_2400__ */
+EXTEND_CMD("cbst", 168246, 0, "+CBST: (0,6-7,12,14,70-71,75,134),(0-1,4),(0-3)", RMMI_CMD_ATCBST, rmmi_cbst_hdlr)
+#endif /* __CSD_NT_2400__ */
+#else  /* __CSD_T__*/
+#ifdef __CSD_NT_2400__
+EXTEND_CMD("cbst", 168246, 0, "+CBST: (0,4-7,12,14,68,70-71,75,134),(0-1,4),(0-1)", RMMI_CMD_ATCBST, rmmi_cbst_hdlr)
+#else  /* __CSD_NT_2400__ */
+EXTEND_CMD("cbst", 168246, 0, "+CBST: (0,6-7,12,14,70-71,75,134),(0-1,4),(0-1)", RMMI_CMD_ATCBST, rmmi_cbst_hdlr)
+#endif /* __CSD_NT_2400__ */
+#endif  /* __CSD_T__*/
+#else /*(__VIDEO_CALL_SUPPORT__) && (__REL5__)*/
+#ifdef __CSD_T__
+#ifdef __CSD_NT_2400__
+EXTEND_CMD("cbst", 168246, 0, "+CBST: (0,4-7,12,14,68,70-71,75),(0,4),(0-3)", RMMI_CMD_ATCBST, rmmi_cbst_hdlr)
+#else  /* __CSD_NT_2400__ */
+EXTEND_CMD("cbst", 168246, 0, "+CBST: (0,6-7,12,14,70-71,75),(0,4),(0-3)", RMMI_CMD_ATCBST, rmmi_cbst_hdlr)
+#endif /* __CSD_NT_2400__ */
+#else  /* __CSD_T__*/
+#ifdef __CSD_NT_2400__
+EXTEND_CMD("cbst", 168246, 0, "+CBST: (0,4-7,12,14,68,70-71,75),(0,4),(1)", RMMI_CMD_ATCBST, rmmi_cbst_hdlr)
+#else  /* __CSD_NT_2400__ */
+EXTEND_CMD("cbst", 168246, 0, "+CBST: (0,6-7,12,14,70-71,75),(0,4),(1)", RMMI_CMD_ATCBST, rmmi_cbst_hdlr)
+#endif /* __CSD_NT_2400__ */
+#endif  /* __CSD_T__*/
+#endif /*(__VIDEO_CALL_SUPPORT__) && (__REL5__)*/
+#else /* CSD_SUPPORT */
+#if defined(__VIDEO_CALL_SUPPORT__) && defined(__REL5__)
+EXTEND_CMD("cbst", 168246, 0, "+CBST: 134, 1, 0", RMMI_CMD_ATCBST, rmmi_cbst_hdlr)
+#endif
+#endif /* CSD_SUPPORT */
+
+#if defined(CSD_SUPPORT)
+EXTEND_CMD("cmod", 183962, 0, "+CMOD: (0-3)", RMMI_CMD_ATCMOD, rmmi_cmod_hdlr)
+EXTEND_CMD("crlp", 191080, 0, "+CRLP: (0-61),(0-61),(39-255),(1-255)", RMMI_CMD_ATCRLP, rmmi_crlp_hdlr)
+EXTEND_CMD("icf", 13116, 0, "+ICF: (0-6), (0-3)", RMMI_CMD_ATICF, rmmi_icf_hdlr)
+EXTEND_CMD("ds", 171, 0, "+DS: 0, (0-1), (512-4096), (6-250)", RMMI_CMD_ATDS, rmmi_ds_hdlr)
+EXTEND_CMD("dr", 170, 0, "+DR: (0)", RMMI_CMD_ATDR, rmmi_dr_hdlr)
+#endif /* CSD_SUPPORT */
+
+#if defined(__CSD_FAX__)
+EXTEND_CMD("fmi", 9167, 0, "", RMMI_CMD_ATFMI, rmmi_fmi_hdlr)
+EXTEND_CMD("fmm", 9171, 0, "", RMMI_CMD_ATFMM, rmmi_fmi_hdlr)
+EXTEND_CMD("fmr", 9176, 0, "", RMMI_CMD_ATFMR, rmmi_fmi_hdlr)
+EXTEND_CMD("fpr", 9290, 0, "0,1,2,4,8,10,18", RMMI_CMD_ATFPR, rmmi_fpr_hdlr)
+EXTEND_CMD("fdt", 8836, 0, "", RMMI_CMD_ATFDT, rmmi_fdt_hdlr)
+EXTEND_CMD("fdr", 8834, 0, "", RMMI_CMD_ATFDR, rmmi_fdr_hdlr)
+EXTEND_CMD("fip", 9022, 0, "", RMMI_CMD_ATFIP, rmmi_fip_hdlr)
+EXTEND_CMD("fks", 9101, 0, "", RMMI_CMD_ATFKS, rmmi_fks_hdlr)
+EXTEND_CMD("fk", 239, 0, "", RMMI_CMD_ATFK, rmmi_fk_hdlr)
+EXTEND_CMD("fet", 8874, 0, "", RMMI_CMD_ATFET, rmmi_fet_hdlr)
+EXTEND_CMD("ftm", 9437, 0, "", RMMI_CMD_ATFTM, rmmi_ftm_hdlr)
+EXTEND_CMD("frm", 9361, 0, "", RMMI_CMD_ATFRM, rmmi_frm_hdlr)
+EXTEND_CMD("fth", 9432, 0, "", RMMI_CMD_ATFTH, rmmi_fth_hdlr)
+EXTEND_CMD("frh", 9356, 0, "", RMMI_CMD_ATFRH, rmmi_frh_hdlr)
+EXTEND_CMD("fts", 9443, 0, "", RMMI_CMD_ATFTS, rmmi_fts_hdlr)
+EXTEND_CMD("frs", 9367, 0, "", RMMI_CMD_ATFRS, rmmi_frs_hdlr)
+EXTEND_CMD("fcc", 8781, 0, "", RMMI_CMD_ATFCC, rmmi_fcc_hdlr)
+EXTEND_CMD("fdcc", 335125, 0, "", RMMI_CMD_ATFDCC, rmmi_fdcc_hdlr)
+EXTEND_CMD("fis", 9025, 0, "", RMMI_CMD_ATFIS, rmmi_fis_hdlr)
+EXTEND_CMD("fdis", 335369, 0, "", RMMI_CMD_ATFDIS, rmmi_fdis_hdlr)
+EXTEND_CMD("fcs", 8797, 0, "", RMMI_CMD_ATFCS, rmmi_fcs_hdlr)
+EXTEND_CMD("fdcs", 335141, 0, "", RMMI_CMD_ATFDCS, rmmi_fdcs_hdlr)
+EXTEND_CMD("fli", 9129, 0, "", RMMI_CMD_ATFLI, rmmi_fli_hdlr)
+EXTEND_CMD("flid", 346906, 0, "", RMMI_CMD_ATFLID, rmmi_flid_hdlr)
+EXTEND_CMD("fpi", 9281, 0, "", RMMI_CMD_ATFPI, rmmi_fpi_hdlr)
+EXTEND_CMD("fcig", 333913, 0, "", RMMI_CMD_ATFCIG, rmmi_fcig_hdlr)
+EXTEND_CMD("flp", 9136, 0, "", RMMI_CMD_ATFLP, rmmi_flp_hdlr)
+EXTEND_CMD("flpl", 347180, 0, "", RMMI_CMD_ATFLPL, rmmi_flpl_hdlr)
+EXTEND_CMD("fsp", 9402, 0, "", RMMI_CMD_ATFSP, rmmi_fsp_hdlr)
+EXTEND_CMD("fspl", 357288, 0, "", RMMI_CMD_ATFSPL, rmmi_fspl_hdlr)
+EXTEND_CMD("fnr", 9214, 0, "", RMMI_CMD_ATFNR, rmmi_fnr_hdlr)
+EXTEND_CMD("fie", 9011, 0, "", RMMI_CMD_ATFIE, rmmi_fie_hdlr)
+EXTEND_CMD("fps", 9291, 0, "", RMMI_CMD_ATFPS, rmmi_fps_hdlr)
+EXTEND_CMD("fpts", 353115, 0, "", RMMI_CMD_ATFPTS, rmmi_fpts_hdlr)
+EXTEND_CMD("frq", 9365, 0, "", RMMI_CMD_ATFRQ, rmmi_frq_hdlr)
+EXTEND_CMD("fbadlin", 12622168, 356, "", RMMI_CMD_ATFBADLIN, rmmi_fbadlin_hdlr)
+EXTEND_CMD("fbadmul", 12622169, 810, "", RMMI_CMD_ATFBADMUL, rmmi_fbadmul_hdlr)
+EXTEND_CMD("fcq", 8795, 0, "", RMMI_CMD_ATFCQ, rmmi_fcq_hdlr)
+EXTEND_CMD("fit", 9026, 0, "", RMMI_CMD_ATFIT, rmmi_fit_hdlr)
+EXTEND_CMD("fpp", 9288, 0, "", RMMI_CMD_ATFPP, rmmi_fpp_hdlr)
+EXTEND_CMD("fbo", 8755, 0, "", RMMI_CMD_ATFBO, rmmi_fbo_hdlr)
+EXTEND_CMD("fbor", 332708, 0, "", RMMI_CMD_ATFBOR, rmmi_fbor_hdlr)
+EXTEND_CMD("fea", 8855, 0, "", RMMI_CMD_ATFEA, rmmi_fea_hdlr)
+EXTEND_CMD("frel", 355426, 0, "", RMMI_CMD_ATFREL, rmmi_frel_hdlr)
+EXTEND_CMD("fns", 9215, 0, "", RMMI_CMD_ATFNS, rmmi_fns_hdlr)
+EXTEND_CMD("fcr", 8796, 0, "", RMMI_CMD_ATFCR, rmmi_fcr_hdlr)
+EXTEND_CMD("fbu", 8761, 0, "", RMMI_CMD_ATFBU, rmmi_fbu_hdlr)
+EXTEND_CMD("fbug", 332925, 0, "", RMMI_CMD_ATFBUG, rmmi_fbug_hdlr)
+EXTEND_CMD("fap", 8718, 0, "", RMMI_CMD_ATFAP, rmmi_fap_hdlr)
+EXTEND_CMD("fsa", 9387, 0, "", RMMI_CMD_ATFSA, rmmi_fsa_hdlr)
+EXTEND_CMD("fpa", 9273, 0, "", RMMI_CMD_ATFPA, rmmi_fpa_hdlr)
+EXTEND_CMD("fpw", 9295, 0, "", RMMI_CMD_ATFPW, rmmi_fpw_hdlr)
+EXTEND_CMD("fct", 8798, 0, "", RMMI_CMD_ATFCT, rmmi_fct_hdlr)
+EXTEND_CMD("fphcto", 13400454, 15, "", RMMI_CMD_ATFPHCTO, rmmi_fphcto_hdlr)
+EXTEND_CMD("fhs", 8987, 0, "", RMMI_CMD_ATFHS, rmmi_fhs_hdlr)
+EXTEND_CMD("fms", 9177, 0, "", RMMI_CMD_ATFMS, rmmi_fms_hdlr)
+EXTEND_CMD("fminsp", 13237699, 16, "", RMMI_CMD_ATFMINSP, rmmi_fminsp_hdlr)
+EXTEND_CMD("fry", 9373, 0, "", RMMI_CMD_ATFRY, rmmi_fry_hdlr)
+EXTEND_CMD("fbs", 8759, 0, "", RMMI_CMD_ATFBS, rmmi_fbs_hdlr)
+EXTEND_CMD("ffc", 8895, 0, "", RMMI_CMD_ATFFC, rmmi_ffc_hdlr)
+EXTEND_CMD("fvrfc", 13744223, 0, "", RMMI_CMD_ATFVRFC, rmmi_fvrfc_hdlr)
+EXTEND_CMD("fdffc", 12739199, 0, "", RMMI_CMD_ATFDFFC, rmmi_fdffc_hdlr)
+EXTEND_CMD("flnfc", 13189727, 0, "", RMMI_CMD_ATFLNFC, rmmi_flnfc_hdlr)
+EXTEND_CMD("fwdfc", 13778879, 0, "", RMMI_CMD_ATFWDFC, rmmi_fwdfc_hdlr)
+#endif /* __CSD_FAX__ */
+#endif /* !defined(__ULC_AT__) */
+
+
+/****************************************************************/
+/* CISS AT commands (defined in rmmi_validator_ciss.c)          */
+/****************************************************************/
+#if defined(__MOD_CSM__)
+EXTEND_CMD("ccwa", 169823, 0, "+CCWA: (0-1)", RMMI_CMD_ATCCWA, rmmi_ccwa_hdlr)
+EXTEND_CMD("clip", 182302, 0, "+CLIP: (0-1)", RMMI_CMD_ATCLIP, rmmi_clip_hdlr)
+EXTEND_CMD("ccfc", 169179, 0, "+CCFC: (0-5)", RMMI_CMD_ATCCFC, rmmi_ccfc_hdlr)
+#if !defined(__SLIM_AT__)
+EXTEND_CMD("caemlpp", 6318006, 624, "", RMMI_CMD_ATCAEMLPP, rmmi_caemlpp_hdlr)
+EXTEND_CMD("cdip", 170750, 0, "+CDIP: (0-1)", RMMI_CMD_ATCDIP, rmmi_cdip_hdlr)
+EXTEND_CMD("clck", 182069, 0, "+CLCK: (\"PF\",\"SC\",\"AO\",\"OI\",\"OX\",\"AI\",\"IR\",\"AB\",\"AG\",\"AC\",\"FD\",\"PN\",\"PU\",\"PP\",\"PC\")", RMMI_CMD_ATCLCK, rmmi_clck_hdlr)
+EXTEND_CMD("essp", 302534, 0, "+ESSP: (0-2)", RMMI_CMD_ATESSP, rmmi_essp_hdlr)
+EXTEND_CMD("clir", 182304, 0, "+CLIR: (0-2)", RMMI_CMD_ATCLIR, rmmi_clir_hdlr)
+EXTEND_CMD("colp", 186748, 0, "+COLP: (0-1)", RMMI_CMD_ATCOLP, rmmi_colp_hdlr)
+EXTEND_CMD("cnap", 184886, 0, "+CNAP: (?-?)", RMMI_CMD_ATCNAP, rmmi_cnap_hdlr)
+EXTEND_CMD("cpwd", 188598, 0, "+CPWD: (\"SC\",8),(\"P2\",8),(\"AO\",4),(\"OI\",4),(\"OX\",4),(\"AI\",4),(\"IR\",4),(\"AB\",4),(\"AG\",4),(\"AC\",4)", RMMI_CMD_ATCPWD, rmmi_cpwd_hdlr)
+EXTEND_CMD("cssn", 192788, 0, "+CSSN: (0-1),(0-1)", RMMI_CMD_ATCSSN, rmmi_cssn_hdlr)
+EXTEND_CMD("ccbs", 169043, 0, "+CCBS: <ccbs_id>", RMMI_CMD_ATCCBS, rmmi_ccbs_hdlr)
+EXTEND_CMD("cusd", 195666, 0, "+CUSD: (0-2)", RMMI_CMD_ATCUSD, rmmi_cusd_hdlr)
+EXTEND_CMD("ecusd", 10621346, 0, "", RMMI_CMD_ATECUSD, rmmi_ecusd_hdlr)
+EXTEND_CMD("colr", 186750, 0, "", RMMI_CMD_ATCOLR, rmmi_colr_hdlr)
+#endif /* !defined(__SLIM_AT__) */
+#endif /* __MOD_CSM__ */
+
+
+/****************************************************************/
+/* GPRS AT commands (defined in rmmi_validator_tcm.c)          */
+/****************************************************************/
+#ifdef __MOD_TCM__
+	#if !defined(__ULC_AT__)
+	#if defined(__EXT_PDP_CONTEXT_ON__)
+		EXTEND_CMD("cgact", 6641090, 0, "\r\n+CGACT: (0,1)\r\n", RMMI_CMD_ATCGACT, rmmi_cgact_hdlr)
+		EXTEND_CMD("cgcmod", 6644353, 4, "", RMMI_CMD_ATCGCMOD, rmmi_cgcmod_hdlr)
+		#ifdef __PPP_TYPE_PDP_DIALUP_SUPPORT__
+			EXTEND_CMD("cgdcont", 6645417, 552, "\r\n+CGDCONT: (1-3),\"IP\",,,(0),(0)\r\n+CGDCONT: (1-3),\"PPP\",,,(0),(0)\r\n", RMMI_CMD_ATCGDCONT, rmmi_cgdcont_hdlr)
+			EXTEND_CMD("cgqmin", 6664563, 14, "\r\n+CGQMIN: \"IP\", (0,1,2,3), (0,1,2,3,4), (0,1,2,3,4,5) , (0,1,2,3,4,5,6,7,8,9), (0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,31)\r\n+CGQMIN: \"PPP\", (0,1,2,3), (0,1,2,3,4), (0,1,2,3,4,5) , (0,1,2,3,4,5,6,7,8,9), (0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,31)\r\n", RMMI_CMD_ATCGQMIN, rmmi_cgqmin_hdlr)
+			EXTEND_CMD("cgqreq", 6664749, 17, "\r\n+CGQREQ: \"IP\", (0,1,2,3), (0,1,2,3,4), (0,1,2,3,4,5) , (0,1,2,3,4,5,6,7,8,9), (0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,31)\r\n+CGQREQ: \"PPP\", (0,1,2,3), (0,1,2,3,4), (0,1,2,3,4,5) , (0,1,2,3,4,5,6,7,8,9), (0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,31)\r\n", RMMI_CMD_ATCGQREQ, rmmi_cgqreq_hdlr)
+		#else
+			EXTEND_CMD("cgdcont", 6645417, 552, "\r\n+CGDCONT: (1-3),\"IP\",,,(0),(0)\r\n", RMMI_CMD_ATCGDCONT, rmmi_cgdcont_hdlr)
+			EXTEND_CMD("cgqmin", 6664563, 14, "\r\n+CGQMIN: \"IP\", (0,1,2,3), (0,1,2,3,4), (0,1,2,3,4,5) , (0,1,2,3,4,5,6,7,8,9), (0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,31)\r\n", RMMI_CMD_ATCGQMIN, rmmi_cgqmin_hdlr)
+			EXTEND_CMD("cgqreq", 6664749, 17, "\r\n+CGQREQ: \"IP\", (0,1,2,3), (0,1,2,3,4), (0,1,2,3,4,5) , (0,1,2,3,4,5,6,7,8,9), (0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,31)\r\n", RMMI_CMD_ATCGQREQ, rmmi_cgqreq_hdlr)
+		#endif /* __PPP_TYPE_PDP_DIALUP_SUPPORT__ */ 
+		EXTEND_CMD("cgsdata", 6667101, 761, "", RMMI_CMD_ATCGSDATA, rmmi_cgsdata_hdlr)
+		EXTEND_CMD("acttest", 2279397, 742, "", RMMI_CMD_ATACTTEST, rmmi_acttest_hdlr)
+		#ifdef __R99__
+			EXTEND_CMD("cgeqmin", 6647391, 356, "", RMMI_CMD_ATCGEQMIN, rmmi_cgeqmin_hdlr) //MAUI_02232041, mtk02285, 20100203
+			EXTEND_CMD("cgeqreq", 6647396, 207, "", RMMI_CMD_ATCGEQREQ, rmmi_cgeqreq_hdlr) //MAUI_02232041, mtk02285, 20100203
+			EXTEND_CMD("cgeqneg", 6647392, 197, "", RMMI_CMD_ATCGEQNEG, rmmi_cgeqneg_hdlr) /* mtk02285, 20111003 */
+		#endif /* __R99__ */
+		EXTEND_CMD("egact", 10811362, 0, "\r\n+EGACT: (0,1)\r\n", RMMI_CMD_ATEGACT, rmmi_egact_hdlr)		
+	#endif /* __EXT_PDP_CONTEXT_ON__ */
+    #endif /* !defined(__ULC_AT__) */
+
+	#if !defined(__SLIM_AT__)
+		#ifdef __EXT_PDP_CONTEXT_ON__
+			EXTEND_CMD("cgans", 6641507, 0, "+CGANS: (0-1), \"PPP\"", RMMI_CMD_ATCGANS, rmmi_cgans_hdlr)
+			EXTEND_CMD("cgauto", 6641774, 15, "+CGAUTO: (0,1)", RMMI_CMD_ATCGAUTO, rmmi_cgauto_hdlr)
+			EXTEND_CMD("cgpaddr", 6662658, 170, "\r\n+CGPADDR: (1-3)\r\n", RMMI_CMD_ATCGPADDR, rmmi_cgpaddr_hdlr)
+			EXTEND_CMD("egpau", 10832947, 0, "\r\n+EGPAU: (0-1), (1-3), (0-1)\r\n", RMMI_CMD_ATEGPAU, rmmi_egpau_hdlr) 
+			EXTEND_CMD("cgerep", 6647421, 16, "\r\n+CGEREP: (0,1), (0)", RMMI_CMD_ATCGEREQ, rmmi_cgerep_hdlr)
+			#ifdef __EXT_SECONDARY_PDP_FEASIBLE__
+				EXTEND_CMD("cgdscont", 6646013, 22212, "", RMMI_CMD_ATCGDSCONT, rmmi_cgdscont_hdlr) 
+				EXTEND_CMD("cgtft", 6668640, 0, "", RMMI_CMD_ATCGTFT, rmmi_cgtft_hdlr) 
+				EXTEND_CMD("egdelpf", 10815762, 614, "\r\n+EGDELPF: (1-16)\r\n", RMMI_CMD_ATEGDELPF, rmmi_egdelpf_hdlr) 
+				EXTEND_CMD("eglnkpf", 10827655, 614, "\r\n+EGLNKPF: (1-16)\r\n", RMMI_CMD_ATEGLNKPF, rmmi_eglnkpf_hdlr) 				
+			#endif /* __EXT_SECONDARY_PDP_FEASIBLE__ */
+				//EXTEND_CMD("cgdata", 6645346, 1, "+CGDATA: \"M-CCMNI\",\"M-RNDIS\",\"M-MBIM\",\"ppp\"", RMMI_CMD_ATCGDATA, rmmi_cgdata_hdlr)
+			//EXTEND_CMD("cgprco", 6663303, 15, "\r\n+CGPRCO: (1-3)\r\n", RMMI_CMD_ATCGPRCO, rmmi_cgprco_hdlr)
+			EXTEND_CMD("cgauth", 6641774, 8, "\r\n+CGAUTH: (1-3),(0-2),(1-31),(1-31)\r\n", RMMI_CMD_ATCGAUTH, rmmi_cgauth_hdlr)
+			//EXTEND_CMD("egld", 284928, 0, "+EGLD: (0-9)", RMMI_CMD_ATEGLD, rmmi_egld_hdlr)
+            #ifdef __MOBILE_BROADBAND_PROVISION_CONTEXT__
+            	//EXTEND_CMD("mbpc", 716835, 0, "", RMMI_CMD_ATMBPC, rmmi_mbpc_hdlr)
+            #endif 
+			#ifdef __MBIM_SUPPORT__
+				//EXTEND_CMD("mbconnect", 27221428, 775562, "", RMMI_CMD_ATMBCONNECT, rmmi_mbconnect_hdlr)
+			#endif
+			#if 0 //defined(__DIALUP_GPRS_COUNTER_SUPPORT__)
+				EXTEND_CMD("egch", 284590, 0, "+EGCH: (0-1),(0-3)", RMMI_CMD_EGCH, rmmi_egch_hdlr)
+			#endif
+		#endif /* __EXT_PDP_CONTEXT_ON__ */
+
+		#ifdef __IPV4V6__
+			EXTEND_CMD("egfb", 284698, 0, "", RMMI_CMD_EGFB, rmmi_egfb_hdlr)
+		#endif		
+
+		EXTEND_CMD("cgpiaf", 6662959, 6, "\r\n+CGPIAF: (0-1),(0-1),(0-1),(0-1)\r\n", RMMI_CMD_ATCGPIAF, rmmi_cgpiaf_hdlr)
+		//EXTEND_CMD("ei3gppirat", 10963130, 33882074, "+EI3GPPIRAT: (0-1) (0-3)", RMMI_CMD_EI3GPPIRAT, rmmi_ei3gppirat_hdlr)
+		//EXTEND_CMD("egcontrdp", 10814700, 1123600, "", RMMI_CMD_EGCONTRDP, rmmi_egcontrdp_hdlr)
+		EXTEND_CMD("vzwapne", 47332930, 537, "+VZWAPNE: (1-N),(1-4),,(\"IPv4v6\",\"IPv4\",\"IPv6\"),(\"LTE\"),(\"Eanbled\",\"Disabled\")", RMMI_CMD_VZWAPNE, rmmi_vzwapne_hdlr)
+		EXTEND_CMD("vzwapnetmr", 47332930, 29495656, "", RMMI_CMD_VZWAPNETMR, rmmi_vzwapnetmr_hdlr)
+		//EXTEND_CMD("epanrdp", 10504206, 168, "", RMMI_CMD_EAPNRDP, rmmi_eapnrdp_hdlr)
+		EXTEND_CMD("egdcont", 10815689, 552, "+EGDCONT: (0-11), (\"IPv4v6\",\"IPv4\",\"IPv6\")", RMMI_CMD_EGDCONT, rmmi_egdcont_hdlr)
+		//EXTEND_CMD("eapnsync", 10504207, 36635, "+EAPNSYNC: (0-19), \"apn_name\", (0-65535)", RMMI_CMD_EAPNSYNC, rmmi_eapnsync_hdlr)
+	
+		EXTEND_CMD("ecncfg", 10610632, 7, "+ECNCFG: (0-1), (0-1), (0-1), (0-1)", RMMI_CMD_ECNCFG, rmmi_ecncfg_hdlr)
+		//EXTEND_CMD("elattpdncc", 11086368, 33601997, "+ELATTPDNCC: (0), (0-10)", RMMI_CMD_ELATTPDNCC, rmmi_elattpdncc_hdlr)
+		
+		EXTEND_CMD("egpcap", 10833003, 16, "+EGPCAP: (0-11),(0-11)", RMMI_CMD_ATEGPCAP, rmmi_egpcap_hdlr)
+                EXTEND_CMD("psbearer", 34407823, 26200, "+PSBEARER: (0-1)", RMMI_CMD_PSBEARER, rmmi_psbearer_hdlr)
+		#ifdef __MEDIATEK_SMART_QOS__
+			//EXTEND_CMD("msq", 19511, 0, "+MSQ: (1-100),", RMMI_CMD_ATMSQ, rmmi_msq_hdlr)
+			//EXTEND_CMD("msqon", 28174468, 0, "+MSQON: (0-1)", RMMI_CMD_ATMSQON, rmmi_msqon_hdlr)
+		#endif
+
+		//EXTEND_CMD("epdnctrans", 11309943, 42692411, "+EPDNCTRANS: (0-1)", RMMI_CMD_EPDNCTRANS, rmmi_epdnctrans_hdlr)
+				
+  #endif /* __SLIM_AT__ */
+
+	/* 27.007 Ch10 R10 */
+    //EXTEND_CMD("cgcontrdp",  6644428, 1123600,  "+CGCONTRDP: (0-1)",  RMMI_CMD_CGCONTRDP,  rmmi_cgcontrdp_hdlr)
+    EXTEND_CMD("cgscontrdp", 6667077, 30315504, "+CGSCONTRDP: (0-1)", RMMI_CMD_CGSCONTRDP, rmmi_cgscontrdp_hdlr)
+    EXTEND_CMD("cgeqos",     6647393, 19      , "+CGEQOS: (0-1)",     RMMI_CMD_CGEQOS,     rmmi_cgeqos_hdlr)
+    EXTEND_CMD("cgeqosrdp",  6647393, 1068728,  "+CGEQOSRDP: (0-1)",  RMMI_CMD_CGEQOSRDP,  rmmi_cgeqosrdp_hdlr)
+    EXTEND_CMD("cgtftrdp",   6668640, 26160,    "+CGTFTRDP: (0-1)",   RMMI_CMD_CGTFTRDP,   rmmi_cgtftrdp_hdlr)
+    EXTEND_CMD("cgdel",      6645490, 0,        "+CGDEL: (0-1)",      RMMI_CMD_CGDEL,      rmmi_cgdel_hdlr)
+	/* 27.007 Ch10 R10 end */
+    EXTEND_CMD("eggrntrspt", 10820590, 42718480, 	"+EGGRNTRSPT: (1-10), (5-0xffffffff)", RMMI_CMD_ATEGGRNTRSPT, rmmi_eggrntrspt_hdlr)
+
+	//EXTEND_CMD("evzwapfcia", 11671283, 33696083, 	"+EVZWAPFCIA: (0-1)", RMMI_CMD_ATEVZWAPFCIA, rmmi_evzwapfcia_hdlr)
+
+	
+		EXTEND_CMD("egpco", 10833017, 0, "+EGPCO: (0-10),\"PCO IE ID\",\"PCO contents\"", RMMI_CMD_EGPCO, rmmi_egpco_hdlr)
+		//EXTEND_CMD("egpcordp", 10833017, 26160, "+EGPCORDP: (0-10)[,\"PCO IE ID\"]", RMMI_CMD_EGPCORDP, rmmi_egpcordp_hdlr)
+
+
+#endif /* __MOD_TCM__ */
+
+
+/****************************************************************/
+/* NW AT commands (defined in rmmi_validator_nw.c)              */
+/****************************************************************/
+#ifdef __MOD_RAC__
+EXTEND_CMD("cops", 186903, 0, "", RMMI_CMD_ATCOPS, rmmi_cops_hdlr)
+EXTEND_CMD("erat", 300410, 0, "+ERAT: (0-8, 10-12, 14)", RMMI_CMD_ATERAT, rmmi_erat_hdlr)
+EXTEND_CMD("csq", 5071, 0, "+CSQ: (0-31,99),(0-7,99)", RMMI_CMD_ATCSQ, rmmi_csq_hdlr)
+EXTEND_CMD("cesq", 172575, 0, "+CESQ: (0-63,99),(0-7,99),(0-96,255),(0-49,255),(0-34,255),(0-97,255)", RMMI_CMD_ATCESQ, rmmi_cesq_hdlr)
+EXTEND_CMD("armee", 240797303, 0, "$ARMEE: (0,1)", RMMI_CMD_ATARMEE, rmmi_armee_hdlr)
+EXTEND_CMD("errmt", 11439882, 0, "", RMMI_CMD_ATERRMT, rmmi_errmt_hdlr)
+EXTEND_CMD("ecainfo", 10592096, 243, "+ECAINFO: (0,1)", RMMI_CMD_ATECAINFO, rmmi_ecainfo_hdlr)
+
+#if defined(NEPTUNE_MMI)
+EXTEND_CMD("cfun", 174092, 0, "+CFUN: (0,1,4)", RMMI_CMD_ATCFUN, rmmi_cfun_hdlr)
+#else
+EXTEND_CMD("cfun", 174092, 0, "+CFUN: (0,1,4),(0,1)", RMMI_CMD_ATCFUN, rmmi_cfun_hdlr)
+#endif
+
+#if !defined(__ULC_AT__) 
+EXTEND_CMD("efun", 283836, 0, "", RMMI_CMD_ATEFUN, rmmi_efun_hdlr)
+EXTEND_CMD("eops", 296647, 0, "", RMMI_CMD_ATEOPS, rmmi_eops_hdlr)
+EXTEND_CMD("creg", 190805, 0, "+CREG: (0-3)", RMMI_CMD_ATCREG, rmmi_creg_hdlr)
+EXTEND_CMD("eopn", 296642, 0, "", RMMI_CMD_ATEOPN, rmmi_eopn_hdlr)
+EXTEND_CMD("epof", 298040, 0, "+EPOF: 1", RMMI_CMD_ATEPOF, rmmi_epof_hdlr)
+EXTEND_CMD("epbse", 11307247, 0, "", RMMI_CMD_ATEPBSE, rmmi_epbse_hdlr)
+EXTEND_CMD("cgatt", 6641736, 0, "+CGATT: (0,1)", RMMI_CMD_ATCGATT, rmmi_cgatt_hdlr)
+EXTEND_CMD("cgreg", 6665701, 0, "+CGREG: (0-3)", RMMI_CMD_ATCGREG, rmmi_cgreg_hdlr)
+EXTEND_CMD("cgclass", 6644301, 741, "", RMMI_CMD_ATCGCLASS, rmmi_cgclass_hdlr)
+EXTEND_CMD("ecgreg", 10601093, 7, "+ECGREG: (0,1)", RMMI_CMD_ATECGREG, rmmi_ecgreg_hdlr)
+EXTEND_CMD("ecereg", 10598205, 7, "+ECEREG: (0,1)", RMMI_CMD_ATECEREG, rmmi_ecereg_hdlr)
+EXTEND_CMD("ecreg", 10616485, 0, "+ECREG: (0,1)", RMMI_CMD_ATECREG, rmmi_ecreg_hdlr)
+#endif /* !defined(__ULC_AT__) */
+
+#if !defined(__SLIM_AT__)
+EXTEND_CMD("copn", 186898, 0, "", RMMI_CMD_ATCOPN, rmmi_copn_hdlr)
+EXTEND_CMD("capl", 166680, 0, "", RMMI_CMD_ATCAPL, rmmi_capl_hdlr)
+EXTEND_CMD("ws46", 1290703, 0, "(12,22,25,28,29,30,31)", RMMI_CMD_ATWS46, rmmi_ws46_hdlr)
+EXTEND_CMD("ctzr", 194502, 0, "+CTZR: (0-2)", RMMI_CMD_ATCTZR, rmmi_ctzr_hdlr)
+
+EXTEND_CMD("cvdp", 196552, 0, "+CVDP: (1-3)", RMMI_CMD_ATCVDP, rmmi_cvdp_hdlr)
+EXTEND_CMD("cavims", 6342403, 19, "+CAVIMS: (0-1)", RMMI_CMD_ATCAVIMS, rmmi_cavims_hdlr)
+EXTEND_CMD("casims", 6338071, 19, "+CASIMS: (0-1)", RMMI_CMD_ATCASIMS, rmmi_casims_hdlr)
+
+#ifdef __LTE_RAT__
+EXTEND_CMD("ceus", 172653, 0, "+CEUS: (0-1)", RMMI_CMD_ATCEUS, rmmi_ceus_hdlr)
+EXTEND_CMD("cevdp", 6561704, 0, "+CEVDP: (1-4)", RMMI_CMD_ATCEVDP, rmmi_cevdp_hdlr)
+EXTEND_CMD("cemode", 6549114, 5, "+CEMODE: (0-3)", RMMI_CMD_ATCEMODE, rmmi_cemode_hdlr)
+EXTEND_CMD("cereg", 6555957, 0, "+CEREG: (0-3)", RMMI_CMD_ATCEREG, rmmi_cereg_hdlr)
+EXTEND_CMD("eemode", 10719386, 5, "+EEMODE: (0-4)", RMMI_CMD_ATEEMODE, rmmi_eemode_hdlr)
+EXTEND_CMD("ede", 7377, 0, "+EDE: \"<plmn_id>\"", RMMI_CMD_ATEDE, rmmi_ede_hdlr)
+EXTEND_CMD("ecasw", 10592485, 0, "+ECASW: (0-1)", RMMI_CMD_ATECASW, rmmi_ecasw_hdlr)
+EXTEND_CMD("erttcl", 11443019, 12, "+ERTTCL: (0-1)", RMMI_CMD_ATERTTCL, rmmi_erttcl_hdlr)
+EXTEND_CMD("etm9", 303770, 0, "+ETM9: (0-1),(0-1)", RMMI_CMD_ATETM9, rmmi_etm9_hdlr)
+#endif
+
+EXTEND_CMD("efss", 283765, 0, "+EFSS: (0-2)", RMMI_CMD_ATEFSS, rmmi_efss_hdlr)
+#if defined(__CSG_SUPPORT__)
+EXTEND_CMD("ecsg", 279421, 0, "+ECSG: (0-3)", RMMI_CMD_ATECSG, rmmi_ecsg_hdlr)
+#endif
+
+#if defined(__GEMINI__)
+
+#ifdef __GEMINI_MONITOR_PAGE_DURING_TRANSFER__
+EXTEND_CMD("emppch", 11162731, 8, "+EMPPCH: (0,1)", RMMI_CMD_ATEMPPCH, rmmi_emppch_hdlr)
+#endif
+
+#endif
+
+#if defined(__NO_PSDATA_SEND_SCRI__) || defined(__FAST_DORMANCY__)
+EXTEND_CMD("escri", 11473273, 0, "", RMMI_CMD_ATESCRI, rmmi_escri_hdlr)
+EXTEND_CMD("efd", 7452, 0, "+EFD: (0-3)", RMMI_CMD_ATEFD, rmmi_efd_hdlr)
+#endif
+
+#if defined(__MODEM_EM_MODE__)
+EXTEND_CMD("ecelck", 10597975, 11, "+ECELCK: (0,1)", RMMI_CMD_ATECELCK, rmmi_ecelck_hdlr)  
+#endif
+
+EXTEND_CMD("ecsq", 279431, 0, "+ECSQ: (0-3)", RMMI_CMD_ATECSQ, rmmi_ecsq_hdlr)
+EXTEND_CMD("enbr", 294670, 0, "", RMMI_CMD_ATENBR, rmmi_enbr_hdlr)
+EXTEND_CMD("ecell", 10597984, 0, "", RMMI_CMD_ATECELL, rmmi_ecell_hdlr)
+EXTEND_CMD("epsb", 298188, 0, "", RMMI_CMD_ATEPSB, rmmi_epsb_hdlr) 
+EXTEND_CMD("escellinfo", 11472782, 25535939, "", RMMI_CMD_ATESCELLINFO, rmmi_escellinfo_hdlr)
+
+#if defined(__SYSSEL_SUPPORT__)
+EXTEND_CMD("syssel", 41017547, 12, "", RMMI_CMD_ATSYSSEL, rmmi_syssel_hdlr) 
+#endif
+
+EXTEND_CMD("csra", 192737, 0, "+CSRA: 1,(0-1),(0-1),0,0,(0-1),(0-1)", RMMI_CMD_ATCSRA, rmmi_csra_hdlr)
+EXTEND_CMD("ecsra", 10618417, 0, "+ECSRA: (0-3)", RMMI_CMD_ATECSRA, rmmi_ecsra_hdlr)
+EXTEND_CMD("ewmpolicy", 11707131, 671599, "+EWMPOLICY: (1-4)", RMMI_CMD_ATEWMPOLICY, rmmi_ewmpolicy_hdlr)
+EXTEND_CMD("emodcfg", 11160831, 235, "+EMODCFG: (0-1)", RMMI_CMD_ATEMODCFG, rmmi_emodcfg_hdlr)
+EXTEND_CMD("egmss", 10829297, 0, "", RMMI_CMD_ATEGMSS, rmmi_egmss_hdlr)
+
+#if defined(__MONITOR_PAGE_DURING_TRANSFER__)
+EXTEND_CMD("egtp", 285244, 0, "+EGTP: (0-1)", RMMI_CMD_EGTP, rmmi_egtp_hdlr)
+#endif
+EXTEND_CMD("ehsm", 286647, 0, "+EHSM: (0-2),(0-1)", RMMI_CMD_EHSM, rmmi_ehsm_hdlr) //mtk02285, hspa_mmi
+EXTEND_CMD("egtype", 10839630, 5, "+EGTYPE: (0-4)", RMMI_CMD_EGTYPE, rmmi_egtype_hdlr)
+
+#endif  /* !defined(__SLIM_AT__) */
+
+#if defined(__ACMT_SUPPORT__)
+EXTEND_CMD("eacmt", 10485398, 0, "+EACMT: (0,1)", RMMI_CMD_ATEACMT, rmmi_eacmt_hdlr)
+#endif /* __ACMT_SUPPORT__ */
+
+#if defined(__REPORT_AVAILABLE_PLMN__)
+EXTEND_CMD("ecops", 10612583, 0, "+ECOPS: (0,1)", RMMI_CMD_ATECOPS, rmmi_ecops_hdlr)
+#endif
+
+#if defined(__2STAGE_NW_SELECTION__)
+EXTEND_CMD("emsr", 293872, 0, "+EMSR: (0,1)", RMMI_CMD_ATEMSR, rmmi_emsr_hdlr)
+#endif
+
+#ifdef __IMS_SUPPORT__
+EXTEND_CMD("CIREG", 6775445, 0, "+CIREG: (0-2)", RMMI_CMD_ATCIREG, rmmi_cireg_hdlr)
+EXTEND_CMD("CIREP", 6775454, 0, "+CIREP: (0,1)", RMMI_CMD_ATCIREP, rmmi_cirep_hdlr)
+EXTEND_CMD("CNEM", 185035, 0, "+CNEM: (0,1)", RMMI_CMD_ATCNEM, rmmi_cnem_hdlr)
+EXTEND_CMD("ECFGGET", 10599233, 210, "", RMMI_CMD_ATECFGGET, rmmi_ecfgget_hdlr)
+EXTEND_CMD("ECFGSET", 10599245, 210, "", RMMI_CMD_ATECFGSET, rmmi_ecfgset_hdlr)
+EXTEND_CMD("EIMS", 287869, 0, "", RMMI_CMD_ATEIMS, rmmi_eims_hdlr)
+EXTEND_CMD("ENWSEL", 11227827, 12, "", RMMI_CMD_ATENWSEL, rmmi_enwsel_hdlr)
+EXTEND_CMD("EIRS", 288059, 0, "+EIRS: (0,1)", RMMI_CMD_ATEIRS, rmmi_eirs_hdlr)
+EXTEND_CMD("EIDRS", 10926007, 0, "+EIDRS: (0,1)", RMMI_CMD_ATEIDRS, rmmi_eidrs_hdlr)
+EXTEND_CMD("EIMSVOLTE", 10939044, 841173, "+EIMSVOLTE: (0,1)", RMMI_CMD_ATEIMSVOLTE, rmmi_eimsvolte_hdlr)
+EXTEND_CMD("EIMSCFG", 10939025, 235, "", RMMI_CMD_ATEIMSCFG, rmmi_eimscfg_hdlr)
+EXTEND_CMD("EPVSSET", 11336141, 210, "", RMMI_CMD_ATEPVSSET, rmmi_ecfgset_hdlr)
+EXTEND_CMD("EPVSGET", 11336129, 210, "", RMMI_CMD_ATEPVSGET, rmmi_ecfgget_hdlr)
+EXTEND_CMD("EIMSESS", 10939027, 741, "+EIMSESS: (0,1)", RMMI_CMD_ATEIMSESS, rmmi_eimsess_hdlr)
+EXTEND_CMD("EITMR", 10948920, 0, "", RMMI_CMD_ATEITMR, rmmi_eitmr_hdlr)
+EXTEND_CMD("EIMSEVENT", 10939027, 1214956, "", RMMI_CMD_ATEIMSEVENT, rmmi_eimsevent_hdlr)
+EXTEND_CMD("EIMSROAM", 10939040, 21711, "+EIMSROAM: (0,1)", RMMI_CMD_ATEIMSROAM, rmmi_eimsroam_hdlr)
+
+#endif /* __IMS_SUPPORT__ */
+#ifdef __VOLTE_SUPPORT__
+EXTEND_CMD("CSSAC", 7325453, 0, "", RMMI_CMD_ATCSSAC, rmmi_cssac_hdlr)
+EXTEND_CMD("CMMIVT", 6987880, 20, "+CMMIVT: (1,2)", RMMI_CMD_ATCMMIVT, rmmi_cmmivt_hdlr)
+EXTEND_CMD("EIMSCI", 10939025, 9, "+EIMSCI: (0,1),(0,1)", RMMI_CMD_ATEIMSCI, rmmi_eimsci_hdlr)
+EXTEND_CMD("EVVS", 306983, 0, "+EVVS: (0,1)", RMMI_CMD_ATEVVS, rmmi_evvs_hdlr)
+EXTEND_CMD("EVIVS", 11646715, 0, "+EVIVS: (0,1)", RMMI_CMD_ATEVIVS, rmmi_evivs_hdlr)
+EXTEND_CMD("CISRVCC", 6777398, 117, "+CISRVCC: (0,1)", RMMI_CMD_ATCISRVCC, rmmi_cisrvcc_hdlr)
+#endif /* __VOLTE_SUPPORT__ */
+
+EXTEND_CMD("CEPPI", 6553489, 0, "+CEPPI: (0,1)", RMMI_CMD_ATCEPPI, rmmi_ceppi_hdlr)
+
+EXTEND_CMD("epol", 298046, 0, "", RMMI_CMD_ATEPOL, rmmi_epol_hdlr)
+EXTEND_CMD("efpl", 283644, 0, "", RMMI_CMD_ATEFPL, rmmi_efpl_hdlr)
+
+EXTEND_CMD("ESLBAND", 11485653, 536, "", RMMI_CMD_ATESLBAND, rmmi_eslband_hdlr)
+EXTEND_CMD("egrea", 10835967, 0, "", RMMI_CMD_ATEGREA, rmmi_egrea_hdlr)
+EXTEND_CMD("EIREG", 10945717, 0, "", RMMI_CMD_ATEIREG, rmmi_eireg_hdlr)
+EXTEND_CMD("eccause", 10594687, 727, "", RMMI_CMD_ATECCAUSE, rmmi_eccause_hdlr)
+
+EXTEND_CMD("ecarfcn", 10592430, 128, "", RMMI_CMD_ATECARFCN, rmmi_ecarfcn_hdlr)
+EXTEND_CMD("ectmode", 10619685, 157, "", RMMI_CMD_ATECTMODE, rmmi_ectmode_hdlr)
+
+EXTEND_CMD("ecamp", 10592250, 0, "+ECAMP: (0,1)", RMMI_CMD_ATECAMP, rmmi_ecamp_hdlr)
+EXTEND_CMD("eiratmode", 10945578, 735153, "+EIRATEMODE: (0,1)", RMMI_CMD_ATEIRATEMODE, rmmi_eiratmode_hdlr)
+EXTEND_CMD("emdstatus", 11145534, 84569, "+EMDSTATUS: (0,1,2),(0,1,2)", RMMI_CMD_ATEMDSTATUS, rmmi_emdstatus_hdlr)
+EXTEND_CMD("erprat", 11437165, 20, "", RMMI_CMD_ATERPRAT, rmmi_erprat_hdlr)
+EXTEND_CMD("edrb", 280822, 0, "+EDRB: (0,1)", RMMI_CMD_ATEDRB, rmmi_edrb_hdlr)
+
+EXTEND_CMD("vzwrsrp", 47333579, 700, "", RMMI_CMD_ATVZWRSRP, rmmi_vzwrsrp_hdlr)
+EXTEND_CMD("vzwrsrq", 47333579, 701, "", RMMI_CMD_ATVZWRSRQ, rmmi_vzwrsrq_hdlr)
+EXTEND_CMD("vzwmruc", 47333388, 801, "", RMMI_CMD_ATVZWMRUC, rmmi_vzwmruc_hdlr)
+EXTEND_CMD("vzwmrue", 47333388, 803, "+VZWMRUE: (1-10),(\"LTE\"),(2,4,13),(list of supported plmn-ids)", RMMI_CMD_ATVZWMRUE, rmmi_vzwmrue_hdlr)
+EXTEND_CMD("vzwralc", 47333561, 459, "", RMMI_CMD_ATVZWRALC, rmmi_vzwralc_hdlr)
+EXTEND_CMD("vzwrale", 47333561, 461, "+VZWRALE: (1-10),(\"LTE\"),(2,4,13),(list of supported plmn-ids)", RMMI_CMD_ATVZWRALE, rmmi_vzwrale_hdlr)
+EXTEND_CMD("egdm", 284633, 0, "", RMMI_CMD_ATEGDM, rmmi_egdm_hdlr)
+
+EXTEND_CMD("rsrp", 1015832, 0, "", RMMI_CMD_ATRSRP, rmmi_rsrp_rsrq_hdlr)
+EXTEND_CMD("rsrq", 1015833, 0, "", RMMI_CMD_ATRSRQ, rmmi_rsrp_rsrq_hdlr)
+EXTEND_CMD("rscp", 1015262, 0, "", RMMI_CMD_ATRSCP, rmmi_rscp_ecno_hdlr)
+EXTEND_CMD("ecno", 279239,  0, "", RMMI_CMD_ATECNO, rmmi_rscp_ecno_hdlr)
+
+EXTEND_CMD("erms", 300865,  0, "", RMMI_CMD_ATERMS, rmmi_erms_hdlr)
+
+//#ifdef __ATCMD_STAR_SYMBOL_SUPPORT__
+EXTEND_CMD("MRUCLEAR", 345065586, 7276, "", RMMI_CMD_MRUCLEAR, rmmi_mruclear_hdlr)
+EXTEND_CMD("MRU",  316960149, 0, "", RMMI_CMD_MRU, rmmi_mru_hdlr)
+EXTEND_CMD("AUXPLMN",  320213396, 508, "", RMMI_CMD_AUXPLMN, rmmi_auxplmn_hdlr)
+EXTEND_CMD("PSMODE",  351364762, 5, "", RMMI_CMD_PSMODE, rmmi_psmode_hdlr)
+EXTEND_CMD("cnti",  317126273, 0, "*CNTI: (0,1,2)", RMMI_CMD_ATCNTI, rmmi_cnti_hdlr)
+//#endif
+EXTEND_CMD("EEMCINFO", 10718935, 20459, "+EEMCINFO: (0,1)", RMMI_CMD_ATEEMCINFO, rmmi_eemcinfo_hdlr)
+EXTEND_CMD("ESSAC", 11495725, 0, "+ESSAC: (0,1)", RMMI_CMD_ATESSAC, rmmi_essac_hdlr)
+EXTEND_CMD("EMOBD", 11160756, 0, "+EMOBD: (0,1)", RMMI_CMD_ATEMOBD, rmmi_emobd_hdlr)
+EXTEND_CMD("eregchk", 11420865, 315, "+EREGCHK: (0-255),(0-255)", RMMI_CMD_ATEREGCHK, rmmi_eregchk_hdlr)
+EXTEND_CMD("ereginfo", 11420871 , 20459, "+EREGINFO: (0-1)", RMMI_CMD_ATEREGINFO, rmmi_ereginfo_hdlr)
+EXTEND_CMD("edrat", 10671218, 0, "+EDRAT: (0-1)", RMMI_CMD_ATEDRAT, rmmi_edrat_hdlr)
+EXTEND_CMD("cscon", 7302892, 0, "+CSCON: (0-2)", RMMI_CMD_ATCSCON, rmmi_cscon_hdlr)
+EXTEND_CMD("erds", 300523, 0, "+ERDS: (0-1),(0-1)", RMMI_CMD_ATERDS, rmmi_erds_hdlr)
+EXTEND_CMD("euedrx", 11585382, 24, "+EUEDRX: (7),(0-65535)", RMMI_CMD_ATEUEDRX, rmmi_euedrx_hdlr)
+EXTEND_CMD("ehvolte", 10897006, 765, "+EHVOLTE: (0-1)", RMMI_CMD_ATEHVOLTE, rmmi_ehvolte_hdlr)
+EXTEND_CMD("ecbm", 278781, 0, "+ECBM: (0-1)", RMMI_CMD_ATECBM, rmmi_ecbm_hdlr)
+EXTEND_CMD("emcs", 293265, 0, "+EMCS: (0-1)", RMMI_CMD_ATEMCS, rmmi_emcs_hdlr)
+EXTEND_CMD("emcss", 11144089, 0, "", RMMI_CMD_ATEMCSS, rmmi_emcss_hdlr)
+EXTEND_CMD("ec2kcell", 10632593, 7688, "", RMMI_CMD_ATEC2KCELL, rmmi_ec2kcell_hdlr)
+EXTEND_CMD("eimsps", 10939038, 19, "+EIMSPS: (0-1)", RMMI_CMD_ATEIMSPS, rmmi_eimsps_hdlr)
+EXTEND_CMD("eimscons", 10939025, 22211, "+EIMSCONS: (0-1)", RMMI_CMD_ATEIMSCONS, rmmi_eimscons_hdlr)
+EXTEND_CMD("vmemexit", 46594047, 35018, "", RMMI_CMD_ATVMEMEXIT, rmmi_vmemexit_hdlr)
+EXTEND_CMD("evzwt", 11671302, 0, "", RMMI_CMD_ATEVZWT, rmmi_evzwt_hdlr)
+EXTEND_CMD("eepdgho", 10723303, 319, "+EEPDGHO: (0-1),(0-1),(0-65535),(0-15)", RMMI_CMD_ATEEPDGHO, rmmi_eepdgho_hdlr)
+EXTEND_CMD("eppi", 298081, 0, "+EPPI: (0-1)", RMMI_CMD_ATEPPI, rmmi_eppi_hdlr)
+EXTEND_CMD("eapc", 276415, 0, "", RMMI_CMD_ATEAPC, rmmi_eapc_hdlr)
+EXTEND_CMD("elce", 291807, 0, "", RMMI_CMD_ATELCE, rmmi_elce_hdlr)
+EXTEND_CMD("etwmode", 11556841, 157, "", RMMI_CMD_ATETWMODE, rmmi_etwmode_hdlr)
+EXTEND_CMD("eltebwinfo", 11113216, 48472435, "+ELTEBWINFO: (0,1)", RMMI_CMD_ATELTEBWINFO, rmmi_eltebwinfo_hdlr)
+EXTEND_CMD("eacb", 275920, 0, "+EACB: (0,1)", RMMI_CMD_ATEACB, rmmi_eacb_hdlr)
+EXTEND_CMD("ecmpcid", 10609679, 346 , "+ECMPCID: (0-1)", RMMI_CMD_ATECMPCID, rmmi_ecmpcid_hdlr)
+
+EXTEND_CMD("enwbdinfo", 11227180, 514307, "+ENWBDINFO: (0,1)", RMMI_CMD_ATENWBDINFO, rmmi_enwbdinfo_hdlr)
+//#if defined(__FAST_ROAMING_SEARCH__)
+EXTEND_CMD("efmcc", 10773801, 0, "+EFMCC: (0,1)", RMMI_CMD_ATEFMCC, rmmi_efmcc_hdlr)
+EXTEND_CMD("efplmn", 10778485, 14, "+EFPLMN: (0-1)", RMMI_CMD_ATEFPLMN, rmmi_efplmn_hdlr)
+//#endif
+EXTEND_CMD("egrat", 10835834, 0, "", RMMI_CMD_ATEGRAT, rmmi_egrat_hdlr)
+EXTEND_CMD("eplwth", 11321854, 8, "", RMMI_CMD_ATEPLWTH, rmmi_eplwth_hdlr)
+EXTEND_CMD("epoc", 298037, 0, "", RMMI_CMD_ATEPOC, rmmi_epoc_hdlr)
+EXTEND_CMD("eloscust", 11106529, 31066, "+ELOSCUST: (0-1),(0-1)", RMMI_CMD_ATELOSCUST, rmmi_eloscust_hdlr)
+EXTEND_CMD("emro", 293831, 0, "", RMMI_CMD_ATEMRO, rmmi_emro_hdlr)
+
+
+EXTEND_CMD("egmc", 284965, 0, "", RMMI_CMD_ATEGMC, rmmi_egmc_hdlr)
+#if !defined(MT6739)&& !defined(__LTE_CA_DISABLE__)
+EXTEND_CMD("ecacomb", 10591869, 496 , "+ECACOMB: (0-1),(0-1),(list of CA band combinations)", RMMI_CMD_ATECACOMB, rmmi_ecacomb_hdlr)
+#endif
+
+EXTEND_CMD("efreqscn", 10781111, 27564, "", RMMI_CMD_ATEFREQSCN, rmmi_efreqscn_hdlr)
+#ifdef __ARFCN_TO_CAMERA_SUPPORT__
+EXTEND_CMD("etfsic", 11532515, 3, "", RMMI_CMD_ATETFSIC, rmmi_etfsic_hdlr)
+#endif
+EXTEND_CMD("eplwss", 11321853, 19, "", RMMI_CMD_ATEPLWSS, rmmi_eplwss_hdlr)
+EXTEND_CMD("enwrej", 11227789, 10, "+ENWREJ: (0-1)", RMMI_CMD_ATENWREJ, rmmi_enwrej_hdlr)
+#endif /* __MOD_RAC__ */
+
+#if defined(__MODEM_EM_MODE__)
+#if defined(__CHANNEL_LOCK__)
+EXTEND_CMD("emmchlck", 11157910, 17453, "+EMMCHLCK: (0-1),(0,2,7),(0,1),(0-46589),(0-511)", RMMI_CMD_ATEMMCHLCK, rmmi_emmchlck_hdlr)
+#endif /* __CHANNEL_LOCK__ */
+#endif /* __MODEM_EM_MODE__ */
+
+EXTEND_CMD("ercefc", 11417904, 3, "+ERCEFC: (0-1)", RMMI_CMD_ATERCEFC, rmmi_ercefc_hdlr)
+EXTEND_CMD("eatnusd", 10509985, 726, "+EATNUSD: (0-1)", RMMI_CMD_ATEATNUSD, rmmi_eatnusd_hdlr)
+
+/****************************************************************/
+/* PHB AT commands (defined in rmmi_validator_phb.c)            */
+/****************************************************************/
+#if defined(__MOD_PHB__)
+
+#if !defined(__ULC_AT__) 
+    EXTEND_CMD("cpbr", 187814, 0, "", RMMI_CMD_ATCPBR, rmmi_cpbr_hdlr)
+    EXTEND_CMD("ecpbr", 10613494, 0, "", RMMI_CMD_ATECPBR, rmmi_cpbr_hdlr)
+
+    #if defined(EXTERNAL_MMI)
+        EXTEND_CMD("cpbs", 187815, 0, "+CPBS: (\"SM\",\"FD\",\"ON\")", RMMI_CMD_ATCPBS, rmmi_cpbs_hdlr)
+    #else
+	    EXTEND_CMD("cpbs", 187815, 0, "+CPBS: (\"ME\",\"SM\",\"LD\",\"MC\",\"RC\",\"FD\",\"DC\",\"ON\")", RMMI_CMD_ATCPBS, rmmi_cpbs_hdlr)
+    #endif
+
+    EXTEND_CMD("cpbw", 187819, 0, "", RMMI_CMD_ATCPBW, rmmi_cpbw_hdlr)
+    EXTEND_CMD("ecpbw", 10613499, 0, "", RMMI_CMD_ATECPBW, rmmi_cpbw_hdlr)
+        EXTEND_CMD("epbw", 297563, 0, "", RMMI_CMD_ATEPBW, rmmi_cpbw_hdlr)
+    EXTEND_CMD("eeccud", 10704507, 4, "", RMMI_CMD_ATEECCUD, rmmi_eeccud_hdlr)
+    EXTEND_CMD("eeccfc", 10704492, 3, "", RMMI_CMD_ATEECCFC, rmmi_eeccfc_hdlr)
+    EXTEND_CMD("esimecc", 11481743, 117, "", RMMI_CMD_ATESIMECC, rmmi_esimecc_hdlr)
+#endif /* !defined(__ULC_AT__) */
+
+#if defined(__AT_EPBUM_SUPPORT__)
+    EXTEND_CMD("epbum", 11307331, 0, "", RMMI_CMD_ATEPBUM, rmmi_epbum_hdlr)
+#endif
+
+EXTEND_CMD("cnum", 185643, 0, "", RMMI_CMD_ATCNUM, rmmi_cnum_hdlr)
+
+#if !defined(__SLIM_AT__)
+    EXTEND_CMD("cpbf", 187802, 0, "", RMMI_CMD_ATCPBF, rmmi_cpbf_hdlr)	
+#endif /* !defined(__SLIM_AT__) */
+
+EXTEND_CMD("esln", 302266, 0, "", RMMI_CMD_ATESLN, rmmi_esln_hdlr)	
+
+
+EXTEND_CMD("cen", 4536, 0, "", RMMI_CMD_ATCEN, rmmi_cen_hdlr) // +CEN
+
+
+#ifdef __IMS_SUPPORT__
+EXTEND_CMD("eapprove", 10504282, 22501, "", RMMI_CMD_ATEAPPROVE, rmmi_eapprove_hdlr)
+#endif
+#endif /* defined(__MOD_PHB__) */
+
+
+/****************************************************************/
+/* SMS AT commands (defined in rmmi_validator_sms.c)            */
+/****************************************************************/
+#ifdef __MOD_SMSAL__
+
+#if !defined(__SLIM_AT__)
+EXTEND_CMD("csms", 192565, 0, "+CSMS: (0,1)", RMMI_CMD_ATCSMS, rmmi_csms_hdlr)
+EXTEND_CMD("cmgl", 183666, 0, "", RMMI_CMD_ATCMGL, rmmi_cmgl_hdlr)
+EXTEND_CMD("csas", 192109, 0, "", RMMI_CMD_ATCSAS, rmmi_csas_hdlr)
+EXTEND_CMD("cres", 190817, 0, "", RMMI_CMD_ATCRES, rmmi_cres_hdlr)
+EXTEND_CMD("csmp", 192562, 0, "", RMMI_CMD_ATCSMP, rmmi_csmp_hdlr)
+EXTEND_CMD("csdh", 192212, 0, "+CSDH: (0, 1)", RMMI_CMD_ATCSDH, rmmi_csdh_hdlr)
+EXTEND_CMD("cnmi", 185335, 0, "+CNMI: (0-3), (0-3), (0,2,3), (0,1), (0,1)", RMMI_CMD_ATCNMI, rmmi_cnmi_hdlr)
+EXTEND_CMD("cmms", 183901, 0, "+CMMS: (0-2)", RMMI_CMD_ATCMMS, rmmi_cmms_hdlr)
+EXTEND_CMD("cmss", 184129, 0, "", RMMI_CMD_ATCMSS, rmmi_cmss_hdlr)
+EXTEND_CMD("cmgc", 183657, 0, "", RMMI_CMD_ATCMGC, rmmi_cmgc_hdlr)
+EXTEND_CMD("cnma", 185327, 0, "", RMMI_CMD_ATCNMA, rmmi_cnma_dispatch_hdlr)
+#ifdef __CB__
+EXTEND_CMD("cscb", 192168, 0, "+CSCB: (0,1)", RMMI_CMD_ATCSCB, rmmi_cscb_hdlr)
+EXTEND_CMD("ecbmr", 10593696, 0, "", RMMI_CMD_ATECBMR, rmmi_ecbmr_hdlr)
+EXTEND_CMD("ecscbsw", 10617848, 745, "+ECSCBSW: (0,1)", RMMI_CMD_ATECSCBSW, rmmi_ecscbsw_hdlr)
+EXTEND_CMD("ecscbcfg", 10617848, 4567, "", RMMI_CMD_ATECSCBCFG, rmmi_ecscbcfg_hdlr)
+EXTEND_CMD("ewac", 307613, 0, "+EWAC: (0,1)", RMMI_CMD_ATEWAC, rmmi_ewac_hdlr)
+#endif
+EXTEND_CMD("esmss", 11487761, 0, "+ESMSS: (0-1)", RMMI_CMD_ATESMSS, rmmi_esmss_hdlr)
+EXTEND_CMD("csma", 192547, 0, "", RMMI_CMD_ATCSMA, rmmi_csma_hdlr)
+#endif /* !defined(__SLIM_AT__) */
+
+#if !defined(__ULC_AT__)
+EXTEND_CMD("cgsms", 6667461, 0, "", RMMI_CMD_ATCGSMS, rmmi_cgsms_hdlr)
+EXTEND_CMD("cmgs", 183673, 0, "", RMMI_CMD_ATCMGS, rmmi_cmgs_dispatch_hdlr)
+EXTEND_CMD("cmgw", 183677, 0, "", RMMI_CMD_ATCMGW, rmmi_cmgw_dispatch_hdlr)
+EXTEND_CMD("emgc", 293401, 0, "", RMMI_CMD_ATEMGC, rmmi_emgc_hdlr)
+EXTEND_CMD("enma", 295071, 0, "", RMMI_CMD_ATENMA, rmmi_enma_hdlr)
+EXTEND_CMD("emgs", 293417, 0, "", RMMI_CMD_ATEMGS, rmmi_emgs_hdlr)
+EXTEND_CMD("emgw", 293421, 0, "", RMMI_CMD_ATEMGW, rmmi_emgw_hdlr)
+EXTEND_CMD("emgl", 293410, 0, "", RMMI_CMD_ATEMGL, rmmi_emgl_hdlr)
+EXTEND_CMD("emems", 11146749, 0, "+EMEMS: (1), (0, 1)", RMMI_CMD_ATEMEMS, rmmi_emems_hdlr) 
+EXTEND_CMD("csca", 192167, 0, "", RMMI_CMD_ATCSCA, rmmi_csca_hdlr)
+EXTEND_CMD("cmgd", 183658, 0, "", RMMI_CMD_ATCMGD, rmmi_cmgd_hdlr)
+EXTEND_CMD("cmgf", 183660, 0, "+CMGF: (0,1)", RMMI_CMD_ATCMGF, rmmi_cmgf_hdlr)
+EXTEND_CMD("cmgr", 183672, 0, "", RMMI_CMD_ATCMGR, rmmi_cmgr_hdlr)
+EXTEND_CMD("cpms", 188233, 0, "", RMMI_CMD_ATCPMS, rmmi_cpms_hdlr)
+EXTEND_CMD("eqsi", 299639, 0, "", RMMI_CMD_ATEQSI, rmmi_eqsi_hdlr)
+EXTEND_CMD("emgr", 293416, 0, "", RMMI_CMD_ATEMGR, rmmi_cmgr_hdlr) 
+#ifdef __ETWS_SUPPORT__
+EXTEND_CMD("etws", 304133,0, "", RMMI_CMD_ATETWS, rmmi_etws_hdlr)
+EXTEND_CMD("cpner", 7153784,0, "+CPNER: (0,1)", RMMI_CMD_ATCPNER, rmmi_cpner_hdlr)
+#endif
+#if defined(__IMS_SUPPORT__) || defined(__SMS_IMS_SUPPORT__)
+EXTEND_CMD("esmsmaip", 11487755,1802, "", RMMI_CMD_ATESMSMAIP, rmmi_esmsmaip_hdlr)
+EXTEND_CMD("esmsmoip", 11487755,22018, "", RMMI_CMD_ATESMSMOIP, rmmi_esmsmoip_hdlr)
+EXTEND_CMD("esmsmtip", 11487755,29238, "", RMMI_CMD_ATESMSMTIP, rmmi_esmsmtip_hdlr)
+EXTEND_CMD("esmma", 11487515,0, "", RMMI_CMD_ATESMMA, rmmi_esmma_hdlr)
+#ifdef __WFC_SUPPORT__
+EXTEND_CMD("ewfcp", 11696530, 0, "", RMMI_CMD_ATEWFCP, rmmi_ewfcp_hdlr)
+#endif
+EXTEND_CMD("stksmsoip", 40731643,1064586, "", RMMI_CMD_ATSTKSMSOIP, rmmi_stksmsoip_hdlr)
+EXTEND_CMD("ecmss", 10609809,0, "", RMMI_CMD_ATECMSS, rmmi_ecmss_hdlr)
+EXTEND_CMD("ecmssu", 10609809,21, "", RMMI_CMD_ATECMSSU, rmmi_ecmssu_hdlr)
+#endif
+
+#endif /* !defined(__ULC_AT__) */
+
+EXTEND_CMD("esimulate", 11481759, 660673, "", RMMI_CMD_ATESIMULATE, rmmi_esimulate_hdlr)
+
+#endif /* __MOD_SMSAL__ */
+
+/****************************************************************/
+/* SIM AT commands (defined in rmmi_validator_sim.c)            */
+/****************************************************************/
+#ifdef __MOD_SMU__
+EXTEND_CMD("esims", 11481757, 0, "", RMMI_CMD_ATESIMS, rmmi_esims_hdlr)
+EXTEND_CMD("esimexist", 11481743, 1330666, "", RMMI_CMD_ATESIMEXIST, rmmi_esimexist_hdlr)
+EXTEND_CMD("esimapp", 11481739, 624, "+ESIMAPP: (0-4),(0)", RMMI_CMD_ATESIMAPP, rmmi_esimapp_hdlr)
+EXTEND_CMD("escg", 301917, 0, "+ESCG: (3-4)", RMMI_CMD_ATESCG, rmmi_escg_hdlr)
+#if !defined(__ULC_AT__)
+EXTEND_CMD("cimi", 178115, 0, "", RMMI_CMD_ATCIMI, rmmi_cimi_hdlr)
+#ifdef __VSIM__
+EXTEND_CMD("evsim", 11660655, 0, "", RMMI_CMD_ATEVSIM, rmmi_evsim_hdlr)
+EXTEND_CMD("evauth", 11635126, 8, " ", RMMI_CMD_ATEVAUTH, rmmi_evauth_hdlr)
+#ifdef __MDVSIM__
+EXTEND_CMD("evsimkey", 11660655, 16099, "", RMMI_CMD_ATEVSIMKEY, rmmi_evsimkey_hdlr)
+EXTEND_CMD("evsimef", 11660655, 196, "", RMMI_CMD_ATEVSIMEF, rmmi_evsimef_hdlr)
+EXTEND_CMD("evsimpro", 11660655, 23803, "", RMMI_CMD_ATEVSIMPRO, rmmi_evsimpro_hdlr)
+#endif
+#endif
+#endif
+#if !defined(__SLIM_AT__)
+EXTEND_CMD("eusim", 11605783, 0, "+EUSIM: (0,1)", RMMI_CMD_ATEUSIM, rmmi_eusim_hdlr)
+EXTEND_CMD("etestsim", 11531082, 27791, "+ETESTSIM: (0,1)", RMMI_CMD_ATETESTSIM, rmmi_etestsim_hdlr)
+EXTEND_CMD("cpin", 188076, 0, "", RMMI_CMD_ATCPIN, rmmi_cpin_hdlr)
+EXTEND_CMD("epin", 297820, 0, "", RMMI_CMD_ATEPIN, rmmi_epin_hdlr)
+EXTEND_CMD("epin1", 11317188, 0, "", RMMI_CMD_ATEPIN1, rmmi_epin1_hdlr)
+EXTEND_CMD("epin2", 11317189, 0, "", RMMI_CMD_ATEPIN2, rmmi_epin2_hdlr)
+EXTEND_CMD("epinc", 11317163, 0, "", RMMI_CMD_ATEPINC, rmmi_epinc_hdlr)
+EXTEND_CMD("cpol", 188302, 0, "", RMMI_CMD_ATCPOL, rmmi_cpol_hdlr)
+EXTEND_CMD("cpls", 188195, 0, "", RMMI_CMD_ATCPLS, rmmi_cpls_hdlr)
+EXTEND_CMD("pacsp", 33422118, 0, "", RMMI_CMD_ATPACSP, rmmi_pacsp_hdlr)
+EXTEND_CMD("esimrec", 11481756, 193, "", RMMI_CMD_ATESIMREC, rmmi_esimrec_hdlr)
+#ifdef __AOC_SUPPORT__
+EXTEND_CMD("cpuc", 188521, 0, "", RMMI_CMD_ATCPUC, rmmi_cpuc_hdlr)
+#endif
+EXTEND_CMD("crsm", 191343, 0, "", RMMI_CMD_ATCRSM, rmmi_crsm_hdlr)
+#if defined(__SIM_UT__)
+EXTEND_CMD("csrm", 192749, 0, "", RMMI_CMD_ATCSRM, rmmi_csrm_hdlr)
+#endif
+EXTEND_CMD("csim", 192407, 0, "", RMMI_CMD_ATCSIM, rmmi_csim_hdlr)
+EXTEND_CMD("cgla", 175181, 0, "", RMMI_CMD_ATCGLA, rmmi_cgla_hdlr)
+EXTEND_CMD("excgla", 11747218, 1, "", RMMI_CMD_ATEXCGLA, rmmi_excgla_hdlr)
+#ifdef __EUICC_SUPPORT__
+EXTEND_CMD("ecgla", 10600861, 0, "", RMMI_CMD_ATECGLA, rmmi_cgla_hdlr)
+#endif
+EXTEND_CMD("crla", 191065, 0, "", RMMI_CMD_ATCRLA, rmmi_crla_hdlr)
+EXTEND_CMD("ccho", 169267, 0, "", RMMI_CMD_ATCCHO, rmmi_ccho_hdlr)
+EXTEND_CMD("cchc", 169255, 0, "", RMMI_CMD_ATCCHC, rmmi_cchc_hdlr)
+EXTEND_CMD("esmlck", 11487479, 11, "+ESMLCK:(0-4), (0-4), <key>, <data_imsi>, <data_gid1>, <data_gid2>", RMMI_CMD_ATESMLCK, rmmi_esmlck_hdlr)
+EXTEND_CMD("etmosk", 11542481, 11, "+ETMOSK: 0", RMMI_CMD_ATETMOSK, rmmi_etmosk_hdlr)
+EXTEND_CMD("etmoslb", 11542481, 458, "+ETMOSLB: (1-3)", RMMI_CMD_ATETMOSLB, rmmi_etmoslb_hdlr)
+#ifdef __CARRIER_RESTRICTION__
+EXTEND_CMD("ecrrst", 10616991, 20, "+ECRRST:(0-8), <key>, (0-1), (0-4), <data_mccmnc>, <data_hlr>, <data_spn>, <data_gid1>, <data_gid2>", RMMI_CMD_ATECRRST, rmmi_ecrrst_hdlr)
+#endif
+EXTEND_CMD("espn", 302418, 0, "+ESPN: (0-1)", RMMI_CMD_ESPN, rmmi_espn_hdlr)
+EXTEND_CMD("iccid", 18935518, 0, "", RMMI_CMD_ICCID, rmmi_iccid_hdlr)
+#if defined(__SML_MAX_RETRY_COUNT__) || defined(__SMB_SIMME_LOCK__)
+EXTEND_CMD("ecsmlck", 10618238, 125, "", RMMI_CMD_ATECSMLCK, rmmi_ecsmlck_hdlr)
+#endif
+#if defined(__SUBSIDY_LOCK__) || defined(__SMB_SIMME_LOCK__)
+EXTEND_CMD("eslblob", 11485664, 572, "", RMMI_CMD_ATESLBLOB, rmmi_eslblob_hdlr)
+#endif /* __SUBSIDY_LOCK__ */
+#if defined(__SMB_SIMME_LOCK__)
+EXTEND_CMD("eslblobf", 11485664, 21742, "", RMMI_CMD_ATESLBLOBF, rmmi_eslblobf_hdlr)
+#endif /* __SMB_SIMME_LOCK__ */
+#ifdef __SML_RSU_SUPPORT__
+EXTEND_CMD("esmlrsu", 11487494, 743, "", RMMI_CMD_ATESMLRSU, rmmi_esmlrsu_hdlr)
+#endif
+#if defined(__SINGLE_AP_DUAL_MODEM__)
+EXTEND_CMD("esadm", 11469857, 0, "", RMMI_CMD_ESADM, rmmi_esadm_hdlr)
+#endif
+#ifdef __BT_SIM_PROFILE__
+EXTEND_CMD("ebtsap", 10565027, 16, "", RMMI_CMD_ATEBTSAP, rmmi_ebtsap_hdlr)
+#endif
+EXTEND_CMD("esiminfo", 11481747, 20459, "", RMMI_CMD_ATESIMINFO, rmmi_esiminfo_hdlr)
+EXTEND_CMD("esimtc", 11481758, 3, "", RMMI_CMD_ATESIMTC, rmmi_esimtc_hdlr)
+#if defined(__SIM_UNIT_TEST__)
+EXTEND_CMD("esimtest", 11481758, 7962, "", RMMI_CMD_ATESIMTEST, rmmi_esimtest_hdlr)  //mtk02514_hot_recovery
+#endif
+EXTEND_CMD("esimauth", 11481739, 31092, "", RMMI_CMD_ATESIMAUTH, rmmi_esimauth_hdlr)
+EXTEND_CMD("eauth", 10511644, 0, "", RMMI_CMD_ATEAUTH, rmmi_eauth_hdlr)
+#ifdef __FAKEID_SUPPORT__
+EXTEND_CMD("efakeid", 10756779, 346, "", RMMI_CMD_ATEFAKEID, rmmi_efakeid_hdlr)
+#endif
+
+#ifdef __SAT__
+/////EXTEND_CMD("stkpd", 40731520, 0, "", RMMI_CMD_ATSTKPD, rmmi_stkpd_hdlr)
+/* mtk01616_110211 : MAUI_02868445 phase out RSAT AT+STKPD */
+EXTEND_CMD("stkpci", 40731519, 9, "", RMMI_CMD_ATSTKPCI, rmmi_stkpci_hdlr)
+EXTEND_CMD("stktr", 40731686, 0, "", RMMI_CMD_ATSTKTR, rmmi_stktr_hdlr)
+EXTEND_CMD("stkenv", 40731112, 22, "", RMMI_CMD_ATSTKENV, rmmi_stkenv_hdlr)
+EXTEND_CMD("stkcall", 40731023, 468, "", RMMI_CMD_STCALL, rmmi_stkcall_hdlr)
+EXTEND_CMD("stksms", 40731643, 19, "", RMMI_CMD_STKSMS, rmmi_stksms_hdlr)
+EXTEND_CMD("stkss", 40731649, 0, "", RMMI_CMD_STKSS, rmmi_stkss_hdlr)
+EXTEND_CMD("stkussd", 40731725, 726, "", RMMI_CMD_STKUSSD, rmmi_stkussd_hdlr)
+EXTEND_CMD("stkussi", 40731725, 731, "", RMMI_CMD_STKUSSI, rmmi_stkussi_hdlr)
+EXTEND_CMD("stkdtmf", 40731080, 500, "", RMMI_CMD_STKDTMF, rmmi_stkdtmf_hdlr)
+EXTEND_CMD("stkmenu", 40731407, 553, "", RMMI_CMD_STKMENU, rmmi_stkmenu_hdlr)
+EXTEND_CMD("cusatd", 7435214, 4, "+CUSATD: (0-2), (0,1)", RMMI_CMD_CUSATD, rmmi_cusatd_hdlr)
+EXTEND_CMD("cusata", 7435214, 1, "+CUSATA: (0-3)", RMMI_CMD_CUSATA, rmmi_cusata_hdlr)
+EXTEND_CMD("cusate", 7435214, 5, "", RMMI_CMD_CUSATE, rmmi_cusate_hdlr)
+EXTEND_CMD("cusatr", 7435214, 18, "+CUSATR: (0-5)", RMMI_CMD_CUSATR, rmmi_cusatr_hdlr)
+EXTEND_CMD("cusatt", 7435214, 20, "", RMMI_CMD_CUSATT, rmmi_stktr_hdlr)
+EXTEND_CMD("cusatw", 7435214, 23, "+CUSATW: (0,1)", RMMI_CMD_CUSATW, rmmi_cusatw_hdlr)
+#ifdef __CDMA2000_RAT__
+EXTEND_CMD("eutk", 305455, 0, "", RMMI_CMD_EUTK, rmmi_eutk_hdlr)
+#endif /* __CDMA2000_RAT__ */
+#endif /* __SAT__ */
+#ifdef __GEMINI_3G_SWITCH__
+	EXTEND_CMD("es3g", 302943, 0, "", RMMI_CMD_ES3G, rmmi_es3g_hdlr)
+    EXTEND_CMD("esimmap", 11481751, 54, "", RMMI_CMD_ATSIMMAP, rmmi_esimmap_hdlr)
+    EXTEND_CMD("epsmap", 11331563, 16, "", RMMI_CMD_ATEPSMAP, rmmi_epsmap_hdlr)
+#endif
+#endif  /* !defined(__SLIM_AT__) */
+#ifdef __EUICC_SUPPORT__
+EXTEND_CMD("eslotsmap", 11486166, 1061394, "", RMMI_CMD_ATESLOTSMAP, rmmi_eslotsmap_hdlr)
+#endif
+EXTEND_CMD("csus", 192869, 0, "", RMMI_CMD_CSUS, rmmi_csus_hdlr)
+EXTEND_CMD("cuad", 194982, 0, "+CUAD: (0-1)", RMMI_CMD_CUAD, rmmi_cuad_hdlr)
+EXTEND_CMD("ersa", 301075, 0, "", RMMI_CMD_ERSA, rmmi_ersa_hdlr)
+
+EXTEND_CMD("eapvsim", 10504511, 355, "", RMMI_CMD_EAPVSIM, rmmi_eapvsim_hdlr)
+EXTEND_CMD("ecusats", 10621343, 779, "+ECUSATD: (0,1)", RMMI_CMD_ECUSATS, rmmi_ecusats_hdlr)
+#ifdef __REMOTE_SIM__
+EXTEND_CMD("ersim", 11441167, 0, "", RMMI_CMD_ERSIM, rmmi_ersim_hdlr)
+EXTEND_CMD("ersimauth", 11441167, 85964, "+ERSIMAUTH: (0-1)", RMMI_CMD_ERSIMAUTH, rmmi_ersimauth_hdlr)
+EXTEND_CMD("ersimaka", 11441167, 1863, "+ERSIMAKA: (0-1)", RMMI_CMD_ERSIMAKA, rmmi_ersimaka_hdlr)
+EXTEND_CMD("ersimato", 11441167, 2219, "+ERSIMATO: (0-255)", RMMI_CMD_ERSIMATO, rmmi_ersimato_hdlr)
+#endif
+#endif
+EXTEND_CMD("ermode", 11432722, 5, "+ERMODE: (0,1)", RMMI_CMD_ERMODE, rmmi_ermode_hdlr)
+
+/****************************************************************/
+/* EQ AT commands (defined in rmmi_validator_eq.c)              */
+/* For Standard Equipment related commands                      */
+/****************************************************************/
+#ifdef __MOD_UEM__
+EXTEND_CMD("cgmr", 175236, 0, "", RMMI_CMD_ATCGMR, rmmi_cgmr_hdlr)
+EXTEND_CMD("gmr", 10620, 0, "", RMMI_CMD_ATGMR, rmmi_cgmr_hdlr)
+EXTEND_CMD("cmer", 183596, 0, "+CMER: (0-3),(0-2),(0),(0-2),(0,1),(0)", RMMI_CMD_ATCMER, rmmi_cmer_hdlr)
+#if !defined(__ULC_AT__)
+EXTEND_CMD("ifc", 13227, 0, "+IFC: (0-2),(0-2)", RMMI_CMD_ATIFC, rmmi_ifc_hdlr)
+EXTEND_CMD("ipr", 13622, 0, "+IPR: 0,75,150,300,600,1200,2400,4800,7200,9600,14400,19200,28800,38400,57600,115200,230400,460800,921600", RMMI_CMD_ATIPR, rmmi_ipr_hdlr)
+EXTEND_CMD("cclk", 169415, 0, "", RMMI_CMD_ATCCLK, rmmi_cclk_hdlr)
+EXTEND_CMD("cala", 166517, 0, "", RMMI_CMD_ATCALA, rmmi_cala_hdlr)
+EXTEND_CMD("cald", 166520, 0, "", RMMI_CMD_ATCALD, rmmi_cald_hdlr)
+#endif /*!defined(__ULC_AT__) */
+
+EXTEND_CMD("cgmm", 175231, 0, "", RMMI_CMD_ATCGMM, rmmi_cgmm_hdlr)
+EXTEND_CMD("cmec", 183581, 0, "+CMEC: (0,2),(0),(0)", RMMI_CMD_ATCMEC, rmmi_cmec_hdlr) 
+EXTEND_CMD("ecal", 278742, 0, "", RMMI_CMD_ATECAL, rmmi_ecal_hdlr)
+
+#if !defined(__SLIM_AT__) 
+EXTEND_CMD("clan", 181996, 0, "", RMMI_CMD_ATCLAN, rmmi_clan_hdlr)
+EXTEND_CMD("clae", 181987, 0, "+CLAE: (0,1)", RMMI_CMD_ATCLAE, rmmi_clae_hdlr)
+EXTEND_CMD("vgr", 32052, 0, "+VGR: (0-255)", RMMI_CMD_VGR, rmmi_vgr_hdlr)
+EXTEND_CMD("vgt", 32054, 0, "+VGT: (0-255)", RMMI_CMD_VGT, rmmi_vgt_hdlr)
+EXTEND_CMD("cbc", 4411, 0, "+CBC: (0,2), (0-100)", RMMI_CMD_ATCBC, rmmi_cbc_hdlr)
+EXTEND_CMD("clvl", 182792, 0, "", RMMI_CMD_ATCLVL, rmmi_clvl_hdlr)
+EXTEND_CMD("cmut", 184206, 0, "+CMUT: (0,1)", RMMI_CMD_ATCMUT, rmmi_cmut_hdlr)
+EXTEND_CMD("crsl", 191342, 0, "", RMMI_CMD_ATCRSL, rmmi_crsl_hdlr)
+EXTEND_CMD("cgmi", 175227, 0, "", RMMI_CMD_ATCGMI, rmmi_cgmi_hdlr)
+EXTEND_CMD("gmi", 10611, 0, "", RMMI_CMD_ATGMI, rmmi_cgmi_hdlr)
+EXTEND_CMD("gmm", 10615, 0, "", RMMI_CMD_ATGMM, rmmi_cgmm_hdlr)
+EXTEND_CMD("cgsn", 175460, 0, "", RMMI_CMD_ATCGSN, rmmi_cgsn_hdlr)
+#endif /* !defined(__SLIM_AT__) */
+
+#endif /* __MOD_UEM__ */
+
+
+/****************************************************************/
+/* EM AT commands (defined in rmmi_validator_em.c)              */
+/* For Proprietary HW testing or enginering mode commands       */
+/****************************************************************/
+	#if defined(__USB_MULTIPLE_COMPORT_SUPPORT__) && defined(__USB_ENABLE__)
+		EXTEND_CMD("diag", 232529, 0, "+DIAG: (0,1)", RMMI_CMD_ATDIAG, rmmi_diag_hdlr)
+	#endif /* __USB_MULTIPLE_COMPORT_SUPPORT__, mtk02285_usb2 */
+    EXTEND_CMD("sleepcount", 40283474, 7109364, "+SLEEPCOUNT: (0)", RMMI_CMD_ATSLEEPCOUNT, rmmi_sleepcount_hdlr)
+	EXTEND_CMD("egcmd", 10814614, 0, "", RMMI_CMD_ATEGCMD, rmmi_egcmd_hdlr)
+	EXTEND_CMD("casp", 166798, 0, "+CASP: <1-2>,<id>[,<0-3>[,<1-25>[,<0-6>[,<0-7>]]]]", RMMI_CMD_ATCASP, rmmi_casp_hdlr)
+	EXTEND_CMD("esam", 301847, 0, "+ESAM: (0-2)", RMMI_CMD_ATESAM, rmmi_esam_hdlr)
+	#if defined(__GEMINI__)
+		EXTEND_CMD("egmr", 284980, 0, "+EGMR: (0,1),(0-5,7-15)", RMMI_CMD_ATEGMR, rmmi_egmr_hdlr)
+	#else
+		EXTEND_CMD("egmr", 284980, 0, "+EGMR: (0,1),(0-5,7-9,13-15)", RMMI_CMD_ATEGMR, rmmi_egmr_hdlr)
+	#endif
+    EXTEND_CMD("eslp", 302268, 0, "+ESLP: (0,1)", RMMI_CMD_ATESLP, rmmi_eslp_hdlr)
+    EXTEND_CMD("elnvrm", 11105214, 13, "+ELNVRM: (1)", RMMI_CMD_ATENVRM, rmmi_elnvrm_hdlr)
+    EXTEND_CMD("erftx", 11422824, 0, "+ERFTX: (0)", RMMI_CMD_ATERFTX, rmmi_erftx_hdlr)
+    EXTEND_CMD("epct", 297598, 0, "+EPCT: (0-3)", RMMI_CMD_ATEPCT, rmmi_epct_hdlr)
+    EXTEND_CMD("eswla", 11501917, 0, "+ESWLA: (0-3)", RMMI_CMD_ATESWLA, rmmi_eswla_hdlr)
+#ifdef __RF_SCAN_FOR_DESENSE_TEST__
+	EXTEND_CMD("erfscan", 11422765, 52, "", RMMI_CMD_ATERFSCAN, rmmi_erfscan_hdlr)
+#endif /*__RF_SCAN_FOR_DESENSE_TEST__*/
+    #if defined(__AT_BACKUP_DATA_SUPPORT__)
+        EXTEND_CMD("esds", 301967, 0, "", RMMI_CMD_ATESDS, rmmi_esds_hdlr)
+    #endif
+	#ifdef __TC02__
+		EXTEND_CMD("rbti", 991353, 0, "", RMMI_CMD_ATRBTI, rmmi_rbti_hdlr)
+	#endif
+	EXTEND_CMD("ethermal", 11534880, 18822, "", RMMI_CMD_ATETHERMAL, rmmi_ethermal_hdlr)
+
+/*mtk01616_100303: The commands below are not used by MTK internally now.
+   We wrap this feature option, so that we can disable these seldom used command to save ROM size 
+   Currently, we only add this feature option in low cost project to default disable these command support */
+#if !defined(__DISABLE_SELDOM_USED_PROPRIETARY_CMD__)
+    EXTEND_CMD("egpio", 10833245, 0, "", RMMI_CMD_ATEGPIO, rmmi_egpio_hdlr)
+    EXTEND_CMD("epwm", 298351, 0, "+EPWM: (0-3),(0-2),(0-4),(0-65535),(0-100)", RMMI_CMD_ATEPWM, rmmi_epwm_hdlr)
+    EXTEND_CMD("eslt", 302272, 0, "+ESLT: (0-6),(0-255)", RMMI_CMD_ATESLT, rmmi_eslt_hdlr)
+    EXTEND_CMD("ealt", 276280, 0, "+EALT: (0,1)", RMMI_CMD_ATEALT, rmmi_ealt_hdlr)	
+    EXTEND_CMD("eadc", 275959, 0, "+EADC: (0,1)", RMMI_CMD_ATEADC, rmmi_eadc_hdlr)
+    EXTEND_CMD("egpo", 285091, 0, "+EGPO: (0-254),(0-254)", RMMI_CMD_ATEGPO, rmmi_egpo_hdlr)
+    EXTEND_CMD("edft", 280384, 0, "+EDFT: (0-20),(0,1-5)", RMMI_CMD_ATEDFT, rmmi_edft_hdlr)    
+#endif /* !defined(__DISABLE_SELDOM_USED_PROPRIETARY_CMD__) */
+
+#if defined(__AT_RRC_TRACE_SUPPORT__)
+    EXTEND_CMD("trace", 42691979, 0, "+TRACE: (0-1)", RMMI_CMD_ATTRACE, rmmi_trace_hdlr)
+#endif
+
+EXTEND_CMD("eswm", 302683, 0, "", RMMI_CMD_ATESWM, rmmi_eswm_hdlr)
+
+    EXTEND_CMD("etstlp", 11551328, 16, "", RMMI_CMD_ATETSTLP, rmmi_etstlp_hdlr)
+
+#if !defined(__SLIM_AT__) || defined(__AT_FOR_SPEECH_TUNING_TOOL__)
+EXTEND_CMD("eadp", 275972, 0, "+EADP: (0,1),(0-2),(0-4),(0-6),(0-255)", RMMI_CMD_ATEADP, rmmi_eadp_hdlr)
+EXTEND_CMD("eaps", 276431, 0, "+EAPS: (0-1),(0-4)", RMMI_CMD_ATEAPS, rmmi_eaps_hdlr)
+#endif
+
+#if defined(__NFC_SUPPORT__)
+EXTEND_CMD("enfc", 294807, 0, "+ENFC: (0-3)", RMMI_CMD_ATENFC, rmmi_enfc_hdlr)
+#endif
+
+EXTEND_CMD("erxpath", 11448641, 768, "+ERXPATH: (0-2)", RMMI_CMD_ATERXPATH, rmmi_erxpath_hdlr)
+EXTEND_CMD("etxant", 11557828, 20, "+ETXANT: (0-2),(1-4),(0-1)", RMMI_CMD_ATETXANT, rmmi_etxant_hdlr)
+EXTEND_CMD("eapinfo", 10504012, 243, "+EAPINFO: (0-1),(0-1),(0-1),(0-1)", RMMI_CMD_ATEAPINFO, rmmi_eapinfo_hdlr)
+EXTEND_CMD("emetacfg", 11146997, 4567, "+EMETACFG: (0,1)", RMMI_CMD_ATEMETACFG, rmmi_emetacfg_hdlr)
+EXTEND_CMD("erfidx", 11422386, 24, "", RMMI_CMD_ATERFIDX, rmmi_erfidx_hdlr)
+
+
+#if defined(__EM_MAX_TX_POWER_SUPPORT__)
+EXTEND_CMD("emaxpwr", 11141388, 892, "+EMAXPWR: (0-4),(0-1023),(1-4)", RMMI_CMD_ATEMAXPWR, rmmi_emaxpwr_hdlr)
+#endif
+
+#if defined(__GSM_EM_TX_POWER_CONTROL_SUPPORT__)
+EXTEND_CMD("epcl", 297590, 0, "+EPCL: (0-2),(1-4),(-1-31)", RMMI_CMD_ATEPCL, rmmi_epcl_hdlr)
+#endif
+
+#if defined(__SAR_SENSOR_TX_DETECTION_SUPPORT__)
+EXTEND_CMD("etxpwrstus", 11558407, 38604713, "+ETXPWRSTUS: (0-1)", RMMI_CMD_ATETXPWRSTUS, rmmi_etxpwrstus_hdlr)
+#endif
+/****************************************************************/
+/* MISC AT commands (defined in rmmi_validator.c)               */
+/* For Standard or Proprietary genreal commands                 */
+/****************************************************************/
+EXTEND_CMD("cscs", 192185, 0, "", RMMI_CMD_ATCSCS, rmmi_cscs_hdlr)
+EXTEND_CMD("cmee", 183583, 0, "+CMEE: (0-2)", RMMI_CMD_ATCMEE, rmmi_cmee_hdlr)
+EXTEND_CMD("cind", 178148, 0, "", RMMI_CMD_ATCIND, rmmi_cind_hdlr)
+
+#if defined(__DT_SUPPORT__) && defined(__GEMINI__) && !defined(__DISABLE_SIM2_AT_SUPPORT__)
+EXTEND_CMD("esuo", 302609, 0, "+ESUO: (3-5)", RMMI_CMD_ATESUO, rmmi_esuo_hdlr)
+#elif  !defined(__DT_SUPPORT__) && defined(__GEMINI__) && !defined(__DISABLE_SIM2_AT_SUPPORT__)
+EXTEND_CMD("esuo", 302609, 0, "+ESUO: (4-5)", RMMI_CMD_ATESUO, rmmi_esuo_hdlr)
+#elif  defined(__DT_SUPPORT__) && (!defined(__GEMINI__) || defined(__DISABLE_SIM2_AT_SUPPORT__))
+EXTEND_CMD("esuo", 302609, 0, "+ESUO: (3-4)", RMMI_CMD_ATESUO, rmmi_esuo_hdlr)
+#else
+EXTEND_CMD("esuo", 302609, 0, "+ESUO: (?-?)", RMMI_CMD_ATESUO, rmmi_esuo_hdlr)
+#endif
+EXTEND_CMD("equery", 11389036, 25, "", RMMI_CMD_ATEQUERY, rmmi_equery_hdlr)
+
+#if !defined(__SLIM_AT__)
+EXTEND_CMD("eboot", 10557674, 0, "", RMMI_CMD_ATEBOOT, rmmi_eboot_hdlr)
+EXTEND_CMD("ceer", 172044, 0, "", RMMI_CMD_ATCEER, rmmi_ceer_hdlr)
+EXTEND_CMD("gcap", 388490, 0, "", RMMI_CMD_ATGCAP, rmmi_gcap_hdlr)
+EXTEND_CMD("eind", 287892, 0, "+EIND: (0-4294967295)", RMMI_CMD_ATEIND, rmmi_eind_hdlr)
+EXTEND_CMD("einfo", 10939987, 0, "+EINFO: (0-4294967295)", RMMI_CMD_ATEINFO, rmmi_einfo_hdlr)
+EXTEND_CMD("epon", 298048, 0, "", RMMI_CMD_ATEPON, rmmi_epon_hdlr)
+#ifdef __CMUX_SUPPORT__
+EXTEND_CMD("cmux", 184210, 0, "+CMUX: (0)", RMMI_CMD_CMUX, rmmi_cmux_hdlr)
+#endif
+EXTEND_CMD("clac", 181985, 0, "", RMMI_CMD_ATCLAC, rmmi_clac_hdlr)  
+#endif /* !defined(__SLIM_AT__) */
+
+#if defined(__OP11_ATK__) || defined(__AUTO_ATK__)
+EXTEND_CMD("ecpu", 279321, 0, "", RMMI_CMD_ATECPU, rmmi_ecpu_hdlr)
+#endif /* defined(__OP11_ATK__) || defined(__AUTO_ATK__) */
+
+#if defined(__DUAL_TALK_MODEM_SUPPORT__)
+EXTEND_CMD("espeech", 11491547, 122, "+ESPEECH: (0-1)", RMMI_CMD_ATESPEECH, rmmi_espeech_hdlr)
+EXTEND_CMD("esstv", 11496466, 0, "+ESSTV: (0-255)", RMMI_CMD_ATESSTV, rmmi_esstv_hdlr)
+EXTEND_CMD("edtp", 280912, 0, "+EDTP: (0-255)", RMMI_CMD_ATEDTP, rmmi_edtp_hdlr)
+EXTEND_CMD("edts", 280915, 0, "", RMMI_CMD_ATEDTS, rmmi_edts_hdlr)
+EXTEND_CMD("esetdev", 11476232, 212, "+ESETDEV: (0-1),(0-255)", RMMI_CMD_ATESETDEV, rmmi_esetdev_hdlr)
+EXTEND_CMD("esov", 302388, 0, "+ESOV: (0-255),(0-255)", RMMI_CMD_ATESOV, rmmi_esov_hdlr)
+EXTEND_CMD("esmv", 302312, 0, "+ESMV: (0-255)", RMMI_CMD_ATESMV, rmmi_esmv_hdlr)
+EXTEND_CMD("essma", 11496179, 0, "+ESSMA: (0-255)", RMMI_CMD_ATESSMA, rmmi_essma_hdlr)
+#endif /* defined(__DUAL_TALK_MODEM_SUPPORT__) */
+
+
+EXTEND_CMD("erscfg", 11440932, 7, "", RMMI_CMD_ATERSCFG, rmmi_erscfg_hdlr)
+EXTEND_CMD("ebgs", 277533, 0, "+EBGS: (0,1,2)", RMMI_CMD_ATEBGS, rmmi_ebgs_hdlr)
+
+EXTEND_CMD("eb3info", 10579100, 243, "", RMMI_CMD_ATEB3INFO, rmmi_eb3info_hdlr)
+EXTEND_CMD("edss", 280877, 0, "+EDSS: (0,1)", RMMI_CMD_ATEDSS, rmmi_edss_hdlr)
+EXTEND_CMD("earal", 10506594, 0, "", RMMI_CMD_ATEARAL, rmmi_earal_hdlr)
+
+#if defined(__EONS_SUPPORT__)
+EXTEND_CMD("eons", 296571, 0, "+EONS: (1-2)", RMMI_CMD_ATEONS, rmmi_eons_hdlr)
+#endif
+EXTEND_CMD("edmode", 10664514, 5, "+EDMODE: (0-1)", RMMI_CMD_ATEDMODE, rmmi_edmode_hdlr)
+EXTEND_CMD("esectest", 11475602, 7962, "", RMMI_CMD_ATESECTEST, rmmi_esectest_hdlr)
+
+EXTEND_CMD("ecmsid", 10609799, 4, "", RMMI_CMD_ATECMSID, rmmi_ecmsid_hdlr)
+EXTEND_CMD("esimoff", 11481753, 234, "", RMMI_CMD_ATESIMOFF, rmmi_esimoff_hdlr)
+EXTEND_CMD("esimpower", 11481754, 856500, "", RMMI_CMD_ATESIMPOWER, rmmi_esimpower_hdlr)
+EXTEND_CMD("emdver", 11145633, 18, "", RMMI_CMD_ATEMDVER, rmmi_emdver_hdlr)
+EXTEND_CMD("esimtray", 11481758, 26055, "", RMMI_CMD_ATESIMTRAY, rmmi_esimtray_hdlr)
+EXTEND_CMD("egutic", 10840877, 3, "", RMMI_CMD_ATEGUTIC, rmmi_egutic_hdlr)
+#ifdef __ATT_SIM_LOCK__
+EXTEND_CMD("eattsk", 10510211, 11, "+EATTSK: 0", RMMI_CMD_ATEATTSK, rmmi_eattsk_hdlr)
+EXTEND_CMD("eattslb", 10510211, 458, "+EATTSLB: (1-11)", RMMI_CMD_ATEATTSLB, rmmi_eattslb_hdlr)
+#endif
+
+/****************************************************************/
+/* Phonesuite commands (defined in rmmi_validator_phonesuite.c) */
+/* For Proprietary Phonesuite used commands                     */ 
+/****************************************************************/
+#if defined(__DT_SUPPORT__)
+#if !defined(NEPTUNE_MMI)
+EXTEND_CMD("evcard", 11637252, 4, "", RMMI_CMD_ATEVCARD, rmmi_evcard_hdlr)
+#endif 
+#endif
+
+/****************************************************************/
+/* AT commands (defined in rmmi_validator_sim.c) */
+/****************************************************************/
+#if defined(__MTK_TARGET__)
+EXTEND_CMD("usimsmt", 44843933, 514, "+USIMSMT: (2)", RMMI_CMD_USIMSMT, rmmi_usim_smt_hdlr)
+#endif
+
+EXTEND_CMD("esstq", 11496461, 0, "", RMMI_CMD_ATESSTQ, rmmi_esstq_hdlr)
+
+#if defined(__MULTIPLE_PS__)
+EXTEND_CMD("edallow", 10647080, 593, "+EDALLOW: (0-1)", RMMI_CMD_ATEDALLOW, rmmi_edallow_hdlr)
+#endif
+EXTEND_CMD("euulk", 11608783, 0, "", RMMI_CMD_ATEUULK, rmmi_euulk_hdlr)
+
+/****************************************************************/
+/* AT commands (defined in rmmi_mbms.c) */
+/****************************************************************/
+
+#ifdef __LTE_RAT__
+EXTEND_CMD("emsen", 11166656, 0, "", RMMI_CMD_ATEMSEN, rmmi_mbms_hdlr)
+EXTEND_CMD("emsrv", 11167158, 0, "", RMMI_CMD_ATEMSRV, rmmi_mbms_hdlr)
+EXTEND_CMD("emtsi", 11168627, 0, "", RMMI_CMD_ATEMTSI, rmmi_mbms_hdlr)
+EXTEND_CMD("emslu", 11166929, 0, "", RMMI_CMD_ATEMSLU, rmmi_mbms_hdlr)
+EXTEND_CMD("empri", 11162813, 0, "", RMMI_CMD_ATEMPRI, rmmi_mbms_hdlr)
+EXTEND_CMD("emsail", 11166499, 12, "", RMMI_CMD_ATEMSAIL, rmmi_mbms_hdlr)
+EXTEND_CMD("emsess", 11166661, 19, "", RMMI_CMD_ATEMSESS, rmmi_mbms_hdlr)
+EXTEND_CMD("emfrq", 11148381, 0, "", RMMI_CMD_ATEMFRQ, rmmi_mbms_hdlr)
+EXTEND_CMD("embind", 11142260, 4, "", RMMI_CMD_ATEMBIND, rmmi_mbms_hdlr)
+EXTEND_CMD("emscp", 11166582, 0, "", RMMI_CMD_ATEMSCP, rmmi_mbms_hdlr)
+EXTEND_CMD("emevt", 11147092, 0, "", RMMI_CMD_ATEMEVT, rmmi_mbms_hdlr)
+EXTEND_CMD("emsesscfg", 11166661, 1047135, "", RMMI_CMD_ATEMSESSCFG, rmmi_mbms_hdlr)
+#endif
+
+
+/****************************************************************/
+/* Define command enumeration */
+/****************************************************************/
+
+/* Basic command enum, should be in order */
+CMD_ENUM(RMMI_CMD_ATA)
+CMD_ENUM(RMMI_CMD_ATD)
+CMD_ENUM(RMMI_CMD_ATE)
+CMD_ENUM(RMMI_CMD_ATH)
+CMD_ENUM(RMMI_CMD_ATI)
+CMD_ENUM(RMMI_CMD_ATL)
+CMD_ENUM(RMMI_CMD_ATM)
+CMD_ENUM(RMMI_CMD_ATO)
+CMD_ENUM(RMMI_CMD_ATP)
+CMD_ENUM(RMMI_CMD_ATQ)
+CMD_ENUM(RMMI_CMD_ATS)
+CMD_ENUM(RMMI_CMD_ATT)
+CMD_ENUM(RMMI_CMD_ATV)
+CMD_ENUM(RMMI_CMD_ATW)
+CMD_ENUM(RMMI_CMD_ATX)
+CMD_ENUM(RMMI_CMD_ATZ)
+CMD_ENUM(RMMI_CMD_ATAMP)
+
+
+
+/* Extend command enum */
+CMD_ENUM(RMMI_CMD_ATCACM)
+CMD_ENUM(RMMI_CMD_ATCAMM)
+CMD_ENUM(RMMI_CMD_ATCLCC)
+CMD_ENUM(RMMI_CMD_ATCLCCS)
+CMD_ENUM(RMMI_CMD_ATVTS)
+CMD_ENUM(RMMI_CMD_ATCHUP)
+CMD_ENUM(RMMI_CMD_ATCHLD)
+CMD_ENUM(RMMI_CMD_ATECPI)
+CMD_ENUM(RMMI_CMD_ATBLDN)
+CMD_ENUM(RMMI_CMD_ATBVRA)
+CMD_ENUM(RMMI_CMD_ATEMSD)
+CMD_ENUM(RMMI_CMD_ATEMSDSET)
+CMD_ENUM(RMMI_CMD_ATEMSDPUSH)
+CMD_ENUM(RMMI_CMD_ATEMSDMOD)
+CMD_ENUM(RMMI_CMD_ATEMSDTNUM)
+CMD_ENUM(RMMI_CMD_ATEMSDRNUM)
+CMD_ENUM(RMMI_CMD_ATCECALL)
+CMD_ENUM(RMMI_CMD_ATEPSAP)
+CMD_ENUM(RMMI_CMD_ATEPSAPPULL)
+CMD_ENUM(RMMI_CMD_ATECCP)
+CMD_ENUM(RMMI_CMD_ATCAOC)
+CMD_ENUM(RMMI_CMD_ATCCWE)
+CMD_ENUM(RMMI_CMD_ATCCUG)
+CMD_ENUM(RMMI_CMD_ATCPAS)
+CMD_ENUM(RMMI_CMD_CVHU)
+CMD_ENUM(RMMI_CMD_ATCTFR)
+CMD_ENUM(RMMI_CMD_ATCIWF)
+CMD_ENUM(RMMI_CMD_ATCRC)
+CMD_ENUM(RMMI_CMD_ATCR)
+CMD_ENUM(RMMI_CMD_ATCSTA)
+CMD_ENUM(RMMI_CMD_ATEVTS)
+CMD_ENUM(RMMI_CMD_ATEALS)
+CMD_ENUM(RMMI_CMD_ATECHUP)
+CMD_ENUM(RMMI_CMD_ATEAIC)
+CMD_ENUM(RMMI_CMD_ATCRM)
+CMD_ENUM(RMMI_CMD_ATESVC)
+CMD_ENUM(RMMI_CMD_ATESRVCCTFR)
+CMD_ENUM(RMMI_CMD_ATEIMSCP)
+CMD_ENUM(RMMI_CMD_ATCSCM)
+CMD_ENUM(RMMI_CMD_ATEVOCD)
+CMD_ENUM(RMMI_CMD_ATESBP)
+CMD_ENUM(RMMI_CMD_ATERLM)
+CMD_ENUM(RMMI_CMD_ATERTTSTR)
+CMD_ENUM(RMMI_CMD_ATCTMSET)
+CMD_ENUM(RMMI_CMD_ATCTMOPEN)
+CMD_ENUM(RMMI_CMD_ATCTMCLOSE)
+CMD_ENUM(RMMI_CMD_ATCTMCONN)
+CMD_ENUM(RMMI_CMD_ATCTMS)
+CMD_ENUM(RMMI_CMD_ATCTMCFG)
+CMD_ENUM(RMMI_CMD_ATCTMCALL)
+CMD_ENUM(RMMI_CMD_ATFCLASS)
+CMD_ENUM(RMMI_CMD_ATCSNS)
+CMD_ENUM(RMMI_CMD_ATCBST)
+CMD_ENUM(RMMI_CMD_ATCMOD)
+CMD_ENUM(RMMI_CMD_ATCRLP)
+CMD_ENUM(RMMI_CMD_ATICF)
+CMD_ENUM(RMMI_CMD_ATDS)
+CMD_ENUM(RMMI_CMD_ATDR)
+CMD_ENUM(RMMI_CMD_ATFMI)
+CMD_ENUM(RMMI_CMD_ATFMM)
+CMD_ENUM(RMMI_CMD_ATFMR)
+CMD_ENUM(RMMI_CMD_ATFPR)
+CMD_ENUM(RMMI_CMD_ATFDT)
+CMD_ENUM(RMMI_CMD_ATFDR)
+CMD_ENUM(RMMI_CMD_ATFIP)
+CMD_ENUM(RMMI_CMD_ATFKS)
+CMD_ENUM(RMMI_CMD_ATFK)
+CMD_ENUM(RMMI_CMD_ATFET)
+CMD_ENUM(RMMI_CMD_ATFTM)
+CMD_ENUM(RMMI_CMD_ATFRM)
+CMD_ENUM(RMMI_CMD_ATFTH)
+CMD_ENUM(RMMI_CMD_ATFRH)
+CMD_ENUM(RMMI_CMD_ATFTS)
+CMD_ENUM(RMMI_CMD_ATFRS)
+CMD_ENUM(RMMI_CMD_ATFCC)
+CMD_ENUM(RMMI_CMD_ATFDCC)
+CMD_ENUM(RMMI_CMD_ATFIS)
+CMD_ENUM(RMMI_CMD_ATFDIS)
+CMD_ENUM(RMMI_CMD_ATFCS)
+CMD_ENUM(RMMI_CMD_ATFDCS)
+CMD_ENUM(RMMI_CMD_ATFLI)
+CMD_ENUM(RMMI_CMD_ATFLID)
+CMD_ENUM(RMMI_CMD_ATFPI)
+CMD_ENUM(RMMI_CMD_ATFCIG)
+CMD_ENUM(RMMI_CMD_ATFLP)
+CMD_ENUM(RMMI_CMD_ATFLPL)
+CMD_ENUM(RMMI_CMD_ATFSP)
+CMD_ENUM(RMMI_CMD_ATFSPL)
+CMD_ENUM(RMMI_CMD_ATFNR)
+CMD_ENUM(RMMI_CMD_ATFIE)
+CMD_ENUM(RMMI_CMD_ATFPS)
+CMD_ENUM(RMMI_CMD_ATFPTS)
+CMD_ENUM(RMMI_CMD_ATFRQ)
+CMD_ENUM(RMMI_CMD_ATFBADLIN)
+CMD_ENUM(RMMI_CMD_ATFBADMUL)
+CMD_ENUM(RMMI_CMD_ATFCQ)
+CMD_ENUM(RMMI_CMD_ATFIT)
+CMD_ENUM(RMMI_CMD_ATFPP)
+CMD_ENUM(RMMI_CMD_ATFBO)
+CMD_ENUM(RMMI_CMD_ATFBOR)
+CMD_ENUM(RMMI_CMD_ATFEA)
+CMD_ENUM(RMMI_CMD_ATFREL)
+CMD_ENUM(RMMI_CMD_ATFNS)
+CMD_ENUM(RMMI_CMD_ATFCR)
+CMD_ENUM(RMMI_CMD_ATFBU)
+CMD_ENUM(RMMI_CMD_ATFBUG)
+CMD_ENUM(RMMI_CMD_ATFAP)
+CMD_ENUM(RMMI_CMD_ATFSA)
+CMD_ENUM(RMMI_CMD_ATFPA)
+CMD_ENUM(RMMI_CMD_ATFPW)
+CMD_ENUM(RMMI_CMD_ATFCT)
+CMD_ENUM(RMMI_CMD_ATFPHCTO)
+CMD_ENUM(RMMI_CMD_ATFHS)
+CMD_ENUM(RMMI_CMD_ATFMS)
+CMD_ENUM(RMMI_CMD_ATFMINSP)
+CMD_ENUM(RMMI_CMD_ATFRY)
+CMD_ENUM(RMMI_CMD_ATFBS)
+CMD_ENUM(RMMI_CMD_ATFFC)
+CMD_ENUM(RMMI_CMD_ATFVRFC)
+CMD_ENUM(RMMI_CMD_ATFDFFC)
+CMD_ENUM(RMMI_CMD_ATFLNFC)
+CMD_ENUM(RMMI_CMD_ATFWDFC)
+CMD_ENUM(RMMI_CMD_ATCCWA)
+CMD_ENUM(RMMI_CMD_ATCLIP)
+CMD_ENUM(RMMI_CMD_ATCAEMLPP)
+CMD_ENUM(RMMI_CMD_ATCCFC)
+CMD_ENUM(RMMI_CMD_ATCDIP)
+CMD_ENUM(RMMI_CMD_ATCLCK)
+CMD_ENUM(RMMI_CMD_ATESSP)
+CMD_ENUM(RMMI_CMD_ATCLIR)
+CMD_ENUM(RMMI_CMD_ATCOLP)
+CMD_ENUM(RMMI_CMD_ATCNAP)
+CMD_ENUM(RMMI_CMD_ATCPWD)
+CMD_ENUM(RMMI_CMD_ATCSSN)
+CMD_ENUM(RMMI_CMD_ATCCBS)
+CMD_ENUM(RMMI_CMD_ATCUSD)
+CMD_ENUM(RMMI_CMD_ATECUSD)
+CMD_ENUM(RMMI_CMD_ATCOLR)
+CMD_ENUM(RMMI_CMD_ATCGATT)
+CMD_ENUM(RMMI_CMD_ATCGREG)
+CMD_ENUM(RMMI_CMD_ATCGCLASS)
+CMD_ENUM(RMMI_CMD_ATCGACT)
+CMD_ENUM(RMMI_CMD_ATCGCMOD)
+CMD_ENUM(RMMI_CMD_ATCGDCONT)
+CMD_ENUM(RMMI_CMD_ATCGQMIN)
+CMD_ENUM(RMMI_CMD_ATCGQREQ)
+CMD_ENUM(RMMI_CMD_ATCGSDATA)
+CMD_ENUM(RMMI_CMD_ATACTTEST)
+CMD_ENUM(RMMI_CMD_ATCGEQMIN)
+CMD_ENUM(RMMI_CMD_ATCGEQREQ)
+CMD_ENUM(RMMI_CMD_ATCGEQNEG) /* mtk02285, 20111003 */
+CMD_ENUM(RMMI_CMD_ATCGANS)
+CMD_ENUM(RMMI_CMD_ATCGAUTO)
+CMD_ENUM(RMMI_CMD_ATCGPADDR)
+CMD_ENUM(RMMI_CMD_ATCGDSCONT)
+CMD_ENUM(RMMI_CMD_ATEGPAU)
+CMD_ENUM(RMMI_CMD_ATCGTFT)
+CMD_ENUM(RMMI_CMD_ATEGDELPF)
+CMD_ENUM(RMMI_CMD_ATEGLNKPF)
+CMD_ENUM(RMMI_CMD_ATCGEREQ)
+CMD_ENUM(RMMI_CMD_ATCGDATA)
+CMD_ENUM(RMMI_CMD_ATEGACT)
+CMD_ENUM(RMMI_CMD_ATEGLD)
+CMD_ENUM(RMMI_CMD_ATMBPC)
+CMD_ENUM(RMMI_CMD_ATMBCONNECT)
+CMD_ENUM(RMMI_CMD_ATCGPRCO)
+CMD_ENUM(RMMI_CMD_ATCGAUTH)
+CMD_ENUM(RMMI_CMD_ATCGPIAF)
+CMD_ENUM(RMMI_CMD_EHSM)
+CMD_ENUM(RMMI_CMD_EGFB) // __IPV4V6__
+CMD_ENUM(RMMI_CMD_EI3GPPIRAT)
+CMD_ENUM(RMMI_CMD_EGCONTRDP)
+CMD_ENUM(RMMI_CMD_VZWAPNE)
+CMD_ENUM(RMMI_CMD_VZWAPNETMR)
+CMD_ENUM(RMMI_CMD_EAPNRDP)
+CMD_ENUM(RMMI_CMD_EGDCONT)
+CMD_ENUM(RMMI_CMD_ELATTPDNCC)
+CMD_ENUM(RMMI_CMD_EAPNSYNC)
+CMD_ENUM(RMMI_CMD_ECNCFG)
+CMD_ENUM(RMMI_CMD_EPDNCTRANS)
+CMD_ENUM(RMMI_CMD_EGPCO)
+CMD_ENUM(RMMI_CMD_EGPCORDP)
+
+#if 0 //defined(__DIALUP_GPRS_COUNTER_SUPPORT__)
+CMD_ENUM(RMMI_CMD_EGCH)
+#endif
+CMD_ENUM(RMMI_CMD_EGTP)
+CMD_ENUM(RMMI_CMD_EGTYPE)
+CMD_ENUM(RMMI_CMD_ATEGPCAP)
+CMD_ENUM(RMMI_CMD_ATMSQ)        // __MEDIATEK_SMART_QOS__
+CMD_ENUM(RMMI_CMD_ATMSQON)      // __MEDIATEK_SMART_QOS__
+CMD_ENUM(RMMI_CMD_PSBEARER)
+
+CMD_ENUM(RMMI_CMD_CGCONTRDP)
+CMD_ENUM(RMMI_CMD_CGSCONTRDP)
+CMD_ENUM(RMMI_CMD_CGEQOS)
+CMD_ENUM(RMMI_CMD_CGEQOSRDP)
+CMD_ENUM(RMMI_CMD_CGTFTRDP)
+CMD_ENUM(RMMI_CMD_ATCEMODE)
+CMD_ENUM(RMMI_CMD_ATCEREG)
+CMD_ENUM(RMMI_CMD_CGDEL)
+
+CMD_ENUM(RMMI_CMD_ATCOPS) 
+CMD_ENUM(RMMI_CMD_ATCFUN)
+CMD_ENUM(RMMI_CMD_ATEFUN)
+CMD_ENUM(RMMI_CMD_ATEOPS)
+CMD_ENUM(RMMI_CMD_ATCREG)
+CMD_ENUM(RMMI_CMD_ATEOPN)
+CMD_ENUM(RMMI_CMD_ATEPOF)
+CMD_ENUM(RMMI_CMD_ATEPBSE)
+CMD_ENUM(RMMI_CMD_ATECASW)
+CMD_ENUM(RMMI_CMD_ATCOPN)
+CMD_ENUM(RMMI_CMD_ATCSQ)
+CMD_ENUM(RMMI_CMD_ATCESQ)
+CMD_ENUM(RMMI_CMD_ATERRMT)
+CMD_ENUM(RMMI_CMD_ATCAPL)
+CMD_ENUM(RMMI_CMD_ATWS46)
+CMD_ENUM(RMMI_CMD_ATCTZR)
+CMD_ENUM(RMMI_CMD_ATERAT)
+CMD_ENUM(RMMI_CMD_ATEMPPCH)
+CMD_ENUM(RMMI_CMD_ATCEUS)
+CMD_ENUM(RMMI_CMD_ATCEVDP)
+CMD_ENUM(RMMI_CMD_ATCVDP)
+CMD_ENUM(RMMI_CMD_ATCAVIMS)
+CMD_ENUM(RMMI_CMD_ATCASIMS)
+CMD_ENUM(RMMI_CMD_ATEFSS)
+CMD_ENUM(RMMI_CMD_ATECSG)
+CMD_ENUM(RMMI_CMD_ATESCRI)
+CMD_ENUM(RMMI_CMD_ATEFD)
+CMD_ENUM(RMMI_CMD_ATECSQ)
+CMD_ENUM(RMMI_CMD_ATEACMT)
+CMD_ENUM(RMMI_CMD_ATECOPS)
+CMD_ENUM(RMMI_CMD_ATEMSR)
+CMD_ENUM(RMMI_CMD_ATEPOL)
+CMD_ENUM(RMMI_CMD_ATEFPL)
+CMD_ENUM(RMMI_CMD_ATECELCK)
+CMD_ENUM(RMMI_CMD_ATENBR)
+CMD_ENUM(RMMI_CMD_ATECELL)
+CMD_ENUM(RMMI_CMD_ATEPSB)
+CMD_ENUM(RMMI_CMD_ATSYSSEL)
+CMD_ENUM(RMMI_CMD_ATCSRA)
+CMD_ENUM(RMMI_CMD_ATECSRA)
+CMD_ENUM(RMMI_CMD_ATEWMPOLICY)
+CMD_ENUM(RMMI_CMD_ATEMODCFG)
+CMD_ENUM(RMMI_CMD_ATEGMSS)
+CMD_ENUM(RMMI_CMD_ATCPBR)
+CMD_ENUM(RMMI_CMD_ATEECCUD)
+CMD_ENUM(RMMI_CMD_ATEECCFC)
+CMD_ENUM(RMMI_CMD_ATESIMECC)
+CMD_ENUM(RMMI_CMD_ATECPBR)
+CMD_ENUM(RMMI_CMD_ATCPBS)
+CMD_ENUM(RMMI_CMD_ATCPBW)
+CMD_ENUM(RMMI_CMD_ATECPBW)
+CMD_ENUM(RMMI_CMD_ATEPBW)
+CMD_ENUM(RMMI_CMD_ATEPBUM)
+CMD_ENUM(RMMI_CMD_ATCNUM)
+CMD_ENUM(RMMI_CMD_ATCPBF)
+CMD_ENUM(RMMI_CMD_ATESLN)
+CMD_ENUM(RMMI_CMD_ATCEN)
+CMD_ENUM(RMMI_CMD_ATEAPPROVE)
+CMD_ENUM(RMMI_CMD_ATCSMS)
+CMD_ENUM(RMMI_CMD_ATCMGL)
+CMD_ENUM(RMMI_CMD_ATCSAS)
+CMD_ENUM(RMMI_CMD_ATCRES)
+CMD_ENUM(RMMI_CMD_ATCSMP)
+CMD_ENUM(RMMI_CMD_ATCSDH)
+CMD_ENUM(RMMI_CMD_ATCNMI)
+CMD_ENUM(RMMI_CMD_ATCMMS)
+CMD_ENUM(RMMI_CMD_ATCMSS)
+CMD_ENUM(RMMI_CMD_ATCMGC)
+CMD_ENUM(RMMI_CMD_ATCNMA)
+CMD_ENUM(RMMI_CMD_ATCSCB)
+CMD_ENUM(RMMI_CMD_ATECBMR)
+CMD_ENUM(RMMI_CMD_ATECSCBSW)
+CMD_ENUM(RMMI_CMD_ATECSCBCFG)
+CMD_ENUM(RMMI_CMD_ATESMSS)
+CMD_ENUM(RMMI_CMD_ATCSMA)
+CMD_ENUM(RMMI_CMD_ATCGSMS)
+CMD_ENUM(RMMI_CMD_ATCMGS)
+CMD_ENUM(RMMI_CMD_ATCMGW)
+CMD_ENUM(RMMI_CMD_ATEMGC)
+CMD_ENUM(RMMI_CMD_ATENMA)
+CMD_ENUM(RMMI_CMD_ATEMGS)
+CMD_ENUM(RMMI_CMD_ATEMGW)
+CMD_ENUM(RMMI_CMD_ATEMGL)
+CMD_ENUM(RMMI_CMD_ATEMEMS)
+CMD_ENUM(RMMI_CMD_ATCSCA)
+CMD_ENUM(RMMI_CMD_ATCMGD)
+CMD_ENUM(RMMI_CMD_ATCMGF)
+CMD_ENUM(RMMI_CMD_ATCMGR)
+CMD_ENUM(RMMI_CMD_ATCPMS)
+CMD_ENUM(RMMI_CMD_ATEQSI)
+CMD_ENUM(RMMI_CMD_ATEMGR)
+CMD_ENUM(RMMI_CMD_ATETWS)
+CMD_ENUM(RMMI_CMD_ATCPNER)
+CMD_ENUM(RMMI_CMD_ATESMSMAIP)
+CMD_ENUM(RMMI_CMD_ATESMSMOIP)
+CMD_ENUM(RMMI_CMD_ATESMSMTIP)
+CMD_ENUM(RMMI_CMD_ATESMMA)
+CMD_ENUM(RMMI_CMD_ATEWFCP)
+CMD_ENUM(RMMI_CMD_ATSTKSMSOIP)
+CMD_ENUM(RMMI_CMD_ATECMSS)
+CMD_ENUM(RMMI_CMD_ATECMSSU)
+CMD_ENUM(RMMI_CMD_ATEUSIM)
+CMD_ENUM(RMMI_CMD_ATETESTSIM)
+CMD_ENUM(RMMI_CMD_ATESIMS)
+CMD_ENUM(RMMI_CMD_ATESIMEXIST)
+CMD_ENUM(RMMI_CMD_ATESIMAPP)
+CMD_ENUM(RMMI_CMD_ATESCG)
+CMD_ENUM(RMMI_CMD_ATCIMI)
+CMD_ENUM(RMMI_CMD_ATEVSIM)
+CMD_ENUM(RMMI_CMD_ATEVAUTH)
+CMD_ENUM(RMMI_CMD_ATEVSIMKEY)
+CMD_ENUM(RMMI_CMD_ATEVSIMEF)
+CMD_ENUM(RMMI_CMD_ATEVSIMPRO)
+CMD_ENUM(RMMI_CMD_ATCPIN)
+CMD_ENUM(RMMI_CMD_ATEPIN)
+CMD_ENUM(RMMI_CMD_ATEPIN1)
+CMD_ENUM(RMMI_CMD_ATEPIN2)
+CMD_ENUM(RMMI_CMD_ATEPINC)
+CMD_ENUM(RMMI_CMD_ATCPOL)
+CMD_ENUM(RMMI_CMD_ATCPLS)
+CMD_ENUM(RMMI_CMD_ATPACSP)
+CMD_ENUM(RMMI_CMD_ATESIMREC)
+CMD_ENUM(RMMI_CMD_ATCPUC)
+CMD_ENUM(RMMI_CMD_ATCRSM)
+CMD_ENUM(RMMI_CMD_ATCSRM)
+CMD_ENUM(RMMI_CMD_ATCSIM)
+CMD_ENUM(RMMI_CMD_ATCGLA) 
+#ifdef __EUICC_SUPPORT__
+CMD_ENUM(RMMI_CMD_ATECGLA)
+#endif
+CMD_ENUM(RMMI_CMD_ATEXCGLA)
+CMD_ENUM(RMMI_CMD_ATCRLA) 
+CMD_ENUM(RMMI_CMD_ATCCHO)
+CMD_ENUM(RMMI_CMD_ATCCHC)
+CMD_ENUM(RMMI_CMD_ATESMLCK)
+CMD_ENUM(RMMI_CMD_ATETMOSK)
+CMD_ENUM(RMMI_CMD_ATETMOSLB)
+CMD_ENUM(RMMI_CMD_ATESIMAUTH)
+CMD_ENUM(RMMI_CMD_ATEAUTH)
+CMD_ENUM(RMMI_CMD_ATEBTSAP)
+CMD_ENUM(RMMI_CMD_ATESIMINFO)
+CMD_ENUM(RMMI_CMD_ATESIMTC)
+CMD_ENUM(RMMI_CMD_ATESIMTEST)	
+CMD_ENUM(RMMI_CMD_ATEFAKEID)
+CMD_ENUM(RMMI_CMD_ATSTKPCI)
+CMD_ENUM(RMMI_CMD_ATSTKTR)
+CMD_ENUM(RMMI_CMD_ATSTKENV)
+CMD_ENUM(RMMI_CMD_STCALL)
+CMD_ENUM(RMMI_CMD_STKSMS)
+CMD_ENUM(RMMI_CMD_STKSS)
+CMD_ENUM(RMMI_CMD_STKUSSD)
+CMD_ENUM(RMMI_CMD_STKUSSI)
+CMD_ENUM(RMMI_CMD_STKDTMF)
+CMD_ENUM(RMMI_CMD_STKMENU)
+CMD_ENUM(RMMI_CMD_CUSATD)
+CMD_ENUM(RMMI_CMD_CUSATA)
+CMD_ENUM(RMMI_CMD_CUSATE)
+CMD_ENUM(RMMI_CMD_CUSATR)
+CMD_ENUM(RMMI_CMD_CUSATT)
+CMD_ENUM(RMMI_CMD_CUSATW)
+CMD_ENUM(RMMI_CMD_EUTK)
+CMD_ENUM(RMMI_CMD_ES3G)
+CMD_ENUM(RMMI_CMD_EDMSIM)
+CMD_ENUM(RMMI_CMD_CSUS)
+CMD_ENUM(RMMI_CMD_ERMODE)
+CMD_ENUM(RMMI_CMD_CUAD)
+CMD_ENUM(RMMI_CMD_ERSA)
+CMD_ENUM(RMMI_CMD_EAPVSIM)
+CMD_ENUM(RMMI_CMD_ECUSATS)
+CMD_ENUM(RMMI_CMD_ESPN)
+CMD_ENUM(RMMI_CMD_ICCID)
+CMD_ENUM(RMMI_CMD_ESADM)
+CMD_ENUM(RMMI_CMD_ATCGMR)
+CMD_ENUM(RMMI_CMD_ATGMR)
+CMD_ENUM(RMMI_CMD_ATCMER)
+CMD_ENUM(RMMI_CMD_ATIFC)
+CMD_ENUM(RMMI_CMD_ATIPR)
+CMD_ENUM(RMMI_CMD_ATCCLK)
+CMD_ENUM(RMMI_CMD_ATCALA)
+CMD_ENUM(RMMI_CMD_ATCALD)
+CMD_ENUM(RMMI_CMD_ATCKPD)
+CMD_ENUM(RMMI_CMD_ATCSDF)
+CMD_ENUM(RMMI_CMD_ATCSGT)
+CMD_ENUM(RMMI_CMD_ATCSIL)
+CMD_ENUM(RMMI_CMD_ATCSTF)
+CMD_ENUM(RMMI_CMD_ATCVIB)
+CMD_ENUM(RMMI_CMD_ATCBKLT)
+CMD_ENUM(RMMI_CMD_ATCLAN)
+CMD_ENUM(RMMI_CMD_ATCLAE)
+CMD_ENUM(RMMI_CMD_VGR)
+CMD_ENUM(RMMI_CMD_VGT)
+CMD_ENUM(RMMI_CMD_ATCBC)
+CMD_ENUM(RMMI_CMD_ATCLVL)
+CMD_ENUM(RMMI_CMD_ATCMUT)
+CMD_ENUM(RMMI_CMD_ATCRSL)
+CMD_ENUM(RMMI_CMD_ATCGMI)
+CMD_ENUM(RMMI_CMD_ATGMI)
+CMD_ENUM(RMMI_CMD_ATCGMM)
+CMD_ENUM(RMMI_CMD_ATGMM)
+CMD_ENUM(RMMI_CMD_ATCGSN)
+CMD_ENUM(RMMI_CMD_ATCMEC)
+CMD_ENUM(RMMI_CMD_ATCSO)
+CMD_ENUM(RMMI_CMD_ATCSS)
+CMD_ENUM(RMMI_CMD_ATECAL)
+CMD_ENUM(RMMI_CMD_ATCTSA)
+CMD_ENUM(RMMI_CMD_ATECSCN)
+CMD_ENUM(RMMI_CMD_EREG)
+CMD_ENUM(RMMI_CMD_EPMIC)
+CMD_ENUM(RMMI_CMD_ATEVCLD)
+CMD_ENUM(RMMI_CMD_ATELSM)
+CMD_ENUM(RMMI_CMD_ATEKPD)
+CMD_ENUM(RMMI_CMD_ATELCM)
+CMD_ENUM(RMMI_CMD_ATETEST)
+CMD_ENUM(RMMI_CMD_ATEKEY)
+CMD_ENUM(RMMI_CMD_ATELQT)
+CMD_ENUM(RMMI_CMD_ATEMBT)
+CMD_ENUM(RMMI_CMD_ATEBTLB)
+CMD_ENUM(RMMI_CMD_ATDIAG)
+CMD_ENUM(RMMI_CMD_ATSLEEPCOUNT)
+CMD_ENUM(RMMI_CMD_ATEGCMD)
+CMD_ENUM(RMMI_CMD_ATCASP)
+CMD_ENUM(RMMI_CMD_ATESAM)
+CMD_ENUM(RMMI_CMD_ATEGMR)
+CMD_ENUM(RMMI_CMD_ATESLP)
+CMD_ENUM(RMMI_CMD_ATENVRM)
+CMD_ENUM(RMMI_CMD_ATERFTX)
+CMD_ENUM(RMMI_CMD_ATEPCT)
+CMD_ENUM(RMMI_CMD_ATESWLA)
+CMD_ENUM(RMMI_CMD_ATESDS)
+CMD_ENUM(RMMI_CMD_ATRBTI)
+CMD_ENUM(RMMI_CMD_ATETHERMAL)
+CMD_ENUM(RMMI_CMD_ATCEMS)
+CMD_ENUM(RMMI_CMD_ATESLCD)
+CMD_ENUM(RMMI_CMD_ATESHW)
+CMD_ENUM(RMMI_CMD_ATEMMISTR)
+CMD_ENUM(RMMI_CMD_ATESDP)
+CMD_ENUM(RMMI_CMD_ATEGPIO)
+CMD_ENUM(RMMI_CMD_ATEPWM)
+CMD_ENUM(RMMI_CMD_ATESLT)
+CMD_ENUM(RMMI_CMD_ATEALT)
+CMD_ENUM(RMMI_CMD_ATEADC)
+CMD_ENUM(RMMI_CMD_ATEGPO)
+CMD_ENUM(RMMI_CMD_ATEDFT)
+CMD_ENUM(RMMI_CMD_ATTRACE)
+CMD_ENUM(RMMI_CMD_ATESWM)
+CMD_ENUM(RMMI_CMD_ATETSTLP)
+CMD_ENUM(RMMI_CMD_ATEADP)
+CMD_ENUM(RMMI_CMD_ATEAPS)
+CMD_ENUM(RMMI_CMD_ATENFC)
+CMD_ENUM(RMMI_CMD_ATERXPATH)
+CMD_ENUM(RMMI_CMD_ATETXANT)
+CMD_ENUM(RMMI_CMD_ATCSCS)
+CMD_ENUM(RMMI_CMD_ATCMEE)
+CMD_ENUM(RMMI_CMD_ATCIND)
+CMD_ENUM(RMMI_CMD_ATESUO)
+CMD_ENUM(RMMI_CMD_ATEQUERY)
+CMD_ENUM(RMMI_CMD_ATEBOOT)
+CMD_ENUM(RMMI_CMD_ATCEER)
+CMD_ENUM(RMMI_CMD_ATGCAP)
+CMD_ENUM(RMMI_CMD_ATEIND)
+CMD_ENUM(RMMI_CMD_ATEINFO)
+CMD_ENUM(RMMI_CMD_ATEPON)
+CMD_ENUM(RMMI_CMD_CMUX)
+CMD_ENUM(RMMI_CMD_ATCLAC)
+CMD_ENUM(RMMI_CMD_ATECPU)
+CMD_ENUM(RMMI_CMD_ATERAM)
+CMD_ENUM(RMMI_CMD_ATELAUNCH)
+CMD_ENUM(RMMI_CMD_ATELOG)
+CMD_ENUM(RMMI_CMD_ATESPEECH)
+CMD_ENUM(RMMI_CMD_ATESSTV)
+CMD_ENUM(RMMI_CMD_ATEDTP)
+CMD_ENUM(RMMI_CMD_ATEDTS)
+CMD_ENUM(RMMI_CMD_ATESETDEV)
+CMD_ENUM(RMMI_CMD_ATESOV)
+CMD_ENUM(RMMI_CMD_ATESMV)
+CMD_ENUM(RMMI_CMD_ATESSMA)
+CMD_ENUM(RMMI_CMD_ATEVCARD)
+CMD_ENUM(RMMI_CMD_ATEMMSFS)
+CMD_ENUM(RMMI_CMD_ATEMMSEXE)
+CMD_ENUM(RMMI_CMD_ATEJAVA)
+CMD_ENUM(RMMI_CMD_ATEBGS)
+CMD_ENUM(RMMI_CMD_ATERSCFG)
+CMD_ENUM(RMMI_CMD_ATEB3INFO)
+CMD_ENUM(RMMI_CMD_ATEDSS)
+CMD_ENUM(RMMI_CMD_ATEARAL)
+CMD_ENUM(RMMI_CMD_USIMSMT)
+CMD_ENUM(RMMI_CMD_ATEEMODE)
+CMD_ENUM(RMMI_CMD_ATARMEE)
+CMD_ENUM(RMMI_CMD_ATCIREG)
+CMD_ENUM(RMMI_CMD_ATCIREP)
+CMD_ENUM(RMMI_CMD_ATCNEM)
+CMD_ENUM(RMMI_CMD_ATECFGGET)
+CMD_ENUM(RMMI_CMD_ATECFGSET)
+CMD_ENUM(RMMI_CMD_ATEPVSGET)
+CMD_ENUM(RMMI_CMD_ATEPVSSET)
+CMD_ENUM(RMMI_CMD_ATEIREG)
+CMD_ENUM(RMMI_CMD_ATEIMS)
+CMD_ENUM(RMMI_CMD_ATENWSEL)
+CMD_ENUM(RMMI_CMD_ATEIRS)
+CMD_ENUM(RMMI_CMD_ATEIDRS)
+CMD_ENUM(RMMI_CMD_ATCSSAC)
+CMD_ENUM(RMMI_CMD_ATCMMIVT)
+CMD_ENUM(RMMI_CMD_ATCEPPI)
+CMD_ENUM(RMMI_CMD_ATEMSEN)
+CMD_ENUM(RMMI_CMD_ATEMSRV)
+CMD_ENUM(RMMI_CMD_ATEMTSI)
+CMD_ENUM(RMMI_CMD_ATEMSLU)
+CMD_ENUM(RMMI_CMD_ATEMPRI)
+CMD_ENUM(RMMI_CMD_ATEMSAIL)
+CMD_ENUM(RMMI_CMD_ATEMSESS)
+CMD_ENUM(RMMI_CMD_ATEMFRQ)
+CMD_ENUM(RMMI_CMD_ATEMBIND)
+CMD_ENUM(RMMI_CMD_ATEMSCP)
+CMD_ENUM(RMMI_CMD_ATEMEVT)
+CMD_ENUM(RMMI_CMD_ATEMSESSCFG)
+CMD_ENUM(RMMI_CMD_ATEGREA)
+CMD_ENUM(RMMI_CMD_ATECARFCN)
+CMD_ENUM(RMMI_CMD_ATECTMODE)
+CMD_ENUM(RMMI_CMD_ATEVVS)
+CMD_ENUM(RMMI_CMD_ATEVIVS)
+CMD_ENUM(RMMI_CMD_ATCISRVCC)
+CMD_ENUM(RMMI_CMD_ATEEMCINFO)
+CMD_ENUM(RMMI_CMD_ATSIMMAP)
+CMD_ENUM(RMMI_CMD_ATEPSMAP)
+#ifdef __EUICC_SUPPORT__
+CMD_ENUM(RMMI_CMD_ATESLOTSMAP)
+#endif
+CMD_ENUM(RMMI_CMD_ATEDRB)
+CMD_ENUM(RMMI_CMD_ATEMETACFG)
+CMD_ENUM(RMMI_CMD_ATEMDSTATUS)
+CMD_ENUM(RMMI_CMD_ATECAMP)
+CMD_ENUM(RMMI_CMD_ATEIRATEMODE)
+CMD_ENUM(RMMI_CMD_ATEDE)
+CMD_ENUM(RMMI_CMD_ATERPRAT)
+CMD_ENUM(RMMI_CMD_ATEIMSCI)
+CMD_ENUM(RMMI_CMD_ATECCAUSE)
+CMD_ENUM(RMMI_CMD_ATVZWRSRP)
+CMD_ENUM(RMMI_CMD_ATVZWRSRQ)
+CMD_ENUM(RMMI_CMD_ATVZWMRUC)
+CMD_ENUM(RMMI_CMD_ATVZWMRUE)
+CMD_ENUM(RMMI_CMD_ATVZWRALC)
+CMD_ENUM(RMMI_CMD_ATVZWRALE)
+CMD_ENUM(RMMI_CMD_ATEGDM)
+CMD_ENUM(RMMI_CMD_ATRSRP)
+CMD_ENUM(RMMI_CMD_ATRSRQ)
+CMD_ENUM(RMMI_CMD_ATRSCP)
+CMD_ENUM(RMMI_CMD_ATECNO)
+CMD_ENUM(RMMI_CMD_MRUCLEAR)
+CMD_ENUM(RMMI_CMD_MRU)
+CMD_ENUM(RMMI_CMD_AUXPLMN)
+CMD_ENUM(RMMI_CMD_PSMODE)
+CMD_ENUM(RMMI_CMD_ATESSAC)
+CMD_ENUM(RMMI_CMD_ATEMOBD)
+CMD_ENUM(RMMI_CMD_ATESLBAND)
+CMD_ENUM(RMMI_CMD_ATCSCON)
+CMD_ENUM(RMMI_CMD_ATEREGCHK)
+CMD_ENUM(RMMI_CMD_ATEMMCHLCK)
+CMD_ENUM(RMMI_CMD_ATEREGINFO)
+CMD_ENUM(RMMI_CMD_ATERDS)
+CMD_ENUM(RMMI_CMD_ATEDRAT)
+CMD_ENUM(RMMI_CMD_ATEUEDRX)
+CMD_ENUM(RMMI_CMD_ATCNTI)
+CMD_ENUM(RMMI_CMD_ATEHVOLTE)
+CMD_ENUM(RMMI_CMD_ATECBM)
+CMD_ENUM(RMMI_CMD_ATEMCS)
+CMD_ENUM(RMMI_CMD_ATEMCSS)
+CMD_ENUM(RMMI_CMD_ATEONS)
+CMD_ENUM(RMMI_CMD_ATEC2KCELL)
+CMD_ENUM(RMMI_CMD_ATEIMSPS)
+CMD_ENUM(RMMI_CMD_ATEIMSCONS)
+CMD_ENUM(RMMI_CMD_ATVMEMEXIT)
+CMD_ENUM(RMMI_CMD_ATEVZWT)
+CMD_ENUM(RMMI_CMD_ATEEPDGHO)
+CMD_ENUM(RMMI_CMD_ATERMS)
+CMD_ENUM(RMMI_CMD_ATEIMSVOLTE)
+CMD_ENUM(RMMI_CMD_ATEIMSCFG)
+CMD_ENUM(RMMI_CMD_ATELCE)
+CMD_ENUM(RMMI_CMD_ATESSTQ)
+CMD_ENUM(RMMI_CMD_ATESIMULATE)
+CMD_ENUM(RMMI_CMD_ATEDMODE)
+CMD_ENUM(RMMI_CMD_ATECGREG)
+CMD_ENUM(RMMI_CMD_ATECEREG)
+CMD_ENUM(RMMI_CMD_ATETWMODE)
+CMD_ENUM(RMMI_CMD_ATECREG)
+CMD_ENUM(RMMI_CMD_ATESECTEST)
+CMD_ENUM(RMMI_CMD_ATECMSID)
+CMD_ENUM(RMMI_CMD_ATEMDVER)
+CMD_ENUM(RMMI_CMD_ATESIMTRAY)
+CMD_ENUM(RMMI_CMD_ATELTEBWINFO)
+CMD_ENUM(RMMI_CMD_ATEAPINFO)
+CMD_ENUM(RMMI_CMD_ATENWBDINFO)
+CMD_ENUM(RMMI_CMD_ATEACB)
+CMD_ENUM(RMMI_CMD_ATESIMOFF)
+CMD_ENUM(RMMI_CMD_ATESIMPOWER)
+CMD_ENUM(RMMI_CMD_ATEPPI)
+CMD_ENUM(RMMI_CMD_ATEFMCC)
+CMD_ENUM(RMMI_CMD_ATEDALLOW)
+CMD_ENUM(RMMI_CMD_ATEVZWAPFCIA)
+CMD_ENUM(RMMI_CMD_ATECMPCID)
+CMD_ENUM(RMMI_CMD_ATEGRAT)
+CMD_ENUM(RMMI_CMD_ATEAPC)
+CMD_ENUM(RMMI_CMD_ATEGGRNTRSPT)
+CMD_ENUM(RMMI_CMD_ERSIM)
+CMD_ENUM(RMMI_CMD_ERSIMAUTH)
+CMD_ENUM(RMMI_CMD_ERSIMAKA)
+CMD_ENUM(RMMI_CMD_ERSIMATO)
+CMD_ENUM(RMMI_CMD_ATEPLWTH)
+CMD_ENUM(RMMI_CMD_ATEPOC)
+CMD_ENUM(RMMI_CMD_ATEIMSESS)
+CMD_ENUM(RMMI_CMD_ATECAINFO)
+CMD_ENUM(RMMI_CMD_ATERFIDX)
+CMD_ENUM(RMMI_CMD_ATEGUTIC)
+CMD_ENUM(RMMI_CMD_ATEIMSROAM)
+CMD_ENUM(RMMI_CMD_ATEITMR)
+CMD_ENUM(RMMI_CMD_ATEIMSEVENT)
+CMD_ENUM(RMMI_CMD_ATELOSCUST)
+CMD_ENUM(RMMI_CMD_ATEGMC)
+CMD_ENUM(RMMI_CMD_ATERCEFC)
+CMD_ENUM(RMMI_CMD_ATEMRO)
+CMD_ENUM(RMMI_CMD_ATEFPLMN)
+CMD_ENUM(RMMI_CMD_ATESCELLINFO)
+CMD_ENUM(RMMI_CMD_ATEMAXPWR)
+CMD_ENUM(RMMI_CMD_ATERTTCL)
+CMD_ENUM(RMMI_CMD_ATEUULK)
+CMD_ENUM(RMMI_CMD_ATETM9)
+CMD_ENUM(RMMI_CMD_ATEPCL)
+CMD_ENUM(RMMI_CMD_ATECSMLCK)
+CMD_ENUM(RMMI_CMD_ATESLBLOB)
+CMD_ENUM(RMMI_CMD_ATECACOMB)
+CMD_ENUM(RMMI_CMD_ATESLBLOBF)
+CMD_ENUM(RMMI_CMD_ATERFSCAN)
+CMD_ENUM(RMMI_CMD_ATEATNUSD)
+CMD_ENUM(RMMI_CMD_ATECRRST)
+CMD_ENUM(RMMI_CMD_ATEFREQSCN)
+CMD_ENUM(RMMI_CMD_ATESMLRSU)
+CMD_ENUM(RMMI_CMD_ATETFSIC)
+CMD_ENUM(RMMI_CMD_ATEPLWSS)
+CMD_ENUM(RMMI_CMD_ATEWAC)
+CMD_ENUM(RMMI_CMD_ATENWREJ)
+CMD_ENUM(RMMI_CMD_ATEATTSK)
+CMD_ENUM(RMMI_CMD_ATEATTSLB)
+CMD_ENUM(RMMI_CMD_ATETXPWRSTUS)

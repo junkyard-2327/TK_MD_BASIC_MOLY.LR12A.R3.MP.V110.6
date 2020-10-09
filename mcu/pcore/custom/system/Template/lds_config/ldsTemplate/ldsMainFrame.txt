@@ -1,0 +1,33 @@
+OUTPUT_ARCH(mips)
+ENTRY(INT_Vectors)
+MEMORY
+{
+[ldsGen_GenMEMORY]
+}
+
+CACHELINESIZE = 32;
+
+SECTIONS
+{
+[ldsGen_GenSECTIONS]
+[ldsGen_AvoidOrphanSECTIONS]
+    /DISCARD/ : 
+    {
+        * (SHOULD_NOT_USED_RODATA)
+        * (SHOULD_NOT_USED_FUNCTION)
+		
+        /* SPRAM3 */
+        * (.sdata_3)
+        * (.sdata_3.*)
+        * (.sbss_3)
+        * (.sbss_3.*)
+        * (ISPRAM_ROCODE_CORE3*)
+        * (DSPRAM_RODATA_CORE3*)
+        * (DSPRAM_RW_CORE3*)
+        * (DSPRAM_ZI_CORE3*)
+        * (IOCU_READ_ALLOC_MCURW_HWRW_C*)
+    }
+    PROVIDE (end = .);
+}
+
+EXTERN(DummyReference)

@@ -1,0 +1,6 @@
+        ROM_IV_REGION$$Base = . ;
+        KEEP(*(MAUI_IV_REGION))
+        ROM_IV_REGION$$Limit = . ;
+        ROM_IV_REGION$$Length = ABSOLUTE(ROM_IV_REGION$$Limit - ROM_IV_REGION$$Base);
+        KEEP(*(MAUI_GFH))
+        KEEP(*(MAUI_GFH_EXT))

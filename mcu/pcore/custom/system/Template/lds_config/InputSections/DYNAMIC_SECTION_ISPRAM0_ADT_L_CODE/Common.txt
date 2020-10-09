@@ -1,0 +1,4 @@
+            * (DYNAMIC_SECTION_ISPRAM0_ADT_L_ROCODE)
+            KEEP(* (NOP_DYNAMIC_SECTION_ISPRAM0_ADT_L_ROCODE_SECTION))
+            LONG(0);
+	    . = ALIGN(8);

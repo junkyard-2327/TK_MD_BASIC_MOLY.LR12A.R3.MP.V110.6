@@ -1,0 +1,19 @@
+        * (NONCACHEDRW)
+
+        
+        /********************** A. need to be confirmed in 93 **********************/
+        /********************** B. need to be moved to right section in 93 **********************/
+        /********************** C. will be removed in 93 **********************/
+        * (NONCACHEDRW_CORE2)
+
+        
+        /* continuous physical region - should be continuous with PHY_EXTSRAM_ZI! */
+        /* Caution: PHY_EXTSRAM_RW should be in the bottom of this region and kept 64 bytes aligned */
+        . = ALIGN(64);
+        PHY_EXTSRAM_RW$$Base = .;
+        * (PHY_EXTSRAM_RW)
+        . = ALIGN(4);
+        PHY_EXTSRAM_RW$$Limit = .;
+        PHY_EXTSRAM_RW$$Length = ABSOLUTE(PHY_EXTSRAM_RW$$Limit - PHY_EXTSRAM_RW$$Base);
+		
+		

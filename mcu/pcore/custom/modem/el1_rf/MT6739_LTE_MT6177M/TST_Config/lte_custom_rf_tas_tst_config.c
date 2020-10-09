@@ -1,0 +1,107 @@
+/*****************************************************************************
+*  Copyright Statement:
+*  --------------------
+*  This software is protected by Copyright and the information contained
+*  herein is confidential. The software may not be copied and the information
+*  contained herein may not be used or disclosed except with the written
+*  permission of MediaTek Inc. (C) 2005
+*
+*  BY OPENING THIS FILE, BUYER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+*  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("MEDIATEK SOFTWARE")
+*  RECEIVED FROM MEDIATEK AND/OR ITS REPRESENTATIVES ARE PROVIDED TO BUYER ON
+*  AN "AS-IS" BASIS ONLY. MEDIATEK EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES,
+*  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+*  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NONINFRINGEMENT.
+*  NEITHER DOES MEDIATEK PROVIDE ANY WARRANTY WHATSOEVER WITH RESPECT TO THE
+*  SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY, INCORPORATED IN, OR
+*  SUPPLIED WITH THE MEDIATEK SOFTWARE, AND BUYER AGREES TO LOOK ONLY TO SUCH
+*  THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO. MEDIATEK SHALL ALSO
+*  NOT BE RESPONSIBLE FOR ANY MEDIATEK SOFTWARE RELEASES MADE TO BUYER'S
+*  SPECIFICATION OR TO CONFORM TO A PARTICULAR STANDARD OR OPEN FORUM.
+*
+*  BUYER'S SOLE AND EXCLUSIVE REMEDY AND MEDIATEK'S ENTIRE AND CUMULATIVE
+*  LIABILITY WITH RESPECT TO THE MEDIATEK SOFTWARE RELEASED HEREUNDER WILL BE,
+*  AT MEDIATEK'S OPTION, TO REVISE OR REPLACE THE MEDIATEK SOFTWARE AT ISSUE,
+*  OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE CHARGE PAID BY BUYER TO
+*  MEDIATEK FOR SUCH MEDIATEK SOFTWARE AT ISSUE.
+*
+*  THE TRANSACTION CONTEMPLATED HEREUNDER SHALL BE CONSTRUED IN ACCORDANCE
+*  WITH THE LAWS OF THE STATE OF CALIFORNIA, USA, EXCLUDING ITS CONFLICT OF
+*  LAWS PRINCIPLES.  ANY DISPUTES, CONTROVERSIES OR CLAIMS ARISING THEREOF AND
+*  RELATED THERETO SHALL BE SETTLED BY ARBITRATION IN SAN FRANCISCO, CA, UNDER
+*  THE RULES OF THE INTERNATIONAL CHAMBER OF COMMERCE (ICC).
+*
+*****************************************************************************/
+
+/*******************************************************************************
+ *
+ * Filename:
+ * ---------
+ *   lte_custom_rf_tas_tst_config.c
+ *
+ * Project:
+ * --------
+ *   MT6293
+ *
+ * Description:
+ * ------------
+ *   MT6177L FDD/TDD ANT
+ *
+ * Author:
+ * -------
+ * -------
+ *
+ *******************************************************************************/
+
+
+/* ------------------------------------------------------------------------- */
+#include "lte_custom_rf_tas_tst_config.h"
+#include "lte_custom_rf_tas.h"
+#include "el1d_rf_custom_data.h"
+
+
+LTE_RF_TAS_TST_CONFIG_DATABASE_T LTE_TAS_TST_CONFIG_DATABASE_SetDefault =
+{
+   LTE_TAS_TST_CONFIG_EN(SetDefault),
+   {
+      /*Index  0*/ LTE_TAS_TST_CONFIGURE( BAND_TAS_INDICATOR0  , SetDefault) ,
+      /*Index  1*/ LTE_TAS_TST_CONFIGURE( BAND_TAS_INDICATOR1  , SetDefault) ,
+      /*Index  2*/ LTE_TAS_TST_CONFIGURE( BAND_TAS_INDICATOR2  , SetDefault) ,
+      /*Index  3*/ LTE_TAS_TST_CONFIGURE( BAND_TAS_INDICATOR3  , SetDefault) ,
+      /*Index  4*/ LTE_TAS_TST_CONFIGURE( BAND_TAS_INDICATOR4  , SetDefault) ,
+      /*Index  5*/ LTE_TAS_TST_CONFIGURE( BAND_TAS_INDICATOR5  , SetDefault) ,
+      /*Index  6*/ LTE_TAS_TST_CONFIGURE( BAND_TAS_INDICATOR6  , SetDefault) ,
+      /*Index  7*/ LTE_TAS_TST_CONFIGURE( BAND_TAS_INDICATOR7  , SetDefault) ,
+      /*Index  8*/ LTE_TAS_TST_CONFIGURE( BAND_TAS_INDICATOR8  , SetDefault) ,
+      /*Index  9*/ LTE_TAS_TST_CONFIGURE( BAND_TAS_INDICATOR9  , SetDefault) ,
+      /*Index 10*/ LTE_TAS_TST_CONFIGURE( BAND_TAS_INDICATOR10 , SetDefault) ,
+      /*Index 11*/ LTE_TAS_TST_CONFIGURE( BAND_TAS_INDICATOR11 , SetDefault) ,
+      /*Index 12*/ LTE_TAS_TST_CONFIGURE( BAND_TAS_INDICATOR12 , SetDefault) ,
+      /*Index 13*/ LTE_TAS_TST_CONFIGURE( BAND_TAS_INDICATOR13 , SetDefault) ,
+      /*Index 14*/ LTE_TAS_TST_CONFIGURE( BAND_TAS_INDICATOR14 , SetDefault) ,
+      /*Index 15*/ LTE_TAS_TST_CONFIGURE( BAND_TAS_INDICATOR15 , SetDefault) ,
+      /*Index 16*/ LTE_TAS_TST_CONFIGURE( BAND_TAS_INDICATOR16 , SetDefault) ,
+      /*Index 17*/ LTE_TAS_TST_CONFIGURE( BAND_TAS_INDICATOR17 , SetDefault) ,
+      /*Index 18*/ LTE_TAS_TST_CONFIGURE( BAND_TAS_INDICATOR18 , SetDefault) ,
+      /*Index 19*/ LTE_TAS_TST_CONFIGURE( BAND_TAS_INDICATOR19 , SetDefault) ,
+      /*Index 20*/ LTE_TAS_TST_CONFIGURE( BAND_TAS_INDICATOR20 , SetDefault) ,
+      /*Index 21*/ LTE_TAS_TST_CONFIGURE( BAND_TAS_INDICATOR21 , SetDefault) ,
+      /*Index 22*/ LTE_TAS_TST_CONFIGURE( BAND_TAS_INDICATOR22 , SetDefault) ,
+      /*Index 23*/ LTE_TAS_TST_CONFIGURE( BAND_TAS_INDICATOR23 , SetDefault) ,
+      /*Index 24*/ LTE_TAS_TST_CONFIGURE( BAND_TAS_INDICATOR24 , SetDefault) ,
+   }
+};
+
+LTE_RF_TAS_TST_CONFIG_GROUP_DATABASE_T LTE_TAS_TST_STATE_GROUP_SetDefault = 
+{
+   {
+      /*GROUP0*/ LTE_TAS_TST_STATE_CONFIGURE( LTE_TAS_TST_GROUP0, SetDefault),
+      /*GROUP1*/ LTE_TAS_TST_STATE_CONFIGURE( LTE_TAS_TST_GROUP1, SetDefault),
+      /*GROUP2*/ LTE_TAS_TST_STATE_CONFIGURE( LTE_TAS_TST_GROUP2, SetDefault),
+      /*GROUP3*/ LTE_TAS_TST_STATE_CONFIGURE( LTE_TAS_TST_GROUP3, SetDefault),
+      /*GROUP4*/ LTE_TAS_TST_STATE_CONFIGURE( LTE_TAS_TST_GROUP4, SetDefault),
+   }
+};
+
+/* ------------------------------------------------------------------------- */
+

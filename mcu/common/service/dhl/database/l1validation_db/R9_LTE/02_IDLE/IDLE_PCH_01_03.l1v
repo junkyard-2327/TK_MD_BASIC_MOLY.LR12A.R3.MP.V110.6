@@ -1,0 +1,37 @@
+{ Validation }
+Title 		= "[R9_LTE][02_IDLE]IDLE_PCH_01_03: The test case is used to check if the UE can successfully camp on a target cell and successfully acquire a paging message"
+ModuleID 	= MOD_ERRC
+MsgID 		= MSG_ID_L1EDPS_IDLE_PCH_01
+
+/******************************************************************************
+* Data Structure accompanying the above primitive
+typedef struct
+{
+    kal_uint8           ref_count;
+    kal_uint16          msg_len;
+    kal_bool            csr_config_by_band;
+    kal_bool            csr_report_by_band;
+    kal_bool            csr_is_skip_bw;
+    el1_csr_search_type_enum search_type;
+    kal_uint8           test_pattern_id;
+    
+} l1edps_idle_pch_01_struct;
+*
+*******************************************************************************/
+
+
+{Parameters}
+/******************************************************************************
+* 1. The following is the constrained range for the input of this value.
+* 2. Some combination of the following bit-fields may be suported
+* 3. The parameter range can be changed to support combinations of different bands
+*******************************************************************************/
+
+/* [Variable Name] "corresponding label showen on GUI" */
+[test_pattern_id] "test_pattern_id"
+1~12
+@3
+[is_case_repeat] "is_case_repeat"
+@KAL_FALSE
+
+

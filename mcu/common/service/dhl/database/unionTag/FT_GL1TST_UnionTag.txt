@@ -1,0 +1,137 @@
+/*****************************************************************************
+*  Copyright Statement:
+*  --------------------
+*  This software is protected by Copyright and the information contained
+*  herein is confidential. The software may not be copied and the information
+*  contained herein may not be used or disclosed except with the written
+*  permission of MediaTek Inc. (C) 2005
+*
+*  BY OPENING THIS FILE, BUYER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+*  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("MEDIATEK SOFTWARE")
+*  RECEIVED FROM MEDIATEK AND/OR ITS REPRESENTATIVES ARE PROVIDED TO BUYER ON
+*  AN "AS-IS" BASIS ONLY. MEDIATEK EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES,
+*  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+*  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NONINFRINGEMENT.
+*  NEITHER DOES MEDIATEK PROVIDE ANY WARRANTY WHATSOEVER WITH RESPECT TO THE
+*  SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY, INCORPORATED IN, OR
+*  SUPPLIED WITH THE MEDIATEK SOFTWARE, AND BUYER AGREES TO LOOK ONLY TO SUCH
+*  THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO. MEDIATEK SHALL ALSO
+*  NOT BE RESPONSIBLE FOR ANY MEDIATEK SOFTWARE RELEASES MADE TO BUYER'S
+*  SPECIFICATION OR TO CONFORM TO A PARTICULAR STANDARD OR OPEN FORUM.
+*
+*  BUYER'S SOLE AND EXCLUSIVE REMEDY AND MEDIATEK'S ENTIRE AND CUMULATIVE
+*  LIABILITY WITH RESPECT TO THE MEDIATEK SOFTWARE RELEASED HEREUNDER WILL BE,
+*  AT MEDIATEK'S OPTION, TO REVISE OR REPLACE THE MEDIATEK SOFTWARE AT ISSUE,
+*  OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE CHARGE PAID BY BUYER TO
+*  MEDIATEK FOR SUCH MEDIATEK SOFTWARE AT ISSUE.
+*
+*  THE TRANSACTION CONTEMPLATED HEREUNDER SHALL BE CONSTRUED IN ACCORDANCE
+*  WITH THE LAWS OF THE STATE OF CALIFORNIA, USA, EXCLUDING ITS CONFLICT OF
+*  LAWS PRINCIPLES.  ANY DISPUTES, CONTROVERSIES OR CLAIMS ARISING THEREOF AND
+*  RELATED THERETO SHALL BE SETTLED BY ARBITRATION IN SAN FRANCISCO, CA, UNDER
+*  THE RULES OF THE INTERNATIONAL CHAMBER OF COMMERCE (ICC).
+*
+*****************************************************************************/
+/*
+This file is used by cgen for union Tag information.
+Usage:
+
+structure_name   tag_field_name   union_name:
+{ 
+        tag_fileld_value   field_of_union_name;
+	    tag_fileld_value   field_of_union_name;
+};
+
+For Example:
+
+InvokeChoice ChoiceId a:
+{
+    1 localValue;
+    2 globalValue;        
+};
+
+*/
+
+ft_to_gl1tst_struct type param:
+{ 
+    0   pm;
+    1   afc;
+    2   nbTx;
+    3   contRx;
+    4   contTx;
+    5   setBBTXCfg;
+    6   selectPCS1900;
+    8   msTx;
+    9   setRampApcLevel;
+   10   setAfcDacValue;
+   11   BBTxCfg2;
+   13   setCrystalCfg;
+   16   setRampTable;
+   17   setAfcSinWave;
+   18   msTxEx;
+   21   SetBSI;
+   22   GetBSI;
+   25   BBTxCfg3;
+   24   contTxEx;
+   28   contTxEx2;
+   31   BBTxCfg4;
+   47   NSFT_start;
+   49   NSFT_change_power;
+   56   PowerRollbackTable;
+   61   m_u4NSFTSBERTestCount;
+   65   m_u2NSFTRxQualBerDecile;
+   66   m_IrPm;
+   75   dcxoMode;
+   78   setTxOctPaCoef;
+   87   gainRfTx;
+   92   path_flag;
+   90   query_op_code;
+   93   List_Mode_NSFT_start;
+   99   is_uplate_to_NVRAM;
+  101   is_uplate_to_NVRAM;
+  106   afc_gpscoclockv2;
+  107   is_uplate_to_NVRAM;
+  109   set_txdata_req;
+  110   get_txdata_req;
+};
+
+gl1tst_to_ft_struct type param:
+{ 
+    0   pm;
+    1   afc;
+   12   BBTxCfg2;
+   20   rfid;
+   22   GetBSI;
+   26   BBTxCfg3;
+   30   GetAfcDacValueAtRTXOffsetCal;
+   32   BBTxCfg4;
+   35   calibration_32k;
+   36   ms_capability_ex;
+   44   dts_get_result_status;
+   48   ok;
+   49   ok;
+   54   m_i1RfPwrState_FT;
+   62   m_rNSFTSBER;
+   64   m_u2NSFTRxLevel;
+   65   m_u1NSFTRxQual;
+   73   temperature;
+   77   dts_get_result_status;
+   82   dts_get_result_status;
+   85   dts_get_result_status;
+   88   m_ucNumOfGainRf;
+   89   m_sBBPowerArrary;
+   90   CheckIfFuncExist;
+   91   rfTemperatureInfo;
+   93   List_Mode_NSFT_result;
+   97   dts_get_result_status;
+   99   nvramAccessResult;
+  100   nvramAccessResult;
+  101   nvramAccessResult;
+  102   nvramAccessResult;
+  105   dts_get_result_status;
+  106   afc_gpscoclockv2_result;
+  107   nvramAccessResult;
+  108   nvramAccessResult;
+  109   set_txdata_cnf;
+  110   get_txdata_cnf;
+};

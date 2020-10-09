@@ -1,0 +1,29 @@
+&MEM_CLASS="AXI"
+; do AP to MD path disable
+; MD cannot access AP after running this script
+LOCAL &BASE_ADDR_AP2MD_Dummy 
+LOCAL &BASE_ADDR_INFRA_SET_CLEAR_PROT_EN 
+LOCAL &temp 
+
+&BASE_ADDR_AP2MD_Dummy=0x10001370
+&BASE_ADDR_INFRA_SET_CLEAR_PROT_EN=0x100012A0
+
+; Set reg_ap2md_dummy[0] = 1'b0
+&temp=data.long(&MEM_CLASS:(&BASE_ADDR_AP2MD_Dummy+0x0))&0xFFFFFFFE
+;PRINT "temp=" "&temp"
+;PRINT "BASE_ADDR_AP2MD_Dummy=" "&BASE_ADDR_AP2MD_Dummy"
+D.S &MEM_CLASS:(&BASE_ADDR_AP2MD_Dummy+0x0) %LE %LONG &temp  
+wait 1.ms
+
+; Set md2peri_protect_en = 1'b1
+; Write 0x1000_12A8[6] = 1'b1.
+&temp=data.long(&MEM_CLASS:(&BASE_ADDR_INFRA_SET_CLEAR_PROT_EN+0x8))|0x40
+;PRINT "temp=" "&temp"
+;PRINT "(&BASE_ADDR_INFRA_SET_CLEAR_PROT_EN+0x8)"
+D.S &MEM_CLASS:(&BASE_ADDR_INFRA_SET_CLEAR_PROT_EN+0x8) %LE %LONG &temp
+wait 1.ms
+
+; Check md2peri_protect_en setting
+;&temp=data.long(&MEM_CLASS:(&BASE_ADDR_INFRA_SET_CLEAR_PROT_EN+0x8))
+;PRINT "temp=" "&temp"
+;PRINT "(&BASE_ADDR_INFRA_SET_CLEAR_PROT_EN+0x8)"

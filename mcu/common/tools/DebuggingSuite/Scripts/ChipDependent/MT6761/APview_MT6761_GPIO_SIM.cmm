@@ -1,0 +1,20 @@
+// SIM GPIO MODE
+// Clear bits
+d.s &MEM_CLASS:0x10005348 %long %le 0x77777000
+d.s &MEM_CLASS:0x10005358 %long %le 0x00000007
+// Set bits
+d.s &MEM_CLASS:0x10005344 %long %le 0x11111000
+d.s &MEM_CLASS:0x10005354 %long %le 0x00000001
+
+// SIM PUPD
+// Control PAD_SIM1_SIO PUPD pin. PUPD=0: pull up, PUPD=1: pull down.
+// Set bits
+d.s &MEM_CLASS:0x10002454 %long %le 0x00000FC0
+// Clear bits, SIO pull up
+d.s &MEM_CLASS:0x10002458 %long %le 0x00000480
+
+// SIM R1R0
+// R1R0=00:High-Z, R1R0=01:PU 45kohm;PD 75kohm, 
+// R1R0=10:PU 5kohm;PD 75kohm, R1R0=11:PU 45kohm/5kohm;PD 75kohm/75kohm.
+// Set R1 bits
+d.s &MEM_CLASS:0x10002484 %long %le 0x00000FC0

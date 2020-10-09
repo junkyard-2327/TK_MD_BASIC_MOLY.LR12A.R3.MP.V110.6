@@ -1,0 +1,10 @@
+ROM               : ORIGIN = [ROM_BASE],                                LENGTH = [ROM_LEN]
+L1CORE_LV   : ORIGIN = [L1CORE_LV_BASE],                   LENGTH = [L1CORE_LV_LEN]
+L1CORE_RWZI : ORIGIN = [L1CORE_RWZI_BASE],                 LENGTH = [L1CORE_RWZI_LEN]
+RAM               : ORIGIN = [RAM_BASE],                         LENGTH = [RAM_LEN]
+VRAM              : ORIGIN = [CACHEABLE_PREFIX] | [RAM_BASE], LENGTH = [RAM_LEN]
+TCM               : ORIGIN = 0x70000000,                         LENGTH = 0x80000
+DTCM              : ORIGIN = 0x70040000,                         LENGTH = 0x40000
+L1CORE_TCM_BASE   : ORIGIN = 0x72000000,                         LENGTH = 0x0
+L1CORE_ITCM       : ORIGIN = 0x00000000,                         LENGTH = 0x80000
+L1CORE_L2SRAM     : ORIGIN = 0x75000000,                         LENGTH = 0x80000

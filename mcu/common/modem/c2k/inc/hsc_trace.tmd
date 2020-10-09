@@ -1,0 +1,343 @@
+/*************************************************************
+*
+* This Software is the property of MTK, Inc. and may only be used pursuant to a license from MTK, Inc.  
+* 
+* Any unauthorized use inconsistent with the terms of such license is strictly prohibited.
+* 
+* Copyright (c) 2002-2016 MTK, Inc.  All rights reserved.
+*
+*************************************************************/
+[Default]
+  C2K_HSC
+  On
+  Buffer
+  TCMFORCE
+
+[MODEM_TYPE]
+  C2K_L1
+
+[Class]
+  HSC_UT_TRACE       ON
+  HSC_IT_TRACE       ON
+  HSC_MP_TRACE       ON
+  HSC_FULL_FT_TRACE  ON
+  HSC_KERNAL_TRACE   ON
+  HSC_WARN           OFF
+  
+  RTBA_UT_TRACE       ON
+  RTBA_IT_TRACE       ON
+  RTBA_MP_TRACE       ON
+  RTBA_FULL_FT_TRACE  ON
+  RTBA_KERNAL_TRACE   ON
+  RTBA_WARN           OFF
+  
+  LL1A_UT_TRACE       ON
+  LL1A_IT_TRACE       ON
+  LL1A_MP_TRACE       ON
+  LL1A_FULL_FT_TRACE  ON
+  LL1A_KERNAL_TRACE   ON
+  LL1A_WARN           OFF
+
+  STUB_IT_TRACE      ON
+  UT_CASE_TRACE      ON
+  FRAMEWORK_UT_TRACE ON
+
+[String]
+  Hsc_init_String
+  {
+    "hsc init"
+  }
+  
+  Ll1Stub_String
+  {
+    "Ll1stubGetGapAssignTimerLength"
+  }
+  
+  RtbStub_UtTst_String
+  {
+    "cl1_fh_rtbstub_testcase",
+    "RtbStubUtTestHifherInfoCheckFunc",
+    "RtbStubUtTestReserveInfoCheckFunc",
+    "check func fail!(EVDO)",
+    "check func pass!(EVDO)",
+    "check func fail!(1xRTT)",
+    "check func pass!(1xRTT)",
+    "case pass!",
+    "case fail!"
+  }
+  Hsc_UtTst_CaseName_String
+  {
+    "Cl1UtHsc_1xNullDoNull_Case0",
+    "Cl1UtHsc_1xNullDoNull_Case1",
+    "Cl1UtHsc_1xActiveDoNull_Case0",
+    "Cl1UtHsc_1xSleepDoNull_Case0",
+    "Cl1UtHsc_1xNullDoActive_Case0",
+    "Cl1UtHsc_1xNullDoSleep_Case0"
+  }
+  
+[Message]
+  info   CL1TRACE_HSC_Init_Dbg                      HSC_UT_TRACE          "HSC module: %s"
+  info   CL1TRACE_Ll1Stub_Get_Gap_Assign_Len        STUB_IT_TRACE         "Ll1stubGetGapAssignTimerLength:LteModeState:%MCbsLl1stubModeStatusE,PCH_valid:%d,MAC_valid:%d,CSR_valid:%d,GapTimerLen:%l"
+  info   CL1TRACE_Ll1Stub_Idle_Gap_CallBack         STUB_IT_TRACE         "Ll1stubLteIdleGapStartCallBack:LteModeState:%d,CurrentTime:%l"
+  info   CL1TRACE_Ll1Stub_Idle_Gap_TimerStart       STUB_IT_TRACE         "Ll1stubLteIdleGapStartTimerStart: length:%d"
+  info   CL1TRACE_Ll1Stub_Idle_Gap_TimerStop        STUB_IT_TRACE         "Ll1stubLteIdleGapStartTimerStop:"
+  info   CL1TRACE_Ll1Stub_Auto_Gap_TimerStart       STUB_IT_TRACE         "Ll1stubConnectAutoGapTimerStart: length:%d, current_time:%l"
+  info   CL1TRACE_Ll1Stub_BchStart_CallBack         STUB_IT_TRACE         "Ll1stubBchStartCallBack:"
+  info   CL1TRACE_Ll1Stub_Bch_TimerStart            STUB_IT_TRACE         "Ll1stubBchStartTimerStart: length:%d"
+  info   CL1TRACE_Ll1Stub_Gap_Temp_CallBack         STUB_IT_TRACE         "Ll1stubGapTempCallBack:"
+  info   CL1TRACE_Ll1Stub_Gap_Temp_TimerStart       STUB_IT_TRACE         "Ll1stubGapTempTimerStart: length:%d"
+  info   CL1TRACE_Ll1Stub_Gap_Assign_CallBack       STUB_IT_TRACE         "Ll1stubGapAssignCallBack:"
+  info   CL1TRACE_Ll1Stub_Gap_Assign_TimerStart     STUB_IT_TRACE         "Ll1stubGapAssignTimerStart:timerlength:%l"
+  info   CL1TRACE_Ll1Stub_Gap_Assign_TimerStop      STUB_IT_TRACE         "Ll1stubGapAssignTimerStop:"
+  info   CL1TRACE_Ll1Stub_Gap_Service_Req           STUB_IT_TRACE         "Ll1stubStandbySendGapServiceReq:enable:%Mkal_bool"
+  info   CL1TRACE_Ll1Stub_Idle_State_Handle_1       STUB_IT_TRACE         "Ll1stubLteIdleStateHandle:IsCl1MeasureStart:%d,tick_bitmap:%d"
+  info   CL1TRACE_Ll1Stub_Idle_State_Handle_2       STUB_IT_TRACE         "Ll1stubLteIdleStateHandle:LteMeasCl1PeriodDrxNum:%d,LteMeasCl1PeriodDrxCnt:%d,tick_bitmap:%d"
+  info   CL1TRACE_Ll1Stub_Idle_State_Handle_3       STUB_IT_TRACE         "Ll1stubLteIdleStateHandle:CurrentTime:%l,LtePchStartTime:%l,Distance:%l,LteIdleGapLen:%l"
+  info   CL1TRACE_Ll1Stub_Conn_State_Handle_1       STUB_IT_TRACE         "Ll1stubLteConnectStateHandle:IsCl1MeasureStart:%d,IsCl1AutoGapStart:%d"
+  info   CL1TRACE_Ll1Stub_Conn_State_Handle_2       STUB_IT_TRACE         "Ll1stubLteConnectStateHandle:LteMeasCl1PeriodConnectNum:%d,LteMeasCl1PeriodConnectCnt:%d,tick_bitmap:%d"
+  info   CL1TRACE_Ll1Stub_Conn_State_Handle_3       STUB_IT_TRACE         "Ll1stubLteConnectStateHandle:session_i:%d,start_time:%l"
+  info   CL1TRACE_Ll1Stub_Oosa_State_Handle_1       STUB_IT_TRACE         "Ll1stubLteOosStateHandle:IsCl1MeasureStart:%d"
+  info   CL1TRACE_Ll1Stub_Oosa_State_Handle_2       STUB_IT_TRACE         "Ll1stubLteOosStateHandle:LteMeasCl1PeriodOOSNum:%d,LteMeasCl1PeriodOOSCnt:%d,tick_bitmap:%d"
+  info   CL1TRACE_Ll1Stub_Oosa_State_Handle_3       STUB_IT_TRACE         "Ll1stubLteOosStateHandle:CurrentTime:%l,BlockStartTime:%l,Distance:%l,LteIdleGapLen:%l"
+  info   CL1TRACE_Ll1Stub_Active_State_Handle       STUB_IT_TRACE         "Ll1stubActiveStateHandle:Cl1RatState:%Mcl1_ll1_rat_status_E,LteRatState:%MCbsLl1stubRatStatusE,LteModeState:%MCbsLl1stubModeStatusE" 
+  info   CL1TRACE_Ll1Stub_Rat_Mode_Ind              STUB_IT_TRACE         "Ll1stubRatModeIndHandle:LteRatState:%MCbsLl1stubRatStatusE,LteModeState:%MCbsLl1stubModeStatusE"
+  info   CL1TRACE_Ll1Stub_Auto_Gap_Available_Ind    STUB_IT_TRACE         "Ll1stubAutoGapAvailableInd:available:%d"
+  info   CL1TRACE_Ll1Stub_Active_Meas_Info          STUB_IT_TRACE         "Ll1stubActiveMeasureInfoInd:FreqNum:%d"
+  info   CL1TRACE_Ll1Stub_NextBlock_StartTime       STUB_IT_TRACE         "Ll1stubLteNextblockStartTime:CurrentTime:%l,LteNextDataStartTime:%l"
+  info   CL1TRACE_Ll1Stub_Set_Tmeas_Num             STUB_IT_TRACE         "Ll1stubSetTmeasureNum:ChannelType:%d,LteMeasCl1PeriodDrxNum:%d,LteMeasCl1PeriodConnectNum:%d,LteMeasCl1PeriodOOSNum:%d"
+  info   CL1TRACE_Ll1Stub_Cbs_Channel_Ind           STUB_IT_TRACE         "Ll1stubCbsChannelNotifyIndMsgHandle:ChannelType:%MChannelTypeE,Operation:%MStubOperationE,LteRatState:%MCbsLl1stubRatStatusE,LteModeState:%MCbsLl1stubModeStatusE,IsCl1MeasureStart:%d"
+  info   CL1TRACE_Ll1Stub_Cl1_Rat_Status_Ind        STUB_IT_TRACE         "Ll1stubCl1RatStatusIndHandle:Cl1RatState:%Mcl1_ll1_rat_status_enum"
+  info   CL1TRACE_Ll1Stub_Cl1_Mode_Status_Ind       STUB_IT_TRACE         "Ll1stubCl1ModeStatusIndHandle:c2k_mode_status:%Mll1_active_rat_mode_status_enum,Cl1DrxLength:%d"
+  info   CL1TRACE_Ll1Stub_Cl1_MeasDone_Ind          STUB_IT_TRACE         "Ll1stubCl1StandbyMeasureDoneInd: tick_bitmap:%d"
+  info   CL1TRACE_Ll1Stub_Cl1_Auto_Gap_Req          STUB_IT_TRACE         "Ll1stubCl1AutoGapReq:auto_time:%l,IsCl1AutoGapAvailable:%d"
+  info   CL1TRACE_Ll1Stub_Cl1_Gap_Pattern_Ind_1     STUB_IT_TRACE         "Ll1stubCl1GapPatternInd:cl1_current_time:%l,start_time:%l,idle_gap_length:%l,EndTime:%l,is_drx_tick:%d"
+  info   CL1TRACE_Ll1Stub_Cl1_Gap_Pattern_Ind_2     STUB_IT_TRACE         "Ll1stubCl1GapPatternInd: Cl1 send gap normally"
+  info   CL1TRACE_Ll1Stub_Cl1_Gap_Pattern_Ind_3     STUB_IT_TRACE         "Ll1stubCl1GapPatternInd: warning!!!!!!!!! Cl1 send gap abnormal"
+  info   CL1TRACE_Ll1Stub_Cl1_Meas_Req              STUB_IT_TRACE         "Ll1stubCl1MeasureReq:meas_purpose_bitmap:%d,pch_valid:%d,pdsch_valid:%d,Csr_valid:%d"
+  info   CL1TRACE_Cbs_LTE_Pch_Valid_Flag            STUB_IT_TRACE         "CbsIsLtePchChannelValid: isvalid:%d"
+  info   CL1TRACE_Cbs_LTE_Oos_Valid_Flag            STUB_IT_TRACE         "CbsIsLteOosChannelValid: isvalid:%d"
+  info   CL1TRACE_Cbs_LTE_Pdsch_Valid_Flag          STUB_IT_TRACE         "CbsIsLtePdschChannelValid:isvalid:%d"
+  info   CL1TRACE_Cbs_MD1_Rat_Mode_Status_Ind       STUB_IT_TRACE         "CbsRatModeStatusIndHandle:Rat:%MRatE,RatStatus:%MCbsLl1stubRatStatusE,ModeStatus:%MCbsLl1stubModeStatusE"
+  info   CL1TRACE_Cbs_Chann_Config_Ind              STUB_IT_TRACE         "CbsChannelConfigIndHandle:Rat:%MRatE,ChannelType:%MChannelTypeE,Operation:%MStubOperationE"
+
+  info   CL1TRACE_RTBSTUB_START_TIMER_TRACE          STUB_IT_TRACE        "RtbStub_L1R_StartTimer:Rat:%MRTB_RAT_E,ChannelType:%d,StartTime:%l,EndTime:%l,Positive:%Mkal_bool,RegisterStatus:%MChannelRegisterStatusE"
+  info   CL1TRACE_RTBSTUB_FIND_TIMER_TRACE           STUB_IT_TRACE        "RtbStub_L1R_FindTimerDelayandReservation:Conflict_Type:%MConflictTypeE,CheckDelay:%l,CheckLength:%l,PriorityArbitrate:%Mkal_bool"
+  info   CL1TRACE_RTBSTUB_RESERVE_HWRESOURCE_TRACE   STUB_IT_TRACE        "RtbStub_L1R_ReserveHWResource:StartTime:%l,EndTime:%l,ChannelType:%d,ReserveSuccessfully:%Mkal_bool"
+  info   CL1TRACE_RTBSTUB_CLEAR_TIMER_TRACE          STUB_IT_TRACE        "RtbStub_L1R_ClearTimer:RegisterStatus:%MChannelRegisterStatusE,Positive:%d,PriorityArbitrate:%d"
+  info   CL1TRACE_RTBSTUB_PROTECT_CHAN_TRACE         STUB_IT_TRACE        "RtbStub_L1R_ClearTimer:Protected:%d,ProtectNum:%d"
+  info   CL1TRACE_RTBSTUB_CANCEL_PROTECT_TRACE       STUB_IT_TRACE        "RtbStub_L1R_CancelProtection:Protected:%d,ProtectNum:%d"
+  info   CL1TRACE_RTBSTUB_CHANGE_PRIORITY_TRACE      STUB_IT_TRACE        "RtbStub_L1R_ChangeTimerPriority:NewPriority:%d"
+  info   CL1TRACE_RTBSTUB_ADJUST_POS_TRACE           STUB_IT_TRACE        "RtbStub_L1R_AdjustTimerPosition:StartTime:%l,EndTime:%l"
+  info   CL1TRACE_RTBSTUB_CONFLICT_REPORT_TRACE      STUB_IT_TRACE        "RtbStub_L1R_GetConflictReport:ConflictReport:%MRTBConflictType"
+  info   CL1TRACE_RTBSTUB_OTHER_RESERVE_LENGTH_TRACE STUB_IT_TRACE        "RtbStub_L1R_GetOtherRATReservedLength:rat:%MRTB_RAT_E,HWReserveLength:%l"
+  info   CL1TRACE_RTBSTUB_GET_RATSTATUS_TRACE        STUB_IT_TRACE        "RtbStub_L1R_GetRATStatus:RatStatus:%l"
+  info   CL1TRACE_RTBSTUB_JUDGE_PRIORITY_TRACE       STUB_IT_TRACE        "RTBStub_JudgePriority:ChannelType:%d,ChannelPriority:%d"         
+  info   CL1TRACE_RTBSTUB_RAT_ARBITRATE_TRACE        STUB_IT_TRACE        "RTBStub_RatTypeArbitrate:RatType:%MRTBStubRatTypeE,ConflictRat:%d"
+  info   CL1TRACE_RTBSTUB_REGISTED_CHANNEL_TRACE     STUB_IT_TRACE        "RTBStub_RegisteredChannel:RegisterNum:%d"
+  info   CL1TRACE_RTBSTUB_RESERVED_CHANNEL_TRACE     STUB_IT_TRACE        "RTBStub_ReservedChannel:ReserveNum:%d"
+  info   CL1TRACE_RTBSTUB_UPDATA_CHAN_TRACE          STUB_IT_TRACE        "RTBStub_PassiveChanStatusDecide:RegisterStatus:%MChannelRegisterStatusE,ReserveStatus:%MChannelReserveStatusE,StartTime:%l,EndTime:%l"
+  info   CL1TRACE_RTBSTUB_JUDGE_CHAN_VALID_TRACE     STUB_IT_TRACE        "RTBStub_ChannelValidJudge:Priority:%d,CheckPriority:%d,ChannelValid:%d"
+  info   CL1TRACE_RTBSTUB_HIGHER_TIMER_TRACE         STUB_IT_TRACE        "RTBStub_FindCheckTimer:type:%MConflictTypeE,Phase:%MConflictPhaseE,HigherTimerDelay:%l,HigherTimerReservation:%l"
+
+  /* HSC MPA, SSM trace */
+  info   CL1TRACE_HSC_MPA_INIT_ERROR                 HSC_MP_TRACE         "CL1TRACE_HSC_MPA_INIT_ERROR, NumMain:%l,NumTx:%l,NumIndDiv:%l,NumDepDiv:%l,k:%l,j:%l,AntAlow[k]:%b"  
+  info   CL1TRACE_HSC_MPA_INIT_ERROR_2               HSC_MP_TRACE         "CL1TRACE_HSC_MPA_INIT_ERROR_2, NumMain:%l,NumTx:%l,NumIndDiv:%l,NumDepDiv:%l,k:%l,j:%l,AntAlow:k_1:%b"  
+  info   CL1TRACE_HSC_MPA_INIT_3                     HSC_MP_TRACE         "CL1TRACE_HSC_MPA_INIT_3, NumMain:%l,NumTx:%l,NumIndDiv:%l,NumDepDiv:%l"  
+  info   CL1TRACE_HSC_MPA_INIT_4                     HSC_MP_TRACE         "CL1TRACE_HSC_MPA_INIT_4, MpaAntMap 1x Main:0x%xb,MpaAntMap 1x Div:0x%xb,MpaAntMap 1x Tx:0x%xb,MpaAntMap Do Main:0x%xb,MpaAntMap Do Div:0x%xb,MpaAntMap Do Tx:0x%xb"  
+  info   CL1TRACE_HSC_MPA_REQ_Proc_Active            HSC_MP_TRACE         "CL1TRACE_HSC_MPA_REQ_Proc_Active, ActiveQnum Owner:%MHSCSysAirInterfaceT, Owner:%MHSCSysAirInterfaceT, Req:0x%xb, Status:0x%xd,Priority:%d"  
+  info   CL1TRACE_HSC_MPA_REQ_Proc_Active_2          HSC_MP_TRACE         "CL1TRACE_HSC_MPA_REQ_Proc_Active_2, PreemptFlag:%b, AcceptReq:%b, hscMpaOpMode:0x%xb,Status:0x%xd,status(owner^1):0x%xd"
+  info   CL1TRACE_HSC_MPA_REQ_Proc_NotActive         HSC_MP_TRACE         "CL1TRACE_HSC_MPA_REQ_Proc_NotActive, Owner:%MHSCSysAirInterfaceT, Req:0x%xb,Status:0x%xd,Special1xPreemption:%b,hscMpaOpMode:0x%xb"
+  info   CL1TRACE_HSC_MPA_REQ_Proc_Dropped           HSC_MP_TRACE         "CL1TRACE_HSC_MPA_REQ_Proc_Dropped, Owner:%MHSCSysAirInterfaceT, Req:0x%xb,Status:0x%xd,Priority:%b"
+  info   CL1TRACE_HSC_MPA_RELEASE                    HSC_MP_TRACE         "CL1TRACE_HSC_MPA_RELEASE,Reason:%MHscSsmMpaReasonT,Owner:%MHscSysAirInterfaceT,Req:0x%xb"
+  info   CL1TRACE_HSC_MPA_RELEASE_SEND_TX_AVAIL_IND  HSC_MP_TRACE         "CL1TRACE_HSC_MPA_RELEASE_SEND_TX_AVAIL_IND,Status(Owner^1):0x%xd,status:0x%xd"
+  info   CL1TRACE_HSC_MPA_RELEASE_DivReqPend         HSC_MP_TRACE         "CL1TRACE_HSC_MPA_RELEASE_DivReqPend,Owner^1:%MHscSysAirInterfaceT,HscSsmDivReqPend:%b,MpaStatus:0x%xb,MpaStutus(owner^1):0x%xb,hscMpaOpMode:0x%xb"
+  info   CL1TRACE_HSC_MPA_RELEASE_SUSPEND_PENDING    HSC_MP_TRACE         "CL1TRACE_HSC_MPA_RELEASE_SUSPEND_PENDING,Owner:%MHscSysAirInterfaceT,Req:0x%xb,MpaAllStatus:0x%xb,Stutus:0x%xd,SysTimeSymbNum:%d"
+  info   CL1TRACE_HSC_MPA_RELEASE_ASSIGN_DIV         HSC_MP_TRACE         "CL1TRACE_HSC_MPA_RELEASE_ASSIGN_DIV,Owner^1:%MHscSysAirInterfaceT,HscSsmDivAssigned(owner^1):%b,Reason:%MHscSsmMpaReasonT,MpaStatus:0x%xb,MpaStutus(owner^1):0x%xb,hscMpaOpMode:0x%xb"
+  info   CL1TRACE_HSC_MPA_RELEASE_RESET              HSC_MP_TRACE         "CL1TRACE_HSC_MPA_RELEASE_RESET,Reason:%MHscSsmMpaReasonT,MpaStatus:0x%xb, Status:0x%xd"
+  info   CL1TRACE_HSC_MPA_CheckAntStatus             HSC_MP_TRACE         "CL1TRACE_HSC_MPA_CheckAntStatus,Req:0x%xb,ReqEnum:%MMpaMdmAntennaTypeT,Owner:%MHscSysAirInterfaceT,MpaStatus:0x%xb,AntStatus:%MHscAntStatusT,RetVal:%b"
+  info   CL1TRACE_HSC_SSM_SwapAntennas               HSC_MP_TRACE         "CL1TRACE_HSC_SSM_SwapAntennas,Owner:%MHscSysAirInterfaceT,RfReq:0x%xb"
+  info   CL1TRACE_HSC_SSM_SwapAntennas_Fail          HSC_MP_TRACE         "CL1TRACE_HSC_SSM_SwapAntennas_Fail,Owner:%MHscSysAirInterfaceT,RfReq:0x%xb,Result:%d,RfPath:0x%xb,SysAirInterfaceBM:0x%xb"
+  info   CL1TRACE_HSC_MPA_RemoveRfOwner              HSC_MP_TRACE         "CL1TRACE_HSC_MPA_RemoveRfOwner,Owner:%MHscSysAirInterfaceT,Action:%b,Req:%MMpaMdmAntennaTypeT,ValidatedReq:0x%xb,MpaAllStatus:0x%xb,1xMpaStatus:0x%xb,DoMpaStatus:0x%xb,RfReq:0x%xb,hscMpaOpMode:0x%xb"
+  info   CL1TRACE_HSC_MPA_AddRfOwner                 HSC_MP_TRACE         "CL1TRACE_HSC_MPA_AddRfOwner,Owner:%MHscSysAirInterfaceT,RfReq:0x%xb,Req:%MMpaMdmAntennaTypeT,ValidatedReq:0x%xb,MpaAllStatus:0x%xb,1xMpaStatus:0x%xb,DoMpaStatus:0x%xb,hscMpaOpMode:0x%xb"
+  info   CL1TRACE_HSC_MPA_AddRfOwner_Err             HSC_MP_TRACE         "CL1TRACE_HSC_MPA_AddRfOwner_Err,Owner:%MHscSysAirInterfaceT,RfReq:0x%xb,Req:%MMpaMdmAntennaTypeT,ValidatedReq:0x%xb,MpaAllStatus:0x%xb,hscMpaOpMode:0x%xb"
+  info   CL1TRACE_HSC_MPA_SEND_RF_ASSIGN_IND         HSC_MP_TRACE         "CL1TRACE_HSC_MPA_SEND_RF_ASSIGN_IND,Owner:%MHscSysAirInterfaceT,RfGrant:%MMpaRfAssignStatusT,Req:0x%xb,RfAssigned:0x%xb"
+  info   CL1TRACE_HSC_MPA_PREEMPT_LAST_RF_STOP_TIME  HSC_MP_TRACE         "CL1TRACE_HSC_MPA_PREEMPT_LAST_RF_STOP_TIME, SHDR Div_Preempt:%Mkal_bool, 1xActiveBlock Valid:%Mkal_bool, LastRFStopTimeInFrc:%ul,LastRFStopTimeInSysTime SuperFrame:%Xl,Chip8xOffset:%Xl"
+  info   CL1TRACE_HSC_MPA_SYS_TRANSITION_TYPE        HSC_UT_TRACE         "CL1TRACE_HSC_MPA_SYS_TRANSITION_TYPE,Req:0x%xb,Owner:%MHscSysAirInterfaceT,HscShdrOn:%b,transition:%b"
+  info   CL1TRACE_HSC_MPA_REQUEST_SUCCESS            HSC_IT_TRACE         "CL1TRACE_HSC_MPA_REQUEST_SUCCESS,Owner:%MHscSysAirInterfaceT,Transition:0x%xl,SysTimeSymbNum:%d,Req:0x%xb,RfPath:0x%xb,RfReq:0x%xb,RfAntenna:0x%xb,HscShdrWakeup:%b,Statuss:0x%xd"
+  info   CL1TRACE_HSC_MPA_NORM_REQ_BAD               HSC_IT_TRACE         "CL1TRACE_HSC_MPA_NORM_REQ_BAD,Owner:%MHscSysAirInterfaceT,Transition:0x%xl, HscShdrWakeup:%b,1x RfReq: 0x%xb, Do RfReq:0x%xb, ActiveQnum Ptr:0x%xl, ActiveQnum Owner:%MHscSysAirInterfaceT, WAIT_1 Prt:0x%xl, WAIT_1 Owner:%MHscSysAirInterfaceT,WAIT_2 Ptr:0x%xl"
+  info   CL1TRACE_HSC_MPA_REQUEST_FAIL               HSC_IT_TRACE         "CL1TRACE_HSC_MPA_REQUEST_FAIL,Owner:%MHscSysAirInterfaceT,RfReq:0x%xb,Req:0x%xb,RfPath:0x%xb,SysAirIntBM:0x%xb"
+  info   CL1TRACE_HSC_SSM_SLEEPOVER_EVT              HSC_IT_TRACE         "CL1TRACE_HSC_SSM_SLEEPOVER_EVT,Owner:%MHscSysAirInterfaceT,Status:0x%xd,Status(owner^1):0x%xd,WakeSchedulePend:%b,ModemWakePend:%b,HscSsmPriority:%b,MpaStatus(owner|Owner^1):0x%xl,RfReq(owner|Owner^1):0x%xl"
+  info   CL1TRACE_HSC_SSM_QUEUE_WAKE_CMD_WAIT1       HSC_MP_TRACE         "CL1TRACE_HSC_SSM_QUEUE_WAKE_CMD_WAIT1,Owner:%MHscSysAirInterfaceT,WAIT1 Ptr:0x%xl,WAIT1 Owner:%MHscSysAirInterfaceT,Status:0x%xd,Status(owner^1):0x%xd,HscSsmPriority:%b,RfReq:0x%xb"
+  info   CL1TRACE_HSC_SSM_QUEUE_WAKE_CMD_WAIT2       HSC_MP_TRACE         "CL1TRACE_HSC_SSM_QUEUE_WAKE_CMD_WAIT2,Owner:%MHscSysAirInterfaceT,WAIT1 Ptr:0x%xl,WAIT1 Owner:%MHscSysAirInterfaceT,WAIT2 Ptr:0x%xl,WAIT2 Owner:%MHscSysAirInterfaceT,HscSsmPriority:%b,RfReq:0x%xb"
+  info   CL1TRACE_HSC_SSM_QUEUE_WAKE_CMD_DROPPED     HSC_MP_TRACE         "CL1TRACE_HSC_SSM_QUEUE_WAKE_CMD_DROPPED,Owner:%MHscSysAirInterfaceT,WAIT1 Ptr:0x%xl,WAIT1 Owner:%MHscSysAirInterfaceT,WAIT2 Ptr:0x%xl,WAIT2 Owner:%MHscSysAirInterfaceT,HscSsmPriority:%b,RfReq:0x%xb,Status(Owner^1)|Status:0x%xl"
+  info   CL1TRACE_HSC_SSM_DEQUEUE_NORMAL             HSC_MP_TRACE         "CL1TRACE_HSC_SSM_DEQUEUE_NORMAL,i:%b,Status 1x:0x%xd,Status Do:0x%xd,HscSpEnabled 1x:%b,HscSpEnabled Do:%b, ActiveQnum Ptr 1x: 0x%xl, ActiveQnum Ptr Do: 0x%xl"
+  info   CL1TRACE_HSC_SSM_DEQUEUE_WAKE_ACTIVE        HSC_MP_TRACE         "CL1TRACE_HSC_SSM_DEQUEUE_WAKE_ACTIVE,Owner:%MHscSysAirInterfaceT,Status:0x%xd,Status(Owner^1):0x%xd,RfReq:0x%xb,hscMpaOpMode:0x%xb,HscShdrWakeup:%b,Loc:%b"
+  info   CL1TRACE_HSC_SSM_DEQUEUE_WAKE_SCHEDULE_1    HSC_MP_TRACE         "CL1TRACE_HSC_SSM_DEQUEUE_WAKE_SCHEDULE_1,Owner:%MHscSysAirInterfaceT,Status:0x%xd,HscSpState:%b,HscSsmPriority:%b,hscMpaOpMode:0x%xb"
+  info   CL1TRACE_HSC_SSM_DEQUEUE_WAKE_PREEMPT       HSC_MP_TRACE         "CL1TRACE_HSC_SSM_DEQUEUE_WAKE_PREEMPT,Owner:%MHscSysAirInterfaceT,Owner^1:%MHscSysAirInterfaceT,hscMpaOpMode:0x%xb"
+  info   CL1TRACE_HSC_SSM_DEQUEUE_WAKE_SCHEDULE_2    HSC_MP_TRACE         "CL1TRACE_HSC_SSM_DEQUEUE_WAKE_SCHEDULE_2,Owner:%MHscSysAirInterfaceT,Status:0x%xd,HscSpState:%b,HscSsmPriority:%b"
+  info   CL1TRACE_HSC_SSM_DEQUEUE_WAKE_DENIED        HSC_MP_TRACE         "CL1TRACE_HSC_SSM_DEQUEUE_WAKE_DENIED,Owner|HscMpaRfPath:0x%xl,Status|Status(Owner^1):0x%xl,ActiveQnum Ptr:0x%xl,RESYNC Ptr:0x%xl,WAIT_1 Ptr:0x%xl,1x ResyncValid|Do ResyncValid:0x%xl,RfReq|RfReq(Owner^1):0x%xl,1x SysTimeValid|Do SysTimeValid:0x%xl"
+  info   CL1TRACE_HSC_SSM_DEQUEUE_RESYNC_COLLISION   HSC_MP_TRACE         "CL1TRACE_HSC_SSM_DEQUEUE_RESYNC_COLLISION,ResyncOwner:%MHscSysAirInterfaceT,CurrFrc:%ul,NextResync:0x%ul"
+  info   CL1TRACE_HSC_SSM_CLOSE_TO_RESYNC            HSC_MP_TRACE         "CL1TRACE_HSC_SSM_CLOSE_TO_RESYNC, ResyncOwner:%MHscSysAirInterfaceT, Collision:%b,CurrFrc:%ul,CollisionPeriod:%ul, NextResync:%ul, Diff:%ul, RESYNC Ptr:0x%xl, 1x Resync Valid:%b, Do Resync Valid:%b"
+  info   CL1TRACE_HSC_SSM_WAKE_ACCEPT_SUCCESS        HSC_MP_TRACE         "CL1TRACE_HSC_SSM_WAKE_ACCEPT_SUCCESS,Owner:%MHscSysAirInterfaceT,SysTimeSymbNum:%d,ActiveQnum Ptr:0x%xl,RESYNC Ptr:0x%xl,WAIT_1 Ptr:0x%xl,WAIT_2 Ptr:0x%xl,SUSPEND Ptr:0x%xl,HscMpaRfPath(HSC_NUM_APPS):0x%xb,HscMpaRfPath:0x%xb"
+  info   CL1TRACE_HSC_SSM_WAKE_ACCEPT_FAIL           HSC_MP_TRACE         "CL1TRACE_HSC_SSM_WAKE_ACCEPT_FAIL,ActiveQnum Ptr:0x%xl,RESYNC Ptr:0x%xl,WAIT_1 Ptr:0x%xl,HscMpaRfPath(HSC_NUM_APPS):0x%xb,HscMpaRfPath:0x%xb"
+  info   CL1TRACE_HSC_SSM_EVSTANDBY_SEND_RXACTIVE    HSC_IT_TRACE         "CL1TRACE_HSC_SSM_EVSTANDBY_SEND_RXACTIVE,RfAntenna:0x%xb"
+  info   CL1TRACE_HSC_SSM_SEND_RXACTIVE              HSC_IT_TRACE         "CL1TRACE_HSC_SSM_SEND_RXACTIVE,RfAntenna:0x%xb,Channel:%MRtbaCl1ChannelTypeT,SysStartTime.SuperFrame:0x%xl,SysStartTime.Chip8xOffset:0x%xl,SysEndTime.SuperFrame:0x%xl,SysEndTime.Chip8xOffset:0x%xl"
+  info   CL1TRACE_HSC_SSM_SEND_RESYNC_IND            HSC_IT_TRACE         "CL1TRACE_HSC_SSM_SEND_RESYNC_IND,EvdoStatus:0x%xd,Status:0x%xd,RfReq:0x%xb"
+  info   CL1TRACE_HSC_SSM_SEND_WAKE_IND              HSC_IT_TRACE         "CL1TRACE_HSC_SSM_SEND_WAKE_IND,EvdoStatus:0x%xd,Status:0x%xd,RfReq:0x%xb,HscSpEnabled:%b"
+  info   CL1TRACE_HSC_SSM_SEND_THAW_IND              HSC_IT_TRACE         "CL1TRACE_HSC_SSM_SEND_THAW_IND,Status:0x%xd"
+  info   CL1TRACE_HSC_SSM_DO_NOT_SEND_IND            HSC_IT_TRACE         "CL1TRACE_HSC_SSM_DO_NOT_SEND_IND, EvdoStatus:0x%xd"
+  info   CL1TRACE_HSC_SSM_ERR_DEQUEUE_RECOVERY_1     HSC_IT_TRACE         "CL1TRACE_HSC_SSM_ERR_DEQUEUE_RECOVERY_1,Owner:%MHscSysAirInterfaceT,RfReq:0x%xl"
+  info   CL1TRACE_HSC_SSM_ERR_DEQUEUE_RECOVERY_2     HSC_IT_TRACE         "CL1TRACE_HSC_SSM_ERR_DEQUEUE_RECOVERY_2,Owner:%MHscSysAirInterfaceT,RfReq:0x%xl,ActiveQnum Ptr:0x%xl,ActiveQnum Owner:%MHscSysAirInterfaceT,WAIT_1 Ptr:0x%xl,WAIT_1 Owner:%MHscSysAirInterfaceT,WAIT_2 Ptr:0x%xl,WAIT_2 Owner:%MHscSysAirInterfaceT"
+  info   CL1TRACE_HSC_SSM_QUEUE_WAKE_CMD_ACTIVE      HSC_IT_TRACE         "CL1TRACE_HSC_SSM_QUEUE_WAKE_CMD_ACTIVE,Owner:%MHscSysAirInterfaceT,ActiveQnum Ptr:0x%xl,ActiveQnum Owner:%MHscSysAirInterfaceT,hscMpaOpMode:0x%xb,1x Status:0x%xd,Do Status:0x%xd,RfReq:0x%xb"
+  info   CL1TRACE_HSC_SSM_DEQUEUE_WAKE_PREEMPT_NONHYBRID     HSC_IT_TRACE         "CL1TRACE_HSC_SSM_DEQUEUE_WAKE_PREEMPT_NONHYBRID,Owner:%MHscSysAirInterfaceT,Owner^1:%MHscSysAirInterfaceT,hscMpaOpMode:0x%xb,HscShdrWakeup:%b,Status(Owner):0x%xd,Status(Owner^1):0x%xd"
+  info   CL1TRACE_HSC_SSM_RESYNC_HANDLE              HSC_IT_TRACE         "CL1TRACE_HSC_SSM_RESYNC_HANDLE,Resync Owner:%MHscSysAirInterfaceT,PchWakeTime L32:0x%xl,ST_Resync:0x%xl,CurrStCnt:0x%xl,SC_Resync:0x%xl,CurrFrame L32:0x%xl,RxPllBackoffTimeUs:%d,RxMiscAdjUs:%d"
+  info   CL1TRACE_HSC_SSM_STOP_TX_REQ                HSC_IT_TRACE         "CL1TRACE_HSC_SSM_STOP_TX_REQ,WakeFrame L32:0x%xl,WakeFrame upper6:0x%xb,FRC_Resync:0x%xl,WakeFrame.Lower32:0x%xl"
+  info   CL1TRACE_HSC_SSM_STOP_TX_REQ_NOT_SENT       HSC_IT_TRACE         "CL1TRACE_HSC_SSM_STOP_TX_REQ_NOT_SENT,WakeFrame L32:0x%xl,WakeFrame L32+GUARD:0x%xl,WakeFrame L32-GUARD:0x%xl,WakeFrame upper6:0x%xb,FRC_Resync:0x%xl,WakeFrame.Lower32:0x%xl"
+  info   CL1TRACE_HSC_SSM_STOP_TX_CANCEL             HSC_IT_TRACE         "CL1TRACE_HSC_SSM_STOP_TX_CANCEL"
+  info   CL1TRACE_HSC_SSM_SIGNAL_COND_INFO           HSC_IT_TRACE         "CL1TRACE_HSC_SSM_SIGNAL_COND_INFO,1x CurrentBand:%MSysCdmaBandT,1x RssiValMain:%d,Do CurrentBand:%MSysCdmaBandT,Do RssiValMain:%d,Do RssiValDiv:%d,HscShdrWakeup:%b,SignalCond:%l"
+  info   CL1TRACE_HSC_SSM_DEQUEUE_RESYNC_ACCEPT      HSC_IT_TRACE         "CL1TRACE_HSC_SSM_DEQUEUE_RESYNC_ACCEPT,i:%b,Owner:%MHscSysAirInterfaceT,hscMpaOpMode:0x%xb,1x Status:0x%xd,Do Status:0x%xd,HscShdrWakeup:%b,Loc:%b"
+  info   CL1TRACE_HSC_SSM_DEQUEUE_RESYNC_PREEMPT     HSC_IT_TRACE         "CL1TRACE_HSC_SSM_DEQUEUE_RESYNC_PREEMPT,i:%b,Owner:%MHscSysAirInterfaceT,hscMpaOpMode:0x%xb,DOisInTraffic:%b,HscShdrWakeup:%b,RfReq(Owner^1):0x%xb"
+  info   CL1TRACE_HSC_SSM_DEQUEUE_RESYNC_DUPLICATE   HSC_IT_TRACE         "CL1TRACE_HSC_SSM_DEQUEUE_RESYNC_DUPLICATE,i:%b,Owner:%MHscSysAirInterfaceT,ActiveQnum Owner:%MHscSysAirInterfaceT"
+  info   CL1TRACE_HSC_SSM_DEQUEUE_RESYNC_DENY        HSC_IT_TRACE         "CL1TRACE_HSC_SSM_DEQUEUE_RESYNC_DENY,i|MpaRfPath:0x%xl,Status(Owner)|Status(Owner^1):0x%xl,ActiveQnum Ptr:0x%xl,RESYNC Ptr:0x%xl,WAIT_1 Ptr:0x%xl,1x Resync Valid|Do Resync Valid:0x%xl,SC_Resync:0x%xl,RfReq(Owner)|(Owner^1):0x%xl,SystimeValid 1x|Do:0x%xl,Loc:%b"
+  info   CL1TRACE_HSC_SSM_RESYNC_ACCEPT_SUCCESS      HSC_IT_TRACE         "CL1TRACE_HSC_SSM_RESYNC_ACCEPT_SUCCESS,i:%b,Owner:%MHscSysAirInterfaceT,SysTimeSymbNum:%d,RfAntenna:0x%xb,1x Status:0x%xd,Do Status:0x%xd,1x RfReq:0x%xb,Do RfReq:0x%xb"
+  info   CL1TRACE_HSC_SSM_RESYNC_ACCEPT_FAIL         HSC_MP_TRACE         "CL1TRACE_HSC_SSM_RESYNC_ACCEPT_FAIL,i:%b,Owner:%MHscSysAirInterfaceT,SysTimeSymbNum:%d,HscMpaRfPath(HSC_NUM_APPS):0x%xb"
+  info   CL1TRACE_HSC_SSM_RF_DIV_PREEMPT             HSC_MP_TRACE         "CL1TRACE_HSC_SSM_RF_DIV_PREEMPT,Owner:%MHscSysAirInterfaceT,Status:0x%xd,RfReq:0x%xb,hscMpaOpMode:0x%xb,antennaAvail:%b,HscShdrWakeup:%b"
+  info   CL1TRACE_HSC_SSM_SHDR_TIMER_START           HSC_MP_TRACE         "CL1TRACE_HSC_SSM_SHDR_TIMER_START,Owner:%MHscSysAirInterfaceT,FRC_Resync:%ul,CurrFrc:%ul,ShdrModeCheckingTime:%ul,timerDuration:%ul,HscShdrWakeup:%b,DoinTraffic:%b"
+  info   CL1TRACE_HSC_SSM_SHDR_TIMER_STOP            HSC_MP_TRACE         "CL1TRACE_HSC_SSM_SHDR_TIMER_STOP,Owner:%MHscSysAirInterfaceT,FRC_Resync:%ul,CurrFrc:%ul,timerDuration:%ul,HscShdrWakeup:%b,HscIsSignalCondGood:%b"
+  info   CL1TRACE_HSC_SSM_SHDR_TIMER_EXPIRED         HSC_MP_TRACE         "CL1TRACE_HSC_SSM_SHDR_TIMER_EXPIRED,hscMpaOpMode:0x%xb,HscShdrWakeup:%b,HscIsSignalCondGood:%b,1x Status:0x%xd,Do Status:0x%xd"
+  info   CL1TRACE_HSC_SSM_PROCESS_WAKE_CMD           HSC_MP_TRACE         "CL1TRACE_HSC_SSM_PROCESS_WAKE_CMD, Owner:%MHscSysAirInterfaceT,Status:0x%xd, RfReq:0x%xb,SsmStatus RfReq:0x%xb"
+  info   CL1TRACE_HSC_SSM_PROCESS_EVSTANDBY_WAKE_CMD HSC_MP_TRACE         "CL1TRACE_HSC_SSM_PROCESS_EVSTANDBY_WAKE_CMD, Status:0x%xd,SsmStatus RfReq:0x%xb,Loc:0x%xb"
+  info   CL1TRACE_HSC_SSM_RESYNC_ACTIVATE_NEW        HSC_MP_TRACE         "CL1TRACE_HSC_SSM_RESYNC_ACTIVATE_NEW,ResyncOwner|Owner:0x%xl,PchWakeTime Upper6:%xl, PchWakeTime L32:%xl, Chip8xOffset:%xl,ResyncFrc:%ul, FRC_Reysnc:%ul"
+  info   CL1TRACE_HSC_SSM_RESYNC_ACTIVATE_SAME       HSC_MP_TRACE         "CL1TRACE_HSC_SSM_RESYNC_ACTIVATE_SAME,ResyncOwner|Owner:0x%xl,PchWakeTime L32:%xl,ResyncFrc:%ul, CurFRC:%ul"
+  info   CL1TRACE_HSC_SSM_RESYNC_ACTIVATE_NONE       HSC_MP_TRACE         "CL1TRACE_HSC_SSM_RESYNC_ACTIVATE_NONE,ResyncOwner:%MHscSysAirInterfaceT,ResyncFrc:%ul, CurFRC:%ul ,1xRTT Resync Valid:%b, 1xRTT FRC_Resync:%ul, EvDO Resync Valid:%b,  EvDO RFC_Resync:%ul"
+  info   CL1TRACE_HSC_SSM_UPDATE_DO_RESYNC_TIME      HSC_MP_TRACE         "CL1TRACE_HSC_SSM_UPDATE_DO_RESYNC_TIME ,PchWakeTime L32:%xl, Backoff9MHz:%xl, MiniAcqCorrectionTc8:%xl, Resync SuperFrame:%xl, Resync Chip8xOffset:%xl"
+  info   CL1TRACE_HSC_SSM_DEEP_SLEEP_ACTIVATE        HSC_IT_TRACE         "CL1TRACE_HSC_SSM_DEEP_SLEEP_ACTIVATE, Owner:%MHscSysAirInterfaceT,MonDeepSleepIsVetoed: %b,MonDeepSleepVetoMaskGet:0x%xl"
+  info   CL1TRACE_HSC_SPDO_FSM_ENABLED               HSC_MP_TRACE         "CL1TRACE_HSC_SPDO_FSM_ENABLED, Flag:0x%xb, History:0x%xl, State:%b,Triggers:0x%xd"
+  info   CL1TRACE_HSC_SPDO_FSM_CHANGED               HSC_MP_TRACE         "CL1TRACE_HSC_SPDO_FSM_CHANGED, Flag:0x%xb, History:0x%xl, Prev:%b,State:%b,Triggers: 0x%xd,SP_ENABLING_TRIGGERS: 0x%xd"
+  info   CL1TRACE_HSC_SPDO_FSM_DISABLED              HSC_MP_TRACE         "CL1TRACE_HSC_SPDO_FSM_DISABLED, Flag:0x%xb, History:0x%xl, State:%b,Triggers:0x%xd"
+  info   CL1TRACE_HSC_SPDO_STATE_WAIT_FOR_STOP_ACK   HSC_MP_TRACE         "CL1TRACE_HSC_SPDO_STATE_WAIT_FOR_STOP_ACK, History:0x%xl, State:%b"
+  info   CL1TRACE_HSC_SPDO_STATE_STATE_SLEEP         HSC_MP_TRACE         "CL1TRACE_HSC_SPDO_STATE_STATE_SLEEP, History:0x%xl, State:%b"
+  info   CL1TRACE_HSC_GAP_OFFER_DOSTATESLEEP         HSC_MP_TRACE         "CL1TRACE_HSC_GAP_OFFER_DOSTATESLEEP, (gap_offer|Enable):%xl, SltWakePend:%b,OosaWakePend:%b,ContOosaPend:%b, GapEndFrame:%xl, ContSleepDuration:%ul"
+  info   CL1TRACE_HSC_SPDO_PROCESS_DISABLED_MSG      HSC_MP_TRACE         "CL1TRACE_HSC_SPDO_PROCESS_DISABLED_MSG,History:0x%xl, State:%b"
+  info   CL1TRACE_HSC_SPDO_PROCESS_ENABLED_MSG       HSC_MP_TRACE         "CL1TRACE_HSC_SPDO_PROCESS_ENABLED_MSG, Status:0x%xd,SlotCycleIndex:%d,State:%b,History:0x%xl"
+  info   CL1TRACE_HSC_SPDO_PROCESS_SLEEP_CMD_MSG     HSC_MP_TRACE         "CL1TRACE_HSC_SPDO_PROCESS_SLEEP_CMD_MSG, Status:0x%xd, State:%b,History:0x%xl,PchWakeTime Upper6:%xl, PchWakeTime L32:%xl"
+  info   CL1TRACE_HSC_SPDO_PROCESS_SRCH_DONE_MSG     HSC_MP_TRACE         "CL1TRACE_HSC_SPDO_PROCESS_SRCH_DONE_MSG, State:%b,Histrory:0x%xl,Status:0x%xd"
+  info   CL1TRACE_HSC_SPDO_SP_DISABLE                HSC_MP_TRACE         "CL1TRACE_HSC_SPDO_SP_DISABLE, Histrory:0x%xl,State:%b, Enabled:%b"
+  info   CL1TRACE_HSC_SPDO_PROCESS_SLEEP_PEND_MSG    HSC_MP_TRACE         "CL1TRACE_HSC_SPDO_PROCESS_SLEEP_PEND_MSG"
+  info   CL1TRACE_HSC_SSM_RESYNC_CALC_TIME_DO        HSC_MP_TRACE         "CL1TRACE_HSC_SSM_RESYNC_CALC_TIME_DO, PchWakeTime L32:%xl, Backoff9MHz:%xl,MiniAcqCorrectionTc8:%xl,Resync SuperFrame:%xl,Resync Chip8xOffset:%xl"
+
+  info   CL1TRACE_HSC_UT_CASE_NAME                  UT_CASE_TRACE         "CL1TRACE_HSC_UT_CASE_NAME:%s"
+  info   CL1TRACE_HSC_UT_CASE_FRAMENUM              UT_CASE_TRACE         "CL1TRACE_HSC_UT_CASE_FRAMENUM:%l"
+  info   CL1TRACE_HSC_UT_ReqRxMainCheckStep         UT_CASE_TRACE         "CL1TRACE_HSC_UT_ReqRxMainCheckStep,Owner:%MSysAirInterfaceT,CheckStepNum:%d"
+  info   CL1TRACE_HSC_UT_OUT_OF_STEP_RANGE_Err      UT_CASE_TRACE         "CL1TRACE_HSC_UT_OUT_OF_STEP_RANGE_Err,out of the step range"
+  
+  info   CL1TRACE_RTBSTUB_UT_CASE_MSG_TRACE               UT_CASE_TRACE   "%s case %ub"
+  info   CL1TRACE_RTBSTUB_UT_CASE_CHECK_HIGHER_TRACE      UT_CASE_TRACE   "%s %ub,InputFindHigherTimer:%d,CheckFindHigherTimer:%d,InputHigherTimerDelay:%l,CheckHigherTimerDelay:%l,InputHigherTimerReservation:%l,CheckHigherTimerReservation:%l"
+  info   CL1TRACE_RTBSTUB_UT_CASE_CHECK_RESOURCE_TRACE    UT_CASE_TRACE   "%s %ub,InputReserveSuccess:%d,CheckReserveSuccess:%d"
+
+  info   CL1TRACE_RTBA_API_TRACE_0                             RTBA_MP_TRACE           "[RTBA]RtbaCl1SwitchActiveRatReq: Mode=%MSysAirInterfaceT,Activate=%Mkal_bool,ByPassMode=%Mkal_bool."  
+  info   CL1TRACE_RTBA_API_TRACE_1                             RTBA_MP_TRACE           "[RTBA]RtbaCl1RegReq: Mode=%MSysAirInterfaceT, Cl1Channel=%MRtbaCl1ChannelTypeT, StartTimeValid=%Mkal_bool, StartTime=%ul, ReserveLen=%l, GapEndFRC=%ul."                                                                                           
+  info   CL1TRACE_RTBA_API_TRACE_2                             RTBA_MP_TRACE           "[RTBA]RtbaCl1ProtectionCfgReq: Mode=%MSysAirInterfaceT, ProtectReason=%MRtbaProtecReasonT."                                                                                                                                            
+  info   CL1TRACE_RTBA_API_TRACE_3                             RTBA_MP_TRACE           "[RTBA]RtbaCl1CancelReq: Mode=%MSysAirInterfaceT, CancelAll=%Mkal_bool, Cl1Channel=%MRtbaCl1ChannelTypeT."                                                                                                                                        
+  info   CL1TRACE_RTBA_API_TRACE_4                             RTBA_MP_TRACE           "[RTBA]RtbaCl1CancelQueryReq: Mode=%MSysAirInterfaceT."                                                                                                                                                                
+  info   CL1TRACE_RTBA_API_TRACE_5                             RTBA_MP_TRACE           "[RTBA]RtbaCl1ChannelChangeReq: Mode=%MSysAirInterfaceT, Cl1Channel=%MRtbaCl1ChannelTypeT."                                                                                                                                               
+  info   CL1TRACE_RTBA_API_TRACE_6                             RTBA_MP_TRACE           "[RTBA]RtbaCl1KickQueryReq: Mode=%MSysAirInterfaceT."                                                                                                                                                                  
+  info   CL1TRACE_RTBA_API_TRACE_7                             RTBA_MP_TRACE           "[RTBA]RtbaHscKickQueryReq(Start): Mode=%MSysAirInterfaceT, Cl1Channel=%MRtbaCl1ChannelTypeT, StartTimeFRC=%ul, EndTimeFRC=%ul "                                                                                                            
+  info   CL1TRACE_RTBA_API_TRACE_8                             RTBA_MP_TRACE           "[RTBA]RtbaHscKickQueryReq(QuerySuccess):Cl1Channel=%MRtbaCl1ChannelTypeT, RxOnTimeTmp=[%-10Xl,%-10Xl], RxOffTimeTmp=[%-10Xl,%-10Xl]."                                                                                       
+  info   CL1TRACE_RTBA_API_TRACE_9                             RTBA_MP_TRACE           "[RTBA]RtbaProcessSimIndexInfoMsg: SimIndex=%d, gRtbaPrioIndex=%d, gRtbaSimIndexRecord[SYS_MODE_1xRTT]=%MRTB_SIM_INDEX, gRtbaSimIndexRecord[SYS_MODE_EVDO]=%MRTB_SIM_INDEX."                                                     
+  info   CL1TRACE_RTBA_API_TRACE_10                            RTBA_MP_TRACE           "[RTBA]RtbaChannelPrioBoostReq: Mode=%MSysAirInterfaceT, Cl1Channel=%MRtbaCl1ChannelTypeT."                                                                                                                                               
+  info   CL1TRACE_RTBA_API_TRACE_11                            RTBA_MP_TRACE           "[RTBA]RtbaGateModeReq: Mode=%MSysAirInterfaceT, Reason=%MRtbaGateModeReasonT, GapLen=%ul."                                                                                                                                                
+  info   CL1TRACE_RTBA_API_TRACE_12                            RTBA_MP_TRACE           "RtbaEventHandler: Mode=%MSysAirInterfaceT, fifo_index=%d, CmdFifo[0]=%MRtbaCmdTypeT, CmdFifo[1]=%MRtbaCmdTypeT, CmdFifo[2]=%MRtbaCmdTypeT, CmdFifo[3]=%MRtbaCmdTypeT, CmdFifo[4]=%MRtbaCmdTypeT, CmdFifo[5]=%MRtbaCmdTypeT."
+  info   CL1TRACE_RTBA_API_TRACE_13                            RTBA_MP_TRACE           "[RTBA]RtbaQueryScheduler: Mode=%MSysAirInterfaceT, CurrentFrame= %ul, QueryFrameNum= %ul."     
+  info   CL1TRACE_RTBA_API_TRACE_14                            RTBA_MP_TRACE           "[RTBA]RtbaCl1AdjustChannelPositionReq: Mode=%MSysAirInterfaceT, StartTime= %ul, ReserveLen= %ul"
+  info   CL1TRACE_RTBA_API_TRACE_15                            RTBA_MP_TRACE           "[RTBA]RtbaCl1RegWithPostProcessMarginReq: Mode=%MSysAirInterfaceT, Cl1Channel=%MRtbaCl1ChannelTypeT, StartTimeValid=%Mkal_bool, StartTime=%ul, ReserveLen=%ul, GapEndFRC=%ul, PostProcessMargin=%ul." 
+  info   CL1TRACE_RTBA_API_TRACE_16                            RTBA_IT_TRACE           "[RTBA]RtbaCl1RbsScenarioControlReq: RbsSceneControl = %MRbsScenarioConfigTypeT, TimingOffset = %l, TargetRbsScenCtrlBitmap = %xl."
+  info   CL1TRACE_RTB_API_TRACE_0                              RTBA_MP_TRACE           "[RTBA]RtbaProcSwitchActiveRatSendToRtb:Mode = %MSysAirInterfaceT, Activate = %Mkal_bool, SimIndex = %MRTB_SIM_INDEX, Frc = %ul."                                                  
+  info   CL1TRACE_RTB_API_TRACE_1                              RTBA_MP_TRACE           "[RTBA]RtbaProcStartTimerSendToRtb:Mode = %MSysAirInterfaceT, Channel = %d, StartTime = %ul, Prio = %d, ReserveLen = %ul, SimIndex = %MRTB_SIM_INDEX, Frc = %ul."            
+  info   CL1TRACE_RTB_API_TRACE_2                              RTBA_MP_TRACE           "[RTBA]RtbaProcProtectCfgSendToRtb:Mode = %MSysAirInterfaceT, ProtectCfg = %Mkal_bool, ChannelType = %d, Frc = %ul."                                                  
+  info   CL1TRACE_RTB_API_TRACE_3                              RTBA_MP_TRACE           "[RTBA]RtbaProcClearTimerSendToRtb:Mode = %MSysAirInterfaceT, ChannelType = %d, Frc = %ul."                                                                   
+  info   CL1TRACE_RTB_API_TRACE_4                              RTBA_MP_TRACE           "[RTBA]RtbaProcClearReservationSendToRtb: Frc = %ul."                                                                                         
+  info   CL1TRACE_RTB_API_TRACE_5                              RTBA_MP_TRACE           "RtbaProcClearPassedReservationSendToRtb!"                                                                                             
+  info   CL1TRACE_RTB_API_TRACE_6                              RTBA_MP_TRACE           "[RTBA]RtbaProcHighTimerQuerySendToRtb: Mode = %MSysAirInterfaceT, ChannelType = %d, ChannelPrio = %d, StartTime = %ul, CheckLen = %ul, PostProcessMargin = %ul, Frc = %ul."             
+  info   CL1TRACE_RTB_API_TRACE_7                              RTBA_MP_TRACE           "[RTBA]RtbaProcCheckHWResourceSendToRtb: Mode = %MSysAirInterfaceT, ChannelType = %d, ReservedLength = %l, PostProcessMargin = %l, Frc = %ul."                                        
+  info   CL1TRACE_RTB_API_TRACE_8                              RTBA_MP_TRACE           "[RTBA]RtbaProcSwitchPriritySendToRtb: Mode = %MSysAirInterfaceT, ChannelType = %d, Prio = %d, Frc = %ul."  
+  info   CL1TRACE_RTB_API_TRACE_9                              RTBA_MP_TRACE           "[RTBA]RtbaProcAdjTimerPosSendToRtb: Mode = %MSysAirInterfaceT, ChannelType = %d, Delay = %l, Frc = %ul."                                                   
+  info   CL1TRACE_RTBA_API_PROC_INFO_TRACE_0                   RTBA_MP_TRACE           "RtbaProcPrimaryChannelRegReq(Start): Mode=%MSysAirInterfaceT, Cl1Channel=%MRtbaCl1ChannelTypeT, StartTimeValid=%Mkal_bool, StartTime=%ul, ReserveLen= %ul, GapEndFRC=%ul, PostProcessMargin=%ul."     
+  info   CL1TRACE_RTBA_API_PROC_INFO_TRACE_1                   RTBA_MP_TRACE           "RtbaProcSecondaryChannelRegReq(Start): Mode=%MSysAirInterfaceT, Cl1Channel=%MRtbaCl1ChannelTypeT, StartTimeValid=%Mkal_bool, StartTime=%ul, ReserveLen= %l, PrimaryStatus=%d"
+  info   CL1TRACE_RTBA_API_PROC_INFO_TRACE_2                   RTBA_MP_TRACE           "RtbaProcCancelReq: Mode=%MSysAirInterfaceT, Cl1Channel=%MRtbaCl1ChannelTypeT, CancelAll=%Mkal_bool, PriChanReg=%Mkal_bool, PriStatus=%MRtbaChannelStatusT, SecStatus=%MRtbaChannelStatusT."                            
+  info   CL1TRACE_RTBA_API_PROC_INFO_TRACE_3                   RTBA_MP_TRACE           "RtbaProcCancelQueryReq: Mode=%MSysAirInterfaceT, QueryFrame=%ul, CurrentFrame=%ul."                                                               
+  info   CL1TRACE_RTBA_API_PROC_INFO_TRACE_4                   RTBA_MP_TRACE           "[RTBA]RtbaProcChannelChangeReq: Mode=%MSysAirInterfaceT, DestCl1Channel=%MRtbaCl1ChannelTypeT, ScheChannel=%MRtbaCl1ChannelTypeT."                                                          
+  info   CL1TRACE_RTBA_API_PROC_INFO_TRACE_5                   RTBA_MP_TRACE           "RtbaProcChannelProtectReq: Mode=%MSysAirInterfaceT, Protect=%Mkal_bool, Cl1Channel=%MRtbaCl1ChannelTypeT."                                                                 
+  info   CL1TRACE_RTBA_API_PROC_INFO_TRACE_6                   RTBA_MP_TRACE           "RtbaProcKickQueryReq: Mode=%MSysAirInterfaceT, Cl1Channel=%MRtbaCl1ChannelTypeT."                                                                                  
+  info   CL1TRACE_RTBA_API_PROC_INFO_TRACE_7                   RTBA_MP_TRACE           "RtbaProcChangeChannelPrioReq: Mode=%MSysAirInterfaceT, Cl1Channel=%MRtbaCl1ChannelTypeT."                                                                          
+  info   CL1TRACE_RTBA_API_PROC_INFO_TRACE_8                   RTBA_MP_TRACE           "RtbaProcGateModeReq(Start): Mode=%MSysAirInterfaceT, Reason=%MRtbaGateModeReasonT, GapLen=%ul."                                                                     
+  info   CL1TRACE_RTBA_API_PROC_INFO_TRACE_9                   RTBA_MP_TRACE           "RtbaProcGateModeReq(End): GapStartTime= %ul, GapPeriod= %l."                                                                       
+  info   CL1TRACE_RTBA_SCHE_INFO_TRACE_0                       RTBA_MP_TRACE           "RtbaCmdFifoIn: fifo_index=%d, CmdFifo[0]=%MRtbaCmdTypeT, CmdFifo[1]=%MRtbaCmdTypeT, CmdFifo[2]=%MRtbaCmdTypeT, CmdFifo[3]=%MRtbaCmdTypeT, CmdFifo[4]=%MRtbaCmdTypeT, CmdFifo[5]=%MRtbaCmdTypeT." 
+  info   CL1TRACE_RTBA_SCHE_INFO_TRACE_1                       RTBA_MP_TRACE           "RtbaQueryExecute(Start):Mode=%MSysAirInterfaceT, Channel=%MRtbaCl1ChannelTypeT, StartTime= %ul, ReserveLen= %l, Prio= %d, BypassMode=%Mkal_bool, GateMode=%MRtbaGateModeTypeT."                                                                     
+  info   CL1TRACE_RTBA_SCHE_INFO_TRACE_2                       RTBA_MP_TRACE           "RtbaQueryExecute(HighTimerCheck):FindHighTimer=%Mkal_bool, HighTimerDelay= %ul, HigherTimerReservation= %l."                                                                                   
+  info   CL1TRACE_RTBA_SCHE_INFO_TRACE_3                       RTBA_MP_TRACE           "[RTBA]RtbaQueryExecute(ReserveCheck):QueryResult=%Mkal_bool, Chan = %MRtbaCl1ChannelTypeT, AvailableTime= %ul, CheckLen= %ul."                                                                                                      
+  info   CL1TRACE_RTBA_SCHE_INFO_TRACE_4                       RTBA_MP_TRACE           "[RTBA]RtbaResyncCollisionCheck:CheckTime=%ul, CheckLen=%ul, 1xRTT_StartTime= %ul, CollisionTime= %ul."                                                                             
+  info   CL1TRACE_RTBA_SCHE_INFO_TRACE_5                       RTBA_MP_TRACE           "[RTBA]RtbaSendDeniedInd:Mode=%MSysAirInterfaceT, Cl1Channel=%MRtbaCl1ChannelTypeT, DeniedByRtb=%Mkal_bool, TimeValid=%Mkal_bool, AvailableTime= %ul."                                                                                          
+  info   CL1TRACE_RTBA_SCHE_INFO_TRACE_6                       RTBA_MP_TRACE           "RtbaChannelScheTypeHandle:Cl1Channel=%MRtbaCl1ChannelTypeT, ScheType=%MRtbaChannelScheTypeT."                                                                                                                              
+  info   CL1TRACE_RTBA_SCHE_INFO_TRACE_7                       RTBA_MP_TRACE           "[RTBA]RtbaRegisterSche:ChannelType=%MRtbaCl1ChannelTypeT, StartTime= %ul, ReserveLen= %l, Prio= %d, RtbaResumeGrantRefTiming= %l, RtbaRfStopRefTiming= %l, RtbaPreemptRefTiming= %l."                                                                                                             
+  info   CL1TRACE_RTBA_SCHE_INFO_TRACE_8                       RTBA_MP_TRACE           "[RTBA]RtbaQuerySche:Mode=%MSysAirInterfaceT, ImmediateQuery=%Mkal_bool, PreStatus= %MRtbaChannelStatusT, CurrStatus= %MRtbaChannelStatusT."                                                                                                                                          
+  info   CL1TRACE_RTBA_SCHE_INFO_TRACE_9                       RTBA_MP_TRACE           "[RTBA]RtbaScheIndToCl1:Mode=%MSysAirInterfaceT, RtbaInd=%MRtbaIndTypeT, Channel:%MRtbaCl1ChannelTypeT, RxOnTime=[%-10Xl,%-10Xl], RxOffTime=[%-10Xl,%-10Xl], FirstEventTime = %ul."                                                                                                         
+  info   CL1TRACE_RTBA_SCHE_INFO_TRACE_10                      RTBA_MP_TRACE           "RtbaStarvationTimerStop!"                                                                                                                                                           
+  info   CL1TRACE_RTBA_SCHE_INFO_TRACE_11                      RTBA_MP_TRACE           "RtbaStarvationTimerStart!"                                                                                                                                                           
+  info   CL1TRACE_RTBA_SCHE_INFO_TRACE_12                      RTBA_MP_TRACE           "RtbaInit: Bypass Mode(1xRTT EVDO) = [%Mkal_bool, %Mkal_bool], gRtbaPrioIndex = %d, SimIndex(1xRTT EVDO) = [%MRTB_SIM_INDEX,%MRTB_SIM_INDEX]"
+  info   CL1TRACE_RTBA_SCHE_INFO_TRACE_13                      RTBA_MP_TRACE           "[RTBA]RtbaStarvationTrigger!"    
+  info   CL1TRACE_RTBA_SCHE_INFO_TRACE_14                      RTBA_MP_TRACE           "RtbaProcChannelPosAdjustReq:Mode=%MSysAirInterfaceT,Cl1Channel=%MRtbaCl1ChannelTypeT,RtbTimer=%MRtbTimerTypeE, PreemptTime=%ul, NewStartTime=%ul, ReserveLen=%d"
+  info   CL1TRACE_RTBA_SCHE_INFO_TRACE_15                      RTBA_IT_TRACE           "[RTBA]RtbaProcRbsScenCtrlScheHandle: Mode=%MSysAirInterfaceT,ScheBlockStartTime=%l,DoRbsState=%MRbsScenCtrlStateTypeT,RttRbsState=%MRbsScenCtrlStateTypeT,AdjLength=%ul."
+  info   CL1TRACE_RTBA_SCHE_INFO_TRACE_16                      RTBA_IT_TRACE           "[RTBA]RtbaProcRbsScenCtrlRpt: Mode=%MSysAirInterfaceT,RtbaInd=%MRtbaIndTypeT,RbsScenarioConfig=%MRbsScenarioConfigTypeT,TaretScenCtrlBitmap=0x:%xl,CurrScenCtrlBitmap=0x:%xl,SpecificEvtTimingSet = %Mkal_bool."
+  info   CL1TRACE_RTBA_SCHE_INFO_TRACE_17                      RTBA_IT_TRACE           "[RTBA]RtbaProcRbsScenCtrlRtbEventHandle: Mode=%MSysAirInterfaceT,RbsScenarioConfig=%MRbsScenarioConfigTypeT,DoRbsState=%MRbsScenCtrlStateTypeT,RttRbsState=%MRbsScenCtrlStateTypeT,*QueryResult=%Mkal_bool,RtbForceDeny=%Mkal_bool."
+  info   CL1TRACE_RTBA_SCHE_INFO_TRACE_18 					           RTBA_IT_TRACE           "[RTBA]RtbaCalcRbsScneCtrlEventTimingDiff:DoSysTime = [%-10Xl,%-10Xl], RttSysTime = [%-10Xl,%-10Xl], TimingOffset = %ul, TimingCheckPass = %Mkal_bool,RbsEvtTimingDiff = %d, SpecificEvtTimingSet = %Mkal_bool."
+  info   CL1TRACE_RTBA_SCHE_INFO_TRACE_19                      RTBA_IT_TRACE           "[RTBA]RtbaProcRbsScenCtrlRpt(Enter): Mode=%MSysAirInterfaceT,RtbaInd=%MRtbaIndTypeT,RbsScenarioConfig=%MRbsScenarioConfigTypeT,DoRbsState=%MRbsScenCtrlStateTypeT,RttRbsState=%MRbsScenCtrlStateTypeT,SpecificEvtTimingSet = %Mkal_bool."
+  info   CL1TRACE_RTBA_SCHE_INFO_TRACE_20                      RTBA_IT_TRACE           "[RTBA]HscPreemptAribitrate(PrimaryChanTrigger): PreemptTimeOffset = %d, ResumeTimeOffset = %d, HscActionType = %MHscActionParaE."                  
+  info   CL1TRACE_RTBA_SCHE_INFO_TRACE_21                      RTBA_IT_TRACE           "[RTBA]HscPreemptAribitrate(SecondaryChanTrigger): PreemptTimeOffset = %d, ResumeTimeOffset = %d, HscActionType = %MHscActionParaE." 
+	info   CL1TRACE_RTBA_SCHE_INFO_TRACE_22										   RTBA_MP_TRACE           "[RTBA]RtbaProcHighTimerDetect: Mode=%MSysAirInterfaceT, gRtbaHighTimerDetectCnt = %d, gRtbaHighTimerDetectTryCnt = %d, QueryAbandon = %Mkal_bool"
+  info   CL1TRACE_RTBA_PRI_CHANNEL_INFO_TRACE                  RTBA_MP_TRACE           "[RTBA]PRI_CHAN_INFO: Status = %MRtbaChannelStatusT, Chan = %MRtbaCl1ChannelTypeT, Prio = %d, StartTime = %ul, ResLen = %ul, ActResLen = %l, EndTime = %ul, ResumeGrantRef = %ul, StopRef = %ul, PreemptRef = %ul." 
+  info   CL1TRACE_RTBA_SEC_CHANNEL_INFO_TRACE                  RTBA_MP_TRACE           "[RTBA]SEC_CHAN_INFO: Status = %MRtbaChannelStatusT, Chan = %MRtbaCl1ChannelTypeT, Prio = %d, StartTime = %ul, ResLen = %ul, ActResLen = %l, EndTime = %ul" 
+  info   CL1TRACE_RTBA_QUERY_RSLT_INFO_TRACE                   RTBA_MP_TRACE           "[RTBA]RtbaQueryResuleProc(Start):ScheType = %MRtbaChannelScheTypeT, Mode = %MSysAirInterfaceT, ReserveSuccess = %Mkal_bool, AvailableTime = %ul, Channel = %MRtbaCl1ChannelTypeT, StartTimeFRC = %ul, EndTimeFRC = %ul, Status = %MRtbaChannelStatusT."    
+  info   CL1TRACE_RTBA_QUERY_SCHE_INFO_TRACE                   RTBA_MP_TRACE           "[RTBA]RtbaQueryScheTimeCalc:PreStatus = %MRtbaChannelStatusT, CurStatus = %MRtbaChannelStatusT, ResumeGrantRef = %ul,PreemptRef = %ul,QueryTime = %ul, QueryFrame = %ul."    
+  info   CL1TRACE_RTBA_RESERVE_LENGHT_CALC_INFO_TRACE					 RTBA_MP_TRACE					 "[RTBA]RtbaReserveLenScheCalc:Cl1Channel=%MRtbaCl1ChannelTypeT, ResLenScheType = %MRtbaResLenScheTypeT, Cl1ResLen = %ul, ReserveLength = %ul."    
+  info   CL1TRACE_RTBA_ASSERT_INFO_TRACE	                     RTBA_MP_TRACE           "[RTBA]Cl1_AssertFunction: AssertCause = %MRTB_ASSERT_CAUSE, SimIndex = %MRTB_SIM_INDEX, Para1 = %ul, Para2 = %ul."
+  
+  info   CL1TRACE_RTBA_UT_CHECK_FUNC_TRACE_0		               RTBA_UT_TRACE           "RtbaUtTestIndCheckFunc:CurrentFrameNum = %l,AbsFrameNum=%l,Para = [%MRtbaIndTypeT,%MRtbaCl1ChannelTypeT]"
+  info   CL1TRACE_RTBA_UT_CALLBACL_FUNC_TRACE_0		             RTBA_UT_TRACE           "RtbaUtCallBackFunc:RtbaInd = %MRtbaIndTypeT,Channel =%MRtbaCl1ChannelTypeT, ScheTime = [%l,%l]."
+  info   CL1TRACE_RTBA_UT_CHECK_FUNC_TRACE_1		               RTBA_UT_TRACE           "RtbaUtTestChanInfoCheckFunc:CurrentFrameNum = %l,AbsFrameNum=%l,Para = %MRtbaChannelStatusT"  
+  info   CL1TRACE_RTBA_UT_CHECK_FUNC_TRACE_2		               RTBA_UT_TRACE           "RtbaUtTestDeniedIndCheckFunc:CurrentFrameNum = %l,AbsFrameNum=%l,Para = [%MRtbaCl1ChannelTypeT,%d]"
+  info   CL1TRACE_RTBA_UT_CHECK_FUNC_TRACE_3		               RTBA_UT_TRACE           "RtbaUtTestHscKickCheckFunc:CurrentFrameNum = %l,AbsFrameNum=%l,Para = %d"
+  info   CL1TRACE_RTBA_UT_CHECK_FUNC_TRACE_4		               RTBA_UT_TRACE           "RtbaUtTestHscKickCheckFunc:CurrentFrameNum = %l,AbsFrameNum=%l,Para =[ %MMpaRfAssignStatusT,%d]"
+  info   CL1TRACE_RTBA_UT_CHECK_FUNC_TRACE_5                   RTBA_UT_TRACE           "RtbaUtTestEndIndCheckFunc:CurrentFrameNum = %l,AbsFrameNum=%l,Para =%MRtbaCl1ChannelTypeT"
+  
+  info   CL1TRACE_MML1_TO_LL1A_MSG_TRACE_0               LL1A_MP_TRACE           "[LL1A]:LL1_CL1_GAP_SERVICE_REQ: Enable = %Mkal_bool, RatStatus = %MRmcRatStatusT, RmcModeStatus = %MRmcModeStatusT, L1dModeStatus = %ML1dModeStatusT, GapServiceTid = %d, Ll1aProtectConnSignal =%Mkal_bool, FRC = %ul"
+  info   CL1TRACE_MML1_TO_LL1A_MSG_TRACE_1               LL1A_MP_TRACE           "[LL1A]:LL1_CL1_GAP_STOP_CNF: sLl1aRatSetPending = %Mkal_bool, sLl1aModeSetPending = %Mkal_bool, sLl1aPendingRat =%MRmcRatStatusT, sLl1aPendingMode =%MRmcRatStatusT, sbpMMO=%Mkal_bool,GapOfferedOwner=%MSysAirInterfaceT,FRC = %ul"    
+  info   CL1TRACE_MML1_TO_LL1A_MSG_TRACE_2               LL1A_MP_TRACE           "[LL1A]:LL1_CL1_GAP_NOTIFY_IND: Tid =%d, measure_tid = %d, hps_tid =%d, session_num = %d, tick_bitmap = %d, FRC = %ul"                    
+  info   CL1TRACE_MML1_TO_LL1A_MSG_TRACE_3               LL1A_MP_TRACE           "[LL1A]:LL1_CL1_GAP_NOTIFY_IND: session_num=%d,StartTime1:%ul,StartTime2:%ul,StartTime3:%ul,StartTime4:%ul,StartTime5:%ul,StartTime6:%ul, Session_GapLen = %l"                                          
+  info   CL1TRACE_MML1_TO_LL1A_MSG_TRACE_4               LL1A_MP_TRACE           "[LL1A]:LL1_CL1_GAP_STOP_REQ: RatStatus = %MRmcRatStatusT, GapStopEvent = %d, FRC = %ul"                                                               
+  info   CL1TRACE_MML1_TO_LL1A_MSG_TRACE_5               LL1A_MP_TRACE           "[LL1A]:LL1_CL1_GAP_SUSPEDN_REQ: RatStatus = %MRmcRatStatusT, GapStopEvent = %d, FRC = %ul"                                                            
+  info   CL1TRACE_MML1_TO_LL1A_MSG_TRACE_6               LL1A_MP_TRACE           "[LL1A]:LL1_CL1_GAP_RESUME_IND: RatStatus = %MRmcRatStatusT, FRC = %ul"                                                                               
+  info   CL1TRACE_MML1_TO_LL1A_MSG_TRACE_7               LL1A_MP_TRACE           "[LL1A]:LL1_CL1_AUTO_GAP_AVAILABLE_IND: RatStatus = %MRmcRatStatusT, AutoGapAvailStatus = %MLl1aAutoGapAvailStatusT, AutoGapState = %MLl1aAutoGapReqStateT, FRC = %ul"                           
+  info   CL1TRACE_MML1_TO_LL1A_MSG_TRACE_8               LL1A_MP_TRACE           "[LL1A]:LL1_CL1_AUTO_GAP_UNAVAILABLE_IND: RatStatus = %MRmcRatStatusT, AutoGapAvailStatus = %MLl1aAutoGapAvailStatusT, AutoGapState = %MLl1aAutoGapReqStateT, FRC = %ul"                          
+  info   CL1TRACE_MML1_TO_LL1A_MSG_TRACE_9               LL1A_MP_TRACE           "[LL1A]:LL1_CL1_AUTO_GAP_CNF: RatStatus = %MRmcRatStatusT, AutoGapAvailStatus =%MLl1aAutoGapAvailStatusT, AutoGapState = %MLl1aAutoGapReqStateT, Success =%Mkal_bool, AutoTime = %ul, FRC = %ul"          
+  info   CL1TRACE_MML1_TO_LL1A_MSG_TRACE_10              LL1A_MP_TRACE           "[LL1A]:LL1_CL1_AUTO_GAP_STOP_IND: RatStatus = %MRmcRatStatusT, AutoGapState = %MLl1aAutoGapReqStateT, FRC = %ul"                                                           
+  
+  info   CL1TRACE_LL1A_TO_MLL1_MSG_TRACE_0               LL1A_MP_TRACE           "[LL1A]:CL1_LL1_RAT_STATUS_IND:  RatStatus = %MRmcRatStatusT, RmcModeStatus = %MRmcModeStatusT, FRC = %ul"                                                                                                              
+  info   CL1TRACE_LL1A_TO_MLL1_MSG_TRACE_1               LL1A_MP_TRACE           "[LL1A]:CL1_LL1_MODE_STATUS_IND: RmcModeStatus = %MRmcModeStatusT, DrxCycleLen = %d, GapEnableStatus = %d, GapOfferedStatus = %MLl1aGapOfferedStatusT, FRC = %ul"                                                                
+  info   CL1TRACE_LL1A_TO_MLL1_MSG_TRACE_2               LL1A_MP_TRACE           "[LL1A]:CL1_LL1_ACTIVE_MEASURE_STATUS_IND: FreqNum = %d, FRC = %ul"                                                                                                                           
+  info   CL1TRACE_LL1A_TO_MLL1_MSG_TRACE_3               LL1A_MP_TRACE           "[LL1A]:CL1_LL1_MEASURE_REQ: FreqNum = %d, is_period_reset_bmp = %d, meas_purpose = %d, tick_bitmap = %d, tid = %d, FRC = %ul"                                                                
+  info   CL1TRACE_LL1A_TO_MLL1_MSG_TRACE_4               LL1A_MP_TRACE           "[LL1A]:CL1_LL1_STANDBY_MEASURE_DONE_IND: TickBitmap = %d, TickBmp=%d, FRC = %ul"                                                                                                             
+  info   CL1TRACE_LL1A_TO_MLL1_MSG_TRACE_5               LL1A_MP_TRACE           "[LL1A]:CL1_LL1_GAP_SUSPEND_CNF: FRC = %ul"                                                                                                                                                  
+  info   CL1TRACE_LL1A_TO_MLL1_MSG_TRACE_6               LL1A_MP_TRACE           "[LL1A]:CL1_LL1_GAP_STOP_CNF: FRC = %ul"                                                                                                                                                      
+  info   CL1TRACE_LL1A_TO_MLL1_MSG_TRACE_7               LL1A_MP_TRACE           "[LL1A]:CL1_LL1_AUTO_GAP_END_IND: RatStatus = %MRmcRatStatusT, AutoGapState = %MLl1aAutoGapReqStateT, FRC = %ul"                                                                                                               
+  info   CL1TRACE_LL1A_TO_MLL1_MSG_TRACE_8               LL1A_MP_TRACE           "[LL1A]:CL1_LL1_AUTO_GAP_STOP_RES: RatStatus = %MRmcRatStatusT, AutoGapState = %MLl1aAutoGapReqStateT, FRC = %ul"                                                                                                              
+  info   CL1TRACE_LL1A_TO_MLL1_MSG_TRACE_9               LL1A_MP_TRACE           "[LL1A]:CL1_LL1_GAP_STOP_REQ: GapEnableStatus = %Mkal_bool, GapOfferedStatus = %MLl1aGapOfferedStatusT, FRC = %ul"                                                                                                         
+  info   CL1TRACE_LL1A_TO_MLL1_MSG_TRACE_10              LL1A_MP_TRACE           "[LL1A]:CL1_LL1_GAP_PATTERN_IND: IsDrxCycle = %Mkal_bool, StartTime = %ul, GapLen = %l, sLl1aGapServiceTid = %d, FRC = %ul"                                                                           
+  info   CL1TRACE_LL1A_TO_MLL1_MSG_TRACE_11              LL1A_MP_TRACE           "[LL1A]:CL1_LL1_AUTO_GAP_REQ: AutoTime = %l, FRC = %ul."       
+  info   CL1TRACE_LL1A_TO_MLL1_MSG_TRACE_12              LL1A_MP_TRACE           "[LL1A]:CL1_LL1_SPECIFIC_GAP_IND: Enable = %Mkal_bool, GapLen = %l, FRC = %ul."                                                                                                                                       
+                                                                                                                                
+
+  info   CL1TRACE_LL1A_INTERNAL_MSG_TRACE_0              LL1A_MP_TRACE           "[LL1A]:LL1A_MSG_RECEIVE_FROM_CL1(LL1A_EVSTANDBY_MEAS_REQ): MeasPurpose = %d, TickBitMap = %d, sLl1aMeasPurposeBitmap =%d, sLl1aMeasTickBitmap =%d, RatStaus = %MRmcRatStatusT"                                                                                                                                                   
+  info   CL1TRACE_LL1A_INTERNAL_MSG_TRACE_1              LL1A_MP_TRACE           "[LL1A]:LL1A_MSG_RECEIVE_FROM_CL1(LL1A_EVSTANDBY_AUTO_REQ): RatStaus = %MRmcRatStatusT, AutoGapAvailStatus = %MLl1aAutoGapAvailStatusT, AutoGapState = %MLl1aAutoGapReqStateT, AutoTime = %ul, FRC = %ul"                                                                                                                                                    
+  info   CL1TRACE_LL1A_INTERNAL_MSG_TRACE_2              LL1A_MP_TRACE           "[LL1A]:LL1A_MSG_RECEIVE_FROM_CL1(LL1A_EVSTANDBY_AUTO_REQ_CANCEL): RatStaus = %MRmcRatStatusT, AutoGapAvailStatus = %MLl1aAutoGapAvailStatusT, AutoGapState = %MLl1aAutoGapReqStateT, FRC = %ul"                                                                                                                                                            
+  info   CL1TRACE_LL1A_INTERNAL_MSG_TRACE_3              LL1A_MP_TRACE           "[LL1A]:LL1A_MSG_RECEIVE_FROM_CAS(HSC_CSS_SUSPEND_CMD): CssCmdType = %MHscCssSupendResumeT, RatType = %MRmcRatStatusT, GapEnableStatus = %d, GapOfferedStatus = %MLl1aGapOfferedStatusT, RmcModeStatus = %MRmcModeStatusT, FRC = %ul"                                                                                                                                    

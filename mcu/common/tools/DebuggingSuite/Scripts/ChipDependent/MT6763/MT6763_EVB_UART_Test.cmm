@@ -1,0 +1,32 @@
+;MT6763 MD_UART0 port test
+;You should make sure GPIO13 has connected to UART port RXD pin,GPIO14 has connected to UART port TXD pin
+
+;port: MDUART0
+;Baudrate: 115200
+&BASE_ADDR_MDUART0=0xA0010000
+&BASE_ADDR_MDGPIO=0xC0005000
+
+;&BASE_ADDR_MDUART0=0x20010000
+;&BASE_ADDR_MDGPIO=0x10005000
+
+
+D.S SD:&BASE_ADDR_MDGPIO+0x310 %LE %LONG  0x4400000  //set GPIO 13/14 to MDUART mode
+D.S SD:&BASE_ADDR_MDUART0+0x24 %LE %LONG  0x03   //High Speed X
+D.S SD:&BASE_ADDR_MDUART0+0x28 %LE %LONG  0xE1   //Sample count
+D.S SD:&BASE_ADDR_MDUART0+0x2C %LE %LONG  0x71   //sample point
+D.S SD:&BASE_ADDR_MDUART0+0x0C %LE %LONG  0x83   //Enable Divisor latch acess bit, and set 8bit length.
+D.S SD:&BASE_ADDR_MDUART0+0x00 %LE %LONG  0x01   //sample point
+D.S SD:&BASE_ADDR_MDUART0+0x04 %LE %LONG  0x00   //sample point
+D.S SD:&BASE_ADDR_MDUART0+0x0C %LE %LONG  0x03   //Clear Divisor latch acess bit, and set 8bit length.
+
+&uart_lsr=0x0
+&uart_rxd=0x0
+PRINT "Please put char "U" from PC to EVB UART! Note: ASCII "U" remap to HEX is 0x55 "
+WHILE (&uart_lsr&0x01)!=0x01
+(
+	&uart_lsr=data.long(sd:&BASE_ADDR_MDUART0+0x14)
+)
+&uart_rxd=data.long(sd:&BASE_ADDR_MDUART0+0x0)
+PRINT "EVB UART Get data: &uart_rxd" 
+D.S SD:&BASE_ADDR_MDUART0+0x00 %LE %LONG  &uart_rxd   //Write data to UART, please check console.
+PRINT "EVB UART will send data to PC,please check!"

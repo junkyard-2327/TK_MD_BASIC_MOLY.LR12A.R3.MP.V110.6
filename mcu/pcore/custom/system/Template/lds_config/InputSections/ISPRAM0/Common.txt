@@ -1,0 +1,3 @@
+        * (ISPRAM_ROCODE_CORE0*)
+        KEEP(* (NOP_ISPRAM_ROCODE_CORE0_SECTION))
+        . = ALIGN(8);

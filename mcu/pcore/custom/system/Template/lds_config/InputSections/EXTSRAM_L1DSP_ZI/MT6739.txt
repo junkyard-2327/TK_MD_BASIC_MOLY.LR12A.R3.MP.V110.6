@@ -1,0 +1,15 @@
+        /* owner: Yuni */
+        DSP_TEMP_ROM_SPACE$$Base = .;
+        * (DSP_BIN_ZI)
+        DSP_TEMP_ROM_SPACE$$Limit = .;
+        DSP_TEMP_ROM_SPACE$$Length = ABSOLUTE(DSP_TEMP_ROM_SPACE$$Limit - DSP_TEMP_ROM_SPACE$$Base); 
+#ifndef __EVS_SUPPORT__
+#if defined(__MD_LAYOUT_SHRINK__)
+        . = DSP_TEMP_ROM_SPACE$$Base + 0x07F0000;       /* 7.9375 MB = 8128 KB */
+#else
+        . = DSP_TEMP_ROM_SPACE$$Base + 0x09F0000;       /* 9.9375 MB = 10176 KB */
+#endif
+#else
+        . = DSP_TEMP_ROM_SPACE$$Base + 0x0C50000;	/* 12.3125 MB = 12608 KB */
+#endif
+        MD_USED_END$$Limit = .; /* This address must align 64 KB for EMI MPU and AP MMU */

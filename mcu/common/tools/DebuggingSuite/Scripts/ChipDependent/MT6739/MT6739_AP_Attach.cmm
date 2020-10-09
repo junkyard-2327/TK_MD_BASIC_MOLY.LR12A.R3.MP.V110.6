@@ -1,0 +1,31 @@
+    print "[INFO][MAIN] Attach Target"
+    SYStem.Down
+
+    system.reset
+    SYSTEM.OPTION ENRESET OFF
+    SYStem.Option ResBreak OFF
+    SYStem.Option WaitReset OFF
+    SYStem.JtagClock 10.MHz
+
+    SYStem.CPU CORTEXA53;
+    ;Setting Core debug register access
+    SYStem.CONFIG CORENUMBER 1
+
+
+    SYStem.CONFIG COREBASE 0x8D410000 0x8D510000 0x8D610000 0x8D710000 0x8D810000 0x8D910000 0x8DA10000 0x8DB10000;
+    SYStem.CONFIG CTIBASE  0x8D420000 0x8D520000 0x8D620000 0x8D720000 0x8D820000 0x8D920000 0x8DA20000 0x8DB20000;
+
+    SYStem.CONFIG SWDP ON
+
+
+    SYStem.Attach
+    ON PBREAK GOSUB
+    (
+        print "[INFO][MAIN] Watchdog Disabled"
+        d.s c:0x10211000 %le %long 0x22000064
+
+    )
+    ;SETUP.IMASKHLL ON
+    ;SETUP.IMASKASM ON
+    STOP
+

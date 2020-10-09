@@ -1,0 +1,64 @@
+/*************************************************************
+*
+* This Software is the property of MTK, Inc. and may only be used pursuant to a license from MTK, Inc.  
+* 
+* Any unauthorized use inconsistent with the terms of such license is strictly prohibited.
+* 
+* Copyright (c) 2002-2016 MTK, Inc.  All rights reserved.
+*
+*************************************************************/
+
+[Default]
+  C2K_RTT_L1_PUBLIC
+  On
+  Buffer
+  TCMFORCE
+
+[MODEM_TYPE]
+  C2K_L1
+
+[Class]
+    /*RTT_PUBLIC_UT_TRACE       ON
+    RTT_PUBLIC_IT_TRACE       ON*/
+    RTT_PUBLIC_MP_TRACE       ON
+    /*RTT_PUBLIC_FULL_FT_TRACE  ON
+    RTT_PUBLIC_KERNAL_TRACE   ON
+    RTT_PUBLIC_L1_WARN        OFF*/
+
+[String]
+  L1_Test_String
+  {
+    "l1d init",
+    "L1dFmpNonActSetFingerPrune():",
+    "L1dFmpPathFingerMerge():",
+    "L1dFmpFingerInsert():",
+    "L1dFmpFingerStatusUpdate():",
+    "L1dFmpAllocListGen():",
+    "L1dSchStart():",
+    "L1dSchListStateChange():",
+    "L1dSchActivePwrRpt():",
+    "L1dSchCandidatePwrRpt():",
+    "L1dSchNeighborPwrRpt():",
+    "L1dSchCfgGen():",
+    "L1dFmpAjacentPathPrune():",
+    "L1dFmpSideLobePrune():",
+    "L1dFmpMergedFingerRelease():",
+    "L1dFmpShadowFingerRelease():",
+    "L1dFmpWeakestFingerReplace():",
+    "L1dFmpWeakFingerRelease():",
+    "L1dSchSortProc():",
+    "L1dSchListAveraging():",
+    "l1dmain.c",
+    "l1dspage.c",    
+    "L1D_AFLT_TRACE_ID",
+    "L1dFmpOorFingerRelease():"
+
+  }
+
+  
+[Message]
+    info   XL1TRACE_L1D_TRACE6                  RTT_PUBLIC_MP_TRACE            "L1dMdmTask():L1dState=%ML1dStateType"
+    info   XL1TRACE_SCH_TRACE16                 RTT_PUBLIC_MP_TRACE            "%sNumPn=%d,PwrEst0=%d,PwrEst1=%d,PwrEst2=%d,PwrEst3=%d,PwrEst4=%d,PwrEst5=%d"
+    info   XL1TRACE_SPAGE_TRACE3                RTT_PUBLIC_MP_TRACE            "L1dSPageSendWakeInd():%ML1dSPageTraceTrackT,SysTime=%xl,CmdStatus=%MPswCmdStatusT,WakeMode=%MWakeModeT"
+    info   XL1TRACE_SPAGE_TRACE4                RTT_PUBLIC_MP_TRACE            "L1dSPageSendWakeInd():WakeMode=%MWakeModeT,QpchInd=%d,QpchMetric=%d,PilotEnergy=%d,EcIo=%d,NumPath=%d,QpchPilotPn=%d"
+

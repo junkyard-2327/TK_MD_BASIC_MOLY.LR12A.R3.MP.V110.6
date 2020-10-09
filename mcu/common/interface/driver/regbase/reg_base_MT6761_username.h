@@ -1,0 +1,266 @@
+#ifndef __REG_BASE_MT6761_USERNAME_H__
+#define __REG_BASE_MT6761_USERNAME_H__
+
+/****************************
+*       AP registers        *
+*****************************/
+
+// MTK/WSD/OSS1/SS10 Argus Lin 
+#define	BASE_MADDR_APMCU_MISC	(0xC000D000)
+#define	BASE_NADDR_APMCU_MISC	(0xD000D000)
+#define	BASE_ADDR_APMCU_MISC    (0xD000D000)
+
+// MCD/WSP/SE7/SD9 Gang Lei
+#define	BASE_MADDR_USB20_MAC	(0xC1200000)
+#define	BASE_MADDR_USB20_PHY	(0xC1CC0000)
+#define	BASE_MADDR_U3PHY0	    (0xC1F40000)
+#define	BASE_MADDR_U3MAC0	    (0xC1200000)
+#define	BASE_MADDR_U3MAC1	    (0xC3900000)
+#define	BASE_NADDR_USB20_MAC	(0xD1200000)
+#define	BASE_NADDR_USB20_PHY	(0xD1CC0000)
+#define	BASE_NADDR_U3PHY0	    (0xD1F40000)
+#define	BASE_NADDR_U3MAC0	    (0xD1200000)
+#define	BASE_NADDR_U3MAC1	    (0xD3900000)
+#define	BASE_ADDR_USB20_MAC	    (0xD1200000)
+#define	BASE_ADDR_USB20_PHY	    (0xD1CC0000)
+#define	BASE_ADDR_U3PHY0	    (0xD3300000)
+#define	BASE_ADDR_U3MAC0	    (0xD3800000)
+#define	BASE_ADDR_U3MAC1	    (0xD3900000)
+
+// MCD/WSP/SE7/SD6 Alva Li
+#define	BASE_MADDR_PCCIF0_AP	(0xC0209000)
+#define	BASE_MADDR_PCCIF0_MD	(0xC020A000)
+#define	BASE_MADDR_PCCIF1_AP	(0xC020B000)
+#define	BASE_MADDR_PCCIF1_MD	(0xC020C000)
+#define	BASE_MADDR_PCCIF2_AP	(0xC023C000)
+#define	BASE_MADDR_PCCIF2_MD	(0xC023D000)
+#define	BASE_NADDR_PCCIF0_AP	(0xD0209000)
+#define	BASE_NADDR_PCCIF0_MD	(0xD020A000)
+#define	BASE_NADDR_PCCIF1_AP	(0xD020B000)
+#define	BASE_NADDR_PCCIF1_MD	(0xD020C000)
+#define	BASE_ADDR_PCCIF0_AP	    (0xD0209000)
+#define	BASE_ADDR_PCCIF0_MD	    (0xD020A000)
+#define	BASE_ADDR_PCCIF1_AP	    (0xD020B000)
+#define	BASE_ADDR_PCCIF1_MD	    (0xD020C000)
+
+// MCD/WSP/SE7/SD9 Zhiqiang Yu
+#define	BASE_MADDR_AP_GPIOMUX	(0xC0005000)
+#define	BASE_NADDR_AP_GPIOMUX	(0xD0005000)
+#define	BASE_ADDR_AP_GPIOMUX	(0xD0005000)
+
+// MCD/WSP/SE7/SD9 Da Li
+#define BASE_MADDR_APRGU        (0xC3670000)
+#define BASE_NADDR_APRGU        (0xD3670000)
+#define BASE_ADDR_APRGU         (0xD3670000)
+
+// MTK/WSD/OSS8/ME9 Thomas Chen
+#define	BASE_MADDR_AUDIO	    (0xC1220000)
+#define	BASE_MADDR_WCN_AHB_SLAVE	(0xC8000000)
+#define	BASE_NADDR_AUDIO	    (0xD1220000)
+#define	BASE_NADDR_WCN_AHB_SLAVE	(0xD8000000)
+#define	BASE_ADDR_AUDIO	        (0xD1220000)
+#define	BASE_ADDR_WCN_AHB_SLAVE	(0xD8000000)
+
+// MTK/WSP/SE7/SD10 Guo-Huei Chang
+#define	BASE_MADDR_AP_SYSTIMER	(0xC0017000)
+#define	BASE_NADDR_AP_SYSTIMER	(0xD0017000)
+#define	BASE_ADDR_AP_SYSTIMER	(0xD0017000)
+
+// MTK/WSP/SE7/SD10 Ying Hsu
+#define	BASE_MADDR_DVFSRC	    (0xC0012000)
+#define	BASE_MADDR_SPM_VMODEM	(0xC000F000)
+#define	BASE_NADDR_DVFSRC	    (0xD0012000)
+#define	BASE_NADDR_SPM_VMODEM	(0xD000F000)
+#define	BASE_ADDR_DVFSRC	    (0xD0012000)
+#define	BASE_ADDR_SPM_VMODEM	(0xD000F000)
+
+// MTK/WSP/SE7/SD10 Jim Chou
+#define	BASE_MADDR_SPM_PCM	    (0xC0006000)
+#define	BASE_NADDR_SPM_PCM	    (0xD0006000)
+#define	BASE_ADDR_SPM_PCM	    (0xD0006000)
+
+// MTK/WSP/SE7/SD10 Chao-Kai Yu
+#define	BASE_MADDR_INFRASYS_CONFIG_REGS	(0xC0001000)
+#define	BASE_MADDR_APMIXEDSYS	(0xC000C000)
+#define	BASE_MADDR_AUXADC	    (0xC1001000)
+#define	BASE_MADDR_AP_PTP	    (0xC100B000)
+#define	BASE_NADDR_INFRASYS_CONFIG_REGS	(0xD0001000)
+#define	BASE_NADDR_APMIXEDSYS	(0xD000C000)
+#define	BASE_NADDR_AUXADC	    (0xD1001000)
+#define	BASE_NADDR_AP_PTP	    (0xD100B000)
+#define	BASE_ADDR_INFRASYS_CONFIG_REGS	(0xD0001000)
+#define	BASE_ADDR_APMIXEDSYS	(0xD000C000)
+#define	BASE_ADDR_AUXADC	    (0xD1001000)
+#define	BASE_ADDR_AP_PTP	    (0xD100B000)
+
+// MTK/WSP/SE7/SD8 CW Wang
+#define	BASE_AP_CLDMA_TOP_MD	(0XC021C800)
+
+// MSHC/WCT/SE1/SE9 Shelley Liu
+#define BASE_ADDR_MODEM_TEMP_SHARE      (0xD0018000)
+
+// SE7/SD3 Hanna Chiang
+#define BASE_MADDR_AES_TOP0   (0xC0016000) 
+#define EFUSE_base            (0xC1C50000)
+//#define BASE_MADDR_AO_SEJ     (BASE_MADDR_SEJ)
+
+// SE7/SD3 Chao-Hung Hsu
+#define TEC_BASEADDR (0xCFFFFFFF0)
+
+// WCS/SSE/SS2 Shin-Chieh Tsai
+#define BASE_MADDR_AP_EMI_CONFIG	(0xC0219000)
+
+// WCS/SSE/SS3 Chia-Fu Lee & WCS/SSE/SS2 Linson Du
+#define BASE_ADDR_AP_VCORE_DVFS			(0xC0012000)
+#define BASE_ADDR_AP_SPM				(0xC0006000)
+
+// WCS/SSE/SS3 Ruta Lin
+#define	BASE_MADDR_EFUSE	    (EFUSE_base)
+
+#if !defined(__FPGA__)
+// WSP/SE7/SD8 CW Wang, for CLDMA
+#define BASE_AP_CLDMA_AO_UL     (0xC0014000)
+#define BASE_AP_CLDMA_AO_DL     (0xC0014400)
+#define BASE_AP_CLDMA_AO_MISC   (0xC0014800)
+#define BASE_AP_CLDMA_TOP_UL    (0xC021B000)
+#define BASE_AP_CLDMA_TOP_DL    (0xC021B400)
+#define BASE_AP_CLDMA_TOP_AP    (0xC021B800)
+#endif
+
+// WSP/SE7/SD10 Guo-Huei Chang, for Wall Clock
+#define BASE_INFRA_AO_SYS_TIMER (0xC0017000)
+
+//WCT1/SE1/SE9 Shelley.Liu Move to el1d_reg_gen93m17.h
+//#define MODEM_TEMP_SHARE_REG_BASE      (0xD0018000)
+
+//End of AP registers
+
+
+/****************************
+*       MD registers        *  
+*****************************/
+
+// SE7/SS1 Yen-Tsung Cheng
+#define BASE_ADDR_DFESYS_1 (0xB3000000)
+#define BASE_MADDR_DFESYS_1 (0xA3000000)
+
+// SE7/SD3 Ansel Liao
+#define SIM0_base               (BASE_MADDR_USIM1)
+#define SIM1_base               (BASE_MADDR_USIM2)
+
+// SE2/CS15 Shengfu Tsai request
+#define MODEM_TOPSM_base                   (L1_BASE_MADDR_MODEM_TOPSM)       
+#define TDMA_SLP_base                      (L1_BASE_MADDR_TDMA_SLP)
+#define FDD_SLP_base                       (L1_BASE_MADDR_FDD_SLP)
+#define LTE_SLP_base                       (L1_BASE_MADDR_LTE_SLP)
+
+
+
+//WCT1/SE2/CS3 Rick Wu, temp workaround for build error
+#define L1_BASE_MADDR_L1INFRA_CONF (0xA6800000)
+#define L1_BASE_MADDR_FCS (0xA6810000)
+
+//SE2/CS3 GL1 Sy.Yeh
+#define FCS2G_base              (BASE_MADDR_MDINFRA_FCS)
+
+
+// SE7/SS2 Alan-TL Lin
+/* PDA Monitor Base Address */
+#define BASE_ADDR_MDPCMON   (BASE_ADDR_MDMCU_PDAMON)
+#define BASE_MADDR_MDPCMON  (BASE_MADDR_MDMCU_PDAMON)
+
+// SE7/SS2 YH Peng
+#define MD_CONFIG_base BASE_MADDR_MDCFGCTL
+
+// SE7/SD3 Grass Chang
+#define	MDSYS_PERI_ACC_TYPE_MASK	(0xA0000000)
+#define	MDSYS_PERI_DEVICE_TYPE	(0xB0000000)
+
+// SE7/SD3 Yi-Chih
+#define BASE_ADDR_MML2_CIPHER	(0xB0607000)
+
+//SE7/SD9 shenghui.shi
+#define UART1_base              (BASE_MADDR_MDUART0)
+#define UART2_base              (BASE_MADDR_MDUART1)
+#define UART3_base              (BASE_MADDR_MDUART2)
+
+// WSD/OSS8/ME9 Thomas Chen
+#define AFE_BASE                    (0xA1640000)    //AFE_BASE c    L1_BASE_MADDR_AFE
+#define AFE_SHARED_REGISTER_BASE    (0xA6FA0000)    //AFE_SHARE_REGISTER_BASE  L1_BASE_MADDR_SHARE_D1
+#define SPEECHDSP_CONFIG_BASE       (0xA1600000)    //uSIP_CONFIG_BASE   L1_BASE_MADDR_MD2G_CONFG
+
+//#define BASE_MADDR_WCN_AHB_SLAVE    (0xA8000000)    //For BT
+
+//WCT/SD/SP2 Daniel Lu
+#define	PATCH_base                  (0xA6FC0000)    //FIXIT: the same as L1_BASE_MADDR_PATCH
+
+/* WCT1/SSE/SS2 Alan-TL Lin */
+// PDA Monitor
+#define BASE_NBADDR_PDAMON      (BASE_MADDR_MDMCU_PDAMON)
+#define BASE_BADDR_PDAMON       (BASE_ADDR_MDMCU_PDAMON)
+
+// WCT1/SSE/SS2 I-Chun Liu
+#define BASE_MADDR_MDPERISYS_MDCIRQ (0x1E004000)
+
+#define BASE_ADDR_MO_SYNC_MAGIC (0xA1FF0000)
+
+//WCT1/SE2/CS6 Max Weng, temp workaround for build error (resue FDD_TIMER's base)
+#if defined(L1_SIM)
+#define L1_BASE_MADDR_DFE0_CMIF                    (0xAF010000)
+#define L1_BASE_MADDR_RXBRP_CDIF                   (0xAF020000)
+#define L1_BASE_MADDR_DFESYS0_CFG                  (0xAF040000)
+#define L1_BASE_MADDR_EQ1_CONFIG                   (0xAF070000)
+#define L1_BASE_MADDR_EQ2_CONFIG                   (0xAF080000)
+#define L1_BASE_MADDR_EQ3_CONFIG                   (0xAF090000)
+#define BASE_MADDR_BRPSYS_GLOBAL_CON               (0xAD110000)
+#define BASE_MADDR_RAKESYS_MEM_CONFIG              (BASE_MADDR_RAKESYS||0x00210000)
+#define BASE_MADDR_RAKESYS_CONFIG                  (BASE_MADDR_RAKESYS||0x00200000)
+#define L1_BASE_MADDR_RXBRP_BRPSYS_AO_CONFIG       (0xAF0A0000)
+#define L1_BASE_MADDR_CSTXB_CONFIG                 (0xAF0B0000)
+#else
+#define L1_BASE_MADDR_DFE0_CMIF                    (0xA6070000)
+#define L1_BASE_MADDR_RXBRP_CDIF                   (0xA6070000)
+#define L1_BASE_MADDR_DFESYS0_CFG                  (0xA6070000)
+#define L1_BASE_MADDR_EQ1_CONFIG                   (0xA6070000)
+#define L1_BASE_MADDR_EQ2_CONFIG                   (0xA6070000)
+#define L1_BASE_MADDR_EQ3_CONFIG                   (0xA6070000)
+#define BASE_MADDR_BRPSYS_GLOBAL_CON               (0xAD110000)
+#define BASE_MADDR_RAKESYS_MEM_CONFIG              (BASE_MADDR_RAKESYS||0x00210000)
+#define BASE_MADDR_RAKESYS_CONFIG                  (BASE_MADDR_RAKESYS||0x00200000)
+#define L1_BASE_MADDR_RXBRP_BRPSYS_AO_CONFIG       (0xA6070000)
+#define L1_BASE_MADDR_CSTXB_CONFIG                 (0xA6070000)
+#endif
+
+//WCT/SE3/PS7 MC Li, temp workaround for build error
+//#define BASE_MADDR_HSPAL2_MBIST      (0xA0900000)
+//#define BASE_MADDR_HSPAL2_CONFIG     (0xA0910000)
+//#define BASE_MADDR_HSPAL2_UPA        (0xA0920000)
+//#define BASE_MADDR_HSPAL2_MAC        (0xA0930000)
+//#define BASE_MADDR_HSPAL2_RLC        (0xA0940000)
+//#define BASE_MADDR_PS_PERI_CONFG     (0xA0A00000)
+//#define BASE_MADDR_HSPAL2_UPA_SRAM   (0xA8400000)
+#define BASE_MADDR_HSPAL2_MBIST      (0xA0900000)
+#define BASE_MADDR_HSPAL2_CONFIG     (0xA0900000)
+#define BASE_MADDR_HSPAL2_UPA        (0xA0900000)
+#define BASE_MADDR_HSPAL2_MAC        (0xA0900000)
+#define BASE_MADDR_HSPAL2_RLC        (0xA0900000)
+#define BASE_MADDR_PS_PERI_CONFG     (0xA0900000)
+#define BASE_MADDR_HSPAL2_UPA_SRAM   (0xA0900000)
+
+//WCT/SE2/CS9 Paul, for temp build pass.
+#define L1_BASE_MADDR_DFE0_WTL_RX_FC (0xA7F90000)
+#define L1_BASE_MADDR_DFE1_WTL_RX_FC (0xA3790000)
+#define L1_BASE_MADDR_DFE0_WTL_TXDFE (0xA7F40000)
+#define L1_BASE_MADDR_DFE1_WTL_TXDFE (0xA3740000)
+
+//WCT/SE2/CS9 Neil, for temp build pass
+#define L1_BASE_MADDR_DFE0_WL_TXIRQ    (0xA7F70000)
+
+//WCT1/SSE/SS3 I-Chun Liu
+#define BASE_ADDR_MDCIRQ_GCR (GCR_CUSTOM_ADDR + 0x4000)
+
+// WCT1/SE2/CS7 Aman, for temp build issue
+#define L1_BASE_MADDR_MDL1_CONF (0xA60F0000)
+
+//End of MD registers
+#endif	/*	end	of	__REG_BASE_MT6761_USERNAME_H__	*/	

@@ -1,0 +1,86 @@
+#ifndef __CUIF_WCDMA_HRXBRP_STRUCT_CUIF_H__
+#define __CUIF_WCDMA_HRXBRP_STRUCT_CUIF_H__
+
+// ----------------- CUIF_WCDMA_HRXBRP Register Definition -------------------
+typedef volatile struct {
+    kal_uint32 CUIF_HRXBRP_FW_CBRP_SERV_CELL_FB_OFFSET;     // 0x0000
+    kal_uint32 CUIF_HRXBRP_FW_CBRP_SERV_CELL_START;         // 0x0004
+    kal_uint32 CUIF_HRXBRP_FW_CBRP_SERV_CELL_STOP;          // 0x0008
+    kal_uint32 CUIF_HRXBRP_FW_SCCH_RRC_STATE;               // 0x000C
+    kal_uint32 CUIF_HRXBRP_FW_EPCH_SUBF_NUM;                // 0x0010
+    kal_uint32 CUIF_HRXBRP_FW_CBRP_TARGETCELL_FB_OFFSET;    // 0x0014
+    kal_uint32 CUIF_HRXBRP_FW_CBRP_TARGETCELL_START;        // 0x0018
+    kal_uint32 CUIF_HRXBRP_FW_CBRP_TARGETCELL_STOP;         // 0x001C
+    kal_uint32 CUIF_HRXBRP_FW_CBRP_SERV_CELL_SCCH_EN;       // 0x0020
+    kal_uint32 CUIF_HRXBRP_SCCH_TRACK_DISABLE;              // 0x0024
+    kal_uint32 CUIF_HRXBRP_SCCH_REINIT;                     // 0x0028
+    kal_uint32 CUIF_HRXBRP_ACK_NACK_RESET;                  // 0x002C
+    kal_uint32 CUIF_HRXBRP_ACK_NACK_REP_NUM;                // 0x0030
+    kal_uint32 CUIF_HRXBRP_INACT_ABORT_SUBFk[5];            // 0x0034..0x0044
+    kal_uint32 CUIF_HRXBRP_FW_HS_SUBFCFG_SUBFk[5];          // 0x0048..0x0058
+    kal_uint32 CUIF_HRXBRP_SCCH_GAP_IND_PC;                 // 0x005C
+    kal_uint32 CUIF_HRXBRP_LESS_FRAME_CTRL;                 // 0x0060
+    kal_uint32 CUIF_HRXBRP_LESS_SUBFk_CTRL[5];              // 0x0064..0x0074
+    kal_uint32 CUIF_HRXBRP_NC_FRAME_CTRL;                   // 0x0078
+    kal_uint32 CUIF_HRXBRP_SCCH_GAP_IND_NC;                 // 0x007C
+    kal_uint32 CUIF_HRXBRP_SCm_FRAME_CTRL[2];               // 0x0080..0x0084
+    kal_uint32 CUIF_HRXBRP_SCCH_REINIT_SCm[2];              // 0x0088..0x008C
+    kal_uint32 CUIF_HRXBRP_ACK_NACK_RESET_SCm[2];           // 0x0090..0x0094
+    kal_uint32 CUIF_HRXBRP_RE_CONFIG_SUBFk_CON_SCm[10];     // 0x0098..0x00BC
+    kal_uint32 CUIF_HRXBRP_INACT_ABORT_SCm_SUBFk[10];       // 0x00C0..0x00E4
+    kal_uint32 CUIF_HRXBRP_SCCH_GAP_IND_SCm[2];             // 0x00E8..0x00EC
+    kal_uint32 CUIF_HRXBRP_R7_CTRL;                         // 0x00F0
+    kal_uint32 CUIF_HRXBRP_RNTI_CTRL;                       // 0x00F4
+    kal_uint32 CUIF_HRXBRP_H_RNTI0;                         // 0x00F8
+    kal_uint32 CUIF_HRXBRP_H_RNTI1;                         // 0x00FC
+    kal_uint32 CUIF_HRXBRP_BCCH_RNTI;                       // 0x0100
+    kal_uint32 CUIF_HRXBRP_CLR_ID_FIFO;                     // 0x0104
+    kal_uint32 CUIF_HRXBRP_FLUSH_HARQ;                      // 0x0108
+    kal_uint32 CUIF_HRXBRP_DSCH_CON;                        // 0x010C
+    kal_uint32 CUIF_HRXBRP_H_RNTI_NC;                       // 0x0110
+    kal_uint32 CUIF_HRXBRP_R7_CTRL_SCm[2];                  // 0x0114..0x0118
+    kal_uint32 CUIF_HRXBRP_H_RNTI_SCm[2];                   // 0x011C..0x0120
+    kal_uint32 CUIF_HRXBRP_CLR_ID_FIFO_SCm[2];              // 0x0124..0x0128
+    kal_uint32 CUIF_HRXBRP_FLUSH_HARQ_SCm[2];               // 0x012C..0x0130
+    kal_uint32 CUIF_HRXBRP_LM_TBS[4];                       // 0x0134..0x0140
+    kal_uint32 CUIF_HRXBRP_TURBO_EQ_FRAME_CTRL;             // 0x0144
+    kal_uint32 CUIF_HRXBRP_EXT_HARQ_START_ADDR;             // 0x0148
+    kal_uint32 CUIF_HRXBRP_HDA_ADDR_PC_LESS[5];             // 0x014C..0x015C
+    kal_uint32 CUIF_HRXBRP_NIR[8];                          // 0x0160..0x017C
+    kal_uint32 CUIF_HRXBRP_HDA_ADDRk_PC_PROm[40];           // 0x0180..0x021C
+    kal_uint32 CUIF_HRXBRP_NIR_SCm_PROk[16];                // 0x0220..0x025C
+    kal_uint32 CUIF_HRXBRP_HDA_ADDR_SCm_PROk[16];           // 0x0260..0x029C
+    kal_uint32 CUIF_HRXBRP_FW_CBRP_AGCH_FB_OFFSET;          // 0x02A0
+    kal_uint32 CUIF_HRXBRP_FW_CBRP_AGCH_START;              // 0x02A4
+    kal_uint32 CUIF_HRXBRP_FW_CBRP_AGCH_STOP;               // 0x02A8
+    kal_uint32 CUIF_HRXBRP_FW_AGCH_RRC_STATE;               // 0x02AC
+    kal_uint32 CUIF_HRXBRP_FW_AGCHm_RX_GATED_SUBFk[10];     // 0x02B0..0x02D4
+    kal_uint32 CUIF_HRXBRP_AGCHm_GAP_VEC[2];                // 0x02D8..0x02DC
+    kal_uint32 CUIF_HRXBRP_AGCH_TTI;                        // 0x02E0
+    kal_uint32 CUIF_HRXBRP_AGCH_LATCH_SLT;                  // 0x02E4
+    kal_uint32 CUIF_HRXBRP_AGCHm_ERNTI_P[2];                // 0x02E8..0x02EC
+    kal_uint32 CUIF_HRXBRP_AGCHm_ERNTI_S[2];                // 0x02F0..0x02F4
+    kal_uint32 CUIF_HRXBRP_AUTON_GAP_IND;                   // 0x02F8
+    kal_uint32 CUIF_HRXBRP_TRC_EMI_BUF_SIZE;                // 0x02FC
+    kal_uint32 CUIF_HRXBRP_TRC_EMI_BUF_BASE_ADDR;           // 0x0300
+    kal_uint32 CUIF_HRXBRP_TRC_CFG;                         // 0x0304
+    kal_uint32 CUIF_HRXBRP_TRC_EMI_BANDWIDTH_CON;           // 0x0308
+    kal_uint32 CUIF_HRXBRP_SCCH_STS_SUBFk[5];               // 0x030C..0x031C
+    kal_uint32 CUIF_HRXBRP_R7_STS_SUBFk[5];                 // 0x0320..0x0330
+    kal_uint32 CUIF_HRXBRP_SCCH_R8_STS_SUBFk[5];            // 0x0334..0x0344
+    kal_uint32 CUIF_HRXBRP_DSCH_STS_SUBFk[5];               // 0x0348..0x0358
+    kal_uint32 CUIF_HRXBRP_HDA_OUT_ADR_PC_SUBFk[5];         // 0x035C..0x036C
+    kal_uint32 CUIF_HRXBRP_HDA_OUT_IDX_PC_SUBFk[5];         // 0x0370..0x0380
+    kal_uint32 CUIF_HRXBRP_SCCH_STS_NC_SUBFk[5];            // 0x0384..0x0394
+    kal_uint32 CUIF_HRXBRP_SCCH_STS_SCm_SUBFk[10];          // 0x0398..0x03BC
+    kal_uint32 CUIF_HRXBRP_R7_STS_SCm_SUBFk[10];            // 0x03C0..0x03E4
+    kal_uint32 CUIF_HRXBRP_DSCH_STS_SCm_SUBFk[10];          // 0x03E8..0x040C
+    kal_uint32 CUIF_HRXBRP_HDA_OUT_ADR_SCm_SUBFk[10];       // 0x0410..0x0434
+    kal_uint32 CUIF_HRXBRP_HDA_OUT_IDX_SCm_SUBFk[10];       // 0x0438..0x045C
+    kal_uint32 CUIF_HRXBRP_AGCHm_DEC_STA[2];                // 0x0460..0x0464
+    kal_uint32 CUIF_HRXBRP_AGCHm_ENERGY[2];                 // 0x0468..0x046C
+    kal_uint32 CUIF_HRXBRP_AGCHm_S_VALUE[2];                // 0x0470..0x0474
+    kal_uint32 CUIF_HRXBRP_AGCHm_RSLT[2];                   // 0x0478..0x047C
+} CUIF_WCDMA_HRXBRP_REGS, *PCUIF_WCDMA_HRXBRP_REGS;
+
+#endif /* __CUIF_WCDMA_HRXBRP_STRUCT_CUIF_H__ */

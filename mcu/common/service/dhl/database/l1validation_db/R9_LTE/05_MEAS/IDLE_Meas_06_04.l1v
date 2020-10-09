@@ -1,0 +1,30 @@
+{ Validation }
+Title 		= "[R9_LTE][05_MEAS][IDLE_MEAS_06]IDLE_MEAS_06_4: Test of TDD high priority inter frequency measurement in RRC_IDLE under different DRX cycles"
+ModuleID 	= MOD_ERRC
+MsgID 		= MSG_ID_L1EDPS_IDLE_MEASUREMENT_06
+
+/******************************************************************************
+* Data Structure accomnying the above primitive
+typedef struct
+{
+   kal_uint8           ref_count;
+   kal_uint16         msg_len;
+   kal_uint8          test_pattern_id;       
+    
+ 
+} l1edps_idle_measurement_06_struct;
+*
+*******************************************************************************/
+
+
+{Parameters}
+/******************************************************************************
+* 1. The following is the constrained range for the input of this value.
+* 2. Some combination of the following bit-fields may be suported
+* 3. The parameter range can be changed to support combinations of different bands
+*******************************************************************************/
+
+/* [Variable Name] "corresponding label showen on GUI" */
+[test_pattern_id] "test_pattern_id"
+1~4
+@4

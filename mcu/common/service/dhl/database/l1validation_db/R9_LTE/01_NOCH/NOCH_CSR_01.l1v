@@ -1,0 +1,46 @@
+{ Validation }
+Title 		= "[R9_LTE][01_NOCH]NOCH_CSR_01: Test of Carrier Search with Band Configuration and Band Report"
+ModuleID 	= MOD_ERRC
+MsgID 		= MSG_ID_L1EDPS_NOCH_CSR_01
+
+/******************************************************************************
+* Data Structure accomnying the above primitive
+typedef struct
+{
+   kal_uint8           ref_count;
+   kal_uint16         msg_len;
+   kal_bool           csr_config_by_band;
+   kal_bool           csr_report_by_band;
+   kal_bool           csr_is_skip_bw;
+   el1_csr_search_type_enum search_type;
+   kal_bool           is_user_define_earfcn;
+   kal_uint32         user_define_earfcn;  
+} l1edps_noch_csr_01_struct;
+*
+*******************************************************************************/
+
+
+{Parameters}
+/******************************************************************************
+* 1. The following is the constrained range for the input of this value.
+* 2. Some combination of the following bit-fields may be suported
+* 3. The parameter range can be changed to support combinations of different bands
+*******************************************************************************/
+
+/* [Variable Name] "corresponding label showen on GUI" */
+[csr_config_by_band] "csr_config_by_band"
+@KAL_TRUE
+
+[csr_report_by_band] "csr_report_by_band"
+@KAL_TRUE
+
+[csr_is_skip_bw] "csr_skip_bw"
+@KAL_TRUE
+
+[is_user_define_earfcn] "is_user_define_earfcn"
+@KAL_FALSE
+
+[user_define_earfcn] "user_define_earfcn"
+1~65535
+@38450
+

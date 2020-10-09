@@ -1,0 +1,185 @@
+/*************************************************************
+*
+* This Software is the property of MTK, Inc. and may only be used pursuant to a license from MTK, Inc.
+*
+* Any unauthorized use inconsistent with the terms of such license is strictly prohibited.
+*
+* Copyright (c) 2002-2016 MTK, Inc.  All rights reserved.
+*
+*************************************************************/
+[Default]
+  C2K_EVL2
+  On
+  L2_Buffer
+  TCMFORCE
+  MAX_ARG 15
+  L2_BUFFER_SETTING L2_BUFFER_ERT
+[MODEM_TYPE]
+  C2K_EVL2
+
+[Class]
+  EVL2_RCI_RI_RCP_TRACE        ON
+  EVL2_RCP_RI_ACM_TRACE        ON
+  EVL2_RCP_RI_RTM_TRACE        ON
+  EVL2_RCP_RI_DSAR_TRACE       ON
+  EVL2_RCP_RI_PAR_TRACE        ON
+  EVL2_RCP_RI_FTAPR_TRACE      ON
+  EVL2_RCP_RI_IT_TRACE         OFF
+  EVL2_RCP_RI_CPBUF_TRACE      OFF
+  EVL2_RCP_RI_WARN             ON
+  EVL2_RCP_RI_RTAP_TRACE       ON
+  EVL2_RCP_RI_GAUP_TRACE       ON
+  EVL2_RCP_RI_PCP_TRACE        ON
+
+[String]
+
+
+
+[Message]
+  warn   EVL2TRACE_RCP_RI_RCP_FAULT                        EVL2_RCP_RI_WARN           "[RCP_FAULT] parameter: %d, Line: %ud"
+  warn   EVL2TRACE_RCP_RI_INVALID_MSG                      EVL2_RCP_RI_WARN           "[RCP_INVALID_MSG_ID] %ul"
+  warn   EVL2TRACE_RCP_RI_INVALID_TRAFFIC_OCCASION         EVL2_RCP_RI_WARN           "[RCP_INVALID_OCCASION] RtmState: %MRtmRmmStateT, current_slot: %ul, deadline_slot: %ul"
+  warn   EVL2TRACE_RCP_RI_CPBUF_BUSY_ERROR                 EVL2_RCP_RI_WARN           "[RCP_CPBUF_BUSY_ERROR] Line: %ul"
+  warn   EVL2TRACE_RCP_RI_NST_ACM_HANDLE_ACACK_MSG         EVL2_RCP_RI_WARN           "[NST_RCP_ACM_HANDLE_ACACK_MSG] position: %d, Line: %ud"
+  warn   EVL2TRACE_RCP_RI_CPBUF_GET_FAIL                   EVL2_RCP_RI_WARN           "[RCP_CPBUF_GET_FAIL] Line: %ud"
+  warn   EVL2TRACE_RCP_RI_DATAPKT_GET_FAIL                 EVL2_RCP_RI_WARN           "[RCP_DATAPKT_GET_FAIL] Line: %ud"
+  warn   EVL2TRACE_RCP_RI_ACM_RCV_SIG_WRONG_TIME           EVL2_RCP_RI_WARN           "[RCP_ACM_RCV_SIG_ERR] ACM Get signal not on correct time, Signal: %MAcmSigTypeE, WantTime: %xl, ActTime: %xl, Line: %ul"
+  warn   EVL2TRACE_RCP_RI_ACM_OVERLAP_TST_FAIL             EVL2_RCP_RI_WARN           "[RCP_OVERLAP_TST_FAIL] acmRFReady: %Mkal_bool, Line: %ud"
+  warn   EVL2TRACE_RCP_RI_DECODE_ACM_ACCESS_PARMS_FAIL     EVL2_RCP_RI_WARN           "[RCP_ACM_ACCESS_PARMS] access param decode error"
+  warn   EVL2TRACE_RCP_RI_DSAR_1XRTT_PREMPT_WARNING        EVL2_RCP_RI_WARN           "[RCP_DSAR_1XRTT_PREMPT_WARNING] Line: %ud"
+  warn   EVL2TRACE_RCP_RI_DSAR_INVALID_MSG                 EVL2_RCP_RI_WARN           "[RCP_DSAR_INVALID_MSG] Line: %ud"
+  warn   EVL2TRACE_RCP_RI_DSAR_TIMER_START_ERR             EVL2_RCP_RI_WARN           "[RCP_DSAR_TIMER_START_ERR] _bDsarInit = %Mkal_bool, Line: %ud"
+  warn   EVL2TRACE_RCP_RI_DSAR_TIMER_INDEX_ERR             EVL2_RCP_RI_WARN           "[RCP_DSAR_TIMER_INDEX_ERR] Index = %d, Line: %ud"
+  warn   EVL2TRACE_RCP_RI_DSAR_DEL_MSG_FAIL                EVL2_RCP_RI_WARN           "[RCP_DSAR_DEL_MSG_FAIL] MONFAULT_INFO = %8xl, Line: %ud"
+  warn   EVL2TRACE_RCP_RI_DSAR_SLPD_INIT_PACKET            EVL2_RCP_RI_WARN           "[RCP_DSAR_SLPD_INIT_PACKET] msg_Qsize = %d, retryCount = %d, fragCount = %d, txWaitingForConfirm = %Mkal_bool, confirmReq = %MConfirmRequiredE, revMacId = %d, allowedChan = %MRevChannelTypeT, RcpMode = %MRcpModeT"
+  warn   EVL2TRACE_RCP_RI_DSAR_ERR                         EVL2_RCP_RI_WARN           "[RCP_DSAR_ERR] type = %d, param1 = %d, param2 = %d, param3 = %d, param4 = %d"
+  warn   EVL2TRACE_RCP_RI_DSAR_VN_VS                       EVL2_RCP_RI_WARN           "[RCP_DSAR_VN_VS] old_slpd_Vn = %d, slpd_Vn = %d, slpd_Vs = %d, slpd_Vs2 = %d"
+  warn   EVL2TRACE_RCP_RI_DSAR_PHY_ACK_MISSED_ERR          EVL2_RCP_RI_WARN           "[RCP_DSAR_PHY_ACK_MISSED_ERR] MONFAULT_INFO = %8xl, Line: %ud"
+  warn   EVL2TRACE_RCP_RI_DSAR_ACK_QUEUE_FULL_ERR          EVL2_RCP_RI_WARN           "[RCP_DSAR_ACK_QUEUE_FULL_ERR] Message Sequence = %8xl, Line: %ud"
+  warn   EVL2TRACE_RCP_RI_DSAR_ACK_ERR                     EVL2_RCP_RI_WARN           "[RCP_DSAR_RESET_ACK_ERR] Line: %ud"
+  warn   EVL2TRACE_RCP_RI_DSAR_CHAN_REQ_ERR                EVL2_RCP_RI_WARN           "[RCP_DSAR_CHANNEL_REQ_ERR] RcpMode & AllowedChan = %8xl, Line: %ud"
+  warn   EVL2TRACE_RCP_RI_DSAR_QUEUE_FULL_ERR              EVL2_RCP_RI_WARN           "[RCP_DSAR_QUEUE_FULL_ERR] protocolType & TransId = %8xl, Line: %ud"
+  warn   EVL2TRACE_RCP_RI_DSAR_NO_EXEBUFF_ERR              EVL2_RCP_RI_WARN           "[RCP_DSAR_NO_EXEBUFF_ERR] protocolType & TransId = %8xl, Line: %ud"
+  warn   EVL2TRACE_RCP_RI_DSAR_TIMER_ACTIVE_ERR            EVL2_RCP_RI_WARN           "[RCP_DSAR_TIMER_ACTIVE_ERR] timerId = %ul, Line: %ud"
+  warn   EVL2TRACE_RCP_RI_FTAPR_LOOPBACK_HDR_STATE_ERR     EVL2_RCP_RI_WARN           "[RCP_FTAPR_LOOPBACK_HDR_STATE_ERR] Line: %ud"
+  warn   EVL2TRACE_RCP_RI_DSAR_NO_TXUAVAIL                 EVL2_RCP_RI_WARN           "[RCP_DSAR_NO_TXAVAIL] Qsize = %d, _dsarInAcessProgress = %MDsarWfrIdpRespStatusE, RcpMode = %MRcpModeT"
+  warn   EVL2TRACE_RCP_RI_FTAPR_REC_OVERFLOW_ERR           EVL2_RCP_RI_WARN           "[RCP_FTAPR_REC_OVERFLOW_ERR] Line: %ud"
+  warn   EVL2TRACE_RCP_RI_FTAPR_STATE_ERR                  EVL2_RCP_RI_WARN           "[RCP_FTAPR_STATE_ERR] Line: %ud"
+  warn   EVL2TRACE_RCP_RI_FTAPR_MSG_ID_ERR                 EVL2_RCP_RI_WARN           "[RCP_FTAPR_MSG_ID_ERR] Line: %ud"
+  warn   EVL2TRACE_RCP_RI_FTAPR_ERR                        EVL2_RCP_RI_WARN           "[RCP_FTAPR_ERR] count = %d, Line: %ud"
+  warn   EVL2TRACE_RCP_RI_FTAPR_GRANT_ERR                  EVL2_RCP_RI_WARN           "[RCP_FTAPR_GRANT_ERR] Line: %ud"
+  warn   EVL2TRACE_RCP_RI_FTAPR_REVMAC_ID_ERR              EVL2_RCP_RI_WARN           "[RCP_FTAPR_REVMAC_ID_ERR] Line: %ud"
+  warn   EVL2TRACE_RCP_RI_PAR_ERR                          EVL2_RCP_RI_WARN           "[RCP_PAR_ERR] TraceInfo = %8xl, Line: %ud"
+  warn   EVL2TRACE_RCP_RI_PAR_MSGDEC_ERR                   EVL2_RCP_RI_WARN           "[RCP_PAR_MSGDEC_ERR] Line: %ud"
+  warn   EVL2TRACE_RCP_RI_PAR_APPNOTINIT_ERR               EVL2_RCP_RI_WARN           "[RCP_PAR_APPNOTINIT_ERR] Line: %ud"
+  warn   EVL2TRACE_RCP_RI_PAR_STRNUM_ERR                   EVL2_RCP_RI_WARN           "[RCP_PAR_STRNUM_ERR] Line: %ud"
+  warn   EVL2TRACE_RCP_RI_PAR_RLP_RESET_OCCURS             EVL2_RCP_RI_WARN           "[RCP_PAR_RLP_RESET_OCCURS] Line: %ud"
+  warn   EVL2TRACE_RCP_RI_PAR_RLP_RETXLIST_ERR             EVL2_RCP_RI_WARN           "[RCP_PAR_RETXLIST_ERR] Line: %ud"
+  warn   EVL2TRACE_RCP_RI_PAR_TXLIST_ERR                   EVL2_RCP_RI_WARN           "[RCP_PAR_TXLIST_ERR] Line: %ud"
+  warn   EVL2TRACE_RCP_RI_PAR_SUBTYPE_ERR                  EVL2_RCP_RI_WARN           "[RCP_PAR_SUBTYPE_ERR] Line: %ud"
+  warn   EVL2TRACE_RCP_RI_PAR_RETX_DATA_NOT_EXIST          EVL2_RCP_RI_WARN           "[RCP_PAR_RETRANSMIT_DATA_NOT_EXIST] TxSeq = %8xl, Line: %ud"
+  warn   EVL2TRACE_RCP_RI_PAR_WRONG_APP_SUBTYPE            EVL2_RCP_RI_WARN           "[RCP_PAR_RLP_WRONG_APP_SUBTYPE] AppSubtype = %MAppSubTypeT, Line: %ud"
+  warn   EVL2TRACE_RCP_RI_PAR_TXLIST_FULL_ERR              EVL2_RCP_RI_WARN           "[RCP_PAR_TXLIST_FULL_ERR] Line: %ud"
+  warn   EVL2TRACE_RCP_DATAPKT_GET_FAIL                    EVL2_RCP_RI_WARN           "[RCP_DATAPKT_GET_FAIL] Line: %ud"
+  warn   EVL2TRACE_RTAP_GRANT_ERR                          EVL2_RCP_RI_WARN           "[RCP_RTAP_GRANT_ERR] Line: %ud"
+  warn   EVL2TRACE_RTAP_PAYLOADINDEX_ERR                   EVL2_RCP_RI_WARN           "[RCP_RTAP_PAYLOADINDEX_ERR] Line: %ud"
+  warn   EVL2TRACE_RTAP_RATEINDEX_ERR                      EVL2_RCP_RI_WARN           "[RCP_RTAP_RATEINDEX_ERR] Line: %ud"
+  warn   EVL2TRACE_RTAP_OTAMSG_DEC_ERR                     EVL2_RCP_RI_WARN           "[RCP_RTAP_OTAMSG_DEC_ERR] Line: %ud"
+  warn   EVL2TRACE_RTAP_INIT_SUBTYPE_ERR                   EVL2_RCP_RI_WARN           "[RCP_RTAP_INIT_SUBTYPE_ERR] Line: %ud"
+  warn   EVL2TRACE_RTAP_SENDING_MSG_NUM_ERR                EVL2_RCP_RI_WARN           "[RCP_RTAP_SENDING_MSG_NUM_ERR] Line: %ud"
+  warn   EVL2TRACE_RCP_RTM_INVALID_EVENT                   EVL2_RCP_RI_WARN           "[RCP_RTM_INVALID_EVENT] Invalid event id = %MRtmEvent RtmState = %MRtmRmmStateT, RtmTxState = %MRtmTxStateT, Line: %ud"
+  warn   EVL2TRACE_RTM_ERR_INVALID_ATTR_ID                 EVL2_RCP_RI_WARN           "[RCP_RTM_ERR_INVALID_ATTR_ID] Attibute Id = %8xl, Line: %ud"
+  warn   EVL2TRACE_RTM_ERR_AN_REJECT                       EVL2_RCP_RI_WARN           "[RCP_RTM_ERR_AN_REJECT] Line: %ud"
+  warn   EVL2TRACE_RTM_ERR_INVALID_VALUE_ID                EVL2_RCP_RI_WARN           "[RCP_RTM_ERR_INVALID_VALUE_ID] value Id = %8xl, Line: %du"
+  warn   EVL2TRACE_RTM_ERR_INVALID_ATTR_LEN                EVL2_RCP_RI_WARN           "[RCP_RTM_ERR_INVALID_ATTR_LEN] Index = %d, Line: %ud"
+  warn   EVL2TRACE_RTM_ERR_GAIN_SCALE_CONV_RANGE           EVL2_RCP_RI_WARN           "[RCP_RTM_ERR_GAIN_SCALE_CONV_RANGE] packetTxT2PPrevInterlace = %8xl, Line: %ud"
+  warn   EVL2TRACE_RCP_RTM_ERR                             EVL2_RCP_RI_WARN           "[RCP_RTM_ERR] Line: %ud"
+  warn   EVL2TRACE_RTM_ERR_INVALID_PKT_SIZE                EVL2_RCP_RI_WARN           "[RCP_RTM_ERR_INVALID_PKT_SIZE] MaxPayloadSize & Pkt TotalLen = %8xl, Line: %ud"
+  warn   EVL2TRACE_RCP_CPBUF_FREE_FAILED_PEER              EVL2_RCP_RI_WARN           "[RCP_CPBUF_FREE_FAILED_PEER] CpBufType:%MCpBufTypeT, Free Ptr = %xl, Status = %MCpBufStatusT, Ref Count = %d, FILE1:%d, FILE2: %d, LINE: %ud"
+  info   EVL2TRACE_RCP_RI_PROCESS_EVENT_ID                 EVL2_RCI_RI_RCP_TRACE      "[RCP_PROCESS_EVENT_ID] EvtId = %MFrEvtIdT"
+  info   EVL2TRACE_RCP_RI_REG_CALLBACK_EVENT               EVL2_RCI_RI_RCP_TRACE      "[RCP_ACM_REG_SIG_CB] AcmSignalID = %MAcmSigTypeE"
+  info   EVL2TRACE_RCP_RI_TIMER_STARTED                    EVL2_RCI_RI_RCP_TRACE      "[RCP_TIMER_STARTED] timerID = %xl, duration = %ul"
+  info   EVL2TRACE_RCP_RI_TIMER_EXPIRED                    EVL2_RCI_RI_RCP_TRACE      "[RCP_TIMER_EXPIRED] timerID = %xl"
+  info   EVL2TRACE_RCP_RI_CPBUF_GET                        EVL2_RCI_RI_RCP_TRACE      "[RCP_REV_CPBUF_GET] cpBufType = %MCpBufTypeT, Size = %d, Line:%ud, Addr = %xl"
+  info   EVL2TRACE_RCP_CPBUF_FREE_ENTER                    EVL2_RCP_RI_CPBUF_TRACE    "[RCP_CPBUF_FREE_ENTER] CpBufType:%MCpBufTypeT, Free Ptr = %xl, Status = %MCpBufStatusT, Ref Count = %d, FILE1:%d, FILE2: %d, LINE: %ud"
+  info   EVL2TRACE_RCP_CPBUF_COPY_ENTER                    EVL2_RCP_RI_CPBUF_TRACE    "[RCP_CPBUF_COPY_ENTER] CpBufType:%MCpBufTypeT, Free Ptr = %xl, Status = %MCpBufStatusT, Ref Count = %d, FILE1:%d, FILE2: %d, LINE: %ud"
+  info   EVL2TRACE_RCP_RI_ACM_RCV_OTA_MSG                  EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_RCV_OTA_MSG] MsgId = %MAcmOtaMsgE, MsgLen = %xl, CtlState = %MAcmCtlStateE, RbState = %MAcmRbStateE"
+  info   EVL2TRACE_RCP_RI_ACM_ACCESS_PARAMS                EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_ACCESS_PARMS] AccessCycleDuration = %d, AccessSignature = %ud, OpenLoopAdjust = %d, ProbeInitialAdjust = %d, ProbeNumStep = %d, PowerStep = %d, PreambleLength = %d, CapsuleLengthMax = %d, APersistence[0] = %d, APersistence[1] = %d"
+  info   EVL2TRACE_RCP_RI_ACM_ENH_ACCESS_PARAMS            EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_ENH_ACCESS_PARMS] PreambleLengthSlots = %d, AccessOffset = %d, SectorAccessMaxRate = %MAcmAccessRateMaxE, ProbeTimeOutAdjust = %d, PilotStrengthNominal = %d, PilotStrengthCorrectionMin = %d, PilotStrengthCorrectionMax = %d"
+  info   EVL2TRACE_RCP_RI_ACM_ATTRIBUTE_UPDATE             EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_ATTRIBUTE_UPDATE] TerminalAccessRateMax = %MAcmAccessRateMaxE, APersistenceOverride = %d, AccessTerminalClassOverride = %d"
+  info   EVL2TRACE_RCP_RI_ACM_DSAR_SEND_MSG                EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_DSAR_SEND_MSG] acmMsgInDsaQueue = %d, CtlState = %MAcmCtlStateE, RbState = %MAcmRbStateE, APersistence = %d, AccessTerminalClassOverride = %d, bUpdated = %Mkal_bool, AccessSignature = %ud, ColorCode = %d, SectorId = %ul"
+  info   EVL2TRACE_RCP_RI_ACM_SYS_INFO_UPDATE              EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_SYS_INFO_UPDATE] bUpdated = %Mkal_bool, AccessSignature = %ud, ColorCode = %d, SectorId = %ul, ReverseLinkSilencePeriod = %ul, ReverseLinkSilenceDuration = %d"
+  info   EVL2TRACE_RCP_RI_ACM_ACCESS_HANDOFF               EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_ACCESS_HANDOFF] CtlState = %MAcmCtlStateE, RbState = %MAcmRbStateE"
+  info   EVL2TRACE_RCP_RI_ACM_SIGNAL                       EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_SIGNAL] action = %MAcmSigActionE, signalId = %MAcmSigTypeE, CtlState = %MAcmCtlStateE, RbState = %MAcmRbStateE, frame = %ul, slot = %ud"
+  info   EVL2TRACE_RCP_RI_ACM_TIMER                        EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_TIMER] action = %MAcmTimerActionE, timerId = %MAcmTimerIdT, duration = %d, CtlState = %MAcmCtlStateE, RbState = %MAcmRbStateE"
+  info   EVL2TRACE_RCP_RI_ACM_RB_SM                        EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_RB_SM] type = %MAcmIoTypeE, event = %MAcmRbEventE, RbState = %MAcmRbStateE, CtlState = %MAcmCtlStateE"
+  info   EVL2TRACE_RCP_RI_ACM_TX_CONDITION_TEST            EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_TX_CONDITION_TEST] type = %MAcmAccessInterTypeE, testTimes = %d, frame = %ul, slot = %d, acmProbeStartTime = %ul, AccessOffset = %d, PreambleDuration = %ul"
+  info   EVL2TRACE_RCP_RI_ACM_PROBE_TX_TEST                EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_PROBE_TX_TEST] type = %MAcmProbeTxTestTypeE, frame = %ul, slot = %d, ProbeNum = %ud, SeqNum = %ud, ProbeStartTime = %ul"
+  info   EVL2TRACE_RCP_RI_ACM_PST_TEST                     EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_PST_TEST] randomx = %ul, pTest = %ul, numConsecFailedTest = %ul, cTest = %ul"
+  info   EVL2TRACE_RCP_RI_ACM_SILENCE_TST                  EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_SILENCE_TST] preSilenceStart = %ul, nxtSilenceStart = %ul, ReverseLinkSilenceDuration = %ul, ProbeStartTime = %ul, ProbeDuration = %ul"
+  info   EVL2TRACE_RCP_RI_ACM_OVERLAP_TST                  EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_RX_OVERLAP_TST] time1xWakeup64H = %ul, time1xWakeup64L = %ul, ProbeStartTime = %ul, ProbeDuration = %ul"
+  info   EVL2TRACE_RCP_RI_ACM_PREP_PROBE                   EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_PREP_PROBE] curDataStartOffset = %ul, AccessStart = %ul, preambleActTime = %ul, DataActTime = %ul"
+  info   EVL2TRACE_RCP_RI_ACM_TX_SETUP                     EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_TX_SETUP] ProbeNum = %ul, PwrRef = %d, PreamblePilotScale = %ud, ColorCode = %d, SectorId = %ul"
+  info   EVL2TRACE_RCP_RI_ACM_SEND_PROBE                   EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_SEND_PROBE] frame = %ul, slot = %ul, dataActTime = %ul, data2Send = %ul, accessRate = %MAcmAccessRateE, ProbeNum = %ul, SeqNum = %ul, dataGainScale = %ul, rateData = %ul"
+  info   EVL2TRACE_RCP_RI_ACM_SELECT_TX_RATE               EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_SELECT_TX_RATE] accessRateMax = %MAcmAccessRateE, dataLen = %ud, totalPower = %l, txPwrAvail = %l, pilotPower = %l, myKs = %l, myDataG = %ul"
+  info   EVL2TRACE_RCP_RI_ACM_FORM_PHY_PACKET              EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_FORM_PHY_PACKET] maxPayload = %ul, data2Send = %ul, pktLen = %ul, pktOffset = %ul"
+  info   EVL2TRACE_RCP_RI_ACM_FORM_PARAM                   EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_FORM_PARAM] PilotScale = %ul, PreambleScale =%ul, DataScaleKs = %ul, DataScale= %ul"
+  info   EVL2TRACE_RCP_RI_ACM_PROBE_DONE                   EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_PROBE_DONE] frame = %ul, slot = %d, RbState = %MAcmRbStateE, RFReady = %Mkal_bool, ProbeNum = %d, ProbeNumStep = %d, SeqNum = %d, ProbeSeqMax = %d"
+  info   EVL2TRACE_RCP_RI_ACM_START_ACCESS                 EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_START_ACCESS] grantByteSize = %ud, pktTotalLen = %ul, revMacId = %ud, AcmTestMode = %MAcmTestModeT"
+  info   EVL2TRACE_RCP_RI_ACM_FORM_CAPSULE                 EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_FORM_CAPSULE] pktTotalLen = %ul, pktListCount = %ud, HeadPktLen = %ud, scToken = %ud, atiType = %ud, ATI = %ul"
+  info   EVL2TRACE_RCP_RI_ACM_TX_STOP                      EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_TX_STOP] reason = %MAcmTxStopReasonE, CtlState = %MAcmCtlStateE, RbState = %MAcmRbStateE, revMacId = %d, %ul"
+  info   EVL2TRACE_RCP_RI_ACM_PWR_REF                      EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_PWR_REF] AcmPwrRef = %d, probeInitialAdjust = %d, curRxPilotStrength = %d, probeNum = %ud"
+  info   EVL2TRACE_RCP_RI_ACM_PREAMBLE_START               EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_PREAMBLE_START] frameNum=%ul, slotNum=%ul, ProtocolSubtype=%ul, PwrBase=%ul"
+  info   EVL2TRACE_RCP_RI_ACM_DATA_REQ                     EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_DATA_REQ] frameNum=%ul, slotNum=%ul, DataRate=%ul, DataAddr=%ul"
+  info   EVL2TRACE_RCP_RI_ACM_TRANS_STOP                   EVL2_RCP_RI_ACM_TRACE      "[RCP_ACM_TRANS_STOP] immAction=%Mkal_bool"
+  info   EVL2TRACE_RCP_RI_DSAR_PHY_TRAFFIC_MISSED1         EVL2_RCP_RI_DSAR_TRACE     "[RCP_DSAR_PHY_TRAFFIC_MISSED_1] Qsize = %d, revMacId = %d"
+  info   EVL2TRACE_RCP_RI_DSAR_PHY_TRAFFIC_MISSED3         EVL2_RCP_RI_DSAR_TRACE     "[RCP_DSAR_PHY_TRAFFIC_MISSED_3] getIndex = %d, txWaitingForConfirm = %Mkal_bool, revMacId = %d"
+  info   EVL2TRACE_RCP_RI_DSAR_PHY_TRAFFIC_ACKED1          EVL2_RCP_RI_DSAR_TRACE     "[RCP_DSAR_PHY_TRAFFIC_ACKED_1] Qsize = %d, revMacId = %d"
+  info   EVL2TRACE_RCP_RI_DSAR_PHY_TRAFFIC_ACKED3          EVL2_RCP_RI_DSAR_TRACE     "[RCP_DSAR_PHY_TRAFFIC_ACKED_3] getIndex = %d, confirmReq = %Mkal_bool, revMacId = %d"
+  info   EVL2TRACE_RCP_RI_DSAR_PKT_SENT2                   EVL2_RCP_RI_DSAR_TRACE     "[RCP_DSAR_PKT_SENT_2] getIndex = %d, fragCount = %d, confirmReq = %MConfirmRequiredE, reliable = %MDsarTransModeT, lastFrag = %Mkal_bool"
+  info   EVL2TRACE_RCP_RI_DSAR_PKT_SENT3                   EVL2_RCP_RI_DSAR_TRACE     "[RCP_DSAR_PKT_SENT_3] getIndex = %d, txWaitingForConfirm = %Mkal_bool, revMacId = %d"
+  info   EVL2TRACE_RCP_RI_DSAR_ACK                         EVL2_RCP_RI_DSAR_TRACE     "[RCP_DSAR_ACK] msgSeq = %ul"
+  info   EVL2TRACE_RCP_RI_DSAR_ACK2                        EVL2_RCP_RI_DSAR_TRACE     "[RCP_DSAR_ACK_2] msgSeq = %d, confirmReq = %MConfirmRequiredE, revMacId = %d"
+  info   EVL2TRACE_RCP_RI_DSAR_ACK_OK                      EVL2_RCP_RI_DSAR_TRACE     "[RCP_DSAR_ACK_OK]"
+  info   EVL2TRACE_RCP_RI_DSAR_ACK4                        EVL2_RCP_RI_DSAR_TRACE     "[RCP_DSAR_ACK_4] msgSeq = %d, confirmReq = %MConfirmRequiredE, revMacId = %d"
+  info   EVL2TRACE_RCP_RI_DSAR_ACK_REQ                     EVL2_RCP_RI_DSAR_TRACE     "[RCP_DSAR_ACK_REQ] msgSeq = %ul"
+  info   EVL2TRACE_RCP_RI_DSAR_PROCESS_REV2                EVL2_RCP_RI_DSAR_TRACE     "[RCP_DSAR_PROCESS_REV_2] protocolType = %MProtocolTypeE"
+  info   EVL2TRACE_RCP_RI_FTAPR_PAYLOAD_ALLOC_ID_ERR       EVL2_RCP_RI_FTAPR_TRACE    "[RCP_FTAPR_PAYLOAD_ALLOCATE_ID_ERR] Line: %ud"
+  info   EVL2TRACE_RCP_RI_PAR_RLP_FRAME_SEND_DETAILED      EVL2_RCP_RI_IT_TRACE       "[RCP_PAR_RLP_FRAME_SEND_DETAIL] %MAppSubTypeT, RLP Flow = %xl, Packet Send: VS = %8xl, LEN = %3xl"
+  info   EVL2TRACE_RCP_RI_PAR_RLP_MAX_PRIORITY             EVL2_RCP_RI_PAR_TRACE      "[RCP_PAR_RLP_MAX_PRIORITY] %MAppSubTypeT, RLP Flow = %xl, Rlp State = %MParRlpStateT"
+  info   EVL2TRACE_RCP_RI_PAR_RLP_TX_QUEUE_SZ              EVL2_RCP_RI_PAR_TRACE      "[RCP_PAR_RLP_TX_QUEUE_SZ] %MAppSubTypeT, AppType of pInst %MAppSubTypeT, RLP Flow = %xl, totalBytesInTxQ = %ul, Line = %ud"
+  info   EVL2TRACE_RCP_RI_PAR_RLP_RETX_QUEUE_SZ            EVL2_RCP_RI_PAR_TRACE      "[RCP_PAR_RLP_RETX_QUEUE_SZ] %MAppSubTypeT, AppType of pInst %MAppSubTypeT, RLP Flow = %xl, totalBytesInRetxQ = %ul, Line = %ud"
+  info   EVL2TRACE_RCP_RI_PAR_RLP_NAK_MSG                  EVL2_RCP_RI_PAR_TRACE      "[RCP_PAR_RLP_NAK_MSG] %MAppSubTypeT, RLP Flow = %xl, i = %ud, FirstErased = %ul, WindowLen = %ud, Vs = %ul"
+  info   EVL2TRACE_RCP_RI_PAR_RLP_RESERVATIONLABEL_STATE   EVL2_RCP_RI_PAR_TRACE      "[RCP_PAR_RLP_RESERVATIONLABEL_STATE] flag = %d, Label = %d, Resv State = %MParResrevationStateT"
+  info   EVL2TRACE_RCP_RI_PAR_FLOW_CTRL_STATE              EVL2_RCP_RI_PAR_TRACE      "[RCP_PAR_FLOW_CTRL_STATE] streamType = %MPARAppStreamT, state = %MParFlowCtrlStateT"
+  info   EVL2TRACE_RCP_RI_PAR_DOS_MSG                      EVL2_RCP_RI_PAR_TRACE      "[RCP_PAR_DOS_MSG] Msg Seq = %8xl"
+  info   EVL2TRACE_RCP_RI_PAR_GAUP_STAT                    EVL2_RCP_RI_PAR_TRACE      "[RCP_PAR_GAUP_STAT] State = %MPARGaupStateT"
+  info   EVL2TRACE_RCP_RI_PAR_GET_QUE_SZ                   EVL2_RCP_RI_PAR_TRACE      "[RCP_PAR_GET_QUE_SZ] AppSubtype = %MAppSubTypeT, macFlowId = %ud, totalBytesinQ = %ul, totalBytesInTxQ = %ul, totalBytesInRetxQ = %ul"
+  info   EVL2TRACE_RTAP_CONNFLAG                           EVL2_RCP_RI_RTAP_TRACE     "[RCP_RTAP_CONNFLAG] RTAP_ConnFlag = %d"  
+  info   EVL2TRACE_RCP_RI_PCP_FORM_DUMMY_PKT               EVL2_RCP_RI_PCP_TRACE      "[RCP_PCP_FORM_DUMMY_PKT] FormDummyPktSize=%d btytes"
+  info   EVL2TRACE_RCP_RTM_TXPKT3                          EVL2_RCP_RI_RTM_TRACE      "[RCP_RTM_TXPKT3] ProgHw= %MProgHwE, RtmState=%MRtmRmmStateT, currChip=%8xl, currSlot=%8xl, RtmTxState=%MRtmTxStateT, Event=%MRtmEvent, SilentPara=%8xl"
+  info   EVL2TRACE_RCP_RTM_QOS_MINPKTSIZE                  EVL2_RCP_RI_RTM_TRACE      "[RCP_RTM_QOS_MINPKTSIZE] PktSize:%xl, TMmin:%MTransmissionModeE, TxMode:%MTransmissionModeE, SetF:%Mkal_bool, TransmissionModeNn:%MTransmissionModeE, grantByteSize0:%8xl, grantByteSize1:%8xl, grantByteSize2:%8xl, grantByteSize3:%8xl"
+  info   EVL2TRACE_RCP_RTM_PHYACKNAK7                      EVL2_RCP_RI_RTM_TRACE      "[RCP_RTM_PHYACKNAK7] drcLock:%2xl, qrab:%2xl, hlarq:%2xl, parq:%2xl, frab:%d, qrabs:%d, pilotStrength:%xd, numPilots:%d, servingPN:%d"
+  info   EVL2TRACE_RCP_RTM_PHYACKNAK3                      EVL2_RCP_RI_RTM_TRACE      "[RCP_RTM_PHYACKNAK3] HLarq: interlace:%d, arq:%d, subPkt:%d, max:%Mkal_bool, currRevMacPkt:%8xl, macId:%ud"                   
+  info   EVL2TRACE_RCP_RTM_PHYACKNAK4                      EVL2_RCP_RI_RTM_TRACE      "[RCP_RTM_PHYACKNAK4] RtmPrevInterlace:%d, parq:%d, subfr:%d, macId:%d, larqPresentFlag:%Mkal_bool, 1stSubp:%Mkal_bool"
+  info   EVL2TRACE_RCP_RTM_TXPKT1                          EVL2_RCP_RI_RTM_TRACE      "[RCP_RTM_TXPKT1] RtmState=%MRtmRmmStateT, list dataPrt=%8xl, revMacId=%ud"
+  info   EVL2TRACE_RCP_RI_RTM_GRANT10                      EVL2_RCP_RI_RTM_TRACE      "[RCP_RTM_GRANT10] MAC Flow Queue Size: RtmQueueSz[0]: %ul, RtmQueueSz[1]: %ul, RtmQueueSz[2]: %ul, RtmQueueSz[3]: %ul"
+  info   EVL2TRACE_RCP_RI_RTM_HLP_DATA_REV_READ            EVL2_RCP_RI_RTM_TRACE      "[RCP_RTM_HLP_DATA_REV_READ] RdLen=%ul, RestLen=%ul, RestItems=%ul"
+  info   EVL2TRACE_RCP_RI_RTM_TRANS_START                  EVL2_RCP_RI_RTM_TRACE      "[RCP_RTM_TRANS_START] frameNum=%ul, slotNum=%ul, PwrBase=%d, isSlientExit=%Mkal_bool"
+  info   EVL2TRACE_RCP_RI_RTM_DATA_TXNULLPKT_PARAM1        EVL2_RCP_RI_RTM_TRACE      "[RCP_RTM_DATA_TXNULLPKT_PARAM1] AuxPilotScaleAck=%ul, AuxPilotScaleNak=%ul, RriScaleAck=%ul, RriScaleNak=%ul, DataKsScaleAck=%ul, DataKsScaleNak=%ul"
+  info   EVL2TRACE_RCP_RI_RTM_DATA_TXNULLPKT_PARAM2        EVL2_RCP_RI_RTM_TRACE      "[RCP_RTM_DATA_TXNULLPKT_PARAM2] Data0ScaleAck=%ul,Data0ScaleNak=%ul, Data1ScaleAck=%ul, Data1ScaleNak=%ul, Data2ScaleAck=%ul, Data2ScaleNak=%ul, Data3ScaleAck=%ul, Data3ScaleNak=%ul"
+  info   EVL2TRACE_RCP_RI_RTM_DATA_TXPKT1_PARAM1           EVL2_RCP_RI_RTM_TRACE      "[RCP_RTM_DATA_TXPKT1_PARAM1] AuxPilotScaleAck=%ul, AuxPilotScaleNak=%ul, RriScaleAck=%ul, RriScaleNak=%ul, DataKsScaleAck=%ul, DataKsScaleNak=%ul"
+  info   EVL2TRACE_RCP_RI_RTM_DATA_TXPKT1_PARAM2           EVL2_RCP_RI_RTM_TRACE      "[RCP_RTM_DATA_TXPKT1_PARAM2] Data0ScaleAck=%ul,Data0ScaleNak=%ul, Data1ScaleAck=%ul, Data1ScaleNak=%ul, Data2ScaleAck=%ul, Data2ScaleNak=%ul, Data3ScaleAck=%ul, Data3ScaleNak=%ul"
+  info   EVL2TRACE_RCP_RI_RTM_DATA_TXPKT2_PARAM1           EVL2_RCP_RI_RTM_TRACE      "[RCP_RTM_DATA_TXPKT2_PARAM1] AuxPilotScaleAck=%ul, AuxPilotScaleNak=%ul, RriScaleAck=%ul, RriScaleNak=%ul, DataKsScaleAck=%ul, DataKsScaleNak=%ul"
+  info   EVL2TRACE_RCP_RI_RTM_DATA_TXPKT2_PARAM2           EVL2_RCP_RI_RTM_TRACE      "[RCP_RTM_DATA_TXPKT2_PARAM2] Data0ScaleAck=%ul,Data0ScaleNak=%ul, Data1ScaleAck=%ul, Data1ScaleNak=%ul, Data2ScaleAck=%ul, Data2ScaleNak=%ul, Data3ScaleAck=%ul, Data3ScaleNak=%ul"
+  info   EVL2TRACE_RCP_RI_RTM_PARAM_INIT                   EVL2_RCP_RI_RTM_TRACE      "[RCP_RTM_PARAM_INIT] FrameOffset=%d, ProtocolSubtype=%ul, Ftmtype=%ul"
+  info   EVL2TRACE_RCP_RI_RTM_PARAM_RECFG                  EVL2_RCP_RI_RTM_TRACE      "[RCP_RTM_PARAM_RECFG] FrameOffset=%d"
+  info   EVL2TRACE_RCP_RI_RTM_TX_DUMMY_PKT                 EVL2_RCP_RI_RTM_TRACE      "[RCP_RTM_TX_DUMMY_PKT]RtmState=%MRtmRmmStateT, RtmDummyMacPktId = %d"
+  info   EVL2TRACE_RCP_RI_RTM_GRANT01                      EVL2_RCP_RI_RTM_TRACE      "[RCP_RTM_GRANT01]myRate = %ul, maxRate = %ul, currRateLimit = %ul, txPwrAvail = %ul, txPwrReq = %ul, configuredPacketRateMode = %Mkal_bool, rtapTargetRate = %ul"
+  info   EVL2TRACE_RCP_RI_TXPKT_SWEEP_MODE                 EVL2_RCP_RI_RTM_TRACE      "[RCP_RTM_TXPKT_SWEEP_MODE]RtmState=%MRtmRmmStateT, Chip=%8xl, slot= %8xl, RtmSubtype=%MRtmRmmSubtypeT"
+  info   EVL2TRACE_RCP_RI_RTM_TXPWR_LIMITED                EVL2_RCP_RI_RTM_TRACE      "[RCP_RTM_TXPWR_LIMITED] availableTxPwrQ7=%d"
+  info   EVL2TRACE_RCP_RI_QOS_MINPKTSIZE_CONDITION         EVL2_RCP_RI_RTM_TRACE      "[RCP_RTM_QOS_MINPKTSIZE_CONDITION] TransmissionMode = %MTransmissionModeE, packetSizeIndex = %d, conditionNo = %d, conditionNo[0] = %8xl, conditionNo[1] = %8xl, conditionNo[2] = %8xl, conditionNo[3] = %8xl, conditionNo[4] = %8xl, conditionNo[5] = %8xl"
+  info   EVL2TRACE_RCP_RI_QOS_POTENTIAL_T2P_OUTFLOW_INFO   EVL2_RCP_RI_RTM_TRACE      "[RCP_RTM_QOS_POTENTIAL_T2P_OUTFLOW] TransmissionMode = %MTransmissionModeE, setFLL[0] = %Mkal_bool, setFLL[1] = %Mkal_bool, queueOutflow[0] = %ud, queueOutflow[1] = %ud, sumQueueOutflow = %ul"
+  info   EVL2TRACE_RCP_RI_QOS_PKTSIZE                      EVL2_RCP_RI_RTM_TRACE      "[RCP_RTM_QOS_PKTSIZE] tmp1 = %l, tmp2 = %l, tmp3 = %l, bucketFactor = %l, bucketLevel = %l, t2PInflow = %l, t2PConversionFactorHC = %ud, potentialT2POutflowHC = %ul, t2PConversionFactorLL = %ud, potentialT2POutflowLL = %ul, RtmQueueSz = %ul"
+  info   EVL2TRACE_RCP_RI_QOS_BUCKET_LEVEL                 EVL2_RCP_RI_RTM_TRACE      "[RCP_RTM_QOS_BUCKET_LEVEL] fwdChanValid = %Mkal_bool, bucketLevelSat[0] = %l, bucketLevel[0] = %l, bucketLevelSat[1] = %l, bucketLevel[1] = %l, t2PInflow[1] = %l, t2POutflow[1] = %l, bucketFactor[1] = %l, bucketLevelMax[1] = %l"
+  info   EVL2TRACE_RCP_RI_QOS_INFLOW                       EVL2_RCP_RI_IT_TRACE       "[RCP_RTM_QOS_INFLOW] Macflow = %d, T2PHold = %xl, t2PInflowmin = %l, t2PInflowmax = %l, t2POutflow = %l, deltaT2PInflow = %l, T2pFilterTcNn = %l, t2PInflow = %l, Strored.t2PInflow = %l"

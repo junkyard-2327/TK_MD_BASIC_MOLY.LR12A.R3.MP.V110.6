@@ -1,0 +1,48 @@
+;===============================================
+;CMM START
+;===============================================
+SETUP.BAKfile OFF
+
+; ======================
+; Reset all configuration
+; ======================
+winclear
+AREA.RESet
+AREA.Create dram
+AREA.Select dram
+AREA.view   dram
+AREA.Clear  dram
+SYStem.RESet //Reset all configuration
+
+; ======================
+; attach on MIPS
+; ======================
+system.down
+;system.cpu MIPS4K
+system.cpu MIPSinterAptiv
+SYStem.OPTION Endianess little
+system.up
+
+; load elf
+do BuildInfo.cmm 
+print "Load MD ELF(Download)..."
+D.LOAD.ELF &OPT_MD_P_ELF_PATH /RELPATH /PATH &OPT_MD_P_SRC_PATH /CODESEC /DWARF2 /GNU
+y.spath &OPT_MD_P_SRC_PATH
+
+;===============================================
+;CMM END
+;===============================================
+PRINT "Init Done"
+
+winclear
+
+winpos 30% 50% 40% 50%
+symbol.browse
+winpos 70% 0% 30% 30%
+register.view
+winpos 70% 30% 30% 30%
+var.WATCH 
+winpos 70% 60% 30% 40%
+data.dump 0 /ORIENT /DIALOG 
+
+ENDDO

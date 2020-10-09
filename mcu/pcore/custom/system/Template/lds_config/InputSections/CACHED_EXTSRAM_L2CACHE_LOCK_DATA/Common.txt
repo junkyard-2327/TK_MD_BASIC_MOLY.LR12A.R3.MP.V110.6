@@ -1,0 +1,28 @@
+        . = ALIGN(0x8000);  /* align base to 32KB = 0x8000 */
+        L2CACHE_LOCK$$Base = .;
+        /* COMMON ROCODE, RODATA */
+        . = ALIGN(64);
+        L2CACHE_LOCK_ROCODE$$Base = .;       
+        *lib_a-memcpy.o (.text)
+        *lib_a-memset.o (.text)
+        L2CACHE_LOCK_ITC_ROCODE$$Base = .;
+        *kal_hw_itc.obj (L2CACHE_LOCK_ROCODE)
+        L2CACHE_LOCK_ITC_ROCODE$$Limit = .;
+        L2CACHE_LOCK_ITC_ROCODE$$Length = ABSOLUTE(L2CACHE_LOCK_ITC_ROCODE$$Limit - L2CACHE_LOCK_ITC_ROCODE$$Base);
+        * (L2CACHE_LOCK_ROCODE*) /* L2 cache lock! align base and end to 64 bytes */
+        KEEP(* (NOP_L2CACHE_LOCK_ROCODE_SECTION))
+        . = ALIGN(64);
+        * (L2CACHE_LOCK_RODATA)  /* protect by MPU with ROCODE */
+        . = ALIGN(64);
+        L2CACHE_LOCK_ROCODE$$Limit = .;
+        L2CACHE_LOCK_ROCODE$$Length = ABSOLUTE(L2CACHE_LOCK_ROCODE$$Limit - L2CACHE_LOCK_ROCODE$$Base);
+		
+        /* COMMON RW */
+        . = ALIGN(64);
+        L2CACHE_LOCK_DATA$$Base = .; 
+        * (L2CACHE_LOCK_RW) /* L2 cache lock! align base and end to 64 bytes */
+        . = ALIGN(64);
+        L2CACHE_LOCK_DATA$$Limit = .;
+        L2CACHE_LOCK_DATA$$Length = ABSOLUTE(L2CACHE_LOCK_DATA$$Limit - L2CACHE_LOCK_DATA$$Base);
+
+

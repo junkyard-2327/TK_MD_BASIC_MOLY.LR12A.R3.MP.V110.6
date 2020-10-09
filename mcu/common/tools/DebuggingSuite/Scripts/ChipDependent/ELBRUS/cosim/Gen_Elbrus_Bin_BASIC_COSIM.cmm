@@ -1,0 +1,99 @@
+;===============================================
+;CMM START
+;===============================================
+SETUP.BAKfile OFF
+
+; ======================
+; Reset all configuration
+; ======================
+winclear
+AREA.RESet
+AREA.Create dram
+AREA.Select dram
+AREA.view   dram
+AREA.Clear  dram
+SYStem.RESet //Reset all configuration
+
+; ======================
+; attach on PSCore
+; ======================
+; DO MD_P_Attach.cmm
+system.down
+;system.cpu MIPS4K
+system.cpu MIPSinterAptiv
+SYStem.OPTION Endianess little
+system.up
+
+; ======================
+; Load L1Core code
+; ======================
+; define and init elf,src,bin path
+GLOBAL &OPT_MD_P_ELF_PATH
+GLOBAL &OPT_MD_P_SRC_PATH
+GLOBAL &OPT_MD_P_BIN_PATH
+GLOBAL &L_CMM_RELATIVE_PATH
+
+;Path information
+GLOBAL &OPT_MD_ELF_PATH
+&OPT_MD_ELF_PATH="../bin/ELBRUS_FPGA_PCB01_P_ELBRUS_FPGAS00.elf"
+
+GLOBAL &OPT_MD_BIN_PATH
+&OPT_MD_BIN_PATH="../bin/sim/MD_IMAGE"
+
+GLOBAL &OPT_MD_SRC_PATH
+&OPT_MD_SRC_PATH="../../../../.."
+
+GLOBAL &CMM_RELATIVE_PATH
+&CMM_RELATIVE_PATH="../../cmm"
+
+
+;data.load.elf &OPT_MD_P_ELF_PATH
+D.LOAD.BINARY &OPT_MD_BIN_PATH
+D.LOAD.ELF &OPT_MD_ELF_PATH /RELPATH /PATH &OPT_MD_SRC_PATH /CODESEC /DWARF2 /GNU
+
+
+; ======================
+; Do region initialize
+; ======================
+;v INT_InitShareRegions()
+;v INT_InitRegions()
+
+; ======================
+; Backup 0x0 -- Image$$L1CORE_DUMP_REGION__ITCM$$Length
+; ======================
+;;GLOBAL &DSPRAM0_SIZE
+;;&DSPRAM0_SIZE=V.VALUE(&Image$$DSPRAM$$Length)
+;;data.copy 0x0--&DSPRAM0_SIZE VM:0x0
+
+; ======================
+; Save &Image$$EXTSRAM_DSP_RX$$Limit
+; ======================
+LOCAL &EXTSRAM_END 
+&EXTSRAM_END=V.VALUE(&Image$$EXTSRAM_DSP_RX$$Limit)
+; ======================
+; Create ElbrusReleaseBin folder
+; ======================
+IF !OS.DIR(ElbrusReleaseBin)
+(
+    mkdir ./ElbrusReleaseBin
+)
+
+; ======================
+; dump all bins
+; ======================
+
+;;d.save.binary .\ElbrusReleaseBin\sw_emi.bin 0x00000000--&EXTSRAM_END
+d.save.binary .\ElbrusReleaseBin\sw_emi.load 0x00000000--&EXTSRAM_END
+PRINT "EXTSTAM:sw_emi.load generated"
+;;d.save.binary .\ElbrusReleaseBin\ispram_0.bin 0x9F800000--0x9F880000
+;;PRINT "CORE0:ispram_0 generated"
+;;d.save.binary .\ElbrusReleaseBin\dspram_0.bin 0x9F880000--0x9F900000
+;;PRINT "CORE0 TCM:dspram_0.bin generated"
+;;d.save.binary .\ElbrusReleaseBin\l2sram.bin Image$$L2SRAM_CODE$$Base--Image$$L2SRAM_DATA_ZI$$ZI$$Limit
+;;PRINT "L2SRAM:l2sram.bin generated"
+
+;===============================================
+;CMM END
+;===============================================
+PRINT "Init Done"
+ENDDO

@@ -1,0 +1,1543 @@
+/*****************************************************************************
+*  Copyright Statement:
+*  --------------------
+*  This software is protected by Copyright and the information contained
+*  herein is confidential. The software may not be copied and the information
+*  contained herein may not be used or disclosed except with the written
+*  permission of MediaTek Inc. (C) 2005
+*
+*  BY OPENING THIS FILE, BUYER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+*  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("MEDIATEK SOFTWARE")
+*  RECEIVED FROM MEDIATEK AND/OR ITS REPRESENTATIVES ARE PROVIDED TO BUYER ON
+*  AN "AS-IS" BASIS ONLY. MEDIATEK EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES,
+*  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+*  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NONINFRINGEMENT.
+*  NEITHER DOES MEDIATEK PROVIDE ANY WARRANTY WHATSOEVER WITH RESPECT TO THE
+*  SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY, INCORPORATED IN, OR
+*  SUPPLIED WITH THE MEDIATEK SOFTWARE, AND BUYER AGREES TO LOOK ONLY TO SUCH
+*  THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO. MEDIATEK SHALL ALSO
+*  NOT BE RESPONSIBLE FOR ANY MEDIATEK SOFTWARE RELEASES MADE TO BUYER'S
+*  SPECIFICATION OR TO CONFORM TO A PARTICULAR STANDARD OR OPEN FORUM.
+*
+*  BUYER'S SOLE AND EXCLUSIVE REMEDY AND MEDIATEK'S ENTIRE AND CUMULATIVE
+*  LIABILITY WITH RESPECT TO THE MEDIATEK SOFTWARE RELEASED HEREUNDER WILL BE,
+*  AT MEDIATEK'S OPTION, TO REVISE OR REPLACE THE MEDIATEK SOFTWARE AT ISSUE,
+*  OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE CHARGE PAID BY BUYER TO
+*  MEDIATEK FOR SUCH MEDIATEK SOFTWARE AT ISSUE. 
+*
+*  THE TRANSACTION CONTEMPLATED HEREUNDER SHALL BE CONSTRUED IN ACCORDANCE
+*  WITH THE LAWS OF THE STATE OF CALIFORNIA, USA, EXCLUDING ITS CONFLICT OF
+*  LAWS PRINCIPLES.  ANY DISPUTES, CONTROVERSIES OR CLAIMS ARISING THEREOF AND
+*  RELATED THERETO SHALL BE SETTLED BY ARBITRATION IN SAN FRANCISCO, CA, UNDER
+*  THE RULES OF THE INTERNATIONAL CHAMBER OF COMMERCE (ICC).
+*
+*****************************************************************************/
+
+/*****************************************************************************
+ *
+ * Filename:
+ * ---------
+ * el1_nvram_def.c
+ *
+ * Project:
+ * --------
+ *   MAUI
+ *
+ * Description:
+ * ------------
+ *   
+ *
+ * Author:
+ * -------
+ * 
+ *
+ *============================================================================
+ *             HISTORY
+ * Below this line, this part is controlled by PVCS VM. DO NOT MODIFY!!
+ *------------------------------------------------------------------------------
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ *------------------------------------------------------------------------------
+ * Upper this line, this part is controlled by PVCS VM. DO NOT MODIFY!!
+ *============================================================================
+ ****************************************************************************/
+#ifndef NVRAM_NOT_PRESENT
+
+#ifdef __LTE_RAT__
+
+#include "kal_general_types.h"
+#ifdef NVRAM_AUTO_GEN
+#include "nvram_auto_gen.h"
+#endif
+
+#include "nvram_enums.h"
+#include "nvram_defs.h"
+
+/*
+ *   User Headers & Default value
+ */
+#include "el1_nvram_def.h" 
+#include "el1_nvram_editor.h" 
+
+#include "el1d_rf_cid.h"
+
+extern void nvram_get_eL1_default_value_to_write(nvram_lid_enum lid, kal_uint8 *buffer, kal_uint16 buffer_size);
+#if !defined(__UE_SIMULATOR__)
+extern void nvram_get_TX_default_value_to_write(nvram_lid_enum lid, kal_uint8 *buffer, kal_uint16 buffer_size);
+#else
+#define nvram_get_TX_default_value_to_write   nvram_get_eL1_default_value_to_write
+#endif
+
+// Default Values
+
+// LID Declaration
+ltable_entry_struct logical_data_item_table_el1[] =
+{
+
+ 
+   /** EL1 RF Calibration */
+   {
+      NVRAM_EF_EL1_CTRL_REG_RW_LID,
+      NVRAM_EF_EL1_CTRL_REG_RW_TOTAL,
+      NVRAM_EF_EL1_CTRL_REG_RW_SIZE,
+      NVRAM_NORMAL(NVRAM_EF_FF_DEFAULT),
+      NVRAM_CATEGORY_USER,
+      NVRAM_ATTR_AVERAGE,
+      "EA00",
+      VER(NVRAM_EF_EL1_CTRL_REG_RW_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_DSPLOGFILTER_LID,
+      NVRAM_EF_EL1_DSPLOGFILTER_TOTAL,
+      NVRAM_EF_EL1_DSPLOGFILTER_SIZE,
+      NVRAM_NORMAL(NVRAM_EF_ZERO_DEFAULT),
+      NVRAM_CATEGORY_USER| NVRAM_CATEGORY_CALIBRAT,
+      NVRAM_ATTR_AVERAGE,
+      "EA02",
+      VER(NVRAM_EF_EL1_DSPLOGFILTER_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_FREQADJTBL_LID,
+      NVRAM_EF_EL1_FREQADJTBL_TOTAL,
+      NVRAM_EF_EL1_FREQADJTBL_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_CALIBRAT | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_AVERAGE,
+      "EA03",
+      VER(NVRAM_EF_EL1_FREQADJTBL_LID)
+   },
+
+   /** EL1D RF RX RSSI Table */
+   {
+      NVRAM_EF_EL1_RSSIGAINTBL_TYPE1_LID,
+      NVRAM_EF_EL1_RSSIGAINTBL_TYPE1_BAND_TOTAL,
+      NVRAM_EF_EL1_RSSIGAINTBL_TYPE1_BAND_SIZE,
+      NVRAM_NORMAL(NVRAM_EF_ZERO_DEFAULT),
+      NVRAM_CATEGORY_CALIBRAT,
+      NVRAM_ATTR_AVERAGE,
+      "EA10",
+      VER(NVRAM_EF_EL1_RSSIGAINTBL_TYPE1_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_RSSIGAINTBL_TYPE2_LID,
+      NVRAM_EF_EL1_RSSIGAINTBL_TYPE2_BAND_TOTAL,
+      NVRAM_EF_EL1_RSSIGAINTBL_TYPE2_BAND_SIZE,
+      NVRAM_NORMAL(NVRAM_EF_ZERO_DEFAULT),
+      NVRAM_CATEGORY_CALIBRAT,
+      NVRAM_ATTR_AVERAGE,
+      "EA0A",
+      VER(NVRAM_EF_EL1_RSSIGAINTBL_TYPE2_LID)
+   },
+
+   /** EL1D RF Tx DAC */
+   {
+      NVRAM_EF_EL1_TXDAC_LID,
+      NVRAM_EF_EL1_TXDAC_BAND_TOTAL,
+      NVRAM_EF_EL1_TXDAC_BAND_SIZE,
+      NVRAM_NORMAL(NVRAM_EF_ZERO_DEFAULT),
+      NVRAM_CATEGORY_CALIBRAT,
+      NVRAM_ATTR_AVERAGE,
+      "EA40",
+      VER(NVRAM_EF_EL1_TXDAC_LID)
+   },
+
+   /**EL1D RF Tx PA OCT level */
+   {
+      NVRAM_EF_EL1_TXPAOCTLEV_LID,
+      NVRAM_EF_EL1_TXPAOCTLEV_BAND_TOTAL,
+      NVRAM_EF_EL1_TXPAOCTLEV_BAND_SIZE,
+      NVRAM_NORMAL(NVRAM_EF_ZERO_DEFAULT),
+      NVRAM_CATEGORY_CALIBRAT,
+      NVRAM_ATTR_AVERAGE,
+      "EA50",
+      VER(NVRAM_EF_EL1_TXPAOCTLEV_LID)
+   },
+
+   /** EL1D RF Tx ET */
+
+
+   /** EL1D RF General Parammeters */
+   {
+      NVRAM_EF_EL1_MPRADJTBL_LID,
+      NVRAM_EF_EL1_MPRADJTBL_TOTAL,
+      NVRAM_EF_EL1_MPRADJTBL_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_TX_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_GEN_DEFAULT,
+      "EL01",
+      VER(NVRAM_EF_EL1_MPRADJTBL_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_AMPRADJTBL_LID,
+      NVRAM_EF_EL1_AMPRADJTBL_TOTAL,
+      NVRAM_EF_EL1_AMPRADJTBL_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_TX_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_GEN_DEFAULT,
+      "EL02",
+      VER(NVRAM_EF_EL1_AMPRADJTBL_LID)
+   },
+
+   /** EL1D RF Customization data */
+   {
+      NVRAM_EF_EL1_BAND_INDICATOR_LID,
+      NVRAM_EF_EL1_BAND_INDICATOR_TOTAL,
+      NVRAM_EF_EL1_BAND_INDICATOR_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_CALIBRAT | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_AVERAGE | NVRAM_ATTR_GEN_DEFAULT,
+      "EL03",
+      VER(NVRAM_EF_EL1_BAND_INDICATOR_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_FE_CA_LINKAGE_DATABASE_LID,
+      NVRAM_EF_EL1_FE_CA_LINKAGE_DATABASE_TOTAL,
+      NVRAM_EF_EL1_FE_CA_LINKAGE_DATABASE_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_CALIBRAT | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_AVERAGE | NVRAM_ATTR_GEN_DEFAULT,
+      "EL04",
+      VER(NVRAM_EF_EL1_FE_CA_LINKAGE_DATABASE_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_EVT_TIME_OFST_TABLE_LID,
+      NVRAM_EF_EL1_EVT_TIME_OFST_TABLE_TOTAL,
+      NVRAM_EF_EL1_EVT_TIME_OFST_TABLE_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "EL05",
+      VER(NVRAM_EF_EL1_EVT_TIME_OFST_TABLE_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_FE_RX_ROUTE_DATABASE_LID,
+      NVRAM_EF_EL1_FE_RX_ROUTE_DATABASE_TOTAL,
+      NVRAM_EF_EL1_FE_RX_ROUTE_DATABASE_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_MULTI_DEFAULT,
+      "EL06",
+      VER(NVRAM_EF_EL1_FE_RX_ROUTE_DATABASE_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_FE_TX_ROUTE_DATABASE_LID,
+      NVRAM_EF_EL1_FE_TX_ROUTE_DATABASE_TOTAL,
+      NVRAM_EF_EL1_FE_TX_ROUTE_DATABASE_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_MULTI_DEFAULT,
+      "EL07",
+      VER(NVRAM_EF_EL1_FE_TX_ROUTE_DATABASE_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_MIPI_RX_EVENT_LID,
+      NVRAM_EF_EL1_MIPI_RX_EVENT_TOTAL,
+      NVRAM_EF_EL1_MIPI_RX_EVENT_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_MULTI_DEFAULT,
+      "EL08",
+      VER(NVRAM_EF_EL1_MIPI_RX_EVENT_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_MIPI_TX_EVENT_LID,
+      NVRAM_EF_EL1_MIPI_TX_EVENT_TOTAL,
+      NVRAM_EF_EL1_MIPI_TX_EVENT_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_MULTI_DEFAULT,
+      "EL09",
+      VER(NVRAM_EF_EL1_MIPI_TX_EVENT_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_MIPI_RX_DATA_LID,
+      NVRAM_EF_EL1_MIPI_RX_DATA_TOTAL,
+      NVRAM_EF_EL1_MIPI_RX_DATA_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_MULTI_DEFAULT,
+      "EL0A",
+      VER(NVRAM_EF_EL1_MIPI_RX_DATA_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_MIPI_TX_DATA_LID,
+      NVRAM_EF_EL1_MIPI_TX_DATA_TOTAL,
+      NVRAM_EF_EL1_MIPI_TX_DATA_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_MULTI_DEFAULT,
+      "EL0B",
+      VER(NVRAM_EF_EL1_MIPI_TX_DATA_LID)
+   },
+
+
+   /* AMPR JP Feature */
+   {
+      NVRAM_EF_EL1_AMPR_JP_FEATURE_LID,
+      NVRAM_EF_EL1_AMPR_JP_FEATURE_TOTAL,
+      NVRAM_EF_EL1_AMPR_JP_FEATURE_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_TX_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_GEN_DEFAULT,
+      "EL0C",
+      VER(NVRAM_EF_EL1_AMPR_JP_FEATURE_LID)
+   },
+
+   /* Dynamic Radio-setting Dedicated Image (DRDI) */
+   {
+      NVRAM_EF_EL1_CUSTOM_DYNAMIC_INIT_DEBUG_LID,
+      NVRAM_EF_EL1_CUSTOM_DYNAMIC_INIT_DEBUG_TOTAL,
+      NVRAM_EF_EL1_CUSTOM_DYNAMIC_INIT_DEBUG_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "EL0G",
+      VER(NVRAM_EF_EL1_CUSTOM_DYNAMIC_INIT_DEBUG_LID)
+   },
+
+   /* Single ANT Feature */
+   {
+      NVRAM_EF_EL1_RF_RX_PATH_CONFIG_LID,
+      NVRAM_EF_EL1_RF_RX_PATH_CONFIG_TOTAL,
+      NVRAM_EF_EL1_RF_RX_PATH_CONFIG_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "EL0H",
+      VER(NVRAM_EF_EL1_RF_RX_PATH_CONFIG_LID)
+   },
+
+   /* Ant custom BPI table */
+   {
+      NVRAM_EF_EL1_ANT_PDATABASE_LID,
+      NVRAM_EF_EL1_ANT_PDATABASE_TOTAL,
+      NVRAM_EF_EL1_ANT_PDATABASE_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "EL0I",
+      VER(NVRAM_EF_EL1_ANT_PDATABASE_LID)
+   },
+
+   /* VPA source config table */
+   {
+      NVRAM_EF_EL1_VPA_CONFIG_DATABASE_LID,
+      NVRAM_EF_EL1_VPA_CONFIG_DATABASE_TOTAL,
+      NVRAM_EF_EL1_VPA_CONFIG_DATABASE_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_CALIBRAT | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_AVERAGE,
+      "EL0J",
+      VER(NVRAM_EF_EL1_VPA_CONFIG_DATABASE_LID)
+   },
+
+   /* MPR/AMPR CA Feature */
+   {
+      NVRAM_EF_EL1_MPRADJTBLCA_LID,
+      NVRAM_EF_EL1_MPRADJTBLCA_TOTAL,
+      NVRAM_EF_EL1_MPRADJTBLCA_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_TX_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_GEN_DEFAULT,
+      "EL0K",
+      VER(NVRAM_EF_EL1_MPRADJTBLCA_LID)
+   },
+                   
+   {
+      NVRAM_EF_EL1_AMPRADJTBLCA_LID,
+      NVRAM_EF_EL1_AMPRADJTBLCA_TOTAL,
+      NVRAM_EF_EL1_AMPRADJTBLCA_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_TX_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_GEN_DEFAULT,
+      "EL0L",
+      VER(NVRAM_EF_EL1_AMPRADJTBLCA_LID)
+   },
+
+   /* MPR HPUE CA Feature */
+   {
+      NVRAM_EF_EL1_MPR_HPUE_CA_FEATURE_LID,
+      NVRAM_EF_EL1_MPR_HPUE_CA_FEATURE_TOTAL,
+      NVRAM_EF_EL1_MPR_HPUE_CA_FEATURE_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_TX_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_GEN_DEFAULT,
+      "EL5C",
+      VER(NVRAM_EF_EL1_MPR_HPUE_CA_FEATURE_LID)
+   },
+   
+   /*Ant CA linkage table*/
+   {
+      NVRAM_EF_EL1_ANT_CA_LINKAGE_DATABASE_LID,
+      NVRAM_EF_EL1_ANT_CA_LINKAGE_DATABASE_TOTAL,
+      NVRAM_EF_EL1_ANT_CA_LINKAGE_DATABASE_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "EL0M",
+      VER(NVRAM_EF_EL1_ANT_CA_LINKAGE_DATABASE_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_MIPI_ANTRX_EVENT_LID,
+      NVRAM_EF_EL1_MIPI_ANTRX_EVENT_TOTAL,
+      NVRAM_EF_EL1_MIPI_ANTRX_EVENT_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_MULTI_DEFAULT,
+      "EL0N",
+      VER(NVRAM_EF_EL1_MIPI_ANTRX_EVENT_LID)
+   },
+      
+   {
+      NVRAM_EF_EL1_MIPI_ANTTX_EVENT_LID,
+      NVRAM_EF_EL1_MIPI_ANTTX_EVENT_TOTAL,
+      NVRAM_EF_EL1_MIPI_ANTTX_EVENT_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_MULTI_DEFAULT,
+      "EL0O",
+      VER(NVRAM_EF_EL1_MIPI_ANTTX_EVENT_LID)
+   },
+      
+   {
+      NVRAM_EF_EL1_MIPI_ANTRX_DATA_LID,
+      NVRAM_EF_EL1_MIPI_ANTRX_DATA_TOTAL,
+      NVRAM_EF_EL1_MIPI_ANTRX_DATA_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_MULTI_DEFAULT,
+      "EL0P",
+      VER(NVRAM_EF_EL1_MIPI_ANTRX_DATA_LID)
+   },
+      
+   {
+      NVRAM_EF_EL1_MIPI_ANTTX_DATA_LID,
+      NVRAM_EF_EL1_MIPI_ANTTX_DATA_TOTAL,
+      NVRAM_EF_EL1_MIPI_ANTTX_DATA_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_MULTI_DEFAULT,
+      "EL0Q",
+      VER(NVRAM_EF_EL1_MIPI_ANTTX_DATA_LID)
+   },
+
+   /* AMPR VzW Feature */
+   {
+      NVRAM_EF_EL1_AMPR_VZW_FEATURE_LID,
+      NVRAM_EF_EL1_AMPR_VZW_FEATURE_TOTAL,
+      NVRAM_EF_EL1_AMPR_VZW_FEATURE_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_TX_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_GEN_DEFAULT,
+      "EL0R",
+      VER(NVRAM_EF_EL1_AMPR_VZW_FEATURE_LID)
+   },
+
+   /* AMPR VzW Feature */
+   {
+      NVRAM_EF_EL1_AMPR_HPUE_FEATURE_LID,
+      NVRAM_EF_EL1_AMPR_HPUE_FEATURE_TOTAL,
+      NVRAM_EF_EL1_AMPR_HPUE_FEATURE_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_TX_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_GEN_DEFAULT,
+      "EL0S",
+      VER(NVRAM_EF_EL1_AMPR_HPUE_FEATURE_LID)
+   },
+
+   /* MPR/AMPR Extra table Feature */
+   {
+      NVRAM_EF_EL1_AMPRADJTBL_EXTRA_LID,
+      NVRAM_EF_EL1_AMPRADJTBL_EXTRA_TOTAL,
+      NVRAM_EF_EL1_AMPRADJTBL_EXTRA_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_TX_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_GEN_DEFAULT,
+      "EL0T",
+      VER(NVRAM_EF_EL1_AMPRADJTBL_EXTRA_LID)
+   },
+  
+   {
+      NVRAM_EF_EL1_AMPRADJTBLCA_EXTRA_LID,
+      NVRAM_EF_EL1_AMPRADJTBLCA_EXTRA_TOTAL,
+      NVRAM_EF_EL1_AMPRADJTBLCA_EXTRA_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_TX_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_GEN_DEFAULT,
+      "EL0U",
+      VER(NVRAM_EF_EL1_AMPRADJTBLCA_EXTRA_LID)
+   },
+
+   /* AMPR HPUE CA Feature */
+   {
+      NVRAM_EF_EL1_AMPR_HPUE_CA_FEATURE_LID,
+      NVRAM_EF_EL1_AMPR_HPUE_CA_FEATURE_TOTAL,
+      NVRAM_EF_EL1_AMPR_HPUE_CA_FEATURE_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_TX_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_GEN_DEFAULT,
+      "EL5D",
+      VER(NVRAM_EF_EL1_AMPR_HPUE_CA_FEATURE_LID)
+   },
+
+  /*LGE HPUE Power Offset Feature*/
+   {
+      NVRAM_EF_EL1_HPUE_TPOS_LID,
+      NVRAM_EF_EL1_HPUE_TPOS_TOTAL,
+      NVRAM_EF_EL1_HPUE_TPOS_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_TX_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_GEN_DEFAULT,
+      "EL5G",
+      VER(NVRAM_EF_EL1_HPUE_TPOS_LID)
+   },
+
+   /* OLAT Feature */
+   {
+      NVRAM_EF_EL1_OLAT_FEATURE_LID,
+      NVRAM_EF_EL1_OLAT_FEATURE_TOTAL,
+      NVRAM_EF_EL1_OLAT_FEATURE_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "EL0V",
+      VER(NVRAM_EF_EL1_OLAT_FEATURE_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_AMPRADJTBL_SPRINT_LID,
+      NVRAM_EF_EL1_AMPRADJTBL_SPRINT_TOTAL,
+      NVRAM_EF_EL1_AMPRADJTBL_SPRINT_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_TX_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_GEN_DEFAULT,
+      "EL0W",
+      VER(NVRAM_EF_EL1_AMPRADJTBL_SPRINT_LID)
+   },
+   
+   /* AMPR Sprint Feature */
+   {
+      NVRAM_EF_EL1_AMPR_SPRINT_FEATURE_LID,
+      NVRAM_EF_EL1_AMPR_SPRINT_FEATURE_TOTAL,
+      NVRAM_EF_EL1_AMPR_SPRINT_FEATURE_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_TX_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_GEN_DEFAULT,
+      "EL0X",
+      VER(NVRAM_EF_EL1_AMPR_SPRINT_FEATURE_LID)
+   },
+
+   /*MUSE swap test*/
+    {
+       NVRAM_EF_EL1_PRX_DRX_ONLY_ANT_CONFIG_LID,
+       NVRAM_EF_EL1_PRX_DRX_ONLY_ANT_CONFIG_TOTAL,
+       NVRAM_EF_EL1_PRX_DRX_ONLY_ANT_CONFIG_SIZE,
+       NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+       NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+       NVRAM_ATTR_AVERAGE,
+       "EL0Y",
+       VER(NVRAM_EF_EL1_PRX_DRX_ONLY_ANT_CONFIG_LID)
+    },
+
+    {
+       NVRAM_EF_EL1_PRX_DRX_CONFIG_LID,
+       NVRAM_EF_EL1_PRX_DRX_CONFIG_TOTAL,
+       NVRAM_EF_EL1_PRX_DRX_CONFIG_SIZE,
+       NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+       NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+       NVRAM_ATTR_AVERAGE,
+       "EL0Z",
+       VER(NVRAM_EF_EL1_PRX_DRX_CONFIG_LID)
+    },
+
+   /* MIPI Feature */
+   {
+      NVRAM_EF_EL1_MIPI_FEATURE_LID,
+      NVRAM_EF_EL1_MIPI_FEATURE_TOTAL,
+      NVRAM_EF_EL1_MIPI_FEATURE_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "EL10",
+      VER(NVRAM_EF_EL1_MIPI_FEATURE_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_MIPI_TPC_EVENT_LID,
+      NVRAM_EF_EL1_MIPI_TPC_EVENT_TOTAL,
+      NVRAM_EF_EL1_MIPI_TPC_EVENT_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_MULTI_DEFAULT,
+      "EL30",
+      VER(NVRAM_EF_EL1_MIPI_TPC_EVENT_LID)
+   },
+   {  // MIPI_PA_TPC_SECTION_DATA
+      NVRAM_EF_EL1_MIPI_PA_TPC_SECTION_DATA_LID,
+      NVRAM_EF_EL1_MIPI_PA_TPC_SECTION_DATA_TOTAL,
+      NVRAM_EF_EL1_MIPI_PA_TPC_SECTION_DATA_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_CALIBRAT | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_AVERAGE | NVRAM_ATTR_MULTI_DEFAULT,
+      "EL60",
+      VER(NVRAM_EF_EL1_MIPI_PA_TPC_SECTION_DATA_LID)
+   },
+
+
+   /*** MIPI BYPASS Feature ***/
+   {
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_EVENT_0THBAND_LID,
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_EVENT_TOTAL,
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_EVENT_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_CALIBRAT | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_AVERAGE | NVRAM_ATTR_GEN_DEFAULT,
+      "EL70",
+      VER(NVRAM_EF_EL1_MIPI_BYPASS_TX_EVENT_0THBAND_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_EVENT_1STBAND_LID,
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_EVENT_TOTAL,
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_EVENT_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_CALIBRAT | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_AVERAGE | NVRAM_ATTR_GEN_DEFAULT,
+      "EL71",
+      VER(NVRAM_EF_EL1_MIPI_BYPASS_TX_EVENT_1STBAND_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_EVENT_2NDBAND_LID,
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_EVENT_TOTAL,
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_EVENT_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_CALIBRAT | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_AVERAGE | NVRAM_ATTR_GEN_DEFAULT,
+      "EL72",
+      VER(NVRAM_EF_EL1_MIPI_BYPASS_TX_EVENT_2NDBAND_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_EVENT_3RDBAND_LID,
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_EVENT_TOTAL,
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_EVENT_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_CALIBRAT | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_AVERAGE | NVRAM_ATTR_GEN_DEFAULT,
+      "EL73",
+      VER(NVRAM_EF_EL1_MIPI_BYPASS_TX_EVENT_3RDBAND_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_EVENT_4THBAND_LID,
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_EVENT_TOTAL,
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_EVENT_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_CALIBRAT | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_AVERAGE | NVRAM_ATTR_GEN_DEFAULT,
+      "EL74",
+      VER(NVRAM_EF_EL1_MIPI_BYPASS_TX_EVENT_4THBAND_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_DATA_0THBAND_LID,
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_DATA_TOTAL,
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_DATA_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_CALIBRAT | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_AVERAGE | NVRAM_ATTR_GEN_DEFAULT,
+      "EL75",
+      VER(NVRAM_EF_EL1_MIPI_BYPASS_TX_DATA_0THBAND_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_DATA_1STBAND_LID,
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_DATA_TOTAL,
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_DATA_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_CALIBRAT | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_AVERAGE | NVRAM_ATTR_GEN_DEFAULT,
+      "EL76",
+      VER(NVRAM_EF_EL1_MIPI_BYPASS_TX_DATA_1STBAND_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_DATA_2NDBAND_LID,
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_DATA_TOTAL,
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_DATA_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_CALIBRAT | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_AVERAGE | NVRAM_ATTR_GEN_DEFAULT,
+      "EL77",
+      VER(NVRAM_EF_EL1_MIPI_BYPASS_TX_DATA_2NDBAND_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_DATA_3RDBAND_LID,
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_DATA_TOTAL,
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_DATA_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_CALIBRAT | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_AVERAGE | NVRAM_ATTR_GEN_DEFAULT,
+      "EL78",
+      VER(NVRAM_EF_EL1_MIPI_BYPASS_TX_DATA_3RDBAND_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_DATA_4THBAND_LID,
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_DATA_TOTAL,
+      NVRAM_EF_EL1_MIPI_BYPASS_TX_DATA_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_CALIBRAT | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_AVERAGE | NVRAM_ATTR_GEN_DEFAULT,
+      "EL79",
+      VER(NVRAM_EF_EL1_MIPI_BYPASS_TX_DATA_4THBAND_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_MIPI_FILTER_TPC_EVENT_LID,
+      NVRAM_EF_EL1_MIPI_FILTER_TPC_EVENT_TOTAL,
+      NVRAM_EF_EL1_MIPI_FILTER_TPC_EVENT_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_MULTI_DEFAULT,
+      "EL7A",
+      VER(NVRAM_EF_EL1_MIPI_FILTER_TPC_EVENT_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_MIPI_FILTER_PA_TPC_SECTION_DATA_LID,
+      NVRAM_EF_EL1_MIPI_FILTER_PA_TPC_SECTION_DATA_TOTAL,
+      NVRAM_EF_EL1_MIPI_FILTER_PA_TPC_SECTION_DATA_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_CALIBRAT | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_AVERAGE | NVRAM_ATTR_MULTI_DEFAULT,
+      "EL7F",
+      VER(NVRAM_EF_EL1_MIPI_FILTER_PA_TPC_SECTION_DATA_LID)
+   },
+   
+   /*** RX Power Offset Feature ***/
+   {
+      NVRAM_EF_EL1_RX_POWER_OFFSET_SWITCH_LID,
+      NVRAM_EF_EL1_RX_POWER_OFFSET_SWITCH_TOTAL,
+      NVRAM_EF_EL1_RX_POWER_OFFSET_SWITCH_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "ELC1",
+      VER(NVRAM_EF_EL1_RX_POWER_OFFSET_SWITCH_LID)
+   },
+   
+   {
+      NVRAM_EF_EL1_RX_POWER_OFFSET_LID,
+      NVRAM_EF_EL1_RX_POWER_OFFSET_TOTAL,
+      NVRAM_EF_EL1_RX_POWER_OFFSET_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_MULTI_DEFAULT,
+      "ELC2",
+      VER(NVRAM_EF_EL1_RX_POWER_OFFSET_LID)
+   },
+   
+   /*** SAR Power Offset Feature ***/
+   {
+      NVRAM_EF_EL1_SAR_TX_POWER_OFFSET_LID,
+      NVRAM_EF_EL1_SAR_TX_POWER_OFFSET_TOTAL,
+      NVRAM_EF_EL1_SAR_TX_POWER_OFFSET_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_MULTI_DEFAULT,
+      "EL80",
+      VER(NVRAM_EF_EL1_SAR_TX_POWER_OFFSET_LID)
+   },
+
+   /*** SWTP Feature ***/
+   {
+      NVRAM_EF_EL1_SWTP_TX_POWER_OFFSET_LID,
+      NVRAM_EF_EL1_SWTP_TX_POWER_OFFSET_TOTAL,
+      NVRAM_EF_EL1_SWTP_TX_POWER_OFFSET_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_MULTI_DEFAULT,
+      "EL82",
+      VER(NVRAM_EF_EL1_SWTP_TX_POWER_OFFSET_LID)
+   },
+
+   /*** TX Power Offset Feature ***//*Since SWTP is using new LID: NVRAM_EF_EL1_SWTP_TX_POWER_OFFSET_LID, it's need to be remove in 95*/
+   {
+      NVRAM_EF_EL1_TX_POWER_OFFSET_LID,
+      NVRAM_EF_EL1_TX_POWER_OFFSET_TOTAL,
+      NVRAM_EF_EL1_TX_POWER_OFFSET_SIZE,
+      NVRAM_NORMAL(NVRAM_EF_ZERO_DEFAULT),
+      NVRAM_CATEGORY_USER,
+      NVRAM_ATTR_OTA_RESET,
+      "EL81",
+      VER(NVRAM_EF_EL1_TX_POWER_OFFSET_LID)
+   },
+
+   {  
+      NVRAM_EF_EL1_RF_SELF_CAL_RX_DC_IRR_LID,
+      NVRAM_EF_EL1_RF_SELF_CAL_RX_DC_IRR_TOTAL,
+      NVRAM_EF_EL1_RF_SELF_CAL_RX_DC_IRR_SIZE,
+      NVRAM_NORMAL(NVRAM_EF_ZERO_DEFAULT),
+      NVRAM_CATEGORY_CALIBRAT,
+      NVRAM_ATTR_AVERAGE,
+      "EL90",
+      VER(NVRAM_EF_EL1_RF_SELF_CAL_RX_DC_IRR_LID)
+   },
+   
+   {  
+      NVRAM_EF_EL1_RF_SELF_CAL_RX_IIP2_LID,
+      NVRAM_EF_EL1_RF_SELF_CAL_RX_IIP2_TOTAL,
+      NVRAM_EF_EL1_RF_SELF_CAL_RX_IIP2_SIZE,
+      NVRAM_NORMAL(NVRAM_EF_ZERO_DEFAULT),
+      NVRAM_CATEGORY_CALIBRAT,
+      NVRAM_ATTR_AVERAGE,
+      "EL91",
+      VER(NVRAM_EF_EL1_RF_SELF_CAL_RX_IIP2_LID)
+   },   
+   
+   {  
+      NVRAM_EF_EL1_RF_SELF_CAL_DET_TX_LID,
+      NVRAM_EF_EL1_RF_SELF_CAL_DET_TX_TOTAL,
+      NVRAM_EF_EL1_RF_SELF_CAL_DET_TX_SIZE,
+      NVRAM_NORMAL(NVRAM_EF_ZERO_DEFAULT),
+      NVRAM_CATEGORY_CALIBRAT,
+      NVRAM_ATTR_AVERAGE,
+      "EL92",
+      VER(NVRAM_EF_EL1_RF_SELF_CAL_DET_TX_LID)
+   },
+   
+   {  
+      NVRAM_EF_EL1_RF_SELF_CAL_TX_SB_LID,
+      NVRAM_EF_EL1_RF_SELF_CAL_TX_SB_TOTAL,
+      NVRAM_EF_EL1_RF_SELF_CAL_TX_SB_SIZE,
+      NVRAM_NORMAL(NVRAM_EF_ZERO_DEFAULT),
+      NVRAM_CATEGORY_CALIBRAT,
+      NVRAM_ATTR_AVERAGE,
+      "EL93",
+      VER(NVRAM_EF_EL1_RF_SELF_CAL_TX_SB_LID)
+   },
+
+   /*** TX Power Backoff Parameters ***/
+   {
+      NVRAM_EF_EL1_TX_POWER_BACKOFF_LID,
+      NVRAM_EF_EL1_TX_POWER_BACKOFF_TOTAL,
+      NVRAM_EF_EL1_TX_POWER_BACKOFF_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "EA6L",
+      VER(NVRAM_EF_EL1_TX_POWER_BACKOFF_LID)
+   },
+
+   /*** TX Multi-Cluster Vcc idx shift ***/
+   {
+      NVRAM_EF_EL1_TX_MC_VCC_IDX_OFS_LID,
+      NVRAM_EF_EL1_TX_MC_VCC_IDX_OFS_TOTAL,
+      NVRAM_EF_EL1_TX_MC_VCC_IDX_OFS_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "EA6M",
+      VER(NVRAM_EF_EL1_TX_MC_VCC_IDX_OFS_LID)
+   },
+   
+   /*** TX Multi-Cluster pow bf shift ***/
+   {
+      NVRAM_EF_EL1_TX_MC_POW_BF_LID,
+      NVRAM_EF_EL1_TX_MC_POW_BF_TOTAL,
+      NVRAM_EF_EL1_TX_MC_POW_BF_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "EA6N",
+      VER(NVRAM_EF_EL1_TX_MC_POW_BF_LID)
+   },
+	
+   /*** TX Power Conditional Backoff Parameters ***/
+   {
+      NVRAM_EF_EL1_TX_POWER_BACKOFF_CONDITION_LID,
+      NVRAM_EF_EL1_TX_POWER_BACKOFF_CONDITION_TOTAL,
+      NVRAM_EF_EL1_TX_POWER_BACKOFF_CONDITION_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "EA6O",
+      VER(NVRAM_EF_EL1_TX_POWER_BACKOFF_CONDITION_LID)
+   },
+   
+   {
+      NVRAM_EF_EL1_TX_POWER_CONDITIONAL_BACKOFF_TABLE_LID,
+      NVRAM_EF_EL1_TX_POWER_CONDITIONAL_BACKOFF_TABLE_TOTAL,
+      NVRAM_EF_EL1_TX_POWER_CONDITIONAL_BACKOFF_TABLE_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "EA6P",
+      VER(NVRAM_EF_EL1_TX_POWER_CONDITIONAL_BACKOFF_TABLE_LID)
+   },
+   
+   /*** TX NSFT Power Backoff Parameters ***/
+   {
+      NVRAM_EF_EL1_TX_NSFT_POWER_BACKOFF_LID,
+      NVRAM_EF_EL1_TX_NSFT_POWER_BACKOFF_TOTAL,
+      NVRAM_EF_EL1_TX_NSFT_POWER_BACKOFF_SIZE,
+      NVRAM_NORMAL(NVRAM_EF_ZERO_DEFAULT),
+      NVRAM_CATEGORY_CALIBRAT,
+      NVRAM_ATTR_AVERAGE,
+      "EA6Q",
+      VER(NVRAM_EF_EL1_TX_NSFT_POWER_BACKOFF_LID)
+   },
+
+   /*** TX Multi-Cluster pow bf shift CCA cases and NS0-2***/
+   {
+      NVRAM_EF_EL1_TX_MC_POW_BF_CCA_LID,
+      NVRAM_EF_EL1_TX_MC_POW_BF_CCA_TOTAL,
+      NVRAM_EF_EL1_TX_MC_POW_BF_CCA_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "EA6R",
+      VER(NVRAM_EF_EL1_TX_MC_POW_BF_CCA_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_TX_MC_POW_BF_CCA_0_LID,
+      NVRAM_EF_EL1_TX_MC_POW_BF_CCA_0_TOTAL,
+      NVRAM_EF_EL1_TX_MC_POW_BF_CCA_0_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "EA6S",
+      VER(NVRAM_EF_EL1_TX_MC_POW_BF_CCA_0_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_TX_MC_POW_BF_CCA_1_LID,
+      NVRAM_EF_EL1_TX_MC_POW_BF_CCA_1_TOTAL,
+      NVRAM_EF_EL1_TX_MC_POW_BF_CCA_1_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "EA6T",
+      VER(NVRAM_EF_EL1_TX_MC_POW_BF_CCA_1_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_TX_MC_POW_BF_CCA_2_LID,
+      NVRAM_EF_EL1_TX_MC_POW_BF_CCA_2_TOTAL,
+      NVRAM_EF_EL1_TX_MC_POW_BF_CCA_2_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "EA6U",
+      VER(NVRAM_EF_EL1_TX_MC_POW_BF_CCA_2_LID)
+   },
+   
+      /*** TX Power Conditional Backoff Parameters for CCA***/
+   {
+      NVRAM_EF_EL1_TX_POWER_BACKOFF_CONDITION_CCA_LID,
+      NVRAM_EF_EL1_TX_POWER_BACKOFF_CONDITION_CCA_TOTAL,
+      NVRAM_EF_EL1_TX_POWER_BACKOFF_CONDITION_CCA_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "EA6V",
+      VER(NVRAM_EF_EL1_TX_POWER_BACKOFF_CONDITION_CCA_LID)
+   },
+   
+   {
+      NVRAM_EF_EL1_TX_POWER_CONDITIONAL_BACKOFF_TABLE_CCA_LID,
+      NVRAM_EF_EL1_TX_POWER_CONDITIONAL_BACKOFF_TABLE_CCA_TOTAL,
+      NVRAM_EF_EL1_TX_POWER_CONDITIONAL_BACKOFF_TABLE_CCA_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "EA6W",
+      VER(NVRAM_EF_EL1_TX_POWER_CONDITIONAL_BACKOFF_TABLE_CCA_LID)
+   },
+   
+   {
+      NVRAM_EF_EL1_FILTER_TXDAC_LID,
+      NVRAM_EF_EL1_FILTER_TXDAC_BAND_TOTAL,
+      NVRAM_EF_EL1_FILTER_TXDAC_BAND_SIZE,
+      NVRAM_NORMAL(NVRAM_EF_ZERO_DEFAULT),
+      NVRAM_CATEGORY_CALIBRAT,
+      NVRAM_ATTR_AVERAGE,
+      "EA90",
+      VER(NVRAM_EF_EL1_FILTER_TXDAC_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_FILTER_TXPAOCTLEV_LID,
+      NVRAM_EF_EL1_FILTER_TXPAOCTLEV_BAND_TOTAL,
+      NVRAM_EF_EL1_FILTER_TXPAOCTLEV_BAND_SIZE,
+      NVRAM_NORMAL(NVRAM_EF_ZERO_DEFAULT),
+      NVRAM_CATEGORY_CALIBRAT,
+      NVRAM_ATTR_AVERAGE,
+      "EAA0",
+      VER(NVRAM_EF_EL1_FILTER_TXPAOCTLEV_LID)
+   },
+
+   /* For the Transmit Antenna Selection feature */
+   {
+      NVRAM_EF_EL1_TAS_FORCE_PARAMETER_LID,
+      NVRAM_EF_EL1_TAS_FORCE_PARAMETER_TOTAL,
+      NVRAM_EF_EL1_TAS_FORCE_PARAMETER_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "EL8L",
+      VER(NVRAM_EF_EL1_TAS_FORCE_PARAMETER_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_TAS_FEATURE_BY_RAT_LID,
+      NVRAM_EF_EL1_TAS_FEATURE_BY_RAT_TOTAL,
+      NVRAM_EF_EL1_TAS_FEATURE_BY_RAT_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "EL8K",
+      VER(NVRAM_EF_EL1_TAS_FEATURE_BY_RAT_LID)
+   },
+
+   /* For the Transmit Antenna Selection feature */
+   {
+      NVRAM_EF_EL1_TAS_FEATURE_ENABLE_LID,
+      NVRAM_EF_EL1_TAS_FEATURE_ENABLE_TOTAL,
+      NVRAM_EF_EL1_TAS_FEATURE_ENABLE_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "EL8M",
+      VER(NVRAM_EF_EL1_TAS_FEATURE_ENABLE_LID)
+   },
+
+
+   /* For the Split Band feature */
+   {
+      NVRAM_EF_EL1_SPLIT_BAND_DATABASE_LID,
+      NVRAM_EF_EL1_SPLIT_BAND_DATABASE_TOTAL,
+      NVRAM_EF_EL1_SPLIT_BAND_DATABASE_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_CALIBRAT | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_AVERAGE,
+      "EL8O",
+      VER(NVRAM_EF_EL1_SPLIT_BAND_DATABASE_LID)
+   },
+
+   /* For the Bypass Mode feature */
+   {
+      NVRAM_EF_EL1_FILTER_MODE_DATABASE_LID,
+      NVRAM_EF_EL1_FILTER_MODE_DATABASE_TOTAL,
+      NVRAM_EF_EL1_FILTER_MODE_DATABASE_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_CALIBRAT | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_AVERAGE,
+      "EL8Q",
+      VER(NVRAM_EF_EL1_FILTER_MODE_DATABASE_LID)
+   },
+
+    {
+      NVRAM_EF_EL1_BAND_IND_CCA_SUPPORT_LID,
+      NVRAM_EF_EL1_BAND_IND_CCA_SUPPORT_TOTAL,
+      NVRAM_EF_EL1_BAND_IND_CCA_SUPPORT_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "ELB0",
+      VER(NVRAM_EF_EL1_BAND_IND_CCA_SUPPORT_LID)
+   },
+   
+   {
+      NVRAM_EF_EL1_BAND_IND_FLT_CCA_SUPPORT_LID,
+      NVRAM_EF_EL1_BAND_IND_FLT_CCA_SUPPORT_TOTAL,
+      NVRAM_EF_EL1_BAND_IND_FLT_CCA_SUPPORT_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "ELB1",
+      VER(NVRAM_EF_EL1_BAND_IND_FLT_CCA_SUPPORT_LID)
+   },
+   
+   /** EL1D DPD Feature        */
+   /** EL1D DPD Factory Cal Data*/
+   {
+      NVRAM_EF_EL1_DPD_FACTORY_CAL_DATA_LID,
+      NVRAM_EF_EL1_DPD_FACTORY_CAL_DATA_TOTAL,
+      NVRAM_EF_EL1_DPD_FACTORY_CAL_DATA_SIZE,
+      NVRAM_NORMAL(NVRAM_EF_ZERO_DEFAULT),
+      NVRAM_CATEGORY_CALIBRAT,
+      NVRAM_ATTR_AVERAGE,
+      "ELB2",
+      VER(NVRAM_EF_EL1_DPD_FACTORY_CAL_DATA_LID)
+   },
+
+   /** EL1D DPD FILTER Factory Cal Data*/
+   {
+      NVRAM_EF_EL1_DPD_FILTER_FACTORY_CAL_DATA_LID,
+      NVRAM_EF_EL1_DPD_FILTER_FACTORY_CAL_DATA_TOTAL,
+      NVRAM_EF_EL1_DPD_FILTER_FACTORY_CAL_DATA_SIZE,
+      NVRAM_NORMAL(NVRAM_EF_ZERO_DEFAULT),
+      NVRAM_CATEGORY_CALIBRAT,
+      NVRAM_ATTR_AVERAGE,
+      "ELB3",
+      VER(NVRAM_EF_EL1_DPD_FILTER_FACTORY_CAL_DATA_LID)
+   },
+
+   /** EL1D DPD Common Control Data*/
+   {
+      NVRAM_EF_EL1_DPD_COMMON_CTRL_DATA_LID,
+      NVRAM_EF_EL1_DPD_COMMON_CTRL_DATA_TOTAL,
+      NVRAM_EF_EL1_DPD_COMMON_CTRL_DATA_SIZE,
+      NVRAM_NORMAL(NVRAM_EF_ZERO_DEFAULT),
+      NVRAM_CATEGORY_USER,
+      NVRAM_ATTR_OTA_RESET,
+      "ELB4",
+      VER(NVRAM_EF_EL1_DPD_COMMON_CTRL_DATA_LID)
+   },
+
+   /** EL1D DPD FILTER Common Control Data*/
+   {
+      NVRAM_EF_EL1_DPD_FILTER_COMMON_CTRL_DATA_LID,
+      NVRAM_EF_EL1_DPD_FILTER_COMMON_CTRL_DATA_TOTAL,
+      NVRAM_EF_EL1_DPD_FILTER_COMMON_CTRL_DATA_SIZE,
+      NVRAM_NORMAL(NVRAM_EF_ZERO_DEFAULT),
+      NVRAM_CATEGORY_USER,
+      NVRAM_ATTR_OTA_RESET,
+      "ELB5",
+      VER(NVRAM_EF_EL1_DPD_FILTER_COMMON_CTRL_DATA_LID)
+   },
+   
+   /** EL1D DPD MIPI TPC PA Section Data*/
+   {
+      NVRAM_EF_EL1_DPD_MIPI_PA_TPC_SECTION_DATA_LID,
+      NVRAM_EF_EL1_DPD_MIPI_PA_TPC_SECTION_DATA_TOTAL,
+      NVRAM_EF_EL1_DPD_MIPI_PA_TPC_SECTION_DATA_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_CALIBRAT | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_AVERAGE | NVRAM_ATTR_MULTI_DEFAULT,
+      "ELB6",
+      VER(NVRAM_EF_EL1_DPD_MIPI_PA_TPC_SECTION_DATA_LID)
+   },
+
+   /** EL1D DPD MIPI FILTER TPC PA Section Data*/
+   {
+      NVRAM_EF_EL1_DPD_MIPI_FILTER_PA_TPC_SECTION_DATA_LID,
+      NVRAM_EF_EL1_DPD_MIPI_FILTER_PA_TPC_SECTION_DATA_TOTAL,
+      NVRAM_EF_EL1_DPD_MIPI_FILTER_PA_TPC_SECTION_DATA_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_CALIBRAT | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_AVERAGE | NVRAM_ATTR_MULTI_DEFAULT,
+      "ELB7",
+      VER(NVRAM_EF_EL1_DPD_MIPI_FILTER_PA_TPC_SECTION_DATA_LID)
+   },
+
+   /** EL1D PCFE and DPD OTFC custom file parameters*/
+   {      
+      NVRAM_EF_EL1_DPD_PCFE_OTFC_CUSTOM_PARA_LID,      
+      NVRAM_EF_EL1_DPD_PCFE_OTFC_CUSTOM_PARA_TOTAL,      
+      NVRAM_EF_EL1_DPD_PCFE_OTFC_CUSTOM_PARA_SIZE,      
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_GEN_DEFAULT,     
+      "ELB8",      
+      VER(NVRAM_EF_EL1_DPD_PCFE_OTFC_CUSTOM_PARA_LID)   
+    },      
+
+    /** EL1D PCFE and DPD OTFC non-custom file parameters*/
+    {      
+      NVRAM_EF_EL1_DPD_PCFE_OTFC_NONCUSTOM_PARA_LID,      
+      NVRAM_EF_EL1_DPD_PCFE_OTFC_NONCUSTOM_PARA_TOTAL,      
+      NVRAM_EF_EL1_DPD_PCFE_OTFC_NONCUSTOM_PARA_SIZE,      
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),      
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,      
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_GEN_DEFAULT,      
+      "ELB9",      
+      VER(NVRAM_EF_EL1_DPD_PCFE_OTFC_NONCUSTOM_PARA_LID)   
+    },          
+
+   
+   /** EL1D Feature */
+   {
+      NVRAM_EF_EL1D_FEATURE_LID,
+      NVRAM_EF_EL1D_FEATURE_TOTAL,
+      NVRAM_EF_EL1D_FEATURE_SIZE,
+      NVRAM_NORMAL(NVRAM_EF_ZERO_DEFAULT),
+      NVRAM_CATEGORY_USER,
+      NVRAM_ATTR_AVERAGE,
+      "E1D0",
+      VER(NVRAM_EF_EL1D_FEATURE_LID)
+   },
+
+      
+   /** DAT Feature */
+   {
+      NVRAM_EF_EL1_DAT_FEATURE_ENABLE_LID,
+      NVRAM_EF_EL1_DAT_FEATURE_ENABLE_TOTAL,
+      NVRAM_EF_EL1_DAT_FEATURE_ENABLE_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "E1D1",
+      VER(NVRAM_EF_EL1_DAT_FEATURE_ENABLE_LID)
+   },
+         
+   {
+      NVRAM_EF_EL1_DAT_ROUTE_DATABASE_LID,
+      NVRAM_EF_EL1_DAT_ROUTE_DATABASE_TOTAL,
+      NVRAM_EF_EL1_DAT_ROUTE_DATABASE_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "E1D2",
+      VER(NVRAM_EF_EL1_DAT_ROUTE_DATABASE_LID)
+   },
+
+  /* ANT Reorg Route table*/
+   {
+      NVRAM_EF_EL1_ANT_ROUTE_DATABASE_LID,
+      NVRAM_EF_EL1_ANT_ROUTE_DATABASE_TOTAL,
+      NVRAM_EF_EL1_ANT_ROUTE_DATABASE_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "E1D3",
+      VER(NVRAM_EF_EL1_ANT_ROUTE_DATABASE_LID)
+   },
+
+   /** EL1D DPD bypass DPD NS info*/
+   {      
+      NVRAM_EF_EL1_DPD_BYPASS_DPD_NS_INFO_LID,      
+      NVRAM_EF_EL1_DPD_BYPASS_DPD_NS_INFO_TOTAL,      
+      NVRAM_EF_EL1_DPD_BYPASS_DPD_NS_INFO_SIZE,      
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET | NVRAM_ATTR_GEN_DEFAULT | NVRAM_ATTR_MULTI_DEFAULT,     
+      "ELD4",      
+      VER(NVRAM_EF_EL1_DPD_BYPASS_DPD_NS_INFO_LID)   
+    },
+
+   {  // MIPI_PA_TPC_SECTION_DATA2
+      NVRAM_EF_EL1_MIPI_PA_TPC_SECTION_DATA2_LID,
+      NVRAM_EF_EL1_MIPI_PA_TPC_SECTION_DATA2_TOTAL,
+      NVRAM_EF_EL1_MIPI_PA_TPC_SECTION_DATA2_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_CALIBRAT | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_AVERAGE | NVRAM_ATTR_MULTI_DEFAULT,
+      "ELD5",
+      VER(NVRAM_EF_EL1_MIPI_PA_TPC_SECTION_DATA2_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_TAS_FE_DATABASE_CAT_A_LID,
+      NVRAM_EF_EL1_TAS_FE_DATABASE_CAT_A_TOTAL,
+      NVRAM_EF_EL1_TAS_FE_DATABASE_CAT_A_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "ELD6",
+      VER(NVRAM_EF_EL1_TAS_FE_DATABASE_CAT_A_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_TAS_FE_DATABASE_CAT_B_LID,
+      NVRAM_EF_EL1_TAS_FE_DATABASE_CAT_B_TOTAL,
+      NVRAM_EF_EL1_TAS_FE_DATABASE_CAT_B_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "ELD7",
+      VER(NVRAM_EF_EL1_TAS_FE_DATABASE_CAT_B_LID)
+   },
+
+   {
+      NVRAM_EF_EL1_TAS_ROUTE_DATABASE_LID,
+      NVRAM_EF_EL1_TAS_ROUTE_DATABASE_TOTAL,
+      NVRAM_EF_EL1_TAS_ROUTE_DATABASE_SIZE,
+      NVRAM_DEFAULT_FUNC(nvram_get_eL1_default_value_to_write),
+      NVRAM_CATEGORY_USER | NVRAM_CATEGORY_FUNC_DEFAULT,
+      NVRAM_ATTR_OTA_RESET,
+      "ELD8",
+      VER(NVRAM_EF_EL1_TAS_ROUTE_DATABASE_LID)
+   },
+
+   NVRAM_LTABLE_END
+};
+#endif
+#endif /* NVRAM_NOT_PRESENT */

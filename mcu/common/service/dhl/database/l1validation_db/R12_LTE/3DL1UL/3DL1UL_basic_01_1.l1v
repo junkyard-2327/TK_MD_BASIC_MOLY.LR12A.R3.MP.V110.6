@@ -1,0 +1,28 @@
+{ Validation }
+Title 		= "[R12_LTE][3DL1UL]3DL1UL_basic_01_1: Add and activate 2 Scells, non-blind"
+ModuleID 	= MOD_ERRC
+MsgID 		= MSG_ID_L1EDPS_3DL1UL_BASIC_01
+
+/******************************************************************************
+* Data Structure accomnying the above primitive
+typedef struct
+{
+   kal_uint8          ref_count;
+   kal_uint16         msg_len;
+   kal_uint32         test_pattern_id;
+
+} l1edps_3dl1ul_basic_01_struct;
+*
+*******************************************************************************/
+
+{Parameters}
+/******************************************************************************
+* 1. The following is the constrained range for the input of this value.
+* 2. Some combination of the following bit-fields may be suported
+* 3. The parameter range can be changed to support combinations of different bands
+*******************************************************************************/
+
+/* [Variable Name] "corresponding label showen on GUI" */
+[test_pattern_id] "test_pattern_id"
+0~99999
+@1

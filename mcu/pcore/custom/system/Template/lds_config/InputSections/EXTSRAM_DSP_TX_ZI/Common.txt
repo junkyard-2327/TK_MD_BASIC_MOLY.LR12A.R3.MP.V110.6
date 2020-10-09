@@ -1,0 +1,3 @@
+        LONG(0);
+        /* . = .; */ /* add this to avoid location counter to be moved backwords and cause build fail */
+        . += Image$$L1CORE_DSP_TX_LENGTH$$Length;

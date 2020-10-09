@@ -1,0 +1,18 @@
+[Default]
+DHL_DEBUGL1
+On
+Buffer
+
+[Modem_Type]
+dhl
+
+[Class]
+L1_CHANNEL_DEBUG ON
+
+[String]
+
+[Message]
+info                    DHL_DEBUGL1_ULSP_SEND                  L1_CHANNEL_DEBUG           "[DHL][ULSP][SEND] Type= %l, Address= %xl, Len= %xl"
+info                    DHL_DEBUGL1_ULSP_ACK                   L1_CHANNEL_DEBUG           "[DHL][ULSP][ACK] Type= %l, Address= %xl, Len= %xl"
+info                    DHL_DEBUGL1_PS_SEND                  L1_CHANNEL_DEBUG           "[DHL][PS][SEND] Output buffer number %xl"
+info                    DHL_DEBUGL1_PS_ACK                   L1_CHANNEL_DEBUG           "[DHL][PS][ACK] Release buffer number %xl"

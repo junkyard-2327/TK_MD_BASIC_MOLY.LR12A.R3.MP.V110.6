@@ -1,0 +1,338 @@
+;*****************************************************************************
+;  Copyright Statement:
+;  --------------------
+;  This software is protected by Copyright and the information contained
+;  herein is confidential. The software may not be copied and the information
+;  contained herein may not be used or disclosed except with the written
+;  permission of MediaTek Inc. (C) 2016
+;
+;*****************************************************************************
+;
+;*****************************************************************************
+;
+; Filename:
+; ---------
+;   MIPS_MPU_Viewer.cmm (v.1.0)
+;
+; Project:
+; --------
+;   MT6292
+;
+; Description:
+; ------------
+;   This file generates human readable memory map from MPU tables
+;
+; Author:
+; -------
+;   Jari Manninen (mtk09391)
+;
+;============================================================================
+;             HISTORY
+; Below this line, this part is controlled by PVCS VM. DO NOT MODIFY!!
+;------------------------------------------------------------------------------
+; * $Revision$
+; * $Modtime$
+; * $Log$
+; *
+; * 05 17 2017 hw.jheng
+; * [MOLY00250340] [93] MIPS_MPU_Viewer.cmm update
+; *
+; * 09 02 2017 jari.manninen
+; * Initial Version
+; * 	Inherited MIP_MMU_View.cmm functionality to a new MPU parser.
+;------------------------------------------------------------------------------
+; Upper this line, this part is controlled by PVCS VM. DO NOT MODIFY!!
+;============================================================================
+
+  AREA.Create mpu_area 100. 70.
+  WINPOS , , 100. 50.
+
+  DIALOG.AREA mpu_area
+  (
+           HEADER "DIALOG.AREA MPU Viewer"
+
+           POS 1. 0. 82.
+           LINE "CORE Options"
+
+           POS 0.25 1. 11. 1.
+           BUTTON "CORE 0"
+           (
+              LOCAL &tmp
+              AREA.Select mpu_area
+              AREA.CLEAR mpu_area
+              &CORE_ID=0
+              &tmp=FORMAT.DECIMAL(1,&CORE_ID)
+              DIALOG.SET LINENUM "MPU Table for CORE: &tmp"
+              ; enable clean button
+              DIALOG.Enable BTN_CLEAN
+              GOSUB parse
+           )
+           POS 12.25 1. 11. 1.
+           BUTTON "CORE 1"
+           (
+              LOCAL &tmp
+              AREA.Select mpu_area
+              AREA.CLEAR mpu_area
+              &CORE_ID=1
+              &tmp=FORMAT.DECIMAL(1,&CORE_ID)
+              DIALOG.SET LINENUM "MPU Table for CORE: &tmp"
+              ; enable clean button
+              DIALOG.Enable BTN_CLEAN
+              GOSUB parse
+           )
+
+           POS 24.25 1. 11. 1.
+           BUTTON "Both"
+           (
+              AREA.Select mpu_area
+              AREA.CLEAR mpu_area
+              &CORE_ID=2
+              DIALOG.SET LINENUM "MPU Table for both CORE's"
+              ; enable clean button
+              DIALOG.Enable BTN_CLEAN
+              GOSUB parse
+           )
+
+           POS 63. 1. 11. 1.
+BTN_CLEAN: button "Reset"
+           (
+              AREA.CLEAR mpu_area
+              DIALOG.set LINENUM "Select the CORE from above buttons"
+              ; disable clean button
+              DIALOG.Disable BTN_CLEAN
+           )
+
+           ; close button
+           POS 74. 1. 11. 1.
+           BUTTON "Close" "goto closeDialog"
+
+           ; handle [X] and Escape
+           CLOSE "goto closeDialog"
+
+           POS 2. 2. 20. 1.
+LINENUM:   dyntext "Select the CORE from above buttons"
+
+  )
+
+;initialy disable clean button
+  DIALOG.DISABLE BTN_CLEAN
+  STOP
+
+;common jumplabel for closing the dialog and ending script
+closeDialog:
+  DIALOG.END
+  ENDDO
+  
+parse:
+  LOCAL &core
+  &core=FORMAT.DECIMAL(1,&CORE_ID)
+  &CORE_ID=0
+
+  IF &core==0
+  (
+     PRINT "MPU Base Segments for CORE 0"
+     PRINT "======================================================================"
+     GOSUB parseBaseSegments 0
+     PRINT "  "
+
+     PRINT "MPU Table for CORE 0"
+     PRINT "======================================================================"
+     GOSUB parseCore 0
+  ) 
+  IF &core==1
+  (
+     PRINT "MPU Base Segments for CORE 1"
+     PRINT "======================================================================"
+     GOSUB parseBaseSegments 1
+     PRINT "  "
+
+     PRINT "MPU Table for CORE 1"
+     PRINT "======================================================================"
+     GOSUB parseCore 1
+  )
+  IF &core==2
+  (
+     PRINT "MPU Base Segments for CORE 0"
+     PRINT "======================================================================"
+     GOSUB parseBaseSegments 0
+     PRINT "  "
+
+     PRINT "MPU Table for CORE 0"
+     PRINT "======================================================================"
+     GOSUB parseCore 0
+     PRINT "  "
+
+     PRINT "MPU Base Segments for CORE 1"
+     PRINT "======================================================================"
+     GOSUB parseBaseSegments 1
+     PRINT "  "
+
+     PRINT "MPU Table for CORE 1"
+     PRINT "======================================================================"
+     GOSUB parseCore 1
+  )
+
+  PRINT "======================================================================"
+  RETURN
+
+parseBaseSegments:
+  ENTRY &core_index
+  LOCAL &loop_count
+  LOCAL &index
+  LOCAL &enable
+  LOCAL &start_addr
+  LOCAL &size
+  LOCAL &count
+  LOCAL &RI
+  LOCAL &WI
+  LOCAL &XI
+  LOCAL &CCA
+  &index=0
+  &loop_count=10
+  
+  WHILE &index<&loop_count
+  (
+    &ATTRIBUTE_STRING=""
+  
+    &start_addr=10000000*&index
+    GOSUB parseStartAddr &start_addr      
+
+    &size=1C
+    &count=1
+    GOSUB parseEndAddr &start_addr &size &count
+       
+    &RI=v.value(IA_MPU_SETTING_CORE_EX[&core_index].segment_control[&index].RI)
+    &WI=v.value(IA_MPU_SETTING_CORE_EX[&core_index].segment_control[&index].WI)
+    &XI=v.value(IA_MPU_SETTING_CORE_EX[&core_index].segment_control[&index].XI)
+    &CCA=v.value(IA_MPU_SETTING_CORE_EX[&core_index].segment_control[&index].CCA)
+
+    GOSUB parseConfig &RI &WI &XI &CCA
+       
+    PRINT FORMAT.Decimal(2.,&index) "&ATTRIBUTE_STRING"
+  
+    &index=&index+1
+  )
+  RETURN
+parseCore:
+  ENTRY &core_index
+  LOCAL &loop_count
+  LOCAL &index
+  LOCAL &enable
+  LOCAL &start_addr
+  LOCAL &size
+  LOCAL &count
+  LOCAL &RI
+  LOCAL &WI
+  LOCAL &XI
+  LOCAL &CCA
+  &index=0
+  &loop_count=18
+  &ATTRIBUTE_STRING=""
+  
+  WHILE &index<&loop_count
+  (
+    &enable=v.value(IA_MPU_SETTING_CORE_EX[&core_index].region[&index].Region_Enable)
+    
+    IF &enable!=0
+    ( 
+       &ATTRIBUTE_STRING=""
+  
+       &start_addr=v.value(IA_MPU_SETTING_CORE_EX[&core_index].region[&index].Region_Base_Address)
+       GOSUB parseStartAddr &start_addr      
+
+       &size=v.value(IA_MPU_SETTING_CORE_EX[&core_index].region[&index].SubRegion_Size)
+       &count=v.value(IA_MPU_SETTING_CORE_EX[&core_index].region[&index].SubRegion_Count)+1
+       GOSUB parseEndAddr &start_addr &size &count
+       
+       &RI=v.value(IA_MPU_SETTING_CORE_EX[&core_index].region[&index].RI)
+       &WI=v.value(IA_MPU_SETTING_CORE_EX[&core_index].region[&index].WI)
+       &XI=v.value(IA_MPU_SETTING_CORE_EX[&core_index].region[&index].XI)
+       &CCA=v.value(IA_MPU_SETTING_CORE_EX[&core_index].region[&index].CCA)
+
+       GOSUB parseConfig &RI &WI &XI &CCA
+       
+       PRINT FORMAT.Decimal(2.,&index) "&ATTRIBUTE_STRING"
+  
+    )
+    &index=&index+1
+  )
+  RETURN
+
+parseStartAddr:
+   ENTRY &saddr
+   &ATTRIBUTE_STRING="&ATTRIBUTE_STRING"+" Address:"+"0x"+FORMAT.Hex(8.,&saddr)+"--"
+   RETURN
+
+parseEndAddr:
+   ENTRY &addr &regsize &regCount
+   LOCAL &loop_count
+   LOCAL &index
+   LOCAL &mpler
+   
+   &loop_count=&regsize-5
+   &index=0
+   &mpler=1
+   
+   WHILE &index<&loop_count
+   (
+      &mpler=&mpler*2
+      &index=&index+1
+   )
+   &mpler=&mpler*20
+   &mpler=&mpler*&regCount
+
+   &addr=&addr+&mpler-1
+   &ATTRIBUTE_STRING="&ATTRIBUTE_STRING"+"0x"+FORMAT.Hex(8.,&addr)
+   RETURN
+
+parseConfig:
+   ENTRY &ri &wi &xi &cca
+   IF &cca==2
+   (
+     &ATTRIBUTE_STRING="&ATTRIBUTE_STRING"+" UC  "
+   )   
+   IF &cca==3
+   (
+     &ATTRIBUTE_STRING="&ATTRIBUTE_STRING"+" WB  "
+   )   
+   IF &cca==4
+   (
+     &ATTRIBUTE_STRING="&ATTRIBUTE_STRING"+" CWBE"
+   )   
+   IF &cca==5
+   (
+     &ATTRIBUTE_STRING="&ATTRIBUTE_STRING"+" CWB "
+   )   
+   IF &cca==7
+   (
+     &ATTRIBUTE_STRING="&ATTRIBUTE_STRING"+" UCA "
+   )   
+
+   IF &ri==1
+   (
+     &ATTRIBUTE_STRING="&ATTRIBUTE_STRING"+" READ INHIBIT"
+   )   
+   ELSE
+   (
+     &ATTRIBUTE_STRING="&ATTRIBUTE_STRING"+" READABLE    "
+   )
+
+   IF &wi==1
+   (
+     &ATTRIBUTE_STRING="&ATTRIBUTE_STRING"+" WRITE INHIBIT"
+   )   
+   ELSE
+   (
+     &ATTRIBUTE_STRING="&ATTRIBUTE_STRING"+" WRITABLE     "
+   )
+
+   IF &xi==1
+   (
+     &ATTRIBUTE_STRING="&ATTRIBUTE_STRING"+" EXE INHIBIT"
+   )   
+   ELSE
+   (
+     &ATTRIBUTE_STRING="&ATTRIBUTE_STRING"+" EXECUTABLE "
+   )
+   
+   RETURN

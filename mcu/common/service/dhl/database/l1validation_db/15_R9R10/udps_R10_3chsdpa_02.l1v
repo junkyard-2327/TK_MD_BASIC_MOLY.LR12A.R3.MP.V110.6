@@ -1,0 +1,213 @@
+{ Validation }
+Title 		= "[15_R9R10]R10_3CHSDPA_02: Highest Data Rate Test of Category 29"
+ModuleID 	= MOD_DUMMYURR
+MsgID 		= MSG_ID_UDPS_R10_3CHSDPA_02
+
+/******************************************************************************
+* Data Structure accomnying the above primitive
+typedef struct
+{
+   LOCAL_PARA_HDR
+   
+   kal_uint16         uarfcn_bts1;
+   kal_uint16         psc_bts1;
+   kal_uint16         uarfcn_bts1_1s;
+   kal_uint16         psc_bts1_1s;
+   kal_uint16         uarfcn_bts1_2s;
+   kal_uint16         psc_bts1_2s;   
+   kal_int8           max_tx_power;
+   kal_int8	          cpich_tx_power; //RACH use
+   kal_uint32         ul_sc;
+   kal_uint16         DOFF_bts1;
+   kal_uint8          Tdpch_rl1;
+   kal_uint16         OVSFdpch_rl1;
+   
+   //HSDPA parameters
+   
+   //E-DCH parameters
+   
+   kal_uint16         eagch_ovsf; //E-AGCH OVSF code (0 ~ 255)
+   
+   kal_uint16         ehich_ovsf;  // E-HICH OVSF code of RL (0 ~ 127)
+   kal_uint8          ehich_SignatureSeq ; // E-HICH signature sequence of RL1 (0~39)
+   kal_uint8          ehich_TpcIndex ;  // E-HICH TPC combination index of RL1 (0 ~ 5)
+   
+   kal_uint8          ergch_SignatureSeq ;  // E-RGCH signature sequence of RL1 (0~39)
+   kal_uint8          ergch_RgCombIndex ; // E-RGCH RG combination index of RL1 (0 ~ 5)
+   
+   //2nd E-DCH parameters
+   kal_uint32         ul_sc_dchsupa;
+   kal_uint16         OVSFdpch_rl_dchsupa;
+
+   kal_uint16         eagch_ovsf_dchsupa; //E-AGCH OVSF code (0 ~ 255)
+   
+   kal_uint16         ehich_ovsf_rl_dchsupa;  // E-HICH OVSF code of RL1 (0 ~ 127)
+   kal_uint8          ehich_SignatureSeq_dchsupa; // E-HICH signature sequence of RL1 (0~39)
+   kal_uint8          ehich_TpcIndex_dchsupa;  // E-HICH TPC combination index of RL1 (0 ~ 5)
+   
+   kal_uint8          ergch_SignatureSeq_dchsupa;  // E-RGCH signature sequence of RL1 (0~39)
+   kal_uint8          ergch_RgCombIndex_dchsupa; // E-RGCH RG combination index of RL1 (0 ~ 5)
+   
+   
+   kal_uint8          etfci_table_index;      // E-TFCI table index. 0~1
+   kal_uint8          pl_non_max;      // PLnon-max= pl_non_max * 0.04; pl_non_max: Integer(11..25)
+   kal_uint8          etfci_under_test;      // E-TFCI under test: (0..129)
+   kal_uint8          rxd_mode;
+} udps_r10_3chsdpa_02_struct;
+*
+*******************************************************************************/
+
+
+{Parameters}
+/******************************************************************************
+* 1. The following is the constrained range for the input of this value.
+* 2. Some combination of the following bit-fields may be suported
+* 3. The parameter range can be changed to support combinations of different bands
+*******************************************************************************/
+
+/* [Variable Name] "corresponding label showen on GUI" */
+[uarfcn_bts1] "UARFCN of Serving Cell "
+10562~10838
+@10600
+
+[psc_bts1] "PSC of Serving Cell"
+0~511
+@10
+
+[uarfcn_bts1_1s] "UARFCN of 2nd Serving Cell "
+10562~10838
+@10625
+
+[psc_bts1_1s] "PSC of 2nd Serving Cell"
+0~511
+@10
+
+[uarfcn_bts1_2s] "UARFCN of 2nd Serving Cell "
+10562~10838
+@10650
+
+[psc_bts1_2s] "PSC of 2nd Serving Cell"
+0~511
+@10
+
+
+
+/******************************************
+* For RACH 
+******************************************/
+[max_tx_power] "Maximum allowed UL TX power [dBm]"
+-50~33
+@24
+
+[cpich_tx_power] "CPICH TX power [dBm]"
+-10~50
+@0
+
+/******************************************
+* For DCH 
+******************************************/
+[udps_RMC_type] "Choose One of the FOUR standard RMC"
+@RMC_64
+
+[ul_sc] "(DCH) UL Scrambling code Num."
+0~16777215
+@13
+
+[DOFF_bts1] "(DCH) Default DPCH Offset [x512 chips]"
+0~599
+@4
+
+[Tdpch_rl1] "(DCH) Timing offset between 1st DPCH and CPICH [x256 chips]"
+0~149
+@8
+
+[OVSFdpch_rl1] "(DCH) OVSF code of DL DCH: 0~SF-1"
+0~511
+@1
+
+
+/******************************************
+* For E-DCH 
+******************************************/
+/*
+[eagch_ovsf] "E-AGCH OVSF code:(0~255)"
+0~255
+@24
+
+[ehich_ovsf] "E-HICH OVSF code of RL1:(0~127)"
+0~127
+@13
+
+[ehich_SignatureSeq] "E-HICH signature sequence of RL1:(0~39)"
+0~39
+@1
+
+[ehich_TpcIndex] "E-HICH TPC combination index of RL1:(0~5)"
+0~5
+@0
+
+[ergch_SignatureSeq] "E-RGCH signature sequence of RL1:(0~39)"
+0~39
+@0
+
+[ergch_RgCombIndex] "E-RGCH RG combination index of RL1:(0~5)"
+0~5
+@0
+*/
+
+/******************************************
+* For 2nd E-DCH 
+******************************************/
+/*
+[ul_sc_dchsupa] "(DCH) UL Scrambling code Num."
+0~16777215
+@13
+
+[OVSFdpch_rl_dchsupa] "(DCH) OVSF code of DL DCH: 0~SF-1"
+0~511
+@7
+
+
+[eagch_ovsf_dchsupa] "E-AGCH OVSF code:(0~255)"
+0~255
+@24
+
+[ehich_ovsf_rl_dchsupa] "E-HICH OVSF code of RL1:(0~127)"
+0~127
+@13
+
+[ehich_SignatureSeq_dchsupa] "E-HICH signature sequence of RL1:(0~39)"
+0~39
+@1
+
+[ehich_TpcIndex_dchsupa] "E-HICH TPC combination index of RL1:(0~5)"
+0~5
+@0
+
+[ergch_SignatureSeq_dchsupa] "E-RGCH signature sequence of RL1:(0~39)"
+0~39
+@0
+
+[ergch_RgCombIndex_dchsupa] "E-RGCH RG combination index of RL1:(0~5)"
+0~5
+@0
+
+
+[etfci_table_index] "E-TFCI table index:(0~1)"
+0~1
+@0
+
+[pl_non_max] "PLnon-max= pl_non_max * 0.04; pl_non_max: Integer(11..25)"
+11~25
+@13
+
+[etfci_under_test] "E-TFCI under test: (0..129)"
+0~129
+@128
+*/
+
+[rxd_mode] "rxd mode 0~1"
+0~1
+@0
+
+

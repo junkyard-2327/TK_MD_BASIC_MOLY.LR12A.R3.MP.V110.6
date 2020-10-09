@@ -1,0 +1,2 @@
+        * (EXTRAM_TXDATA)
+        LONG(0); /* add this to avoid this fix length section to be empty section */

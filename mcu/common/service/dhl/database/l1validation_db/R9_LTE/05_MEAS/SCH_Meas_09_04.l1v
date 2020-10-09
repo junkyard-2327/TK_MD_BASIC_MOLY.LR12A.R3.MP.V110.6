@@ -1,0 +1,30 @@
+{ Validation }
+Title 		= "[R9_LTE][05_MEAS][SCH_MEAS_09]SCH_MEAS_09_4: Test of 1 FDD intra CSG + 2 FDD inter + 2 TDD inter frequency cells in RRC_CONNECTED"
+ModuleID 	= MOD_ERRC
+MsgID 		= MSG_ID_L1EDPS_SCH_MEASUREMENT_09
+
+/******************************************************************************
+* Data Structure accomnying the above primitive
+typedef struct
+{
+   kal_uint8           ref_count;
+   kal_uint16         msg_len;
+   kal_uint8          test_pattern_id;       
+    
+ 
+} l1edps_sch_measurement_09_struct;
+*
+*******************************************************************************/
+
+
+{Parameters}
+/******************************************************************************
+* 1. The following is the constrained range for the input of this value.
+* 2. Some combination of the following bit-fields may be suported
+* 3. The parameter range can be changed to support combinations of different bands
+*******************************************************************************/
+
+/* [Variable Name] "corresponding label showen on GUI" */
+[test_pattern_id] "test_pattern_id"
+1~8
+@4

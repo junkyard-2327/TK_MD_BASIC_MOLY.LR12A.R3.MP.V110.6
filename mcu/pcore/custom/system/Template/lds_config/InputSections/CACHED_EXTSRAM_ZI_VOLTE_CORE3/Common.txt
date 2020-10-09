@@ -1,0 +1,1 @@
+        KEEP (* (VOLTE_CORE_MCURW_HWRW_CACHEDZI)) /* extern size to 32 MB (use 216 MB ~ 248 MB) */

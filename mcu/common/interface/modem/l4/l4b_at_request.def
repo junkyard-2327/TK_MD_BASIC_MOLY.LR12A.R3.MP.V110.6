@@ -1,0 +1,436 @@
+/*****************************************************************************
+*  Copyright Statement:
+*  --------------------
+*  This software is protected by Copyright and the information contained
+*  herein is confidential. The software may not be copied and the information
+*  contained herein may not be used or disclosed except with the written
+*  permission of MediaTek Inc. (C) 2005
+*
+*  BY OPENING THIS FILE, BUYER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+*  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("MEDIATEK SOFTWARE")
+*  RECEIVED FROM MEDIATEK AND/OR ITS REPRESENTATIVES ARE PROVIDED TO BUYER ON
+*  AN "AS-IS" BASIS ONLY. MEDIATEK EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES,
+*  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+*  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NONINFRINGEMENT.
+*  NEITHER DOES MEDIATEK PROVIDE ANY WARRANTY WHATSOEVER WITH RESPECT TO THE
+*  SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY, INCORPORATED IN, OR
+*  SUPPLIED WITH THE MEDIATEK SOFTWARE, AND BUYER AGREES TO LOOK ONLY TO SUCH
+*  THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO. MEDIATEK SHALL ALSO
+*  NOT BE RESPONSIBLE FOR ANY MEDIATEK SOFTWARE RELEASES MADE TO BUYER'S
+*  SPECIFICATION OR TO CONFORM TO A PARTICULAR STANDARD OR OPEN FORUM.
+*
+*  BUYER'S SOLE AND EXCLUSIVE REMEDY AND MEDIATEK'S ENTIRE AND CUMULATIVE
+*  LIABILITY WITH RESPECT TO THE MEDIATEK SOFTWARE RELEASED HEREUNDER WILL BE,
+*  AT MEDIATEK'S OPTION, TO REVISE OR REPLACE THE MEDIATEK SOFTWARE AT ISSUE,
+*  OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE CHARGE PAID BY BUYER TO
+*  MEDIATEK FOR SUCH MEDIATEK SOFTWARE AT ISSUE.
+*
+*  THE TRANSACTION CONTEMPLATED HEREUNDER SHALL BE CONSTRUED IN ACCORDANCE
+*  WITH THE LAWS OF THE STATE OF CALIFORNIA, USA, EXCLUDING ITS CONFLICT OF
+*  LAWS PRINCIPLES.  ANY DISPUTES, CONTROVERSIES OR CLAIMS ARISING THEREOF AND
+*  RELATED THERETO SHALL BE SETTLED BY ARBITRATION IN SAN FRANCISCO, CA, UNDER
+*  THE RULES OF THE INTERNATIONAL CHAMBER OF COMMERCE (ICC).
+*
+*****************************************************************************/
+
+/*******************************************************************************
+ * Filename:
+ * ---------
+ *  l4b_at_request.def
+ *
+ *
+ * Description:
+ * ------------
+ *  define the items in l4b_at_request_table, and expended for
+ *	MSG_ID_L4B_L4BXXX_YYY_IND and MSG_ID_L4B_L4BXXX_YYY_RSP
+ *
+ * Author:
+ * -------
+ *  Hong Yu
+ *
+ *==============================================================================
+ * 				HISTORY
+ * Below this line, this part is controlled by PVCS VM. DO NOT MODIFY!!
+ *------------------------------------------------------------------------------
+ * $Log$
+ *
+ * 09 17 2019 yilun.yang
+ * [MOLY00441040] [MT6765/MT6762][UICC] Request starting implementation of eUICC feature for Google Fi
+ * 	
+ * 	L4B interface.
+ *
+ * 01 18 2019 vishal.sharma
+ * [MOLY00379922] [L4B Part][Edison][NFC][SmartcardService] is mtk platform(modem/telephony/smartcard) support 2E and 4E command, refer to TS27 13.3.6.3 and 13.3.6.4
+ * 	
+ * 	L4B Changes
+ *
+ * 10 30 2017 allen.hsu
+ * [MOLY00280113] [93]Support ATQ,ATV,ATZ
+ * 	
+ * 	atzv.
+ *
+ * 07 04 2017 shih-che.chou
+ * [MOLY00261225] [Rose][Bianco][N1]FDN cannot enable after input correct PIN2.
+ * .
+ *
+ * 06 29 2017 shih-che.chou
+ * [MOLY00260720] [Rose][Bianco][N1]The SIM card PIN lock will can't set successfully,it will pop up "Incorrect SIM PIN code,you have 3 remaining attempts" dialog box.(5/5)
+ * .
+ *
+ * 04 05 2017 yingfui.hung
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ * 	- M3 patch back; patch 3706244 & 3706284
+ * 	.
+ *
+ * 04 05 2017 wen.zhuang
+ * [MOLY00237411] [6293][PreIT] UTK/STK SMS Flow Merge
+ * 	
+ * 	M3 UTK L4B CL.
+ *
+ * 04 05 2017 shih-che.chou
+ * [MOLY00236783] [GEN93] CPIN related CMD
+ * .
+ *
+ * 02 23 2017 yingfui.hung
+ * [MOLY00230255] [L4BCC] implement CLCCS command
+ * 	
+ * 	.
+ *
+ * 02 21 2017 yingfui.hung
+ * [MOLY00230861] [MT6293][L4BCC] L4/C2K Integration M2 patch-back
+ * 	
+ * 	3481314
+ * 	3481325
+ * 	3481333
+ * 	3481344
+ * 	3481438
+ * 	3481456
+ * 	3481473
+ *
+ * 02 20 2017 wen.zhuang
+ * [MOLY00221556] [Gen93]Merge SIM IO and CC related codes to check in
+ * 	
+ * 	M2 CTZE, Engineering mode AT commands and MT call flow.
+ * 	M2 dual-SIM IO AT command
+ *
+ * 02 20 2017 hong.yu
+ * [MOLY00230416] [Gen93][L4 Integration] M2 check in
+ * L4B PWR and NW
+ *
+ * 02 20 2017 chen-wei.lan
+ * [MOLY00213843] [Gen93] SS feature development
+ * [UMOLYA trunk] M2 chech in
+ *
+ * 02 20 2017 yilun.yang
+ * [MOLY00230391] [MT6293] M2 check in plan
+ * [L4BSIM] Add AT+ECIMI.
+ *
+ * 02 20 2017 benjamin.kuo
+ * [MOLY00230354] [MT6293][SBP] L4/C2K Integration M2 patch-back
+ * L4BSBP.
+ *
+ * 12 29 2016 yilun.yang
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ * [L4BSIM] Add AT+ECIMI.
+ * 12 20 2016 chen-wei.lan
+ *
+ * [MOLY00213843] [Gen93] SS feature development
+ * fix ECLCK
+ *
+ * 12 14 2016 allen.hsu
+ * [MOLY00212439] 93 Power-on/NW
+ * AT+EOPS.
+ *
+ * 12 14 2016 benjamin.kuo
+ * [MOLY00214810] add L4BSBP module
+ * 	
+ * 	implement interaction between L4B and L4BSBP.
+ *
+ * 12 20 2016 yilun.yang
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ * [l4bsim] Add URC +ESIMAPP for CRLA/CGLA channel_id.
+ *
+ * 12 20 2016 chen-wei.lan
+ * [MOLY00213843] [Gen93] SS feature development
+ * fix ECLCK
+ *
+ * 12 14 2016 allen.hsu
+ * [MOLY00212439] 93 Power-on/NW
+ * AT+EOPS.
+ *
+ * 12 14 2016 benjamin.kuo
+ * [MOLY00214810] add L4BSBP module
+ * 	
+ * 	implement interaction between L4B and L4BSBP.
+ *
+ * 12 06 2016 allen.hsu
+ * [MOLY00215808] [6293][Power-on/NW] attach flow
+ * cgatt.
+ *
+ * 11 29 2016 huang-da.chen
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ * [SAT] M2: STK command dispatch (L4BSAT)
+ *
+ * 11 25 2016 allen.hsu
+ * [MOLY00212439] 93 Power-on/NW
+ * attach flow.
+ *
+ * 11 23 2016 wen.zhuang
+ * [MOLY00211531] [MT6799][PS][L4B]Add L4B code of SIM and CC related for 92 preIT
+ *
+ * 	ECC call and CLCC.
+ *
+ * 11 23 2016 allen.hsu
+ * [MOLY00212638] [6293][Power-on/NW] AT+EFUN
+ * M2 AT+EFUN refine.
+ *
+ * 11 21 2016 yingfui.hung
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ *
+ * 	.
+ *
+ * 11 17 2016 yilun.yang
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ * [l4bsim] Forward +CCHO & +CCHC to L4BSIM.
+ *
+ * 11 17 2016 chen-wei.lan
+ * [MOLY00213843] [Gen93] SS feature development
+ * [Gen93][SS] M2+M3 commands
+ *
+ * 11 15 2016 yingfui.hung
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ *
+ * 	.
+ *
+ * 11 11 2016 yilun.yang
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ * [l4bsim] Fix for null AT response. Update SAP for GEMINI UT.
+ *
+ * 11 11 2016 allen.hsu
+ * [MOLY00212825] [6293][Power-on/NW]AT+ERAT
+ * M1-AT+ERAT.
+ *
+ * 11 10 2016 wenson.qiu
+ * [MOLY00212644] [Gen93][pre-IT] L4B and L4BCC codes for C2K CS call
+ * .
+ *
+ * 11 10 2016 allen.hsu
+ * [MOLY00212638] [6293][Power-on/NW] AT+EFUN
+ * AT+EFUN (M1).
+ *
+ * 11 08 2016 yingfui.hung
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ *
+ * 	.
+ *
+ * 11 07 2016 chinte.chen
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ * ECSQ activate mode.
+ *
+ * 11 04 2016 ian-yw.chen
+ * [MOLY00211439] [MT6293][L4B][L4B_SMS] development
+ *  M1 development (part 1)
+ *
+ * 11 03 2016 yingfui.hung
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ *
+ * 	.
+ *
+ * 11 02 2016 shih-che.chou
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ * . CPIN
+ *
+ * 11 01 2016 huang-da.chen
+ * [MOLY00209737] [MT6293] LWTG and C2K L4 integration check in
+ * L4BSAT part
+ *
+ * 10 14 2016 yingfui.hung
+ * [L4B][CC] CS implementation
+ * 	- add URC part
+ *
+ * 10 12 2016 yingfui.hung
+ * [L4B][CC] CS implementation
+ *
+ *
+ *------------------------------------------------------------------------------
+ * Upper this line, this part is controlled by PVCS VM. DO NOT MODIFY!!
+ *==============================================================================
+ *******************************************************************************/
+
+/*
+This table defines the AT command requests from L4BXXX to LWTG or C2K protocol stack, which is relayed by L4B
+1. L4B_ATCI_AT: (<ENUM_ID>,<ind_msg>,<at_encode_func_ptr>,<rsp_msg>,<rsp_msg_func_ptr>)
+- Relay AT command to ATCI
+2. L4B_CVAL_AT: (<ENUM_ID>,<ind_msg>,<at_encode_func_ptr>,<rsp_msg>,<rsp_msg_func_ptr>)
+- Relay AT command to CVAL
+
+<ENUM_ID>
+	-For enum expansion. The name convention is L4B_RELAY_XXX
+<ind_msg>
+    -The indication MSG_ID_L4B_L4BXXX_YYY_IND from L4BXXX to L4B
+<at_encode_func_ptr>
+    -Encode AT command from the ind_msg
+<rsp_msg>
+    -MSG_ID_L4B_L4BXXX_YYY_RSP from L4B to L4BXXX
+<rsp_msg_func_ptr>
+    -convert AT response to rsp_msg, which type is L4B_AT_RSP_TO_ILM_FUNC
+*/
+
+/* L4BPWR AT cmd begin */
+L4B_ATCI_AT(L4B_RELAY_EBOOT,	MSG_ID_L4B_L4BPWR_EBOOT_IND, 	l4bpwr_eboot_ind_construct_func, MSG_ID_L4B_L4BPWR_EBOOT_RSP, 		l4bpwr_eboot_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_C2KEBOOT,	MSG_ID_L4B_L4BPWR_C2KEBOOT_IND, l4bpwr_eboot_ind_construct_func, MSG_ID_L4B_L4BPWR_C2KEBOOT_RSP, 	l4bpwr_eboot_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_EFUN,		MSG_ID_L4B_L4BPWR_EFUN_IND, 	l4bpwr_efun_ind_construct_func, MSG_ID_L4B_L4BPWR_EFUN_RSP, 		l4bpwr_efun_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_C2KEFUN,	MSG_ID_L4B_L4BPWR_C2KEFUN_IND, 	l4bpwr_efun_ind_construct_func, MSG_ID_L4B_L4BPWR_C2KEFUN_RSP, 	l4bpwr_c2kefun_rsp_construct_func)
+/* L4BPWR AT cmd end */
+
+/* L4BNW AT cmd begin */
+L4B_ATCI_AT(L4B_RELAY_ERAT,		MSG_ID_L4B_L4BNW_ERAT_IND, 	l4bnw_erat_ind_construct_func, MSG_ID_L4B_L4BNW_ERAT_RSP, 		l4bnw_erat_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_ERATEFUN,		MSG_ID_L4B_L4BNW_ERATEFUN_IND, 	l4bnw_eratefun_ind_construct_func, MSG_ID_L4B_L4BNW_ERATEFUN_RSP, 		l4bnw_eratefun_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_C2KERATEFUN,		MSG_ID_L4B_L4BNW_C2KERATEFUN_IND, 	l4bnw_eratefun_ind_construct_func, MSG_ID_L4B_L4BNW_C2KERATEFUN_RSP, 		l4bnw_c2keratefun_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_EGTYPE,		MSG_ID_L4B_L4BNW_EGTYPE_IND, 	l4bnw_egtype_ind_construct_func, MSG_ID_L4B_L4BNW_EGTYPE_RSP, 		l4bnw_egtype_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_C2KEGTYPE,	MSG_ID_L4B_L4BNW_C2KEGTYPE_IND, 	l4bnw_egtype_ind_construct_func, MSG_ID_L4B_L4BNW_C2KEGTYPE_RSP, 	l4bnw_c2kegtype_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_CGATT,		MSG_ID_L4B_L4BNW_CGATT_IND, 	l4bnw_cgatt_ind_construct_func, MSG_ID_L4B_L4BNW_CGATT_RSP, 		l4bnw_cgatt_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_C2KCGATT,	MSG_ID_L4B_L4BNW_C2KCGATT_IND, 	l4bnw_cgatt_ind_construct_func, MSG_ID_L4B_L4BNW_C2KCGATT_RSP, 	l4bnw_c2kcgatt_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_EOPS,	    MSG_ID_L4B_L4BNW_EOPS_IND, 	l4bnw_eops_ind_construct_func, MSG_ID_L4B_L4BNW_EOPS_RSP, 	l4bnw_eops_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_C2KEOPS,	MSG_ID_L4B_L4BNW_C2KEOPS_IND, 	l4bnw_eops_ind_construct_func, MSG_ID_L4B_L4BNW_C2KEOPS_RSP, 	l4bnw_c2keops_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_ATV,	    MSG_ID_L4B_L4BNW_ATV_IND, 	l4bnw_atv_ind_construct_func, MSG_ID_L4B_L4BNW_ATV_RSP, 	l4bnw_atv_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_C2KATV,	MSG_ID_L4B_L4BNW_C2KATV_IND, 	l4bnw_atv_ind_construct_func, MSG_ID_L4B_L4BNW_C2KATV_RSP, 	l4bnw_c2katv_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_ATZ,	    MSG_ID_L4B_L4BNW_ATZ_IND, 	l4bnw_atz_ind_construct_func, MSG_ID_L4B_L4BNW_ATZ_RSP, 	l4bnw_atz_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_C2KATZ,	MSG_ID_L4B_L4BNW_C2KATZ_IND, 	l4bnw_atz_ind_construct_func, MSG_ID_L4B_L4BNW_C2KATZ_RSP, 	l4bnw_c2katz_rsp_construct_func)
+/* L4BNW AT cmd end */
+
+/* L4BCC AT cmd begin */
+L4B_ATCI_AT(L4B_RELAY_EAPPROVE, MSG_ID_L4B_L4BCC_EAPPROVE_IND, 	l4bcc_eapprove_ind_construct_func, 	MSG_ID_L4B_L4BCC_EAPPROVE_RSP, 	l4bcc_eapprove_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_ATD,		MSG_ID_L4B_L4BCC_ATD_IND, 		l4bcc_atd_ind_construct_func, 		MSG_ID_L4B_L4BCC_ATD_RSP, 		l4bcc_atd_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_ATDE,		MSG_ID_L4B_L4BCC_ATDE_IND, 		l4bcc_atde_ind_construct_func, 		MSG_ID_L4B_L4BCC_ATDE_RSP, 		l4bcc_atde_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_CHLD,		MSG_ID_L4B_L4BCC_CHLD_IND, 		l4bcc_chld_ind_construct_func, 		MSG_ID_L4B_L4BCC_CHLD_RSP, 		l4bcc_chld_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_CLCC,		MSG_ID_L4B_L4BCC_CLCC_IND, 		l4bcc_clcc_ind_construct_func, 		MSG_ID_L4B_L4BCC_CLCC_RSP, 		l4bcc_clcc_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_CLCCS,	MSG_ID_L4B_L4BCC_CLCCS_IND, 	l4bcc_clccs_ind_construct_func, 	MSG_ID_L4B_L4BCC_CLCCS_RSP, 	l4bcc_clccs_rsp_construct_func)
+
+L4B_ATCI_AT(L4B_RELAY_EAIC,		MSG_ID_L4B_L4BCC_EAIC_IND, 		l4bcc_eaic_ind_construct_func, 		MSG_ID_L4B_L4BCC_EAIC_RSP, 		l4bcc_eaic_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_ATH,		MSG_ID_L4B_L4BCC_ATH_IND,	 	l4bcc_ath_ind_construct_func, 		MSG_ID_L4B_L4BCC_ATH_RSP,		l4bcc_ath_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_ECHUP,	MSG_ID_L4B_L4BCC_ECHUP_IND, 	l4bcc_echup_ind_construct_func, 	MSG_ID_L4B_L4BCC_ECHUP_RSP,		l4bcc_echup_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_CS_ATA,   MSG_ID_L4B_L4BCC_ATA_IND, 		l4bcc_ata_ind_construct_func, 		MSG_ID_L4B_L4BCC_ATA_RSP, 		l4bcc_ata_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_CEER,		MSG_ID_L4B_L4BCC_CEER_IND, 		l4bcc_ceer_ind_construct_func, 		MSG_ID_L4B_L4BCC_CEER_RSP, 		l4bcc_ceer_rsp_construct_func)
+
+L4B_ATCI_AT(L4B_RELAY_VTS,		MSG_ID_L4B_L4BCC_VTS_IND, 		l4bcc_vts_ind_construct_func, 		MSG_ID_L4B_L4BCC_VTS_RSP, 		l4bcc_vts_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_EVTS_START,		MSG_ID_L4B_L4BCC_EVTS_START_IND, 		l4bcc_evts_start_ind_construct_func, 		MSG_ID_L4B_L4BCC_EVTS_START_RSP, 		l4bcc_evts_start_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_EVTS_STOP,		MSG_ID_L4B_L4BCC_EVTS_STOP_IND, 		l4bcc_evts_stop_ind_construct_func, 		MSG_ID_L4B_L4BCC_EVTS_STOP_RSP, 		l4bcc_evts_stop_rsp_construct_func)
+
+L4B_ATCI_AT(L4B_RELAY_STKCALL,		MSG_ID_L4B_L4BCC_STKCALL_IND, 		l4bcc_stkcall_ind_construct_func, 		MSG_ID_L4B_L4BCC_STKCALL_RSP, 		l4bcc_stkcall_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_ESVC,		MSG_ID_L4B_L4BCC_ESVC_IND, 		l4bcc_esvc_ind_construct_func, 		MSG_ID_L4B_L4BCC_ESVC_RSP, 		l4bcc_esvc_rsp_construct_func)
+
+L4B_ATCI_AT(L4B_RELAY_CC_CMD,		MSG_ID_L4B_L4BCC_ATCI_COMMON_CMD_IND, 		l4bcc_common_cmd_ind_construct_func, 		MSG_ID_L4B_L4BCC_ATCI_COMMON_CMD_RSP, 		l4bcc_common_cmd_rsp_construct_func)
+
+
+
+L4B_CVAL_AT(L4B_RELAY_CDV,			MSG_ID_L4B_L4BCC_C2K_CDV_IND, 		l4bcc_c2k_cdv_ind_construct_func, 		MSG_ID_L4B_L4BCC_C2K_CDV_RSP, 		l4bcc_c2k_cdv_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_CHV,			MSG_ID_L4B_L4BCC_C2K_CHV_IND, 		l4bcc_c2k_chv_ind_construct_func, 		MSG_ID_L4B_L4BCC_C2K_CHV_RSP, 		l4bcc_c2k_chv_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_ATA,			MSG_ID_L4B_L4BCC_C2K_ATA_IND, 		l4bcc_c2k_ata_ind_construct_func, 		MSG_ID_L4B_L4BCC_C2K_ATA_RSP, 		l4bcc_c2k_ata_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_ECCCDV,		MSG_ID_L4B_L4BCC_C2K_ECCCDV_IND,	l4bcc_c2k_ecccdv_ind_construct_func,	MSG_ID_L4B_L4BCC_C2K_ECCCDV_RSP,	l4bcc_c2k_ecccdv_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_C2KCLCC,		MSG_ID_L4B_L4BCC_C2K_CLCC_IND,		l4bcc_c2k_clcc_ind_construct_func,		MSG_ID_L4B_L4BCC_C2K_CLCC_RSP,		l4bcc_c2k_clcc_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_C2KEAIC,		MSG_ID_L4B_L4BCC_C2K_EAIC_IND,		l4bcc_c2k_eaic_ind_construct_func,		MSG_ID_L4B_L4BCC_C2K_EAIC_RSP,		l4bcc_c2k_eaic_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_C2KSTKCALL, 	MSG_ID_L4B_L4BCC_C2K_STKCALL_IND,	l4bcc_c2k_stkcall_ind_construct_func,	MSG_ID_L4B_L4BCC_C2K_STKCALL_RSP,	l4bcc_c2k_stkcall_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_C2KCEER,		MSG_ID_L4B_L4BCC_C2K_CEER_IND,		l4bcc_c2k_ceer_ind_construct_func,		MSG_ID_L4B_L4BCC_C2K_CEER_RSP,		l4bcc_c2k_ceer_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_C2KVTS,		MSG_ID_L4B_L4BCC_C2K_VTS_IND,		l4bcc_c2k_vts_ind_construct_func,		MSG_ID_L4B_L4BCC_C2K_VTS_RSP,		l4bcc_c2k_vts_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_VTC_START,	MSG_ID_L4B_L4BCC_C2K_VTC_START_IND,	l4bcc_c2k_vtc_start_ind_construct_func,	MSG_ID_L4B_L4BCC_C2K_VTC_START_RSP,	l4bcc_c2k_vtc_start_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_VTC_STOP,		MSG_ID_L4B_L4BCC_C2K_VTC_STOP_IND,	l4bcc_c2k_vtc_stop_ind_construct_func,	MSG_ID_L4B_L4BCC_C2K_VTC_STOP_RSP,	l4bcc_c2k_vtc_stop_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_C2K_CC_CMD,	MSG_ID_L4B_L4BCC_C2K_COMMON_CMD_IND,l4bcc_common_cmd_ind_construct_func,	MSG_ID_L4B_L4BCC_C2K_COMMON_CMD_RSP,l4bcc_common_cmd_rsp_construct_func)
+/* L4BCC AT cmd end */
+
+/* L4BSMS AT cmd begin */
+L4B_ATCI_AT(L4B_RELAY_CNMI_ATCI, MSG_ID_L4B_L4BSMS_CNMI_ATCI_IND, l4bsms_cnmi_ind_construct_func, MSG_ID_L4B_L4BSMS_CNMI_ATCI_RSP, l4bsms_cnmi_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_CNMI_CVAL, MSG_ID_L4B_L4BSMS_CNMI_CVAL_IND, l4bsms_cnmi_ind_construct_func, MSG_ID_L4B_L4BSMS_CNMI_CVAL_RSP, l4bsms_cnmi_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_CMGF_ATCI, MSG_ID_L4B_L4BSMS_CMGF_ATCI_IND, l4bsms_cmgf_ind_construct_func, MSG_ID_L4B_L4BSMS_CMGF_ATCI_RSP, l4bsms_cmgf_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_CMGF_CVAL, MSG_ID_L4B_L4BSMS_CMGF_CVAL_IND, l4bsms_cmgf_ind_construct_func, MSG_ID_L4B_L4BSMS_CMGF_CVAL_RSP, l4bsms_cmgf_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_EMEMS_ATCI, MSG_ID_L4B_L4BSMS_EMEMS_ATCI_IND, l4bsms_emems_ind_construct_func, MSG_ID_L4B_L4BSMS_EMEMS_ATCI_RSP, l4bsms_emems_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_EMEMS_CVAL, MSG_ID_L4B_L4BSMS_EMEMS_CVAL_IND, l4bsms_emems_ind_construct_func, MSG_ID_L4B_L4BSMS_EMEMS_CVAL_RSP, l4bsms_emems_rsp_construct_func)
+/* L4BSMS AT cmd end */
+
+/* L4BNW AT cmd begin */
+L4B_ATCI_AT(L4B_RELAY_ECSQ,		MSG_ID_L4B_L4BNW_ECSQ_ATCI_IND, l4bnw_ecsq_atci_ind_construct_func, MSG_ID_L4B_L4BNW_ECSQ_ATCI_RSP, l4bnw_ecsq_atci_rsp_construct_func)
+/* L4BNW AT cmd end */
+
+/* L4BSIM AT cmd begin */
+/* MD1 ATCI */
+L4B_ATCI_AT(L4B_RELAY_ECRLA_ATCI, MSG_ID_L4B_L4BSIM_ECRLA_ATCI_IND, l4bsim_ecrla_atci_ind_construct_func, MSG_ID_L4B_L4BSIM_ECRLA_ATCI_RSP, l4bsim_ecrla_atci_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_ECRSM_ATCI, MSG_ID_L4B_L4BSIM_ECRSM_ATCI_IND, l4bsim_ecrsm_atci_ind_construct_func, MSG_ID_L4B_L4BSIM_ECRSM_ATCI_RSP, l4bsim_ecrsm_atci_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_ICCID_ATCI, MSG_ID_L4B_L4BSIM_ICCID_ATCI_IND, l4bsim_iccid_atci_ind_construct_func, MSG_ID_L4B_L4BSIM_ICCID_ATCI_RSP, l4bsim_iccid_atci_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_CNUM_ATCI, MSG_ID_L4B_L4BSIM_CNUM_ATCI_IND, l4bsim_cnum_atci_ind_construct_func, MSG_ID_L4B_L4BSIM_CNUM_ATCI_RSP, l4bsim_cnum_atci_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_ESIMAPP_ATCI, MSG_ID_L4B_L4BSIM_ESIMAPP_ATCI_IND, l4bsim_esimapp_atci_ind_construct_func, MSG_ID_L4B_L4BSIM_ESIMAPP_ATCI_RSP, l4bsim_esimapp_atci_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_CRLA_ATCI, MSG_ID_L4B_L4BSIM_CRLA_ATCI_IND, l4bsim_crla_atci_ind_construct_func, MSG_ID_L4B_L4BSIM_CRLA_ATCI_RSP, l4bsim_crla_atci_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_CGLA_ATCI, MSG_ID_L4B_L4BSIM_CGLA_ATCI_IND, l4bsim_cgla_atci_ind_construct_func, MSG_ID_L4B_L4BSIM_CGLA_ATCI_RSP, l4bsim_cgla_atci_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_CRSM_ATCI, MSG_ID_L4B_L4BSIM_CRSM_ATCI_IND, l4bsim_crsm_atci_ind_construct_func, MSG_ID_L4B_L4BSIM_CRSM_ATCI_RSP, l4bsim_crsm_atci_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_CSIM_ATCI, MSG_ID_L4B_L4BSIM_CSIM_ATCI_IND, l4bsim_csim_atci_ind_construct_func, MSG_ID_L4B_L4BSIM_CSIM_ATCI_RSP, l4bsim_csim_atci_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_CCHO_ATCI, MSG_ID_L4B_L4BSIM_CCHO_ATCI_IND, l4bsim_ccho_atci_ind_construct_func, MSG_ID_L4B_L4BSIM_CCHO_ATCI_RSP, l4bsim_ccho_atci_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_CCHC_ATCI, MSG_ID_L4B_L4BSIM_CCHC_ATCI_IND, l4bsim_cchc_atci_ind_construct_func, MSG_ID_L4B_L4BSIM_CCHC_ATCI_RSP, l4bsim_cchc_atci_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_ECIMI_ATCI, MSG_ID_L4B_L4BSIM_ECIMI_ATCI_IND, l4bsim_ecimi_atci_ind_construct_func, MSG_ID_L4B_L4BSIM_ECIMI_ATCI_RSP, l4bsim_ecimi_atci_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_ECPIN_ATCI, MSG_ID_L4B_L4BSIM_ECPIN_ATCI_IND, l4bsim_ecpin_atci_ind_construct_func, MSG_ID_L4B_L4BSIM_ECPIN_ATCI_RSP, l4bsim_ecpin_atci_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_CPIN_ATCI, MSG_ID_L4B_L4BSIM_CPIN_ATCI_IND, l4bsim_cpin_atci_ind_construct_func, MSG_ID_L4B_L4BSIM_CPIN_ATCI_RSP, l4bsim_cpin_atci_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_EPIN1_ATCI, MSG_ID_L4B_L4BSIM_EPIN1_ATCI_IND, l4bsim_epin1_atci_ind_construct_func, MSG_ID_L4B_L4BSIM_EPIN1_ATCI_RSP, l4bsim_parse_cmd_result_from_generic_at_rsp)
+L4B_ATCI_AT(L4B_RELAY_EPIN2_ATCI, MSG_ID_L4B_L4BSIM_EPIN2_ATCI_IND, l4bsim_epin2_atci_ind_construct_func, MSG_ID_L4B_L4BSIM_EPIN2_ATCI_RSP, l4bsim_parse_cmd_result_from_generic_at_rsp)
+L4B_ATCI_AT(L4B_RELAY_EPINC_ATCI, MSG_ID_L4B_L4BSIM_EPINC_ATCI_IND, l4bsim_epinc_atci_ind_construct_func, MSG_ID_L4B_L4BSIM_EPINC_ATCI_RSP, l4bsim_parse_cmd_result_from_generic_at_rsp)
+L4B_ATCI_AT(L4B_RELAY_CPWD_ATCI, MSG_ID_L4B_L4BSIM_CPWD_ATCI_IND, l4bsim_cpwd_atci_ind_construct_func, MSG_ID_L4B_L4BSIM_CPWD_ATCI_RSP, l4bsim_parse_cmd_result_from_generic_at_rsp)
+L4B_ATCI_AT(L4B_RELAY_ECLCK_ATCI, MSG_ID_L4B_L4BSIM_ECLCK_ATCI_IND, l4bsim_repack_e_cmd_app_id_atci_at_cmd, MSG_ID_L4B_L4BSIM_ECLCK_ATCI_RSP, l4bsim_parse_cmd_result_from_generic_at_rsp)
+L4B_ATCI_AT(L4B_RELAY_CLCK_ATCI, MSG_ID_L4B_L4BSIM_CLCK_ATCI_IND, l4bsim_repack_generic_at_cmd, MSG_ID_L4B_L4BSIM_CLCK_ATCI_RSP, l4bsim_parse_cmd_result_from_generic_at_rsp)
+L4B_ATCI_AT(L4B_RELAY_EXCGLA_ATCI, MSG_ID_L4B_L4BSIM_EXCGLA_ATCI_IND, l4bsim_excgla_atci_ind_construct_func, MSG_ID_L4B_L4BSIM_EXCGLA_ATCI_RSP, l4bsim_excgla_atci_rsp_construct_func)
+#ifdef __EUICC_SUPPORT__
+L4B_ATCI_AT(L4B_RELAY_ESLOTSINFO_CPIN_ATCI, MSG_ID_L4B_L4BSIM_ESLOTSINFO_CPIN_ATCI_IND, l4bsim_cpin_atci_ind_construct_func, MSG_ID_L4B_L4BSIM_ESLOTSINFO_CPIN_ATCI_RSP, l4bsim_cpin_atci_rsp_construct_func)
+#endif
+
+/* MD3 CVAL */
+L4B_CVAL_AT(L4B_RELAY_ECRLA_CVAL, MSG_ID_L4B_L4BSIM_ECRLA_CVAL_IND, l4bsim_ecrla_cval_ind_construct_func, MSG_ID_L4B_L4BSIM_ECRLA_CVAL_RSP, l4bsim_ecrla_cval_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_ECRSM_CVAL, MSG_ID_L4B_L4BSIM_ECRSM_CVAL_IND, l4bsim_ecrsm_cval_ind_construct_func, MSG_ID_L4B_L4BSIM_ECRSM_CVAL_RSP, l4bsim_ecrsm_cval_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_ICCID_CVAL, MSG_ID_L4B_L4BSIM_ICCID_CVAL_IND, l4bsim_iccid_cval_ind_construct_func, MSG_ID_L4B_L4BSIM_ICCID_CVAL_RSP, l4bsim_iccid_cval_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_CNUM_CVAL, MSG_ID_L4B_L4BSIM_CNUM_CVAL_IND, l4bsim_cnum_cval_ind_construct_func, MSG_ID_L4B_L4BSIM_CNUM_CVAL_RSP, l4bsim_cnum_cval_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_ESIMAPP_CVAL, MSG_ID_L4B_L4BSIM_ESIMAPP_CVAL_IND, l4bsim_esimapp_cval_ind_construct_func, MSG_ID_L4B_L4BSIM_ESIMAPP_CVAL_RSP, l4bsim_esimapp_cval_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_CRLA_CVAL, MSG_ID_L4B_L4BSIM_CRLA_CVAL_IND, l4bsim_crla_cval_ind_construct_func, MSG_ID_L4B_L4BSIM_CRLA_CVAL_RSP, l4bsim_crla_cval_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_CGLA_CVAL, MSG_ID_L4B_L4BSIM_CGLA_CVAL_IND, l4bsim_cgla_cval_ind_construct_func, MSG_ID_L4B_L4BSIM_CGLA_CVAL_RSP, l4bsim_cgla_cval_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_CRSM_CVAL, MSG_ID_L4B_L4BSIM_CRSM_CVAL_IND, l4bsim_crsm_cval_ind_construct_func, MSG_ID_L4B_L4BSIM_CRSM_CVAL_RSP, l4bsim_crsm_cval_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_CSIM_CVAL, MSG_ID_L4B_L4BSIM_CSIM_CVAL_IND, l4bsim_csim_cval_ind_construct_func, MSG_ID_L4B_L4BSIM_CSIM_CVAL_RSP, l4bsim_csim_cval_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_CCHO_CVAL, MSG_ID_L4B_L4BSIM_CCHO_CVAL_IND, l4bsim_ccho_cval_ind_construct_func, MSG_ID_L4B_L4BSIM_CCHO_CVAL_RSP, l4bsim_ccho_cval_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_CCHC_CVAL, MSG_ID_L4B_L4BSIM_CCHC_CVAL_IND, l4bsim_cchc_cval_ind_construct_func, MSG_ID_L4B_L4BSIM_CCHC_CVAL_RSP, l4bsim_cchc_cval_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_ECIMI_CVAL, MSG_ID_L4B_L4BSIM_ECIMI_CVAL_IND, l4bsim_ecimi_cval_ind_construct_func, MSG_ID_L4B_L4BSIM_ECIMI_CVAL_RSP, l4bsim_ecimi_cval_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_ECPIN_CVAL, MSG_ID_L4B_L4BSIM_ECPIN_CVAL_IND, l4bsim_ecpin_cval_ind_construct_func, MSG_ID_L4B_L4BSIM_ECPIN_CVAL_RSP, l4bsim_ecpin_cval_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_CPIN_CVAL, MSG_ID_L4B_L4BSIM_CPIN_CVAL_IND, l4bsim_cpin_cval_ind_construct_func, MSG_ID_L4B_L4BSIM_CPIN_CVAL_RSP, l4bsim_cpin_cval_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_EPIN1_CVAL, MSG_ID_L4B_L4BSIM_EPIN1_CVAL_IND, l4bsim_epin1_atci_ind_construct_func, MSG_ID_L4B_L4BSIM_EPIN1_CVAL_RSP, l4bsim_parse_cmd_result_from_generic_at_rsp)
+L4B_CVAL_AT(L4B_RELAY_EPIN2_CVAL, MSG_ID_L4B_L4BSIM_EPIN2_CVAL_IND, l4bsim_epin2_atci_ind_construct_func, MSG_ID_L4B_L4BSIM_EPIN2_CVAL_RSP, l4bsim_parse_cmd_result_from_generic_at_rsp)
+L4B_CVAL_AT(L4B_RELAY_EPINC_CVAL, MSG_ID_L4B_L4BSIM_EPINC_CVAL_IND, l4bsim_epinc_atci_ind_construct_func, MSG_ID_L4B_L4BSIM_EPINC_CVAL_RSP, l4bsim_parse_cmd_result_from_generic_at_rsp)
+L4B_CVAL_AT(L4B_RELAY_CPWD_CVAL, MSG_ID_L4B_L4BSIM_CPWD_CVAL_IND, l4bsim_cpwd_atci_ind_construct_func, MSG_ID_L4B_L4BSIM_CPWD_CVAL_RSP, l4bsim_parse_cmd_result_from_generic_at_rsp)
+L4B_CVAL_AT(L4B_RELAY_ECLCK_CVAL, MSG_ID_L4B_L4BSIM_ECLCK_CVAL_IND, l4bsim_repack_e_cmd_app_id_atci_at_cmd, MSG_ID_L4B_L4BSIM_ECLCK_CVAL_RSP, l4bsim_parse_cmd_result_from_generic_at_rsp)
+L4B_CVAL_AT(L4B_RELAY_CLCK_CVAL, MSG_ID_L4B_L4BSIM_CLCK_CVAL_IND, l4bsim_repack_generic_at_cmd, MSG_ID_L4B_L4BSIM_CLCK_CVAL_RSP, l4bsim_parse_cmd_result_from_generic_at_rsp)
+L4B_CVAL_AT(L4B_RELAY_EXCGLA_CVAL, MSG_ID_L4B_L4BSIM_EXCGLA_CVAL_IND, l4bsim_excgla_cval_ind_construct_func, MSG_ID_L4B_L4BSIM_EXCGLA_CVAL_RSP, l4bsim_excgla_cval_rsp_construct_func)
+#ifdef __EUICC_SUPPORT__
+L4B_CVAL_AT(L4B_RELAY_ESLOTSINFO_CPIN_CVAL, MSG_ID_L4B_L4BSIM_ESLOTSINFO_CPIN_CVAL_IND, l4bsim_cpin_cval_ind_construct_func, MSG_ID_L4B_L4BSIM_ESLOTSINFO_CPIN_CVAL_RSP, l4bsim_cpin_cval_rsp_construct_func)
+#endif
+/* L4BSIM AT cmd end */
+
+/* L4BSAT AT cmd begin */
+
+/* MD1 ATCI */
+L4B_ATCI_AT(L4B_RELAY_STKTR_ATCI,  MSG_ID_L4B_L4BSAT_STKTR_ATCI_IND,  l4bsat_generic_atci_ind_construct_func,  MSG_ID_L4B_L4BSAT_STKTR_ATCI_RSP,  l4bsat_generic_atci_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_CUSATE_ATCI, MSG_ID_L4B_L4BSAT_CUSATE_ATCI_IND, l4bsat_cusate_atci_ind_construct_func, MSG_ID_L4B_L4BSAT_CUSATE_ATCI_RSP, l4bsat_cusate_atci_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_STKCALL_ATCI,  MSG_ID_L4B_L4BSAT_STKCALL_ATCI_IND,  l4bsat_generic_atci_ind_construct_func,  MSG_ID_L4B_L4BSAT_STKCALL_ATCI_RSP,  l4bsat_generic_atci_rsp_construct_func)
+L4B_ATCI_AT(L4B_RELAY_STKSMS_ATCI, MSG_ID_L4B_L4BSAT_STKSMS_ATCI_IND, l4bsat_generic_atci_ind_construct_func, MSG_ID_L4B_L4BSAT_STKSMS_ATCI_RSP, l4bsat_generic_atci_rsp_construct_func)
+
+/* MD3 CVAL */
+L4B_CVAL_AT(L4B_RELAY_STKTR_CVAL,  MSG_ID_L4B_L4BSAT_STKTR_CVAL_IND,  l4bsat_generic_cval_ind_construct_func,  MSG_ID_L4B_L4BSAT_STKTR_CVAL_RSP,  l4bsat_generic_cval_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_CUSATE_CVAL, MSG_ID_L4B_L4BSAT_CUSATE_CVAL_IND, l4bsat_cusate_cval_ind_construct_func, MSG_ID_L4B_L4BSAT_CUSATE_CVAL_RSP, l4bsat_cusate_cval_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_STKCALL_CVAL,  MSG_ID_L4B_L4BSAT_STKCALL_CVAL_IND,  l4bsat_generic_cval_ind_construct_func,  MSG_ID_L4B_L4BSAT_STKCALL_CVAL_RSP,  l4bsat_generic_cval_rsp_construct_func)
+L4B_CVAL_AT(L4B_RELAY_STKSMS_CVAL, MSG_ID_L4B_L4BSAT_STKSMS_CVAL_IND, l4bsat_generic_cval_ind_construct_func, MSG_ID_L4B_L4BSAT_STKSMS_CVAL_RSP, l4bsat_generic_cval_rsp_construct_func)
+
+/* L4BSAT AT cmd end */
+
+
+
+/* L4BSS AT cmd begin */
+
+/* MD1 ATCI */
+
+/* MD3 CVAL */
+
+/* L4BSS AT cmd end */
+
+/* L4BSBP AT cmd begin */
+L4B_ATCI_AT(L4B_RELAY_ESBP,	MSG_ID_L4B_L4BSBP_ESBP_IND, 	l4bsbp_esbp_ind_construct_func, MSG_ID_L4B_L4BSBP_ESBP_RSP, 		l4bsbp_esbp_rsp_construct_func)
+/* L4BSBP AT cmd end */

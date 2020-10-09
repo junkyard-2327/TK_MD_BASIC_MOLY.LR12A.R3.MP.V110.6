@@ -1,0 +1,17 @@
+system.mode attach
+
+register.set cdmmbase 0x1fc1407
+D.S 0x1FC100D4 %LE %LONG 0x02030202
+steal monitor mips32 fastchannel 0 1 
+
+&temp_addr = var.address(dsp_bin_ro)
+&temp_addr = &temp_addr & 0x0FFFFFFF
+;&temp_addr = &temp_addr | 0xA0000000
+
+;data.load.bin U:\MT6292\UMOLYA\DEV\UMOLYA.BIANCO.BRINGUP.DEV\mcu\build\BIANCO_FPGA\L1S_L1DISABLE\bin\DSP_BIANCO_UMOLYA_BIANCO_BRINGUP_DEV_W17_04_LTE_P3.bin &temp_addr
+data.load.bin "D:\dsp123.bin" &temp_addr
+
+print "load dsp done!"
+D.S 0x1FC100D4 %LE %LONG 0x02020202
+enddo
+

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<Customize>
+	<Action name="L1AssertBypass" icon="">
+		<GDB>p/x L1_ASSERT_BYPASS=3</GDB>
+	</Action>
+</Customize>

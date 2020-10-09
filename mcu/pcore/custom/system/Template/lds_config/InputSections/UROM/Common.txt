@@ -1,0 +1,9 @@
+        * (NONCACHED_ROCODE)
+        KEEP(* (NOP_NONCACHED_ROCODE_SECTION))
+        * (NONCACHED_RODATA)
+        . = ALIGN(0x1000);
+        BOOT_EX_VECTORS$$Base = . ;
+        KEEP(* (BOOT_EX_VECTORS))
+        KEEP(* (NOP_BOOT_EX_VECTORS_SECTION))
+        BOOT_EX_VECTORS$$End = . ;
+        /*. = ALIGN(4);*/

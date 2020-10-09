@@ -1,0 +1,286 @@
+/*************************************************************
+*
+* This Software is the property of MTK, Inc. and may only be used pursuant to a license from MTK, Inc.  
+* 
+* Any unauthorized use inconsistent with the terms of such license is strictly prohibited.
+* 
+* Copyright (c) 2002-2016 MTK, Inc.  All rights reserved.
+*
+*************************************************************/
+[Default]
+  C2K_CL1
+  On
+  Buffer
+  TCMFORCE
+
+[MODEM_TYPE]
+  C2K_L1
+
+[Class]
+  CL1_UT_TRACE       ON
+  CL1_IT_TRACE       ON
+  CL1_MP_TRACE       ON
+  CL1_FULL_FT_TRACE  ON
+  CL1_KERNAL_TRACE   ON
+  CL1_WARN           OFF
+  
+
+
+[String]
+  Cl1_Init_String
+  {
+    "Cl1 init",
+    "Cl1fhRtbChnlStatusSet():",
+    "Cl1fhRtbChnlCancelReq():",
+    "Cl1fhRtbChnlRegReq():",
+    "Cl1fhRtbChnlPendingRegProc():",
+    "Cl1fhRtbChnlPendingCancelProc():",
+    "Cl1fhRtbChnlSleepUnlock():"
+  }
+
+  Sm_Tick_String
+  {
+    "DEEP_SLEEP_NOT_ENABLE",
+    "DEEP_SLEEP_NOT_REQ",
+    "DEEP_SLEEP_SUSPENDED",
+    "DEEP_SLEEP_DURATION_TOO_SMALL",
+    "DEEP_SLEEP_MON_ALLOWED",
+    "DEEP_SLEEP_NOT_ALL_QUE_EMPTY",
+    "DEEP_SLEEP_NOT_EVT_QUE_EMPTY",
+    "DEEP_SLEEP_NOT_MSG_QUE_EMPTY",
+    "DEEP_SLEEP_CANCELLING",
+    "DEEP_SLEEP_MARGIN_NOT_ENOUGH",
+    "DEEP_SLEEP_ALLOWED",
+    "DEEP_SLEEP_FH_IS_ONGOING"
+  }
+
+  Cl1_Tst_Case_Reslt
+  {
+    "FAIL",
+    "PASS"
+  }
+
+
+[Message]
+  info   CL1TRACE_CL1_Dbg                   CL1_UT_TRACE            " cl1 tmd file test"
+  info   CL1TRACE_FhcTxRfOn                 CL1_MP_TRACE            "FhcTxRfOn: rat_type=%MCL1D_RF_RAT_E, StOffset=%l, Band=%b, Channel=%d"
+  info   CL1TRACE_FhcTxRfOff                CL1_MP_TRACE            "FhcTxRfOff: rat_type=%MCL1D_RF_RAT_E, StOffset=%l"
+  info   CL1TRACE_FhcRxRfOn                 CL1_MP_TRACE            "FhcRxRfOn: rat_type=%MCL1D_RF_RAT_E, StOffset=%l, Band=%b, Channel=%d, path_bmp=%b, pwr_mode=%b"
+  info   CL1TRACE_FhcRxRfOff                CL1_MP_TRACE            "FhcRxRfOff: rat_type=%MCL1D_RF_RAT_E, StOffset=%l, path_bmp=%b"
+  info   CL1TRACE_FhcTxAgcConfig            CL1_MP_TRACE            "FhcTxAgcConfig: rat_type=%MCL1D_RF_RAT_E, StOffset=%l, target_power=%l, TxElementIdx=%d"
+  info   CL1TRACE_FhcRxAgcConfig            CL1_MP_TRACE            "FhcRxAgcConfig: rat_type=%MCL1D_RF_RAT_E, StOffset=%l, path_bmp=%b, pwr_mode=%b, lna_mode=%b, rssi_avg_start=%l, rssi_avg_end=%l, RxElementIdx=%d"
+  info   CL1TRACE_FhcRfModeSwitch           CL1_MP_TRACE            "FhcRfModeSwitch: rat_type=%MCL1D_RF_RAT_E"
+  info   CL1TRACE_FhcTempMeasStart          CL1_MP_TRACE            "FhcTempMeasStart"
+  info   CL1TRACE_FhcTxPowerQuery           CL1_MP_TRACE            "FhcTxPowerQuery: ant_power=%d, PdetNum=%d, SysTime=%l, PdetAvgSampNum=%b"
+  info   CL1TRACE_FhcRxRssiQuery            CL1_MP_TRACE            "FhcRxRssiQuery: main=%d, div=%d, SHDR=%d, RssiNum=%d, SysTime=%l"
+  info   CL1TRACE_FhcStepInitialize         CL1_MP_TRACE            "FhcStepInitialize: Slot=%b, EchipCnt=%l"
+  info   CL1TRACE_FhcStepTransMeas          CL1_IT_TRACE            "FhcStepTransMeas: HSlot=%d, Slot=%b, EchipCnt=%l"
+  info   CL1TRACE_FhcStepReport             CL1_IT_TRACE            "FhcStepReport Done"
+
+  info   CL1TRACE_DpdTxRfOn                 CL1_MP_TRACE            "DpdTxRfOn: rat_type=%MCL1D_RF_RAT_E, TxStOffset=%l, RxStOffset=%l, Band=%b, Channel=%d, HslotCnt=%l"
+  info   CL1TRACE_DpdTxRfOff                CL1_MP_TRACE            "DpdTxRfOff: rat_type=%MCL1D_RF_RAT_E, TxStOffset=%l, Band=%b, Channel=%d, HslotCnt=%l"
+  info   CL1TRACE_DpdPaCtxQuery             CL1_MP_TRACE            "DpdPaCtxQuery: rat_type=%MCL1D_RF_RAT_E, PaIdx=%b, PaMode=%b, Prf=%d, PaGain=%d, PaGainComp=%d, CPLLoss=%d, Vm0=%b, Vm1=%b, Vdd=%d"
+  info   CL1TRACE_DpdTxAgcCfg               CL1_MP_TRACE            "DpdTxAgcCfg: rat_type=%MCL1D_RF_RAT_E, TxStOffset=%l, Prf=%l, PaGain=%l, CPLLoss=%l, PaIdx=%d, PaMode=%d, Vdd=%d, Vm0=%d, Vm1=%d, HslotCnt=%l"
+  info   CL1TRACE_DpdUpcInfoQuery           CL1_MP_TRACE            "DpdUpcInfoQuery: rat_type=%MCL1D_RF_RAT_E, PaIdx=%b, DetGain=%d, PgaGain=%d, BbGain=%d, HslotCnt=%l"
+  info   CL1TRACE_DpdFixPara                CL1_MP_TRACE            "DpdFixPara: BandIdx=%b, FreqIdx=%b, GainIdx=%b, LutIdx=%l, CplGain=%d, PeakDbm1=%d, PeakDbm2=%d, PaGain1=%d, PaGain2=%d, RfdUpdPrf=%d, RfdUpdPaGain=%d, PgaGain=%d, DetGain=%d, BbGain=%d, HslotCnt=%l"
+  info   CL1TRACE_DpdFixOutPa               CL1_MP_TRACE            "DpdFixOutPa: BandIdx=%b, FreqIdx=%b, PaIdx=%b, PeakDbm1=%d, PeakDbm2=%d, PtarTH1=%d, PtarTH2=%d, PaGain1=%d, PaGain2=%d, FdB1=%d, FdB2=%d"
+  info   CL1TRACE_DpdFixOutAm               CL1_MP_TRACE            "DpdFixOutAm: BandIdx=%b, FreqIdx=%b, PaIdx=%b, Am1=%b, Am2=%b, Am3=%b, Am4=%b, Am5=%b, Am6=%b, Am7=%b, Am8=%b, Am9=%b, Am10=%b, Am11=%b, Am12=%b, Am13=%b, Am14=%b, Am15=%b, Am16=%b"
+  info   CL1TRACE_DpdFixOutPm               CL1_MP_TRACE            "DpdFixOutPm: BandIdx=%b, FreqIdx=%b, PaIdx=%b, Pm1=%b, Pm2=%b, Pm3=%b, Pm4=%b, Pm5=%b, Pm6=%b, Pm7=%b, Pm8=%b, Pm9=%b, Pm10=%b, Pm11=%b, Pm12=%b, Pm13=%b, Pm14=%b, Pm15=%b, Pm16=%b"
+  info   CL1TRACE_DpdPaGainOrig             CL1_MP_TRACE            "DpdPaGainOrig: FreqIdx=%b, ChanNum=%d, PaGain0=%d, PaGain1=%d, PaGain2=%d, PaGain3=%d, PaGain4=%d, PaGain5=%d, PaGain6=%d, PaGain7=%d"
+  info   CL1TRACE_DpdFdParam                CL1_MP_TRACE            "DpdFdParam: FreqIdx=%b, ChanNum=%d, Fd0=%d, Fd1=%d, Fd2=%d, Fd3=%d, Fd4=%d, Fd5=%d, Fd6=%d, Fd7=%d"
+  info   CL1TRACE_DpdPtParam                CL1_MP_TRACE            "DpdPtParam: FreqIdx=%b, ChanNum=%d, Pt0=%d, Pt1=%d, Pt2=%d, Pt3=%d, Pt4=%d, Pt5=%d, Pt6=%d, Pt7=%d"
+  info   CL1TRACE_DpdPaDetaTbl              CL1_MP_TRACE            "DpdPaDetaTbl: Band=%b, PaIdx=%b, FC1=%d, FC2=%d, FC3=%d, FC4=%d, FC5=%d, FC6=%d, FC7=%d, FC8=%d, FC9=%d, FC10=%d, FC11=%d, FC12=%d, FC13=%d, FC14=%d, FC15=%d, FC16=%d"
+  info   CL1TRACE_DpdPaComTbl               CL1_MP_TRACE            "DpdPaComTbl: Band=%b, PaIdx=%b, TmpIdx=%b, FC1=%d, FC2=%d, FC3=%d, FC4=%d, FC5=%d, FC6=%d, FC7=%d, FC8=%d, FC9=%d, FC10=%d, FC11=%d, FC12=%d, FC13=%d, FC14=%d, FC15=%d, FC16=%d"
+  info   CL1TRACE_DpdPaGainBase             CL1_MP_TRACE            "DpdPaGainBase: Band=%b, PaGain0=%d, PaGain1=%d, PaGain2=%d, PaGain3=%d, PaGain4=%d, PaGain5=%d, PaGain6=%d, PaGain7=%d"
+
+  info   CL1TRACE_DlyTxRfOn                 CL1_MP_TRACE            "DlyTxRfOn: rat_type=%MCL1D_RF_RAT_E, TxStOffset=%l, RxStOffset=%l, Band=%b, Channel=%d, HslotCnt=%l"
+  info   CL1TRACE_DlyTxRfOff                CL1_MP_TRACE            "DlyTxRfOff: rat_type=%MCL1D_RF_RAT_E, TxStOffset=%l, Band=%b, Channel=%d, HslotCnt=%l"
+  info   CL1TRACE_DlyTxAgcCfg               CL1_MP_TRACE            "DlyTxAgcCfg: rat_type=%MCL1D_RF_RAT_E, TestMode=%b, ILPC=%b, PaCtrlMode=%d, TxStOffset=%l, TarPwr=%l, HslotCnt=%l"
+
+  info   CL1TRACE_MetaIfTransmitCtrl1       CL1_MP_TRACE            "MetaIfTransmitCtrl_1:rat_type=%MCL1D_RF_RAT_E,Action=%MCl1TstActionT,SigType=%MCl1TstTxSigTypeT,Band=%b,Chan=%d,Revd=%d,FreqOfst=%l,ToneCfg=%l"
+  info   CL1TRACE_MetaIfTransmitCtrl2       CL1_MP_TRACE            "MetaIfTransmitCtrl_2:RevRc=%b,ChnType=%b,FchRate=%b,SchRate=%b,GatePat=%d,FpcPat=%d,TxPmb=%d,LcmLow=%d,SchWc=%d,RaDly=%d,TurboEn=%d"
+  info   CL1TRACE_FhcStart                  CL1_MP_TRACE            "FhcStart: RxStep=%d, TxStep=%d, TxRxDelay=%d, RxElementNum=%d, TxElementNum=%d"
+  info   CL1TRACE_MetaIf                    CL1_MP_TRACE            "MetaIf: CmdId=%l"
+  info   CL1TRACE_EltIf                     CL1_MP_TRACE            "EltIf: MsgId=%d"
+  info   CL1TRACE_Debug                     CL1_MP_TRACE            "Cl1Debug: DbgId=%d, DbgP1=%d, DbgP2 = %d, DbgP3=%l, DbgP4=%MCl1TstCmdTypeE"
+  info   CL1TRACE_Debug_32Bit               CL1_MP_TRACE            "Cl1Debug_32Bit: Dbg16Id=%d, Dbg16P1=%d, Dbg16P2=%d, , Dbg16P3=%d, , Dbg16P4=%d, Dbg32P5 = %l, Dbg32P6 = %l, Dbg32P7 = %l, Dbg32P8 = %l"
+  info   CL1TRACE_MaxTxPwrAdj               CL1_MP_TRACE            "Cl1MaxTxPwrAdj: MaxTxPwrOffset = %d, Band = %d"
+  info   CL1TRACE_FH_RTBAW_TRACE0           CL1_MP_TRACE            "Cl1fhRtbChnlRegReq():Owner=%MSysAirInterfaceT,Chnl=%MRtbaCl1ChannelTypeT,StartTmValid=%b,SpFrm=%xl,Chip8xOffset=%xl,GapLen=%xl,GapEndFrc=%xl,PostProcessMargin=%xl,ExeReg=%Mkal_bool,PendReg=%Mkal_bool,DeepSleepSuspendCnt=%d"
+  info   CL1TRACE_FH_RTBAW_TRACE1           CL1_MP_TRACE            "Cl1fhRtbChnlCancelReq():Owner=%MSysAirInterfaceT,Chnl=%MRtbaCl1ChannelTypeT,CancelAll=%b,CancelToRtba=%b,ExeCancel=%Mkal_bool,PendCancel=%Mkal_bool,DeepSleepSuspendCnt=%d"
+  info   CL1TRACE_FH_RTBAW_TRACE2           CL1_MP_TRACE            "Cl1fhRtbChnlPendingRegProc():Owner=%MSysAirInterfaceT"
+  info   CL1TRACE_FH_RTBAW_TRACE3           CL1_MP_TRACE            "%sOwner=%MSysAirInterfaceT,CurrFtNum=%xl,PendingFtNumCancel=%xl"
+  info   CL1TRACE_FH_RTBAW_TRACE4           CL1_MP_TRACE            "%sOwner=%MSysAirInterfaceT,CurrFtNum=%xl,PendingFtNumRegister=%xl"
+  info   CL1TRACE_FH_RTBAW_TRACE5           CL1_MP_TRACE            "%sOwner=%MSysAirInterfaceT,DeepSleepSuspendCnt=%d"
+  info   CL1TRACE_FH_RTBAW_TRACE6           CL1_MP_TRACE            "%sOwner=%MSysAirInterfaceT"
+  info   CL1TRACE_FH_RTBAW_TRACE7           CL1_MP_TRACE            "Cl1fhRtbChnlStatusSet():Owner=%MSysAirInterfaceT,RtbaInd=%MRtbaIndTypeT,ChnlStatus=%xl"
+  info   CL1TRACE_FH_RTBAW_TRACE8           CL1_MP_TRACE            "Cl1fhRtbChnlStatusGet():Owner=%MSysAirInterfaceT,RfOn=%Mkal_bool,ChnlStatus=%xl"
+  info   CL1TRACE_FH_RTBAW_TRACE9           CL1_MP_TRACE            "Cl1fhRtbChnlRegPendingCheck():Owner=%MSysAirInterfaceT,PendingBmp=%xl"
+  info   CL1TRACE_FH_RTBAW_TRACE10          CL1_MP_TRACE            "Cl1fhRtbChnlCancelPendingCheck():Owner=%MSysAirInterfaceT,PendingBmp=%xl"  
+  info   CL1TRACE_FH_RTBAW_TRACE11          CL1_MP_TRACE            "Cl1fhRtbChnlRegReq():sleep suspended by timing change"
+  info   CL1TRACE_TestSchedInit             CL1_MP_TRACE            "CphTstSchedBegin"
+  info   CL1TRACE_SysDoSlotLisrRegStart     CL1_MP_TRACE            "SysDoSlotLisrRegStart"
+  info   CL1TRACE_SysDoSlotLisrRegFinshed   CL1_MP_TRACE            "SysDoSlotLisrRegFinshed"
+  info   CL1TRACE_Sys1xPcgLisrRegStart      CL1_MP_TRACE            "Sys1xPcgLisrRegStart"
+  info   CL1TRACE_Sys1xPcgLisrRegFinshed    CL1_MP_TRACE            "Sys1xPcgLisrRegStart"
+  info   CL1TRACE_Cl1DoBrpDoneLisr          CL1_MP_TRACE            "Cl1DoBrpDoneLisrRegFinished"
+  info   CL1TRACE_Cl11xBrpDoneLisr          CL1_MP_TRACE            "Cl11xBrpDoneLisrRegFinished"
+  info   CL1TRACE_Cl1TstCoSimMain           CL1_MP_TRACE            "CosimCaseRatTpyeCaseID: RatTpe=%MC2kCphTestSchedRatType, CaseID=%MC2kCphTestSchedCaseID"
+  info   CL1TRACE_Cl1CphTstSchedStart       CL1_MP_TRACE            "Cl1CphTstSchedStart"
+  info   CL1TRACE_Cl1CphTstSysTimeCfg       CL1_MP_TRACE            "Cl1CphTstSysTimeCfgInfo: AirInterface=%MSysAirInterfaceT,FrameType=%MSysFrameSizeT,StIntEnable=%l,SetStIntOffset=%l"
+  info   CL1TRACE_Cl1CphTstPlatformInit     CL1_MP_TRACE            "Cl1CphTstPlatformInit"
+  info   CL1TRACE_Cl1CphTstSchedMain        CL1_MP_TRACE            "TestSchedmain: RatTyep=%MC2kCphTestSchedRatType,SlotNumber=%l,EvFrameNumber=%l,PcgNumber=%l,RttFrameNumber=%l"
+  info   CL1TRACE_Cl1CphTstSchedNotStarted  CL1_MP_TRACE            "TestSchedmain_NotStarted: RatTyep=%MC2kCphTestSchedRatType,SlotNumber=%l,EvFrameNumber=%l,PcgNumber=%l,RttFrameNumber=%l"  
+  info   CL1TRACE_Cl1CosimCaseRunStepNumber CL1_MP_TRACE            "CosimCaseRunStep: StepNo =%d"
+  info   CL1TRACE_Cl1CosimCaseTest           CL1_MP_TRACE            "Cl1CphTestTrace: %xl, %xl, %xl"
+  info   CL1TRACE_Cl1CosimCaseTstDone       CL1_MP_TRACE            "Cl1CphTstCaseFinished"
+  info   CL1TRACE_SH_MMAFC_TRACE1           CL1_MP_TRACE            "Cl1MmAfcUpdateStateToSharedMem: ShareDac=%l,tag_source=%l,md1_time_tag=%l,md3_time_tag=%l,md1_afc_dac=%l,md3_afc_dac=%l,md3_rat_mode=%l,pre_usc=%l,pMmAfcMem=%l"
+  info   CL1TRACE_SH_MMAFC_TRACE2           CL1_MP_TRACE            "Cl1MmAfcDacGetFromMd1: ShareDac=%xl,tag_source=%xl,md1_afc_update_rat=%xl,md1_time_tag=%xl,md3_time_tag=%xl,md1_afc_dac=%xl,md3_afc_dac=%xl,md3_rat_mode=%xl,GetDac=%xl"
+  info   CL1TRACE_SH_MMAFC_TRACE3           CL1_MP_TRACE            "Cl1MmAfcStateUpdate: state=%MCl1MmAfcStateType,Interface=%MSysAirInterfaceT,RttPrePpb=%l,PreStateRTT=%MCl1MmAfcStateType,LatestStateRTT=%MCl1MmAfcStateType,PreStateEVDO=%MCl1MmAfcStateType,LatestStateEVDO=%MCl1MmAfcStateType"
+  info   CL1TRACE_SH_MMAFC_TRACE4           CL1_MP_TRACE            "Cl1MmAfcFoeUpdate: Interface=%MSysAirInterfaceT,PreStateRTT=%MCl1MmAfcStateType,LatestStateRTT=%MCl1MmAfcStateType,PreStateEVDO=%MCl1MmAfcStateType,LatestStateEVDO=%MCl1MmAfcStateType,PpbRTT=%l,PpbEVDO=%l,AfcDacValue=%l"
+  info   CL1TRACE_SH_MMAFC_TRACE5           CL1_MP_TRACE            "Cl1MmAfcFoeGetIcs: InitFoeSrc=%MCl1MmafcFoeSrcT,Interface=%MSysAirInterfaceT,PreState=%MCl1MmAfcStateType,LatestState=%MCl1MmAfcStateType,LatestState_OtherInterface=%MCl1MmAfcStateType,Ppb=%l,InitFoeHz=%l,freq_khz=%l,InitPpb=%l"
+  info   CL1TRACE_SH_MMAFC_TRACE6           CL1_MP_TRACE            "Cl1MmAfcFoeGetDrx: InitFoeSrc=%MCl1MmafcFoeSrcT,Interface=%MSysAirInterfaceT,Ppb=%l,InitFoeHz=%l,InitPpb=%l,tfc_u=%l,TempCompPpb=%l,Cl1MmAfcTfcU=%l,PreCompPbb=%l"
+  info   CL1TRACE_SH_MMAFC_TRACE7           CL1_MP_TRACE            "Cl1MmAfcDacGetStandbyFromShare: PreStateEVDO=%MCl1MmAfcStateType,LatestStateEVDO=%MCl1MmAfcStateType,PpbEVDO=%l,md1_time_tag=%xl,md3_time_tag=%xl,ShareDac=%l,pre_usc=%l"
+  info   CL1TRACE_SH_MMAFC_TRACE8           CL1_MP_TRACE            "Cl1MmAfcFoeGetStandby: InitFoeSrc=%MCl1MmafcFoeSrcT,Interface=%MSysAirInterfaceT,PreState=%MCl1MmAfcStateType,LatestState=%MCl1MmAfcStateType,Ppb=%l,InitFoeHz=%l,FreqKHz=%l,InitPpb=%l"
+  info   CL1TRACE_SH_MMAFC_TRACE9           CL1_MP_TRACE            "Cl1MmAfcFoeProcess: Interface=%MSysAirInterfaceT,FreqKHz=%l,Ppb=%l,Cl1MmAfcPpb=%l,IsToShareMem=%xl,FoeHz=%l,Cl1MmAfcTfcU=%l,band=%l,channel=%l"
+  info   CL1TRACE_SH_MMAFC_TRACE10          CL1_MP_TRACE            "Cl1MmAfcFoeGetDfs: Interface=%MSysAirInterfaceT,band=%l,channel=%l,Ppb=%l,InitFoe=%l,FreqKHz=%l"
+  info   CL1TRACE_SH_MMAFC_TRACE11          CL1_MP_TRACE            "Cl1MmAfcFoeGetIcsMiniAcq: band=%l,channel=%l,Ppb=%l,InitFoe=%l,FreqKHz=%l"
+  info   CL1TRACE_ArbTaskTxRfReq            CL1_MP_TRACE            "Cl1Arb TxRfReq in task: Mod %MSysAirInterfaceT, ActionTyp %MRfcActionOnOffT, Imm %d"
+  info   CL1TRACE_ArbRfActionTimInfo         CL1_MP_TRACE           "Cl1Arb RfReqActionTimInfo: Imm %d, SupFrm %xl %xl, Echip %l, CurSupFrm %xl %xl, CurEchip %l"
+  info   CL1TRACE_ArbRfReqTimInfo            CL1_MP_TRACE            "Cl1Arb RfReqTimInfo: Imm %d, SupFrm %xl %xl, Echip %l"
+  info   CL1TRACE_ArbFrTickRfReq             CL1_MP_TRACE            "Cl1Arb FrTickRfReq: Mod %MSysAirInterfaceT, Path %MRfcPathTypT, ActionTyp %MRfcActionOnOffT, Band %MSysCdmaBandT, Chan %d, RcCtrl %d"
+  info   CL1TRACE_ArbFrTickRxdWiRc           CL1_MP_TRACE            "Cl1Arb FrTickRfReq: RxdWiRc"
+  info   CL1TRACE_ArbRfRdyInd                CL1_MP_TRACE            "Cl1Arb RfRdyInd: Mod %MSysAirInterfaceT, %d, %d"
+  info   CL1TRACE_ArbEvtHdlr                 CL1_MP_TRACE            "Cl1Arb EvtHdlr: Mod %MSysAirInterfaceT, Path %MRfcPathTypT, ActionTyp %MRfcActionOnOffT, RequestTyp %MRfcRequestTypT, Imm %d, SupFrm %xl %xl, Echip %l"
+  info   CL1TRACE_ArbEvtHdlr_FrzImm          CL1_MP_TRACE            "Cl1Arb EvtHdlr: Tx Freeze/Sleep Imm"
+  info   CL1TRACE_ArbEvtHdlr_UnfrzWoRf       CL1_MP_TRACE            "Cl1Arb EvtHdlr: Tx UnFreeze wo RF "
+  info   CL1TRACE_ArbEvtHdlr_UnfrzWiRf       CL1_MP_TRACE            "Cl1Arb EvtHdlr: Tx UnFreeze wi RF,  SupFrm %xl %xl, Echip %l"
+  info   CL1TRACE_ArbEvtHdlr_ImmOnOff2ImmOff CL1_MP_TRACE            "Cl1Arb EvtHdlr: ImmOn-ImmOff-> ImmOff"
+  info   CL1TRACE_ArbEvtHdlr_UnfrzWiRf2WoRfI CL1_MP_TRACE            "Cl1Arb EvtHdlr: Tx Unfreeze wi Rf & Imm TxOff -> Tx Unfreeze"
+  info   CL1TRACE_ArbEvtHdlr_FrzImmOffTxOff  CL1_MP_TRACE            "Cl1Arb EvtHdlr: FrzImm-ImmTxoff -> FrzImm"
+  info   CL1TRACE_ArbEvtHdlr_NormSameAction  CL1_MP_TRACE            "Cl1Arb EvtHdlr: Normal OnOn -> On or Normal OffOff -> Off"
+  info   CL1TRACE_ArbEvtHdlr_NormOnOff2Off   CL1_MP_TRACE            "Cl1Arb EvtHdlr: Normal OnOff -> Off"
+  info   CL1TRACE_ArbEvtHdlr_ImmOnOff2Off    CL1_MP_TRACE            "Cl1Arb EvtHdlr: ImmOnOff -> NormOff"
+  info   CL1TRACE_ArbEvtHdlr_UnfrzWiRf2WoRfN CL1_MP_TRACE            "Cl1Arb EvtHdlr: Tx Unfreeze wi Rf & Norm TxOff -> Tx Unfreeze"
+  info   CL1TRACE_ArbEvtHdlr_ImmOnOn         CL1_MP_TRACE            "Cl1Arb EvtHdlr: ImmOn-On->ImmOn"
+  info   CL1TRACE_ArbEvtHdlr_ImmOffOff       CL1_MP_TRACE            "Cl1Arb EvtHdlr: ImmOff-Off->ImmOff"
+  info   CL1TRACE_ArbEvtHdlr_NormOffOn       CL1_MP_TRACE            "Cl1Arb EvtHdlr: NormOffOn"
+  info   CL1TRACE_ArbEvtHdlr_ImmOffOn        CL1_MP_TRACE            "Cl1Arb EvtHdlr: ImmOffOn"  
+  info   CL1TRACE_ArbEvtHdlr_NormTxInFrz     CL1_MP_TRACE            "Cl1Arb EvtHdlr: NormalTxOn InFreeze -> InFreeze"
+  info   CL1TRACE_ArbEvtHdlr_RcOffMerge2Prev CL1_MP_TRACE            "Cl1Arb EvtHdlr: RcMerge2Prev"
+  info   CL1TRACE_ArbEvtHdlr_RcOnMerged      CL1_MP_TRACE            "Cl1Arb EvtHdlr: RcOnMerged"
+  info   CL1TRACE_NormActionFree             CL1_MP_TRACE            "Cl1Arb Norm Action Freed: Mod %MSysAirInterfaceT, Path %MRfcPathTypT, ActionTyp %MRfcActionOnOffT"
+  info   CL1TRACE_ImmActionFree              CL1_MP_TRACE            "Cl1Arb Imm Action Freed: Mod %MSysAirInterfaceT, Path %MRfcPathTypT, ActionTyp %MRfcActionOnOffT"
+  info   CL1TRACE_IfExeAction                CL1_MP_TRACE            "Cl1Arb Main: Mod %MSysAirInterfaceT, Path %MRfcPathTypT, ActionTyp %MRfcActionOnOffT, CurRxSlot %l CurRxChip %l, ActionSlot %l ActionChip %l, Exe=%d"
+  info   CL1TRACE_Cl1RfcActionReq            CL1_MP_TRACE            "Cl1Rfc ActionReq: Mod %MSysAirInterfaceT, Path %MRfcPathTypT, ActionTyp %MRfcActionOnOffT, RequestTyp %MRfcRequestTypT"
+  info   CL1TRACE_Cl1RfcActionGap            CL1_MP_TRACE            "Cl1Rfc ActionGap: ReqSuperFrame %xl %xl, ReqTiming %l, BufSuperFrame %xl %xl, BufTiming %l, gap=%l"
+  info   CL1TRACE_Cl1RfcActionRxdsInfo       CL1_MP_TRACE            "Cl1Rfc RxdsInfo: Rxd=%MRfcPathStatusT, Rxs=%MRfcPathStatusT, %MRfcPathTypT"      
+  info   CL1TRACE_Cl1RfcActionOffWarning     CL1_MP_TRACE            "Cl1Rfc ActionOff: Warning! ON&OFF Too Close"
+  info   CL1TRACE_Cl1RfcActionOnWarning      CL1_MP_TRACE            "Cl1Rfc ActionOn: Warning! OFF&On Too Close"
+  info   CL1TRACE_Cl1RfcMainOffConfiltWarning CL1_MP_TRACE           "Cl1Rfc Main: Warning! %MSysAirInterfaceT is active,when %MSysAirInterfaceT off requested, Path %MRfcPathTypT"
+  info   CL1TRACE_Cl1RfcMainPathOff          CL1_MP_TRACE            "Cl1Rfc Main: PathAction=Off, Mod %MSysAirInterfaceT Path %MRfcPathTypT, RequestTyp %MRfcRequestTypT"
+  info   CL1TRACE_Cl1RfcMain_PathAlreadyOff  CL1_MP_TRACE            "Cl1Rfc Main: Path already off"
+  info   CL1TRACE_Cl1RfcMain_TxFreeze        CL1_MP_TRACE            "Cl1Rfc Main: TxFreeze"
+  info   CL1TRACE_Cl1RfcMainPathOn           CL1_MP_TRACE            "Cl1Rfc Main: PathAction=On, Mod %MSysAirInterfaceT Path %MRfcPathTypT, RequestTyp %MRfcRequestTypT"
+  info   CL1TRACE_Cl1RfcMain_PathAlreadyOn   CL1_MP_TRACE            "Cl1Rfc Main: Path already on"
+  info   CL1TRACE_Cl1RfcActionOff_TxFreeze   CL1_MP_TRACE            "Cl1Rfc ActionOff: TxFreeze"
+  info   CL1TRACE_Cl1RfcRcReq                CL1_MP_TRACE            "Cl1Rfc RcReq: Mod %MSysAirInterfaceT, Path %MRfcPathTypT, ActionTyp %MRfcActionOnOffT, RcStatus %MRfcPathRcStatusT, RcSuperFrame %xl %xl, RcTiming %l"  
+  info   CL1TRACE_Cl1RfcTurnOffTxPotential   CL1_MP_TRACE            "Cl1Rfc ActionOff: Tx Potential"
+  info   CL1TRACE_Cl1ShRfcRfStatInfo         CL1_MP_TRACE            "RfcRfStatInfo: Mod=%MSysAirInterfaceT, Main=%MRfcPathStatusT,Div=%MRfcPathStatusT,Rxs=%MRfcPathStatusT,Tx=%MRfcPathStatusT"
+  info   CL1TRACE_ArbFillImmTimBefore        CL1_MP_TRACE            "Cl1Arb ArbFillImmTimBefore: Mod %MSysAirInterfaceT, SupFrm %xl %xl, Echip %l"
+  info   CL1TRACE_ArbFillImmTimAfter         CL1_MP_TRACE            "Cl1Arb ArbFillImmTimAfter: Path %MRfcPathTypT, ActionTyp %MRfcActionOnOffT, is26msFrame %d, timeforAlignment %l, SupFrm %xl %xl, Echip %l"     
+  info   CL1TRACE_RfcTimingDebug             CL1_MP_TRACE            "Cl1Rfc TimingDebug: SupFrm %xl %xl, Echip %l" 
+  info   CL1TRACE_Cl1RcInit                  CL1_MP_TRACE            "Cl1RcSwInit"
+  info   CL1TRACE_Cl1RcCurrTiming            CL1_MP_TRACE            "Cl1RcCurrTiming: Mode=%MSysAirInterfaceT, CurrTimingSlot=%l, Curr9MHzCnt=%l"
+  info   CL1TRACE_Cl1RcReqFromArbiter        CL1_MP_TRACE            "Cl1RcReq Arrived: Mode=%MSysAirInterfaceT, ReqType=%MCl1RcReqTypeT, RefSFrame=%l, RefTimingSlot=%l, RefChip8xoffset=%l, CurrTimingSlot=%l, CurrChip8xoffset=%l"
+  info   CL1TRACE_Cl1RcReqRxEnQueue          CL1_MP_TRACE            "Cl1RcReq RxQueueInfo: Mode=%MSysAirInterfaceT, Ongoing=%d, OngoingReq=%MCl1RcReqTypeT, Pending=%b, ComingReq=%MCl1RcReqTypeT"
+  info   CL1TRACE_Cl1RcReqTxEnQueue          CL1_MP_TRACE            "Cl1RcReq TxQueueInfo: Mode=%MSysAirInterfaceT, Ongoing=%d, OngoingReq=%MCl1RcReqTypeT, Pending=%b, ComingReq=%MCl1RcReqTypeT"
+  info   CL1TRACE_Cl1RcSeqRxStateTrans       CL1_MP_TRACE            "Cl1RcSeq RxState: Mode=%MSysAirInterfaceT, CurrState=%MCl1RcSeqRxStateT, ComingEvt=%MCl1RcSeqRxEvtT, CurrTimingSlot=%l"
+  info   CL1TRACE_Cl1RcSeqRxParaEnter        CL1_MP_TRACE            "Cl1RcSeq RxPara: Event Coming, Mode=%MSysAirInterfaceT, StateTran=%xl, DnCnts=%xl, Curr9MHzCnt=%xl, CurrTs=%xl"
+  info   CL1TRACE_Cl1RcSeqRxParaExit         CL1_MP_TRACE            "Cl1RcSeq RxPara: Event Handled, Mode=%MSysAirInterfaceT, StateTran=%xl, DnCnts=%xl, Curr9MHzCnt=%xl, CurrTs=%xl"
+  info   CL1TRACE_Cl1RcSeqRxOnParse          CL1_MP_TRACE            "Cl1RcSeq RxOnParse: Mode=%MSysAirInterfaceT, RxOnType=%MCl1RcReqRxOnTypeT, CurrEchip=%l, FTimer1Echip=%l, FTimer2Echip=%l, GrpComb0=%d, GrpComb1=%d, GrpComb2=%d"
+  info   CL1TRACE_Cl1RcSeqRxOffParse         CL1_MP_TRACE            "Cl1RcSeq RxOffParse: Mode=%MSysAirInterfaceT, RxOffType=%MCl1RcReqRxOffTypeT, CurrEchip=%l, FrameType=%d, GrpComb4=%l, GrpComb5=%l, EndIndComb=%l"
+  info   CL1TRACE_Cl1RcSeqTxStateTrans       CL1_MP_TRACE            "Cl1RcSeq TxState: Mode=%MSysAirInterfaceT, CurrState=%MCl1RcSeqTxStateT, ComingEvt=%MCl1RcSeqTxEvtT, CurrTimingSlot=%l"
+  info   CL1TRACE_Cl1RcSeqTxParaEnter        CL1_MP_TRACE            "Cl1RcSeq TxPara: Event Coming, Mode=%MSysAirInterfaceT, StateTran=%xl, DnCnts=%xl, Curr9MHzCnt=%xl, CurrTs=%xl"
+  info   CL1TRACE_Cl1RcSeqTxParaExit         CL1_MP_TRACE            "Cl1RcSeq TxPara: Event Handled, Mode=%MSysAirInterfaceT, StateTran=%xl, DnCnts=%xl, Curr9MHzCnt=%xl, CurrTs=%xl"
+  info   CL1TRACE_Cl1RcSeqRxRttFtimer        CL1_MP_TRACE            "Cl1RcSeq 1xRTT FineTimer Excuted!"
+  info   CL1TRACE_Cl1RcSeqRxEvdoFtimer       CL1_MP_TRACE            "Cl1RcSeq EVDO FineTimer Excuted!"
+  info   CL1TRACE_Cl1RcSeqRxStatWarning      CL1_MP_TRACE            "Cl1RcSeq RxState: Warning! The coming event is invalid during current rx sequence stat!"
+  info   CL1TRACE_Cl1RcSeqTxStatWarning      CL1_MP_TRACE            "Cl1RcSeq TxState: Warning! The coming event is invalid during current tx sequence stat!"
+  info   CL1TRACE_Cl1RcDrvPwrCtrlAction      CL1_MP_TRACE            "Cl1RcDrv PwrCtrl Action: Mode=%MSysAirInterfaceT, Target=%MCl1RcdPwrSubsysT, Action=%b"
+  info   CL1TRACE_Cl1RcDrvPwrCtrlStatus      CL1_MP_TRACE            "Cl1RcDrv PwrCtrl Status: Mode=%MSysAirInterfaceT, Curr9MHzCnt=%l, Status=%b"
+  info   CL1TRACE_Cl1RcDrvClkCtrlAction      CL1_MP_TRACE            "Cl1RcDrv ClkCtrl Action: Mode=%MSysAirInterfaceT, Target=%MCl1RcdCGSubsysT, Action=%MCl1RcdClkConfTypeT"
+  info   CL1TRACE_Cl1RcDrvClkCtrlStatus      CL1_MP_TRACE            "Cl1RcDrv ClkCtrl Status: Mode=%MSysAirInterfaceT, Curr9MHzCnt=%lx, Status=%b"
+  info   CL1TRACE_Cl1RcDrvSramCtrlAction     CL1_MP_TRACE            "Cl1RcDrv SramCtrl Action: Mode=%MSysAirInterfaceT, Target=%MCl1RcdSramSubsysT, Action=%MCl1RcdSramOnOffT"
+  info   CL1TRACE_Cl1RcDrvSramCtrlStatus     CL1_MP_TRACE            "Cl1RcDrv SramCtrl Status: Mode=%MSysAirInterfaceT, Curr9MHzCnt=%l, Status=%b"
+  info   CL1TRACE_Cl1RcDrvModemDvfsAction    CL1_MP_TRACE            "Cl1RcDrv ModemDvfs Action: Mode=%MSysAirInterfaceT, Set Scenario %MCl1RcdDvfsScenT, Curr9MHzCnt=%l, Target9MHzCnt=%l"
+  info   CL1TRACE_Cl1RcDrvModemDvfsStatus    CL1_MP_TRACE            "Cl1RcDrv ModemDvfs Status: Mode=%MSysAirInterfaceT, DvfsStatus=%MCl1RcdDvfsScenStatusT, Curr9MHzCnt=%l"
+  info   CL1TRACE_Cl1RcDrvDspCtrlAction      CL1_MP_TRACE            "Cl1RcDrv DspCrtl Action: Mode=%MSysAirInterfaceT, TargetDsp=%MCl1RcdDspEnumT, Action=%MCl1RcdDspActionT"
+  info   CL1TRACE_Cl1RcDrvDspCtrlDdlStatus   CL1_MP_TRACE            "Cl1RcDrv DspCrtl Ddl Status: Mode=%MSysAirInterfaceT, DdlMode=%xl, DdlStatus=%xl"
+  info   CL1TRACE_Cl1RcDrvDspCtrlSleepStatus CL1_MP_TRACE            "Cl1RcDrv DspCtrl Sleep Status: Mode=%MSysAirInterfaceT, Dsp=%xl, IdlStatus=%xl, ActiveStatus=%xl, DeactStatus=%xl"
+  info   CL1TRACE_Cl1RcDrvDspDdlStatus       CL1_MP_TRACE            "Cl1RcDrv DspSleep Status: Mode=%MSysAirInterfaceT, BinMode=%MCl1RcdDspDdlBinModeT, Status=%MCl1RcdDspDdlStatusT, Curr9MHzCnt=%l"
+  info   CL1TRACE_Cl1RcDrvDspIdleStatus      CL1_MP_TRACE            "Cl1RcDrv DspIdle Status: Mode=%MSysAirInterfaceT, Dsp=%MCl1RcdDspEnumT, Status=%MCl1RcdDspIdleStatusT, Curr9MHzCnt=%l"
+  info   CL1TRACE_Cl1RcHwDebugRegisterWrite  CL1_MP_TRACE            "Cl1RcHwDebug Register Write: Addr=%Xl, Val=%Xl, CurrFrc=%Xl"
+  info   CL1TRACE_Cl1RcHwDebugRegisterRead   CL1_MP_TRACE            "Cl1RcHwDebug Register Read: Addr=%Xl, Val=%Xl, CurrFrc=%Xl"
+  info   CL1TRACE_Cl1RcHwInit                CL1_MP_TRACE            "Cl1RcHwInit"
+  info   CL1TRACE_Cl1RcHwDebugRegisterDump   CL1_MP_TRACE            "Cl1RcHwDebug Register Dump: Mode=%MSysAirInterfaceT, FeatureMask=%l, Curr9MHzCnt=%l, Id=%l"
+  info   CL1TRACE_Cl1RcDebugPrint            CL1_MP_TRACE            "Cl1RcDrv DebugPrint: Mode=%MSysAirInterfaceT, Index=%d, Var1=%Xl, Var2=%Xl, Var3=%Xl, Var4=%Xl, Var5=%Xl"
+  info   CL1TRACE_Cl1RcReqModemDvfsSet       CL1_MP_TRACE            "Cl1RcReq Modem Dvfs Set: Mode=%MSysAirInterfaceT, User=%MCl1RcReqModemDvfsUsrT, Scen=%MCl1RcdDvfsScenT"
+  info   CL1TRACE_Cl1RcReqModemDvfsCancel    CL1_MP_TRACE            "Cl1RcReq Modem Dvfs Cancel: Mode=%MSysAirInterfaceT, User=%MCl1RcReqModemDvfsUsrT"
+  
+  info   CL1TRACE_Cl1ShRakeArbNullStateWarning  CL1_MP_TRACE         "Cl1ShRakeArb Sub_NullState: Warning! The coming event is invalid during current sub_null state!"
+  info   CL1TRACE_Cl1ShRakeArbStatus            CL1_MP_TRACE         "Cl1ShRakeArb Action: Mode=%MSysAirInterfaceT, Event=%MCl1ShRakeArbEventType, Cl1ShRakeArbCurrState=%MCl1ShRakeArbInterStateT, Cl1ShRakeArbActiveMode=%l, Mark=%l"
+  info   CL1TRACE_Cl1RcdBrpsysDvitReset      CL1_MP_TRACE            "Cl1RcDrv BrpsysDvit Reset: Mode=%MSysAirInterfaceT, Curr9MHzCnt=%Xl"
+  info   CL1TRACE_Cl1RcdBrpsysTurboReset     CL1_MP_TRACE            "Cl1RcDrv BrpsysTurbo Reset: Mode=%MSysAirInterfaceT, Curr9MHzCnt=%Xl"
+  
+  info   CL1TRACE_MD_DVFS_SET_SCEN           CL1_MP_TRACE            "CL1TRACE_MD_DVFS_SET_SCEN: Evt=%MCl1MdDvfsEvtT, ScenNew=%MDVFS_MD_MIPS_SCENARIO_E"
+  info   CL1TRACE_MD_DVFS_APPLY_SCEN         CL1_MP_TRACE            "CL1TRACE_MD_DVFS_APPLY_SCEN: ScenOld=%MDVFS_MD_MIPS_SCENARIO_E, ScenPend=%MDVFS_MD_MIPS_SCENARIO_E, PendCnt=%d, PendSleepOwner=%MSysAirInterfaceT"
+  
+  info   CL1TRACE_SM_TICK                    CL1_MP_TRACE            "CL1TRACE_SM_TICK: Interface=%MSysAirInterfaceT, %s"
+  info   CL1TRACE_SM_SET_CAL_VAL             CL1_MP_TRACE            "CL1TRACE_SM_SET_CAL_VAL: Interface=%MSysAirInterfaceT, CalValue=%Xl"
+  info   CL1TRACE_SM_SET_SLP_OFFSET          CL1_MP_TRACE            "CL1TRACE_SM_SET_SLP_OFFSET: Interface=%MSysAirInterfaceT, Offset=%d"
+  
+  info    CL1TRACE_DVT_RXTIMER_START         CL1_MP_TRACE         "[DVT][RXTIMER][START] %MSysAirInterfaceT case: %d"
+  info    CL1TRACE_DVT_RXTIMER_END           CL1_MP_TRACE         "[DVT][RXTIMER][END] %MSysAirInterfaceT case %d: %s"
+  info    CL1TRACE_DVT_RXTIMER_INFO          CL1_MP_TRACE         "[DVT][RXTIMER][INFO] Line#%d, var1=%Xl, var2=%Xl, var3=%Xl, var4=%Xl, var5=%Xl, var6=%Xl, var7=%Xl, var8=%Xl, var9=%Xl"
+  info    CL1TRACE_DVT_RXTIMER_FAIL_DETAIL   CL1_MP_TRACE         "[DVT][RXTIMER][FAIL_DETAIL] Line#%d"
+
+  info    CL1TRACE_DVT_SLPCTRL_START         CL1_MP_TRACE         "[DVT][SLPCTRL][START] %MSysAirInterfaceT case: %d"
+  info    CL1TRACE_DVT_SLPCTRL_END           CL1_MP_TRACE         "[DVT][SLPCTRL][END] %MSysAirInterfaceT case %d: %s"
+  info    CL1TRACE_DVT_SLPCTRL_INFO          CL1_MP_TRACE         "[DVT][SLPCTRL][INFO] Line#%d, var1=%Xl, var2=%Xl, var3=%Xl, var4=%Xl, var5=%Xl, var6=%Xl, var7=%Xl, var8=%Xl, var9=%Xl"
+  info    CL1TRACE_DVT_SLPCTRL_FAIL_DETAIL   CL1_MP_TRACE         "[DVT][SLPCTRL][FAIL_DETAIL] Line#%d"
+
+  info    CL1TRACE_CPH_SYSTIME_ADVRET           CL1_MP_TRACE         "CL1TRACE_CPH_SYSTIME_ADVRET: Interface=%MSysAirInterfaceT, Adv=%Mkal_bool, Echips=%l"
+  info    CL1TRACE_CPH_SYSTIME_SYNCTIME         CL1_MP_TRACE         "CL1TRACE_CPH_SYSTIME_SYNCTIME: Interface=%MSysAirInterfaceT, SyncEchip=%Xl, SupfrmIniH=%Xb, SupfrmIniL=%Xl, EchipIni=%Xl"
+  info    CL1TRACE_CPH_SYSTIME_FRAMESIZE        CL1_MP_TRACE         "CL1TRACE_CPH_SYSTIME_FRAMESIZE: Interface=%MSysAirInterfaceT, FrameSize=%MSysFrameSizeT"
+  info    CL1TRACE_CPH_SYSTIME_STINTDIS         CL1_MP_TRACE         "CL1TRACE_CPH_SYSTIME_STINTDIS: Interface=%MSysAirInterfaceT, Mask=%Xl"
+  info    CL1TRACE_CPH_SYSTIME_STINTEN          CL1_MP_TRACE         "CL1TRACE_CPH_SYSTIME_STINTEN: Interface=%MSysAirInterfaceT, Mask=%Xl, ClrMask=%Xl"
+  info    CL1TRACE_CPH_SYSTIME_STHALFINTDIS     CL1_MP_TRACE         "CL1TRACE_CPH_SYSTIME_STHALFINTDIS: Interface=%MSysAirInterfaceT, Mask=%Xl"
+  info    CL1TRACE_CPH_SYSTIME_STHALFINTEN      CL1_MP_TRACE         "CL1TRACE_CPH_SYSTIME_STHALFINTEN: Interface=%MSysAirInterfaceT, Mask=%Xl, ClrMask=%Xl"
+  info    CL1TRACE_CPH_SYSTIME_STINTOFFSET      CL1_MP_TRACE         "CL1TRACE_CPH_SYSTIME_STINTOFFSET: Interface=%MSysAirInterfaceT, ChipOffset2x=%Xl"
+  info    CL1TRACE_CPH_SYSTIME_STHALFINTOFFSET  CL1_MP_TRACE         "CL1TRACE_CPH_SYSTIME_STHALFINTOFFSET: Interface=%MSysAirInterfaceT, ChipOffset2x=%Xl"
+  info    CL1TRACE_CPH_SYSTIME_SFO              CL1_MP_TRACE         "CL1TRACE_CPH_SYSTIME_SFO: Interface=%MSysAirInterfaceT, AfcPpb=%d"
+
+  info    CL1TRACE_TAS_RTT_MAIN_INFO       CL1_MP_TRACE            "TAS_MAIN_INFO:Mode=%MSysAirInterfaceT,dual=%Mkal_bool,state=%ML1dStateType,sevice=%MSysServiceTypeT,TAS_state=%MC2K_CUSTOM_TAS_STATE_E,status=%MTasStatusNumT,RxMain=%d,RxDiv=%d,TxPwr=%d,MainEcIo=%d,DivEcIo=%d,Version=%MC2K_CUSTOM_TAS_VER_E,TasTimeMsCntThrd1=%d,TasTimeMsCntThrd2=%d"
+  info    CL1TRACE_TAS_DO_MAIN_INFO        CL1_MP_TRACE            "TAS_MAIN_INFO:Mode=%MSysAirInterfaceT,dual=%Mkal_bool,state=%MFmpModeT,sevice=%MSysServiceTypeT,TAS_state=%MC2K_CUSTOM_TAS_STATE_E,status=%MTasStatenumT,RxMain=%d,RxDiv=%d,TxPwr=%d,MainEcIo=%d,DivEcIo=%d,Version=%MC2K_CUSTOM_TAS_VER_E,TasTimeMsCntThrd1=%d,TasTimeMsCntThrd2=%d"
+  info    CL1TRACE_TAS_DEBUG_INFO          CL1_MP_TRACE            "TAS_DEBUG_INFO:status=%MTasStatusNumT, step=%MTasStepFuncEnumT,state=%MC2K_CUSTOM_TAS_STATE_E,v1=%d,v2=%d,v3=%d,v4=%d,v5=%d"
+  info    CL1TRACE_TAS_FORCE_ANT_INFO      CL1_MP_TRACE            "TAS_FORCE_ANT_INFO:band = %MSysCdmaBandT,FmpGetFmpMode() = %d, Tas_Ctrl = %MTasForceAntCtrlT, TasVersion = %MC2K_CUSTOM_TAS_VER_E"
+  info    CL1TRACE_TAS_FORCE_ANT_AT_INFO   CL1_MP_TRACE            "TAS_FORCE_ANT_AT_INFO:Tas_Ctrl = %MTasForceAntCtrlT,Tas_Mode = %d,Tas_Band = %d, Tas_NvWriteEn = %Mkal_bool"
+  info    CL1TRACE_TAS_SAR_INFO            CL1_MP_TRACE            "TAS_DEBUG_SAR_INFO:dual = %Mkal_bool,SAR_EN = %Mkal_bool, DeltaPilotEc = %l,DeltaMaxTXP = %l,MsIndex = %l"
+  info    CL1TRACE_TAS_ACCESS_INFO         CL1_MP_TRACE            "TAS_ACCESS_INFO:TasStatus=%MTasStatusNumT,PreTasState = %MC2K_CUSTOM_TAS_STATE_E,TAS_Enable=%Mkal_bool"
+
+  info    CL1TRACE_TAS_SH_START            CL1_MP_TRACE            "TAS_SWITCH_START:(Mode=%MSysAirInterfaceT,band = %MSysCdmaBandT,TAS_state=%MC2K_CUSTOM_TAS_STATE_E,PathOff=%Mkal_bool,TasTimeReq.SuperFrame=%l,TasTimeReq.Timing=%l,RxMPathState=%MRfcPathStatusT,TasBackoffSwitch=%Mkal_bool)"
+  info    CL1TRACE_TAS_SH_END              CL1_MP_TRACE            "TAS_SWITCH_END:(Mode=%MSysAirInterfaceT,band = %MSysCdmaBandT,TAS_state=%MC2K_CUSTOM_TAS_STATE_E,DirectTasFlag=%Mkal_bool,TasSwitch=%Mkal_bool,TasDelay=%Mkal_bool)"
+
+  info    CL1TRACE_TAS_RF_CFG_ACTION       CL1_MP_TRACE            "TAS_SWITCH_RF_CFG_ACTION:(Mode=%MSysAirInterfaceT,band = %MSysCdmaBandT,TAS_state=%MC2K_CUSTOM_TAS_STATE_E,TasCfgFlag=%Mkal_bool,RfActionFlag=%Mkal_bool,RfOnFlag=%Mkal_bool!)"
+  info    CL1TRACE_TAS_IMMID_RF_SW         CL1_MP_TRACE            "TAS_SWITCH_IMMID_RF_SW:(Mode=%MSysAirInterfaceT,ShdrMode=%Mkal_bool,EvdoOnly=%Mkal_bool,TasRtbaQuery=%MRtbaTasQueryResultT,TasCl1Query=%Mkal_bool,Data6=%d,Data7=%d)"
+  info    CL1TRACE_TAS_BACKOFF_SW          CL1_MP_TRACE            "TAS_SWITCH_BACKOFF_SW:(Mode=%MSysAirInterfaceT,TasRtbaQuery=%MRtbaTasQueryResultT,TasCl1Query=%Mkal_bool,TasHscQuery=%d,Data5=%d)"
+  info    CL1TRACE_TAS_NORMAL_SW           CL1_MP_TRACE            "TAS_SWITCH_NORMAL_SW :(Mode=%MSysAirInterfaceT,1xPreemptState=%MTasRfPreemptStateT,DoPreemptState=%MTasRfPreemptStateT,TasPreemptFlag=%Mkal_bool,Data5=%d,Data6=%d)"
+  info    CL1TRACE_TAS_RF_STAT             CL1_MP_TRACE            "TAS_SWITCH_TAS_RF_STAT:(Mode=%MSysAirInterfaceT,RxMPathOff=%Mkal_bool,RxDPathOff=%Mkal_bool,RxSPathOff=%Mkal_bool,TxPathOff=%Mkal_bool,RxMPathState=%MRfcPathStatusT,RxDPathState=%MRfcPathStatusT,RxSPathState=%MRfcPathStatusT,TxPathState=%MRfcPathStatusT,)"
+  info    CL1TRACE_TAS_SWITCH_OVER         CL1_MP_TRACE            "TAS_SWITCH_TAS_SWITCH_OVER:(Mode=%MSysAirInterfaceT,1xPreemptFlag=%Mkal_bool,1xResumeFlag=%Mkal_bool,DoPreemptFlag=%Mkal_bool,DoResumeFlag=%Mkal_bool,TasRfCfg=%Mkal_bool)"
+  info    CL1TRACE_TAS_DEBUG_GENERAL       CL1_MP_TRACE            "TAS_SWITCH_DEBUG_GENERAL:(Mode=%MSysAirInterfaceT,TAS_state=%MC2K_CUSTOM_TAS_STATE_E,Data3=%d,Data4=%d,Data5=%d,Data6=%d,Data7=%d,Data8=%d)"
+                                     
+  info    CL1TRACE_DAT_CTRL_INFO              CL1_MP_TRACE        "DAT_CTRL_INFO:OP_code=%d,rat=%d,DatStatus=%Xl,CurrentFrameNum=%Xl,NextFrameTime=%Xl,ReserveLen=%l,FeatureIndex=%d,SeqNum=%d"
+  info    CL1TRACE_RF_RX_ON_IMMIDIATE_INFO    CL1_MP_TRACE        "TAS_SWITCH RF_ON_IMMID Rx: (Mode=%MSysAirInterfaceT, RxMPathState=%MRfcPathStatusT, RxDPathState=%MRfcPathStatusT, Band = %MSysCdmaBandT, Chan = %d, PcgSlotNo=%d, CurrentOffset=%l, RfOpenRxOffset=%l)"
+  info    CL1TRACE_RF_TX_ON_IMMIDIATE_INFO    CL1_MP_TRACE        "TAS_SWITCH RF_ON_IMMID Tx: (Mode=%MSysAirInterfaceT, TxPathState=%MRfcPathStatusT,  Band = %MSysCdmaBandT, Chan = %d, TasRfTxOffFlag=%Mkal_bool, GateOnState=%Mkal_bool, PcgSlotNo=%d, RfOpenRxOffset=%l, RfCloseTxOffset=%l)"
+  info    CL1TRACE_RF_RX_OFF_IMMIDIATE_INFO   CL1_MP_TRACE        "TAS_SWITCH RF_OFF_IMMID Rx:(Mode=%MSysAirInterfaceT, RxMPathState=%MRfcPathStatusT, RxDPathState=%MRfcPathStatusT, Band = %MSysCdmaBandT, Chan = %d, PcgSlotNo=%d, CurrentOffset=%l, RfOpenRxOffset=%l)"
+  info    CL1TRACE_RF_TX_OFF_IMMIDIATE_INFO   CL1_MP_TRACE        "TAS_SWITCH RF_OFF_IMMID Tx:(Mode=%MSysAirInterfaceT, TxPathState=%MRfcPathStatusT,  Band = %MSysCdmaBandT, Chan = %d, TasRfTxOffFlag=%Mkal_bool, GateOnState=%Mkal_bool, PcgSlotNo=%d, RfOpenRxOffset=%l, RfCloseTxOffset=%l)"

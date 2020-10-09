@@ -1,0 +1,5 @@
+VARS kal_uint32  "" 
+{
+      {dhl_tool_connected}   DHL_TOOL_CONNECTED;
+};
+
